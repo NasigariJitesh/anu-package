@@ -1,29 +1,13 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "tsconfig/nextjs.json",
+  "exclude": ["node_modules", "jest.config.js"],
+  "include": ["globals.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    "esModuleInterop": true,
-    "jsx": "react-native",
-    "lib": ["DOM", "ESNext"],
-    "moduleResolution": "node",
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "target": "ESNext",
-
-    "baseUrl": ".",
-    "allowJs": false,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "incremental": true,
-    "module": "esnext",
-    "isolatedModules": true,
     "paths": {
       "constants": ["common/constants"],
       "common/*": ["common/*"],
       "config/*": ["config/*"],
       "lib/*": ["lib/*"]
     }
-  },
-  "exclude": ["node_modules", "jest.config.js"],
-  "include": ["globals.d.ts", "**/*.ts", "**/*.tsx"]
+  }
 }

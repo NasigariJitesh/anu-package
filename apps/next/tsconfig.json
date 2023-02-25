@@ -13,7 +13,7 @@
       "constants": ["common/constants"],
       "common/*": ["common/*"],
       "config/*": ["config/*"],
-      "lib/*": ["lib/*"],
+      "lib/*": ["../../packages/parmanu/lib/*"],
       "navigation": ["src/navigation"],
       "src/*": ["src/*"],
       "screens": ["src/screens"]

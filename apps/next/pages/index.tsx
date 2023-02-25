@@ -1,13 +1,8 @@
-import { Container, Icon } from 'lib';
+import { Typography } from 'lib';
 
 /**
  *
  */
 export default function Test() {
-  return (
-    <>Hello</>
-    // <Container align='flex-end' maxWidth='sm' flex='row'>
-    //   <Icon name='account-box' />
-    // </Container>
-  );
+  return <Typography.Body>Hello</Typography.Body>;
 }
