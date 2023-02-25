@@ -8,12 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "dev": "next dev",
-    "format": "prettier --write . --loglevel silent",
     "lint": "eslint . --fix",
     "build:web": "next build",
-    "storybook": "start-storybook -p 7007",
-    "storybook:web": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "clean": "npx rimraf -f .expo .next node_modules package-lock.json",
     "clean-install": "yarn clean"
   },
