@@ -5,10 +5,19 @@
   "license": "MIT",
   "dependencies": {
     "eslint": "^7.23.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-next": "13.0.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-config-turbo": "latest",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsdoc": "^40.0.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-no-secrets": "^0.8.9",
     "eslint-plugin-react": "7.31.8",
-    "eslint-config-turbo": "latest"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unicorn": "^45.0.2"
   },
   "devDependencies": {
     "typescript": "^4.7.4"

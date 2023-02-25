@@ -1,0 +1,23 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowJs": false,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "module": "esnext",
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "paths": {
+      "constants": ["common/constants"],
+      "common/*": ["common/*"],
+      "config/*": ["config/*"],
+      "lib/*": ["lib/*"],
+      "navigation": ["src/navigation"],
+      "src/*": ["src/*"],
+      "screens": ["src/screens"]
+    }
+  },
+  "include": ["globals.d.ts", "next-env.d.ts", "rn-overrides.d.ts", "**/*.ts", "**/*.tsx"]
+}
