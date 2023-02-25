@@ -11,12 +11,11 @@
     "format": "prettier --write . --loglevel silent",
     "lint": "eslint . --fix",
     "build:web": "next build",
-    "prepare": "husky install",
     "storybook": "start-storybook -p 7007",
     "storybook:web": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "clean": "npx rimraf -f .expo .next node_modules package-lock.json",
-    "clean-install": "yarn clean && yarn"
+    "clean-install": "yarn clean"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.17.3",
@@ -61,22 +60,7 @@
     "@types/react-native-vector-icons": "^6.4.13",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
-    "babel-plugin-module-resolver": "^5.0.0",
-    "eslint": "^7.32.0 || ^8.2.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-next": "^13.1.5",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsdoc": "^39.6.9",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-no-secrets": "^0.8.9",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-native": "^4.0.0",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-unicorn": "^45.0.2",
-    "husky": "^8.0.0",
-    "prettier": "^2.8.3"
+    "babel-plugin-module-resolver": "^5.0.0"
   },
   "private": true
 }

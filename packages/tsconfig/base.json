@@ -9,8 +9,6 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"target": "ESNext",
-
-		"baseUrl": ".",
 		"allowJs": false,
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,

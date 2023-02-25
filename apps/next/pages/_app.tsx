@@ -2,10 +2,9 @@ import 'raf/polyfill';
 import 'setimmediate';
 import '../public/fonts/font.css';
 
+import { makeTheme, Provider } from 'anu';
 import type { AppProps } from 'next/app';
 import { NextSeo } from 'next-seo';
-
-import { DripsyProvider } from '../config/dripsy';
 
 interface PageProperties extends AppProps {
   pageProps: {
@@ -13,15 +12,21 @@ interface PageProperties extends AppProps {
   };
 }
 
+const theme = makeTheme({});
+
+/**
+ *
+ * @param props
+ */
 export default function App(props: PageProperties) {
   const { Component, pageProps } = props;
 
   return (
     <>
       {pageProps?.seo ? <NextSeo {...pageProps.seo} /> : null}
-      <DripsyProvider>
+      <Provider theme={theme}>
         <Component {...pageProps} />
-      </DripsyProvider>
+      </Provider>
     </>
   );
 }

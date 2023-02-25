@@ -1,25 +1,29 @@
 {
-  "name": "my-turborepo",
-  "version": "0.0.0",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "eslint-config-custom": "*",
-    "prettier": "latest",
-    "turbo": "latest"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "dependencies": {},
-  "packageManager": "yarn@1.22.19"
+	"name": "my-turborepo",
+	"version": "0.0.0",
+	"private": true,
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"scripts": {
+		"build": "turbo run build",
+		"dev": "turbo run dev",
+		"lint": "turbo run lint",
+		"clean-install": "turbo run clean-install",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"clean": "npx rimraf -f node_modules package-lock.json",
+		"prepare": "husky install"
+	},
+	"devDependencies": {
+		"eslint-config-custom": "*",
+		"prettier": "latest",
+		"turbo": "latest",
+		"husky": "latest"
+	},
+	"engines": {
+		"node": ">=14.0.0"
+	},
+	"dependencies": {},
+	"packageManager": "yarn@1.22.19"
 }

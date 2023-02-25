@@ -24,7 +24,7 @@ module.exports = function (api) {
             screens: './src/screens',
             constants: './common/constants',
             config: './config',
-            lib: './lib',
+            anu: './../packages/anu',
           },
         },
       ],
