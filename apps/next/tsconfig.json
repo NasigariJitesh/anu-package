@@ -1,6 +1,7 @@
 {
   "extends": "tsconfig/base.json",
   "compilerOptions": {
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
       "anu/*": ["../../packages/anu/*"],
@@ -11,9 +12,8 @@
       "navigation": ["src/navigation"],
       "src/*": ["src/*"],
       "screens": ["src/screens"]
-    },
-    "jsx": "preserve"
+    }
   },
-  "include": ["globals.d.ts", "next-env.d.ts", "rn-overrides.d.ts", "**/*.ts", "**/*.tsx", "*"],
+  "include": ["globals.d.ts", "next-env.d.ts", "rn-overrides.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
