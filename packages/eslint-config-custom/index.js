@@ -29,9 +29,6 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    //next
-    'no-html-link-for-pages': 'off',
-
     // typescript
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/indent': 'off',

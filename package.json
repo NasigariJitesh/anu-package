@@ -9,6 +9,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:docs": "cd apps/docs && yarn run dev",
     "lint": "turbo run lint",
     "format": "prettier --write . --loglevel silent",
     "clean": "npx rimraf -f node_modules",
