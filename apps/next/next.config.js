@@ -15,6 +15,7 @@ const nextConfig = withExpo({
     'dripsy',
     '@dripsy/core',
     'react-native-vector-icons',
+    'anu',
     // 'moti',
     // 'react-native-reanimated',
     // '@motify',

@@ -1,18 +1,20 @@
-import { DripsyProvider } from 'config/dripsy';
+import { makeTheme, Provider } from 'anu';
 import { SafeAreaView } from 'dripsy';
 
 import { Home } from './src/screens';
+
+const theme = makeTheme({});
 
 /**
  *
  */
 const App = () => {
   return (
-    <DripsyProvider>
+    <Provider theme={theme}>
       <SafeAreaView>
         <Home />
       </SafeAreaView>
-    </DripsyProvider>
+    </Provider>
   );
 };
 

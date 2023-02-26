@@ -3,16 +3,17 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "constants": ["common/constants"],
-      "common/*": ["common/*"],
-      "config/*": ["config/*"],
       "anu/*": ["../../packages/anu/*"],
       "anu": ["../../packages/anu"],
+      "lib/*": ["../../packages/anu/lib/*"],
+      "common/*": ["../../packages/anu/common/*"],
+      "config/*": ["../../packages/anu/config/*"],
       "navigation": ["src/navigation"],
       "src/*": ["src/*"],
       "screens": ["src/screens"]
-    }
+    },
+    "jsx": "preserve"
   },
-  "include": ["globals.d.ts", "next-env.d.ts", "rn-overrides.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["globals.d.ts", "next-env.d.ts", "rn-overrides.d.ts", "**/*.ts", "**/*.tsx", "*"],
   "exclude": ["node_modules"]
 }

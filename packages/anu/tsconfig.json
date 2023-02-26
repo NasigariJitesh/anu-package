@@ -3,9 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "common/*": ["common/*"],
-      "config/*": ["config/*"],
-      "lib/*": ["lib/*"]
+      "common/*": ["./common/*"],
+      "config/*": ["./config/*"],
+      "lib/*": ["./lib/*"]
     }
   },
   "exclude": ["node_modules"],

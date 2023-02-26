@@ -10,9 +10,9 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "clean-install": "turbo run clean-install",
     "format": "prettier --write . --loglevel silent",
-    "clean": "npx rimraf -f node_modules package-lock.json",
+    "clean": "npx rimraf -f node_modules",
+    "clean-install": "turbo run clean-install && yarn clean && yarn",
     "prepare": "husky install"
   },
   "devDependencies": {

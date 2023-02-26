@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --fix",
-    "clean": "npx rimraf -f node_modules package-lock.json",
+    "clean": "npx rimraf -f node_modules .turbo",
     "clean-install": "yarn clean"
   },
   "dependencies": {
@@ -36,5 +36,12 @@
   },
   "author": "Aditya Manikanth Rao",
   "license": "MIT",
-  "private": true
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "common/**/*",
+    "config/**/*",
+    "lib/**/*"
+  ]
 }
