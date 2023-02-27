@@ -12,8 +12,8 @@
     "dev:docs": "cd apps/docs && yarn run dev",
     "lint": "turbo run lint",
     "format": "prettier --write . ",
-    "clean": "npx rimraf -f node_modules",
-    "clean-install": "turbo run clean-install && yarn clean && yarn",
+    "clean": "npx rimraf -f **/node_modules",
+    "clean-install": "yarn clean && yarn",
     "prepare": "husky install"
   },
   "devDependencies": {

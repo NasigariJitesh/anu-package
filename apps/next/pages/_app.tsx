@@ -2,7 +2,8 @@ import 'raf/polyfill';
 import 'setimmediate';
 import '../public/fonts/font.css';
 
-import { makeTheme, Provider } from 'anu';
+import { Provider } from 'anu/common/context';
+import { makeTheme } from 'dripsy';
 import type { AppProps } from 'next/app';
 import { NextSeo } from 'next-seo';
 

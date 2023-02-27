@@ -37,8 +37,6 @@
     "web": "expo start --web",
     "dev": "next dev",
     "lint": "eslint . --fix",
-    "build:web": "next build",
-    "clean": "npx rimraf -f .expo .next node_modules .turbo",
-    "clean-install": "yarn clean"
+    "build:web": "next build"
   }
 }

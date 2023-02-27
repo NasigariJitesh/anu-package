@@ -4,9 +4,7 @@
   "description": "UI Library inspired by Material Design V3",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --fix",
-    "clean": "npx rimraf -f node_modules .turbo",
-    "clean-install": "yarn clean"
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "@gorhom/portal": "^1.0.14",

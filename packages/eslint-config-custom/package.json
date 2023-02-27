@@ -3,10 +3,6 @@
   "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts": {
-    "clean": "npx rimraf -f node_modules",
-    "clean-install": "yarn clean"
-  },
   "dependencies": {
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
