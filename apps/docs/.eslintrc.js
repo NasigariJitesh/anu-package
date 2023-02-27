@@ -14,8 +14,14 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  ignorePatterns: ['**/*.js'],
   rules: {
     //next
     'no-html-link-for-pages': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };

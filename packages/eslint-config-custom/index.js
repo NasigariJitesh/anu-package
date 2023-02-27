@@ -8,8 +8,8 @@ module.exports = {
     'react-native/react-native': true,
   },
   extends: [
-    'next',
     'turbo',
+    'next',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-native/all',
@@ -29,6 +29,9 @@ module.exports = {
     'prettier',
   ],
   rules: {
+    //react
+    '@next/next/no-html-link-for-pages': 'off',
+
     // typescript
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/indent': 'off',

@@ -21,7 +21,6 @@
     "@typescript-eslint/parser": "^5.49.0",
     "husky": "^8.0.0",
     "lodash": "^4.17.21",
-    "prettier": "^2.8.3",
     "react": "18.1.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-gesture-handler": "^2.9.0",
@@ -38,9 +37,5 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
-  },
-  "files": [
-    "config",
-    "lib"
-  ]
+  }
 }

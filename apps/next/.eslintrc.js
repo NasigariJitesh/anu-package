@@ -2,7 +2,7 @@
  * @type {import('eslint').Linter.Config}
  */
 module.exports = {
-  extends: ['custom'],
+  extends: ['custom', 'next'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     root: true,
@@ -17,5 +17,10 @@ module.exports = {
   rules: {
     //next
     'no-html-link-for-pages': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };
