@@ -36,7 +36,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "dev": "next dev",
-    "lint": "eslint . --fix",
+    "lint": "eslint .",
     "build:web": "next build"
   }
 }

@@ -10,9 +10,9 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "dev:docs": "cd apps/docs && yarn run dev",
-    "lint": "turbo run lint",
+    "lint": "turbo run lint -- --cache --cache-strategy content --fix",
     "format": "prettier --write . ",
-    "clean": "npx rimraf -f **/node_modules",
+    "clean": "npx rimraf -f **/node_modules **/.eslintcache",
     "clean-install": "yarn clean && yarn",
     "prepare": "husky install"
   },

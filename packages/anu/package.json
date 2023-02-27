@@ -4,7 +4,7 @@
   "description": "UI Library inspired by Material Design V3",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --fix"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@gorhom/portal": "^1.0.14",
