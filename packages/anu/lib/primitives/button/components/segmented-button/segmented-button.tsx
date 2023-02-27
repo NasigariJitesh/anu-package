@@ -69,7 +69,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
         <Container flexDirection='row' align='center' justify='center' disableGutters maxWidth={88}>
           <RenderSelected />
 
-          <Typography.Body numberOfLines={1} ellipsizeMode='tail' sx={labelStyles}>
+          <Typography.Body numberOfLines={1} ellipsizeMode='tail' style={labelStyles}>
             {finalProps.title}
           </Typography.Body>
         </Container>

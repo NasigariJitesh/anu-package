@@ -35,13 +35,13 @@ export const RadioButtonGroup = (props: RadioButtonGroupProps) => {
   };
 
   return isArray(props.children) ? (
-    <Container flex={props.flexDirection} align={props.align} justify={props.justify}>
+    <Container flexDirection={props.flexDirection} align={props.align} justify={props.justify}>
       {props.children.map((c) => {
         return addPropsToEachRadio(c, selected, onPressHandler);
       })}
     </Container>
   ) : (
-    <Container flex={props.flexDirection} align={props.align} justify={props.justify}>
+    <Container flexDirection={props.flexDirection} align={props.align} justify={props.justify}>
       {addPropsToEachRadio(props.children, selected, onPressHandler)}
     </Container>
   );

@@ -11,12 +11,12 @@ interface DripsyAppProps {
 /**
  * Provider to wrap the app with. This is where the theme is set.
  *
- * @param props - Props with Children and custom theme
+ * @param {ReactChildren} props - The JSX to be rendered inside as children
  */
 function DripsyProvider(props: DripsyAppProps) {
-  const t = extendTheme(props.theme);
+  const theme = extendTheme(props.theme);
 
-  return <Provider theme={t as never}>{props.children}</Provider>;
+  return <Provider theme={theme as never}>{props.children}</Provider>;
 }
 
 export default DripsyProvider;

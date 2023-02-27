@@ -22,7 +22,13 @@ const Header = (props: SideSheetProps & { scrollTo: (destination: number) => voi
   };
 
   return (
-    <Container maxWidth={props.width} sx={{ backgroundColor: 'red' }} flex='row' align='center' justify='space-between'>
+    <Container
+      maxWidth={props.width}
+      sx={{ backgroundColor: 'red' }}
+      flexDirection='row'
+      align='center'
+      justify='space-between'
+    >
       <View>
         {onBackButtonPress ? (
           <IconButton

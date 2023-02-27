@@ -83,7 +83,7 @@ const TextField = (props: Partial<TextFieldProps>) => {
         {...props.pressableProps}
         disabled={props.disabled}
       >
-        <Container disableGutters flex='row' sx={{ backgroundColor: 'inherit', position: 'relative' }}>
+        <Container disableGutters flexDirection='row' sx={{ backgroundColor: 'inherit', position: 'relative' }}>
           {/* TODO: Put the icon components in another file */}
           {props.leadingIcon ? (
             <Container disableGutters style={leadingIconContainerStyle}>

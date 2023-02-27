@@ -57,7 +57,6 @@ export const Checkbox = (props: CheckboxProps) => {
       </Pressable>
 
       {finalProps.label ? (
-        // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
         <Typography.Label for={finalProps.id} style={finalProps.labelStyle}>
           {props.label}
         </Typography.Label>

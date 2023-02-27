@@ -9,7 +9,7 @@
  *  @todo - Add default values for the props
  */
 import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'common/types';
-import { Pressable, SxProp } from 'dripsy';
+import { Pressable } from 'dripsy';
 import { IconProps, IconSource } from 'lib/primitives/icon';
 import { ReactElement } from 'react';
 import { ButtonProps as RNButtonProps, StyleProp, TextStyle } from 'react-native';
@@ -43,7 +43,7 @@ export interface ButtonProps extends RNButtonProps {
   category: ButtonCategory;
   // size: ButtonSize;
   containerStyle?: ButtonContainerStyle;
-  labelStyle?: SxProp;
+  labelStyle?: StyleProp<TextStyle>;
   pressableProps?: Omit<React.ComponentProps<typeof Pressable>, 'sx'>;
 }
 

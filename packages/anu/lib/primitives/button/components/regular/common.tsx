@@ -14,6 +14,8 @@ type ButtonProps = RegularButtonProps;
  * @param {ButtonProps} props - all the props related to the component
  */
 export const RenderComponent = (props: ButtonProps) => {
+  const labelStyles = { color: 'inherit' };
+
   const generateStyles = (state: PressableStateCallbackType) => {
     const buttonStyles = getButtonStyles(props);
 
@@ -22,7 +24,7 @@ export const RenderComponent = (props: ButtonProps) => {
 
   return (
     <Pressable accessibilityRole='button' {...props.pressableProps} style={generateStyles} disabled={props.disabled}>
-      <Typography.Label size='large' sx={{ color: 'inherit', ...props.labelStyle }}>
+      <Typography.Label size='large' style={[labelStyles, props.labelStyle]}>
         {props.title}
       </Typography.Label>
     </Pressable>

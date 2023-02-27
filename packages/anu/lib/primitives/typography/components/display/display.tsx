@@ -13,8 +13,6 @@ const Display = (props: Partial<DisplayProps>) => {
 
   const styles = getFontStyles(restOfTheProps);
 
-  console.log(styles);
-
   return (
     <RenderComponent {...restOfTheProps} style={[styles, restOfTheProps.style]}>
       {props.children}
