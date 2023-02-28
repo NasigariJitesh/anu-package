@@ -16,6 +16,8 @@ export { default as Image } from './image';
 export * from './image';
 export { default as Container } from './layout';
 export * from './layout';
+export { default as FlatList } from './list';
+export * from './list';
 export { default as Radio, RadioButtonGroup } from './radio-button';
 export * from './radio-button';
 export { default as SideSheet } from './side-sheet';
