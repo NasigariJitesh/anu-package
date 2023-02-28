@@ -6,11 +6,14 @@ const nextConfig = withExpo({
   swcMinify: true,
   transpilePackages: [
     'react-native',
+    'react-native-web',
     'expo',
     'solito',
     'anu',
     'react-native-vector-icons',
     '@expo/html-elements',
+    '@dripsy/core',
+    'dripsy',
     // Add more React Native / Expo packages here...
   ],
   experimental: {

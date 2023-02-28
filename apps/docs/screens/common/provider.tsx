@@ -11,8 +11,8 @@ export default function RootLayout(props: { children: ReactChildren }) {
   const { children } = props;
 
   return (
-    <SafeAreaView>
-      <Provider theme={{}}>{children}</Provider>
-    </SafeAreaView>
+    <Provider theme={{}}>
+      <SafeAreaView>{children}</SafeAreaView>
+    </Provider>
   );
 }

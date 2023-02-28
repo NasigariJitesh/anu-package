@@ -1,5 +1,6 @@
+import { Typography } from 'anu/lib';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 /**
  *
@@ -7,7 +8,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to Expo + Next.js 👋</Text>
+      <Typography.Display>Welcome to Expo + Next.js 👋</Typography.Display>
     </View>
   );
 }
@@ -17,8 +18,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
-  },
-  text: {
-    fontSize: 16,
   },
 });
