@@ -1,3 +1,4 @@
+import { getCombinedStylesForView } from 'common/utils';
 import { View } from 'dripsy';
 import React from 'react';
 
@@ -16,7 +17,7 @@ export const Container = (props: Partial<ContainerProps>) => {
   const { style, sx } = getContainerStyles(finalProps);
 
   return (
-    <View {...finalProps} style={[style, props.style]} sx={sx}>
+    <View {...finalProps} style={getCombinedStylesForView(style, props.style)} sx={sx}>
       {props.children}
     </View>
   );

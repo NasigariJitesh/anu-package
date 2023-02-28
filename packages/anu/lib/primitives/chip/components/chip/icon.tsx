@@ -1,3 +1,4 @@
+import { getCombinedStylesForView } from 'common/utils';
 import Icon from 'lib/primitives/icon';
 import { View } from 'react-native';
 
@@ -14,7 +15,10 @@ export const LeadingIcon = (props: ChipProps) => {
 
   if (props.type !== 'suggestion' && props.leadingIcon) {
     return (
-      <View {...props.leadingIcon.containerProps} style={[styles, props.leadingIcon.containerProps?.style]}>
+      <View
+        {...props.leadingIcon.containerProps}
+        style={getCombinedStylesForView(styles, props.leadingIcon.containerProps?.style)}
+      >
         <Icon color={styles.color} name={props.leadingIcon.name as never} {...props.leadingIcon.iconProps} />
       </View>
     );
@@ -33,7 +37,10 @@ export const TrailingIcon = (props: ChipProps) => {
 
   if (props.type === 'input' && props.trailingIcon) {
     return (
-      <View {...props.trailingIcon.containerProps} style={[styles, props.trailingIcon.containerProps?.style]}>
+      <View
+        {...props.trailingIcon.containerProps}
+        style={getCombinedStylesForView(styles, props.trailingIcon.containerProps?.style)}
+      >
         <Icon color={styles.color} name={props.trailingIcon.name as never} {...props.trailingIcon.iconProps} />
       </View>
     );

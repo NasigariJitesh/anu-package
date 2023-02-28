@@ -1,4 +1,5 @@
 import { getTheme } from 'config/dripsy/theme';
+import { TextStyle } from 'react-native';
 
 import { TypographyProps } from '../types';
 

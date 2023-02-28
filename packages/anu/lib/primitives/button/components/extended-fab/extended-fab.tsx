@@ -1,4 +1,4 @@
-import { generateHoverStyles } from 'common/utils';
+import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
 import { Container, Typography } from 'lib/primitives';
 import Icon from 'lib/primitives/icon';
@@ -32,7 +32,6 @@ const ExtendedFAB = (props: ExtendedFABProps) => {
       icon
     );
   };
-
   return (
     // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
     <Container disableGutters style={containerStyles}>
@@ -43,7 +42,9 @@ const ExtendedFAB = (props: ExtendedFABProps) => {
         style={generateStyles}
       >
         {restOfTheProps.icon ? getIcon(restOfTheProps.icon) : null}
-        <Typography.Label style={[labelStyles, restOfTheProps.titleStyle]}>{restOfTheProps.title}</Typography.Label>
+        <Typography.Label style={getCombinedStylesForText(labelStyles, restOfTheProps.titleStyle)}>
+          {restOfTheProps.title}
+        </Typography.Label>
       </Pressable>
     </Container>
   );

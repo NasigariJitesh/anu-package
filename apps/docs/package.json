@@ -4,6 +4,7 @@
   "name": "docs",
   "main": "index.js",
   "dependencies": {
+    "@next/font": "^13.2.1",
     "anu": "*",
     "expo": "^47.0.0",
     "expo-constants": "~14.0.2",

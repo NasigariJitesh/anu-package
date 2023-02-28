@@ -1,3 +1,4 @@
+// import { Inter } from '@next/font/google';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import RootLayout from 'screens/common/provider';
@@ -9,6 +10,8 @@ import RootLayout from 'screens/common/provider';
  * @param root0.pageProps
  */
 export default function App({ Component, pageProps }: AppProps) {
+  // const inter = Inter({ subsets: ['latin'] });
+
   return (
     <RootLayout>
       <Head>

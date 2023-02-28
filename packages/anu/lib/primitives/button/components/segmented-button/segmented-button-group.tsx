@@ -13,14 +13,16 @@ export const SegmentedButtonGroup = (props: SegmentedButtonGroupProps) => {
 
   const onPressHandler = (value: string) => {
     if (props.onPress) props.onPress(value);
+
     if (props.multiSelect && Array.isArray(selected)) {
       const selectedValues = [...selected];
+
       const index = selectedValues.indexOf(value);
 
       if (index > -1) selectedValues.splice(index, 1);
       else selectedValues.push(value);
 
-      setSelected(selectedValues);
+      setSelected([...selectedValues]);
     } else setSelected((previous) => (previous === value ? '' : value));
   };
 

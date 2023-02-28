@@ -1,3 +1,4 @@
+import { getCombinedStylesForText } from 'common/utils';
 import Container from 'lib/primitives/layout';
 import Typography from 'lib/primitives/typography';
 import React from 'react';
@@ -18,7 +19,9 @@ const Divider = (props: Partial<DividerProps>) => {
   return (
     <Container style={style} sx={sx}>
       {finalProps.text ? (
-        <Typography.Body style={[defaultTextStyle, props.textStyle]}>{finalProps.text}</Typography.Body>
+        <Typography.Body style={getCombinedStylesForText(defaultTextStyle, props.textStyle)}>
+          {finalProps.text}
+        </Typography.Body>
       ) : null}
     </Container>
   );

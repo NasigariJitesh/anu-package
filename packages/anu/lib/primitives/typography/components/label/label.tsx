@@ -1,3 +1,5 @@
+import { getCombinedStylesForText } from 'common/utils';
+
 import { LabelProps } from '../../types';
 import { getFontStyles } from '../../utils';
 import { RenderComponent } from '../common';
@@ -12,9 +14,8 @@ const Label = (props: Partial<LabelProps>) => {
   const restOfTheProps = { ...defaultProps, ...props };
 
   const styles = getFontStyles(restOfTheProps);
-
   return (
-    <RenderComponent {...restOfTheProps} style={[styles, restOfTheProps.style]}>
+    <RenderComponent {...restOfTheProps} style={getCombinedStylesForText(styles, restOfTheProps.style)}>
       {props.children}
     </RenderComponent>
   );

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { ExtendedHoverStyles } from 'common/types';
 import { useSx as SxType } from 'dripsy';
-import { PressableStateCallbackType } from 'react-native';
+import { PressableStateCallbackType, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 /**
  * To convert the maxWidth into pixels
@@ -73,4 +73,12 @@ export const getHoverStates = (state: PressableStateCallbackType) => {
   if (hovered) return '@hover';
   if (pressed) return '@press';
   if (focused) return '@focus';
+};
+
+export const getCombinedStylesForText = (defaultStyle: StyleProp<TextStyle>, customStyles: StyleProp<TextStyle>) => {
+  return Array.isArray(customStyles) ? [defaultStyle, ...customStyles] : [defaultStyle, customStyles];
+};
+
+export const getCombinedStylesForView = (defaultStyle: StyleProp<ViewStyle>, customStyles: StyleProp<ViewStyle>) => {
+  return Array.isArray(customStyles) ? [defaultStyle, ...customStyles] : [defaultStyle, customStyles];
 };
