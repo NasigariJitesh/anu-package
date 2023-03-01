@@ -1,8 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
+import { getTheme } from 'anu/config';
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 import { Children } from 'react';
 // @ts-expect-error REASON: Types are not available
 import { AppRegistry } from 'react-native-web';
+
+const theme = getTheme();
 
 // Follows the setup for react-native-web:
 // https://necolas.github.io/react-native-web/docs/setup/#root-element
@@ -13,6 +16,19 @@ const style = `
 html, body, #__next {
   -webkit-overflow-scrolling: touch;
 }
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: ${theme.colors.$surfaceVariant};
+}
+
+::-webkit-scrollbar-thumb {
+  background: ${theme.colors.$onSurfaceVariant};
+  border-radius: 5px 
+}
+
 #__next {
   display: flex;
   flex-direction: column;
