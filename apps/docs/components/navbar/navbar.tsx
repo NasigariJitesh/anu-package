@@ -1,6 +1,7 @@
 import { getTheme } from 'anu/config';
-import { Container, IconButton, Typography } from 'anu/lib';
+import { Container, Icon, Typography } from 'anu/lib';
 import { Source_Sans_Pro } from 'next/font/google';
+import { useState } from 'react';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { TextLink } from 'solito/link';
 
@@ -11,6 +12,20 @@ const source = Source_Sans_Pro({
 });
 
 const theme = getTheme();
+
+const ToggleTheme = () => {
+  const [isLightTheme, toggleLightTheme] = useState(false);
+
+  const onIconPressedHandler = () => {
+    toggleLightTheme((previousState) => !previousState);
+  };
+
+  return isLightTheme ? (
+    <Icon name='brightness-2' size={24} onPress={onIconPressedHandler} />
+  ) : (
+    <Icon name='wb-sunny' size={24} onPress={onIconPressedHandler} />
+  );
+};
 
 const Links = () => {
   return (
@@ -40,10 +55,10 @@ const MetaData = () => {
   return (
     <ul style={style.list}>
       <li style={style.listItem}>
-        <Typography.Body style={style.text}>v 1.0.0 - alpha</Typography.Body>
+        <Typography.Body style={style.text}>1.0</Typography.Body>
       </li>
       <li style={style.listItem}>
-        <Typography.Body style={style.text}>Light/ Dark Mode</Typography.Body>
+        <ToggleTheme />
       </li>
       <li style={style.listItem}>
         <MaterialCommunityIcon name='github' size={24} />
