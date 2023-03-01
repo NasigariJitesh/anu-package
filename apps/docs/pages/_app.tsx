@@ -1,6 +1,10 @@
 // import { Inter } from '@next/font/google';
+import '../public/fonts/font.css';
+
+import Navbar from 'components/navbar';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { ScrollView } from 'react-native';
 import RootLayout from 'screens/common/provider';
 
 /**
@@ -15,7 +19,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
-      <Component {...pageProps} />
+      <Navbar />
+      <ScrollView>
+        <Component {...pageProps} />
+      </ScrollView>
     </RootLayout>
   );
 }
