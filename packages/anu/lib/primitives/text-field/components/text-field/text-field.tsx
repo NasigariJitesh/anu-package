@@ -1,4 +1,4 @@
-import { generateHoverStyles } from 'common/utils';
+import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
 import { Pressable, TextInput, useSx } from 'dripsy';
 import Container from 'lib/primitives/layout';
 import Typography from 'lib/primitives/typography';
@@ -114,12 +114,12 @@ const TextField = (props: Partial<TextFieldProps>) => {
         </Container>
       </Pressable>
       {props?.supportingText ? (
-        <Typography.Body style={[supportingTextStyle, props.supportingTextStyle]}>
+        <Typography.Body style={getCombinedStylesForText(supportingTextStyle, props.supportingTextStyle)}>
           {props?.supportingText}
         </Typography.Body>
       ) : null}
       {errors?.map((error, index) => (
-        <Typography.Body key={index} style={[errorStyle, props.errorMessageStyle]}>
+        <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
           {error}
         </Typography.Body>
       ))}

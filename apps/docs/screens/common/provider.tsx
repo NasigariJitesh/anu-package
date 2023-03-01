@@ -1,6 +1,7 @@
 import { Provider } from 'anu/common/context';
 import { ReactChildren } from 'anu/common/types';
 import { SafeAreaView } from 'dripsy';
+import { ScrollView } from 'react-native';
 
 /**
  *
@@ -12,7 +13,9 @@ export default function RootLayout(props: { children: ReactChildren }) {
 
   return (
     <Provider theme={{}}>
-      <SafeAreaView>{children}</SafeAreaView>
+      <ScrollView>
+        <SafeAreaView>{children}</SafeAreaView>
+      </ScrollView>
     </Provider>
   );
 }

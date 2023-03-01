@@ -1,4 +1,4 @@
-import { generateHoverStyles } from 'common/utils';
+import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
 import Typography from 'lib/primitives/typography';
 import { PressableStateCallbackType } from 'react-native';
@@ -15,7 +15,6 @@ type ButtonProps = RegularButtonProps;
  */
 export const RenderComponent = (props: ButtonProps) => {
   const labelStyles = { color: 'inherit' };
-
   const generateStyles = (state: PressableStateCallbackType) => {
     const buttonStyles = getButtonStyles(props);
 
@@ -23,8 +22,14 @@ export const RenderComponent = (props: ButtonProps) => {
   };
 
   return (
-    <Pressable accessibilityRole='button' {...props.pressableProps} style={generateStyles} disabled={props.disabled}>
-      <Typography.Label size='large' style={[labelStyles, props.labelStyle]}>
+    <Pressable
+      accessibilityRole='button'
+      onPress={props.onPress}
+      {...props.pressableProps}
+      style={generateStyles}
+      disabled={props.disabled}
+    >
+      <Typography.Label size='large' style={getCombinedStylesForText(labelStyles, props.labelStyle)}>
         {props.title}
       </Typography.Label>
     </Pressable>

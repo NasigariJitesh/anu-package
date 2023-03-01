@@ -6,6 +6,7 @@
     "paths": {
       "anu/*": ["../../packages/anu/*"],
       "lib/*": ["../../packages/anu/lib/*"],
+      "lib": ["../../packages/anu/lib"],
       "common/*": ["../../packages/anu/common/*"],
       "config/*": ["../../packages/anu/config/*"],
       "src/*": ["src/*"],

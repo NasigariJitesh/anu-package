@@ -1,3 +1,4 @@
+import { getCombinedStylesForView } from 'common/utils';
 import { Container } from 'lib/primitives';
 
 import { CardProps } from '../../types/card';
@@ -15,7 +16,7 @@ const Card = (props: Partial<CardProps>) => {
   const { variant, onHover, ...componentProps } = finalProps;
 
   return (
-    <Container {...componentProps} style={[style, props.style]} sx={sx}>
+    <Container {...componentProps} style={getCombinedStylesForView(style, props.style)} sx={sx}>
       {props.children}
     </Container>
   );

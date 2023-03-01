@@ -1,3 +1,5 @@
+import { getCombinedStylesForText } from 'common/utils';
+
 import { DisplayProps } from '../../types';
 import { getFontStyles } from '../../utils';
 import { RenderComponent } from '../common';
@@ -14,7 +16,7 @@ const Display = (props: Partial<DisplayProps>) => {
   const styles = getFontStyles(restOfTheProps);
 
   return (
-    <RenderComponent {...restOfTheProps} style={[styles, restOfTheProps.style]}>
+    <RenderComponent {...restOfTheProps} style={getCombinedStylesForText(styles, restOfTheProps.style)}>
       {props.children}
     </RenderComponent>
   );

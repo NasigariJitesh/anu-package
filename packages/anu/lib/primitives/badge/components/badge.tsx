@@ -1,3 +1,4 @@
+import { getCombinedStylesForText, getCombinedStylesForView } from 'common/utils';
 import { Container, Typography } from 'lib/primitives';
 
 import { BadgeProps, NumberBadgeProps, StringBadgeProps } from '../types';
@@ -23,8 +24,14 @@ const Badge = (props: BadgeProps) => {
   return (
     <Container disableGutters style={containerStyle}>
       {showBadge(props) ? (
-        <Container disableGutters style={[badgeStyle, finalProps.style]} sx={{ ...badgeSx, ...finalProps.sx }}>
-          <Typography.Body style={[contentStyle, props.style]}>{getBadgeValue(props)}</Typography.Body>
+        <Container
+          disableGutters
+          style={getCombinedStylesForView(badgeStyle, finalProps.style)}
+          sx={{ ...badgeSx, ...finalProps.sx }}
+        >
+          <Typography.Body style={getCombinedStylesForText(contentStyle, props.style)}>
+            {getBadgeValue(props)}
+          </Typography.Body>
         </Container>
       ) : null}
 
