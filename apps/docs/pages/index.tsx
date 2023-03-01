@@ -2,7 +2,7 @@ import { Button, Container, Typography } from 'anu/lib';
 import Content from 'src/sections/content';
 
 /**
- *
+ * This is an example of how the content is supposed to look
  */
 export default function App() {
   const props = [
@@ -15,7 +15,7 @@ export default function App() {
       name: 'onClick',
       type: 'click Event',
       description: 'The behavior of the click event',
-      defaultValue: '()=> void',
+      defaultValue: '() => void',
     },
   ];
 

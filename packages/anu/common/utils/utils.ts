@@ -75,10 +75,24 @@ export const getHoverStates = (state: PressableStateCallbackType) => {
   if (focused) return '@focus';
 };
 
+/**
+ * Merge all the styles based on the type, if its an array of styles or object
+ *
+ * @param defaultStyle
+ * @param customStyles
+ * @returns Combined Styles
+ */
 export const getCombinedStylesForText = (defaultStyle: StyleProp<TextStyle>, customStyles: StyleProp<TextStyle>) => {
   return Array.isArray(customStyles) ? [defaultStyle, ...customStyles] : [defaultStyle, customStyles];
 };
 
+/**
+ * Merge all the styles based on the type, if its an array of styles or object
+ *
+ * @param defaultStyle
+ * @param customStyles
+ * @returns Combined Styles
+ */
 export const getCombinedStylesForView = (defaultStyle: StyleProp<ViewStyle>, customStyles: StyleProp<ViewStyle>) => {
   return Array.isArray(customStyles) ? [defaultStyle, ...customStyles] : [defaultStyle, customStyles];
 };

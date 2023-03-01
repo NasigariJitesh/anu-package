@@ -1,7 +1,8 @@
 import { ReactChildren } from 'anu/common/types';
-import { getTheme } from 'anu/config/dripsy';
+import { getTheme } from 'anu/config';
 import { Container, Divider, Typography } from 'anu/lib';
-import { translations } from 'languageBundles';
+
+import { translations } from '../../services/localization';
 
 export interface Example {
   code: string;

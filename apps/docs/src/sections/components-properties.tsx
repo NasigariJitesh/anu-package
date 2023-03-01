@@ -1,8 +1,8 @@
 import { getColorInRGBA } from 'anu/common/utils';
-import { getTheme } from 'anu/config/dripsy';
-import { translations } from 'languageBundles';
-import { Container, Divider, Typography } from 'lib/index';
-import React from 'react';
+import { getTheme } from 'anu/config';
+import { Container, Divider, Typography } from 'anu/lib';
+
+import { translations } from '../../services/localization';
 
 export interface Property {
   name: string;
@@ -25,12 +25,15 @@ const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
           <Typography.Headline style={styles.name}>{prop.name}</Typography.Headline>
           <Typography.Body style={styles.type}>{prop.type}</Typography.Body>
         </Container>
+
         <Typography.Body style={styles.otherDetails}>{prop.description}</Typography.Body>
+
         {prop.defaultValue ? (
           <Typography.Body style={styles.otherDetails}>
             {translations('en', 'defaultValue')} : {prop.defaultValue}
           </Typography.Body>
         ) : null}
+
         {isLast ? null : <Divider variant='full-width' light style={styles.divider} />}
       </Container>
     );
@@ -92,6 +95,7 @@ const getStyles = () => {
       marginBottom: 8,
     },
   } as const;
+
   return styles;
 };
 
