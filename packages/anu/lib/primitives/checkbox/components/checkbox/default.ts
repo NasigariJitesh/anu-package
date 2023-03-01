@@ -5,5 +5,7 @@ import { CheckboxProps } from '../../types';
  */
 export const defaultProps: CheckboxProps = {
   id: '1',
-  label: 'Check Box',
+  iconSize: 18,
+  disabled: false,
+  error: false,
 };
