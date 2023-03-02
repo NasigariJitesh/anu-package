@@ -1,1 +1,1 @@
-export { FlatList as default } from 'dripsy';
+export { FlatList as default } from 'react-native';
