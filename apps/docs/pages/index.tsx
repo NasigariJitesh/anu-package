@@ -22,7 +22,7 @@ export default function App() {
   const examples = [
     {
       name: 'Regular Button',
-      code: "<Container align='flex-end' maxWidth='sm'>\n\t<Button.Elevated title='Elevated'  />\n</Container>",
+      code: "<Container align='flex-end' maxWidth='sm'> \n  <Button.Elevated title='Elevated'  />\n</Container>",
       component: (
         <Container align='flex-end' maxWidth='sm'>
           <Button.Elevated title='Elevated' />
