@@ -1,10 +1,14 @@
-import { Pressable, View } from 'dripsy';
-import Container from 'lib/primitives/layout/components';
+import { Pressable } from 'dripsy';
+import { Container } from 'lib/primitives/layout/components/container/container';
 import { createContext, useContext, useState } from 'react';
+import { Animated, View } from 'react-native';
 
 import { AccordionProps } from '../../types';
 import { defaultProps } from './default';
 
+/**
+ * This needs to be used because collapse is used in header component
+ */
 const AccordionContext = createContext({
   collapse: false,
 });
@@ -14,9 +18,11 @@ export const useAccordionContext = () => {
 };
 
 /**
+ * Accordion Component
  *
- * @param props
- * @returns
+ * TODO: Add Animations
+ *
+ * @param props - Accordion props
  */
 const Accordion = (props: AccordionProps) => {
   const finalProps = { ...defaultProps, ...props };
@@ -31,11 +37,11 @@ const Accordion = (props: AccordionProps) => {
 
   return (
     <AccordionContext.Provider value={{ collapse }}>
-      <Container disableGutters {...props.containerProps} sx={props.sx} style={props.style}>
-        <Pressable onPress={onCollapse}>
+      <Container disableGutters {...finalProps.containerProps} style={finalProps.style}>
+        <Pressable sx={{ transition: 'all 2s linear' }} onPress={onCollapse}>
           <View>{finalProps.title}</View>
-          {collapse ? null : <View>{finalProps.children}</View>}
         </Pressable>
+        {collapse ? null : <Animated.View>{props.children}</Animated.View>}
       </Container>
     </AccordionContext.Provider>
   );

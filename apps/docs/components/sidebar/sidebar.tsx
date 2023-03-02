@@ -1,8 +1,6 @@
 import { getTheme } from 'anu/config';
 import { Accordion, FlatList, Typography } from 'anu/lib';
-import AccordionChildren from 'anu/lib/composites/accordion/components/accordion-children';
-import AccordionTitle from 'anu/lib/composites/accordion/components/accordion-title';
-import { Sx, View } from 'dripsy';
+import { View } from 'dripsy';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
 import { TextLink } from 'solito/link';
@@ -21,12 +19,9 @@ interface ComponentLinks extends Link {
   variants: Link[];
 }
 
-interface Links extends Link {
-  components: ComponentLinks[];
-}
-
 interface SubIndex {
   title: string;
+  components: ComponentLinks[];
 }
 
 interface HeadingProps {
@@ -41,21 +36,51 @@ const Group = (props: HeadingProps) => {
       data={props.links}
       renderItem={({ item }) => {
         return (
+          <Accordion.Container
+            sx={{ backgroundColor: 'pink' }}
+            title={
+              <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.groupName}>
+                {item.title}
+              </Accordion.Header>
+            }
+          >
+            <Accordion.Children>
+              <Components links={item.components} />
+            </Accordion.Children>
+          </Accordion.Container>
+        );
+      }}
+    />
+  );
+};
+
+const Components = (props: { links: ComponentLinks[] }) => {
+  const { pathname } = useRouter();
+
+  return (
+    <FlatList
+      contentContainerStyle={style.componentList}
+      data={props.links}
+      renderItem={({ item }) => {
+        return (
           <>
-            {/* <Typography.Title style={style.groupName}>{item.title}</Typography.Title> */}
-            <Accordion
-              sx={{ backgroundColor: 'pink' }}
-              title={
-                <AccordionTitle iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.groupName}>
-                  {item.title}
-                </AccordionTitle>
-              }
-            >
-              <AccordionChildren>
-                <Typography.Title style={style.heading}>Hello</Typography.Title>
-              </AccordionChildren>
-            </Accordion>
-            {/* <Components links={item.components} /> */}
+            {item.variants.length > 0 ? (
+              <Accordion.Container
+                title={
+                  <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.componentName}>
+                    {item.title}
+                  </Accordion.Header>
+                }
+              >
+                <Accordion.Children>
+                  <Categories links={item.variants} />
+                </Accordion.Children>
+              </Accordion.Container>
+            ) : (
+              <Typography.Title style={[style.componentName, pathname === item.link ? style.active : {}]}>
+                <TextLink href={item.link}>{item.title}</TextLink>
+              </Typography.Title>
+            )}
           </>
         );
       }}
@@ -63,42 +88,22 @@ const Group = (props: HeadingProps) => {
   );
 };
 
-// const Components = (props: { links: ComponentLinks[] }) => {
-//   const { pathname } = useRouter();
+const Categories = (props: { links: Link[] }) => {
+  const { pathname } = useRouter();
 
-//   return (
-//     <FlatList
-//       data={props.links}
-//       renderItem={({ item }) => {
-//         return (
-//           <>
-//             <Typography.Title style={[style.componentName, pathname === item.link ? style.active : {}]}>
-//               <TextLink href={item.link}>{item.title}</TextLink>
-//             </Typography.Title>
-//             <Categories links={item.variants} />
-//           </>
-//         );
-//       }}
-//     />
-//   );
-// };
-
-// const Categories = (props: { links: Link[] }) => {
-//   const { pathname } = useRouter();
-
-//   return (
-//     <FlatList
-//       data={props.links}
-//       renderItem={({ item }) => {
-//         return (
-//           <Typography.Title style={[style.categoryName, pathname === item.link ? style.active : {}]}>
-//             <TextLink href={item.link}>{item.title}</TextLink>
-//           </Typography.Title>
-//         );
-//       }}
-//     />
-//   );
-// };
+  return (
+    <FlatList
+      data={props.links}
+      renderItem={({ item }) => {
+        return (
+          <Typography.Title style={[style.categoryName, pathname === item.link ? style.active : {}]}>
+            <TextLink href={item.link}>{item.title}</TextLink>
+          </Typography.Title>
+        );
+      }}
+    />
+  );
+};
 
 const Index = (props: HeadingProps) => {
   return (
@@ -117,19 +122,19 @@ const Sidebar = () => {
         links={[
           {
             title: 'Inputs',
+            components: [
+              {
+                link: '/button',
+                title: 'Button',
 
-            // components: [
-            //   {
-            //     link: '/button',
-            //     title: 'Button',
-            //     variants: [
-            //       {
-            //         link: '/button#regular',
-            //         title: 'Regular',
-            //       },
-            //     ],
-            //   },
-            // ],
+                variants: [
+                  {
+                    link: '/button#regular',
+                    title: 'Regular',
+                  },
+                ],
+              },
+            ],
           },
         ]}
       />
@@ -141,7 +146,7 @@ const style = {
   container: {
     maxWidth: 320,
     width: '100%',
-  } as Sx,
+  },
   heading: {
     fontFamily: source.style.fontFamily,
     fontSize: 18,
@@ -167,6 +172,10 @@ const style = {
   },
   groupList: {
     marginVertical: 15,
+  },
+  componentList: {
+    marginVertical: 15,
+    marginLeft: 15,
   },
   active: {
     color: theme.colors.$primary,
