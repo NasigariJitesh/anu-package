@@ -49,7 +49,13 @@ export const extendedFABDocumentation: ContentValues = {
     {
       name: 'FABColor',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} />
           <ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} />
           <ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} />
@@ -66,7 +72,13 @@ export const extendedFABDocumentation: ContentValues = {
     {
       name: 'Lowered',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'add' }} />
           <ExtendedFAB FABColor='primary' title='Lowered' icon={{ name: 'add' }} lowered />
         </Container>

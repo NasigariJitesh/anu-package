@@ -38,19 +38,25 @@ export const iconButtonDocumentation: ContentValues = {
     {
       name: 'Basic',
       component: (
-        <Container sx={{ width: '100%', maxWidth: 800 }}>
+        <Container sx={{ width: '100%', maxWidth: 500 }}>
           <Container
             flexDirection='row'
             align='center'
             justify='space-around'
-            sx={{ width: '100%', maxWidth: 800, marginBottom: 10 }}
+            sx={{ width: '100%', maxWidth: 500, marginBottom: 10 }}
           >
             <IconButton type='filled' icon={{ name: 'favorite' }} />
             <IconButton type='tonal' icon={{ name: 'flag' }} />
             <IconButton type='outlined' icon={{ name: 'label' }} />
             <IconButton type='standard' icon={{ name: 'person' }} />
           </Container>
-          <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+          <Container
+            disableGutters
+            flexDirection='row'
+            align='center'
+            justify='space-around'
+            sx={{ width: '100%', maxWidth: 500 }}
+          >
             <IconButton type='filled' icon={<Icon name='favorite' />} />
             <IconButton type='tonal' icon={<Icon name='flag' />} />
             <IconButton type='outlined' icon={<Icon name='label' />} />
@@ -76,7 +82,13 @@ export const iconButtonDocumentation: ContentValues = {
     {
       name: 'Disabled',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <IconButton type='filled' icon={{ name: 'favorite' }} disabled />
           <IconButton type='tonal' icon={{ name: 'flag' }} disabled />
           <IconButton type='outlined' icon={{ name: 'label' }} disabled />
@@ -93,7 +105,13 @@ export const iconButtonDocumentation: ContentValues = {
     {
       name: 'Toggle',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <IconButton type='filled' icon={{ name: 'favorite' }} toggle />
           <IconButton type='tonal' icon={{ name: 'flag' }} toggle />
           <IconButton type='outlined' icon={{ name: 'label' }} toggle />

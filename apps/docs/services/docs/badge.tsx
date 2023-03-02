@@ -55,7 +55,13 @@ export const badgeDocumentation: ContentValues = {
     {
       name: 'String Badge',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <Badge value='new'>
             <Icon name='notification' />
           </Badge>
@@ -82,7 +88,13 @@ export const badgeDocumentation: ContentValues = {
     {
       name: 'Number Badge',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <Badge value={90}>
             <Icon name='notification' />
           </Badge>

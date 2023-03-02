@@ -1,4 +1,4 @@
-import { Button, Container } from 'anu/lib';
+import { Button, Chip, Container } from 'anu/lib';
 import Content from 'src/sections/content';
 
 /**
@@ -52,6 +52,7 @@ export default function App() {
 
   return (
     <Container>
+      <Chip value='chip' type='suggestion' />
       <Content values={values} />
     </Container>
   );

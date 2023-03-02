@@ -58,7 +58,13 @@ export const segmentedButtonDocumentation: ContentValues = {
     {
       name: 'Basic',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <SegmentedButtonGroup>
             <SegmentedButton id='segmentedButton1' title='Button 1' />
             <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
@@ -67,7 +73,7 @@ export const segmentedButtonDocumentation: ContentValues = {
           </SegmentedButtonGroup>
         </Container>
       ),
-      code: `<Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+      code: `<Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 500 }}>
       <SegmentedButtonGroup>
         <SegmentedButton id='segmentedButton1' title='Button 1' />
         <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
@@ -79,7 +85,13 @@ export const segmentedButtonDocumentation: ContentValues = {
     {
       name: 'Multi Select',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <SegmentedButtonGroup multiSelect>
             <SegmentedButton id='segmentedButton1' title='Button 1' />
             <SegmentedButton id='segmentedButton2' title='Button 2' />
@@ -88,7 +100,7 @@ export const segmentedButtonDocumentation: ContentValues = {
           </SegmentedButtonGroup>
         </Container>
       ),
-      code: `<Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+      code: `<Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 500 }}>
       <SegmentedButtonGroup multiSelect>
         <SegmentedButton id='segmentedButton1' title='Button 1' />
         <SegmentedButton id='segmentedButton2' title='Button 2' />

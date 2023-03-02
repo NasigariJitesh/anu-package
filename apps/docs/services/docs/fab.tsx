@@ -45,7 +45,7 @@ export const FABDocumentation: ContentValues = {
     {
       name: 'size',
       component: (
-        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 500 }}>
           <FAB FABColor='primary' size='small' icon={{ name: 'add' }} />
           <FAB FABColor='primary' size='medium' icon={{ name: 'add' }} />
           <FAB FABColor='primary' size='large' icon={{ name: 'add' }} />
@@ -60,7 +60,13 @@ export const FABDocumentation: ContentValues = {
     {
       name: 'FABColor',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
           <FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} />
           <FAB FABColor='tertiary' size='medium' icon={{ name: 'phone' }} />
@@ -77,7 +83,13 @@ export const FABDocumentation: ContentValues = {
     {
       name: 'Lowered',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
           <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} lowered />
         </Container>
