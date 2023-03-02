@@ -1,11 +1,12 @@
+/* eslint-disable react-native/no-inline-styles */
 import '../public/fonts/font.css';
 
 import Navbar from 'components/navbar';
+import RightSidebar from 'components/right-sidebar';
 import Sidebar from 'components/sidebar';
-import { View } from 'dripsy';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ScrollView } from 'react-native';
+import { View } from 'react-native';
 import RootLayout from 'screens/common/provider';
 
 /**
@@ -20,18 +21,20 @@ export default function App(props: AppProps) {
       </Head>
       <Navbar />
       <View
-        sx={{
+        style={{
           flexDirection: 'row',
           maxWidth: 1440,
           width: '100%',
           alignSelf: 'center',
+          justifyContent: 'space-between',
           marginVertical: 40,
         }}
       >
         <Sidebar />
-        <ScrollView>
+        <div id='root-scroll' style={{ height: '100vh', overflow: 'scroll' }}>
           <props.Component {...props.pageProps} />
-        </ScrollView>
+        </div>
+        <RightSidebar />
       </View>
     </RootLayout>
   );

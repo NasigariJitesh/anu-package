@@ -17,7 +17,6 @@ html, body, #__next {
   -webkit-overflow-scrolling: touch;
 }
 
-
 ::-webkit-scrollbar {
   width: 5px;
   height: 8px;
@@ -34,10 +33,22 @@ html, body, #__next {
   flex-direction: column;
   height: 100%;
 }
+
+#root-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+#root-scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
+
 body {
   /* Allows you to scroll below the viewport; default value is visible */
   overflow-y: auto;

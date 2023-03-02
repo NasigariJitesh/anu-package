@@ -1,5 +1,6 @@
 import { getTheme } from 'anu/config';
 import { Accordion, Container, FlatList, Typography } from 'anu/lib';
+import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
 import { useMenuContext } from 'screens/common/provider';
@@ -15,9 +16,7 @@ const source = Source_Sans_Pro({
 
 type Link = { title: string; link: string };
 
-interface ComponentLinks extends Link {
-  variants: Link[];
-}
+type ComponentLinks = Link;
 
 interface SubIndex {
   title: string;
@@ -63,40 +62,7 @@ const Components = (props: { links: ComponentLinks[] }) => {
       data={props.links}
       renderItem={({ item }) => {
         return (
-          <>
-            {item.variants.length > 0 ? (
-              <Accordion.Container
-                title={
-                  <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.componentName}>
-                    {item.title}
-                  </Accordion.Header>
-                }
-              >
-                <Accordion.Children>
-                  <Categories links={item.variants} />
-                </Accordion.Children>
-              </Accordion.Container>
-            ) : (
-              <Typography.Title style={[style.componentName, pathname === item.link ? style.active : {}]}>
-                <TextLink href={item.link}>{item.title}</TextLink>
-              </Typography.Title>
-            )}
-          </>
-        );
-      }}
-    />
-  );
-};
-
-const Categories = (props: { links: Link[] }) => {
-  const { pathname } = useRouter();
-
-  return (
-    <FlatList
-      data={props.links}
-      renderItem={({ item }) => {
-        return (
-          <Typography.Title style={[style.categoryName, pathname === item.link ? style.active : {}]}>
+          <Typography.Title style={[style.componentName, pathname === item.link ? style.active : {}]}>
             <TextLink href={item.link}>{item.title}</TextLink>
           </Typography.Title>
         );
@@ -108,35 +74,33 @@ const Categories = (props: { links: Link[] }) => {
 const Index = (props: HeadingProps) => {
   return (
     <>
+      <Typography.Body style={style.preHeading}>{'On this page'}</Typography.Body>
       <Typography.Title style={style.heading}>{props.heading}</Typography.Title>
       <Group {...props} />
     </>
   );
 };
 
-const Sidebar = () => {
-  const { isOpen } = useMenuContext();
+const RightSidebar = () => {
+  const { width } = useWindowDimensions();
 
-  if (!isOpen) return null;
+  if (width <= 768) return null;
 
   return (
     <Container sx={style.container}>
       <Index
-        heading='Components Overview'
+        heading='Regular Button'
         links={[
           {
-            title: 'Inputs',
+            title: 'Elevated',
             components: [
               {
                 link: '/button',
-                title: 'Button',
-
-                variants: [
-                  {
-                    link: '/button#regular',
-                    title: 'Regular',
-                  },
-                ],
+                title: 'Examples',
+              },
+              {
+                link: '/button',
+                title: 'Props',
               },
             ],
           },
@@ -148,12 +112,18 @@ const Sidebar = () => {
 
 const style = {
   container: {
-    maxWidth: 300,
+    maxWidth: 200,
     width: '100%',
+  },
+  preHeading: {
+    fontFamily: source.style.fontFamily,
+    fontSize: 16,
+    opacity: 0.7,
+    marginVertical: 10,
   },
   heading: {
     fontFamily: source.style.fontFamily,
-    fontSize: 18,
+    fontSize: 24,
   },
   groupName: {
     fontSize: 18,
@@ -165,14 +135,7 @@ const style = {
     fontFamily: source.style.fontFamily,
     opacity: 0.7,
     marginLeft: 20,
-    marginVertical: 10,
-  },
-  categoryName: {
-    fontSize: 18,
-    fontFamily: source.style.fontFamily,
-    opacity: 0.7,
-    marginLeft: 40,
-    marginBottom: 10,
+    marginTop: 10,
   },
   groupList: {
     marginVertical: 15,
@@ -187,4 +150,4 @@ const style = {
   },
 } as const;
 
-export default Sidebar;
+export default RightSidebar;

@@ -1,4 +1,5 @@
 import { Button, Container, Typography } from 'anu/lib';
+// import { View } from 'react-native';
 import Content from 'src/sections/content';
 
 /**
@@ -51,12 +52,10 @@ export default function App() {
   };
 
   return (
-    <>
-      <Container sx={{ width: 700 }}>
-        <Typography.Display>Welcome to Expo + Next.js 👋</Typography.Display>
+    <Container>
+      <Typography.Display>Welcome to Expo + Next.js 👋</Typography.Display>
 
-        <Content values={values} />
-      </Container>
-    </>
+      <Content values={values} />
+    </Container>
   );
 }
