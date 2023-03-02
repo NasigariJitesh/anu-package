@@ -26,7 +26,7 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
         containerColor: themeColors.$secondaryContainer,
         stateLayerColor: themeColors.$onSecondaryContainer,
         iconColor: themeColors.$onSecondaryContainer,
-        labelColor: themeColors.$onPrimaryContainer,
+        labelColor: themeColors.$onSecondaryContainer,
       };
     }
     case 'tertiary': {
@@ -34,7 +34,7 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
         containerColor: themeColors.$tertiaryContainer,
         stateLayerColor: themeColors.$onTertiaryContainer,
         iconColor: themeColors.$onTertiaryContainer,
-        labelColor: themeColors.$onPrimaryContainer,
+        labelColor: themeColors.$onTertiaryContainer,
       };
     }
     case 'surface': {
@@ -57,7 +57,6 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
 const getExtendedFABTheme = (props: ExtendedFABProps) => {
   const themeColors = getTheme().colors;
   const { containerColor, stateLayerColor, iconColor, labelColor } = getColors(props.FABColor);
-  const elevation = props.lowered ? 1 : 6;
   const fabTheme = {
     common: {
       justifyContent: 'center' as const,
@@ -68,11 +67,11 @@ const getExtendedFABTheme = (props: ExtendedFABProps) => {
       shadowColor: themeColors.$shadow,
       shadowOffset: {
         width: 0,
-        height: 3,
+        height: props.lowered ? 3 : 6,
       },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
-      elevation: elevation,
+      elevation: props.lowered ? 1 : 6,
       height: 56,
       minWidth: 80,
       borderRadius: 16,
@@ -93,6 +92,14 @@ const getExtendedFABTheme = (props: ExtendedFABProps) => {
       padding: 16,
       '@hover': {
         backgroundColor: getColorInRGBA(stateLayerColor, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: props.lowered ? 6 : 9,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: props.lowered ? 3 : 8,
       },
 
       '@focus': {

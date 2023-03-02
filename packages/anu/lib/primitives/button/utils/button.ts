@@ -1,3 +1,4 @@
+import { getColorInRGBA } from 'common/utils';
 import { getTheme } from 'config/dripsy/theme';
 
 import { ButtonContainerStyle, ButtonProps } from '../types';
@@ -24,30 +25,17 @@ const getButtonTheme = () => {
     },
     filled: {
       backgroundColor: themeColors.$primary,
-      color: themeColors.$background,
-      paddingHorizontal: 24,
+      color: themeColors.$onPrimary,
 
       '@disable': {
-        color: themeColors.$shadow,
-        backgroundColor: themeColors.$shadow + 50,
-      },
-
-      '@hover': {
-        backgroundColor: themeColors.$primary + 85,
-      },
-
-      '@focus': {
-        backgroundColor: themeColors.$primary + 90,
-      },
-
-      '@press': {
-        backgroundColor: themeColors.$primary + 90,
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
       },
     },
     elevated: {
-      backgroundColor: themeColors.$background,
+      backgroundColor: themeColors.$surface,
       color: themeColors.$primary,
-      shadowColor: themeColors.$primary + 90,
+      shadowColor: themeColors.$shadow,
       shadowOffset: {
         width: 0,
         height: 3,
@@ -55,101 +43,171 @@ const getButtonTheme = () => {
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
       elevation: 1,
-      paddingHorizontal: 24,
-
-      '@hover': {
-        shadowOffset: {
-          width: 0,
-          height: 6,
-        },
-        backgroundColor: themeColors.$primary + 60,
-      },
 
       '@disable': {
-        color: themeColors.$shadow,
-        backgroundColor: themeColors.$shadow + 50,
-      },
-
-      '@focus': {
-        backgroundColor: themeColors.$primary + 70,
-      },
-
-      '@press': {
-        backgroundColor: themeColors.$primary + 70,
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        elevation: 0,
+        shadowRadius: 0,
       },
     },
     tonal: {
-      backgroundColor: themeColors.$primary + 50,
-      color: themeColors.$primary,
-      paddingHorizontal: 24,
-
-      '@hover': {
-        backgroundColor: themeColors.$primary + 60,
-      },
+      backgroundColor: themeColors.$secondaryContainer,
+      color: themeColors.$onSecondaryContainer,
 
       '@disable': {
-        color: themeColors.$shadow,
-        backgroundColor: themeColors.$shadow + 50,
-      },
-
-      '@focus': {
-        backgroundColor: themeColors.$primary + 70,
-      },
-
-      '@press': {
-        backgroundColor: themeColors.$primary + 70,
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
       },
     },
     outlined: {
       backgroundColor: 'transparent',
       color: themeColors.$primary,
       borderWidth: 1,
-      borderColor: themeColors.$shadow,
-      paddingHorizontal: 24,
-
-      '@hover': {
-        backgroundColor: themeColors.$primary + 40,
-      },
+      borderColor: themeColors.$outline,
 
       '@disable': {
-        color: themeColors.$shadow,
-        backgroundColor: themeColors.$shadow + 10,
-        borderColor: themeColors.$shadow + 50,
-      },
-
-      '@focus': {
-        backgroundColor: themeColors.$primary + 40,
-        borderColor: themeColors.$primary,
-      },
-
-      '@press': {
-        backgroundColor: themeColors.$primary + 40,
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        borderColor: getColorInRGBA(themeColors.$onSurface, 12),
       },
     },
     text: {
       backgroundColor: 'transparent',
       color: themeColors.$primary,
-      paddingHorizontal: 12,
-
-      '@hover': {
-        backgroundColor: themeColors.$primary + 40,
-      },
 
       '@disable': {
-        color: themeColors.$shadow,
-      },
-
-      '@focus': {
-        backgroundColor: themeColors.$primary + 45,
-      },
-
-      '@press': {
-        backgroundColor: themeColors.$primary + 45,
+        color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
   } as const;
 
-  return { buttonTheme };
+  const stateLayerTheme = {
+    common: {
+      minHeight: 40,
+      minWidth: 100,
+      color: 'inherit',
+
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 100,
+      transitionProperty: 'all',
+      transitionTimingFunction: 'ease',
+      transitionDuration: '.2s',
+    },
+    filled: {
+      backgroundColor: 'transparent',
+      paddingHorizontal: 24,
+
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onPrimary, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 1,
+      },
+
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$onPrimary, 12),
+      },
+
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onPrimary, 8),
+      },
+    },
+    elevated: {
+      backgroundColor: 'transparent',
+      paddingHorizontal: 24,
+
+      '@hover': {
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 6,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
+        backgroundColor: getColorInRGBA(themeColors.$primary, 8),
+      },
+
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$primary, 12),
+      },
+
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onPrimary, 12),
+      },
+    },
+    tonal: {
+      backgroundColor: 'transparent',
+      paddingHorizontal: 24,
+
+      '@hover': {
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 1,
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
+      },
+
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
+      },
+
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
+      },
+    },
+    outlined: {
+      backgroundColor: 'transparent',
+      borderWidth: 1,
+      borderColor: themeColors.$outline,
+      paddingHorizontal: 24,
+
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$primary, 8),
+      },
+
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$primary, 12),
+        borderColor: themeColors.$primary,
+      },
+
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$primary, 12),
+      },
+    },
+    text: {
+      backgroundColor: 'transparent',
+      paddingHorizontal: 12,
+
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$primary, 8),
+      },
+
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$primary, 12),
+      },
+
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$primary, 12),
+      },
+    },
+  } as const;
+
+  return { buttonTheme, stateLayerTheme };
 };
 
 /**
@@ -162,17 +220,22 @@ export type GetButtonStylesReturnType = ButtonContainerStyle;
  *
  * @param {ButtonProps} props - props of the button component
  */
-export const getButtonStyles = (props: ButtonProps): GetButtonStylesReturnType => {
-  let styles: GetButtonStylesReturnType;
+export const getButtonStyles = (props: ButtonProps) => {
+  let styles;
+  let layerStyles: GetButtonStylesReturnType;
 
   switch (props.category) {
     case 'regular': {
-      styles = getRegularButtonStyles(props);
+      const { styles: regularStyles, stateLayerStyles } = getRegularButtonStyles(props);
+      styles = regularStyles;
+      layerStyles = stateLayerStyles;
       break;
     }
 
     default: {
-      styles = getRegularButtonStyles(props);
+      const { styles: regularStyles, stateLayerStyles } = getRegularButtonStyles(props);
+      styles = regularStyles;
+      layerStyles = stateLayerStyles;
       break;
     }
   }
@@ -185,9 +248,12 @@ export const getButtonStyles = (props: ButtonProps): GetButtonStylesReturnType =
   const customStyle = props.containerStyle;
 
   return {
-    ...styles,
-    ...resetStyles,
-    ...customStyle,
+    styles: {
+      ...styles,
+      ...resetStyles,
+      ...customStyle,
+    },
+    stateLayerStyles: layerStyles,
   };
 };
 
@@ -211,22 +277,29 @@ export const getDisabledButtonStyles = (props: ButtonProps): GetButtonStylesRetu
  *
  * @param props - props of the button component
  */
-const getRegularButtonStyles = (props: ButtonProps): GetButtonStylesReturnType => {
-  const { buttonTheme } = getButtonTheme();
+const getRegularButtonStyles = (props: ButtonProps) => {
+  const { buttonTheme, stateLayerTheme } = getButtonTheme();
 
   const theme = buttonTheme[props.type];
   const commonTheme = buttonTheme.common;
 
-  let styles: GetButtonStylesReturnType;
+  const layerTheme = stateLayerTheme[props.type];
+  const commonLayerTheme = stateLayerTheme.common;
+
+  let styles;
 
   styles = {
     backgroundColor: theme.backgroundColor,
     color: theme.color,
-    paddingHorizontal: theme.paddingHorizontal,
     ...commonTheme,
-    '@hover': { ...theme['@hover'], ...props.containerStyle?.['@hover'] },
-    '@focus': { ...theme['@focus'], ...props.containerStyle?.['@focus'] },
-    '@press': { ...theme['@press'], ...props.containerStyle?.['@press'] },
+  };
+
+  const stateLayerStyles: GetButtonStylesReturnType = {
+    paddingHorizontal: layerTheme.paddingHorizontal,
+    ...commonLayerTheme,
+    '@hover': { ...layerTheme['@hover'], ...props.containerStyle?.['@hover'] },
+    '@focus': { ...layerTheme['@focus'], ...props.containerStyle?.['@focus'] },
+    '@press': { ...layerTheme['@press'], ...props.containerStyle?.['@press'] },
   };
 
   switch (props.type) {
@@ -262,5 +335,5 @@ const getRegularButtonStyles = (props: ButtonProps): GetButtonStylesReturnType =
 
   const disabledStyles = getDisabledButtonStyles(props);
 
-  return { ...styles, ...disabledStyles };
+  return { styles: { ...styles, ...disabledStyles }, stateLayerStyles };
 };

@@ -33,7 +33,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
         {example.description ? (
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
         ) : null}
-        <Container sx={{ marginVertical: 20 }} align='center' justify='center'>
+        <Container sx={{ marginVertical: 20 }} align='flex-start' justify='center' style={styles.examplesContainer}>
           {example.component}
         </Container>
         <Container style={styles.codeArea}>

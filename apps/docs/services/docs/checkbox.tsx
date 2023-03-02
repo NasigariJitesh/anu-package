@@ -78,12 +78,12 @@ export const checkBoxDocumentation: ContentValues = {
   examples: [
     {
       name: 'Basic Checkbox',
-      code: `<Container>
+      code: `<Container flexDirection='row' align='center' justify='space-around'>
       <Checkbox id='basic' />
       <Checkbox id='disabled' disabled />
     </Container>`,
       component: (
-        <Container flexDirection='row' justify='space-around'>
+        <Container flexDirection='row' align='center' justify='space-around'>
           <Checkbox id='basic' />
           <Checkbox id='disabled' disabled />
         </Container>
@@ -102,11 +102,15 @@ export const checkBoxDocumentation: ContentValues = {
     },
     {
       name: 'Label ',
-      code: `<Container>
-      <Checkbox id='indeterminate' indeterminate />
+      code: `<Container flexDirection='row' justify='space-around' align='center' >
+      <Checkbox id='label' label='Label' />
+      <Checkbox id='labelLeft' label='Left' labelPlacement='left' />
+      <Checkbox id='labelRight' label='Right' labelPlacement='right' />
+      <Checkbox id='labelTop' label='Top' labelPlacement='top' />
+      <Checkbox id='labelBottom' label='Bottom' labelPlacement='bottom' />
     </Container>`,
       component: (
-        <Container flexDirection='row' justify='space-around'>
+        <Container flexDirection='row' justify='space-around' align='center'>
           <Checkbox id='label' label='Label' />
           <Checkbox id='labelLeft' label='Left' labelPlacement='left' />
           <Checkbox id='labelRight' label='Right' labelPlacement='right' />
