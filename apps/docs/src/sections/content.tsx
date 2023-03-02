@@ -4,7 +4,7 @@ import ComponentDetails from './component-details';
 import ComponentExamples, { Example } from './component-examples';
 import ComponentProperties, { Property } from './components-properties';
 
-interface ContentValues {
+export interface ContentValues {
   mainHeading?: string;
   heading: string;
   subTitle?: string;

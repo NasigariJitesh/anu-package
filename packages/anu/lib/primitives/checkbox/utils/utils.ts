@@ -1,8 +1,6 @@
-import { Flex } from 'common/types';
 import { getColorInRGBA } from 'common/utils';
 import { getTheme } from 'config/dripsy';
 import { GetButtonStylesReturnType } from 'lib/primitives/button/utils';
-import { ContainerAlign, ContainerJustify } from 'lib/primitives/layout/types/container';
 
 import { CheckboxProps } from '../types/checkbox';
 
@@ -221,22 +219,23 @@ export const getCheckboxStyles = (props: CheckboxProps, selected: boolean) => {
 export const getLabelAlignment = (labelPlacement?: 'left' | 'right' | 'top' | 'bottom') => {
   switch (labelPlacement) {
     case 'left': {
-      return { flexDirection: 'row-reverse' as Flex, align: 'center' as ContainerAlign };
+      return { flexDirection: 'row-reverse', justify: 'center', align: 'center' } as const;
     }
     case 'right': {
-      return { flexDirection: 'row' as Flex, align: 'center' as ContainerAlign };
+      return { flexDirection: 'row', justify: 'center', align: 'center' } as const;
     }
     case 'top': {
       return {
-        flexDirection: 'column-reverse' as Flex,
-        justify: 'center' as ContainerJustify,
-      };
+        flexDirection: 'column-reverse',
+        justify: 'center',
+        align: 'center',
+      } as const;
     }
     case 'bottom': {
-      return { flexDirection: 'column' as Flex, justify: 'center' as ContainerJustify };
+      return { flexDirection: 'column', justify: 'center', align: 'center' } as const;
     }
     default: {
-      return { flexDirection: 'row' as Flex, align: 'center' as ContainerAlign };
+      return { flexDirection: 'row', justify: 'center', align: 'center' } as const;
     }
   }
 };

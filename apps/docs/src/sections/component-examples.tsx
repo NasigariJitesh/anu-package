@@ -8,6 +8,7 @@ export interface Example {
   code: string;
   component: ReactChildren;
   name: string;
+  description?: string;
 }
 
 interface ComponentExampleProps {
@@ -20,6 +21,9 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
     return (
       <Container key={index} disableGutters style={styles.examplesContainer}>
         <Typography.Headline style={styles.name}>{example.name}</Typography.Headline>
+        {example.description ? (
+          <Typography.Body style={styles.description}>{example.description}</Typography.Body>
+        ) : null}
         <Container align='center' justify='center'>
           {example.component}
         </Container>
@@ -67,6 +71,14 @@ const getStyles = () => {
       fontWeight: '600',
       lineHeight: 22,
       marginBottom: 8,
+    },
+    description: {
+      color: colors.$onSurface,
+      fontFamily: 'Source Sans Pro',
+      fontSize: 14,
+      fontWeight: '400',
+      lineHeight: 20,
+      marginTop: 8,
     },
     code: {
       color: colors.$onSurface,
