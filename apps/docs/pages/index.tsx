@@ -1,5 +1,4 @@
-import { Button, Container, Typography } from 'anu/lib';
-// import { View } from 'react-native';
+import { Button, Container } from 'anu/lib';
 import Content from 'src/sections/content';
 
 /**
