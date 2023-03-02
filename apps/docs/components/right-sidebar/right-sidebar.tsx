@@ -3,13 +3,12 @@ import { Accordion, Container, FlatList, Typography } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
-import { useMenuContext } from 'screens/common/provider';
 import { TextLink } from 'solito/link';
 
 const theme = getTheme();
 
 const source = Source_Sans_Pro({
-  weight: ['600'],
+  weight: ['400', '600'],
   style: 'normal',
   subsets: ['latin'],
 });
@@ -112,8 +111,8 @@ const RightSidebar = () => {
 
 const style = {
   container: {
-    maxWidth: 200,
-    width: '100%',
+    // maxWidth: 200,
+    // width: '100%',
   },
   preHeading: {
     fontFamily: source.style.fontFamily,
@@ -124,6 +123,7 @@ const style = {
   heading: {
     fontFamily: source.style.fontFamily,
     fontSize: 24,
+    fontWeight: '600',
   },
   groupName: {
     fontSize: 18,

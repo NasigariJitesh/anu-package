@@ -1,5 +1,12 @@
 import { getTheme } from 'config/dripsy';
 import { Container, Typography } from 'lib/index';
+import { Source_Sans_Pro } from 'next/font/google';
+
+const source = Source_Sans_Pro({
+  weight: ['400', '600'],
+  style: 'normal',
+  subsets: ['latin'],
+});
 
 interface ComponentDetailsProps {
   mainHeading?: string;
@@ -24,7 +31,7 @@ const getStyles = () => {
   const styles = {
     heading: {
       color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      fontFamily: source.style.fontFamily,
       fontSize: 24,
       fontWeight: '600',
       lineHeight: 28,
@@ -32,7 +39,7 @@ const getStyles = () => {
     },
     mainHeading: {
       color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      fontFamily: source.style.fontFamily,
       fontSize: 28,
       fontWeight: '600',
       lineHeight: 36,
@@ -40,7 +47,7 @@ const getStyles = () => {
     },
     subTitle: {
       color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      fontFamily: source.style.fontFamily,
       fontSize: 16,
       lineHeight: 24,
       marginBottom: 30,

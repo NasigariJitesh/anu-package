@@ -8,7 +8,7 @@ import { TextLink } from 'solito/link';
 const theme = getTheme();
 
 const source = Source_Sans_Pro({
-  weight: ['600'],
+  weight: ['400', '600'],
   style: 'normal',
   subsets: ['latin'],
 });
@@ -37,7 +37,6 @@ const Group = (props: HeadingProps) => {
       renderItem={({ item }) => {
         return (
           <Accordion.Container
-            sx={{ backgroundColor: 'pink' }}
             title={
               <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.groupName}>
                 {item.title}
@@ -147,21 +146,21 @@ const Sidebar = () => {
 };
 
 const style = {
-  container: {
-    maxWidth: 300,
-    width: '100%',
-  },
+  container: {},
   heading: {
     fontFamily: source.style.fontFamily,
     fontSize: 18,
+    fontWeight: '600',
   },
   groupName: {
     fontSize: 18,
     fontFamily: source.style.fontFamily,
+    fontWeight: '600',
     opacity: 0.7,
   },
   componentName: {
     fontSize: 18,
+
     fontFamily: source.style.fontFamily,
     opacity: 0.7,
     marginLeft: 20,

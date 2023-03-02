@@ -53,8 +53,6 @@ export default function App() {
 
   return (
     <Container>
-      <Typography.Display>Welcome to Expo + Next.js 👋</Typography.Display>
-
       <Content values={values} />
     </Container>
   );

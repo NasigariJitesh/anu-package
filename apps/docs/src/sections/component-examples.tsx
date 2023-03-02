@@ -1,8 +1,15 @@
 import { ReactChildren } from 'anu/common/types';
 import { getTheme } from 'anu/config';
 import { Container, Divider, Typography } from 'anu/lib';
+import { Source_Sans_Pro } from 'next/font/google';
 
 import { translations } from '../../services/localization';
+
+const source = Source_Sans_Pro({
+  weight: ['400', '600'],
+  style: 'normal',
+  subsets: ['latin'],
+});
 
 export interface Example {
   code: string;
@@ -58,7 +65,7 @@ const getStyles = () => {
     },
     heading: {
       color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      fontFamily: source.style.fontFamily,
       fontSize: 22,
       fontWeight: '600',
       lineHeight: 28,
@@ -66,7 +73,7 @@ const getStyles = () => {
     },
     name: {
       color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      fontFamily: source.style.fontFamily,
       fontSize: 18,
       fontWeight: '600',
       lineHeight: 22,
@@ -74,7 +81,7 @@ const getStyles = () => {
     },
     description: {
       color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      fontFamily: source.style.fontFamily,
       fontSize: 14,
       fontWeight: '400',
       lineHeight: 20,
@@ -82,7 +89,7 @@ const getStyles = () => {
     },
     code: {
       color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      fontFamily: source.style.fontFamily,
       fontSize: 16,
       fontWeight: '400',
       lineHeight: 16,
