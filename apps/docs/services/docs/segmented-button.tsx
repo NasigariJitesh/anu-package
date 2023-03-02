@@ -28,8 +28,8 @@ export const segmentedButtonDocumentation: ContentValues = {
       type: 'IconType | ReactElement (optional)',
     },
     {
-      name: 'onSelect (Group Property)',
-      description: 'The callback when there is a press or click on the segmented buttons.',
+      name: 'onSelect',
+      description: 'The callback when there is a press or click on the segmented button.',
       type: '(id: string) => void (optional)',
     },
     {
@@ -43,7 +43,6 @@ export const segmentedButtonDocumentation: ContentValues = {
       description: 'The callback when there is a press or click on the segmented buttons.',
       type: '(id: string) => void (optional)',
     },
-
     {
       name: 'style',
       description: 'The styles for the segmented button component.',

@@ -26,7 +26,7 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
         containerColor: themeColors.$secondaryContainer,
         stateLayerColor: themeColors.$onSecondaryContainer,
         iconColor: themeColors.$onSecondaryContainer,
-        labelColor: themeColors.$onPrimaryContainer,
+        labelColor: themeColors.$onSecondaryContainer,
       };
     }
     case 'tertiary': {
@@ -34,7 +34,7 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
         containerColor: themeColors.$tertiaryContainer,
         stateLayerColor: themeColors.$onTertiaryContainer,
         iconColor: themeColors.$onTertiaryContainer,
-        labelColor: themeColors.$onPrimaryContainer,
+        labelColor: themeColors.$onTertiaryContainer,
       };
     }
     case 'surface': {
