@@ -3,7 +3,7 @@ import { ContentValues } from 'src/sections/content';
 
 export const checkBoxDocumentation: ContentValues = {
   heading: 'Checkbox',
-  subTitle: 'Checkboxes allow users to select one or more items from a set. Checkboxes can turn an option on or off.',
+  subTitle: 'Checkboxes allow users to select one or more items from a set. They can turn an option on or off.',
   properties: [
     {
       name: 'id',
