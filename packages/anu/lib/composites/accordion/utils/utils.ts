@@ -1,7 +1,5 @@
 import { getTheme } from 'config/dripsy';
 
-import { AccordionChildrenProps, AccordionHeaderProps } from '../types';
-
 const getAccordionTheme = () => {
   const themeColors = getTheme().colors;
 
@@ -19,10 +17,9 @@ const getAccordionTheme = () => {
 /**
  * Get default styles for collapse and open icon in accordion header
  *
- * @param props - Accordion header props
  * @returns - default styles for icon
  */
-export const getIconStyles = (props: AccordionHeaderProps) => {
+export const getIconStyles = () => {
   const theme = getAccordionTheme();
 
   return theme.iconTheme;
@@ -31,10 +28,9 @@ export const getIconStyles = (props: AccordionHeaderProps) => {
 /**
  * Get default styles container in the header
  *
- * @param props - Accordion header props
  * @returns - default styles for icon
  */
-export const getHeaderContainerStyles = (props: AccordionHeaderProps) => {
+export const getHeaderContainerStyles = () => {
   return {
     backgroundColor: 'transparent',
   };
@@ -43,10 +39,9 @@ export const getHeaderContainerStyles = (props: AccordionHeaderProps) => {
 /**
  * Get default styles for accordion children container
  *
- * @param props - Accordion children props
  * @returns - default styles for icon
  */
-export const getChildrenStyles = (props: AccordionChildrenProps) => {
+export const getChildrenStyles = () => {
   return {
     backgroundColor: 'transparent',
   };
@@ -55,12 +50,11 @@ export const getChildrenStyles = (props: AccordionChildrenProps) => {
 /**
  * Get default accordion header styles
  *
- * @param props - Accordion header props
  * @returns - default styles
  */
-export const getAccordionHeaderStyles = (props: AccordionHeaderProps) => {
+export const getAccordionHeaderStyles = () => {
   return {
-    icon: getIconStyles(props),
-    container: getHeaderContainerStyles(props),
+    icon: getIconStyles(),
+    container: getHeaderContainerStyles(),
   };
 };

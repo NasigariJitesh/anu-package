@@ -1,7 +1,5 @@
 import { Provider } from 'anu/common/context';
 import { ReactChildren } from 'anu/common/types';
-import { SafeAreaView } from 'dripsy';
-import { ScrollView } from 'react-native';
 
 /**
  *

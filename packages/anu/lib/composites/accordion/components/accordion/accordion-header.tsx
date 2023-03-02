@@ -14,7 +14,7 @@ import { useAccordionContext } from './accordion';
 const RenderIcon = (props: AccordionHeaderProps) => {
   const { collapse } = useAccordionContext();
 
-  const style = getAccordionHeaderStyles(props);
+  const style = getAccordionHeaderStyles();
 
   if (props.icon?.collapsed && collapse) return <>{props.icon.collapsed}</>;
   else if (props.icon?.open && !collapse) return <>{props.icon.open}</>;
@@ -34,7 +34,7 @@ const RenderIcon = (props: AccordionHeaderProps) => {
  * @param props - header props for accordion
  */
 const AccordionHeader = (props: AccordionHeaderProps) => {
-  const style = getAccordionHeaderStyles(props);
+  const style = getAccordionHeaderStyles();
 
   return (
     <Container sx={style.container} disableGutters flexDirection='row' align='center'>

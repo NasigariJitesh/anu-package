@@ -10,12 +10,9 @@ import RootLayout from 'screens/common/provider';
 
 /**
  *
- * @param root0.Component
- * @param root0.pageProps
- * @param root0.Component.Component
- * @param root0.Component.pageProps
+ * @param props App props
  */
-export default function App({ Component, pageProps }: AppProps) {
+export default function App(props: AppProps) {
   return (
     <RootLayout>
       <Head>
@@ -32,9 +29,9 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       >
         <Sidebar />
-        {/* <ScrollView>
-          <Component {...pageProps} />
-        </ScrollView> */}
+        <ScrollView>
+          <props.Component {...props.pageProps} />
+        </ScrollView>
       </View>
     </RootLayout>
   );

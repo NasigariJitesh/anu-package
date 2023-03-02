@@ -9,7 +9,7 @@ import { getChildrenStyles } from '../../utils';
  * @param props - children props for accordion
  */
 const AccordionChildren = (props: AccordionChildrenProps) => {
-  const style = getChildrenStyles(props);
+  const style = getChildrenStyles();
 
   return (
     <Container disableGutters sx={{ ...style, ...props.sx }}>
