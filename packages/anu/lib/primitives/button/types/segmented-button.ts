@@ -11,12 +11,31 @@ export interface SegmentedButtonStyle extends ExtendedDisabledStyles, ExtendedHo
  * The props type for the Segmented Button Component
  */
 export interface SegmentedButtonProps extends RNButtonProps {
+  /**
+   * The ids of selected members of the segmented button group
+   */
   selected?: string | string[];
+  /**
+   * Id of the segmented button
+   */
   id: string;
-  onSelect?: (value: string) => void;
+  /**
+   * The callback when there is a press or click on the segmented buttons
+   *
+   * @param {string}id - the id of the clicked segmented button
+   */
+  onSelect?: (id: string) => void;
+  /**
+   * The icon component or the icon props for material icons
+   */
   icon?: IconType | ReactElement;
+  /**
+   * The styles for the segmented button component
+   */
   style?: SegmentedButtonStyle;
-  disabled?: boolean;
+  /**
+   * The styles for the label of the button
+   */
   titleStyle?: StyleProp<TextStyle>;
   isFirst?: boolean;
   isLast?: boolean;
@@ -26,8 +45,19 @@ export interface SegmentedButtonProps extends RNButtonProps {
  * The props type for the Segmented Button Group Component
  */
 export interface SegmentedButtonGroupProps {
+  /**
+   * The ids of selected members of the segmented button group
+   */
   selected?: string | string[];
+  /**
+   * whether the multiple segmented buttons can be selected at once
+   */
   multiSelect?: boolean;
-  onPress?: (value: string) => void;
+  /**
+   * The callback when there is a press or click on the segmented buttons
+   *
+   * @param {string}id - the id of the clicked segmented button
+   */
+  onPress?: (id: string) => void;
   children: React.ReactElement<typeof SegmentedButton>[];
 }

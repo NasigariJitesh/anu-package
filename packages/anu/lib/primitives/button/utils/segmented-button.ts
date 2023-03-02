@@ -158,6 +158,8 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
     segmentedLastButtonTheme,
   } = getSegmentedButtonTheme();
 
+  const themeColors = getTheme().colors;
+
   const key: keyof typeof segmentedButtonTheme = selected ? 'on' : 'off';
 
   const commonTheme = segmentedButtonTheme.common;
@@ -203,11 +205,15 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
   let disabledStyles = {};
   let disabledIconStyles = {};
   let disabledLabelStyles = {};
+  let disabledFirstButtonStyle = {};
+  let disabledLastButtonStyle = {};
 
   if (props.disabled) {
     disabledStyles = { ...disableStyles, ...propsDisableStyles };
     disabledIconStyles = { ...disableIconStyles };
     disabledLabelStyles = { ...disableLabelStyles };
+    disabledFirstButtonStyle = { borderLeftColor: getColorInRGBA(themeColors.$onSurface, 12) };
+    disabledLastButtonStyle = { borderRightColor: getColorInRGBA(themeColors.$onSurface, 12) };
   }
 
   return {
@@ -215,8 +221,8 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
     layerStyles: stateLayerStyles,
     iconStyles: { ...iconStyles, ...disabledIconStyles },
     labelStyles: { ...labelStyles, ...disabledLabelStyles, ...(props.titleStyle as Record<string, never>) },
-    segmentedFirstButtonTheme,
-    segmentedLastButtonTheme,
+    segmentedFirstButtonTheme: { ...segmentedFirstButtonTheme, ...disabledFirstButtonStyle },
+    segmentedLastButtonTheme: { ...segmentedLastButtonTheme, ...disabledLastButtonStyle },
   };
 };
 

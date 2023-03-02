@@ -53,7 +53,6 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
 const getFABTheme = (props: FABProps) => {
   const themeColors = getTheme().colors;
   const { containerColor, stateLayerColor, iconColor } = getColors(props.FABColor);
-  const elevation = props.lowered ? 1 : 6;
   const fabTheme = {
     common: {
       justifyContent: 'center' as const,
@@ -64,11 +63,11 @@ const getFABTheme = (props: FABProps) => {
       shadowColor: themeColors.$shadow,
       shadowOffset: {
         width: 0,
-        height: 3,
+        height: props.lowered ? 3 : 6,
       },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
-      elevation: elevation,
+      elevation: props.lowered ? 1 : 6,
     },
     small: {
       height: 40,
@@ -102,6 +101,14 @@ const getFABTheme = (props: FABProps) => {
       padding: 2,
       '@hover': {
         backgroundColor: getColorInRGBA(stateLayerColor, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: props.lowered ? 6 : 9,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: props.lowered ? 3 : 8,
       },
 
       '@focus': {
@@ -121,6 +128,14 @@ const getFABTheme = (props: FABProps) => {
 
       '@hover': {
         backgroundColor: getColorInRGBA(stateLayerColor, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: props.lowered ? 6 : 9,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: props.lowered ? 3 : 8,
       },
 
       '@focus': {
@@ -140,6 +155,14 @@ const getFABTheme = (props: FABProps) => {
 
       '@hover': {
         backgroundColor: getColorInRGBA(stateLayerColor, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: props.lowered ? 6 : 9,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: props.lowered ? 3 : 8,
       },
 
       '@focus': {
