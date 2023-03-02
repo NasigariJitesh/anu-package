@@ -1,4 +1,4 @@
-import { Button, Container, Typography } from 'anu/lib';
+import { Button, Container } from 'anu/lib';
 import Content from 'src/sections/content';
 
 /**
@@ -22,7 +22,7 @@ export default function App() {
   const examples = [
     {
       name: 'Regular Button',
-      code: "<Container align='flex-end' maxWidth='sm'>\n\t<Button.Elevated title='Elevated'  />\n</Container>",
+      code: "<Container align='flex-end' maxWidth='sm'> \n  <Button.Elevated title='Elevated'  />\n</Container>",
       component: (
         <Container align='flex-end' maxWidth='sm'>
           <Button.Elevated title='Elevated' />
@@ -51,12 +51,8 @@ export default function App() {
   };
 
   return (
-    <>
-      <Container sx={{ width: 700 }}>
-        <Typography.Display>Welcome to Expo + Next.js 👋</Typography.Display>
-
-        <Content values={values} />
-      </Container>
-    </>
+    <Container>
+      <Content values={values} />
+    </Container>
   );
 }

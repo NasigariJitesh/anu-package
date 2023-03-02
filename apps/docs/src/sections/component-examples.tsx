@@ -1,8 +1,17 @@
 import { ReactChildren } from 'anu/common/types';
 import { getTheme } from 'anu/config';
-import { Container, Divider, Typography } from 'anu/lib';
+import { Container, Typography } from 'anu/lib';
+import { Source_Sans_Pro } from 'next/font/google';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import { translations } from '../../services/localization';
+
+const source = Source_Sans_Pro({
+  weight: ['400', '600'],
+  style: 'normal',
+  subsets: ['latin'],
+});
 
 export interface Example {
   code: string;
@@ -24,21 +33,22 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
         {example.description ? (
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
         ) : null}
-        <Container align='flex-start' justify='center' style={styles.examplesContainer}>
+        <Container sx={{ marginVertical: 20 }} align='flex-start' justify='center' style={styles.examplesContainer}>
           {example.component}
         </Container>
         <Container style={styles.codeArea}>
-          <code>
-            <Typography.Body style={styles.code}>{example.code}</Typography.Body>
-          </code>
+          <SyntaxHighlighter showLineNumbers language='typescript' style={arduinoLight} customStyle={styles.code}>
+            {example.code}
+          </SyntaxHighlighter>
         </Container>
-        <Divider variant='full-width' light style={styles.divider} />
+        {/* <Divider variant='full-width' light style={styles.divider} /> */}
       </Container>
     );
   };
 
   return (
     <Container disableGutters style={styles.container}>
+      <Typography.Headline style={styles.heading}>{translations('en', 'examples')}</Typography.Headline>
       {examples.map((example, index) => renderExample(example, index))}
     </Container>
   );
@@ -57,7 +67,7 @@ const getStyles = () => {
     },
     heading: {
       color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      fontFamily: source.style.fontFamily,
       fontSize: 22,
       fontWeight: '600',
       lineHeight: 28,
@@ -65,7 +75,7 @@ const getStyles = () => {
     },
     name: {
       color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      fontFamily: source.style.fontFamily,
       fontSize: 18,
       fontWeight: '600',
       lineHeight: 22,
@@ -73,19 +83,20 @@ const getStyles = () => {
     },
     description: {
       color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      fontFamily: source.style.fontFamily,
       fontSize: 14,
       fontWeight: '400',
       lineHeight: 20,
       marginTop: 8,
     },
     code: {
-      color: colors.$onSurface,
-      fontFamily: 'Source Sans Pro',
+      backgroundColor: 'transparent',
       fontSize: 16,
       fontWeight: '400',
-      lineHeight: 16,
-      marginBottom: 8,
+      // color: colors.$onSurface,
+      // fontFamily: source.style.fontFamily,
+      // lineHeight: 16,
+      // marginBottom: 8,
     },
     divider: {
       color: colors.$onSurface,
@@ -93,10 +104,11 @@ const getStyles = () => {
     codeArea: {
       backgroundColor: colors.$primaryContainer,
       width: '100%',
+      maxWidth: 500,
       marginVertical: 15,
       padding: 5,
       borderRadius: 10,
-      minHeight: 200,
+      justifyContent: 'center',
     },
   } as const;
   return styles;

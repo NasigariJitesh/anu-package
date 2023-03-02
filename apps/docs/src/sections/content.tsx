@@ -32,8 +32,8 @@ const Content = ({ values }: ContentProps) => {
 const getStyles = () => {
   const styles = {
     container: {
-      marginVertical: 20,
       width: '100%',
+      paddingHorizontal: 20,
     },
   } as const;
   return styles;

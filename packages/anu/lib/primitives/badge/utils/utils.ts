@@ -23,7 +23,7 @@ export const isNumberBadge = (props: BadgeProps): props is NumberBadgeProps => {
 export const getContainerStyle = (props: BadgeProps) => {
   const { overlap } = props;
 
-  let style: StyleProp<ViewStyle> = { position: 'relative', backgroundColor: 'blue', padding: 10 };
+  let style: StyleProp<ViewStyle> = { position: 'relative', padding: 10 };
 
   switch (overlap) {
     case 'rectangular': {
