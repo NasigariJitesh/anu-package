@@ -1,4 +1,3 @@
-import React from 'react';
 import { FABDocumentation } from 'services/docs/fab';
 import Content from 'src/sections/content';
 

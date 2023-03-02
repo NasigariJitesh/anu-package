@@ -1,4 +1,3 @@
-import React from 'react';
 import { regularButtonDocumentation } from 'services/docs/regular-button';
 import Content from 'src/sections/content';
 

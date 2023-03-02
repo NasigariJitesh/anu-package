@@ -1,4 +1,3 @@
-import React from 'react';
 import { iconButtonDocumentation } from 'services/docs/icon-button';
 import Content from 'src/sections/content';
 

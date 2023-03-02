@@ -1,4 +1,3 @@
-import React from 'react';
 import IconButtonDoc from 'screens/components/icon-button';
 
 const IconButton = () => {

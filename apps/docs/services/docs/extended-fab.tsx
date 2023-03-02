@@ -1,5 +1,4 @@
 import { Container, ExtendedFAB } from 'anu/lib';
-import React from 'react';
 import { ContentValues } from 'src/sections/content';
 
 export const extendedFABDocumentation: ContentValues = {

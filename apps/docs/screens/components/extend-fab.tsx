@@ -1,4 +1,3 @@
-import React from 'react';
 import { extendedFABDocumentation } from 'services/docs/extended-fab';
 import Content from 'src/sections/content';
 

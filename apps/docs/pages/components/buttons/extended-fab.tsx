@@ -1,4 +1,3 @@
-import React from 'react';
 import ExtendedFABDoc from 'screens/components/extend-fab';
 
 const ExtendedFAB = () => {
