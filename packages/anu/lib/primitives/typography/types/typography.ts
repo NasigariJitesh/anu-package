@@ -110,7 +110,7 @@ export interface TitleProps extends TypographyProps {
 export interface LabelProps extends TypographyProps {
   component: LabelType;
   scale: 'label';
-  for?: string;
+  htmlFor?: string;
 }
 
 /**
