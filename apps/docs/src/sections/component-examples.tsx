@@ -24,7 +24,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
         {example.description ? (
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
         ) : null}
-        <Container align='center' justify='center'>
+        <Container align='flex-start' justify='center' style={styles.examplesContainer}>
           {example.component}
         </Container>
         <Container style={styles.codeArea}>
@@ -38,8 +38,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
   };
 
   return (
-    <Container style={styles.container}>
-      <Typography.Headline style={styles.heading}>{translations('en', 'examples')}</Typography.Headline>
+    <Container disableGutters style={styles.container}>
       {examples.map((example, index) => renderExample(example, index))}
     </Container>
   );

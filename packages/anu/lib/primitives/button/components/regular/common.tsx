@@ -1,12 +1,11 @@
 import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
+import Container from 'lib/primitives/layout';
 import Typography from 'lib/primitives/typography';
 import { PressableStateCallbackType } from 'react-native';
 
-import { RegularButtonProps } from '../../types';
+import { ButtonProps } from '../../types';
 import { getButtonStyles } from '../../utils';
-
-type ButtonProps = RegularButtonProps;
 
 /**
  * Function to render the Button component with the styles
@@ -15,23 +14,26 @@ type ButtonProps = RegularButtonProps;
  */
 export const RenderComponent = (props: ButtonProps) => {
   const labelStyles = { color: 'inherit' };
-  const generateStyles = (state: PressableStateCallbackType) => {
-    const buttonStyles = getButtonStyles(props);
+  const { styles, stateLayerStyles } = getButtonStyles(props);
 
-    return generateHoverStyles(state, buttonStyles, useSx);
+  const generateStyles = (state: PressableStateCallbackType) => {
+    return generateHoverStyles(state, stateLayerStyles, useSx);
   };
 
   return (
-    <Pressable
-      accessibilityRole='button'
-      onPress={props.onPress}
-      {...props.pressableProps}
-      style={generateStyles}
-      disabled={props.disabled}
-    >
-      <Typography.Label size='large' style={getCombinedStylesForText(labelStyles, props.labelStyle)}>
-        {props.title}
-      </Typography.Label>
-    </Pressable>
+    // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
+    <Container disableGutters style={styles}>
+      <Pressable
+        accessibilityRole='button'
+        onPress={props.onPress}
+        {...props.pressableProps}
+        style={generateStyles}
+        disabled={props.disabled}
+      >
+        <Typography.Label size='large' style={getCombinedStylesForText(labelStyles, props.labelStyle)}>
+          {props.title}
+        </Typography.Label>
+      </Pressable>
+    </Container>
   );
 };
