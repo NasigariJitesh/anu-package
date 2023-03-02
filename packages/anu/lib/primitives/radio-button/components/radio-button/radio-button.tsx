@@ -52,7 +52,7 @@ export const Radio = (props: RadioButtonProps) => {
       </Pressable>
 
       {finalProps.label ? (
-        <Typography.Label for={finalProps.id} style={finalProps.labelStyle}>
+        <Typography.Label htmlFor={finalProps.id} style={finalProps.labelStyle}>
           {finalProps.label}
         </Typography.Label>
       ) : null}

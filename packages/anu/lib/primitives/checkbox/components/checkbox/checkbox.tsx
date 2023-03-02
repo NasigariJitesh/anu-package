@@ -57,7 +57,7 @@ export const Checkbox = (props: CheckboxProps) => {
       </Pressable>
 
       {finalProps.label ? (
-        <Typography.Label for={finalProps.id} style={finalProps.labelStyle}>
+        <Typography.Label htmlFor={finalProps.id} style={finalProps.labelStyle}>
           {props.label}
         </Typography.Label>
       ) : null}
