@@ -93,6 +93,10 @@ const getStyles = () => {
       backgroundColor: 'transparent',
       fontSize: 16,
       fontWeight: '400',
+      overflow: 'breakWord',
+      width: '100%',
+      maxWidth: 450,
+
       // color: colors.$onSurface,
       // fontFamily: source.style.fontFamily,
       // lineHeight: 16,
