@@ -37,7 +37,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
           {example.component}
         </Container>
         <Container style={styles.codeArea}>
-          <SyntaxHighlighter showLineNumbers language='typescript' style={arduinoLight} customStyle={styles.code}>
+          <SyntaxHighlighter showLineNumbers style={arduinoLight} customStyle={styles.code}>
             {example.code}
           </SyntaxHighlighter>
         </Container>
@@ -64,6 +64,7 @@ const getStyles = () => {
     },
     examplesContainer: {
       width: '100%',
+      marginBottom: 20,
     },
     heading: {
       color: colors.$onSurface,
@@ -104,7 +105,7 @@ const getStyles = () => {
     codeArea: {
       backgroundColor: colors.$primaryContainer,
       width: '100%',
-      maxWidth: 500,
+      maxWidth: 700,
       marginVertical: 15,
       padding: 5,
       borderRadius: 10,
