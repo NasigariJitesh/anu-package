@@ -63,7 +63,7 @@ export const segmentedButtonDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <SegmentedButtonGroup>
             <SegmentedButton id='segmentedButton1' title='Button 1' />
@@ -73,7 +73,7 @@ export const segmentedButtonDocumentation: ContentValues = {
           </SegmentedButtonGroup>
         </Container>
       ),
-      code: `<Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 500 }}>
+      code: `<Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 700 }}>
       <SegmentedButtonGroup>
         <SegmentedButton id='segmentedButton1' title='Button 1' />
         <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
@@ -90,7 +90,7 @@ export const segmentedButtonDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <SegmentedButtonGroup multiSelect>
             <SegmentedButton id='segmentedButton1' title='Button 1' />
@@ -100,7 +100,7 @@ export const segmentedButtonDocumentation: ContentValues = {
           </SegmentedButtonGroup>
         </Container>
       ),
-      code: `<Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 500 }}>
+      code: `<Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 700 }}>
       <SegmentedButtonGroup multiSelect>
         <SegmentedButton id='segmentedButton1' title='Button 1' />
         <SegmentedButton id='segmentedButton2' title='Button 2' />

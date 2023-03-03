@@ -42,7 +42,7 @@ export const typographyDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-between'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Typography.Body size='large'>Large</Typography.Body>
           <Typography.Body size='medium'>Medium</Typography.Body>

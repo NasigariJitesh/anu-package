@@ -62,7 +62,7 @@ export const chipDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Chip type='assist' value='Assist' />
           <Chip type='assist' value='Assist' disabled />
@@ -85,7 +85,7 @@ export const chipDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Chip type='filter' value='Filter' />
           <Chip type='filter' value='Filter' disabled />
@@ -100,7 +100,7 @@ export const chipDocumentation: ContentValues = {
   flexDirection='row'
   align='center'
   justify='space-around'
-  sx={{ width: '100%', maxWidth: 500 }}
+  sx={{ width: '100%', maxWidth: 700 }}
 >
   <Chip type='filter' value='Filter' />
   <Chip type='filter' value='Filter' disabled />
@@ -119,7 +119,7 @@ export const chipDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Chip type='input' value='Input' />
           <Chip type='input' value='Input' disabled />
@@ -134,7 +134,7 @@ export const chipDocumentation: ContentValues = {
   flexDirection='row'
   align='center'
   justify='space-around'
-  sx={{ width: '100%', maxWidth: 500 }}
+  sx={{ width: '100%', maxWidth: 700 }}
 >
   <<Chip type='input' value='Input' />
   <Chip type='input' value='Input' disabled />
@@ -153,7 +153,7 @@ export const chipDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Chip type='suggestion' value='Suggest' />
           <Chip type='suggestion' value='Suggest' disabled />

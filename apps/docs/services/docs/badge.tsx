@@ -60,7 +60,7 @@ export const badgeDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Badge value='new'>
             <Icon name='notification' />
@@ -93,7 +93,7 @@ export const badgeDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Badge value={90}>
             <Icon name='notification' />

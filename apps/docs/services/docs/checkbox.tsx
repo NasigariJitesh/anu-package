@@ -88,7 +88,7 @@ export const checkBoxDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Checkbox id='basic' />
           <Checkbox id='disabled' disabled />
@@ -106,7 +106,7 @@ export const checkBoxDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Checkbox id='indeterminate' indeterminate />
         </Container>
@@ -127,7 +127,7 @@ export const checkBoxDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Checkbox id='label' label='Label' />
           <Checkbox id='labelLeft' label='Left' labelPlacement='left' />

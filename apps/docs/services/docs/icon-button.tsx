@@ -38,12 +38,12 @@ export const iconButtonDocumentation: ContentValues = {
     {
       name: 'Basic',
       component: (
-        <Container sx={{ width: '100%', maxWidth: 500 }}>
+        <Container sx={{ width: '100%', maxWidth: 700 }}>
           <Container
             flexDirection='row'
             align='center'
             justify='space-around'
-            sx={{ width: '100%', maxWidth: 500, marginBottom: 10 }}
+            sx={{ width: '100%', maxWidth: 700, marginBottom: 10 }}
           >
             <IconButton type='filled' icon={{ name: 'favorite' }} />
             <IconButton type='tonal' icon={{ name: 'flag' }} />
@@ -55,7 +55,7 @@ export const iconButtonDocumentation: ContentValues = {
             flexDirection='row'
             align='center'
             justify='space-around'
-            sx={{ width: '100%', maxWidth: 500 }}
+            sx={{ width: '100%', maxWidth: 700 }}
           >
             <IconButton type='filled' icon={<Icon name='favorite' />} />
             <IconButton type='tonal' icon={<Icon name='flag' />} />
@@ -87,7 +87,7 @@ export const iconButtonDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <IconButton type='filled' icon={{ name: 'favorite' }} disabled />
           <IconButton type='tonal' icon={{ name: 'flag' }} disabled />
@@ -110,7 +110,7 @@ export const iconButtonDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <IconButton type='filled' icon={{ name: 'favorite' }} toggle />
           <IconButton type='tonal' icon={{ name: 'flag' }} toggle />
