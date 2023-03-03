@@ -10,15 +10,19 @@ const source = Source_Sans_Pro({
 
 interface ComponentDetailsProps {
   mainHeading?: string;
+  mainDescription?: string;
   heading: string;
   subTitle?: string;
 }
 
-const ComponentDetails = ({ mainHeading, heading, subTitle }: ComponentDetailsProps) => {
+const ComponentDetails = ({ mainHeading, heading, subTitle, mainDescription }: ComponentDetailsProps) => {
   const styles = getStyles();
   return (
     <Container disableGutters>
       {mainHeading ? <Typography.Headline style={styles.mainHeading}>{mainHeading}</Typography.Headline> : null}
+      {mainDescription ? (
+        <Typography.Headline style={styles.mainDescription}>{mainDescription}</Typography.Headline>
+      ) : null}
       <Typography.Headline style={styles.heading}>{heading}</Typography.Headline>
       {subTitle ? <Typography.Body style={styles.subTitle}>{subTitle}</Typography.Body> : null}
     </Container>
@@ -42,7 +46,14 @@ const getStyles = () => {
       fontFamily: source.style.fontFamily,
       fontSize: 28,
       fontWeight: '600',
+      marginBottom: 15,
       lineHeight: 36,
+    },
+    mainDescription: {
+      color: colors.$onSurface,
+      fontFamily: source.style.fontFamily,
+      fontSize: 16,
+      lineHeight: 24,
       marginBottom: 30,
     },
     subTitle: {

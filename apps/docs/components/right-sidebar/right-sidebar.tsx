@@ -3,6 +3,8 @@ import { Accordion, Container, FlatList, Typography } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
+import { typographyIndex } from 'services/docs/typography';
+import { translations } from 'services/localization';
 import { TextLink } from 'solito/link';
 
 const theme = getTheme();
@@ -19,10 +21,11 @@ type ComponentLinks = Link;
 
 interface SubIndex {
   title: string;
+  link?: string;
   components: ComponentLinks[];
 }
 
-interface HeadingProps {
+export interface HeadingProps {
   heading: string;
   links: SubIndex[];
 }
@@ -34,18 +37,12 @@ const Group = (props: HeadingProps) => {
       data={props.links}
       renderItem={({ item }) => {
         return (
-          <Accordion.Container
-            sx={{ backgroundColor: 'pink' }}
-            title={
-              <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.groupName}>
-                {item.title}
-              </Accordion.Header>
-            }
-          >
-            <Accordion.Children>
-              <Components links={item.components} />
-            </Accordion.Children>
-          </Accordion.Container>
+          <>
+            <Typography.Title style={style.groupName}>
+              <TextLink href={item.link ?? '#'}>{item.title}</TextLink>
+            </Typography.Title>
+            <Components links={item.components} />
+          </>
         );
       }}
     />
@@ -73,11 +70,25 @@ const Components = (props: { links: ComponentLinks[] }) => {
 const Index = (props: HeadingProps) => {
   return (
     <>
-      <Typography.Body style={style.preHeading}>{'On this page'}</Typography.Body>
+      <Typography.Body style={style.preHeading}>{translations('en', 'onThisPage')}</Typography.Body>
       <Typography.Title style={style.heading}>{props.heading}</Typography.Title>
       <Group {...props} />
     </>
   );
+};
+
+const RenderIndex = () => {
+  const { pathname } = useRouter();
+
+  switch (pathname) {
+    case '/components/typography': {
+      {
+        return <Index {...typographyIndex} />;
+      }
+    }
+  }
+
+  return null;
 };
 
 const RightSidebar = () => {
@@ -87,24 +98,7 @@ const RightSidebar = () => {
 
   return (
     <Container sx={style.container}>
-      <Index
-        heading='Regular Button'
-        links={[
-          {
-            title: 'Elevated',
-            components: [
-              {
-                link: '/button',
-                title: 'Examples',
-              },
-              {
-                link: '/button',
-                title: 'Props',
-              },
-            ],
-          },
-        ]}
-      />
+      <RenderIndex />
     </Container>
   );
 };
@@ -129,13 +123,14 @@ const style = {
     fontSize: 18,
     fontFamily: source.style.fontFamily,
     opacity: 0.7,
+    marginTop: 10,
   },
   componentName: {
     fontSize: 18,
     fontFamily: source.style.fontFamily,
     opacity: 0.7,
     marginLeft: 20,
-    marginTop: 10,
+    marginTop: 5,
   },
   groupList: {
     marginVertical: 15,
