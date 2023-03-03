@@ -1,4 +1,5 @@
 import { Container, Typography } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const typographyDocumentation: ContentValues = {
@@ -8,6 +9,7 @@ export const typographyDocumentation: ContentValues = {
   examples: [
     {
       name: 'Basic',
+      id: 'basic',
       description: 'Here is the basic example of how to use the different scales in typography.',
       component: (
         <Container
@@ -32,6 +34,7 @@ export const typographyDocumentation: ContentValues = {
     },
     {
       name: 'Size',
+      id: 'size',
       description: 'You can also adjust the size of each component by providing the size property',
       component: (
         <Container
@@ -82,6 +85,31 @@ export const typographyDocumentation: ContentValues = {
       name: 'htmlFor (only for label)',
       description: 'This can be used as "for" property in label component for web',
       type: 'string',
+    },
+  ],
+};
+
+export const typographyIndex: HeadingProps = {
+  heading: 'Typography',
+  links: [
+    {
+      components: [
+        {
+          title: 'Basic',
+          link: '#basic',
+        },
+        {
+          title: 'Size',
+          link: '#size',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

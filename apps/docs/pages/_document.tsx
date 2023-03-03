@@ -41,12 +41,7 @@ html, body, #__next {
 #root-scroll {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-}
-
-
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth; !important
 }
 
 body {

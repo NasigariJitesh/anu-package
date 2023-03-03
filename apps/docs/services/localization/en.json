@@ -1,5 +1,6 @@
 {
   "props": "Props",
   "defaultValue": "Default Value",
-  "examples": "Examples"
+  "examples": "Examples",
+  "onThisPage": "On this page"
 }

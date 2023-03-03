@@ -18,6 +18,7 @@ export interface Example {
   component: ReactChildren;
   name: string;
   description?: string;
+  id?: string;
 }
 
 interface ComponentExampleProps {
@@ -28,7 +29,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
 
   const renderExample = (example: Example, index: number) => {
     return (
-      <Container key={index} disableGutters style={styles.examplesContainer}>
+      <Container nativeID={example.id} key={index} disableGutters style={styles.examplesContainer}>
         <Typography.Headline style={styles.name}>{example.name}</Typography.Headline>
         {example.description ? (
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
@@ -47,7 +48,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
   };
 
   return (
-    <Container disableGutters style={styles.container}>
+    <Container nativeID='example' disableGutters style={styles.container}>
       <Typography.Headline style={styles.heading}>{translations('en', 'examples')}</Typography.Headline>
       {examples.map((example, index) => renderExample(example, index))}
     </Container>
@@ -94,6 +95,7 @@ const getStyles = () => {
       backgroundColor: 'transparent',
       fontSize: 16,
       fontWeight: '400',
+      width: '100%',
       // color: colors.$onSurface,
       // fontFamily: source.style.fontFamily,
       // lineHeight: 16,
