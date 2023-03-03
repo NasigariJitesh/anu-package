@@ -9,9 +9,9 @@ import { defaultProps } from './default';
 /**
  * Component for Container
  *
- * @param {Partial<ContainerProps>} props - all the properties related to the container component
+ * @param {ContainerProps} props - all the properties related to the container component
  */
-export const Container = (props: Partial<ContainerProps>) => {
+export const Container = (props: ContainerProps) => {
   const finalProps = { ...defaultProps, ...props };
 
   const { style, sx } = getContainerStyles(finalProps);

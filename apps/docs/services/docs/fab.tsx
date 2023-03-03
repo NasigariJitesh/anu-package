@@ -11,7 +11,7 @@ export const FABDocumentation: ContentValues = {
       name: 'size',
       type: "'small' | 'medium' | 'large'",
       description: 'The size of the floating action button',
-      defaultValue: 'medium',
+      defaultValue: "'medium'",
     },
     {
       name: 'icon',
@@ -22,7 +22,7 @@ export const FABDocumentation: ContentValues = {
       name: 'FABColor',
       description: 'The theme color of the FAB.',
       type: "'primary' | 'secondary' | 'surface' | 'tertiary'",
-      defaultValue: 'primary',
+      defaultValue: "'primary'",
     },
     {
       name: 'lowered',

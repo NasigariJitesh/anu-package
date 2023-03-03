@@ -62,8 +62,8 @@ export const typographyDocumentation: ContentValues = {
     },
     {
       name: 'size',
-      type: "'large' | 'medium' | 'small'",
-      description: 'The size of the typography component (optional)',
+      type: "'large' | 'medium' | 'small' (optional)",
+      description: 'The size of the typography component',
       defaultValue: "'medium'",
     },
     {

@@ -17,13 +17,40 @@ export type ContainerJustify = 'center' | 'flex-start' | 'flex-end' | 'space-bet
 type ViewProps = React.ComponentProps<typeof View>;
 
 export interface ContainerProps extends ViewProps {
-  flexDirection: Flex;
-  align: ContainerAlign;
-  justify: ContainerJustify;
+  /**
+   * The direction in which the children components are positioned
+   */
+  flexDirection?: Flex;
+  /**
+   * The alignment of all items on the cross axis
+   */
+  align?: ContainerAlign;
+  /**
+   * The alignment of all items on the main axis
+   */
+  justify?: ContainerJustify;
+  /**
+   * The maximum width of the container in breakpoints, pixels or percentage.
+   */
   maxWidth?: BreakPoints | string | number;
-  style: StyleProp<ViewStyle>;
+  /**
+   * The styles for the container component.
+   */
+  style?: StyleProp<ViewStyle>;
+  /**
+   * The width of the container in pixels or percentage
+   */
   width?: number | string;
-  fixed: boolean;
-  disableGutters: boolean;
+  /**
+   * If true, sets the max-width to match the min-width of the current breakpoint.
+   */
+  fixed?: boolean;
+  /**
+   * If true, the left and right padding is removed.
+   */
+  disableGutters?: boolean;
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
   sx?: SxProp;
 }

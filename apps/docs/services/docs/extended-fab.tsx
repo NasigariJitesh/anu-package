@@ -21,7 +21,7 @@ export const extendedFABDocumentation: ContentValues = {
       name: 'FABColor',
       description: 'The theme color of the FAB.',
       type: "'primary' | 'secondary' | 'surface' | 'tertiary'",
-      defaultValue: 'primary',
+      defaultValue: "'primary'",
     },
     {
       name: 'lowered',
