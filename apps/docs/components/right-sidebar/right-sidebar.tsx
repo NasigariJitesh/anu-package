@@ -86,9 +86,12 @@ const RenderIndex = () => {
         return <Index {...typographyIndex} />;
       }
     }
+    default: {
+      {
+        return <Index {...typographyIndex} />;
+      }
+    }
   }
-
-  return null;
 };
 
 const RightSidebar = () => {
