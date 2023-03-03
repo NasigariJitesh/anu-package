@@ -134,6 +134,68 @@ const Sidebar = () => {
                 title: 'Typography',
                 variants: [],
               },
+              {
+                link: '/components/badge',
+                title: 'Badge',
+                variants: [],
+              },
+              {
+                link: '/components/chip',
+                title: 'Chip',
+                variants: [],
+              },
+            ],
+          },
+          {
+            title: 'Layout',
+            components: [
+              {
+                title: 'Container',
+                link: '/components/container',
+                variants: [],
+              },
+            ],
+          },
+          {
+            title: 'Inputs',
+            components: [
+              {
+                link: '/components/button',
+                title: 'Button',
+                variants: [
+                  {
+                    link: '/components/button/extended-fab',
+                    title: 'Extended FAB',
+                  },
+                  {
+                    link: '/components/button/fab',
+                    title: 'FAB',
+                  },
+
+                  {
+                    link: '/components/button/icon',
+                    title: 'Icon',
+                  },
+                  {
+                    link: '/components/button/regular',
+                    title: 'Regular',
+                  },
+                  {
+                    link: '/components/button/segmented',
+                    title: 'Segmented',
+                  },
+                ],
+              },
+              {
+                link: '/components/checkbox',
+                title: 'Checkbox',
+                variants: [],
+              },
+              {
+                link: '/components/radio-button',
+                title: 'Radio Button',
+                variants: [],
+              },
             ],
           },
         ]}
@@ -154,14 +216,14 @@ const style = {
     fontFamily: source.style.fontFamily,
     fontWeight: '600',
     opacity: 0.7,
+    marginVertical: 10,
   },
   componentName: {
     fontSize: 18,
-
     fontFamily: source.style.fontFamily,
     opacity: 0.7,
     marginLeft: 20,
-    marginVertical: 10,
+    marginBottom: 5,
   },
   categoryName: {
     fontSize: 18,
