@@ -143,8 +143,8 @@ export const getContentStyle = (props: BadgeProps) => {
     lineHeight: 12,
     textAlign: 'center',
     marginVertical: 0,
-    paddingVertical: 1,
-    paddingHorizontal: 2,
+    paddingVertical: props.value === '' ? 0 : 2,
+    paddingHorizontal: props.value === '' ? 0 : 6,
     color: propSx?.color ? (propSx?.color as string) : colors.$background,
     zIndex: propSx?.zIndex ? (propSx?.zIndex as number) : 101,
   };

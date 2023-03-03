@@ -7,4 +7,6 @@ export const defaultProps: BadgeProps = {
   value: 100,
   position: 'topRight',
   maxValue: 100,
+  overlap: 'rectangular',
+  showZero: false,
 };
