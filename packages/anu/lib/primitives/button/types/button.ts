@@ -62,9 +62,9 @@ export interface ButtonProps extends RNButtonProps {
 /**
  * Props for the regular Button component
  */
-// export interface RegularButtonProps extends ButtonProps {
-//   size: 'medium';
-// }
+export interface RegularButtonProps extends ButtonProps {
+  size: 'medium';
+}
 
 /**
  * The type of icon component for the icon button

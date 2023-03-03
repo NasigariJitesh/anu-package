@@ -20,6 +20,7 @@ export interface Example {
   component: ReactChildren;
   name: string;
   description?: string;
+  id?: string;
 }
 
 interface ComponentExampleProps {
@@ -30,7 +31,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
 
   const renderExample = (example: Example, index: number) => {
     return (
-      <Container key={index} disableGutters style={styles.examplesContainer}>
+      <Container nativeID={example.id} key={index} disableGutters style={styles.examplesContainer}>
         <Typography.Headline style={styles.name}>{example.name}</Typography.Headline>
         {example.description ? (
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
@@ -46,7 +47,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
           </Container>
         </ScrollView>
         <Container style={styles.codeArea}>
-          <SyntaxHighlighter showLineNumbers language='typescript' style={arduinoLight} customStyle={styles.code}>
+          <SyntaxHighlighter showLineNumbers style={arduinoLight} customStyle={styles.code}>
             {example.code}
           </SyntaxHighlighter>
         </Container>
@@ -56,7 +57,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
   };
 
   return (
-    <Container disableGutters style={styles.container}>
+    <Container nativeID='example' disableGutters style={styles.container}>
       <Typography.Headline style={styles.heading}>{translations('en', 'examples')}</Typography.Headline>
       {examples.map((example, index) => renderExample(example, index))}
     </Container>
@@ -73,6 +74,7 @@ const getStyles = () => {
     },
     examplesContainer: {
       width: '100%',
+      marginBottom: 20,
     },
     examplesComponentContainer: {
       width: '500px',
@@ -107,12 +109,7 @@ const getStyles = () => {
       fontWeight: '400',
       overflow: 'breakWord',
       width: '100%',
-      maxWidth: '90%',
-
-      // color: colors.$onSurface,
-      // fontFamily: source.style.fontFamily,
-      // lineHeight: 16,
-      // marginBottom: 8,
+      maxWidth: 450,
     },
     divider: {
       color: colors.$onSurface,
@@ -120,7 +117,7 @@ const getStyles = () => {
     codeArea: {
       backgroundColor: colors.$primaryContainer,
       width: '100%',
-      maxWidth: 500,
+      maxWidth: 700,
       marginVertical: 15,
       padding: 5,
       borderRadius: 10,

@@ -7,6 +7,7 @@ import ComponentProperties, { Property } from './components-properties';
 export interface ContentValues {
   mainHeading?: string;
   heading: string;
+  mainDescription?: string;
   subTitle?: string;
   properties: Property[];
   examples: Example[];
@@ -17,12 +18,17 @@ interface ContentProps {
 }
 
 const Content = ({ values }: ContentProps) => {
-  const { mainHeading, heading, subTitle, properties, examples } = values;
+  const { mainHeading, heading, subTitle, properties, examples, mainDescription } = values;
   const styles = getStyles();
 
   return (
     <Container disableGutters style={styles.container}>
-      <ComponentDetails mainHeading={mainHeading} heading={heading} subTitle={subTitle} />
+      <ComponentDetails
+        mainHeading={mainHeading}
+        heading={heading}
+        subTitle={subTitle}
+        mainDescription={mainDescription}
+      />
       <ComponentExamples examples={examples} />
       <ComponentProperties properties={properties} />
     </Container>
