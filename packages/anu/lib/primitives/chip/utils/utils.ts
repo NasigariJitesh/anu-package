@@ -126,13 +126,13 @@ export const getDisabledChipStyles = (props: ChipProps): GetChipStylesReturnType
   const commonTheme = chipTheme.common;
 
   if (props.disabled) {
-    if ((props.type === 'suggestion' || props.type === 'filter') && (props.active || props.elevated))
+    if ((props.type === 'suggestion' || props.type === 'filter') && (props.selected || props.elevated))
       return {
         ...chipTheme.filter['@disable'],
         ...props.style?.['@disable'],
       };
     // According to the material design v3, the styles for filter, input and assist are the same
-    else if (props.type === 'input' && props.active)
+    else if (props.type === 'input' && props.selected)
       return {
         ...chipTheme.filter['@disable'],
         ...props.style?.['@disable'],
@@ -175,7 +175,7 @@ export const getElevatedChipStyles = (props: ChipProps): GetChipStylesReturnType
 };
 
 /**
- * Get the styles when chip is active
+ * Get the styles when chip is selected
  *
  * @param props - props of the chip component
  */
@@ -185,7 +185,7 @@ export const getActiveChipStyles = (props: ChipProps): GetChipStylesReturnType =
   const theme = chipTheme.filter;
 
   // Active is only used for the types other than assist, hence the check.
-  if (props.type !== 'assist' && props.active) return theme;
+  if (props.type !== 'assist' && props.selected) return theme;
 
   return {};
 };
@@ -260,7 +260,7 @@ const getStyles = (props: ChipProps): GetChipStylesReturnType => {
       {
         const filterTheme = chipTheme.filter;
 
-        if (props.active)
+        if (props.selected)
           styles = {
             ...styles,
             ...filterTheme,

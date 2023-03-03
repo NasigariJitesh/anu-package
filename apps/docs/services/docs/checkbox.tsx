@@ -83,7 +83,13 @@ export const checkBoxDocumentation: ContentValues = {
       <Checkbox id='disabled' disabled />
     </Container>`,
       component: (
-        <Container flexDirection='row' align='center' justify='space-around'>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <Checkbox id='basic' />
           <Checkbox id='disabled' disabled />
         </Container>
@@ -95,7 +101,13 @@ export const checkBoxDocumentation: ContentValues = {
       <Checkbox id='indeterminate' indeterminate />
     </Container>`,
       component: (
-        <Container>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <Checkbox id='indeterminate' indeterminate />
         </Container>
       ),
@@ -110,7 +122,13 @@ export const checkBoxDocumentation: ContentValues = {
       <Checkbox id='labelBottom' label='Bottom' labelPlacement='bottom' />
     </Container>`,
       component: (
-        <Container flexDirection='row' justify='space-around' align='center'>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <Checkbox id='label' label='Label' />
           <Checkbox id='labelLeft' label='Left' labelPlacement='left' />
           <Checkbox id='labelRight' label='Right' labelPlacement='right' />
