@@ -47,7 +47,7 @@ const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
   };
 
   return (
-    <Container disableGutters style={styles.container}>
+    <Container nativeID='props' disableGutters style={styles.container}>
       <Typography.Headline style={styles.heading}>{translations('en', 'props')}</Typography.Headline>
       <Divider variant='full-width' light style={styles.divider} />
       {properties.map((prop, index) => renderProperty(prop, index, index === properties.length - 1))}

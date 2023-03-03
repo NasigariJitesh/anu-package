@@ -66,7 +66,10 @@ const Components = (props: { links: ComponentLinks[] }) => {
             {item.variants.length > 0 ? (
               <Accordion.Container
                 title={
-                  <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.componentName}>
+                  <Accordion.Header
+                    iconProps={{ size: 18, style: { opacity: 0.7 } }}
+                    style={[style.componentName, pathname === item.link ? style.active : {}]}
+                  >
                     {item.title}
                   </Accordion.Header>
                 }
@@ -124,18 +127,12 @@ const Sidebar = () => {
         heading='Components Overview'
         links={[
           {
-            title: 'Inputs',
+            title: 'Display',
             components: [
               {
-                link: '/button',
-                title: 'Button',
-
-                variants: [
-                  {
-                    link: '/button#regular',
-                    title: 'Regular',
-                  },
-                ],
+                link: '/components/typography',
+                title: 'Typography',
+                variants: [],
               },
             ],
           },

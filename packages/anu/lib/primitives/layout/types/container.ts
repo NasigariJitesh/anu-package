@@ -1,6 +1,6 @@
 import { BreakPoints, Flex } from 'common/types';
-import { SxProp } from 'dripsy';
-import { StyleProp, ViewProps, ViewStyle } from 'react-native';
+import { SxProp, View } from 'dripsy';
+import { StyleProp, ViewStyle } from 'react-native';
 
 /**
  * The alignment type for alignment of all items on the cross axis
@@ -13,6 +13,8 @@ export type ContainerAlign = 'center' | 'flex-start' | 'flex-end';
  * Checkout {@link https://developer.mozilla.org/en-US/docs/Glossary/Main_Axis Justify Content} to learn more
  */
 export type ContainerJustify = 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around';
+
+type ViewProps = React.ComponentProps<typeof View>;
 
 export interface ContainerProps extends ViewProps {
   flexDirection: Flex;
