@@ -1,4 +1,4 @@
-import { Badge, Chip, Container, Icon } from 'anu/lib';
+import { Chip, Container } from 'anu/lib';
 import { ContentValues } from 'src/sections/content';
 
 export const chipDocumentation: ContentValues = {
@@ -18,9 +18,10 @@ export const chipDocumentation: ContentValues = {
       description: 'The content of the chip.',
     },
     {
-      name: 'active',
+      name: 'selected',
       type: 'boolean (optional)',
-      description: 'TBD',
+      description: 'Whether the chip is selected',
+      defaultValue: 'false',
     },
     {
       name: 'elevated',
@@ -70,11 +71,11 @@ export const chipDocumentation: ContentValues = {
         </Container>
       ),
       code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-      <Chip type='assist' value='Assist' />
-      <Chip type='assist' value='Assist' elevated />
-      <Chip leadingIcon={{ name: 'right-arrow' }} type='assist' value='Assist' />
-    </Container>`,
-      description: 'Assist chip only has a leading icon and (cant be active)',
+  <Chip type='assist' value='Assist' />
+  <Chip type='assist' value='Assist' elevated />
+  <Chip leadingIcon={{ name: 'right-arrow' }} type='assist' value='Assist' />
+</Container>`,
+      description: 'Assist chip only has a leading icon and can be used only as an informative chip',
     },
     {
       name: 'Filter Chip',
@@ -88,27 +89,27 @@ export const chipDocumentation: ContentValues = {
         >
           <Chip type='filter' value='Filter' />
           <Chip type='filter' value='Filter' disabled />
-          <Chip type='filter' value='Filter' active />
-          <Chip type='filter' value='Filter' active disabled />
+          <Chip type='filter' value='Filter' selected />
+          <Chip type='filter' value='Filter' selected disabled />
           <Chip type='filter' value='Filter' elevated />
           <Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' />
         </Container>
       ),
       code: `<Container
-      disableGutters
-      flexDirection='row'
-      align='center'
-      justify='space-around'
-      sx={{ width: '100%', maxWidth: 500 }}
-    >
-      <Chip type='filter' value='Filter' />
-      <Chip type='filter' value='Filter' disabled />
-      <Chip type='filter' value='Filter' active />
-      <Chip type='filter' value='Filter' active disabled />
-      <Chip type='filter' value='Filter' elevated />
-      <Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' />
-    </Container>`,
-      description: 'Filter chip has a leading icon and (can be active)',
+  disableGutters
+  flexDirection='row'
+  align='center'
+  justify='space-around'
+  sx={{ width: '100%', maxWidth: 500 }}
+>
+  <Chip type='filter' value='Filter' />
+  <Chip type='filter' value='Filter' disabled />
+  <Chip type='filter' value='Filter' selected />
+  <Chip type='filter' value='Filter' selected disabled />
+  <Chip type='filter' value='Filter' elevated />
+  <Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' />
+</Container>`,
+      description: 'Filter chip has a leading icon and can be used as a selectable chip',
     },
     {
       name: 'Filter Chip',
@@ -122,27 +123,27 @@ export const chipDocumentation: ContentValues = {
         >
           <Chip type='input' value='Input' />
           <Chip type='input' value='Input' disabled />
-          <Chip type='input' value='Input' active />
-          <Chip type='input' value='Input' active disabled />
+          <Chip type='input' value='Input' selected />
+          <Chip type='input' value='Input' selected disabled />
           <Chip leadingIcon={{ name: 'add' }} type='input' value='Input' />
           <Chip trailingIcon={{ name: 'close' }} type='input' value='Input' />
         </Container>
       ),
       code: `<Container
-      disableGutters
-      flexDirection='row'
-      align='center'
-      justify='space-around'
-      sx={{ width: '100%', maxWidth: 500 }}
-    >
-      <<Chip type='input' value='Input' />
-      <Chip type='input' value='Input' disabled />
-      <Chip type='input' value='Input' active />
-      <Chip type='input' value='Input' active disabled />
-      <Chip leadingIcon={{ name: 'add' }} type='input' value='Input' />
-      <Chip trailingIcon={{ name: 'close' }} type='input' value='Input' />
-    </Container>`,
-      description: 'Filter chip has both leading and tailing icon and (can be active)',
+  disableGutters
+  flexDirection='row'
+  align='center'
+  justify='space-around'
+  sx={{ width: '100%', maxWidth: 500 }}
+>
+  <<Chip type='input' value='Input' />
+  <Chip type='input' value='Input' disabled />
+  <Chip type='input' value='Input' selected />
+  <Chip type='input' value='Input' selected disabled />
+  <Chip leadingIcon={{ name: 'add' }} type='input' value='Input' />
+  <Chip trailingIcon={{ name: 'close' }} type='input' value='Input' />
+</Container>`,
+      description: 'Filter chip has both leading and trailing icon and can be used as a selectable chip',
     },
     {
       name: 'Suggestion Chip',
@@ -157,18 +158,18 @@ export const chipDocumentation: ContentValues = {
           <Chip type='suggestion' value='Suggest' />
           <Chip type='suggestion' value='Suggest' disabled />
           <Chip type='suggestion' value='Suggest' elevated />
-          <Chip type='suggestion' value='Suggest' active />
-          <Chip type='suggestion' value='Suggest' active disabled />
+          <Chip type='suggestion' value='Suggest' selected />
+          <Chip type='suggestion' value='Suggest' selected disabled />
         </Container>
       ),
       code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-        <Chip type='suggestion' value='Suggest' />
-        <Chip type='suggestion' value='Suggest' disabled />
-        <Chip type='suggestion' value='Suggest' elevated />
-        <Chip type='suggestion' value='Suggest' active />
-        <Chip type='suggestion' value='Suggest' active disabled />
-    </Container>`,
-      description: 'Suggestion chip has no icon and (can be active)',
+    <Chip type='suggestion' value='Suggest' />
+    <Chip type='suggestion' value='Suggest' disabled />
+    <Chip type='suggestion' value='Suggest' elevated />
+    <Chip type='suggestion' value='Suggest' selected />
+    <Chip type='suggestion' value='Suggest' selected disabled />
+</Container>`,
+      description: 'Suggestion chip has no icon and can be used as a selectable chip',
     },
   ],
 };

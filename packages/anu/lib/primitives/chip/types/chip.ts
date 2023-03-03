@@ -48,7 +48,10 @@ export interface CommonChipProps extends Omit<React.ComponentProps<typeof Pressa
 type Icon = { name: IconSource; containerProps?: ViewProps; iconProps?: Omit<IconProps, 'name'> };
 
 export interface SuggestionChip extends CommonChipProps {
-  active?: boolean;
+  /**
+   * Whether the chip is selected
+   */
+  selected?: boolean;
   /**
    * The type of the chip
    */
@@ -72,7 +75,10 @@ export interface InputChip extends CommonChipProps {
    * Icon to be displayed after (to right of) the chip content
    */
   trailingIcon?: Icon;
-  active?: boolean;
+  /**
+   * Whether the chip is selected
+   */
+  selected?: boolean;
 }
 
 export interface FilterChip extends CommonChipProps {
@@ -84,7 +90,10 @@ export interface FilterChip extends CommonChipProps {
    * Icon to be displayed before (to left of) the chip content
    */
   leadingIcon?: Icon;
-  active?: boolean;
+  /**
+   * Whether the chip is selected
+   */
+  selected?: boolean;
   /**
    * Whether the chip has an elevated style
    */
