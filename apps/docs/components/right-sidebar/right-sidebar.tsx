@@ -1,5 +1,5 @@
 import { getTheme } from 'anu/config';
-import { Accordion, Container, FlatList, Typography } from 'anu/lib';
+import { Container, FlatList, Typography } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';

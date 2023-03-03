@@ -1,7 +1,9 @@
+/* eslint-disable react-native/no-inline-styles */
 import { ReactChildren } from 'anu/common/types';
 import { getTheme } from 'anu/config';
 import { Container, Typography } from 'anu/lib';
 import { Source_Sans_Pro } from 'next/font/google';
+import { ScrollView } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
@@ -34,9 +36,16 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
         {example.description ? (
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
         ) : null}
-        <Container sx={{ marginVertical: 20 }} align='flex-start' justify='center' style={styles.examplesContainer}>
-          {example.component}
-        </Container>
+        <ScrollView style={{ width: '100%' }} showsHorizontalScrollIndicator={false} horizontal>
+          <Container
+            sx={{ marginVertical: 20 }}
+            align='flex-start'
+            justify='center'
+            style={styles.examplesComponentContainer}
+          >
+            {example.component}
+          </Container>
+        </ScrollView>
         <Container style={styles.codeArea}>
           <SyntaxHighlighter showLineNumbers style={arduinoLight} customStyle={styles.code}>
             {example.code}
@@ -67,6 +76,9 @@ const getStyles = () => {
       width: '100%',
       marginBottom: 20,
     },
+    examplesComponentContainer: {
+      width: '500px',
+    },
     heading: {
       color: colors.$onSurface,
       fontFamily: source.style.fontFamily,
@@ -95,11 +107,9 @@ const getStyles = () => {
       backgroundColor: 'transparent',
       fontSize: 16,
       fontWeight: '400',
+      overflow: 'breakWord',
       width: '100%',
-      // color: colors.$onSurface,
-      // fontFamily: source.style.fontFamily,
-      // lineHeight: 16,
-      // marginBottom: 8,
+      maxWidth: 450,
     },
     divider: {
       color: colors.$onSurface,

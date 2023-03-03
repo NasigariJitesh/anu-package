@@ -37,7 +37,13 @@ export const regularButtonDocumentation: ContentValues = {
     {
       name: 'Basic',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <Button.Elevated title='Elevated' />
           <Button.Filled title='Filled' />
           <Button.Outlined title='Outlined' />
@@ -56,7 +62,13 @@ export const regularButtonDocumentation: ContentValues = {
     {
       name: 'Disabled',
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 800 }}>
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 500 }}
+        >
           <Button.Elevated title='Elevated' disabled />
           <Button.Filled title='Filled' disabled />
           <Button.Outlined title='Outlined' disabled />
