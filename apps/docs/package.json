@@ -4,6 +4,7 @@
   "name": "docs",
   "main": "index.js",
   "dependencies": {
+    "@gorhom/portal": "^1.0.14",
     "anu": "*",
     "expo": "^47.0.0",
     "next": "~13.2.1",
@@ -21,6 +22,7 @@
     "@babel/core": "^7.19.3",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@expo/next-adapter": "~5.0.0",
+    "@types/react": "^18.0.28",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",
     "eslint-config-next": "13.0.0",
@@ -33,6 +35,6 @@
     "web": "expo start --web",
     "dev": "next dev",
     "lint": "eslint .",
-    "build:web": "next build"
+    "build": "next build"
   }
 }
