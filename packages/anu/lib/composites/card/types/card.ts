@@ -6,7 +6,7 @@ import { ContainerProps } from 'lib/primitives/layout/types/container';
  */
 export type CardVariant = 'outlined' | 'filled' | 'elevated';
 
-export interface CardProps extends Omit<ContainerProps, 'fixed' | 'disableGutters'> {
+export interface CardProps extends Omit<ContainerProps, 'fixed' | 'disableGutters' | 'variant'> {
   onHover: (event: MouseEvent) => void;
   variant: CardVariant;
 }
