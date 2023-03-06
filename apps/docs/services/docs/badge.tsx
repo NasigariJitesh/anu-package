@@ -63,25 +63,25 @@ export const badgeDocumentation: ContentValues = {
           sx={{ width: '100%', maxWidth: 700 }}
         >
           <Badge value='new'>
-            <Icon name='notification' />
+            <Icon name='airplay' />
           </Badge>
-          <Badge value='new' overlap='circular'>
-            <Icon name='notification' />
+          <Badge value='New' overlap='circular'>
+            <Icon name='airplay' />
           </Badge>
           <Badge value=''>
-            <Icon name='notification' />
+            <Icon name='airplay' />
           </Badge>
         </Container>
       ),
       code: `<Container flexDirection='row'  align='center'  justify='space-around'>
       <Badge value='new'>
-        <Icon name='notification' />
+        <Icon name='airplay' />
       </Badge>
       <Badge value='new' overlap='circular'>
-        <Icon name='notification' />
+        <Icon name='airplay' />
       </Badge>
       <Badge value=''>
-        <Icon name='notification' />
+        <Icon name='airplay' />
       </Badge>
     </Container>`,
     },
@@ -96,25 +96,25 @@ export const badgeDocumentation: ContentValues = {
           sx={{ width: '100%', maxWidth: 700 }}
         >
           <Badge value={90}>
-            <Icon name='notification' />
+            <Icon name='airplay' />
           </Badge>
           <Badge value={90} maxValue={50}>
-            <Icon name='notification' />
+            <Icon name='airplay' />
           </Badge>
           <Badge value={0} showZero>
-            <Icon name='notification' />
+            <Icon name='airplay' />
           </Badge>
         </Container>
       ),
       code: `<Container flexDirection='row' align='center' justify='space-around' >
       <Badge value={90}>
-        <Icon name='notification' />
+        <Icon name='airplay' />
       </Badge>
       <Badge value={90} maxValue={50}>
-        <Icon name='notification' />
+        <Icon name='airplay' />
       </Badge>
       <Badge value={0} showZero>
-        <Icon name='notification' />
+        <Icon name='airplay' />
       </Badge>
     </Container>`,
     },
