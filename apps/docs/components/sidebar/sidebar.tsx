@@ -196,7 +196,11 @@ const Sidebar = () => {
                 title: 'Radio Button',
                 variants: [],
               },
-              { link: '/components/text-field', title: 'Text Field', variants: [] },
+              {
+                link: '/components/text-field',
+                title: 'Text Field',
+                variants: [],
+              },
             ],
           },
         ]}
