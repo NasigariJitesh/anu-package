@@ -1,11 +1,11 @@
+/* eslint-disable unicorn/no-nested-ternary */
+import { getColorInRGBA } from 'common/utils';
 import { getTheme } from 'config/dripsy/theme';
 
 import { ChipContainerStyle, ChipProps } from '../types';
 
 /**
  * This is a central store for all the default chip styles
- *
- * @returns chip theme
  */
 const getChipTheme = () => {
   const themeColors = getTheme().colors;
@@ -21,71 +21,482 @@ const getChipTheme = () => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      borderWidth: 1,
-      borderColor: themeColors.$shadow,
-      color: themeColors.$text,
-      paddingHorizontal: 16,
+    } as const,
+    assist: {
+      backgroundColor: 'transparent',
+      color: themeColors.$onSurface,
 
       '@disable': {
-        color: themeColors.$shadow + 90,
-        borderColor: themeColors.$shadow + 90,
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+      },
+    } as const,
+    assistElevated: {
+      backgroundColor: themeColors.$surface,
+      shadowColor: themeColors.$shadow,
+      shadowOffset: {
+        width: 0,
+        height: 3,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 1,
+      color: themeColors.$onSurface,
+      '@disable': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        elevation: 0,
+      },
+    } as const,
+    filter: {
+      color: themeColors.$onSurfaceVariant,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+      },
+    } as const,
+    filterSelected: {
+      backgroundColor: themeColors.$secondaryContainer,
+      color: themeColors.$onSecondaryContainer,
+      '@disable': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+      },
+    } as const,
+    filterElevated: {
+      backgroundColor: themeColors.$surface,
+      color: themeColors.$onSurfaceVariant,
+
+      shadowColor: themeColors.$shadow,
+      shadowOffset: {
+        width: 0,
+        height: 3,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 1,
+      '@disable': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        elevation: 0,
+      },
+    } as const,
+    filterElevatedSelected: {
+      backgroundColor: themeColors.$secondaryContainer,
+      color: themeColors.$onSecondaryContainer,
+      shadowColor: themeColors.$shadow,
+      shadowOffset: {
+        width: 0,
+        height: 3,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 1,
+      '@disable': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        elevation: 0,
+      },
+    } as const,
+    input: {
+      backgroundColor: themeColors.$surface,
+      color: themeColors.$onSurfaceVariant,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+      },
+    } as const,
+    inputSelected: {
+      backgroundColor: themeColors.$secondaryContainer,
+      color: themeColors.$onSecondaryContainer,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+    } as const,
+    suggestion: {
+      color: themeColors.$onSurfaceVariant,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+      },
+    } as const,
+    suggestionSelected: {
+      backgroundColor: themeColors.$secondaryContainer,
+      color: themeColors.$onSecondaryContainer,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+    } as const,
+    suggestionElevated: {
+      backgroundColor: themeColors.$surface,
+      shadowColor: themeColors.$shadow,
+      color: themeColors.$onSurfaceVariant,
+      shadowOffset: {
+        width: 0,
+        height: 3,
       },
 
-      '@elevated': {
-        borderWidth: 0,
-        shadowColor: themeColors.$primary + 90,
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 1,
+      '@disable': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        elevation: 0,
+      },
+    } as const,
+    suggestionElevatedSelected: {
+      backgroundColor: themeColors.$secondaryContainer,
+      shadowColor: themeColors.$shadow,
+      color: themeColors.$onSecondaryContainer,
+      shadowOffset: {
+        width: 0,
+        height: 3,
+      },
+
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 1,
+      '@disable': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        elevation: 0,
+      },
+    } as const,
+  };
+
+  const stateLayerTheme = {
+    common: {
+      minHeight: 32,
+      borderRadius: 8,
+      transitionTimingFunction: 'ease',
+      transitionProperty: 'all',
+      transitionDuration: '.2s',
+      backgroundColor: 'transparent',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingHorizontal: '8px',
+    } as const,
+    assistElevated: {
+      color: 'inherit',
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 8),
+      },
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+    } as const,
+    assist: {
+      borderWidth: 1,
+      borderColor: themeColors.$outline,
+      '@disable': {
+        borderColor: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 6,
+        },
+
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
+      },
+      '@focus': {
+        borderColor: themeColors.$onSurface,
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+    } as const,
+    filter: {
+      borderWidth: 1,
+      borderColor: themeColors.$outline,
+      '@disable': {
+        borderColor: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 8),
+      },
+      '@focus': {
+        borderColor: themeColors.$onSurfaceVariant,
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 12),
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 12),
+      },
+    } as const,
+    filterSelected: {
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
+        shadowColor: themeColors.$shadow,
         shadowOffset: {
           width: 0,
           height: 3,
         },
+
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 1,
+        elevation: 2,
       },
-
-      '@hover': {
-        backgroundColor: themeColors.$shadow + 30,
-      },
-
       '@focus': {
-        backgroundColor: themeColors.$shadow + 40,
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
       },
-
       '@press': {
-        backgroundColor: themeColors.$shadow + 40,
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
       },
-    },
+    } as const,
+    filterElevated: {
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 6,
+        },
 
-    assist: {},
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
+      },
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 12),
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 12),
+      },
+    } as const,
+    filterElevatedSelected: {
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 6,
+        },
+
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
+      },
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
+      },
+    } as const,
+    input: {
+      borderWidth: 1,
+      borderColor: themeColors.$outline,
+      '@disable': {
+        borderColor: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 8),
+      },
+      '@focus': {
+        borderColor: themeColors.$onSurfaceVariant,
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 12),
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 12),
+      },
+    } as const,
+    inputSelected: {
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
+      },
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
+      },
+    } as const,
+    suggestion: {
+      borderWidth: 1,
+      borderColor: themeColors.$outline,
+      '@disable': {
+        borderColor: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 8),
+      },
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 12),
+        borderColor: themeColors.$onSurfaceVariant,
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 12),
+      },
+    } as const,
+    suggestionSelected: {
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
+      },
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
+      },
+    } as const,
+    suggestionElevated: {
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 6,
+        },
+
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
+      },
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 12),
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 12),
+      },
+    } as const,
+    suggestionElevatedSelected: {
+      '@hover': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 6,
+        },
+
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
+      },
+      '@focus': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
+      },
+      '@press': {
+        backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 12),
+      },
+    } as const,
+  };
+
+  const iconStyleTheme = {
+    common: {
+      size: 18,
+    } as const,
+    assist: {
+      color: themeColors.$primary,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+      },
+    } as const,
+    assistElevated: {
+      color: themeColors.$primary,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+      },
+    } as const,
     filter: {
-      backgroundColor: themeColors.$primary + 50,
-      borderWidth: 0,
-      color: themeColors.$text,
+      color: themeColors.$onSurfaceVariant,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+      },
+    } as const,
+    filterSelected: {
+      color: themeColors.$onSecondaryContainer,
 
       '@disable': {
-        color: themeColors.$shadow,
-        borderColor: themeColors.$shadow + 90,
-        backgroundColor: themeColors.$shadow + 50,
-        borderWidth: 0,
+        color: getColorInRGBA(themeColors.$onSurface, 38),
       },
+    } as const,
+    filterElevated: {
+      color: themeColors.$onSurfaceVariant,
 
-      '@hover': {
-        backgroundColor: themeColors.$primary + 70,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
       },
+    } as const,
+    filterElevatedSelected: {
+      color: themeColors.$onSecondaryContainer,
 
-      '@focus': {
-        backgroundColor: themeColors.$primary + 80,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
       },
-
-      '@press': {
-        backgroundColor: themeColors.$primary + 90,
+    } as const,
+    input: {
+      color: themeColors.$onSurfaceVariant,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
       },
+    } as const,
+    inputSelected: {
+      color: themeColors.$onSecondaryContainer,
+      '@disable': {
+        color: getColorInRGBA(themeColors.$onSurface, 38),
+      },
+    } as const,
+    suggestion: {
+      '@disable': {},
     },
-    input: {},
-    suggestion: {},
-  } as const;
+    suggestionSelected: {
+      '@disable': {},
+    },
+    suggestionElevated: {
+      '@disable': {},
+    },
+    suggestionElevatedSelected: {
+      '@disable': {},
+    },
+  };
 
-  return chipTheme;
+  return { chipTheme, stateLayerTheme, iconStyleTheme };
 };
 
 /**
@@ -94,198 +505,97 @@ const getChipTheme = () => {
 export type GetChipStylesReturnType = ChipContainerStyle;
 
 /**
- * Get the chip styles
- *
- * @param {ChipProps} props - props of the chip component
- */
-export const getChipStyles = (props: ChipProps): GetChipStylesReturnType => {
-  const styles = getStyles(props);
-
-  const resetStyles = {
-    margin: 0,
-    padding: 0,
-  };
-
-  const customStyle = props.style;
-
-  return {
-    ...styles,
-    ...resetStyles,
-    ...customStyle,
-  };
-};
-
-/**
- * Get the styles when chip is disabled
- *
- * @param props - props of the chip component
- */
-export const getDisabledChipStyles = (props: ChipProps): GetChipStylesReturnType => {
-  const chipTheme = getChipTheme();
-
-  const commonTheme = chipTheme.common;
-
-  if (props.disabled) {
-    if ((props.type === 'suggestion' || props.type === 'filter') && (props.selected || props.elevated))
-      return {
-        ...chipTheme.filter['@disable'],
-        ...props.style?.['@disable'],
-      };
-    // According to the material design v3, the styles for filter, input and assist are the same
-    else if (props.type === 'input' && props.selected)
-      return {
-        ...chipTheme.filter['@disable'],
-        ...props.style?.['@disable'],
-      };
-    else if (props.type === 'assist' && props.elevated)
-      return {
-        ...chipTheme.filter['@disable'],
-        ...props.style?.['@disable'],
-      };
-    else
-      return {
-        ...commonTheme['@disable'],
-        ...props.style?.['@disable'],
-      };
-  }
-
-  return {};
-};
-
-/**
- * Get the styles when chip is elevated
- *
- * @param props - props of the chip component
- */
-export const getElevatedChipStyles = (props: ChipProps): GetChipStylesReturnType => {
-  const chipTheme = getChipTheme();
-
-  const theme = chipTheme.common;
-
-  let styles: GetChipStylesReturnType = {};
-
-  if (props.type !== 'input' && props.elevated && !props.disabled) {
-    styles = {
-      ...theme['@elevated'],
-      ...props.style?.['@elevated'],
-    };
-  }
-
-  return styles;
-};
-
-/**
- * Get the styles when chip is selected
- *
- * @param props - props of the chip component
- */
-export const getActiveChipStyles = (props: ChipProps): GetChipStylesReturnType => {
-  const chipTheme = getChipTheme();
-
-  const theme = chipTheme.filter;
-
-  // Active is only used for the types other than assist, hence the check.
-  if (props.type !== 'assist' && props.selected) return theme;
-
-  return {};
-};
-
-/**
- * Get the icon styles inside the chip component
- *
- * @param props - chip component props
- */
-export const getIconStyles = (props: ChipProps) => {
-  const chipTheme = getChipTheme();
-
-  const commonTheme = chipTheme.common;
-
-  if (props.disabled)
-    return {
-      color: commonTheme['@disable'].color + 50,
-      paddingHorizontal: 8,
-    };
-
-  return {
-    color: commonTheme.color,
-    paddingHorizontal: 8,
-  };
-};
-
-/**
- * Get the styles when there is an icon in the chip (either leading or trailing)
- *
- * The padding on the components change when the icons are used. Hence, this modify's the styling for the container
- *
- * @param props - props of the chip component
- */
-export const getIconSpecificChipStyles = (props: ChipProps) => {
-  if (props.type === 'suggestion') return {};
-
-  if (props.type === 'input' && props.trailingIcon && props.leadingIcon)
-    return {
-      paddingHorizontal: 0,
-    };
-
-  if (props.leadingIcon) return { paddingHorizontal: 0, paddingRight: 16 };
-
-  if (props.type === 'input' && props.trailingIcon) return { paddingHorizontal: 0, paddingLeft: 16 };
-
-  return {};
-};
-
-/**
  * Get the styles for the chip
  *
  * @param props - props of the chip component
  */
-const getStyles = (props: ChipProps): GetChipStylesReturnType => {
-  const chipTheme = getChipTheme();
+export const getStyles = (props: ChipProps) => {
+  //@ts-expect-error REASON not available for few types of chips
+  const { type, elevated, selected, style, disabled } = props;
+  const { chipTheme, stateLayerTheme, iconStyleTheme } = getChipTheme();
 
-  const theme = chipTheme[props.type];
-  const commonTheme = chipTheme.common;
+  let key: keyof typeof chipTheme;
 
-  let styles: GetChipStylesReturnType;
-
-  // Add all the styles including hover, focus and other states
-  styles = {
-    ...commonTheme,
-    '@hover': { ...commonTheme['@hover'], ...props.style?.['@hover'] },
-    '@focus': { ...commonTheme['@focus'], ...props.style?.['@focus'] },
-    '@press': { ...commonTheme['@press'], ...props.style?.['@press'] },
-  };
-
-  switch (props.type) {
-    case 'filter': {
-      {
-        const filterTheme = chipTheme.filter;
-
-        if (props.selected)
-          styles = {
-            ...styles,
-            ...filterTheme,
-          };
-      }
+  switch (type) {
+    case 'assist': {
+      key = elevated ? 'assistElevated' : 'assist';
       break;
     }
+    case 'filter': {
+      if (elevated) key = selected ? 'filterElevatedSelected' : 'filterElevated';
+      else key = selected ? 'filterSelected' : 'filter';
 
+      break;
+    }
+    case 'input': {
+      key = selected ? 'input' : 'inputSelected';
+      break;
+    }
+    case 'suggestion': {
+      if (elevated) key = selected ? 'suggestionElevated' : 'suggestionElevatedSelected';
+      else key = selected ? 'suggestionSelected' : 'suggestion';
+      break;
+    }
     default: {
-      {
-        {
-          styles = {
-            ...styles,
-            ...theme,
-          };
-        }
-        break;
-      }
+      key = 'assist';
     }
   }
 
-  const disabledStyles = getDisabledChipStyles(props);
-  const elevatedStyles = getElevatedChipStyles(props);
-  const activeStyles = getActiveChipStyles(props);
-  const iconStyles = getIconSpecificChipStyles(props);
+  const commonTheme = chipTheme.common;
+  const commonIconTheme = iconStyleTheme.common;
 
-  return { ...styles, ...activeStyles, ...elevatedStyles, ...disabledStyles, ...iconStyles };
+  const commonLayerTheme = stateLayerTheme.common;
+
+  const {
+    '@disable': propsDisableStyles,
+    '@hover': propsHoverStyles,
+    '@focus': propsFocusStyles,
+    '@press': propsPressStyles,
+    ...propsOtherStyles
+  } = style ?? {};
+
+  const { '@disable': disableStyles, ...otherStyles } = chipTheme[key];
+  const { '@disable': iconDisableStyles, ...otherIconStyles } = iconStyleTheme[key];
+
+  let styles;
+  let iconStyle;
+  let layerStyles;
+  // Add all the styles including hover, focus and other states
+  styles = {
+    ...commonTheme,
+    ...otherStyles,
+    ...propsOtherStyles,
+  };
+
+  iconStyle = {
+    ...commonIconTheme,
+    ...otherIconStyles,
+  };
+
+  //@ts-expect-error REASON not available for few types of chips
+  const { '@disable': layerDisableStyles, ...otherLayerStyles } = stateLayerTheme[key];
+
+  layerStyles = {
+    ...commonLayerTheme,
+    ...otherLayerStyles,
+    '@hover': { ...otherLayerStyles['@hover'], ...style?.['@hover'] },
+    '@focus': { ...otherLayerStyles['@focus'], ...style?.['@focus'] },
+    '@press': { ...otherLayerStyles['@press'], ...style?.['@press'] },
+  };
+
+  // const disabledStyles = getDisabledChipStyles(props);
+  // const elevatedStyles = getElevatedChipStyles(props);
+  // const activeStyles = getActiveChipStyles(props);
+  // const iconStyles = getIconSpecificChipStyles(props);
+
+  if (disabled) {
+    styles = { ...styles, ...disableStyles };
+    iconStyle = { ...iconStyle, ...iconDisableStyles };
+    layerStyles = { ...layerStyles, ...layerDisableStyles };
+  }
+  return {
+    styles,
+    layerStyles,
+    iconStyle,
+  };
 };

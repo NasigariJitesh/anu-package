@@ -57,7 +57,7 @@ const getCheckboxTheme = () => {
     },
   };
 
-  const errorLayertheme = {
+  const errorLayerTheme = {
     backgroundColor: 'transparent',
 
     '@hover': {
@@ -115,8 +115,8 @@ const getCheckboxTheme = () => {
       },
     },
 
-    errorOn: { ...errorLayertheme },
-    errorOff: { ...errorLayertheme },
+    errorOn: { ...errorLayerTheme },
+    errorOff: { ...errorLayerTheme },
   };
 
   const selectedIconTheme = {

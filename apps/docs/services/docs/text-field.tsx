@@ -169,7 +169,7 @@ export const textFieldDocumentation: ContentValues = {
         <Container
           disableGutters
           flexDirection='row'
-          align='center'
+          align='flex-start'
           justify='space-around'
           sx={{ width: '100%', maxWidth: 700 }}
         >
@@ -189,7 +189,7 @@ export const textFieldDocumentation: ContentValues = {
   justify='space-around'
   sx={{ width: '100%', maxWidth: 700 }}
 >
-  <TextField variant='filled' placeholder='Filled' errorMessage='This is an error message' />
+  <TextField variant='filled' placeholder='Filled' error />
   <TextField variant='filled' placeholder='Filled' errorMessage={['This is an error message 1', 'This is an error message 2']} />
 </Container>`,
     },

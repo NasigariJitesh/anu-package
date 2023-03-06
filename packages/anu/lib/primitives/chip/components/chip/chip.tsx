@@ -1,10 +1,11 @@
 import { generateHoverStyles } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
+import { Container } from 'lib/index';
 import Typography from 'lib/primitives/typography';
 import { PressableStateCallbackType } from 'react-native';
 
 import { ChipProps } from '../../types';
-import { getChipStyles } from '../../utils';
+import { getStyles } from '../../utils';
 import { defaultProps } from './default';
 import { LeadingIcon, TrailingIcon } from './icon';
 
@@ -16,22 +17,26 @@ import { LeadingIcon, TrailingIcon } from './icon';
 const Chip = (props: Partial<ChipProps> & { value: string }) => {
   const restOfTheProps = { ...defaultProps, ...props };
 
-  const generateStyles = (state: PressableStateCallbackType) => {
-    const chipStyles = getChipStyles(restOfTheProps);
+  const { styles, layerStyles } = getStyles(restOfTheProps);
 
-    return generateHoverStyles(state, chipStyles, useSx);
+  const generateStyles = (state: PressableStateCallbackType) => {
+    return generateHoverStyles(state, layerStyles, useSx);
   };
 
-  const textStyle = { color: 'inherit' };
+  const textStyle = { color: 'inherit', paddingHorizontal: '8px' };
 
   return (
-    <Pressable {...restOfTheProps} style={generateStyles} disabled={props.disabled}>
-      <LeadingIcon {...restOfTheProps} />
-      <Typography.Label style={textStyle} size='large'>
-        {props.value}
-      </Typography.Label>
-      <TrailingIcon {...restOfTheProps} />
-    </Pressable>
+    //@ts-expect-error
+    <Container disableGutters style={styles}>
+      <Pressable {...restOfTheProps} style={generateStyles} disabled={props.disabled}>
+        <LeadingIcon {...restOfTheProps} />
+        <Typography.Label style={textStyle} size='large'>
+          {props.value}
+        </Typography.Label>
+
+        <TrailingIcon {...restOfTheProps} />
+      </Pressable>
+    </Container>
   );
 };
 

@@ -1,9 +1,8 @@
-import { getCombinedStylesForView } from 'common/utils';
 import Icon from 'lib/primitives/icon';
 import { View } from 'react-native';
 
 import { ChipProps } from '../../types';
-import { getIconStyles } from '../../utils';
+import { getStyles } from '../../utils';
 
 /**
  * Function to render the icon component within chip
@@ -11,15 +10,18 @@ import { getIconStyles } from '../../utils';
  * @param {ChipProps} props - all the props related to the component
  */
 export const LeadingIcon = (props: ChipProps) => {
-  const styles = getIconStyles(props);
+  const { iconStyle } = getStyles(props);
 
   if (props.type !== 'suggestion' && props.leadingIcon) {
     return (
-      <View
-        {...props.leadingIcon.containerProps}
-        style={getCombinedStylesForView(styles, props.leadingIcon.containerProps?.style)}
-      >
-        <Icon color={styles.color} name={props.leadingIcon.name as never} {...props.leadingIcon.iconProps} />
+      <View {...props.leadingIcon.containerProps} style={props.leadingIcon.containerProps?.style}>
+        <Icon
+          name={props.leadingIcon.name as never}
+          {...props.leadingIcon.iconProps}
+          size={iconStyle.size}
+          //@ts-expect-error Reason sometimes color is undefined according to ts but its value is set according to the type of chip
+          color={iconStyle.color}
+        />
       </View>
     );
   }
@@ -33,15 +35,18 @@ export const LeadingIcon = (props: ChipProps) => {
  * @param {ChipProps} props - all the props related to the component
  */
 export const TrailingIcon = (props: ChipProps) => {
-  const styles = getIconStyles(props);
+  const { iconStyle } = getStyles(props);
 
   if (props.type === 'input' && props.trailingIcon) {
     return (
-      <View
-        {...props.trailingIcon.containerProps}
-        style={getCombinedStylesForView(styles, props.trailingIcon.containerProps?.style)}
-      >
-        <Icon color={styles.color} name={props.trailingIcon.name as never} {...props.trailingIcon.iconProps} />
+      <View {...props.trailingIcon.containerProps} style={props.trailingIcon.containerProps?.style}>
+        <Icon
+          name={props.trailingIcon.name as never}
+          {...props.trailingIcon.iconProps}
+          size={iconStyle.size}
+          //@ts-expect-error Reason sometimes color is undefined according to ts but its value is set according to the type of chip
+          color={iconStyle.color}
+        />
       </View>
     );
   }
