@@ -82,6 +82,7 @@ const TextField = (props: Partial<TextFieldProps>) => {
 
       setErrors([...errorArray]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.error]);
 
   return (
