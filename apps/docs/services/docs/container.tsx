@@ -1,8 +1,9 @@
 import { Container } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const containerDocumentation: ContentValues = {
-  heading: 'Container',
+  mainHeading: 'Container',
   mainDescription: 'Container helps you arrange your components clearly on the screen',
   examples: [
     {
@@ -69,6 +70,31 @@ export const containerDocumentation: ContentValues = {
       name: 'sx',
       description: 'The system prop that allows defining system overrides as well as additional CSS styles.',
       type: 'Sx (optional)',
+    },
+  ],
+};
+
+export const containerIndex: HeadingProps = {
+  heading: 'Container',
+  links: [
+    {
+      components: [
+        {
+          title: 'Basic',
+          link: '#basic',
+        },
+        {
+          title: 'Fixed',
+          link: '#fixed',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

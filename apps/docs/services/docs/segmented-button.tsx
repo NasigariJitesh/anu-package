@@ -1,4 +1,5 @@
 import { Container, SegmentedButton, SegmentedButtonGroup } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const segmentedButtonDocumentation: ContentValues = {
@@ -57,6 +58,7 @@ export const segmentedButtonDocumentation: ContentValues = {
   examples: [
     {
       name: 'Basic',
+      id: 'basic',
       component: (
         <Container
           disableGutters
@@ -84,6 +86,7 @@ export const segmentedButtonDocumentation: ContentValues = {
     },
     {
       name: 'Multi Select',
+      id: 'multi-select',
       component: (
         <Container
           disableGutters
@@ -108,6 +111,31 @@ export const segmentedButtonDocumentation: ContentValues = {
         <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} disabled />
       </SegmentedButtonGroup>
     </Container>`,
+    },
+  ],
+};
+
+export const segmentedButtonIndex: HeadingProps = {
+  heading: 'Segmented Button',
+  links: [
+    {
+      components: [
+        {
+          title: 'Basic',
+          link: '#basic',
+        },
+        {
+          title: 'Multi Select',
+          link: '#multi-select',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };
