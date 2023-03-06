@@ -13,6 +13,7 @@ import {
 
 import { TextFieldProps } from '../../types';
 import {
+  getErrorIcon,
   getErrors,
   getErrorStyle,
   getLeadingContainerStyle,
@@ -47,7 +48,7 @@ const TextField = (props: Partial<TextFieldProps>) => {
   const errorStyle = getErrorStyle();
   const supportingTextStyle = getSupportingTextStyle();
 
-  const errors = getErrors(props.errorMessage);
+  const [errors, setErrors] = useState(getErrors(props.errorMessage));
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, containerStyle, useSx);
@@ -74,8 +75,18 @@ const TextField = (props: Partial<TextFieldProps>) => {
     });
   }, []);
 
+  useEffect(() => {
+    if (errors?.length <= 0) {
+      const errorArray = [...errors];
+      errorArray.push('Please provide a valid input');
+
+      setErrors([...errorArray]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.error]);
+
   return (
-    <>
+    <Container disableGutters>
       <Pressable
         ref={pressableReference}
         accessibilityRole='button'
@@ -90,40 +101,48 @@ const TextField = (props: Partial<TextFieldProps>) => {
               {props.leadingIcon}
             </Container>
           ) : null}
-          <TextFieldLabel
-            {...finalProps}
-            textInputRef={textInputReference}
-            height={height}
-            states={focus}
-            value={value}
-          />
-          <TextInput
-            ref={textInputReference}
-            onChangeText={onTextChangeHandler}
-            onFocus={onTextInputFocus}
-            onBlur={onTextInputBlur}
-            {...componentProps}
-            placeholder={undefined}
-            style={[style, props.style]}
-          />
-          {props.trailingIcon ? (
+          <Container disableGutters flexDirection='row'>
+            <TextFieldLabel
+              {...finalProps}
+              textInputRef={textInputReference}
+              height={height}
+              states={focus}
+              value={value}
+            />
+            <TextInput
+              ref={textInputReference}
+              onChangeText={onTextChangeHandler}
+              onFocus={onTextInputFocus}
+              onBlur={onTextInputBlur}
+              {...componentProps}
+              placeholder={undefined}
+              style={[style, props.style]}
+            />
+          </Container>
+          {props.error ? (
+            <Container disableGutters style={trailingIconContainerStyle}>
+              {getErrorIcon()}
+            </Container>
+          ) : null}
+          {props.trailingIcon && !props.error ? (
             <Container disableGutters style={trailingIconContainerStyle}>
               {props.trailingIcon}
             </Container>
           ) : null}
         </Container>
       </Pressable>
-      {props?.supportingText ? (
+      {props?.supportingText && !props.error ? (
         <Typography.Body style={getCombinedStylesForText(supportingTextStyle, props.supportingTextStyle)}>
           {props?.supportingText}
         </Typography.Body>
       ) : null}
-      {errors?.map((error, index) => (
-        <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
-          {error}
-        </Typography.Body>
-      ))}
-    </>
+      {props.error &&
+        errors?.map((error, index) => (
+          <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
+            {error}
+          </Typography.Body>
+        ))}
+    </Container>
   );
 };
 

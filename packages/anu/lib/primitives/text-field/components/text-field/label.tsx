@@ -36,7 +36,9 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
     marginHorizontal: 14,
     padding: 2,
     paddingRight: 4,
-    color: props.placeholderTextColor || (value ? colors.$primary : colors.$onSurfaceVariant),
+    color: props.error
+      ? colors.$error
+      : props.placeholderTextColor || (value ? colors.$primary : colors.$onSurfaceVariant),
     backgroundColor: props.variant === 'outlined' ? colors.$background : undefined,
   };
 

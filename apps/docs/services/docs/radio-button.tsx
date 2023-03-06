@@ -62,7 +62,7 @@ export const radioDocumentation: ContentValues = {
   <Radio id='disabled' disabled />
 </Container>`,
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 500 }}>
+        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 700 }}>
           <Radio id='basic' />
           <Radio id='disabled' disabled />
         </Container>
@@ -78,7 +78,7 @@ export const radioDocumentation: ContentValues = {
   <Radio id='labelBottom' label='Bottom' labelPlacement='bottom' />
 </Container>`,
       component: (
-        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 500 }}>
+        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 700 }}>
           <Radio id='label' label='Label' />
           <Radio id='labelLeft' label='Left' labelPlacement='left' />
           <Radio id='labelRight' label='Right' labelPlacement='right' />
@@ -89,7 +89,7 @@ export const radioDocumentation: ContentValues = {
     },
     {
       name: 'Radio Button Group',
-      code: `<Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 500 }}>
+      code: `<Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 700 }}>
       <RadioButtonGroup >
         <Radio id='button1' label='Button 1' />
         <Radio id='button2' label='Button 2' />
@@ -97,7 +97,7 @@ export const radioDocumentation: ContentValues = {
       </RadioButtonGroup>
     </Container>`,
       component: (
-        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 500 }}>
+        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 700 }}>
           <RadioButtonGroup>
             <Radio id='button1' label='Button 1' />
             <Radio id='button2' label='Button 2' />

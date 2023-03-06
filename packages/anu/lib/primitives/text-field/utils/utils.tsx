@@ -1,5 +1,6 @@
 import { getTheme } from 'config/dripsy';
 import { StyleProp, TextStyle } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { TextFieldProps } from '../types';
 
@@ -118,19 +119,35 @@ export const getTrailingContainerStyle = () => {
  * @returns style of the text field container
  */
 export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>) => {
-  const { containerStyle, variant } = props;
+  const { containerStyle, variant, error } = props;
 
   const theme = getTextFieldTheme();
 
   const style = theme[variant ?? 'filled'];
+  const { colors } = getTheme();
 
-  const finalStyle = {
+  let finalStyle = {
     ...style,
     ...containerStyle,
     '@hover': { ...style['@hover'], ...containerStyle?.['@hover'] },
     '@focus': { ...style['@focus'], ...containerStyle?.['@focus'] },
     '@press': { ...style['@press'], ...containerStyle?.['@press'] },
   };
+
+  if (error) {
+    finalStyle =
+      variant === 'outlined'
+        ? {
+            ...finalStyle,
+            borderColor: colors.$error,
+            '@hover': { ...finalStyle['@hover'], borderColor: colors.$onErrorContainer },
+          }
+        : {
+            ...finalStyle,
+            borderBottomColor: colors.$error,
+            '@hover': { ...finalStyle['@hover'], borderBottomColor: colors.$onErrorContainer },
+          };
+  }
 
   return finalStyle;
 };
@@ -142,7 +159,7 @@ export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>) => {
  * @returns error message array
  */
 export const getErrors = (message?: string | string[]) => {
-  return typeof message === 'string' ? [message] : message;
+  return typeof message === 'string' ? [message] : message ?? [];
 };
 
 /**
@@ -179,4 +196,10 @@ export const getSupportingTextStyle = () => {
   };
 
   return style;
+};
+
+export const getErrorIcon = () => {
+  const { colors } = getTheme();
+
+  return <MaterialCommunityIcons name='alert-circle' color={colors.$error} size={24} />;
 };

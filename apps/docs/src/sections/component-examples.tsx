@@ -36,13 +36,8 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
         {example.description ? (
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
         ) : null}
-        <ScrollView style={{ width: '100%' }} showsHorizontalScrollIndicator={false} horizontal>
-          <Container
-            sx={{ marginVertical: 20 }}
-            align='flex-start'
-            justify='center'
-            style={styles.examplesComponentContainer}
-          >
+        <ScrollView style={styles.examplesComponentContainer} showsHorizontalScrollIndicator={false} horizontal>
+          <Container align='flex-start' justify='center' style={styles.examplesComponentContainer}>
             {example.component}
           </Container>
         </ScrollView>
@@ -77,7 +72,8 @@ const getStyles = () => {
       marginBottom: 20,
     },
     examplesComponentContainer: {
-      width: '500px',
+      width: 700,
+      marginVertical: 20,
     },
     heading: {
       color: colors.$onSurface,
@@ -109,7 +105,7 @@ const getStyles = () => {
       fontWeight: '400',
       overflow: 'breakWord',
       width: '100%',
-      maxWidth: 450,
+      maxWidth: 650,
     },
     divider: {
       color: colors.$onSurface,

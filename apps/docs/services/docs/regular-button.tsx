@@ -42,7 +42,7 @@ export const regularButtonDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Button.Elevated title='Elevated' />
           <Button.Filled title='Filled' />
@@ -67,7 +67,7 @@ export const regularButtonDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <Button.Elevated title='Elevated' disabled />
           <Button.Filled title='Filled' disabled />

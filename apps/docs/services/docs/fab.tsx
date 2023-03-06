@@ -45,7 +45,7 @@ export const FABDocumentation: ContentValues = {
     {
       name: 'size',
       component: (
-        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 500 }}>
+        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 700 }}>
           <FAB FABColor='primary' size='small' icon={{ name: 'add' }} />
           <FAB FABColor='primary' size='medium' icon={{ name: 'add' }} />
           <FAB FABColor='primary' size='large' icon={{ name: 'add' }} />
@@ -65,7 +65,7 @@ export const FABDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
           <FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} />
@@ -88,7 +88,7 @@ export const FABDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 500 }}
+          sx={{ width: '100%', maxWidth: 700 }}
         >
           <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
           <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} lowered />
