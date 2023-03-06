@@ -221,24 +221,9 @@ export type GetButtonStylesReturnType = ButtonContainerStyle;
  * @param {ButtonProps} props - props of the button component
  */
 export const getButtonStyles = (props: ButtonProps) => {
-  let styles;
-  let layerStyles: GetButtonStylesReturnType;
-
-  switch (props.category) {
-    case 'regular': {
-      const { styles: regularStyles, stateLayerStyles } = getRegularButtonStyles(props);
-      styles = regularStyles;
-      layerStyles = stateLayerStyles;
-      break;
-    }
-
-    default: {
-      const { styles: regularStyles, stateLayerStyles } = getRegularButtonStyles(props);
-      styles = regularStyles;
-      layerStyles = stateLayerStyles;
-      break;
-    }
-  }
+  const { styles: regularStyles, stateLayerStyles } = getRegularButtonStyles(props);
+  const styles = regularStyles;
+  const layerStyles = stateLayerStyles;
 
   const resetStyles = {
     margin: 0,
