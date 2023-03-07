@@ -68,8 +68,8 @@ export const textFieldDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'Outlined',
-      id: 'outlined',
+      name: 'Outlined Text Field',
+      id: 'outlined-text-field',
       component: (
         <Container
           disableGutters
@@ -92,8 +92,8 @@ export const textFieldDocumentation: ContentValues = {
 </Container>`,
     },
     {
-      name: 'Filled',
-      id: 'filled',
+      name: 'Filled Text Field',
+      id: 'filled-text-field',
       component: (
         <Container
           disableGutters
@@ -213,12 +213,12 @@ export const textFieldIndex: HeadingProps = {
     {
       components: [
         {
-          title: 'Outlined',
-          link: '#outlined',
+          title: 'Outlined Text Field',
+          link: '#outlined-text-field',
         },
         {
-          title: 'Filled',
-          link: '#filled',
+          title: 'Filled Text Field',
+          link: '#filled-text-field',
         },
         {
           title: 'Icon',
