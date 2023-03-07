@@ -16,6 +16,7 @@ import {
   getErrorIcon,
   getErrors,
   getErrorStyle,
+  getInnerContainerStyle,
   getLeadingContainerStyle,
   getSupportingTextStyle,
   getTextFieldContainerStyle,
@@ -31,7 +32,7 @@ import TextFieldLabel from './label';
  * @param {Partial<TextFieldProps>} props - the properties of the text field component
  */
 const TextField = (props: Partial<TextFieldProps>) => {
-  const [focus, setOnFocus] = useState<PressableStateCallbackType>();
+  const [focus, setOnFocus] = useState<PressableStateCallbackType>({ pressed: false });
   const [height, setHeight] = useState(56);
   const [value, setValue] = useState(props.value);
 
@@ -41,10 +42,11 @@ const TextField = (props: Partial<TextFieldProps>) => {
   const finalProps = { ...defaultProps, ...props };
   const { variant, sx, ...componentProps } = finalProps;
 
-  const style = getTextFieldStyles();
+  const style = getTextFieldStyles(finalProps);
   const containerStyle = getTextFieldContainerStyle(finalProps);
   const leadingIconContainerStyle = getLeadingContainerStyle();
   const trailingIconContainerStyle = getTrailingContainerStyle();
+  const innerContainerStyle = getInnerContainerStyle();
   const errorStyle = getErrorStyle();
   const supportingTextStyle = getSupportingTextStyle();
 
@@ -88,20 +90,20 @@ const TextField = (props: Partial<TextFieldProps>) => {
   return (
     <Container disableGutters>
       <Pressable
-        ref={pressableReference}
+        ref={textInputReference}
         accessibilityRole='button'
-        style={generateStyles}
+        style={(state) => generateStyles({ ...focus, hovered: state.hovered })}
         {...props.pressableProps}
         disabled={props.disabled}
       >
-        <Container disableGutters flexDirection='row' sx={{ backgroundColor: 'inherit', position: 'relative' }}>
+        <Container disableGutters flexDirection='row' sx={innerContainerStyle}>
           {/* TODO: Put the icon components in another file */}
           {props.leadingIcon ? (
             <Container disableGutters style={leadingIconContainerStyle}>
               {props.leadingIcon}
             </Container>
           ) : null}
-          <Container disableGutters flexDirection='row'>
+          <Container disableGutters flexDirection='row' sx={innerContainerStyle}>
             <TextFieldLabel
               {...finalProps}
               textInputRef={textInputReference}
@@ -116,6 +118,7 @@ const TextField = (props: Partial<TextFieldProps>) => {
               onBlur={onTextInputBlur}
               {...componentProps}
               placeholder={undefined}
+              // eslint-disable-next-line react-native/no-color-literals, react-native/no-inline-styles
               style={[style, props.style]}
             />
           </Container>

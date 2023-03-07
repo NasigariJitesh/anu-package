@@ -13,7 +13,7 @@ import { getButtonStyles } from '../../utils';
  * @param {ButtonProps} props - all the props related to the component
  */
 export const RenderComponent = (props: ButtonProps) => {
-  const labelStyles = { color: 'inherit' };
+  const labelStyles = { color: 'inherit', cursor: 'pointer' };
   const { styles, stateLayerStyles } = getButtonStyles(props);
 
   const generateStyles = (state: PressableStateCallbackType) => {

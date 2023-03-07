@@ -112,7 +112,7 @@ export const textFieldDocumentation: ContentValues = {
   justify='space-around'
   sx={{ width: '100%', maxWidth: 700 }}
 >
-  <TextField variant='outlined' placeholder='Filled' />
+  <TextField variant='filled' placeholder='Filled' />
 </Container>`,
     },
     {
@@ -141,7 +141,12 @@ export const textFieldDocumentation: ContentValues = {
   justify='space-around'
   sx={{ width: '100%', maxWidth: 700 }}
 >
-  <TextField variant='outlined' placeholder='Filled' />
+<TextField
+  variant='filled'
+  leadingIcon={<Icon name='money' />}
+  trailingIcon={<Icon name='close' />}
+  placeholder='Filled'
+/>
 </Container>`,
     },
     {

@@ -121,7 +121,7 @@ const getIconButtonTheme = () => {
     common: {
       height: 40,
       width: 40,
-      padding: 16,
+      padding: '8px',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,
