@@ -12,13 +12,7 @@ export const typographyDocumentation: ContentValues = {
       id: 'basic',
       description: 'Here is the basic example of how to use the different scales in typography.',
       component: (
-        <Container
-          disableGutters
-          flexDirection='column'
-          align='flex-start'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 400, height: 200 }}
-        >
+        <Container disableGutters flexDirection='column' align='flex-start' justify='space-around' sx={{ height: 200 }}>
           <Typography.Display>Display</Typography.Display>
           <Typography.Headline>Headline</Typography.Headline>
           <Typography.Title>Title</Typography.Title>
@@ -26,24 +20,18 @@ export const typographyDocumentation: ContentValues = {
           <Typography.Body>Body</Typography.Body>
         </Container>
       ),
-      code: `<Typography.Display> Display </Typography.Display>
-<Typography.Headline> Headline </Typography.Headline>
-<Typography.Title> Title </Typography.Title>
-<Typography.Label> Label </Typography.Label>
-<Typography.Body> Body </Typography.Body>`,
+      code: `<Typography.Display>Display</Typography.Display>
+<Typography.Headline>Headline</Typography.Headline>
+<Typography.Title>Title</Typography.Title>
+<Typography.Label>Label</Typography.Label>
+<Typography.Body>Body</Typography.Body>`,
     },
     {
       name: 'Size',
       id: 'size',
       description: 'You can also adjust the size of each component by providing the size property',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-between'
-          sx={{ width: '100%', maxWidth: 400 }}
-        >
+        <Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: 200 }}>
           <Typography.Body size='large'>Large</Typography.Body>
           <Typography.Body size='medium'>Medium</Typography.Body>
           <Typography.Body size='small'>Small</Typography.Body>

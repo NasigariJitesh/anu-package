@@ -23,9 +23,10 @@ html, body, #__next {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  background-color: ${theme.colors.$surfaceVariant};
+  width: 2.5px;
+  height: 2.5px;
+  // background-color: ${theme.colors.$surfaceVariant};
+  background-color: 'transparent';
 }
 
 ::-webkit-scrollbar-thumb {

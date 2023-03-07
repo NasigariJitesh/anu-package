@@ -55,13 +55,7 @@ export const badgeDocumentation: ContentValues = {
     {
       name: 'String Badge',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
+        <Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: 200 }}>
           <Badge value='new'>
             <Icon name='airplay' />
           </Badge>
@@ -73,17 +67,15 @@ export const badgeDocumentation: ContentValues = {
           </Badge>
         </Container>
       ),
-      code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-      <Badge value='new'>
-        <Icon name='airplay' />
-      </Badge>
-      <Badge value='new' overlap='circular'>
-        <Icon name='airplay' />
-      </Badge>
-      <Badge value=''>
-        <Icon name='airplay' />
-      </Badge>
-    </Container>`,
+      code: `  <Badge value='new'>
+    <Icon name='airplay' />
+  </Badge>
+  <Badge value='new' overlap='circular'>
+    <Icon name='airplay' />
+  </Badge>
+  <Badge value=''>
+    <Icon name='airplay' />
+  </Badge>`,
     },
     {
       name: 'Number Badge',
@@ -93,7 +85,7 @@ export const badgeDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
+          sx={{ width: 200, overflow: 'visible' }}
         >
           <Badge value={90}>
             <Icon name='airplay' />

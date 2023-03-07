@@ -32,6 +32,11 @@ const nextConfig = withExpo({
         destination: '/components/button/regular',
         permanent: true,
       },
+      {
+        source: '/',
+        destination: '/components/typography',
+        permanent: true,
+      },
     ];
   },
 });

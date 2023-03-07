@@ -55,39 +55,41 @@ const Group = (props: HeadingProps) => {
   );
 };
 
-const Components = (props: { links: ComponentLinks[] }) => {
+const RenderItem = ({ item }: { item: ComponentLinks }) => {
   const { pathname } = useRouter();
 
+  return (
+    <>
+      {item.variants.length > 0 ? (
+        <Accordion.Container
+          title={
+            <Accordion.Header
+              iconProps={{ size: 18, style: { opacity: 0.7 } }}
+              style={[style.componentName, pathname === item.link ? style.active : {}]}
+            >
+              {item.title}
+            </Accordion.Header>
+          }
+        >
+          <Accordion.Children>
+            <Categories links={item.variants} />
+          </Accordion.Children>
+        </Accordion.Container>
+      ) : (
+        <Typography.Title style={[style.componentName, pathname === item.link ? style.active : {}]}>
+          <TextLink href={item.link}>{item.title}</TextLink>
+        </Typography.Title>
+      )}
+    </>
+  );
+};
+
+const Components = (props: { links: ComponentLinks[] }) => {
   return (
     <FlatList
       contentContainerStyle={style.componentList}
       data={props.links}
-      renderItem={({ item }) => {
-        return (
-          <>
-            {item.variants.length > 0 ? (
-              <Accordion.Container
-                title={
-                  <Accordion.Header
-                    iconProps={{ size: 18, style: { opacity: 0.7 } }}
-                    style={[style.componentName, pathname === item.link ? style.active : {}]}
-                  >
-                    {item.title}
-                  </Accordion.Header>
-                }
-              >
-                <Accordion.Children>
-                  <Categories links={item.variants} />
-                </Accordion.Children>
-              </Accordion.Container>
-            ) : (
-              <Typography.Title style={[style.componentName, pathname === item.link ? style.active : {}]}>
-                <TextLink href={item.link}>{item.title}</TextLink>
-              </Typography.Title>
-            )}
-          </>
-        );
-      }}
+      renderItem={({ item }) => <RenderItem item={item} />}
     />
   );
 };

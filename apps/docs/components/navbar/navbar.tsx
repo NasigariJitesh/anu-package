@@ -73,8 +73,6 @@ const MetaData = () => {
   const { width } = useWindowDimensions();
 
   const RenderToggleMenu = () => {
-    console.log(width);
-
     if (!width) return <ToggleMenu />;
 
     return width < 900 ? <ToggleMenu /> : null;

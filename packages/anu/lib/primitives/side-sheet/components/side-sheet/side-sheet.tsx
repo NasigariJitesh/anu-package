@@ -104,8 +104,6 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
         if (translateX.value * -1 > maxTranslateX / 3) scrollTo(0);
         else scrollTo(maxTranslateX);
       } else {
-        console.log(translateX.value, maxTranslateX / 3);
-
         if (translateX.value > maxTranslateX / 3) scrollTo(maxTranslateX);
         else scrollTo(0);
       }
