@@ -9,9 +9,9 @@ const source = Source_Sans_Pro({
 });
 
 interface ComponentDetailsProps {
-  mainHeading?: string;
+  mainHeading: string;
   mainDescription?: string;
-  heading: string;
+  heading?: string;
   subTitle?: string;
 }
 

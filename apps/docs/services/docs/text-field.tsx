@@ -1,9 +1,10 @@
 import { Container, Icon, TextField } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const textFieldDocumentation: ContentValues = {
-  heading: 'Text Field',
-  subTitle:
+  mainHeading: 'Text Field',
+  mainDescription:
     'Text fields allow users to enter text into a UI. They typically appear in forms and dialogs. There are two types of text fields: filled and outlined.',
   properties: [
     {
@@ -68,6 +69,7 @@ export const textFieldDocumentation: ContentValues = {
   examples: [
     {
       name: 'Outlined',
+      id: 'outlined',
       component: (
         <Container
           disableGutters
@@ -91,6 +93,7 @@ export const textFieldDocumentation: ContentValues = {
     },
     {
       name: 'Filled',
+      id: 'filled',
       component: (
         <Container
           disableGutters
@@ -114,6 +117,7 @@ export const textFieldDocumentation: ContentValues = {
     },
     {
       name: 'Icon',
+      id: 'icon',
       component: (
         <Container
           disableGutters
@@ -142,6 +146,7 @@ export const textFieldDocumentation: ContentValues = {
     },
     {
       name: 'Supporting Text',
+      id: 'supporting-text',
       component: (
         <Container
           disableGutters
@@ -165,6 +170,7 @@ export const textFieldDocumentation: ContentValues = {
     },
     {
       name: 'Error Messages',
+      id: 'error-messages',
       component: (
         <Container
           disableGutters
@@ -192,6 +198,43 @@ export const textFieldDocumentation: ContentValues = {
   <TextField variant='filled' placeholder='Filled' error />
   <TextField variant='filled' placeholder='Filled' errorMessage={['This is an error message 1', 'This is an error message 2']} />
 </Container>`,
+    },
+  ],
+};
+
+export const textFieldIndex: HeadingProps = {
+  heading: 'Text Field',
+  links: [
+    {
+      components: [
+        {
+          title: 'Outlined',
+          link: '#outlined',
+        },
+        {
+          title: 'Filled',
+          link: '#filled',
+        },
+        {
+          title: 'Icon',
+          link: '#icon',
+        },
+        {
+          title: 'Supporting Text',
+          link: '#supporting-text',
+        },
+        {
+          title: 'Error Messages',
+          link: '#error-messages',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

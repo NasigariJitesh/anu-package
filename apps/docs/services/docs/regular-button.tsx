@@ -1,4 +1,5 @@
 import { Button, Container } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const regularButtonDocumentation: ContentValues = {
@@ -36,6 +37,7 @@ export const regularButtonDocumentation: ContentValues = {
   examples: [
     {
       name: 'Basic',
+      id: 'basic',
       component: (
         <Container
           disableGutters
@@ -61,6 +63,7 @@ export const regularButtonDocumentation: ContentValues = {
     },
     {
       name: 'Disabled',
+      id: 'disabled',
       component: (
         <Container
           disableGutters
@@ -83,6 +86,30 @@ export const regularButtonDocumentation: ContentValues = {
       <Button.Tonal title='Tonal' disabled />
       <Button.Text title='Text' disabled />
     </Container>`,
+    },
+  ],
+};
+export const regularButtonIndex: HeadingProps = {
+  heading: 'Regular Button',
+  links: [
+    {
+      components: [
+        {
+          title: 'Basic',
+          link: '#basic',
+        },
+        {
+          title: 'Disabled',
+          link: '#disabled',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

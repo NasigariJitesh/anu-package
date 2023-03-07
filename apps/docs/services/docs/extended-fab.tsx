@@ -1,4 +1,5 @@
 import { Container, ExtendedFAB } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const extendedFABDocumentation: ContentValues = {
@@ -47,7 +48,8 @@ export const extendedFABDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'FABColor',
+      name: 'FAB Color',
+      id: 'fab-color',
       component: (
         <Container
           disableGutters
@@ -71,6 +73,7 @@ export const extendedFABDocumentation: ContentValues = {
     },
     {
       name: 'Lowered',
+      id: 'lowered',
       component: (
         <Container
           disableGutters
@@ -87,6 +90,31 @@ export const extendedFABDocumentation: ContentValues = {
       <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'add' }} />
       <ExtendedFAB FABColor='primary' title='Lowered' icon={{ name: 'add' }} lowered />
     </Container>`,
+    },
+  ],
+};
+
+export const extendedFABIndex: HeadingProps = {
+  heading: 'Extended FAB',
+  links: [
+    {
+      components: [
+        {
+          title: 'FAB Color',
+          link: '#fab-color',
+        },
+        {
+          title: 'Lowered',
+          link: '#lowered',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

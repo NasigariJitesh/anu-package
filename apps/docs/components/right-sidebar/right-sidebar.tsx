@@ -3,6 +3,17 @@ import { Container, FlatList, Typography } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
+import { badgeIndex } from 'services/docs/badge';
+import { checkboxIndex } from 'services/docs/checkbox';
+import { chipIndex } from 'services/docs/chip';
+import { containerIndex } from 'services/docs/container';
+import { extendedFABIndex } from 'services/docs/extended-fab';
+import { FABIndex } from 'services/docs/fab';
+import { iconButtonIndex } from 'services/docs/icon-button';
+import { radioButtonIndex } from 'services/docs/radio-button';
+import { regularButtonIndex } from 'services/docs/regular-button';
+import { segmentedButtonIndex } from 'services/docs/segmented-button';
+import { textFieldIndex } from 'services/docs/text-field';
 import { typographyIndex } from 'services/docs/typography';
 import { translations } from 'services/localization';
 import { TextLink } from 'solito/link';
@@ -84,6 +95,61 @@ const RenderIndex = () => {
     case '/components/typography': {
       {
         return <Index {...typographyIndex} />;
+      }
+    }
+    case '/components/badge': {
+      {
+        return <Index {...badgeIndex} />;
+      }
+    }
+    case '/components/chip': {
+      {
+        return <Index {...chipIndex} />;
+      }
+    }
+    case '/components/container': {
+      {
+        return <Index {...containerIndex} />;
+      }
+    }
+    case '/components/button/extended-fab': {
+      {
+        return <Index {...extendedFABIndex} />;
+      }
+    }
+    case '/components/button/fab': {
+      {
+        return <Index {...FABIndex} />;
+      }
+    }
+    case '/components/button/icon': {
+      {
+        return <Index {...iconButtonIndex} />;
+      }
+    }
+    case '/components/button/regular': {
+      {
+        return <Index {...regularButtonIndex} />;
+      }
+    }
+    case '/components/button/segmented': {
+      {
+        return <Index {...segmentedButtonIndex} />;
+      }
+    }
+    case '/components/checkbox': {
+      {
+        return <Index {...checkboxIndex} />;
+      }
+    }
+    case '/components/radio-button': {
+      {
+        return <Index {...radioButtonIndex} />;
+      }
+    }
+    case '/components/text-field': {
+      {
+        return <Index {...textFieldIndex} />;
       }
     }
     default: {

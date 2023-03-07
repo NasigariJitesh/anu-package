@@ -1,9 +1,11 @@
 import { Badge, Container, Icon } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const badgeDocumentation: ContentValues = {
-  heading: 'Badge',
-  subTitle: 'Badges convey dynamic information, such as counts or status. A badge can include labels or numbers.',
+  mainHeading: 'Badge',
+  mainDescription:
+    'Badges convey dynamic information, such as counts or status. A badge can include labels or numbers.',
   properties: [
     {
       name: 'value',
@@ -54,6 +56,7 @@ export const badgeDocumentation: ContentValues = {
   examples: [
     {
       name: 'String Badge',
+      id: 'string-badge',
       component: (
         <Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: 200 }}>
           <Badge value='new'>
@@ -79,6 +82,7 @@ export const badgeDocumentation: ContentValues = {
     },
     {
       name: 'Number Badge',
+      id: 'number-badge',
       component: (
         <Container
           disableGutters
@@ -109,6 +113,31 @@ export const badgeDocumentation: ContentValues = {
         <Icon name='airplay' />
       </Badge>
     </Container>`,
+    },
+  ],
+};
+
+export const badgeIndex: HeadingProps = {
+  heading: 'Badge',
+  links: [
+    {
+      components: [
+        {
+          title: 'String Badge',
+          link: '#string-badge',
+        },
+        {
+          title: 'Number Badge',
+          link: '#number-badge',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

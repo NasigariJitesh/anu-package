@@ -1,4 +1,5 @@
 import { Container, Icon, IconButton } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const iconButtonDocumentation: ContentValues = {
@@ -37,6 +38,7 @@ export const iconButtonDocumentation: ContentValues = {
   examples: [
     {
       name: 'Basic',
+      id: 'basic',
       component: (
         <Container sx={{ width: '100%', maxWidth: 700 }}>
           <Container
@@ -81,6 +83,7 @@ export const iconButtonDocumentation: ContentValues = {
     },
     {
       name: 'Disabled',
+      id: 'disabled',
       component: (
         <Container
           disableGutters
@@ -104,6 +107,7 @@ export const iconButtonDocumentation: ContentValues = {
     },
     {
       name: 'Toggle',
+      id: 'toggle',
       component: (
         <Container
           disableGutters
@@ -124,6 +128,35 @@ export const iconButtonDocumentation: ContentValues = {
       <IconButton type='outlined' icon={{ name: 'label' }} disabled />
       <IconButton type='standard' icon={{ name: 'person' }} disabled />
     </Container>`,
+    },
+  ],
+};
+
+export const iconButtonIndex: HeadingProps = {
+  heading: 'Icon Button',
+  links: [
+    {
+      components: [
+        {
+          title: 'Basic',
+          link: '#basic',
+        },
+        {
+          title: 'Disabled',
+          link: '#disabled',
+        },
+        {
+          title: 'Toggle',
+          link: '#toggle',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

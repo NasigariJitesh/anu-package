@@ -4,7 +4,6 @@ import { ContentValues } from 'src/sections/content';
 
 export const typographyDocumentation: ContentValues = {
   mainHeading: 'Typography',
-  heading: '',
   mainDescription: 'Typography helps you present your content clearly and efficiently as possible',
   examples: [
     {
