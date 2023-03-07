@@ -1,4 +1,5 @@
 import { Container } from 'anu/lib';
+import { View } from 'react-native';
 import { ContentValues } from 'src/sections/content';
 
 export const containerDocumentation: ContentValues = {
@@ -8,14 +9,19 @@ export const containerDocumentation: ContentValues = {
     {
       name: 'Basic',
       id: 'basic',
-      component: <Container maxWidth='xs' width='100%' sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
-      code: "<Container maxWidth='xs' width='100%' sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
+      component: <Container width={300} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
+      code: `<Container
+  width={300}
+  sx={{ backgroundColor: '#c1c1c1', height: 200 }} />`,
     },
     {
       name: 'Fixed',
       id: 'fixed',
-      component: <Container width='100%' fixed sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
-      code: "<Container width='100%' fixed sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
+      component: <Container width={300} fixed sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
+      code: `<Container
+  width={300}
+  fixed
+  sx={{ backgroundColor: '#c1c1c1', height: 200 }} />`,
     },
   ],
   properties: [
