@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { getTheme } from 'anu/config';
 import { Accordion, Container, FlatList, Typography } from 'anu/lib';
 import { Source_Sans_Pro } from 'next/font/google';
@@ -123,96 +124,105 @@ const Sidebar = () => {
   if (!isOpen) return null;
 
   return (
-    <Container sx={style.container}>
-      <Index
-        heading='Components Overview'
-        links={[
-          {
-            title: 'Display',
-            components: [
-              {
-                link: '/components/typography',
-                title: 'Typography',
-                variants: [],
-              },
-              {
-                link: '/components/badge',
-                title: 'Badge',
-                variants: [],
-              },
-              {
-                link: '/components/chip',
-                title: 'Chip',
-                variants: [],
-              },
-            ],
-          },
-          {
-            title: 'Layout',
-            components: [
-              {
-                title: 'Container',
-                link: '/components/container',
-                variants: [],
-              },
-            ],
-          },
-          {
-            title: 'Inputs',
-            components: [
-              {
-                link: '/components/button',
-                title: 'Button',
-                variants: [
-                  {
-                    link: '/components/button/extended-fab',
-                    title: 'Extended FAB',
-                  },
-                  {
-                    link: '/components/button/fab',
-                    title: 'FAB',
-                  },
+    <div
+      id='root-scroll'
+      style={{
+        height: 'calc(100vh - 90px)',
+        overflowY: 'scroll',
+        width: '210px',
+      }}
+    >
+      <Container sx={style.container}>
+        <Index
+          heading='Components Overview'
+          links={[
+            {
+              title: 'Display',
+              components: [
+                {
+                  link: '/components/typography',
+                  title: 'Typography',
+                  variants: [],
+                },
+                {
+                  link: '/components/badge',
+                  title: 'Badge',
+                  variants: [],
+                },
+                {
+                  link: '/components/chip',
+                  title: 'Chip',
+                  variants: [],
+                },
+              ],
+            },
+            {
+              title: 'Layout',
+              components: [
+                {
+                  title: 'Container',
+                  link: '/components/container',
+                  variants: [],
+                },
+              ],
+            },
+            {
+              title: 'Inputs',
+              components: [
+                {
+                  link: '/components/button',
+                  title: 'Button',
+                  variants: [
+                    {
+                      link: '/components/button/extended-fab',
+                      title: 'Extended FAB',
+                    },
+                    {
+                      link: '/components/button/fab',
+                      title: 'FAB',
+                    },
 
-                  {
-                    link: '/components/button/icon',
-                    title: 'Icon',
-                  },
-                  {
-                    link: '/components/button/regular',
-                    title: 'Regular',
-                  },
-                  {
-                    link: '/components/button/segmented',
-                    title: 'Segmented',
-                  },
-                ],
-              },
-              {
-                link: '/components/checkbox',
-                title: 'Checkbox',
-                variants: [],
-              },
-              {
-                link: '/components/radio-button',
-                title: 'Radio Button',
-                variants: [],
-              },
-              {
-                link: '/components/text-field',
-                title: 'Text Field',
-                variants: [],
-              },
-            ],
-          },
-        ]}
-      />
-    </Container>
+                    {
+                      link: '/components/button/icon',
+                      title: 'Icon',
+                    },
+                    {
+                      link: '/components/button/regular',
+                      title: 'Regular',
+                    },
+                    {
+                      link: '/components/button/segmented',
+                      title: 'Segmented',
+                    },
+                  ],
+                },
+                {
+                  link: '/components/checkbox',
+                  title: 'Checkbox',
+                  variants: [],
+                },
+                {
+                  link: '/components/radio-button',
+                  title: 'Radio Button',
+                  variants: [],
+                },
+                {
+                  link: '/components/text-field',
+                  title: 'Text Field',
+                  variants: [],
+                },
+              ],
+            },
+          ]}
+        />
+      </Container>
+    </div>
   );
 };
 
 const style = {
   container: {
-    width: 250,
+    width: 210,
   },
   heading: {
     fontFamily: source.style.fontFamily,

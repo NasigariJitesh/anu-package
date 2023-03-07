@@ -24,7 +24,7 @@ html, body, #__next {
 
 ::-webkit-scrollbar {
   width: 5px;
-  height: 8px;
+  height: 5px;
   background-color: ${theme.colors.$surfaceVariant};
 }
 

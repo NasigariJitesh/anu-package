@@ -72,6 +72,14 @@ const ToggleMenu = () => {
 const MetaData = () => {
   const { width } = useWindowDimensions();
 
+  const RenderToggleMenu = () => {
+    console.log(width);
+
+    if (!width) return <ToggleMenu />;
+
+    return width <= 768 ? <ToggleMenu /> : null;
+  };
+
   return (
     <ul style={style.list}>
       <li style={style.listItem}>
@@ -83,7 +91,9 @@ const MetaData = () => {
       <li style={style.listItem}>
         <MaterialCommunityIcon name='github' size={24} />
       </li>
-      <li style={style.listItem}>{width < 768 ? <ToggleMenu /> : null}</li>
+      <li style={style.listItem}>
+        <RenderToggleMenu />
+      </li>
     </ul>
   );
 };

@@ -97,7 +97,7 @@ const RenderIndex = () => {
 const RightSidebar = () => {
   const { width } = useWindowDimensions();
 
-  if (width <= 768) return null;
+  if (width <= 1024) return null;
 
   return (
     <Container sx={style.container}>

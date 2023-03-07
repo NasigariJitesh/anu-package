@@ -30,9 +30,7 @@ export default function App(props: AppProps) {
           marginTop: 20,
         }}
       >
-        <div id='root-scroll' style={{ height: 'calc(100vh - 90px)', overflowY: 'scroll', width: '250px' }}>
-          <Sidebar />
-        </div>
+        <Sidebar />
         <props.Component {...props.pageProps} />
         <RightSidebar />
       </View>

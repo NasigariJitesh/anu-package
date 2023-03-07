@@ -17,7 +17,7 @@ export const typographyDocumentation: ContentValues = {
           flexDirection='column'
           align='flex-start'
           justify='space-around'
-          sx={{ width: '100%', maxWidth: 800, height: 200 }}
+          sx={{ width: '100%', maxWidth: 400, height: 200 }}
         >
           <Typography.Display>Display</Typography.Display>
           <Typography.Headline>Headline</Typography.Headline>
@@ -26,10 +26,10 @@ export const typographyDocumentation: ContentValues = {
           <Typography.Body>Body</Typography.Body>
         </Container>
       ),
-      code: `<Typography.Display> Display </Typography.Display>\n
-<Typography.Headline> Headline </Typography.Headline>\n
-<Typography.Title> Title </Typography.Title>\n
-<Typography.Label> Label </Typography.Label>\n
+      code: `<Typography.Display> Display </Typography.Display>
+<Typography.Headline> Headline </Typography.Headline>
+<Typography.Title> Title </Typography.Title>
+<Typography.Label> Label </Typography.Label>
 <Typography.Body> Body </Typography.Body>`,
     },
     {
@@ -42,15 +42,15 @@ export const typographyDocumentation: ContentValues = {
           flexDirection='row'
           align='center'
           justify='space-between'
-          sx={{ width: '100%', maxWidth: 700 }}
+          sx={{ width: '100%', maxWidth: 400 }}
         >
           <Typography.Body size='large'>Large</Typography.Body>
           <Typography.Body size='medium'>Medium</Typography.Body>
           <Typography.Body size='small'>Small</Typography.Body>
         </Container>
       ),
-      code: `<Typography.Body size='large'> Large </Typography.Body>\n
-<Typography.Body size='medium'> Medium </Typography.Body>\n
+      code: `<Typography.Body size='large'> Large </Typography.Body>
+<Typography.Body size='medium'> Medium </Typography.Body>
 <Typography.Body size='small'> Small </Typography.Body>`,
     },
   ],
