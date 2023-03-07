@@ -56,7 +56,7 @@ export const typographyDocumentation: ContentValues = {
     {
       name: 'component',
       description: 'The type of HTML component that needs to be rendered',
-      type: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label'",
+      type: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' (optional)",
     },
     {
       name: 'align',
@@ -69,8 +69,8 @@ export const typographyDocumentation: ContentValues = {
       type: 'StyleProp<TextStyle> (optional)',
     },
     {
-      name: 'htmlFor (only for label)',
-      description: 'This can be used as "for" property in label component for web',
+      name: 'htmlFor',
+      description: 'Only for Label. This can be used as "for" property in label component for web',
       type: 'string',
     },
   ],

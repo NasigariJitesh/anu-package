@@ -60,25 +60,25 @@ export const badgeDocumentation: ContentValues = {
       component: (
         <Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: 200 }}>
           <Badge value='new'>
-            <Icon name='airplay' />
+            <Icon name='chat-bubble-outline' />
           </Badge>
           <Badge value='New' overlap='circular'>
-            <Icon name='airplay' />
+            <Icon name='chat-bubble-outline' />
           </Badge>
           <Badge value=''>
-            <Icon name='airplay' />
+            <Icon name='chat-bubble-outline' />
           </Badge>
         </Container>
       ),
-      code: `  <Badge value='new'>
-    <Icon name='airplay' />
-  </Badge>
-  <Badge value='new' overlap='circular'>
-    <Icon name='airplay' />
-  </Badge>
-  <Badge value=''>
-    <Icon name='airplay' />
-  </Badge>`,
+      code: `<Badge value='new'>
+  <Icon name='chat-bubble-outline' />
+</Badge>
+<Badge value='new' overlap='circular'>
+  <Icon name='chat-bubble-outline' />
+</Badge>
+<Badge value=''>
+  <Icon name='chat-bubble-outline' />
+</Badge>`,
     },
     {
       name: 'Number Badge',
@@ -92,27 +92,25 @@ export const badgeDocumentation: ContentValues = {
           sx={{ width: 200, overflow: 'visible' }}
         >
           <Badge value={90}>
-            <Icon name='airplay' />
+            <Icon name='notifications' />
           </Badge>
           <Badge value={90} maxValue={50}>
-            <Icon name='airplay' />
+            <Icon name='notifications' />
           </Badge>
           <Badge value={0} showZero>
-            <Icon name='airplay' />
+            <Icon name='notifications' />
           </Badge>
         </Container>
       ),
-      code: `<Container flexDirection='row' align='center' justify='space-around' >
-      <Badge value={90}>
-        <Icon name='airplay' />
-      </Badge>
-      <Badge value={90} maxValue={50}>
-        <Icon name='airplay' />
-      </Badge>
-      <Badge value={0} showZero>
-        <Icon name='airplay' />
-      </Badge>
-    </Container>`,
+      code: `<Badge value={90}>
+  <Icon name='notifications' />
+</Badge>
+<Badge value={90} maxValue={50}>
+  <Icon name='notifications' />
+</Badge>
+<Badge value={0} showZero>
+  <Icon name='notifications' />
+</Badge>`,
     },
   ],
 };

@@ -3,7 +3,6 @@ import { getTheme } from 'anu/config';
 import { Accordion, Container, FlatList, Typography } from 'anu/lib';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
-import { TextStyle } from 'react-native';
 import { useMenuContext } from 'screens/common/provider';
 import { TextLink } from 'solito/link';
 
@@ -231,7 +230,7 @@ const style = {
     fontSize: 18,
     fontWeight: '600',
     flexWrap: 'wrap',
-  } as TextStyle,
+  },
   groupName: {
     fontSize: 18,
     fontFamily: source.style.fontFamily,
