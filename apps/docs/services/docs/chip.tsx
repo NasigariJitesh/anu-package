@@ -1,9 +1,10 @@
 import { Chip, Container } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const chipDocumentation: ContentValues = {
-  heading: 'Chips',
-  subTitle:
+  mainHeading: 'Chips',
+  mainDescription:
     'Chips help people enter information, make selections, filter content, or trigger actions. There are four types of chips: assist, filter, input, and suggestion.',
   properties: [
     {
@@ -56,6 +57,7 @@ export const chipDocumentation: ContentValues = {
   examples: [
     {
       name: 'Assist Chip',
+      id: 'assist-chip',
       component: (
         <Container
           disableGutters
@@ -79,6 +81,7 @@ export const chipDocumentation: ContentValues = {
     },
     {
       name: 'Filter Chip',
+      id: 'filter-chip',
       component: (
         <Container
           disableGutters
@@ -112,7 +115,8 @@ export const chipDocumentation: ContentValues = {
       description: 'Filter chip has a leading icon and can be used as a selectable chip',
     },
     {
-      name: 'Filter Chip',
+      name: 'Input Chip',
+      id: 'input-chip',
       component: (
         <Container
           disableGutters
@@ -147,6 +151,7 @@ export const chipDocumentation: ContentValues = {
     },
     {
       name: 'Suggestion Chip',
+      id: 'suggestion-chip',
       component: (
         <Container
           disableGutters
@@ -170,6 +175,39 @@ export const chipDocumentation: ContentValues = {
     <Chip type='suggestion' value='Suggest' selected disabled />
 </Container>`,
       description: 'Suggestion chip has no icon and can be used as a selectable chip',
+    },
+  ],
+};
+
+export const chipIndex: HeadingProps = {
+  heading: 'Chip',
+  links: [
+    {
+      components: [
+        {
+          title: 'Assist Chip',
+          link: '#assist-chip',
+        },
+        {
+          title: 'Filter Chip',
+          link: '#filter-chip',
+        },
+        {
+          title: 'Input Chip',
+          link: '#input-chip',
+        },
+        {
+          title: 'Suggestion Chip',
+          link: '#suggestion-chip',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

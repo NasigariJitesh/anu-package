@@ -1,4 +1,5 @@
 import { Container, FAB } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const FABDocumentation: ContentValues = {
@@ -43,7 +44,8 @@ export const FABDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'size',
+      name: 'Size',
+      id: 'size',
       component: (
         <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 700 }}>
           <FAB FABColor='primary' size='small' icon={{ name: 'add' }} />
@@ -58,7 +60,8 @@ export const FABDocumentation: ContentValues = {
     </Container>`,
     },
     {
-      name: 'FABColor',
+      name: 'FAB Color',
+      id: 'fab-color',
       component: (
         <Container
           disableGutters
@@ -82,6 +85,7 @@ export const FABDocumentation: ContentValues = {
     },
     {
       name: 'Lowered',
+      id: 'lowered',
       component: (
         <Container
           disableGutters
@@ -98,6 +102,35 @@ export const FABDocumentation: ContentValues = {
       <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
       <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} lowered />
     </Container>`,
+    },
+  ],
+};
+
+export const FABIndex: HeadingProps = {
+  heading: 'FAB',
+  links: [
+    {
+      components: [
+        {
+          title: 'Size',
+          link: '#size',
+        },
+        {
+          title: 'FAB Color',
+          link: '#fab-color',
+        },
+        {
+          title: 'Lowered',
+          link: '#lowered',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

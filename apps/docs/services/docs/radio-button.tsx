@@ -1,10 +1,11 @@
 import { Container } from 'anu/lib';
 import { Radio, RadioButtonGroup } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const radioDocumentation: ContentValues = {
-  heading: 'Radio',
-  subTitle: 'Radio buttons allow users to select one option from a set.',
+  mainHeading: 'Radio',
+  mainDescription: 'Radio buttons allow users to select one option from a set.',
   properties: [
     {
       name: 'id',
@@ -57,6 +58,7 @@ export const radioDocumentation: ContentValues = {
   examples: [
     {
       name: 'Basic',
+      id: 'basic',
       code: `<Container flexDirection='row' align='center' justify='space-around'>
   <Radio id='basic' />
   <Radio id='disabled' disabled />
@@ -70,6 +72,7 @@ export const radioDocumentation: ContentValues = {
     },
     {
       name: 'Label ',
+      id: 'label',
       code: `<Container flexDirection='row' justify='space-around' align='center' >
   <Radio id='label' label='Label' />
   <Radio id='labelLeft' label='Left' labelPlacement='left' />
@@ -89,6 +92,7 @@ export const radioDocumentation: ContentValues = {
     },
     {
       name: 'Radio Button Group',
+      id: 'radio-button-group',
       code: `<Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 700 }}>
       <RadioButtonGroup >
         <Radio id='button1' label='Button 1' />
@@ -105,6 +109,35 @@ export const radioDocumentation: ContentValues = {
           </RadioButtonGroup>
         </Container>
       ),
+    },
+  ],
+};
+
+export const radioButtonIndex: HeadingProps = {
+  heading: 'Regular Button',
+  links: [
+    {
+      components: [
+        {
+          title: 'Basic',
+          link: '#basic',
+        },
+        {
+          title: 'Label',
+          link: '#label',
+        },
+        {
+          title: 'Radio Button Group',
+          link: '#radio-button-group',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

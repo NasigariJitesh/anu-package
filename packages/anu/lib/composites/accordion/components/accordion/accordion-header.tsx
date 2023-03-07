@@ -21,7 +21,7 @@ const RenderIcon = (props: AccordionHeaderProps) => {
 
   return (
     <Icon
-      name={collapse ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
+      name={collapse ? 'keyboard-arrow-down' : 'keyboard-arrow-up'}
       {...props.iconProps}
       style={[style.icon, props.iconProps?.style]}
     />

@@ -528,11 +528,11 @@ export const getStyles = (props: ChipProps) => {
       break;
     }
     case 'input': {
-      key = selected ? 'input' : 'inputSelected';
+      key = selected ? 'inputSelected' : 'input';
       break;
     }
     case 'suggestion': {
-      if (elevated) key = selected ? 'suggestionElevated' : 'suggestionElevatedSelected';
+      if (elevated) key = selected ? 'suggestionElevatedSelected' : 'suggestionElevated';
       else key = selected ? 'suggestionSelected' : 'suggestion';
       break;
     }

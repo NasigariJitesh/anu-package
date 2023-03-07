@@ -1,9 +1,10 @@
 import { Checkbox, Container } from 'anu/lib';
+import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 export const checkBoxDocumentation: ContentValues = {
-  heading: 'Checkbox',
-  subTitle: 'Checkboxes allow users to select one or more items from a set. They can turn an option on or off.',
+  mainHeading: 'Checkbox',
+  mainDescription: 'Checkboxes allow users to select one or more items from a set. They can turn an option on or off.',
   properties: [
     {
       name: 'id',
@@ -78,6 +79,7 @@ export const checkBoxDocumentation: ContentValues = {
   examples: [
     {
       name: 'Basic Checkbox',
+      id: 'basic',
       code: `<Container flexDirection='row' align='center' justify='space-around'>
       <Checkbox id='basic' />
       <Checkbox id='disabled' disabled />
@@ -97,6 +99,7 @@ export const checkBoxDocumentation: ContentValues = {
     },
     {
       name: 'Indeterminate',
+      id: 'indeterminate',
       code: `<Container>
       <Checkbox id='indeterminate' indeterminate />
     </Container>`,
@@ -113,7 +116,9 @@ export const checkBoxDocumentation: ContentValues = {
       ),
     },
     {
-      name: 'Label ',
+      name: 'Label',
+      id: 'label',
+
       code: `<Container flexDirection='row' justify='space-around' align='center' >
       <Checkbox id='label' label='Label' />
       <Checkbox id='labelLeft' label='Left' labelPlacement='left' />
@@ -136,6 +141,35 @@ export const checkBoxDocumentation: ContentValues = {
           <Checkbox id='labelBottom' label='Bottom' labelPlacement='bottom' />
         </Container>
       ),
+    },
+  ],
+};
+
+export const checkboxIndex: HeadingProps = {
+  heading: 'Checkbox',
+  links: [
+    {
+      components: [
+        {
+          title: 'Basic',
+          link: '#basic',
+        },
+        {
+          title: 'Indeterminate',
+          link: '#indeterminate',
+        },
+        {
+          title: 'Label',
+          link: '#label',
+        },
+      ],
+      title: 'Examples',
+      link: '#example',
+    },
+    {
+      link: '#props',
+      title: 'Props',
+      components: [],
     },
   ],
 };

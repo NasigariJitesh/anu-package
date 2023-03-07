@@ -5,8 +5,8 @@ import ComponentExamples, { Example } from './component-examples';
 import ComponentProperties, { Property } from './components-properties';
 
 export interface ContentValues {
-  mainHeading?: string;
-  heading: string;
+  mainHeading: string;
+  heading?: string;
   mainDescription?: string;
   subTitle?: string;
   properties: Property[];
