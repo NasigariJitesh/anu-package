@@ -1,7 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Container } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
-import { ScrollView } from 'react-native';
 import { useMenuContext } from 'screens/common/provider';
 
 import ComponentDetails from './component-details';
