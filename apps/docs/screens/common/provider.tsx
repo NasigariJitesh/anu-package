@@ -17,13 +17,19 @@ export const useMenuContext = () => useContext(MenuContent);
  */
 export default function RootLayout(props: { children: ReactChildren }) {
   const [isOpen, toggleIsOpen] = useState(true);
+  const [isAdjustedToResize, toggleIsAdjustedToResize] = useState(false);
 
   const { width } = useWindowDimensions();
 
   useEffect(() => {
-    if (width >= 768) toggleIsOpen(true);
-    else toggleIsOpen(false);
-  }, [width]);
+    if (width >= 768) {
+      toggleIsOpen(true);
+      toggleIsAdjustedToResize(false);
+    } else if (width < 768 && !isAdjustedToResize) {
+      toggleIsOpen(false);
+      toggleIsAdjustedToResize(true);
+    }
+  }, [isAdjustedToResize, width]);
 
   const toggleMenu = () => {
     toggleIsOpen((previousState) => !previousState);

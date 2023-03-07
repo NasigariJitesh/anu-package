@@ -83,11 +83,7 @@ const MetaData = () => {
       <li style={style.listItem}>
         <MaterialCommunityIcon name='github' size={24} />
       </li>
-      {width < 768 ? (
-        <li style={style.listItem}>
-          <ToggleMenu />
-        </li>
-      ) : null}
+      <li style={style.listItem}>{width < 768 ? <ToggleMenu /> : null}</li>
     </ul>
   );
 };
@@ -108,7 +104,7 @@ const Navbar = () => {
 
 const style = {
   navbar: {
-    width: '100vw',
+    width: '100%',
     height: 70,
     display: 'flex',
     justifyContent: 'center',
@@ -129,14 +125,14 @@ const style = {
     alignSelf: 'center',
   },
   list: {
+    listStyleType: 'none',
     display: 'flex',
     flexDirection: 'row',
-    listStyleType: 'none',
   },
   listItem: {
     display: 'flex',
     alignItems: 'center',
-    margin: '0 16px',
+    margin: '0 0 0 32px',
   },
 } as const;
 

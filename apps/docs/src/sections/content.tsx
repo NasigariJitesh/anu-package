@@ -1,4 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import { Container } from 'anu/lib';
+import { useWindowDimensions } from 'hooks/useWindowDimensions';
+import { ViewStyle } from 'react-native';
+import { useMenuContext } from 'screens/common/provider';
 
 import ComponentDetails from './component-details';
 import ComponentExamples, { Example } from './component-examples';
@@ -18,19 +22,27 @@ interface ContentProps {
 }
 
 const Content = ({ values }: ContentProps) => {
+  const { isOpen } = useMenuContext();
+  const { width } = useWindowDimensions();
+
   const { mainHeading, heading, subTitle, properties, examples, mainDescription } = values;
+
   const styles = getStyles();
+
+  if (isOpen && width < 768) return null;
 
   return (
     <Container disableGutters style={styles.container}>
-      <ComponentDetails
-        mainHeading={mainHeading}
-        heading={heading}
-        subTitle={subTitle}
-        mainDescription={mainDescription}
-      />
-      <ComponentExamples examples={examples} />
-      <ComponentProperties properties={properties} />
+      <div id='root-scroll' style={{ height: 'calc(100vh - 90px)', overflowY: 'scroll' }}>
+        <ComponentDetails
+          mainHeading={mainHeading}
+          heading={heading}
+          subTitle={subTitle}
+          mainDescription={mainDescription}
+        />
+        <ComponentExamples examples={examples} />
+        <ComponentProperties properties={properties} />
+      </div>
     </Container>
   );
 };
@@ -38,9 +50,11 @@ const Content = ({ values }: ContentProps) => {
 const getStyles = () => {
   const styles = {
     container: {
+      maxWidth: 1440 - 500,
       width: '100%',
+      alignSelf: 'baseline',
       paddingHorizontal: 20,
-    },
+    } as ViewStyle,
   } as const;
   return styles;
 };
