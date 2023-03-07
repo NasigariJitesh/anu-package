@@ -204,6 +204,33 @@ export const textFieldDocumentation: ContentValues = {
   <TextField variant='filled' placeholder='Filled' errorMessage={['This is an error message 1', 'This is an error message 2']} />
 </Container>`,
     },
+    {
+      name: 'Disabled',
+      id: 'disabled',
+      component: (
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='flex-start'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 700 }}
+        >
+          <TextField variant='outlined' placeholder='Outlined Disabled' disabled />
+          <TextField variant='filled' placeholder='Filled Disabled' disabled />
+        </Container>
+      ),
+      code: `<Container
+  disableGutters
+  flexDirection='row'
+  align='center'
+  justify='space-around'
+  sx={{ width: '100%', maxWidth: 700 }}
+>
+  <TextField variant='outlined' placeholder='Outlined Disabled' disabled />
+  <TextField variant='filled' placeholder='Filled Disabled' disabled />
+  
+</Container>`,
+    },
   ],
 };
 
@@ -231,6 +258,10 @@ export const textFieldIndex: HeadingProps = {
         {
           title: 'Error Messages',
           link: '#error-messages',
+        },
+        {
+          title: 'Disabled',
+          link: '#disabled',
         },
       ],
       title: 'Examples',
