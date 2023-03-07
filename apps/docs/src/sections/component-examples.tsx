@@ -105,7 +105,7 @@ const getStyles = () => {
     },
     codeArea: {
       backgroundColor: colors.$primaryContainer,
-      maxWidth: '90vw',
+      maxWidth: 630,
       padding: 5,
       borderRadius: 10,
     },

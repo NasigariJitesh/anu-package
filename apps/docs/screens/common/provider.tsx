@@ -22,15 +22,12 @@ export default function RootLayout(props: { children: ReactChildren }) {
   const { width } = useWindowDimensions();
 
   useEffect(() => {
-    toggleIsOpen(width >= 768);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (width <= 0) return;
 
-  useEffect(() => {
-    if (width > 768) {
+    if (width >= 900) {
       toggleIsOpen(true);
       toggleIsAdjustedToResize(false);
-    } else if (width <= 768 && !isAdjustedToResize) {
+    } else if (width < 900 && !isAdjustedToResize) {
       toggleIsOpen(false);
       toggleIsAdjustedToResize(true);
     } else {

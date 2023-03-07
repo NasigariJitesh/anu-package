@@ -108,7 +108,7 @@ const RightSidebar = () => {
 
 const style = {
   container: {
-    width: 200,
+    width: 150,
     // width: '100%',
   },
   preHeading: {

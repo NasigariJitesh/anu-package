@@ -29,7 +29,7 @@ const Content = ({ values }: ContentProps) => {
 
   const styles = getStyles();
 
-  if (isOpen && width < 768) return null;
+  if (isOpen && width < 900) return null;
 
   return (
     <Container style={styles.container}>

@@ -77,7 +77,7 @@ const MetaData = () => {
 
     if (!width) return <ToggleMenu />;
 
-    return width <= 768 ? <ToggleMenu /> : null;
+    return width < 900 ? <ToggleMenu /> : null;
   };
 
   return (
