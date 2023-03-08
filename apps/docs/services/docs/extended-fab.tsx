@@ -48,8 +48,8 @@ export const extendedFABDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'FAB Color',
-      id: 'fab-color',
+      name: 'Extended FAB',
+      id: 'extended-fab',
       component: (
         <Container
           disableGutters
@@ -64,32 +64,13 @@ export const extendedFABDocumentation: ContentValues = {
           <ExtendedFAB FABColor='surface' title='Surface' icon={{ name: 'phone' }} />
         </Container>
       ),
-      code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-      <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} />
-      <ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} />
-      <ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} />
-      <ExtendedFAB FABColor='surface' title='Surface' icon={{ name: 'phone' }} />
-    </Container>`,
-    },
-    {
-      name: 'Lowered',
-      id: 'lowered',
-      component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
-          <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'add' }} />
-          <ExtendedFAB FABColor='primary' title='Lowered' icon={{ name: 'add' }} lowered />
-        </Container>
-      ),
-      code: `<Container flexDirection='row' justify='space-around'  align='center' >
-      <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'add' }} />
-      <ExtendedFAB FABColor='primary' title='Lowered' icon={{ name: 'add' }} lowered />
-    </Container>`,
+      code: `<ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} />
+
+<ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} />
+
+<ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} />
+
+<ExtendedFAB FABColor='surface' title='Surface' icon={{ name: 'phone' }} />`,
     },
   ],
 };
@@ -98,23 +79,12 @@ export const extendedFABIndex: HeadingProps = {
   heading: 'Extended FAB',
   links: [
     {
-      components: [
-        {
-          title: 'FAB Color',
-          link: '#fab-color',
-        },
-        {
-          title: 'Lowered',
-          link: '#lowered',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'Extended FAB',
+      link: '#extended-fab',
     },
     {
       link: '#props',
       title: 'Props',
-      components: [],
     },
   ],
 };

@@ -19,6 +19,11 @@ export const regularButtonDocumentation: ContentValues = {
       description: 'The type of the regular button',
     },
     {
+      name: 'icon',
+      description: 'The icon component or the icon props for material icons.',
+      type: 'IconType | ReactElement (optional)',
+    },
+    {
       name: 'containerStyle',
       description: 'The styles for the regular button component.',
       type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
@@ -36,8 +41,8 @@ export const regularButtonDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'Basic',
-      id: 'basic',
+      name: 'Elevated buttons',
+      id: 'elevated-buttons',
       component: (
         <Container
           disableGutters
@@ -47,23 +52,22 @@ export const regularButtonDocumentation: ContentValues = {
           sx={{ width: '100%', maxWidth: 700 }}
         >
           <Button.Elevated title='Elevated' />
-          <Button.Filled title='Filled' />
-          <Button.Outlined title='Outlined' />
-          <Button.Tonal title='Tonal' />
-          <Button.Text title='Text' />
+          <Button.Elevated icon={{ name: 'add' }} title='Elevated Icon' />
+          <Button.Elevated title='Disabled' disabled />
+          <Button.Elevated icon={{ name: 'add' }} title='Disabled' disabled />
         </Container>
       ),
-      code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-      <Button.Elevated title='Elevated' />
-      <Button.Filled title='Filled' />
-      <Button.Outlined title='Outlined' />
-      <Button.Tonal title='Tonal' />
-      <Button.Text title='Text' />
-    </Container>`,
+      code: `<Button.Elevated title='Elevated' />
+
+<Button.Elevated icon={{ name: 'add' }} title='Elevated Icon' />
+
+<Button.Elevated  title='Disabled' disabled />
+
+<Button.Elevated icon={{ name: 'add' }} title='Disabled' disabled />`,
     },
     {
-      name: 'Disabled',
-      id: 'disabled',
+      name: 'Filled buttons',
+      id: 'filled-buttons',
       component: (
         <Container
           disableGutters
@@ -72,20 +76,97 @@ export const regularButtonDocumentation: ContentValues = {
           justify='space-around'
           sx={{ width: '100%', maxWidth: 700 }}
         >
-          <Button.Elevated title='Elevated' disabled />
-          <Button.Filled title='Filled' disabled />
-          <Button.Outlined title='Outlined' disabled />
-          <Button.Tonal title='Tonal' disabled />
-          <Button.Text title='Text' disabled />
+          <Button.Filled title='Filled' />
+          <Button.Filled icon={{ name: 'add' }} title='Filled Icon' />
+          <Button.Filled title='Disabled' disabled />
+          <Button.Filled icon={{ name: 'add' }} title='Disabled' disabled />
         </Container>
       ),
-      code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-      <Button.Elevated title='Elevated' disabled />
-      <Button.Filled title='Filled' disabled />
-      <Button.Outlined title='Outlined' disabled />
-      <Button.Tonal title='Tonal' disabled />
-      <Button.Text title='Text' disabled />
-    </Container>`,
+      code: `<Button.Filled title='Filled' />
+
+<Button.Filled icon={{ name: 'add' }} title='Filled Icon' />
+
+<Button.Filled title='Disabled' disabled />
+
+<Button.Filled icon={{ name: 'add' }} title='Disabled' disabled />`,
+    },
+
+    {
+      name: 'Filled tonal buttons',
+      id: 'filled-tonal-buttons',
+      component: (
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 700 }}
+        >
+          <Button.Tonal title='Tonal' />
+          <Button.Tonal icon={{ name: 'add' }} title='Tonal Icon' />
+          <Button.Tonal title='Disabled' disabled />
+          <Button.Tonal icon={{ name: 'add' }} title='Disabled' disabled />
+        </Container>
+      ),
+      code: `<Button.Tonal title='Tonal' />
+
+<Button.Tonal icon={{ name: 'add' }} title='Tonal Icon' />
+
+<Button.Tonal title='Disabled' disabled />
+
+<Button.Tonal icon={{ name: 'add' }} title='Disabled' disabled />`,
+    },
+
+    {
+      name: 'Outlined buttons',
+      id: 'outlined-buttons',
+      component: (
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 700 }}
+        >
+          <Button.Outlined title='Outlined' />
+          <Button.Outlined icon={{ name: 'add' }} title='Outlined Icon' />
+          <Button.Outlined title='Disabled' disabled />
+          <Button.Outlined icon={{ name: 'add' }} title='Disabled' disabled />
+        </Container>
+      ),
+      code: `<Button.Outlined title='Outlined' />
+
+<Button.Outlined icon={{ name: 'add' }} title='Outlined Icon' />
+
+<Button.Outlined title='Disabled' disabled />
+
+<Button.Outlined icon={{ name: 'add' }} title='Disabled' disabled />`,
+    },
+
+    {
+      name: 'Text buttons',
+      id: 'text-buttons',
+      component: (
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='center'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 700 }}
+        >
+          <Button.Text title='Text' />
+          <Button.Text icon={{ name: 'add' }} title='Text Icon' />
+          <Button.Text title='Disabled' disabled />
+          <Button.Text icon={{ name: 'add' }} title='Disabled' disabled />
+        </Container>
+      ),
+      code: `<Button.Text title='Text' />
+
+<Button.Text icon={{ name: 'add' }} title='Text Icon' />
+
+<Button.Text title='Disabled' disabled />
+
+<Button.Text icon={{ name: 'add' }} title='Disabled' disabled />`,
     },
   ],
 };
@@ -93,23 +174,32 @@ export const regularButtonIndex: HeadingProps = {
   heading: 'Regular Button',
   links: [
     {
-      components: [
-        {
-          title: 'Basic',
-          link: '#basic',
-        },
-        {
-          title: 'Disabled',
-          link: '#disabled',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'Elevated buttons',
+      link: '#elevated-buttons',
     },
+    {
+      title: 'Filled buttons',
+      link: '#filled-buttons',
+    },
+
+    {
+      title: 'Filled tonal buttons',
+      link: '#filled-tonal-buttons',
+    },
+
+    {
+      title: 'Outlined buttons',
+      link: '#outlined-buttons',
+    },
+
+    {
+      title: 'Text buttons',
+      link: '#text-buttons',
+    },
+
     {
       link: '#props',
       title: 'Props',
-      components: [],
     },
   ],
 };

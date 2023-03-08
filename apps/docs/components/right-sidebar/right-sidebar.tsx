@@ -33,7 +33,7 @@ type ComponentLinks = Link;
 interface SubIndex {
   title: string;
   link?: string;
-  components: ComponentLinks[];
+  components?: ComponentLinks[];
 }
 
 export interface HeadingProps {
@@ -60,7 +60,7 @@ const Group = (props: HeadingProps) => {
   );
 };
 
-const Components = (props: { links: ComponentLinks[] }) => {
+const Components = (props: { links: ComponentLinks[] | undefined }) => {
   const { pathname } = useRouter();
 
   return (

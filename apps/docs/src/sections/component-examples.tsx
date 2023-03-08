@@ -52,8 +52,8 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
   };
 
   return (
-    <Container nativeID='example' disableGutters style={styles.container}>
-      <Typography.Headline style={styles.heading}>{translations('en', 'examples')}</Typography.Headline>
+    <Container disableGutters style={styles.container}>
+      {/* <Typography.Headline style={styles.heading}>{translations('en', 'examples')}</Typography.Headline> */}
       {examples.map((example, index) => renderExample(example, index))}
     </Container>
   );
@@ -86,7 +86,7 @@ const getStyles = () => {
     name: {
       color: colors.$onSurface,
       fontFamily: source.style.fontFamily,
-      fontSize: 18,
+      fontSize: 22,
       fontWeight: '600',
       lineHeight: 22,
       marginBottom: 8,

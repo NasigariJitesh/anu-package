@@ -64,6 +64,10 @@ export interface ButtonProps extends RNButtonProps {
  */
 export interface RegularButtonProps extends ButtonProps {
   size: 'medium';
+  /**
+   * The icon component or the icon props for material icons.
+   */
+  icon?: IconType | ReactElement;
 }
 
 /**
