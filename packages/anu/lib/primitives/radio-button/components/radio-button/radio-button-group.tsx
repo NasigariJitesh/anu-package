@@ -12,13 +12,13 @@ import { RadioButtonGroupProps } from '../../types';
  * @returns - React Component with updated props
  */
 const addPropsToEachRadio = (c: ReactElement, selected: string, onPressHandler: (value: string) => void) => {
-  if (typeof c.type !== 'string' && c.type.name === 'Radio') {
-    const p = { ...c.props, selected: selected, onPress: onPressHandler };
+  // if (typeof c.type !== 'string' && c.type.name === 'Radio') {
+  const p = { ...c.props, selected: selected, onPress: onPressHandler };
 
-    return { ...c, props: p };
-  } else {
-    throw new Error('Only Radio components can be children');
-  }
+  return { ...c, props: p };
+  // } else {
+  //   throw new Error('Only Radio components can be children');
+  // }
 };
 
 /**

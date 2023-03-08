@@ -43,7 +43,6 @@ export const containerDocumentation: ContentValues = {
       type: "'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' (optional)",
       defaultValue: "'flex-start'",
     },
-
     {
       name: 'style',
       description: 'The styles for the container component.',
