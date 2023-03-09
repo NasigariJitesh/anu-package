@@ -14,7 +14,7 @@ import { defaultProps } from './default';
  * @param {IconButtonProps} props - all the props related to the component
  */
 const IconButton = (props: IconButtonProps) => {
-  const [isSelected, toggleSelected] = useState(false);
+  const [isSelected, toggleSelected] = useState(props.toggle === undefined ? false : props.toggle);
 
   const restOfTheProps = { ...defaultProps, ...props };
 
@@ -25,7 +25,7 @@ const IconButton = (props: IconButtonProps) => {
   };
 
   const onPressHandler = (event: GestureResponderEvent) => {
-    toggleSelected((previous) => !previous);
+    if (props.toggle != undefined) toggleSelected((previous) => !previous);
     if (restOfTheProps.onPress) restOfTheProps.onPress(event);
   };
 

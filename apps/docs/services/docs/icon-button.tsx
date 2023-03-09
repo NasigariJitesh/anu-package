@@ -1,4 +1,4 @@
-import { Container, Icon, IconButton } from 'anu/lib';
+import { Container, IconButton } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
@@ -47,18 +47,28 @@ export const iconButtonDocumentation: ContentValues = {
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle}>
           <IconButton type='filled' icon={{ name: 'favorite' }} containerStyle={style} />
-          <IconButton type='filled' icon={<Icon name='favorite' />} containerStyle={style} />
-          <IconButton type='filled' icon={{ name: 'favorite' }} toggle containerStyle={style} />
           <IconButton type='filled' icon={{ name: 'favorite' }} disabled containerStyle={style} />
         </Container>
       ),
       code: `<IconButton type='filled' icon={{ name: 'favorite' }} />
-
-<IconButton type='filled' icon={<Icon name='favorite' />} />
-
-<IconButton type='filled' icon={{ name: 'favorite' }} toggle />
-
 <IconButton type='filled' icon={{ name: 'favorite' }} disabled />`,
+    },
+
+    {
+      name: 'Filled icon button - Toggle',
+      id: 'filled-icon-button-toggle',
+      component: (
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <IconButton type='filled' icon={{ name: 'favorite' }} toggle={true} containerStyle={style} />
+          <IconButton type='filled' icon={{ name: 'favorite' }} toggle={true} disabled containerStyle={style} />
+          <IconButton type='filled' icon={{ name: 'favorite' }} toggle={false} containerStyle={style} />
+          <IconButton type='filled' icon={{ name: 'favorite' }} toggle={false} disabled containerStyle={style} />
+        </Container>
+      ),
+      code: `<IconButton type='filled' icon={{ name: 'favorite' }} toggle={true} containerStyle={style} />
+<IconButton type='filled' icon={{ name: 'favorite' }} toggle={true} disabled containerStyle={style} />
+<IconButton type='filled' icon={{ name: 'favorite' }} toggle={false} containerStyle={style} />
+<IconButton type='filled' icon={{ name: 'favorite' }} toggle={false} disabled containerStyle={style} />`,
     },
 
     {
@@ -67,56 +77,88 @@ export const iconButtonDocumentation: ContentValues = {
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle}>
           <IconButton type='tonal' icon={{ name: 'favorite' }} containerStyle={style} />
-          <IconButton type='tonal' icon={<Icon name='favorite' />} containerStyle={style} />
-          <IconButton type='tonal' icon={{ name: 'favorite' }} toggle containerStyle={style} />
           <IconButton type='tonal' icon={{ name: 'favorite' }} disabled containerStyle={style} />
         </Container>
       ),
       code: `<IconButton type='tonal' icon={{ name: 'favorite' }} />
-
-<IconButton type='tonal' icon={<Icon name='favorite' />} />
-
-<IconButton type='tonal' icon={{ name: 'favorite' }} toggle />
-
 <IconButton type='tonal' icon={{ name: 'favorite' }} disabled />`,
     },
+
+    {
+      name: 'Filled tonal icon button - Toggle',
+      id: 'filled-tonal-icon-button-toggle',
+      component: (
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <IconButton type='tonal' icon={{ name: 'favorite' }} toggle={true} containerStyle={style} />
+          <IconButton type='tonal' icon={{ name: 'favorite' }} toggle={true} disabled containerStyle={style} />
+          <IconButton type='tonal' icon={{ name: 'favorite' }} toggle={false} containerStyle={style} />
+          <IconButton type='tonal' icon={{ name: 'favorite' }} toggle={false} disabled containerStyle={style} />
+        </Container>
+      ),
+      code: `<IconButton type='tonal' icon={{ name: 'favorite' }} toggle={true} containerStyle={style} />
+<IconButton type='tonal' icon={{ name: 'favorite' }} toggle={true} disabled containerStyle={style} />
+<IconButton type='tonal' icon={{ name: 'favorite' }} toggle={false} containerStyle={style} />
+<IconButton type='tonal' icon={{ name: 'favorite' }} toggle={false} disabled containerStyle={style} />`,
+    },
+
     {
       name: 'Outlined icon button',
       id: 'outlined-icon-button',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle}>
           <IconButton type='outlined' icon={{ name: 'favorite' }} containerStyle={style} />
-          <IconButton type='outlined' icon={<Icon name='favorite' />} containerStyle={style} />
-          <IconButton type='outlined' icon={{ name: 'favorite' }} toggle containerStyle={style} />
           <IconButton type='outlined' icon={{ name: 'favorite' }} disabled containerStyle={style} />
         </Container>
       ),
       code: `<IconButton type='outlined' icon={{ name: 'favorite' }} />
-
-<IconButton type='outlined' icon={<Icon name='favorite' />} />
-
-<IconButton type='outlined' icon={{ name: 'favorite' }} toggle />
-
 <IconButton type='outlined' icon={{ name: 'favorite' }} disabled />`,
     },
+
+    {
+      name: 'Outlined icon button - Toggle',
+      id: 'outlined-icon-button-toggle',
+      component: (
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <IconButton type='outlined' icon={{ name: 'favorite' }} toggle={true} containerStyle={style} />
+          <IconButton type='outlined' icon={{ name: 'favorite' }} toggle={true} disabled containerStyle={style} />
+          <IconButton type='outlined' icon={{ name: 'favorite' }} toggle={false} containerStyle={style} />
+          <IconButton type='outlined' icon={{ name: 'favorite' }} toggle={false} disabled containerStyle={style} />
+        </Container>
+      ),
+      code: `<IconButton type='outlined' icon={{ name: 'favorite' }} toggle={true} containerStyle={style} />
+<IconButton type='outlined' icon={{ name: 'favorite' }} toggle={true} disabled containerStyle={style} />
+<IconButton type='outlined' icon={{ name: 'favorite' }} toggle={false} containerStyle={style} />
+<IconButton type='outlined' icon={{ name: 'favorite' }} toggle={false} disabled containerStyle={style} />`,
+    },
+
     {
       name: 'Standard icon button',
       id: 'standard-icon-button',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle}>
           <IconButton type='standard' icon={{ name: 'favorite' }} containerStyle={style} />
-          <IconButton type='standard' icon={<Icon name='favorite' />} containerStyle={style} />
-          <IconButton type='standard' icon={{ name: 'favorite' }} toggle containerStyle={style} />
           <IconButton type='standard' icon={{ name: 'favorite' }} disabled containerStyle={style} />
         </Container>
       ),
       code: `<IconButton type='standard' icon={{ name: 'favorite' }} />
-
-<IconButton type='standard' icon={<Icon name='favorite' />} />
-
-<IconButton type='standard' icon={{ name: 'favorite' }} toggle />
-
 <IconButton type='standard' icon={{ name: 'favorite' }} disabled />`,
+    },
+
+    {
+      name: 'Standard icon button - Toggle',
+      id: 'standard-icon-button-toggle',
+      component: (
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <IconButton type='standard' icon={{ name: 'favorite' }} toggle={true} containerStyle={style} />
+          <IconButton type='standard' icon={{ name: 'favorite' }} toggle={true} disabled containerStyle={style} />
+          <IconButton type='standard' icon={{ name: 'favorite' }} toggle={false} containerStyle={style} />
+          <IconButton type='standard' icon={{ name: 'favorite' }} toggle={false} disabled containerStyle={style} />
+        </Container>
+      ),
+      code: `<IconButton type='standard' icon={{ name: 'favorite' }} toggle={true} containerStyle={style} />
+<IconButton type='standard' icon={{ name: 'favorite' }} toggle={true} disabled containerStyle={style} />
+<IconButton type='standard' icon={{ name: 'favorite' }} toggle={false} containerStyle={style} />
+<IconButton type='standard' icon={{ name: 'favorite' }} toggle={false} disabled containerStyle={style} />`,
     },
   ],
 };
@@ -129,16 +171,32 @@ export const iconButtonIndex: HeadingProps = {
       link: '#filled-icon-button',
     },
     {
+      title: 'Filled icon button - Toggle',
+      link: '#filled-icon-button-toggle',
+    },
+    {
       title: 'Filled tonal icon button',
       link: '#filled-tonal-icon-button',
+    },
+    {
+      title: 'Filled tonal icon button - Toggle',
+      link: '#filled-tonal-icon-button-toggle',
     },
     {
       title: 'Outlined icon button',
       link: '#outlined-icon-button',
     },
     {
+      title: 'Outlined icon button - Toggle',
+      link: '#outlined-icon-button-toggle',
+    },
+    {
       title: 'Standard icon button',
       link: '#standard-icon-button',
+    },
+    {
+      title: 'Standard icon button - Toggle',
+      link: '#standard-icon-button-toggle',
     },
 
     {

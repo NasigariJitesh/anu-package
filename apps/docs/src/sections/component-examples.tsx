@@ -1,7 +1,7 @@
 import { ReactChildren } from 'anu/common/types';
 import { getTheme } from 'anu/config';
 import { Container, Typography } from 'anu/lib';
-import { Source_Sans_Pro } from 'next/font/google';
+import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import { ScrollView } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
@@ -9,6 +9,12 @@ import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import { translations } from '../../services/localization';
 
 const source = Source_Sans_Pro({
+  weight: ['400', '600'],
+  style: 'normal',
+  subsets: ['latin'],
+});
+
+const firaCode = Fira_Code({
   weight: ['400', '600'],
   style: 'normal',
   subsets: ['latin'],
@@ -96,8 +102,9 @@ const getStyles = () => {
       marginTop: 8,
     },
     code: {
+      fontFamily: firaCode.style.fontFamily,
       backgroundColor: 'transparent',
-      fontSize: 16,
+      fontSize: 14,
       fontWeight: '400',
     },
     divider: {
