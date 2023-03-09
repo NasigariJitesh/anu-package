@@ -33,7 +33,7 @@ type ComponentLinks = Link;
 interface SubIndex {
   title: string;
   link?: string;
-  components: ComponentLinks[];
+  components?: ComponentLinks[];
 }
 
 export interface HeadingProps {
@@ -60,7 +60,7 @@ const Group = (props: HeadingProps) => {
   );
 };
 
-const Components = (props: { links: ComponentLinks[] }) => {
+const Components = (props: { links: ComponentLinks[] | undefined }) => {
   const { pathname } = useRouter();
 
   return (
@@ -174,8 +174,8 @@ const RightSidebar = () => {
 
 const style = {
   container: {
-    width: 150,
-    // width: '100%',
+    width: 200,
+    zIndex: 1,
   },
   preHeading: {
     fontFamily: source.style.fontFamily,

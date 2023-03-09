@@ -2,6 +2,12 @@ import { Container, FAB } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
+const style = {
+  margin: 10,
+};
+
+const flexStyle = { width: 300, flexWrap: 'wrap' } as const;
+
 export const FABDocumentation: ContentValues = {
   mainHeading: 'Button',
   heading: 'Floating Action Buttons',
@@ -44,64 +50,61 @@ export const FABDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'Size',
-      id: 'size',
+      name: 'FAB',
+      id: 'fab',
       component: (
-        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 700 }}>
-          <FAB FABColor='primary' size='small' icon={{ name: 'add' }} />
-          <FAB FABColor='primary' size='medium' icon={{ name: 'add' }} />
-          <FAB FABColor='primary' size='large' icon={{ name: 'add' }} />
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='tertiary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='surface' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
         </Container>
       ),
-      code: `<Container flexDirection='row' justify='space-around'  align='center' >
-      <FAB FABColor='primary' size='small' icon={{ name: 'add' }} />
-      <FAB FABColor='primary' size='medium' icon={{ name: 'add' }} />
-      <FAB FABColor='primary' size='large' icon={{ name: 'add' }} />
-    </Container>`,
+      code: `<FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
+
+<FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} />
+
+<FAB FABColor='tertiary' size='medium' icon={{ name: 'phone' }} />
+
+<FAB FABColor='surface' size='medium' icon={{ name: 'phone' }} />`,
     },
     {
-      name: 'FAB Color',
-      id: 'fab-color',
+      name: 'Small FAB',
+      id: 'small-fab',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
-          <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
-          <FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} />
-          <FAB FABColor='tertiary' size='medium' icon={{ name: 'phone' }} />
-          <FAB FABColor='surface' size='medium' icon={{ name: 'phone' }} />
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <FAB FABColor='primary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='secondary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='tertiary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='surface' size='small' icon={{ name: 'phone' }} containerStyle={style} />
         </Container>
       ),
-      code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-      <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
-      <FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} />
-      <FAB FABColor='tertiary' size='medium' icon={{ name: 'phone' }} />
-      <FAB FABColor='surface' size='medium' icon={{ name: 'phone' }} />
-    </Container>`,
+      code: `<FAB FABColor='primary' size='small' icon={{ name: 'phone' }} />
+
+<FAB FABColor='secondary' size='small' icon={{ name: 'phone' }} />
+
+<FAB FABColor='tertiary' size='small' icon={{ name: 'phone' }} />
+
+<FAB FABColor='surface' size='small' icon={{ name: 'phone' }} />`,
     },
     {
-      name: 'Lowered',
-      id: 'lowered',
+      name: 'Large FAB',
+      id: 'large-fab',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
-          <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
-          <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} lowered />
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <FAB FABColor='primary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='secondary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='tertiary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='surface' size='large' icon={{ name: 'phone' }} containerStyle={style} />
         </Container>
       ),
-      code: `<Container flexDirection='row' justify='space-around'  align='center' >
-      <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
-      <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} lowered />
-    </Container>`,
+      code: `<FAB FABColor='primary' size='large' icon={{ name: 'phone' }} />
+
+<FAB FABColor='secondary' size='large' icon={{ name: 'phone' }} />
+
+<FAB FABColor='tertiary' size='large' icon={{ name: 'phone' }} />
+
+<FAB FABColor='surface' size='large' icon={{ name: 'phone' }} />`,
     },
   ],
 };
@@ -110,22 +113,16 @@ export const FABIndex: HeadingProps = {
   heading: 'FAB',
   links: [
     {
-      components: [
-        {
-          title: 'Size',
-          link: '#size',
-        },
-        {
-          title: 'FAB Color',
-          link: '#fab-color',
-        },
-        {
-          title: 'Lowered',
-          link: '#lowered',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'FAB',
+      link: '#fab',
+    },
+    {
+      title: 'Small FAB',
+      link: '#small-fab',
+    },
+    {
+      title: 'Large FAB',
+      link: '#large-fab',
     },
     {
       link: '#props',

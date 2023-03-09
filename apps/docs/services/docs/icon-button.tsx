@@ -2,6 +2,11 @@ import { Container, Icon, IconButton } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
+const style = {
+  margin: 15,
+};
+const flexStyle = { width: 300, flexWrap: 'wrap' } as const;
+
 export const iconButtonDocumentation: ContentValues = {
   mainHeading: 'Button',
   heading: 'Icon Buttons',
@@ -37,97 +42,81 @@ export const iconButtonDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'Basic',
-      id: 'basic',
+      name: 'Filled icon button',
+      id: 'filled-icon-button',
       component: (
-        <Container sx={{ width: '100%', maxWidth: 700 }}>
-          <Container
-            flexDirection='row'
-            align='center'
-            justify='space-around'
-            sx={{ width: '100%', maxWidth: 700, marginBottom: 10 }}
-          >
-            <IconButton type='filled' icon={{ name: 'favorite' }} />
-            <IconButton type='tonal' icon={{ name: 'flag' }} />
-            <IconButton type='outlined' icon={{ name: 'label' }} />
-            <IconButton type='standard' icon={{ name: 'person' }} />
-          </Container>
-          <Container
-            disableGutters
-            flexDirection='row'
-            align='center'
-            justify='space-around'
-            sx={{ width: '100%', maxWidth: 700 }}
-          >
-            <IconButton type='filled' icon={<Icon name='favorite' />} />
-            <IconButton type='tonal' icon={<Icon name='flag' />} />
-            <IconButton type='outlined' icon={<Icon name='label' />} />
-            <IconButton type='standard' icon={<Icon name='person' />} />
-          </Container>
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <IconButton type='filled' icon={{ name: 'favorite' }} containerStyle={style} />
+          <IconButton type='filled' icon={<Icon name='favorite' />} containerStyle={style} />
+          <IconButton type='filled' icon={{ name: 'favorite' }} toggle containerStyle={style} />
+          <IconButton type='filled' icon={{ name: 'favorite' }} disabled containerStyle={style} />
         </Container>
       ),
-      code: `<Container>
-      <Container flexDirection='row'  align='center'  justify='space-around' >
-        <IconButton type='filled' icon={{ name: 'favorite' }} />
-        <IconButton type='tonal' icon={{ name: 'flag' }} />
-        <IconButton type='outlined' icon={{ name: 'label' }} />
-        <IconButton type='standard' icon={{ name: 'person' }} />
-      </Container>
-      <Container flexDirection='row'  align='center'  justify='space-around' >
-        <IconButton type='filled' icon={<Icon name='favorite' />} />
-        <IconButton type='tonal' icon={<Icon name='flag' />} />
-        <IconButton type='outlined' icon={<Icon name='label' />} />
-        <IconButton type='standard' icon={<Icon name='person' />} />
-      </Container>
-    </Container>`,
+      code: `<IconButton type='filled' icon={{ name: 'favorite' }} />
+
+<IconButton type='filled' icon={<Icon name='favorite' />} />
+
+<IconButton type='filled' icon={{ name: 'favorite' }} toggle />
+
+<IconButton type='filled' icon={{ name: 'favorite' }} disabled />`,
+    },
+
+    {
+      name: 'Filled tonal icon button',
+      id: 'filled-tonal-icon-button',
+      component: (
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <IconButton type='tonal' icon={{ name: 'favorite' }} containerStyle={style} />
+          <IconButton type='tonal' icon={<Icon name='favorite' />} containerStyle={style} />
+          <IconButton type='tonal' icon={{ name: 'favorite' }} toggle containerStyle={style} />
+          <IconButton type='tonal' icon={{ name: 'favorite' }} disabled containerStyle={style} />
+        </Container>
+      ),
+      code: `<IconButton type='tonal' icon={{ name: 'favorite' }} />
+
+<IconButton type='tonal' icon={<Icon name='favorite' />} />
+
+<IconButton type='tonal' icon={{ name: 'favorite' }} toggle />
+
+<IconButton type='tonal' icon={{ name: 'favorite' }} disabled />`,
     },
     {
-      name: 'Disabled',
-      id: 'disabled',
+      name: 'Outlined icon button',
+      id: 'outlined-icon-button',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
-          <IconButton type='filled' icon={{ name: 'favorite' }} disabled />
-          <IconButton type='tonal' icon={{ name: 'flag' }} disabled />
-          <IconButton type='outlined' icon={{ name: 'label' }} disabled />
-          <IconButton type='standard' icon={{ name: 'person' }} disabled />
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <IconButton type='outlined' icon={{ name: 'favorite' }} containerStyle={style} />
+          <IconButton type='outlined' icon={<Icon name='favorite' />} containerStyle={style} />
+          <IconButton type='outlined' icon={{ name: 'favorite' }} toggle containerStyle={style} />
+          <IconButton type='outlined' icon={{ name: 'favorite' }} disabled containerStyle={style} />
         </Container>
       ),
-      code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-      <IconButton type='filled' icon={{ name: 'favorite' }} disabled />
-      <IconButton type='tonal' icon={{ name: 'flag' }} disabled />
-      <IconButton type='outlined' icon={{ name: 'label' }} disabled />
-      <IconButton type='standard' icon={{ name: 'person' }} disabled />
-    </Container>`,
+      code: `<IconButton type='outlined' icon={{ name: 'favorite' }} />
+
+<IconButton type='outlined' icon={<Icon name='favorite' />} />
+
+<IconButton type='outlined' icon={{ name: 'favorite' }} toggle />
+
+<IconButton type='outlined' icon={{ name: 'favorite' }} disabled />`,
     },
     {
-      name: 'Toggle',
-      id: 'toggle',
+      name: 'Standard icon button',
+      id: 'standard-icon-button',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
-          <IconButton type='filled' icon={{ name: 'favorite' }} toggle />
-          <IconButton type='tonal' icon={{ name: 'flag' }} toggle />
-          <IconButton type='outlined' icon={{ name: 'label' }} toggle />
-          <IconButton type='standard' icon={{ name: 'person' }} toggle />
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <IconButton type='standard' icon={{ name: 'favorite' }} containerStyle={style} />
+          <IconButton type='standard' icon={<Icon name='favorite' />} containerStyle={style} />
+          <IconButton type='standard' icon={{ name: 'favorite' }} toggle containerStyle={style} />
+          <IconButton type='standard' icon={{ name: 'favorite' }} disabled containerStyle={style} />
         </Container>
       ),
-      code: `<Container flexDirection='row'  align='center' justify='space-around' >
-      <IconButton type='filled' icon={{ name: 'favorite' }} toggle />
-      <IconButton type='tonal' icon={{ name: 'flag' }} toggle />
-      <IconButton type='outlined' icon={{ name: 'label' }} toggle />
-      <IconButton type='standard' icon={{ name: 'person' }} toggle />
-    </Container>`,
+      code: `<IconButton type='standard' icon={{ name: 'favorite' }} />
+
+<IconButton type='standard' icon={<Icon name='favorite' />} />
+
+<IconButton type='standard' icon={{ name: 'favorite' }} toggle />
+
+<IconButton type='standard' icon={{ name: 'favorite' }} disabled />`,
     },
   ],
 };
@@ -136,27 +125,25 @@ export const iconButtonIndex: HeadingProps = {
   heading: 'Icon Button',
   links: [
     {
-      components: [
-        {
-          title: 'Basic',
-          link: '#basic',
-        },
-        {
-          title: 'Disabled',
-          link: '#disabled',
-        },
-        {
-          title: 'Toggle',
-          link: '#toggle',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'Filled icon button',
+      link: '#filled-icon-button',
     },
+    {
+      title: 'Filled tonal icon button',
+      link: '#filled-tonal-icon-button',
+    },
+    {
+      title: 'Outlined icon button',
+      link: '#outlined-icon-button',
+    },
+    {
+      title: 'Standard icon button',
+      link: '#standard-icon-button',
+    },
+
     {
       link: '#props',
       title: 'Props',
-      components: [],
     },
   ],
 };

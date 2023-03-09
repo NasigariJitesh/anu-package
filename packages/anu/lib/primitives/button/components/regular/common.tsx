@@ -1,11 +1,12 @@
 import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
+import { Icon } from 'lib/index';
 import Container from 'lib/primitives/layout';
 import Typography from 'lib/primitives/typography';
 import { PressableStateCallbackType } from 'react-native';
 
-import { ButtonProps } from '../../types';
-import { getButtonStyles } from '../../utils';
+import { RegularButtonProps as ButtonProps } from '../../types';
+import { getButtonStyles, getLabelStyles } from '../../utils';
 
 /**
  * Function to render the Button component with the styles
@@ -13,11 +14,23 @@ import { getButtonStyles } from '../../utils';
  * @param {ButtonProps} props - all the props related to the component
  */
 export const RenderComponent = (props: ButtonProps) => {
-  const labelStyles = { color: 'inherit', cursor: 'pointer' };
   const { styles, stateLayerStyles } = getButtonStyles(props);
+  const labelStyles = getLabelStyles(props);
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, stateLayerStyles, useSx);
+  };
+
+  const getIcon = () => {
+    const { icon } = props;
+
+    if (icon)
+      return 'name' in icon ? (
+        <Icon size={18} color='inherit' name={icon.name as never} {...icon.props} style={icon.props?.style} />
+      ) : (
+        icon
+      );
+    else return null;
   };
 
   return (
@@ -30,6 +43,7 @@ export const RenderComponent = (props: ButtonProps) => {
         style={generateStyles}
         disabled={props.disabled}
       >
+        {getIcon()}
         <Typography.Label size='large' style={getCombinedStylesForText(labelStyles, props.labelStyle)}>
           {props.title}
         </Typography.Label>

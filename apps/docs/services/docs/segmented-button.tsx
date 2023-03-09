@@ -2,6 +2,8 @@ import { Container, SegmentedButton, SegmentedButtonGroup } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
+const flexStyle = { width: 300, flexWrap: 'wrap' } as const;
+
 export const segmentedButtonDocumentation: ContentValues = {
   mainHeading: 'Button',
   heading: 'Segmented Buttons',
@@ -57,16 +59,10 @@ export const segmentedButtonDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'Basic',
-      id: 'basic',
+      name: 'Segmented Button',
+      id: 'segmented-button',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
           <SegmentedButtonGroup>
             <SegmentedButton id='segmentedButton1' title='Button 1' />
             <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
@@ -75,26 +71,18 @@ export const segmentedButtonDocumentation: ContentValues = {
           </SegmentedButtonGroup>
         </Container>
       ),
-      code: `<Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 700 }}>
-      <SegmentedButtonGroup>
-        <SegmentedButton id='segmentedButton1' title='Button 1' />
-        <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
-        <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
-        <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} />
-      </SegmentedButtonGroup>
-    </Container>`,
+      code: `<SegmentedButtonGroup>
+  <SegmentedButton id='segmentedButton1' title='Button 1' />
+  <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
+  <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
+  <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} />
+</SegmentedButtonGroup>`,
     },
     {
-      name: 'Multi Select',
-      id: 'multi-select',
+      name: 'Multi Select Segmented Button',
+      id: 'multi-select-segmented-button',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
           <SegmentedButtonGroup multiSelect>
             <SegmentedButton id='segmentedButton1' title='Button 1' />
             <SegmentedButton id='segmentedButton2' title='Button 2' />
@@ -103,14 +91,12 @@ export const segmentedButtonDocumentation: ContentValues = {
           </SegmentedButtonGroup>
         </Container>
       ),
-      code: `<Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 700 }}>
-      <SegmentedButtonGroup multiSelect>
-        <SegmentedButton id='segmentedButton1' title='Button 1' />
-        <SegmentedButton id='segmentedButton2' title='Button 2' />
-        <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
-        <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} disabled />
-      </SegmentedButtonGroup>
-    </Container>`,
+      code: `<SegmentedButtonGroup multiSelect>
+  <SegmentedButton id='segmentedButton1' title='Button 1' />
+  <SegmentedButton id='segmentedButton2' title='Button 2' />
+  <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
+  <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} disabled />
+</SegmentedButtonGroup>`,
     },
   ],
 };
@@ -119,18 +105,12 @@ export const segmentedButtonIndex: HeadingProps = {
   heading: 'Segmented Button',
   links: [
     {
-      components: [
-        {
-          title: 'Basic',
-          link: '#basic',
-        },
-        {
-          title: 'Multi Select',
-          link: '#multi-select',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'Segmented Button',
+      link: '#segmented-button',
+    },
+    {
+      title: 'Multi Select Segmented Button ',
+      link: '#multi-select-segmented-button',
     },
     {
       link: '#props',

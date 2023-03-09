@@ -1,7 +1,7 @@
 import { getColorInRGBA } from 'common/utils';
 import { getTheme } from 'config/dripsy/theme';
 
-import { ButtonContainerStyle, ButtonProps } from '../types';
+import { ButtonContainerStyle, ButtonProps, RegularButtonProps } from '../types';
 
 /**
  * This is a central store for all the default button style
@@ -67,12 +67,9 @@ const getButtonTheme = () => {
     outlined: {
       backgroundColor: 'transparent',
       color: themeColors.$primary,
-      borderWidth: 1,
-      borderColor: themeColors.$outline,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
-        borderColor: getColorInRGBA(themeColors.$onSurface, 12),
       },
     },
     text: {
@@ -90,17 +87,17 @@ const getButtonTheme = () => {
       minHeight: 40,
       minWidth: 100,
       color: 'inherit',
-
+      flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,
       transitionProperty: 'all',
       transitionTimingFunction: 'ease',
       transitionDuration: '.2s',
+      paddingHorizontal: 16,
     },
     filled: {
       backgroundColor: 'transparent',
-      paddingHorizontal: 24,
 
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onPrimary, 8),
@@ -124,7 +121,6 @@ const getButtonTheme = () => {
     },
     elevated: {
       backgroundColor: 'transparent',
-      paddingHorizontal: 24,
 
       '@hover': {
         shadowColor: themeColors.$shadow,
@@ -148,7 +144,6 @@ const getButtonTheme = () => {
     },
     tonal: {
       backgroundColor: 'transparent',
-      paddingHorizontal: 24,
 
       '@hover': {
         shadowColor: themeColors.$shadow,
@@ -174,7 +169,6 @@ const getButtonTheme = () => {
       backgroundColor: 'transparent',
       borderWidth: 1,
       borderColor: themeColors.$outline,
-      paddingHorizontal: 24,
 
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$primary, 8),
@@ -264,6 +258,7 @@ export const getDisabledButtonStyles = (props: ButtonProps): GetButtonStylesRetu
  */
 const getRegularButtonStyles = (props: ButtonProps) => {
   const { buttonTheme, stateLayerTheme } = getButtonTheme();
+  const { colors } = getTheme();
 
   const theme = buttonTheme[props.type];
   const commonTheme = buttonTheme.common;
@@ -279,9 +274,9 @@ const getRegularButtonStyles = (props: ButtonProps) => {
     ...commonTheme,
   };
 
-  const stateLayerStyles: GetButtonStylesReturnType = {
-    paddingHorizontal: layerTheme.paddingHorizontal,
+  let stateLayerStyles: GetButtonStylesReturnType = {
     ...commonLayerTheme,
+    ...layerTheme,
     '@hover': { ...layerTheme['@hover'], ...props.containerStyle?.['@hover'] },
     '@focus': { ...layerTheme['@focus'], ...props.containerStyle?.['@focus'] },
     '@press': { ...layerTheme['@press'], ...props.containerStyle?.['@press'] },
@@ -294,11 +289,7 @@ const getRegularButtonStyles = (props: ButtonProps) => {
 
         styles = {
           ...styles,
-          elevation: elevatedTheme.elevation,
-          shadowRadius: elevatedTheme.shadowRadius,
-          shadowOpacity: elevatedTheme.shadowOpacity,
-          shadowColor: elevatedTheme.shadowColor,
-          shadowOffset: elevatedTheme.shadowOffset,
+          ...elevatedTheme,
         };
       }
       break;
@@ -310,8 +301,7 @@ const getRegularButtonStyles = (props: ButtonProps) => {
 
         styles = {
           ...styles,
-          borderWidth: outlinedTheme.borderWidth,
-          borderColor: outlinedTheme.borderColor,
+          ...outlinedTheme,
         };
       }
       break;
@@ -320,5 +310,24 @@ const getRegularButtonStyles = (props: ButtonProps) => {
 
   const disabledStyles = getDisabledButtonStyles(props);
 
+  if (props.disabled && props.type === 'outlined')
+    stateLayerStyles = { ...stateLayerStyles, borderColor: getColorInRGBA(colors.$onSurface, 12) };
+
   return { styles: { ...styles, ...disabledStyles }, stateLayerStyles };
+};
+
+/**
+ * Get the styles for the regular button label
+ *
+ * @param props - props of the button component
+ */
+export const getLabelStyles = (props: RegularButtonProps) => {
+  let labelStyles;
+  labelStyles = { color: 'inherit', paddingHorizontal: 8, cursor: 'pointer' };
+
+  if (props.icon && props.type === 'text') {
+    labelStyles = { ...labelStyles, paddingLeft: 8, paddingRight: 4 };
+  }
+
+  return labelStyles;
 };

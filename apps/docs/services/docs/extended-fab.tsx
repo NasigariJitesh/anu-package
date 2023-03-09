@@ -2,6 +2,12 @@ import { Container, ExtendedFAB } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
+const style = {
+  margin: 10,
+};
+
+const flexStyle = { width: 300, flexWrap: 'wrap' } as const;
+
 export const extendedFABDocumentation: ContentValues = {
   mainHeading: 'Button',
   heading: 'Extended Floating Action Buttons',
@@ -48,48 +54,23 @@ export const extendedFABDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'FAB Color',
-      id: 'fab-color',
+      name: 'Extended FAB',
+      id: 'extended-fab',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
-          <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} />
-          <ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} />
-          <ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} />
-          <ExtendedFAB FABColor='surface' title='Surface' icon={{ name: 'phone' }} />
+        <Container disableGutters flexDirection='row' sx={flexStyle}>
+          <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} containerStyle={style} />
+          <ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} containerStyle={style} />
+          <ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} containerStyle={style} />
+          <ExtendedFAB FABColor='surface' title='Surface' icon={{ name: 'phone' }} containerStyle={style} />
         </Container>
       ),
-      code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-      <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} />
-      <ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} />
-      <ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} />
-      <ExtendedFAB FABColor='surface' title='Surface' icon={{ name: 'phone' }} />
-    </Container>`,
-    },
-    {
-      name: 'Lowered',
-      id: 'lowered',
-      component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
-          <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'add' }} />
-          <ExtendedFAB FABColor='primary' title='Lowered' icon={{ name: 'add' }} lowered />
-        </Container>
-      ),
-      code: `<Container flexDirection='row' justify='space-around'  align='center' >
-      <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'add' }} />
-      <ExtendedFAB FABColor='primary' title='Lowered' icon={{ name: 'add' }} lowered />
-    </Container>`,
+      code: `<ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} />
+
+<ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} />
+
+<ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} />
+
+<ExtendedFAB FABColor='surface' title='Surface' icon={{ name: 'phone' }} />`,
     },
   ],
 };
@@ -98,23 +79,12 @@ export const extendedFABIndex: HeadingProps = {
   heading: 'Extended FAB',
   links: [
     {
-      components: [
-        {
-          title: 'FAB Color',
-          link: '#fab-color',
-        },
-        {
-          title: 'Lowered',
-          link: '#lowered',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'Extended FAB',
+      link: '#extended-fab',
     },
     {
       link: '#props',
       title: 'Props',
-      components: [],
     },
   ],
 };

@@ -6,8 +6,6 @@ import { ScrollView } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-import { translations } from '../../services/localization';
-
 const source = Source_Sans_Pro({
   weight: ['400', '600'],
   style: 'normal',
@@ -51,8 +49,8 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
   };
 
   return (
-    <Container nativeID='example' disableGutters style={styles.container}>
-      <Typography.Headline style={styles.heading}>{translations('en', 'examples')}</Typography.Headline>
+    <Container disableGutters style={styles.container}>
+      {/* <Typography.Headline style={styles.heading}>{translations('en', 'examples')}</Typography.Headline> */}
       {examples.map((example, index) => renderExample(example, index))}
     </Container>
   );
@@ -70,6 +68,7 @@ const getStyles = () => {
     },
     examplesComponentContainer: {
       marginVertical: 10,
+      flex: 1,
     },
     heading: {
       color: colors.$onSurface,
@@ -82,7 +81,7 @@ const getStyles = () => {
     name: {
       color: colors.$onSurface,
       fontFamily: source.style.fontFamily,
-      fontSize: 18,
+      fontSize: 22,
       fontWeight: '600',
       lineHeight: 22,
       marginBottom: 8,
@@ -90,7 +89,7 @@ const getStyles = () => {
     description: {
       color: colors.$onSurface,
       fontFamily: source.style.fontFamily,
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: '400',
       lineHeight: 20,
       marginTop: 8,
