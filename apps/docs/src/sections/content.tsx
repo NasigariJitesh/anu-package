@@ -35,11 +35,12 @@ const Content = ({ values }: ContentProps) => {
   return (
     <Container disableGutters flexDirection='row' sx={styles.container}>
       <Sidebar />
-      <Container style={styles.mainContainer}>
+      <Container style={styles.mainContainer as never}>
         <div
           id='root-scroll'
           style={{
             height: 'calc(100vh - 90px)',
+
             overflowY: 'scroll',
           }}
         >
@@ -70,6 +71,7 @@ const getStyles = () => {
       flex: 1,
       alignSelf: 'baseline',
       zIndex: 1,
+      width: ['90vw', undefined, undefined, '600px', '750px'],
 
       // paddingHorizontal: 20,
     },

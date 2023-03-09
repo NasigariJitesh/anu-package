@@ -13,7 +13,7 @@ const flexStyle = {
   //
   // 990 px
   // > 1200px
-  width: ['90vw', undefined, undefined, '600px', '700px'],
+  width: ['90vw', undefined, undefined, '600px', '750px'],
 } as const;
 export const FABDocumentation: ContentValues = {
   mainHeading: 'Button',
