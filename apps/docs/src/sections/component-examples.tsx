@@ -90,7 +90,7 @@ const getStyles = () => {
     description: {
       color: colors.$onSurface,
       fontFamily: source.style.fontFamily,
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: '400',
       lineHeight: 20,
       marginTop: 8,
