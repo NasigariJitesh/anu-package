@@ -1,7 +1,7 @@
 import { generateHoverStyles } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
 import { Container, Icon } from 'lib/primitives';
-import { ReactElement, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { GestureResponderEvent, PressableStateCallbackType } from 'react-native';
 
 import { IconButtonProps, IconType } from '../../types';
@@ -14,18 +14,22 @@ import { defaultProps } from './default';
  * @param {IconButtonProps} props - all the props related to the component
  */
 const IconButton = (props: IconButtonProps) => {
-  const [isSelected, toggleSelected] = useState(props.toggle === undefined ? false : props.toggle);
+  const [isSelected, toggleSelected] = useState(props.selected === undefined ? false : props.selected);
 
   const restOfTheProps = { ...defaultProps, ...props };
 
   const { containerStyles, pressableStyles, iconStyles } = getIconButtonStyles(restOfTheProps, isSelected);
+
+  useEffect(() => {
+    toggleSelected(props.selected ?? false);
+  }, [props.selected]);
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, pressableStyles, useSx);
   };
 
   const onPressHandler = (event: GestureResponderEvent) => {
-    if (props.toggle != undefined) toggleSelected((previous) => !previous);
+    if (props.toggle) toggleSelected((previous) => !previous);
     if (restOfTheProps.onPress) restOfTheProps.onPress(event);
   };
 

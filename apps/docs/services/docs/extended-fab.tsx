@@ -3,7 +3,7 @@ import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 const style = {
-  margin: 10,
+  margin: 15,
 };
 
 const flexStyle = {
@@ -72,12 +72,19 @@ export const extendedFABDocumentation: ContentValues = {
         </Container>
       ),
       code: `<ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} />
-
 <ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} />
-
 <ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} />
-
 <ExtendedFAB FABColor='surface' title='Surface' icon={{ name: 'phone' }} />`,
+    },
+    {
+      name: 'Extended FAB - Lowered',
+      id: 'extended-fab-lowered',
+      component: (
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
+          <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} containerStyle={style} lowered />
+        </Container>
+      ),
+      code: "<ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} lowered />",
     },
   ],
 };
@@ -88,6 +95,10 @@ export const extendedFABIndex: HeadingProps = {
     {
       title: 'Extended FAB',
       link: '#extended-fab',
+    },
+    {
+      title: 'Extended FAB - Lowered',
+      link: '#extended-fab-lowered',
     },
     {
       link: '#props',

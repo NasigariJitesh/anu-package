@@ -66,11 +66,8 @@ export const regularButtonDocumentation: ContentValues = {
         </Container>
       ),
       code: `<Button.Elevated title='Elevated' />
-
 <Button.Elevated icon={{ name: 'add' }} title='Elevated Icon' />
-
 <Button.Elevated  title='Disabled' disabled />
-
 <Button.Elevated icon={{ name: 'add' }} title='Disabled' disabled />`,
     },
     {
@@ -85,11 +82,8 @@ export const regularButtonDocumentation: ContentValues = {
         </Container>
       ),
       code: `<Button.Filled title='Filled' />
-
 <Button.Filled icon={{ name: 'add' }} title='Filled Icon' />
-
 <Button.Filled title='Disabled' disabled />
-
 <Button.Filled icon={{ name: 'add' }} title='Disabled' disabled />`,
     },
 
@@ -105,11 +99,8 @@ export const regularButtonDocumentation: ContentValues = {
         </Container>
       ),
       code: `<Button.Tonal title='Tonal' />
-
 <Button.Tonal icon={{ name: 'add' }} title='Tonal Icon' />
-
 <Button.Tonal title='Disabled' disabled />
-
 <Button.Tonal icon={{ name: 'add' }} title='Disabled' disabled />`,
     },
 
@@ -125,11 +116,8 @@ export const regularButtonDocumentation: ContentValues = {
         </Container>
       ),
       code: `<Button.Outlined title='Outlined' />
-
 <Button.Outlined icon={{ name: 'add' }} title='Outlined Icon' />
-
 <Button.Outlined title='Disabled' disabled />
-
 <Button.Outlined icon={{ name: 'add' }} title='Disabled' disabled />`,
     },
 
@@ -145,11 +133,8 @@ export const regularButtonDocumentation: ContentValues = {
         </Container>
       ),
       code: `<Button.Text title='Text' />
-
 <Button.Text icon={{ name: 'add' }} title='Text Icon' />
-
 <Button.Text title='Disabled' disabled />
-
 <Button.Text icon={{ name: 'add' }} title='Disabled' disabled />`,
     },
   ],

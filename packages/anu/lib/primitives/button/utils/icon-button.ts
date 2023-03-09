@@ -456,29 +456,29 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean) =
   switch (props.type) {
     case 'outlined': {
       {
-        if (props.toggle === undefined) key = 'outlined';
-        else key = selected ? 'outlinedSelected' : 'outlinedUnselected';
+        if (props.toggle) key = selected ? 'outlinedSelected' : 'outlinedUnselected';
+        else key = 'outlined';
       }
       break;
     }
     case 'filled': {
       {
-        if (props.toggle === undefined) key = 'filled';
-        else key = selected ? 'filledSelected' : 'filledUnselected';
+        if (props.toggle) key = selected ? 'filledSelected' : 'filledUnselected';
+        else key = 'filled';
       }
       break;
     }
     case 'tonal': {
       {
-        if (props.toggle === undefined) key = 'tonal';
-        else key = selected ? 'tonalSelected' : 'tonalUnselected';
+        if (props.toggle) key = selected ? 'tonalSelected' : 'tonalUnselected';
+        else key = 'tonal';
       }
       break;
     }
     case 'standard': {
       {
-        if (props.toggle === undefined) key = 'standard';
-        else key = selected ? 'standardSelected' : 'standardUnselected';
+        if (props.toggle) key = selected ? 'standardSelected' : 'standardUnselected';
+        else key = 'standard';
       }
       break;
     }

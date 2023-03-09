@@ -91,6 +91,11 @@ export interface IconButtonProps extends Omit<ButtonProps, 'title' | 'type' | 'l
    * Whether the icon button is toggle-able
    */
   toggle?: boolean;
+
+  /**
+   * Whether the toggle-able icon button is selected or not
+   */
+  selected?: boolean;
 }
 
 /**
