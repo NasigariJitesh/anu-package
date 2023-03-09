@@ -9,36 +9,40 @@ export const containerDocumentation: ContentValues = {
     {
       name: 'Basic',
       id: 'basic',
-      component: <Container maxWidth='xs' width='100%' sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
-      code: "<Container maxWidth='xs' width='100%' sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
+      component: <Container width={300} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
+      code: `<Container
+ width={300}
+ sx={{ backgroundColor: '#c1c1c1', height: 200 }} />`,
     },
     {
       name: 'Fixed',
       id: 'fixed',
-      component: <Container width='100%' fixed sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
-      code: "<Container width='100%' fixed sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
+      component: <Container width={300} fixed sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
+      code: `<Container
+ width={300}
+ fixed
+ sx={{ backgroundColor: '#c1c1c1', height: 200 }} />`,
     },
   ],
   properties: [
     {
       name: 'flexDirection',
-      type: "'row' | 'row-reverse' | 'column' | 'column-reverse'",
+      type: "'row' | 'row-reverse' | 'column' | 'column-reverse' (optional)",
       description: 'The direction in which the children components are positioned',
       defaultValue: "'column'",
     },
     {
       name: 'align',
-      type: "'center' | 'flex-start' | 'flex-end'",
+      type: "'center' | 'flex-start' | 'flex-end' (optional)",
       description: 'The alignment of all items on the cross axis',
       defaultValue: "'flex-start'",
     },
     {
       name: 'justify',
-      description: 'The alignment of all items on the main axis',
-      type: "'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around'",
+      description: 'The alignment of all items on the main axis.',
+      type: "'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' (optional)",
       defaultValue: "'flex-start'",
     },
-
     {
       name: 'style',
       description: 'The styles for the container component.',

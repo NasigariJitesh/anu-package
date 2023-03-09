@@ -31,16 +31,16 @@ export const SegmentedButtonGroup = (props: SegmentedButtonGroupProps) => {
   return (
     <Container disableGutters flexDirection='row' align='center' justify='center'>
       {props.children.map((c, index): React.ReactElement => {
-        if (typeof c.type !== 'string' && c.type.name === 'SegmentedButton') {
-          let p;
-          p = { ...c.props, selected: selected, onSelect: onPressHandler };
-          if (index === 0) p = { ...p, isFirst: true };
-          else if (index === props.children.length - 1) p = { ...p, isLast: true };
+        // if (typeof c.type !== 'string' && c.type.name === 'SegmentedButton') {
+        let p;
+        p = { ...c.props, selected: selected, onSelect: onPressHandler };
+        if (index === 0) p = { ...p, isFirst: true };
+        else if (index === props.children.length - 1) p = { ...p, isLast: true };
 
-          return { ...c, props: p };
-        } else {
-          throw new Error('Only SegmentedButton components can be children');
-        }
+        return { ...c, props: p };
+        // } else {
+        //   throw new Error('Only SegmentedButton components can be children');
+        // }
       })}
     </Container>
   );
