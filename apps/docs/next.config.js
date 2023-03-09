@@ -21,8 +21,6 @@ const nextConfig = withExpo({
     appDir: false,
   },
   eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
   async redirects() {
@@ -30,6 +28,11 @@ const nextConfig = withExpo({
       {
         source: '/components/button',
         destination: '/components/button/regular',
+        permanent: true,
+      },
+      {
+        source: '/',
+        destination: '/components/typography',
         permanent: true,
       },
     ];
