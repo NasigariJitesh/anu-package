@@ -6,8 +6,15 @@ const style = {
   margin: 10,
 };
 
-const flexStyle = { width: 300, flexWrap: 'wrap' } as const;
-
+const flexStyle = {
+  flexWrap: 'wrap',
+  // < 576 = 90vw
+  // 576
+  //
+  // 990 px
+  // > 1200px
+  width: ['90vw', undefined, undefined, '600px', '700px'],
+} as const;
 export const FABDocumentation: ContentValues = {
   mainHeading: 'Button',
   heading: 'Floating Action Buttons',
@@ -53,7 +60,7 @@ export const FABDocumentation: ContentValues = {
       name: 'FAB',
       id: 'fab',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='tertiary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
@@ -72,7 +79,7 @@ export const FABDocumentation: ContentValues = {
       name: 'Small FAB',
       id: 'small-fab',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <FAB FABColor='primary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='secondary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='tertiary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
@@ -91,7 +98,7 @@ export const FABDocumentation: ContentValues = {
       name: 'Large FAB',
       id: 'large-fab',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <FAB FABColor='primary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='secondary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='tertiary' size='large' icon={{ name: 'phone' }} containerStyle={style} />

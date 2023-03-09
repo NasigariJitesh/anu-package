@@ -2,8 +2,15 @@ import { Container, SegmentedButton, SegmentedButtonGroup } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
-const flexStyle = { width: 300, flexWrap: 'wrap' } as const;
-
+const flexStyle = {
+  flexWrap: 'wrap',
+  // < 576 = 90vw
+  // 576
+  //
+  // 990 px
+  // > 1200px
+  width: ['90vw', undefined, undefined, '600px', '700px'],
+} as const;
 export const segmentedButtonDocumentation: ContentValues = {
   mainHeading: 'Button',
   heading: 'Segmented Buttons',
@@ -62,7 +69,7 @@ export const segmentedButtonDocumentation: ContentValues = {
       name: 'Segmented Button',
       id: 'segmented-button',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <SegmentedButtonGroup>
             <SegmentedButton id='segmentedButton1' title='Button 1' />
             <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
@@ -82,7 +89,7 @@ export const segmentedButtonDocumentation: ContentValues = {
       name: 'Multi Select Segmented Button',
       id: 'multi-select-segmented-button',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <SegmentedButtonGroup multiSelect>
             <SegmentedButton id='segmentedButton1' title='Button 1' />
             <SegmentedButton id='segmentedButton2' title='Button 2' />

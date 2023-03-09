@@ -6,8 +6,15 @@ const style = {
   margin: 10,
 };
 
-const flexStyle = { width: 300, flexWrap: 'wrap' } as const;
-
+const flexStyle = {
+  flexWrap: 'wrap',
+  // < 576 = 90vw
+  // 576
+  //
+  // 990 px
+  // > 1200px
+  width: ['90vw', undefined, undefined, '600px', '700px'],
+} as const;
 export const extendedFABDocumentation: ContentValues = {
   mainHeading: 'Button',
   heading: 'Extended Floating Action Buttons',
@@ -57,7 +64,7 @@ export const extendedFABDocumentation: ContentValues = {
       name: 'Extended FAB',
       id: 'extended-fab',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} containerStyle={style} />
           <ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} containerStyle={style} />
           <ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} containerStyle={style} />
