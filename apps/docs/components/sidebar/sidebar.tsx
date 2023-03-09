@@ -196,11 +196,6 @@ const Sidebar = () => {
               components: [],
             },
             {
-              title: 'Switch',
-              link: '/components/switch',
-              components: [],
-            },
-            {
               title: 'Typography',
               link: '/components/typography',
               components: [],
