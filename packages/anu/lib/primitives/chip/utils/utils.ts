@@ -195,11 +195,20 @@ const getChipTheme = () => {
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: '8px',
+      color: 'inherit',
     } as const,
     assistElevated: {
-      color: 'inherit',
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSurface, 8),
+        shadowColor: themeColors.$shadow,
+        shadowOffset: {
+          width: 0,
+          height: 6,
+        },
+
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
       },
       '@focus': {
         backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
@@ -216,15 +225,6 @@ const getChipTheme = () => {
       },
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSurface, 8),
-        shadowColor: themeColors.$shadow,
-        shadowOffset: {
-          width: 0,
-          height: 6,
-        },
-
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 2,
       },
       '@focus': {
         borderColor: themeColors.$onSurface,

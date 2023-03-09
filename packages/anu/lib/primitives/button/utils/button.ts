@@ -323,7 +323,7 @@ const getRegularButtonStyles = (props: ButtonProps) => {
  */
 export const getLabelStyles = (props: RegularButtonProps) => {
   let labelStyles;
-  labelStyles = { color: 'inherit', paddingHorizontal: 8 };
+  labelStyles = { color: 'inherit', paddingHorizontal: 8, cursor: 'pointer' };
 
   if (props.icon && props.type === 'text') {
     labelStyles = { ...labelStyles, paddingLeft: 8, paddingRight: 4 };
