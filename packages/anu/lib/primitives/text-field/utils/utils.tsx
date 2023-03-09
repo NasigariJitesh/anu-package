@@ -1,3 +1,4 @@
+import { getColorInRGBA } from 'common/utils';
 import { getTheme } from 'config/dripsy';
 import { StyleProp, TextStyle } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -18,26 +19,30 @@ const getTextFieldTheme = () => {
       color: colors.$onSurfaceVariant,
       height: 56,
       justifyContent: 'center',
-      paddingVertical: 2,
+      paddingVertical: 0,
       paddingHorizontal: 0,
-      borderBottomWidth: 2,
+      borderBottomWidth: 1,
       borderBottomStyle: 'solid',
-      borderTopLeftRadius: 2,
-      borderTopRightRadius: 2,
-      borderBottomColor: colors.$primary + 60,
+      borderTopLeftRadius: 4,
+      borderTopRightRadius: 4,
+      borderBottomColor: colors.$onSurfaceVariant,
       '@disabled': {
-        borderBottomColor: colors.$primary + 80,
-        backgroundColor: colors.$surfaceVariant + 80,
-        color: colors.$onSurfaceVariant + 80,
+        borderBottomColor: getColorInRGBA(colors.$onSurface, 38),
+        backgroundColor: getColorInRGBA(colors.$onSurface, 12),
+        color: getColorInRGBA(colors.$onSurface, 38),
       },
       '@hover': {
-        borderBottomColor: colors.$primary + 40,
+        borderBottomColor: colors.$onSurface,
       },
       '@focus': {
-        borderBottomColor: colors.$primary + 40,
+        borderBottomWidth: 2,
+        borderBottomColor: colors.$primary,
+        color: colors.$primary,
       },
       '@press': {
-        borderBottomColor: colors.$primary + 40,
+        borderBottomWidth: 2,
+        borderBottomColor: colors.$primary,
+        color: colors.$primary,
       },
     },
     outlined: {
@@ -45,25 +50,27 @@ const getTextFieldTheme = () => {
       backgroundColor: colors.$background,
       color: colors.$onSurfaceVariant,
       height: 56,
-      paddingVertical: 2,
+      paddingVertical: 0,
       paddingHorizontal: 0,
-      borderWidth: 2,
+      borderWidth: 1,
       borderStyle: 'solid',
-      borderRadius: 2,
-      borderColor: colors.$primary + 60,
+      borderRadius: 4,
+      borderColor: colors.$outline,
       '@disabled': {
-        borderColor: colors.$primary + 80,
-        backgroundColor: colors.$background + 80,
-        color: colors.$onSurfaceVariant + 80,
+        borderColor: getColorInRGBA(colors.$onSurface, 12),
+        color: getColorInRGBA(colors.$onSurface, 38),
       },
       '@hover': {
-        borderColor: colors.$primary + 40,
+        borderColor: colors.$onSurface,
+        color: colors.$onSurface,
       },
       '@focus': {
-        borderColor: colors.$primary + 40,
+        borderColor: colors.$primary,
+        color: colors.$primary,
       },
       '@press': {
-        borderColor: colors.$primary + 40,
+        borderColor: colors.$primary,
+        color: colors.$primary,
       },
     },
   } as const;
@@ -74,17 +81,24 @@ const getTextFieldTheme = () => {
 /**
  * To generate style for the text field component of dripsy
  *
+ * @param props
  * @returns style of the dripsy text field
  */
-export const getTextFieldStyles = () => {
+export const getTextFieldStyles = (props?: TextFieldProps) => {
+  const { colors } = getTheme();
+
   const common = {
     fontSize: 16,
     lineHeight: 24,
     outline: 'none',
+    paddingVertical: 8,
     paddingHorizontal: 16,
+    color: colors.$onSurface,
+    caretColor: props?.error ? colors.$error : colors.$primary,
     height: '100%',
     alignText: 'center',
     flex: 1,
+    position: 'relative' as const,
   };
 
   return common;
@@ -96,7 +110,7 @@ export const getTextFieldStyles = () => {
  * @returns style of the leading icon
  */
 export const getLeadingContainerStyle = () => {
-  const style = { paddingLeft: 8 };
+  const style = { paddingLeft: 8, paddingVertical: 16, color: 'inherit' };
 
   return style;
 };
@@ -107,7 +121,7 @@ export const getLeadingContainerStyle = () => {
  * @returns style of the trailing icon
  */
 export const getTrailingContainerStyle = () => {
-  const style = { paddingRight: 8 };
+  const style = { paddingRight: 8, paddingVertical: 16, color: 'inherit' };
 
   return style;
 };
@@ -140,12 +154,26 @@ export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>) => {
         ? {
             ...finalStyle,
             borderColor: colors.$error,
-            '@hover': { ...finalStyle['@hover'], borderColor: colors.$onErrorContainer },
+            color: colors.$error,
+            '@hover': {
+              ...finalStyle['@hover'],
+              borderColor: colors.$onErrorContainer,
+              color: colors.$onErrorContainer,
+            },
+            '@focus': { ...finalStyle['@focus'], borderColor: colors.$error, color: colors.$error },
+            '@press': { ...finalStyle['@press'], borderColor: colors.$error, color: colors.$error },
           }
         : {
             ...finalStyle,
             borderBottomColor: colors.$error,
-            '@hover': { ...finalStyle['@hover'], borderBottomColor: colors.$onErrorContainer },
+            color: colors.$error,
+            '@hover': {
+              ...finalStyle['@hover'],
+              borderBottomColor: colors.$onErrorContainer,
+              color: colors.$onErrorContainer,
+            },
+            '@focus': { ...finalStyle['@focus'], borderBottomColor: colors.$error, color: colors.$error },
+            '@press': { ...finalStyle['@press'], borderBottomColor: colors.$error, color: colors.$error },
           };
   }
 
@@ -191,7 +219,7 @@ export const getSupportingTextStyle = () => {
   const style: StyleProp<TextStyle> = {
     fontSize: 12,
     lineHeight: 16,
-    color: colors.$primary,
+    color: colors.$onSurfaceVariant,
     marginVertical: 4,
   };
 
@@ -199,7 +227,9 @@ export const getSupportingTextStyle = () => {
 };
 
 export const getErrorIcon = () => {
-  const { colors } = getTheme();
+  return <MaterialCommunityIcons name='alert-circle' color='inherit' size={24} />;
+};
 
-  return <MaterialCommunityIcons name='alert-circle' color={colors.$error} size={24} />;
+export const getInnerContainerStyle = () => {
+  return { backgroundColor: 'inherit', height: '100%', borderRadius: 4, color: 'inherit' };
 };

@@ -48,7 +48,7 @@ export const Checkbox = (props: CheckboxProps) => {
 
   return (
     <Container {...getLabelAlignment(finalProps.labelPlacement)}>
-      <Pressable onPress={onPressHandler} style={generateStyles}>
+      <Pressable disabled={finalProps.disabled} onPress={onPressHandler} style={generateStyles}>
         {/* 
         // @ts-expect-error REASON: we get ts error but react native ignores hover related styles */}
         <Container disableGutters style={checkboxStyles}>

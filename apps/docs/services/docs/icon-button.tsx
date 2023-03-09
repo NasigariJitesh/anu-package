@@ -123,10 +123,10 @@ export const iconButtonDocumentation: ContentValues = {
         </Container>
       ),
       code: `<Container flexDirection='row'  align='center' justify='space-around' >
-      <IconButton type='filled' icon={{ name: 'favorite' }} disabled />
-      <IconButton type='tonal' icon={{ name: 'flag' }} disabled />
-      <IconButton type='outlined' icon={{ name: 'label' }} disabled />
-      <IconButton type='standard' icon={{ name: 'person' }} disabled />
+      <IconButton type='filled' icon={{ name: 'favorite' }} toggle />
+      <IconButton type='tonal' icon={{ name: 'flag' }} toggle />
+      <IconButton type='outlined' icon={{ name: 'label' }} toggle />
+      <IconButton type='standard' icon={{ name: 'person' }} toggle />
     </Container>`,
     },
   ],

@@ -147,6 +147,8 @@ export const getContentStyle = (props: BadgeProps) => {
     paddingHorizontal: props.value === '' ? 0 : 6,
     color: propSx?.color ? (propSx?.color as string) : colors.$background,
     zIndex: propSx?.zIndex ? (propSx?.zIndex as number) : 101,
+    //@ts-expect-error Reason the cursor property is accommodated by the web
+    cursor: 'default',
   };
 
   return style;
