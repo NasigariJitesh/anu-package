@@ -1,5 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Container } from 'anu/lib';
+import RightSidebar from 'components/right-sidebar';
+import Sidebar from 'components/sidebar';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { useMenuContext } from 'screens/common/provider';
 
@@ -31,23 +33,27 @@ const Content = ({ values }: ContentProps) => {
   if (isOpen && width < 900) return null;
 
   return (
-    <Container style={styles.container}>
-      <div
-        id='root-scroll'
-        style={{
-          height: 'calc(100vh - 90px)',
-          overflowY: 'scroll',
-        }}
-      >
-        <ComponentDetails
-          mainHeading={mainHeading}
-          heading={heading}
-          subTitle={subTitle}
-          mainDescription={mainDescription}
-        />
-        <ComponentExamples examples={examples} />
-        <ComponentProperties properties={properties} />
-      </div>
+    <Container disableGutters flexDirection='row' sx={styles.container}>
+      <Sidebar />
+      <Container style={styles.mainContainer}>
+        <div
+          id='root-scroll'
+          style={{
+            height: 'calc(100vh - 90px)',
+            overflowY: 'scroll',
+          }}
+        >
+          <ComponentDetails
+            mainHeading={mainHeading}
+            heading={heading}
+            subTitle={subTitle}
+            mainDescription={mainDescription}
+          />
+          <ComponentExamples examples={examples} />
+          <ComponentProperties properties={properties} />
+        </div>
+      </Container>
+      <RightSidebar />
     </Container>
   );
 };
@@ -55,9 +61,16 @@ const Content = ({ values }: ContentProps) => {
 const getStyles = () => {
   const styles = {
     container: {
+      maxWidth: 1440,
+      width: '100%',
+      alignSelf: 'center',
+    },
+    mainContainer: {
       // width: '100%',
       flex: 1,
       alignSelf: 'baseline',
+      zIndex: 1,
+
       // paddingHorizontal: 20,
     },
   } as const;

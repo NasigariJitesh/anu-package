@@ -6,8 +6,6 @@ import { ScrollView } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-import { translations } from '../../services/localization';
-
 const source = Source_Sans_Pro({
   weight: ['400', '600'],
   style: 'normal',
@@ -70,6 +68,7 @@ const getStyles = () => {
     },
     examplesComponentContainer: {
       marginVertical: 10,
+      flex: 1,
     },
     heading: {
       color: colors.$onSurface,
