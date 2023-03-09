@@ -18,27 +18,25 @@ import { defaultProps } from './default';
  * Component to create a bottom sheet
  *
  * @param {BottomSheetProps} props - all the props related to the component
- * 
- * This requires 
  * @example
-   const bottomSheetReference = useRef<BottomSheetReferenceProps | null>(null);
- 
-    const onPress = useCallback(() => {
-      const isActive = bottomSheetReference?.current?.isActive();
- 
-      if (isActive) bottomSheetReference?.current?.scrollTo(0);
-      else bottomSheetReference?.current?.scrollTo(-200);
-    }, []);
- 
-    return (
-      <View style={style.container}>
-        <StatusBar style='light' />
-          <TouchableOpacity onPress={onPress} style={style.button} />
-          <BottomSheet ref={bottomSheetReference}>
-            <Children/>
-          </BottomSheet>
-      </View>
-    );
+ *  const bottomSheetReference = useRef<BottomSheetReferenceProps | null>(null);
+ *
+ *   const onPress = useCallback(() => {
+ *     const isActive = bottomSheetReference?.current?.isActive();
+ *
+ *     if (isActive) bottomSheetReference?.current?.scrollTo(0);
+ *    else bottomSheetReference?.current?.scrollTo(-200);
+ *    }, []);
+ *
+ *    return (
+ *      <View style={style.container}>
+ *        <StatusBar style='light' />
+ *          <TouchableOpacity onPress={onPress} style={style.button} />
+ *          <BottomSheet ref={bottomSheetReference}>
+ *            <Children/>
+ *          </BottomSheet>
+ *      </View>
+ *    );
  */
 const BottomSheet = forwardRef<BottomSheetReferenceProps, BottomSheetProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };

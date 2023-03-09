@@ -34,3 +34,7 @@ yarn-error.log*
 .turbo
 .expo
 .vercel
+
+# jest
+__snapshots__
+coverage
