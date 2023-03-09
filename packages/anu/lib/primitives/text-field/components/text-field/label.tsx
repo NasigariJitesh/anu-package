@@ -6,7 +6,7 @@ import { Animated, TextStyle, ViewStyle } from 'react-native';
 import { TextInputLabelProps } from '../../types';
 import { getTextFieldStyles } from '../../utils';
 
-const DURATION = 400; // in milliseconds
+const DURATION = 250; // in milliseconds
 const DELAY = 100; // in milliseconds
 
 /**
@@ -22,23 +22,23 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const transitionFontSize = useRef(new Animated.Value(style.fontSize)).current;
   const transitionLineHeight = useRef(new Animated.Value(style.fontSize)).current;
 
-  const [value, setValue] = useState(0);
+  const [, setValue] = useState(0);
 
   const animatedViewStyle: Animated.WithAnimatedObject<ViewStyle> = {
     top: transitionTopCoordinate,
     maxWidth: 'calc(100% - 16px)',
     position: 'absolute',
+    justifyContent: 'center',
+    paddingHorizontal: 14,
+    paddingVertical: 16,
+    height: '100%',
   };
 
   const animatedTextStyle: Animated.WithAnimatedObject<TextStyle> = {
     fontSize: transitionFontSize,
     lineHeight: transitionLineHeight,
-    marginHorizontal: 14,
-    padding: 2,
-    paddingRight: 4,
-    color: props.error
-      ? colors.$error
-      : props.placeholderTextColor || (value ? colors.$primary : colors.$onSurfaceVariant),
+    paddingHorizontal: 2,
+    color: props.placeholderTextColor || 'inherit',
     backgroundColor: props.variant === 'outlined' ? colors.$background : undefined,
   };
 
@@ -60,12 +60,17 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const transitionIn = () => {
     if (props.value) return;
 
-    // Will change fadeAnim value to 1 in 5 seconds
+    const transitionValue =
+      (props.height / 2) * -1 +
+      (props.variant === 'outlined'
+        ? Math.floor((style.fontSize * 0.75) / -15)
+        : Math.floor((style.fontSize * 0.75) / 1.5));
+
     Animated.timing(transitionTopCoordinate, {
       toValue:
         (props.height / 2) * -1 +
         (props.variant === 'outlined'
-          ? Math.floor((style.fontSize * 0.75) / -4)
+          ? Math.floor((style.fontSize * 0.75) / -15)
           : Math.floor((style.fontSize * 0.75) / 1.5)),
       duration: DURATION,
       useNativeDriver: true,

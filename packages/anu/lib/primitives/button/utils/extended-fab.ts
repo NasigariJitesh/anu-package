@@ -17,32 +17,24 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
       return {
         containerColor: themeColors.$primaryContainer,
         stateLayerColor: themeColors.$onPrimaryContainer,
-        iconColor: themeColors.$onPrimaryContainer,
-        labelColor: themeColors.$onPrimaryContainer,
       };
     }
     case 'secondary': {
       return {
         containerColor: themeColors.$secondaryContainer,
         stateLayerColor: themeColors.$onSecondaryContainer,
-        iconColor: themeColors.$onSecondaryContainer,
-        labelColor: themeColors.$onSecondaryContainer,
       };
     }
     case 'tertiary': {
       return {
         containerColor: themeColors.$tertiaryContainer,
         stateLayerColor: themeColors.$onTertiaryContainer,
-        iconColor: themeColors.$onTertiaryContainer,
-        labelColor: themeColors.$onTertiaryContainer,
       };
     }
     case 'surface': {
       return {
         containerColor: themeColors.$surface,
         stateLayerColor: themeColors.$primary,
-        iconColor: themeColors.$primary,
-        labelColor: themeColors.$primary,
       };
     }
   }
@@ -56,7 +48,7 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
  */
 const getExtendedFABTheme = (props: ExtendedFABProps) => {
   const themeColors = getTheme().colors;
-  const { containerColor, stateLayerColor, iconColor, labelColor } = getColors(props.FABColor);
+  const { containerColor, stateLayerColor } = getColors(props.FABColor);
   const fabTheme = {
     common: {
       justifyContent: 'center' as const,
@@ -64,6 +56,7 @@ const getExtendedFABTheme = (props: ExtendedFABProps) => {
       transitionProperty: 'all',
       transitionDuration: '.2s',
       backgroundColor: containerColor,
+      color: stateLayerColor,
       shadowColor: themeColors.$shadow,
       shadowOffset: {
         width: 0,
@@ -90,6 +83,7 @@ const getExtendedFABTheme = (props: ExtendedFABProps) => {
       minWidth: 80,
       borderRadius: 16,
       padding: 16,
+      color: 'inherit',
       '@hover': {
         backgroundColor: getColorInRGBA(stateLayerColor, 8),
         shadowColor: themeColors.$shadow,
@@ -114,7 +108,7 @@ const getExtendedFABTheme = (props: ExtendedFABProps) => {
 
   const fabIconTheme = {
     common: {
-      color: iconColor,
+      color: 'inherit',
       marginRight: 8,
       size: 24,
     },
@@ -126,7 +120,8 @@ const getExtendedFABTheme = (props: ExtendedFABProps) => {
       lineHeight: 20,
       fontSize: 14,
       letterSpacing: 0.1,
-      color: labelColor,
+      color: 'inherit',
+      cursor: 'pointer',
     },
   };
 

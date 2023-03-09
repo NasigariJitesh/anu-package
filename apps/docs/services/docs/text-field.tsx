@@ -68,8 +68,8 @@ export const textFieldDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'Outlined',
-      id: 'outlined',
+      name: 'Outlined Text Field',
+      id: 'outlined-text-field',
       component: (
         <Container
           disableGutters
@@ -92,8 +92,8 @@ export const textFieldDocumentation: ContentValues = {
 </Container>`,
     },
     {
-      name: 'Filled',
-      id: 'filled',
+      name: 'Filled Text Field',
+      id: 'filled-text-field',
       component: (
         <Container
           disableGutters
@@ -112,7 +112,7 @@ export const textFieldDocumentation: ContentValues = {
   justify='space-around'
   sx={{ width: '100%', maxWidth: 700 }}
 >
-  <TextField variant='outlined' placeholder='Filled' />
+  <TextField variant='filled' placeholder='Filled' />
 </Container>`,
     },
     {
@@ -141,7 +141,12 @@ export const textFieldDocumentation: ContentValues = {
   justify='space-around'
   sx={{ width: '100%', maxWidth: 700 }}
 >
-  <TextField variant='outlined' placeholder='Filled' />
+<TextField
+  variant='filled'
+  leadingIcon={<Icon name='money' />}
+  trailingIcon={<Icon name='close' />}
+  placeholder='Filled'
+/>
 </Container>`,
     },
     {
@@ -199,6 +204,33 @@ export const textFieldDocumentation: ContentValues = {
   <TextField variant='filled' placeholder='Filled' errorMessage={['This is an error message 1', 'This is an error message 2']} />
 </Container>`,
     },
+    {
+      name: 'Disabled',
+      id: 'disabled',
+      component: (
+        <Container
+          disableGutters
+          flexDirection='row'
+          align='flex-start'
+          justify='space-around'
+          sx={{ width: '100%', maxWidth: 700 }}
+        >
+          <TextField variant='outlined' placeholder='Outlined Disabled' disabled />
+          <TextField variant='filled' placeholder='Filled Disabled' disabled />
+        </Container>
+      ),
+      code: `<Container
+  disableGutters
+  flexDirection='row'
+  align='center'
+  justify='space-around'
+  sx={{ width: '100%', maxWidth: 700 }}
+>
+  <TextField variant='outlined' placeholder='Outlined Disabled' disabled />
+  <TextField variant='filled' placeholder='Filled Disabled' disabled />
+  
+</Container>`,
+    },
   ],
 };
 
@@ -208,12 +240,12 @@ export const textFieldIndex: HeadingProps = {
     {
       components: [
         {
-          title: 'Outlined',
-          link: '#outlined',
+          title: 'Outlined Text Field',
+          link: '#outlined-text-field',
         },
         {
-          title: 'Filled',
-          link: '#filled',
+          title: 'Filled Text Field',
+          link: '#filled-text-field',
         },
         {
           title: 'Icon',
@@ -226,6 +258,10 @@ export const textFieldIndex: HeadingProps = {
         {
           title: 'Error Messages',
           link: '#error-messages',
+        },
+        {
+          title: 'Disabled',
+          link: '#disabled',
         },
       ],
       title: 'Examples',
