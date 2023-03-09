@@ -6,7 +6,15 @@ const style = {
   margin: 15,
 };
 
-const flexStyle = { width: 300, flexWrap: 'wrap' } as const;
+const flexStyle = {
+  flexWrap: 'wrap',
+  // < 576 = 90vw
+  // 576
+  //
+  // 990 px
+  // > 1200px
+  width: ['90vw', undefined, undefined, '600px', '700px'],
+} as const;
 
 export const regularButtonDocumentation: ContentValues = {
   mainHeading: 'Button',
@@ -50,7 +58,7 @@ export const regularButtonDocumentation: ContentValues = {
       name: 'Elevated buttons',
       id: 'elevated-buttons',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <Button.Elevated title='Elevated' containerStyle={style} />
           <Button.Elevated icon={{ name: 'add' }} title='Elevated Icon' containerStyle={style} />
           <Button.Elevated title='Disabled' disabled containerStyle={style} />
@@ -69,7 +77,7 @@ export const regularButtonDocumentation: ContentValues = {
       name: 'Filled buttons',
       id: 'filled-buttons',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <Button.Filled title='Filled' containerStyle={style} />
           <Button.Filled icon={{ name: 'add' }} title='Filled Icon' containerStyle={style} />
           <Button.Filled title='Disabled' disabled containerStyle={style} />
@@ -89,7 +97,7 @@ export const regularButtonDocumentation: ContentValues = {
       name: 'Filled tonal buttons',
       id: 'filled-tonal-buttons',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <Button.Tonal title='Tonal' containerStyle={style} />
           <Button.Tonal icon={{ name: 'add' }} title='Tonal Icon' containerStyle={style} />
           <Button.Tonal title='Disabled' disabled containerStyle={style} />
@@ -109,7 +117,7 @@ export const regularButtonDocumentation: ContentValues = {
       name: 'Outlined buttons',
       id: 'outlined-buttons',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <Button.Outlined title='Outlined' containerStyle={style} />
           <Button.Outlined icon={{ name: 'add' }} title='Outlined Icon' containerStyle={style} />
           <Button.Outlined title='Disabled' disabled containerStyle={style} />
@@ -129,7 +137,7 @@ export const regularButtonDocumentation: ContentValues = {
       name: 'Text buttons',
       id: 'text-buttons',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <Button.Text title='Text' containerStyle={style} />
           <Button.Text icon={{ name: 'add' }} title='Text Icon' containerStyle={style} />
           <Button.Text title='Disabled' disabled containerStyle={style} />
