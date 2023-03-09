@@ -22,6 +22,7 @@ interface ComponentLinks extends Link {
 
 interface SubIndex {
   title: string;
+  link: string;
   components: ComponentLinks[];
 }
 
@@ -31,12 +32,14 @@ interface HeadingProps {
 }
 
 const Group = (props: HeadingProps) => {
+  const { pathname } = useRouter();
+
   return (
     <FlatList
       contentContainerStyle={style.groupList}
       data={props.links}
       renderItem={({ item }) => {
-        return (
+        return item.components.length > 0 ? (
           <Accordion.Container
             title={
               <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.groupName}>
@@ -48,6 +51,10 @@ const Group = (props: HeadingProps) => {
               <Components links={item.components} />
             </Accordion.Children>
           </Accordion.Container>
+        ) : (
+          <Typography.Title style={[style.groupName, pathname === item.link ? style.active : {}]}>
+            <TextLink href={item.link}>{item.title}</TextLink>
+          </Typography.Title>
         );
       }}
     />
@@ -135,84 +142,73 @@ const Sidebar = () => {
     >
       <Container sx={style.container}>
         <Index
-          heading='Components Overview'
+          heading='Components'
           links={[
             {
-              title: 'Display',
-              components: [
-                {
-                  link: '/components/typography',
-                  title: 'Typography',
-                  variants: [],
-                },
-                {
-                  link: '/components/badge',
-                  title: 'Badge',
-                  variants: [],
-                },
-                {
-                  link: '/components/chip',
-                  title: 'Chip',
-                  variants: [],
-                },
-              ],
+              title: 'Badges',
+              components: [],
+              link: '/components/badge',
             },
             {
-              title: 'Layout',
+              title: 'Buttons',
               components: [
                 {
-                  title: 'Container',
-                  link: '/components/container',
+                  title: 'Common',
+                  link: '/components/button/regular',
+                  variants: [],
+                },
+                {
+                  title: 'FAB',
+                  link: '/components/button/fab',
+                  variants: [],
+                },
+                {
+                  title: 'Extended FAB',
+                  link: '/components/button/extended-fab',
+                  variants: [],
+                },
+                {
+                  title: 'Icon buttons',
+                  link: '/components/button/icon',
+                  variants: [],
+                },
+                {
+                  title: 'Segmented buttons',
+                  link: '/components/button/segmented',
                   variants: [],
                 },
               ],
+              link: '/components/button',
             },
             {
-              title: 'Inputs',
-              components: [
-                {
-                  link: '/components/button',
-                  title: 'Button',
-                  variants: [
-                    {
-                      link: '/components/button/extended-fab',
-                      title: 'Extended FAB',
-                    },
-                    {
-                      link: '/components/button/fab',
-                      title: 'FAB',
-                    },
-
-                    {
-                      link: '/components/button/icon',
-                      title: 'Icon',
-                    },
-                    {
-                      link: '/components/button/regular',
-                      title: 'Regular',
-                    },
-                    {
-                      link: '/components/button/segmented',
-                      title: 'Segmented',
-                    },
-                  ],
-                },
-                {
-                  link: '/components/checkbox',
-                  title: 'Checkbox',
-                  variants: [],
-                },
-                {
-                  link: '/components/radio-button',
-                  title: 'Radio Button',
-                  variants: [],
-                },
-                {
-                  link: '/components/text-field',
-                  title: 'Text Field',
-                  variants: [],
-                },
-              ],
+              title: 'Checkbox',
+              link: '/components/checkbox',
+              components: [],
+            },
+            {
+              title: 'Chips',
+              link: '/components/chip',
+              components: [],
+            },
+            {
+              title: 'Radio Button',
+              link: '/components/radio-button',
+              components: [],
+            },
+            {
+              title: 'Switch',
+              link: '/components/switch',
+              components: [],
+            },
+            {
+              title: 'Typography',
+              link: '/components/typography',
+              components: [],
+            },
+            {
+              title: 'Text Fields',
+              link: '/components/text-field',
+              components: [],
             },
           ]}
         />
@@ -230,20 +226,21 @@ const style = {
     fontSize: 18,
     fontWeight: '600',
     flexWrap: 'wrap',
+    opacity: 0.7,
   },
   groupName: {
     fontSize: 18,
     fontFamily: source.style.fontFamily,
-    fontWeight: '600',
+    fontWeight: '400',
     opacity: 0.7,
-    marginVertical: 10,
+    marginVertical: 5,
   },
   componentName: {
     fontSize: 18,
     fontFamily: source.style.fontFamily,
     opacity: 0.7,
     marginLeft: 20,
-    marginBottom: 5,
+    marginVertical: 5,
   },
   categoryName: {
     fontSize: 18,
@@ -262,6 +259,7 @@ const style = {
   active: {
     color: theme.colors.$primary,
     opacity: 1,
+    fontWeight: '600',
   },
 } as const;
 
