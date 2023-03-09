@@ -72,6 +72,12 @@ const ToggleMenu = () => {
 const MetaData = () => {
   const { width } = useWindowDimensions();
 
+  const RenderToggleMenu = () => {
+    if (!width) return <ToggleMenu />;
+
+    return width < 900 ? <ToggleMenu /> : null;
+  };
+
   return (
     <ul style={style.list}>
       <li style={style.listItem}>
@@ -83,11 +89,9 @@ const MetaData = () => {
       <li style={style.listItem}>
         <MaterialCommunityIcon name='github' size={24} />
       </li>
-      {width < 768 ? (
-        <li style={style.listItem}>
-          <ToggleMenu />
-        </li>
-      ) : null}
+      <li style={style.listItem}>
+        <RenderToggleMenu />
+      </li>
     </ul>
   );
 };
@@ -108,7 +112,7 @@ const Navbar = () => {
 
 const style = {
   navbar: {
-    width: '100vw',
+    width: '100%',
     height: 70,
     display: 'flex',
     justifyContent: 'center',
@@ -129,14 +133,14 @@ const style = {
     alignSelf: 'center',
   },
   list: {
+    listStyleType: 'none',
     display: 'flex',
     flexDirection: 'row',
-    listStyleType: 'none',
   },
   listItem: {
     display: 'flex',
     alignItems: 'center',
-    margin: '0 16px',
+    margin: '0 0 0 32px',
   },
 } as const;
 

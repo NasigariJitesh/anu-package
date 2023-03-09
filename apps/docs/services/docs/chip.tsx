@@ -2,6 +2,8 @@ import { Chip, Container } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
+const flexStyle = { width: 200, flexWrap: 'wrap', height: 90 } as const;
+
 export const chipDocumentation: ContentValues = {
   mainHeading: 'Chips',
   mainDescription:
@@ -59,24 +61,16 @@ export const chipDocumentation: ContentValues = {
       name: 'Assist Chip',
       id: 'assist-chip',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
+        <Container disableGutters flexDirection='row' align='center' justify='space-around' sx={flexStyle}>
           <Chip type='assist' value='Assist' />
           <Chip type='assist' value='Assist' disabled />
           <Chip type='assist' value='Assist' elevated />
           <Chip leadingIcon={{ name: 'person' }} type='assist' value='Assist' />
         </Container>
       ),
-      code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-  <Chip type='assist' value='Assist' />
-  <Chip type='assist' value='Assist' elevated />
-  <Chip leadingIcon={{ name: 'right-arrow' }} type='assist' value='Assist' />
-</Container>`,
+      code: `<Chip type='assist' value='Assist' />
+<Chip type='assist' value='Assist' elevated />
+<Chip leadingIcon={{ name:'right-arrow' }} type='assist' value='Assist' />`,
       description: 'Assist chip only has a leading icon and can be used only as an informative chip',
     },
     {
@@ -87,8 +81,8 @@ export const chipDocumentation: ContentValues = {
           disableGutters
           flexDirection='row'
           align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
+          justify='space-between'
+          sx={{ ...flexStyle, width: 230 }}
         >
           <Chip type='filter' value='Filter' />
           <Chip type='filter' value='Filter' disabled />
@@ -98,20 +92,13 @@ export const chipDocumentation: ContentValues = {
           <Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' />
         </Container>
       ),
-      code: `<Container
-  disableGutters
-  flexDirection='row'
-  align='center'
-  justify='space-around'
-  sx={{ width: '100%', maxWidth: 700 }}
->
-  <Chip type='filter' value='Filter' />
-  <Chip type='filter' value='Filter' disabled />
-  <Chip type='filter' value='Filter' selected />
-  <Chip type='filter' value='Filter' selected disabled />
-  <Chip type='filter' value='Filter' elevated />
-  <Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' />
-</Container>`,
+      code: `<Chip type='filter' value='Filter' />
+<Chip type='filter' value='Filter' disabled />
+<Chip type='filter' value='Filter' selected />
+<Chip type='filter' value='Filter' selected disabled />
+<Chip type='filter' value='Filter' elevated />
+<Chip leadingIcon={{ name:'filter-alt' }} type='filter' value='Filter' />
+`,
       description: 'Filter chip has a leading icon and can be used as a selectable chip',
     },
     {
@@ -122,8 +109,8 @@ export const chipDocumentation: ContentValues = {
           disableGutters
           flexDirection='row'
           align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
+          justify='space-between'
+          sx={{ ...flexStyle, width: 260 }}
         >
           <Chip type='input' value='Input' />
           <Chip type='input' value='Input' disabled />
@@ -133,20 +120,12 @@ export const chipDocumentation: ContentValues = {
           <Chip trailingIcon={{ name: 'close' }} type='input' value='Input' />
         </Container>
       ),
-      code: `<Container
-  disableGutters
-  flexDirection='row'
-  align='center'
-  justify='space-around'
-  sx={{ width: '100%', maxWidth: 700 }}
->
-  <<Chip type='input' value='Input' />
-  <Chip type='input' value='Input' disabled />
-  <Chip type='input' value='Input' selected />
-  <Chip type='input' value='Input' selected disabled />
-  <Chip leadingIcon={{ name: 'add' }} type='input' value='Input' />
-  <Chip trailingIcon={{ name: 'close' }} type='input' value='Input' />
-</Container>`,
+      code: `<Chip type='input' value='Input' />
+<Chip type='input' value='Input' disabled />
+<Chip type='input' value='Input' selected />
+<Chip type='input' value='Input' selected disabled />
+<Chip leadingIcon={{ name:'add' }} type='input' value='Input' />
+<Chip trailingIcon={{ name:'close' }} type='input' value='Input' />`,
       description: 'Filter chip has both leading and trailing icon and can be used as a selectable chip',
     },
     {
@@ -157,8 +136,8 @@ export const chipDocumentation: ContentValues = {
           disableGutters
           flexDirection='row'
           align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
+          justify='space-between'
+          sx={{ ...flexStyle, width: 270 }}
         >
           <Chip type='suggestion' value='Suggest' />
           <Chip type='suggestion' value='Suggest' disabled />
@@ -167,13 +146,11 @@ export const chipDocumentation: ContentValues = {
           <Chip type='suggestion' value='Suggest' selected disabled />
         </Container>
       ),
-      code: `<Container flexDirection='row'  align='center'  justify='space-around'>
-    <Chip type='suggestion' value='Suggest' />
-    <Chip type='suggestion' value='Suggest' disabled />
-    <Chip type='suggestion' value='Suggest' elevated />
-    <Chip type='suggestion' value='Suggest' selected />
-    <Chip type='suggestion' value='Suggest' selected disabled />
-</Container>`,
+      code: `<Chip type='suggestion' value='Suggest' />
+<Chip type='suggestion' value='Suggest' disabled />
+<Chip type='suggestion' value='Suggest' elevated />
+<Chip type='suggestion' value='Suggest' selected />
+<Chip type='suggestion' value='Suggest' selected disabled />`,
       description: 'Suggestion chip has no icon and can be used as a selectable chip',
     },
   ],

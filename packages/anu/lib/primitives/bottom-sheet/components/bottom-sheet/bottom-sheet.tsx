@@ -93,8 +93,6 @@ const BottomSheet = forwardRef<BottomSheetReferenceProps, BottomSheetProps>((pro
       translateY.value = Math.max(newTranslationYValue, maxTranslateY);
     })
     .onEnd(() => {
-      console.log(translateY.value - maxTranslateY);
-
       if (translateY.value > maxTranslateY / 1.5) scrollTo(0);
       else scrollTo(maxTranslateY);
     });

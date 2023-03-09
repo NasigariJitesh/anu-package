@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import { ReactChildren } from 'anu/common/types';
 import { getTheme } from 'anu/config';
 import { Container, Typography } from 'anu/lib';
@@ -37,15 +36,15 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
         ) : null}
         <ScrollView style={styles.examplesComponentContainer} showsHorizontalScrollIndicator={false} horizontal>
-          <Container align='flex-start' justify='center' style={styles.examplesComponentContainer}>
+          <Container disableGutters align='flex-start' justify='center' style={styles.examplesComponentContainer}>
             {example.component}
           </Container>
         </ScrollView>
-        <Container style={styles.codeArea}>
-          <SyntaxHighlighter showLineNumbers style={arduinoLight} customStyle={styles.code}>
+        <ScrollView horizontal style={styles.codeArea}>
+          <SyntaxHighlighter style={arduinoLight} customStyle={styles.code}>
             {example.code}
           </SyntaxHighlighter>
-        </Container>
+        </ScrollView>
         {/* <Divider variant='full-width' light style={styles.divider} /> */}
       </Container>
     );
@@ -65,15 +64,12 @@ const getStyles = () => {
   const styles = {
     container: {
       marginBottom: 30,
-      width: '100%',
     },
     examplesContainer: {
-      width: '100%',
       marginBottom: 20,
     },
     examplesComponentContainer: {
-      width: 700,
-      marginVertical: 20,
+      marginVertical: 10,
     },
     heading: {
       color: colors.$onSurface,
@@ -103,21 +99,16 @@ const getStyles = () => {
       backgroundColor: 'transparent',
       fontSize: 16,
       fontWeight: '400',
-      overflow: 'breakWord',
-      width: '100%',
-      maxWidth: 650,
     },
     divider: {
       color: colors.$onSurface,
     },
     codeArea: {
       backgroundColor: colors.$primaryContainer,
-      width: '100%',
-      maxWidth: 700,
-      marginVertical: 15,
+      maxWidth: 630,
+      width: '90vw',
       padding: 5,
       borderRadius: 10,
-      justifyContent: 'center',
     },
   } as const;
   return styles;
