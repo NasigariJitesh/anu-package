@@ -118,7 +118,6 @@ const TextField = (props: Partial<TextFieldProps>) => {
               onBlur={onTextInputBlur}
               {...componentProps}
               placeholder={undefined}
-              // eslint-disable-next-line react-native/no-color-literals, react-native/no-inline-styles
               style={[style, props.style]}
             />
           </Container>
