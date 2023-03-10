@@ -16,6 +16,7 @@ const flexStyle = {
 } as const;
 export const iconButtonDocumentation: ContentValues = {
   mainHeading: 'Button',
+  mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
   heading: 'Icon Buttons',
   subTitle:
     'Icon buttons help people take supplementary actions with a single tap. There are four types of icon buttons: filled, filled tonal, outlined, and standard.',

@@ -17,6 +17,7 @@ const flexStyle = {
 } as const;
 export const extendedFABDocumentation: ContentValues = {
   mainHeading: 'Button',
+  mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
   heading: 'Extended Floating Action Buttons',
   subTitle:
     'Extended FABs help people take primary actions. They are wider than FABs to accommodate a text label and larger target area.',

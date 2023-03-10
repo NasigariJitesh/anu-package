@@ -17,6 +17,7 @@ const flexStyle = {
 } as const;
 export const FABDocumentation: ContentValues = {
   mainHeading: 'Button',
+  mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
   heading: 'Floating Action Buttons',
   subTitle:
     'The FAB represents the most important action on a screen. It puts key actions within reach. There are three sizes of floating action buttons: FAB, small FAB, and large FAB.',

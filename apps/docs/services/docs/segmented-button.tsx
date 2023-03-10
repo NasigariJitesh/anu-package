@@ -17,6 +17,8 @@ const flexStyle = {
 } as const;
 export const segmentedButtonDocumentation: ContentValues = {
   mainHeading: 'Button',
+  mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
+
   heading: 'Segmented Buttons',
   subTitle:
     'Segmented buttons help people select options, switch views, or sort elements. There are two types of segmented buttons: single-select and multi-select.',
