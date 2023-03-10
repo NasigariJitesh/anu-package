@@ -45,10 +45,10 @@ const getStyles = () => {
     mainHeading: {
       color: colors.$onSurface,
       fontFamily: source.style.fontFamily,
-      fontSize: 28,
+      fontSize: 32,
       fontWeight: '600',
       marginBottom: 15,
-      lineHeight: 36,
+      lineHeight: 38,
     },
     mainDescription: {
       color: colors.$onSurface,

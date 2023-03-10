@@ -1,7 +1,7 @@
 import { ExtendedDisabledStyles, ExtendedHoverStyles, Flex } from 'common/types';
 import { ContainerAlign } from 'lib/primitives/layout/types';
 import { ContainerJustify } from 'lib/primitives/layout/types/container';
-import { StyleProp } from 'react-native';
+import { StyleProp, ViewStyle } from 'react-native';
 import { TextStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 
 import RadioButton from '../components';
@@ -17,7 +17,7 @@ export interface RadioButtonProps {
    */
   id: string;
   /**
-   * Whether the radio button is selected
+   * Id of the selected radio button
    */
   selected?: string;
   /**
@@ -46,6 +46,10 @@ export interface RadioButtonProps {
    * The styles for the label of the radio button.
    */
   labelStyle?: StyleProp<TextStyle>;
+  /**
+   * The styles for the container of the radio button.
+   */
+  containerStyle?: StyleProp<ViewStyle>;
   /**
    * The color of the radio button component.
    */
