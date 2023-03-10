@@ -127,7 +127,7 @@ const RenderIndex = () => {
         return <Index {...iconButtonIndex} />;
       }
     }
-    case '/components/button/regular': {
+    case '/components/button/common': {
       {
         return <Index {...regularButtonIndex} />;
       }
@@ -163,7 +163,7 @@ const RenderIndex = () => {
 const RightSidebar = () => {
   const { width } = useWindowDimensions();
 
-  if (width <= 1024) return null;
+  if (!width || width <= 1024) return null;
 
   return (
     <Container sx={style.container}>
@@ -174,7 +174,7 @@ const RightSidebar = () => {
 
 const style = {
   container: {
-    width: 200,
+    width: 210,
   },
   preHeading: {
     fontFamily: source.style.fontFamily,
