@@ -27,12 +27,12 @@ const nextConfig = withExpo({
     return [
       {
         source: '/components/button',
-        destination: '/components/button/regular',
+        destination: '/components/button/common',
         permanent: true,
       },
       {
         source: '/',
-        destination: '/components/typography',
+        destination: '/components/badge',
         permanent: true,
       },
     ];

@@ -28,7 +28,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
 
   const renderExample = (example: Example, index: number) => {
     return (
-      <Container nativeID={example.id} key={index} disableGutters style={styles.examplesContainer}>
+      <Container nativeID={example.id} key={index} disableGutters style={styles.examplesContainer as never}>
         <Typography.Headline style={styles.name}>{example.name}</Typography.Headline>
         {example.description ? (
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
@@ -38,7 +38,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
             {example.component}
           </Container>
         </ScrollView>
-        <ScrollView horizontal style={styles.codeArea}>
+        <ScrollView style={styles.codeArea}>
           <SyntaxHighlighter style={arduinoLight} customStyle={styles.code}>
             {example.code}
           </SyntaxHighlighter>
@@ -68,7 +68,6 @@ const getStyles = () => {
     },
     examplesComponentContainer: {
       marginVertical: 10,
-      flex: 1,
     },
     heading: {
       color: colors.$onSurface,
@@ -104,8 +103,6 @@ const getStyles = () => {
     },
     codeArea: {
       backgroundColor: colors.$primaryContainer,
-      maxWidth: 630,
-      width: '90vw',
       padding: 5,
       borderRadius: 10,
     },
