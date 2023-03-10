@@ -47,7 +47,7 @@ const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
   };
 
   return (
-    <Container nativeID='props' disableGutters style={styles.container}>
+    <Container nativeID='props' disableGutters style={styles.container as never}>
       <Typography.Headline style={styles.heading}>{translations('en', 'props')}</Typography.Headline>
       <Divider variant='full-width' light style={styles.divider} />
       {properties.map((prop, index) => renderProperty(prop, index, index === properties.length - 1))}
@@ -61,7 +61,7 @@ const getStyles = () => {
   const styles = {
     container: {
       marginBottom: 30,
-      width: '100%',
+      maxWidth: 750,
     },
     propertyContainer: {
       width: '100%',

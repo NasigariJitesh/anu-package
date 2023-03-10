@@ -17,7 +17,7 @@ export const useMenuContext = () => useContext(MenuContent);
  * @param props.children
  */
 export default function RootLayout(props: { children: ReactChildren }) {
-  const [isOpen, toggleIsOpen] = useState(true);
+  const [isOpen, toggleIsOpen] = useState(false);
   const [isAdjustedToResize, toggleIsAdjustedToResize] = useState(false);
 
   const { width } = useWindowDimensions();
@@ -41,7 +41,6 @@ export default function RootLayout(props: { children: ReactChildren }) {
     if (width >= 900 || width <= 0) return;
 
     toggleIsOpen(false);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
