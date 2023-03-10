@@ -118,7 +118,7 @@ export const badgeDocumentation: ContentValues = {
         </Container>
       ),
       code: `<Badge value='new'>
-  <Icon name='notifications' style={style} />
+  <Icon name='notifications' />
 </Badge>`,
     },
     {
@@ -148,8 +148,17 @@ export const badgeDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<Badge value='new'>
-  <Icon name='notifications' style={style} />
+      code: `<Badge value='new' position='topLeft'>
+  <Icon name='notifications' />
+</Badge>
+<Badge value='new' position='topRight'>
+  <Icon name='notifications' />
+</Badge>
+<Badge value='new' position='bottomLeft'>
+  <Icon name='notifications' />
+</Badge>
+<Badge value='new' position='bottomRight'>
+  <Icon name='notifications' />
 </Badge>`,
     },
   ],
