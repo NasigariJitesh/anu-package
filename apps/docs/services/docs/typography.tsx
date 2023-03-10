@@ -79,7 +79,7 @@ export const typographyDocumentation: ContentValues = {
       id: 'body',
       description: '',
       component: (
-        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between' sx={{ height: 90 }}>
+        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
           <Typography.Body style={style} size='large'>
             b1. Body
           </Typography.Body>
