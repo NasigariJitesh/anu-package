@@ -4,11 +4,21 @@ import { ContentValues } from 'src/sections/content';
 
 const flexStyle = {
   flexWrap: 'wrap',
-  width: ['90vw', '90vw', '300px', '300px', '300px'],
+  // < 576 = 90vw
+  // 576
+  //
+  // 990 px
+  // > 1200px
+  width: ['90vw', '90vw', '550px', '600px', '750px'],
 } as const;
 
 const style = {
   margin: 15,
+};
+
+const otherStyle = {
+  marginVertical: 15,
+  marginHorizontal: 25,
 };
 
 export const badgeDocumentation: ContentValues = {
@@ -111,6 +121,37 @@ export const badgeDocumentation: ContentValues = {
   <Icon name='notifications' style={style} />
 </Badge>`,
     },
+    {
+      name: 'Badge - with Position',
+      id: 'position',
+      component: (
+        <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
+          <Container disableGutters style={otherStyle}>
+            <Badge value='new' position='topLeft'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+          <Container disableGutters style={otherStyle}>
+            <Badge value='new' position='topRight'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+          <Container disableGutters style={otherStyle}>
+            <Badge value='new' position='bottomLeft'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+          <Container disableGutters style={otherStyle}>
+            <Badge value='new' position='bottomRight'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+        </Container>
+      ),
+      code: `<Badge value='new'>
+  <Icon name='notifications' style={style} />
+</Badge>`,
+    },
   ],
 };
 
@@ -124,6 +165,10 @@ export const badgeIndex: HeadingProps = {
     {
       title: 'Status Badge',
       link: '#status',
+    },
+    {
+      title: 'Badge - with Position',
+      link: '#position',
     },
     {
       link: '#props',
