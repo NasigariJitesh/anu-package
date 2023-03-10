@@ -2,10 +2,19 @@ import { Badge, Container, Icon } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
+const flexStyle = {
+  flexWrap: 'wrap',
+  width: ['90vw', '90vw', '300px', '300px', '300px'],
+} as const;
+
+const style = {
+  margin: 15,
+};
+
 export const badgeDocumentation: ContentValues = {
   mainHeading: 'Badge',
   mainDescription:
-    'Badges convey dynamic information, such as counts or status. A badge can include labels or numbers.',
+    'Badges are used to display a small amount of information, typically a number or a short status message, on top of an icon or avatar.',
   properties: [
     {
       name: 'value',
@@ -55,61 +64,45 @@ export const badgeDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'String Badge',
-      id: 'string-badge',
+      name: 'Notification Badge',
+      id: 'notification',
+      description: 'Notification badges are used to provide a visual indicator of new or updated information.',
       component: (
-        <Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: 200 }}>
-          <Badge value='new'>
-            <Icon name='chat-bubble-outline' />
-          </Badge>
-          <Badge value='New' overlap='circular'>
-            <Icon name='chat-bubble-outline' />
-          </Badge>
+        <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
           <Badge value=''>
-            <Icon name='chat-bubble-outline' />
+            <Icon name='notifications' style={style} />
+          </Badge>
+          <Badge value='5' overlap='circular'>
+            <Icon name='notifications' style={style} />
+          </Badge>
+          <Badge value={600} maxValue={599}>
+            <Icon name='notifications' style={style} />
+          </Badge>
+        </Container>
+      ),
+      code: `<Badge value=''>
+  <Icon name='notifications' style={style} />
+</Badge>
+<Badge value='5' overlap='circular'>
+  <Icon name='notifications' style={style} />
+</Badge>
+<Badge value={600} maxValue={599}>
+  <Icon name='notifications' style={style} />
+</Badge>`,
+    },
+    {
+      name: 'Notification Badge',
+      id: 'status',
+      description: 'Notification badges are used to provide a visual indicator of new or updated information.',
+      component: (
+        <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
+          <Badge value='new'>
+            <Icon name='notifications' style={style} />
           </Badge>
         </Container>
       ),
       code: `<Badge value='new'>
-  <Icon name='chat-bubble-outline' />
-</Badge>
-<Badge value='new' overlap='circular'>
-  <Icon name='chat-bubble-outline' />
-</Badge>
-<Badge value=''>
-  <Icon name='chat-bubble-outline' />
-</Badge>`,
-    },
-    {
-      name: 'Number Badge',
-      id: 'number-badge',
-      component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: 200, overflow: 'visible' }}
-        >
-          <Badge value={90}>
-            <Icon name='notifications' />
-          </Badge>
-          <Badge value={90} maxValue={50}>
-            <Icon name='notifications' />
-          </Badge>
-          <Badge value={0} showZero>
-            <Icon name='notifications' />
-          </Badge>
-        </Container>
-      ),
-      code: `<Badge value={90}>
-  <Icon name='notifications' />
-</Badge>
-<Badge value={90} maxValue={50}>
-  <Icon name='notifications' />
-</Badge>
-<Badge value={0} showZero>
-  <Icon name='notifications' />
+  <Icon name='notifications' style={style} />
 </Badge>`,
     },
   ],
@@ -119,18 +112,12 @@ export const badgeIndex: HeadingProps = {
   heading: 'Badge',
   links: [
     {
-      components: [
-        {
-          title: 'String Badge',
-          link: '#string-badge',
-        },
-        {
-          title: 'Number Badge',
-          link: '#number-badge',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'Notification Badge',
+      link: '#notification',
+    },
+    {
+      title: 'Status Badge',
+      link: '#status',
     },
     {
       link: '#props',
