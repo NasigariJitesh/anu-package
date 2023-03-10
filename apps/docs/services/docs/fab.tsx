@@ -3,13 +3,21 @@ import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
 const style = {
-  margin: 10,
+  margin: 15,
 };
 
-const flexStyle = { width: 300, flexWrap: 'wrap' } as const;
-
+const flexStyle = {
+  flexWrap: 'wrap',
+  // < 576 = 90vw
+  // 576
+  //
+  // 990 px
+  // > 1200px
+  width: ['90vw', undefined, undefined, '600px', '750px'],
+} as const;
 export const FABDocumentation: ContentValues = {
   mainHeading: 'Button',
+  mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
   heading: 'Floating Action Buttons',
   subTitle:
     'The FAB represents the most important action on a screen. It puts key actions within reach. There are three sizes of floating action buttons: FAB, small FAB, and large FAB.',
@@ -50,10 +58,10 @@ export const FABDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'FAB',
-      id: 'fab',
+      name: 'Default',
+      id: 'default',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='tertiary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
@@ -61,18 +69,15 @@ export const FABDocumentation: ContentValues = {
         </Container>
       ),
       code: `<FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
-
 <FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} />
-
 <FAB FABColor='tertiary' size='medium' icon={{ name: 'phone' }} />
-
 <FAB FABColor='surface' size='medium' icon={{ name: 'phone' }} />`,
     },
     {
       name: 'Small FAB',
       id: 'small-fab',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <FAB FABColor='primary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='secondary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='tertiary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
@@ -80,18 +85,15 @@ export const FABDocumentation: ContentValues = {
         </Container>
       ),
       code: `<FAB FABColor='primary' size='small' icon={{ name: 'phone' }} />
-
 <FAB FABColor='secondary' size='small' icon={{ name: 'phone' }} />
-
 <FAB FABColor='tertiary' size='small' icon={{ name: 'phone' }} />
-
 <FAB FABColor='surface' size='small' icon={{ name: 'phone' }} />`,
     },
     {
       name: 'Large FAB',
       id: 'large-fab',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle}>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <FAB FABColor='primary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='secondary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
           <FAB FABColor='tertiary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
@@ -99,12 +101,19 @@ export const FABDocumentation: ContentValues = {
         </Container>
       ),
       code: `<FAB FABColor='primary' size='large' icon={{ name: 'phone' }} />
-
 <FAB FABColor='secondary' size='large' icon={{ name: 'phone' }} />
-
 <FAB FABColor='tertiary' size='large' icon={{ name: 'phone' }} />
-
 <FAB FABColor='surface' size='large' icon={{ name: 'phone' }} />`,
+    },
+    {
+      name: 'FAB - Lowered',
+      id: 'large-fab-lowered',
+      component: (
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
+          <FAB FABColor='primary' size='large' icon={{ name: 'phone' }} containerStyle={style} lowered />
+        </Container>
+      ),
+      code: "<FAB FABColor='primary' size='large' icon={{ name: 'phone' }} lowered/>",
     },
   ],
 };
@@ -113,8 +122,8 @@ export const FABIndex: HeadingProps = {
   heading: 'FAB',
   links: [
     {
-      title: 'FAB',
-      link: '#fab',
+      title: 'Default',
+      link: '#default',
     },
     {
       title: 'Small FAB',
@@ -123,6 +132,10 @@ export const FABIndex: HeadingProps = {
     {
       title: 'Large FAB',
       link: '#large-fab',
+    },
+    {
+      title: 'FAB - Lowered',
+      link: '#fab-lowered',
     },
     {
       link: '#props',

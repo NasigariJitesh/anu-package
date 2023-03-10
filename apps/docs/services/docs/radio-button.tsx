@@ -5,6 +5,7 @@ import { ContentValues } from 'src/sections/content';
 
 export const radioDocumentation: ContentValues = {
   mainHeading: 'Radio',
+
   mainDescription: 'Radio buttons allow users to select one option from a set.',
   properties: [
     {
