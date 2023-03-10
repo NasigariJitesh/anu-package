@@ -120,5 +120,5 @@ module.exports = {
     'jsdoc/require-param-type': 'off',
     'jsdoc/require-returns-type': 'off',
   },
-  ignorePatterns: ['*.json, *.js', '.eslintrc.js', '*.config.js'],
+  ignorePatterns: ['*.json, *.js', '.eslintrc.js', '*.config.js', '**/coverage/*'],
 };

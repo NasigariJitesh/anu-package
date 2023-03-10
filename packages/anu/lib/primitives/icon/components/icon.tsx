@@ -5,6 +5,7 @@ import { defaultProps } from './default';
 
 const Icon = (props: MaterialIconProps) => {
   const restOfTheProps = { ...defaultProps, ...props };
+
   return <MaterialIcons {...restOfTheProps} />;
 };
 

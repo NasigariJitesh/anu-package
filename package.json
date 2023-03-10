@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "test": "turbo run test",
     "dev": "turbo run dev",
     "dev:docs": "cd apps/docs && yarn run dev",
     "lint": "turbo run lint -- --cache --cache-strategy content --fix",
