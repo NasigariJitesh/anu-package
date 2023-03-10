@@ -2,6 +2,10 @@ import { Container, Typography } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
+const style = {
+  margin: 15,
+};
+
 export const typographyDocumentation: ContentValues = {
   mainHeading: 'Typography',
   mainDescription:
@@ -12,16 +16,16 @@ export const typographyDocumentation: ContentValues = {
       id: 'display',
       description: 'Displays are often used for large, attention-grabbing headlines or titles.',
       component: (
-        <Container
-          disableGutters
-          flexDirection='column'
-          align='flex-start'
-          justify='space-between'
-          sx={{ height: 200 }}
-        >
-          <Typography.Display size='large'>d1. Display</Typography.Display>
-          <Typography.Display size='medium'>d2. Display</Typography.Display>
-          <Typography.Display size='small'>d3. Display</Typography.Display>
+        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
+          <Typography.Display style={style} size='large'>
+            d1. Display
+          </Typography.Display>
+          <Typography.Display style={style} size='medium'>
+            d2. Display
+          </Typography.Display>
+          <Typography.Display style={style} size='small'>
+            d3. Display
+          </Typography.Display>
         </Container>
       ),
       code: `<Typography.Display size='large'>d1. Display</Typography.Display>
@@ -33,16 +37,16 @@ export const typographyDocumentation: ContentValues = {
       id: 'headline',
       description: 'Headlines in graphic design are typically used for the main title or headline.',
       component: (
-        <Container
-          disableGutters
-          flexDirection='column'
-          align='flex-start'
-          justify='space-between'
-          sx={{ height: 150 }}
-        >
-          <Typography.Headline size='large'>h1. Headline</Typography.Headline>
-          <Typography.Headline size='medium'>h2. Headline</Typography.Headline>
-          <Typography.Headline size='small'>h3. Headline</Typography.Headline>
+        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
+          <Typography.Headline style={style} size='large'>
+            h1. Headline
+          </Typography.Headline>
+          <Typography.Headline style={style} size='medium'>
+            h2. Headline
+          </Typography.Headline>
+          <Typography.Headline style={style} size='small'>
+            h3. Headline
+          </Typography.Headline>
         </Container>
       ),
       code: `<Typography.Headline size='large'>d1. Headline</Typography.Headline>
@@ -54,16 +58,16 @@ export const typographyDocumentation: ContentValues = {
       id: 'title',
       description: '',
       component: (
-        <Container
-          disableGutters
-          flexDirection='column'
-          align='flex-start'
-          justify='space-between'
-          sx={{ height: 100 }}
-        >
-          <Typography.Title size='large'>t1. Title</Typography.Title>
-          <Typography.Title size='medium'>t2. Title</Typography.Title>
-          <Typography.Title size='small'>t3. Title</Typography.Title>
+        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
+          <Typography.Title style={style} size='large'>
+            t1. Title
+          </Typography.Title>
+          <Typography.Title style={style} size='medium'>
+            t2. Title
+          </Typography.Title>
+          <Typography.Title style={style} size='small'>
+            t3. Title
+          </Typography.Title>
         </Container>
       ),
       code: `<Typography.Title size='large'>t1. Title</Typography.Title>
@@ -75,10 +79,16 @@ export const typographyDocumentation: ContentValues = {
       id: 'body',
       description: '',
       component: (
-        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between' sx={{ height: 90 }}>
-          <Typography.Body size='large'>b1. Body</Typography.Body>
-          <Typography.Body size='medium'>b2. Body</Typography.Body>
-          <Typography.Body size='small'>b3. Body</Typography.Body>
+        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
+          <Typography.Body style={style} size='large'>
+            b1. Body
+          </Typography.Body>
+          <Typography.Body style={style} size='medium'>
+            b2. Body
+          </Typography.Body>
+          <Typography.Body style={style} size='small'>
+            b3. Body
+          </Typography.Body>
         </Container>
       ),
       code: `<Typography.Body size='large'>b1. Body</Typography.Body>
@@ -90,10 +100,16 @@ export const typographyDocumentation: ContentValues = {
       id: 'label',
       description: '',
       component: (
-        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between' sx={{ height: 90 }}>
-          <Typography.Label size='large'>l1. Label</Typography.Label>
-          <Typography.Label size='medium'>l2. Label</Typography.Label>
-          <Typography.Label size='small'>l3. Label</Typography.Label>
+        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
+          <Typography.Label style={style} size='large'>
+            l1. Label
+          </Typography.Label>
+          <Typography.Label style={style} size='medium'>
+            l2. Label
+          </Typography.Label>
+          <Typography.Label style={style} size='small'>
+            l3. Label
+          </Typography.Label>
         </Container>
       ),
       code: `<Typography.Label size='large'>l1. Label</Typography.Label>

@@ -3,6 +3,19 @@ import { Radio, RadioButtonGroup } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
 
+const style = {
+  margin: 15,
+};
+const flexStyle = {
+  flexWrap: 'wrap',
+  // < 576 = 90vw
+  // 576
+  //
+  // 990 px
+  // > 1200px
+  width: ['90vw', '90vw', '550px', '600px', '750px'],
+} as const;
+
 export const radioDocumentation: ContentValues = {
   mainHeading: 'Radio',
 
@@ -15,8 +28,8 @@ export const radioDocumentation: ContentValues = {
     },
     {
       name: 'selected',
-      description: 'Whether the radio button is selected.',
-      type: 'boolean (optional)',
+      description: 'Id of the selected radio button.',
+      type: 'string (optional)',
     },
     {
       name: 'label',
@@ -51,6 +64,11 @@ export const radioDocumentation: ContentValues = {
       type: 'StyleProp<TextStyle> (optional)',
     },
     {
+      name: 'containerStyle',
+      description: 'The styles for the container of the radio button.',
+      type: 'StyleProp<ViewStyle> (optional)',
+    },
+    {
       name: 'onPress',
       description: 'The callback when there is a press or click on the radio button.',
       type: '(id: string) => void (optional)',
@@ -58,55 +76,53 @@ export const radioDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'Basic',
-      id: 'basic',
-      code: `<Container flexDirection='row' align='center' justify='space-around'>
-  <Radio id='basic' />
-  <Radio id='disabled' disabled />
-</Container>`,
+      name: 'Default',
+      id: 'default',
+      code: `<Radio id='basic' />
+<Radio id='disabled' disabled />
+<Radio id='basic' selected='basic' />
+<Radio id='basic-disabled' selected='basic-disabled' disabled/>`,
       component: (
-        <Container flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 700 }}>
-          <Radio id='basic' />
-          <Radio id='disabled' disabled />
+        <Container flexDirection='row' sx={flexStyle as never}>
+          <Radio id='basic' containerStyle={style} />
+          <Radio id='disabled' disabled containerStyle={style} />
+          <Radio id='basic' selected='basic' containerStyle={style} />
+          <Radio id='basic-disabled' selected='basic-disabled' disabled containerStyle={style} />
         </Container>
       ),
     },
     {
-      name: 'Label ',
-      id: 'label',
-      code: `<Container flexDirection='row' justify='space-around' align='center' >
-  <Radio id='label' label='Label' />
-  <Radio id='labelLeft' label='Left' labelPlacement='left' />
-  <Radio id='labelRight' label='Right' labelPlacement='right' />
-  <Radio id='labelTop' label='Top' labelPlacement='top' />
-  <Radio id='labelBottom' label='Bottom' labelPlacement='bottom' />
-</Container>`,
+      name: 'Radio Button - with Label',
+      id: 'radio-button-label',
+      code: `<Radio id='label' label='Label' />
+<Radio id='labelLeft' label='Left' labelPlacement='left' />
+<Radio id='labelRight' label='Right' labelPlacement='right' />
+<Radio id='labelTop' label='Top' labelPlacement='top' />
+<Radio id='labelBottom' label='Bottom' labelPlacement='bottom' />`,
       component: (
-        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 700 }}>
-          <Radio id='label' label='Label' />
-          <Radio id='labelLeft' label='Left' labelPlacement='left' />
-          <Radio id='labelRight' label='Right' labelPlacement='right' />
-          <Radio id='labelTop' label='Top' labelPlacement='top' />
-          <Radio id='labelBottom' label='Bottom' labelPlacement='bottom' />
+        <Container flexDirection='row' sx={flexStyle as never}>
+          <Radio id='label' label='Label' containerStyle={style} />
+          <Radio id='labelLeft' label='Left' labelPlacement='left' containerStyle={style} />
+          <Radio id='labelRight' label='Right' labelPlacement='right' containerStyle={style} />
+          <Radio id='labelTop' label='Top' labelPlacement='top' containerStyle={style} />
+          <Radio id='labelBottom' label='Bottom' labelPlacement='bottom' containerStyle={style} />
         </Container>
       ),
     },
     {
-      name: 'Radio Button Group',
+      name: 'Radio Button - Group',
       id: 'radio-button-group',
-      code: `<Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 700 }}>
-      <RadioButtonGroup >
-        <Radio id='button1' label='Button 1' />
-        <Radio id='button2' label='Button 2' />
-        <Radio id='button3' label='Button 3' />
-      </RadioButtonGroup>
-    </Container>`,
+      code: `<RadioButtonGroup flexDirection='row'>
+  <Radio id='button1' label='Button 1' />
+  <Radio id='button2' label='Button 2' />
+  <Radio id='button3' label='Button 3' />
+</RadioButtonGroup>`,
       component: (
-        <Container flexDirection='row' justify='space-around' align='center' sx={{ width: '100%', maxWidth: 700 }}>
-          <RadioButtonGroup>
-            <Radio id='button1' label='Button 1' />
-            <Radio id='button2' label='Button 2' />
-            <Radio id='button3' label='Button 3' />
+        <Container flexDirection='row' sx={flexStyle as never}>
+          <RadioButtonGroup flexDirection='row'>
+            <Radio id='button1' label='Button 1' containerStyle={style} />
+            <Radio id='button2' label='Button 2' containerStyle={style} />
+            <Radio id='button3' label='Button 3' containerStyle={style} />
           </RadioButtonGroup>
         </Container>
       ),
@@ -118,22 +134,16 @@ export const radioButtonIndex: HeadingProps = {
   heading: 'Regular Button',
   links: [
     {
-      components: [
-        {
-          title: 'Basic',
-          link: '#basic',
-        },
-        {
-          title: 'Label',
-          link: '#label',
-        },
-        {
-          title: 'Radio Button Group',
-          link: '#radio-button-group',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'Default',
+      link: '#default',
+    },
+    {
+      title: 'Radio Button - with Label',
+      link: '#radio-button-label',
+    },
+    {
+      title: 'Radio Button - Group',
+      link: '#radio-button-group',
     },
     {
       link: '#props',
