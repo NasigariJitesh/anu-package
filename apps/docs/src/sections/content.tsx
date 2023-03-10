@@ -59,7 +59,7 @@ const getStyles = () => {
       flex: 1,
       alignSelf: 'baseline',
       zIndex: 1,
-      width: ['90vw', undefined, undefined, '600px', '750px'],
+      width: ['90vw', '90vw', '550px', '600px', '750px'],
 
       // paddingHorizontal: 20,
     },
