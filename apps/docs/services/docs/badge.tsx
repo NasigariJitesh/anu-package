@@ -4,11 +4,21 @@ import { ContentValues } from 'src/sections/content';
 
 const flexStyle = {
   flexWrap: 'wrap',
-  width: ['90vw', '90vw', '300px', '300px', '300px'],
+  // < 576 = 90vw
+  // 576
+  //
+  // 990 px
+  // > 1200px
+  width: ['90vw', '90vw', '550px', '600px', '750px'],
 } as const;
 
 const style = {
   margin: 15,
+};
+
+const otherStyle = {
+  marginVertical: 15,
+  marginHorizontal: 25,
 };
 
 export const badgeDocumentation: ContentValues = {
@@ -69,15 +79,21 @@ export const badgeDocumentation: ContentValues = {
       description: 'Notification badges are used to provide a visual indicator of new or updated information.',
       component: (
         <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
-          <Badge value=''>
-            <Icon name='notifications' style={style} />
-          </Badge>
-          <Badge value='5' overlap='circular'>
-            <Icon name='notifications' style={style} />
-          </Badge>
-          <Badge value={600} maxValue={599}>
-            <Icon name='notifications' style={style} />
-          </Badge>
+          <Container disableGutters style={style}>
+            <Badge value=''>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+          <Container disableGutters style={style}>
+            <Badge value='5' overlap='circular'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+          <Container disableGutters style={style}>
+            <Badge value={600} maxValue={599}>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
         </Container>
       ),
       code: `<Badge value=''>
@@ -91,14 +107,45 @@ export const badgeDocumentation: ContentValues = {
 </Badge>`,
     },
     {
-      name: 'Notification Badge',
+      name: 'Status Badge',
       id: 'status',
-      description: 'Notification badges are used to provide a visual indicator of new or updated information.',
+      description: 'Status badges are used to provide a visual indicator of status of a component or information.',
       component: (
         <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
           <Badge value='new'>
-            <Icon name='notifications' style={style} />
+            <Icon name='notifications' />
           </Badge>
+        </Container>
+      ),
+      code: `<Badge value='new'>
+  <Icon name='notifications' style={style} />
+</Badge>`,
+    },
+    {
+      name: 'Badge - with Position',
+      id: 'position',
+      component: (
+        <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
+          <Container disableGutters style={otherStyle}>
+            <Badge value='new' position='topLeft'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+          <Container disableGutters style={otherStyle}>
+            <Badge value='new' position='topRight'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+          <Container disableGutters style={otherStyle}>
+            <Badge value='new' position='bottomLeft'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+          <Container disableGutters style={otherStyle}>
+            <Badge value='new' position='bottomRight'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
         </Container>
       ),
       code: `<Badge value='new'>
@@ -118,6 +165,10 @@ export const badgeIndex: HeadingProps = {
     {
       title: 'Status Badge',
       link: '#status',
+    },
+    {
+      title: 'Badge - with Position',
+      link: '#position',
     },
     {
       link: '#props',
