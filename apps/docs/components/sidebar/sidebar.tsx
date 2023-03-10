@@ -191,6 +191,11 @@ const Sidebar = () => {
               components: [],
             },
             {
+              title: 'Container',
+              link: '/components/container',
+              components: [],
+            },
+            {
               title: 'Radio Button',
               link: '/components/radio-button',
               components: [],

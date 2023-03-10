@@ -16,13 +16,13 @@ export const getMaxWidthInPixels = (maxWidth: string | number) => {
       return ['100%', '540px', '720px', '960px', '1140px'];
     }
     case 'md': {
-      return ['100%', null, '720px', '960px', '1140px'];
+      return ['100%', '100%', '720px', '960px', '1140px'];
     }
     case 'lg': {
-      return ['100%', null, null, '960px', '1140px'];
+      return ['100%', '100%', '100%', '960px', '1140px'];
     }
     case 'xl': {
-      return ['100%', null, null, null, '1140px'];
+      return ['100%', '100%', '100%', '100%', '1140px'];
     }
     default: {
       return maxWidth;

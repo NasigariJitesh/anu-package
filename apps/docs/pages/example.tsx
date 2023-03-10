@@ -1,5 +1,4 @@
-import { Button, Chip, Container } from 'anu/lib';
-import Content from 'src/sections/content';
+import { Button, Container } from 'anu/lib';
 
 /**
  * This is an example of how the content is supposed to look
@@ -42,18 +41,5 @@ export default function App() {
     },
   ];
 
-  const values = {
-    mainHeading: 'Buttons',
-    heading: 'Common Buttons',
-    subTitle: 'this is a test subtitle',
-    properties: props,
-    examples,
-  };
-
-  return (
-    <Container>
-      <Chip value='chip' type='suggestion' />
-      <Content values={values} />
-    </Container>
-  );
+  return <Container maxWidth={'sm'} sx={{ backgroundColor: 'pink', height: 200, flex: 1 }}></Container>;
 }

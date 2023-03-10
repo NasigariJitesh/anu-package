@@ -40,7 +40,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
         ) : null}
 
-        <Container disableGutters style={styles.examplesComponentContainer}>
+        <Container disableGutters sx={styles.examplesComponentContainer as never}>
           {example.component}
         </Container>
         <ScrollView
@@ -79,7 +79,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
           automaticallyAdjustKeyboardInsets={undefined}
           automaticallyAdjustsScrollIndicatorInsets={undefined}
         >
-          <SyntaxHighlighter style={arduinoLight} customStyle={styles.code}>
+          <SyntaxHighlighter language='text' style={arduinoLight} customStyle={styles.code}>
             {example.code}
           </SyntaxHighlighter>
         </ScrollView>
@@ -102,14 +102,15 @@ const getStyles = () => {
   const styles = {
     container: {
       marginBottom: 30,
-      width: ['90vw', undefined, undefined, '600px', '750px'],
+      width: ['90vw', '90vw', '550px', '600px', '750px'],
     },
     examplesContainer: {
       marginBottom: 20,
-      width: '100%',
+      width: ['90vw', '90vw', '550px', '600px', '750px'],
     },
     examplesComponentContainer: {
       marginVertical: 20,
+      width: '100%',
     },
     heading: {
       color: colors.$onSurface,
@@ -144,8 +145,8 @@ const getStyles = () => {
       color: colors.$onSurface,
     },
     codeArea: {
-      backgroundColor: colors.$primaryContainer,
-      width: ['90vw', '90vw', '90vw', '600px', '750px'],
+      backgroundColor: colors.$surfaceVariant,
+      width: ['90vw', '90vw', '550px', '600px', '750px'],
       padding: '5px',
       borderRadius: 10,
     },
