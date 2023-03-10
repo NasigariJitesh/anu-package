@@ -58,8 +58,8 @@ export const FABDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'FAB',
-      id: 'fab',
+      name: 'Default',
+      id: 'default',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
@@ -122,8 +122,8 @@ export const FABIndex: HeadingProps = {
   heading: 'FAB',
   links: [
     {
-      title: 'FAB',
-      link: '#fab',
+      title: 'Default',
+      link: '#default',
     },
     {
       title: 'Small FAB',

@@ -36,9 +36,9 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
     return (
       <Container nativeID={example.id} key={index} disableGutters style={styles.examplesContainer as never}>
         <Typography.Headline style={styles.name}>{example.name}</Typography.Headline>
-        {/* {example.description ? (
+        {example.description ? (
           <Typography.Body style={styles.description}>{example.description}</Typography.Body>
-        ) : null} */}
+        ) : null}
 
         <Container disableGutters style={styles.examplesComponentContainer}>
           {example.component}
@@ -109,7 +109,7 @@ const getStyles = () => {
       width: '100%',
     },
     examplesComponentContainer: {
-      marginVertical: 10,
+      marginVertical: 20,
     },
     heading: {
       color: colors.$onSurface,
@@ -125,7 +125,6 @@ const getStyles = () => {
       fontSize: 22,
       fontWeight: '600',
       lineHeight: 22,
-      marginBottom: 8,
     },
     description: {
       color: colors.$onSurface,

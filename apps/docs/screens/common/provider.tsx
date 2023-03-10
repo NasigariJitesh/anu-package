@@ -17,7 +17,7 @@ export const useMenuContext = () => useContext(MenuContent);
  * @param props.children
  */
 export default function RootLayout(props: { children: ReactChildren }) {
-  const [isOpen, toggleIsOpen] = useState(false);
+  const [isOpen, toggleIsOpen] = useState(true);
   const [isAdjustedToResize, toggleIsAdjustedToResize] = useState(false);
 
   const { width } = useWindowDimensions();

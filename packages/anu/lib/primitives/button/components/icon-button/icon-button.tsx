@@ -14,22 +14,22 @@ import { defaultProps } from './default';
  * @param {IconButtonProps} props - all the props related to the component
  */
 const IconButton = (props: IconButtonProps) => {
-  const [isSelected, toggleSelected] = useState(props.selected === undefined ? false : props.selected);
-
   const restOfTheProps = { ...defaultProps, ...props };
+
+  const [isSelected, toggleSelected] = useState(restOfTheProps.selected);
 
   const { containerStyles, pressableStyles, iconStyles } = getIconButtonStyles(restOfTheProps, isSelected);
 
   useEffect(() => {
-    toggleSelected(props.selected ?? false);
-  }, [props.selected]);
+    toggleSelected(restOfTheProps.selected ?? false);
+  }, [restOfTheProps.selected]);
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, pressableStyles, useSx);
   };
 
   const onPressHandler = (event: GestureResponderEvent) => {
-    if (props.toggle) toggleSelected((previous) => !previous);
+    if (restOfTheProps.toggle) toggleSelected((previous) => !previous);
     if (restOfTheProps.onPress) restOfTheProps.onPress(event);
   };
 

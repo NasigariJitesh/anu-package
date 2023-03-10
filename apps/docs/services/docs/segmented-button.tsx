@@ -77,8 +77,8 @@ export const segmentedButtonDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'Segmented Button',
-      id: 'segmented-button',
+      name: 'Default',
+      id: 'default',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <ScrollView showsHorizontalScrollIndicator={false} horizontal>
@@ -127,8 +127,8 @@ export const segmentedButtonIndex: HeadingProps = {
   heading: 'Segmented Button',
   links: [
     {
-      title: 'Segmented Button',
-      link: '#segmented-button',
+      title: 'Default',
+      link: '#default',
     },
     {
       title: 'Multi Select Segmented Button ',

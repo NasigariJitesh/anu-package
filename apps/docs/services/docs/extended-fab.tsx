@@ -62,8 +62,8 @@ export const extendedFABDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'Extended FAB',
-      id: 'extended-fab',
+      name: 'Default',
+      id: 'default',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} containerStyle={style} />
@@ -94,8 +94,8 @@ export const extendedFABIndex: HeadingProps = {
   heading: 'Extended FAB',
   links: [
     {
-      title: 'Extended FAB',
-      link: '#extended-fab',
+      title: 'Default',
+      link: '#default',
     },
     {
       title: 'Extended FAB - Lowered',
