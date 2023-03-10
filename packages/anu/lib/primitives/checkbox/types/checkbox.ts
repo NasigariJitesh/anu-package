@@ -1,6 +1,6 @@
 import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'common/types';
 import { IconStyle } from 'lib/primitives/icon';
-import { StyleProp, TextStyle } from 'react-native';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export interface CheckBoxStyle extends ExtendedDisabledStyles, ExtendedHoverStyles {}
 
@@ -46,6 +46,10 @@ export interface CheckboxProps {
    * The styles for the label of the checkbox
    */
   labelStyle?: StyleProp<TextStyle>;
+  /**
+   * The styles for the container of the checkbox
+   */
+  containerStyle?: StyleProp<ViewStyle>;
   /**
    * The styles for the checked Icon
    */
