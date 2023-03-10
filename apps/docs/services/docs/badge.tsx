@@ -69,15 +69,21 @@ export const badgeDocumentation: ContentValues = {
       description: 'Notification badges are used to provide a visual indicator of new or updated information.',
       component: (
         <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
-          <Badge value=''>
-            <Icon name='notifications' style={style} />
-          </Badge>
-          <Badge value='5' overlap='circular'>
-            <Icon name='notifications' style={style} />
-          </Badge>
-          <Badge value={600} maxValue={599}>
-            <Icon name='notifications' style={style} />
-          </Badge>
+          <Container disableGutters style={style}>
+            <Badge value=''>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+          <Container disableGutters style={style}>
+            <Badge value='5' overlap='circular'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+          <Container disableGutters style={style}>
+            <Badge value={600} maxValue={599}>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
         </Container>
       ),
       code: `<Badge value=''>
@@ -91,13 +97,13 @@ export const badgeDocumentation: ContentValues = {
 </Badge>`,
     },
     {
-      name: 'Notification Badge',
+      name: 'Status Badge',
       id: 'status',
-      description: 'Notification badges are used to provide a visual indicator of new or updated information.',
+      description: 'Status badges are used to provide a visual indicator of status of a component or information.',
       component: (
         <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
           <Badge value='new'>
-            <Icon name='notifications' style={style} />
+            <Icon name='notifications' />
           </Badge>
         </Container>
       ),
