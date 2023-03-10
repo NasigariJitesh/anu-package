@@ -60,7 +60,7 @@ const getStyles = () => {
 
   const styles = {
     container: {
-      marginBottom: 30,
+      marginVertical: 30,
       width: ['90vw', undefined, undefined, '600px', '750px'],
     },
     propertyContainer: {
@@ -72,7 +72,7 @@ const getStyles = () => {
       fontSize: 22,
       fontWeight: '600',
       lineHeight: 28,
-      marginBottom: 15,
+      marginVertical: 10,
     },
 
     name: {

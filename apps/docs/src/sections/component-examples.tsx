@@ -101,11 +101,11 @@ const getStyles = () => {
 
   const styles = {
     container: {
-      marginBottom: 30,
+      // marginBottom: 30,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
     },
     examplesContainer: {
-      marginBottom: 20,
+      marginVertical: 20,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
     },
     examplesComponentContainer: {
