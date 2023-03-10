@@ -51,13 +51,13 @@ const TextField = (props: Partial<TextFieldProps>) => {
   const supportingTextStyle = getSupportingTextStyle();
 
   const [errors, setErrors] = useState(getErrors(props.errorMessage));
-
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, containerStyle, useSx);
   };
 
   const onTextChangeHandler = (input: string) => {
     setValue(input);
+
     if (props.onChangeText) props.onChangeText(input);
   };
 
@@ -86,21 +86,20 @@ const TextField = (props: Partial<TextFieldProps>) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.error]);
-
   return (
-    <Container disableGutters>
+    <Container disableGutters style={finalProps.containerStyle}>
       <Pressable
         ref={textInputReference}
         accessibilityRole='button'
         style={(state) => generateStyles({ ...focus, hovered: state.hovered })}
-        {...props.pressableProps}
-        disabled={props.disabled}
+        {...finalProps.pressableProps}
+        disabled={finalProps.disabled}
       >
         <Container disableGutters flexDirection='row' sx={innerContainerStyle}>
           {/* TODO: Put the icon components in another file */}
-          {props.leadingIcon ? (
+          {finalProps.leadingIcon ? (
             <Container disableGutters style={leadingIconContainerStyle}>
-              {props.leadingIcon}
+              {finalProps.leadingIcon}
             </Container>
           ) : null}
           <Container disableGutters flexDirection='row' sx={innerContainerStyle}>
@@ -113,29 +112,29 @@ const TextField = (props: Partial<TextFieldProps>) => {
             />
             <TextInput
               ref={textInputReference}
+              {...componentProps}
               onChangeText={onTextChangeHandler}
               onFocus={onTextInputFocus}
               onBlur={onTextInputBlur}
-              {...componentProps}
               placeholder={undefined}
-              style={[style, props.style]}
+              style={getCombinedStylesForText(style, finalProps.textInputStyle)}
             />
           </Container>
-          {props.error ? (
+          {finalProps.error ? (
             <Container disableGutters style={trailingIconContainerStyle}>
               {getErrorIcon()}
             </Container>
           ) : null}
-          {props.trailingIcon && !props.error ? (
+          {finalProps.trailingIcon && !finalProps.error ? (
             <Container disableGutters style={trailingIconContainerStyle}>
-              {props.trailingIcon}
+              {finalProps.trailingIcon}
             </Container>
           ) : null}
         </Container>
       </Pressable>
-      {props?.supportingText && !props.error ? (
+      {finalProps?.supportingText && !finalProps.error ? (
         <Typography.Body style={getCombinedStylesForText(supportingTextStyle, props.supportingTextStyle)}>
-          {props?.supportingText}
+          {finalProps?.supportingText}
         </Typography.Body>
       ) : null}
       {props.error &&

@@ -1,7 +1,12 @@
+import Seo from 'components/seo';
 import ContainerDoc from 'screens/components/container';
 
 const Container = () => {
-  return <ContainerDoc />;
+  return (
+    <>
+      <Seo title='Container' /> <ContainerDoc />
+    </>
+  );
 };
 
 export default Container;

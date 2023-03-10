@@ -26,9 +26,9 @@ const getTextFieldTheme = () => {
       borderTopLeftRadius: 4,
       borderTopRightRadius: 4,
       borderBottomColor: colors.$onSurfaceVariant,
-      '@disabled': {
+      '@disable': {
         borderBottomColor: getColorInRGBA(colors.$onSurface, 38),
-        backgroundColor: getColorInRGBA(colors.$onSurface, 12),
+        backgroundColor: getColorInRGBA(colors.$onSurface, 4),
         color: getColorInRGBA(colors.$onSurface, 38),
       },
       '@hover': {
@@ -56,7 +56,7 @@ const getTextFieldTheme = () => {
       borderStyle: 'solid',
       borderRadius: 4,
       borderColor: colors.$outline,
-      '@disabled': {
+      '@disable': {
         borderColor: getColorInRGBA(colors.$onSurface, 12),
         color: getColorInRGBA(colors.$onSurface, 38),
       },
@@ -87,7 +87,7 @@ const getTextFieldTheme = () => {
 export const getTextFieldStyles = (props?: TextFieldProps) => {
   const { colors } = getTheme();
 
-  const common = {
+  let common = {
     fontSize: 16,
     lineHeight: 24,
     outline: 'none',
@@ -98,9 +98,15 @@ export const getTextFieldStyles = (props?: TextFieldProps) => {
     height: '100%',
     alignText: 'center',
     flex: 1,
+    backgroundColor: 'transparent',
     position: 'relative' as const,
   };
 
+  if (props?.disabled)
+    common = {
+      ...common,
+      color: 'inherit',
+    };
   return common;
 };
 
@@ -110,7 +116,12 @@ export const getTextFieldStyles = (props?: TextFieldProps) => {
  * @returns style of the leading icon
  */
 export const getLeadingContainerStyle = () => {
-  const style = { paddingLeft: 8, paddingVertical: 16, color: 'inherit' };
+  const style = {
+    paddingLeft: 8,
+    paddingVertical: 16,
+    color: 'inherit',
+    backgroundColor: 'transparent',
+  };
 
   return style;
 };
@@ -121,7 +132,7 @@ export const getLeadingContainerStyle = () => {
  * @returns style of the trailing icon
  */
 export const getTrailingContainerStyle = () => {
-  const style = { paddingRight: 8, paddingVertical: 16, color: 'inherit' };
+  const style = { paddingRight: 8, paddingVertical: 16, color: 'inherit', backgroundColor: 'transparent' };
 
   return style;
 };
@@ -133,7 +144,7 @@ export const getTrailingContainerStyle = () => {
  * @returns style of the text field container
  */
 export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>) => {
-  const { containerStyle, variant, error } = props;
+  const { style: propStyle, variant, error, disabled } = props;
 
   const theme = getTextFieldTheme();
 
@@ -142,10 +153,11 @@ export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>) => {
 
   let finalStyle = {
     ...style,
-    ...containerStyle,
-    '@hover': { ...style['@hover'], ...containerStyle?.['@hover'] },
-    '@focus': { ...style['@focus'], ...containerStyle?.['@focus'] },
-    '@press': { ...style['@press'], ...containerStyle?.['@press'] },
+    ...propStyle,
+    '@disable': { ...style['@disable'], ...propStyle?.['@disable'] },
+    '@hover': { ...style['@hover'], ...propStyle?.['@hover'] },
+    '@focus': { ...style['@focus'], ...propStyle?.['@focus'] },
+    '@press': { ...style['@press'], ...propStyle?.['@press'] },
   };
 
   if (error) {
@@ -176,6 +188,8 @@ export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>) => {
             '@press': { ...finalStyle['@press'], borderBottomColor: colors.$error, color: colors.$error },
           };
   }
+
+  if (disabled) finalStyle = { ...finalStyle, ...finalStyle['@disable'] };
 
   return finalStyle;
 };

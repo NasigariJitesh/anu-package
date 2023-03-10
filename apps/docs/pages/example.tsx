@@ -1,9 +1,11 @@
-import { Button, Container } from 'anu/lib';
+import { Button, Container, TextField } from 'anu/lib';
+import { useState } from 'react';
 
 /**
  * This is an example of how the content is supposed to look
  */
 export default function App() {
+  const [value, setValue] = useState('abc');
   const props = [
     {
       name: 'title',
@@ -40,6 +42,7 @@ export default function App() {
       ),
     },
   ];
+  return <TextField label='Label Text' supportingText='Supporting text' value={value} onChangeText={setValue} />;
 
-  return <Container maxWidth={'sm'} sx={{ backgroundColor: 'pink', height: 200, flex: 1 }}></Container>;
+  // return <Container maxWidth={'sm'} sx={{ backgroundColor: 'pink', height: 200, flex: 1 }}></Container>;
 }

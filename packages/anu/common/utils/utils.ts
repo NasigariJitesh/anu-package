@@ -65,7 +65,7 @@ export const generateHoverStyles = (
  */
 export const getColorInRGBA = (color: string, opacity: number) => {
   const opacityValue = Math.floor((opacity * 256) / 100);
-  return color + opacityValue.toString(16);
+  return opacityValue >= 16 ? color + opacityValue.toString(16) : color + '0' + opacityValue.toString(16);
 };
 
 export const getHoverStates = (state: PressableStateCallbackType) => {

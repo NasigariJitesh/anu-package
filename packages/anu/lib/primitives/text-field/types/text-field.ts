@@ -1,7 +1,7 @@
 import { ExtendedDisabledStyles, ExtendedHoverStyles, ReactChildren } from 'common/types';
 import { Pressable, SxProp, TextInput } from 'dripsy';
 import { MutableRefObject } from 'react';
-import { PressableStateCallbackType, StyleProp, TextInput as RNTextInput, TextStyle } from 'react-native';
+import { PressableStateCallbackType, StyleProp, TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native';
 
 /***
  * The Variant type of the text Field
@@ -19,11 +19,15 @@ export type TextInputProps = React.ComponentPropsWithoutRef<typeof TextInput>;
  */
 export interface TextFieldContainerStyle extends ExtendedHoverStyles, ExtendedDisabledStyles {}
 
-export interface TextFieldProps extends Omit<TextInputProps, 'variant'> {
+export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style' | 'placeholder'> {
   /**
    * The type of the text field
    */
   variant: TextInputVariant;
+  /**
+   * The label for the text field component.
+   */
+  label: string;
   /**
    * Icon to be displayed to left of the text field
    */
@@ -39,7 +43,15 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant'> {
   /**
    * The styles for the text field component.
    */
-  containerStyle?: TextFieldContainerStyle;
+  style?: TextFieldContainerStyle;
+  /**
+   * The styles for container of the text field component.
+   */
+  containerStyle?: StyleProp<ViewStyle>;
+  /**
+   * The styles for text input of the text field component.
+   */
+  textInputStyle?: StyleProp<TextStyle>;
   /**
    * The properties of the pressable component of react native (except sx)
    */
