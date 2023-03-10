@@ -4,41 +4,101 @@ import { ContentValues } from 'src/sections/content';
 
 export const typographyDocumentation: ContentValues = {
   mainHeading: 'Typography',
-  mainDescription: 'Typography helps you present your content clearly and efficiently as possible',
+  mainDescription:
+    'Typography is used to arrange the typefaces to create a visually appealing and effective communication design.',
   examples: [
     {
-      name: 'Basic',
-      id: 'basic',
-      description: 'Here is the basic example of how to use the different scales in typography.',
+      name: 'Display',
+      id: 'display',
+      description: 'Displays are often used for large, attention-grabbing headlines or titles.',
       component: (
-        <Container disableGutters flexDirection='column' align='flex-start' justify='space-around' sx={{ height: 200 }}>
-          <Typography.Display>Display</Typography.Display>
-          <Typography.Headline>Headline</Typography.Headline>
-          <Typography.Title>Title</Typography.Title>
-          <Typography.Label>Label</Typography.Label>
-          <Typography.Body>Body</Typography.Body>
+        <Container
+          disableGutters
+          flexDirection='column'
+          align='flex-start'
+          justify='space-between'
+          sx={{ height: 200 }}
+        >
+          <Typography.Display size='large'>d1. Display</Typography.Display>
+          <Typography.Display size='medium'>d2. Display</Typography.Display>
+          <Typography.Display size='small'>d3. Display</Typography.Display>
         </Container>
       ),
-      code: `<Typography.Display>Display</Typography.Display>
-<Typography.Headline>Headline</Typography.Headline>
-<Typography.Title>Title</Typography.Title>
-<Typography.Label>Label</Typography.Label>
-<Typography.Body>Body</Typography.Body>`,
+      code: `<Typography.Display size='large'>d1. Display</Typography.Display>
+<Typography.Display size='medium'>d2. Display</Typography.Display>
+<Typography.Display size='small'>d3. Display</Typography.Display>`,
     },
     {
-      name: 'Size',
-      id: 'size',
-      description: 'You can also adjust the size of each component by providing the size property',
+      name: 'Headline',
+      id: 'headline',
+      description: 'Headlines in graphic design are typically used for the main title or headline.',
       component: (
-        <Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: 200 }}>
-          <Typography.Body size='large'>Large</Typography.Body>
-          <Typography.Body size='medium'>Medium</Typography.Body>
-          <Typography.Body size='small'>Small</Typography.Body>
+        <Container
+          disableGutters
+          flexDirection='column'
+          align='flex-start'
+          justify='space-between'
+          sx={{ height: 150 }}
+        >
+          <Typography.Headline size='large'>h1. Headline</Typography.Headline>
+          <Typography.Headline size='medium'>h2. Headline</Typography.Headline>
+          <Typography.Headline size='small'>h3. Headline</Typography.Headline>
         </Container>
       ),
-      code: `<Typography.Body size='large'> Large </Typography.Body>
-<Typography.Body size='medium'> Medium </Typography.Body>
-<Typography.Body size='small'> Small </Typography.Body>`,
+      code: `<Typography.Headline size='large'>d1. Headline</Typography.Headline>
+<Typography.Headline size='medium'>d2. Headline</Typography.Headline>
+<Typography.Headline size='small'>d3. Headline</Typography.Headline>`,
+    },
+    {
+      name: 'Title',
+      id: 'title',
+      description: '',
+      component: (
+        <Container
+          disableGutters
+          flexDirection='column'
+          align='flex-start'
+          justify='space-between'
+          sx={{ height: 100 }}
+        >
+          <Typography.Title size='large'>t1. Title</Typography.Title>
+          <Typography.Title size='medium'>t2. Title</Typography.Title>
+          <Typography.Title size='small'>t3. Title</Typography.Title>
+        </Container>
+      ),
+      code: `<Typography.Title size='large'>t1. Title</Typography.Title>
+<Typography.Title size='medium'>t2. Title</Typography.Title>
+<Typography.Title size='small'>t3. Title</Typography.Title>`,
+    },
+    {
+      name: 'Body',
+      id: 'body',
+      description: '',
+      component: (
+        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between' sx={{ height: 90 }}>
+          <Typography.Body size='large'>b1. Body</Typography.Body>
+          <Typography.Body size='medium'>b2. Body</Typography.Body>
+          <Typography.Body size='small'>b3. Body</Typography.Body>
+        </Container>
+      ),
+      code: `<Typography.Body size='large'>b1. Body</Typography.Body>
+<Typography.Body size='medium'>b2. Body</Typography.Body>
+<Typography.Body size='small'>b3. Body</Typography.Body>`,
+    },
+    {
+      name: 'Label',
+      id: 'label',
+      description: '',
+      component: (
+        <Container disableGutters flexDirection='column' align='flex-start' justify='space-between' sx={{ height: 90 }}>
+          <Typography.Label size='large'>l1. Label</Typography.Label>
+          <Typography.Label size='medium'>l2. Label</Typography.Label>
+          <Typography.Label size='small'>l3. Label</Typography.Label>
+        </Container>
+      ),
+      code: `<Typography.Label size='large'>l1. Label</Typography.Label>
+<Typography.Label size='medium'>l2. Label</Typography.Label>
+<Typography.Label size='small'>l3. Label</Typography.Label>`,
     },
   ],
   properties: [
@@ -80,18 +140,24 @@ export const typographyIndex: HeadingProps = {
   heading: 'Typography',
   links: [
     {
-      components: [
-        {
-          title: 'Basic',
-          link: '#basic',
-        },
-        {
-          title: 'Size',
-          link: '#size',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'Display',
+      link: '#display',
+    },
+    {
+      title: 'Headline',
+      link: '#headline',
+    },
+    {
+      title: 'Title',
+      link: '#title',
+    },
+    {
+      title: 'Body',
+      link: '#body',
+    },
+    {
+      title: 'Label',
+      link: '#label',
     },
     {
       link: '#props',

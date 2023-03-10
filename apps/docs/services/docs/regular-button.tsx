@@ -20,7 +20,7 @@ export const regularButtonDocumentation: ContentValues = {
   mainHeading: 'Button',
   mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
 
-  heading: 'Regular Buttons',
+  heading: 'Common Buttons',
   subTitle:
     'Buttons help people initiate actions, from sending an email, to sharing a document, to liking a post.There are five types of regular buttons: elevated, filled, filled tonal, outlined, and text.',
   properties: [

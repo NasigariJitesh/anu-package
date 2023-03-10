@@ -40,7 +40,7 @@ const getStyles = () => {
       fontSize: 24,
       fontWeight: '600',
       lineHeight: 28,
-      marginBottom: 15,
+      marginBottom: 10,
     },
     mainHeading: {
       color: colors.$onSurface,
@@ -55,7 +55,7 @@ const getStyles = () => {
       fontFamily: source.style.fontFamily,
       fontSize: 16,
       lineHeight: 24,
-      marginBottom: 30,
+      marginBottom: 20,
     },
     subTitle: {
       color: colors.$onSurface,
