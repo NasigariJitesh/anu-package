@@ -61,7 +61,7 @@ const getStyles = () => {
   const styles = {
     container: {
       marginBottom: 30,
-      width: ['90vw', undefined, undefined, '600px', '750px'],
+      width: ['90vw', '90vw', '550px', '600px', '750px'],
     },
     propertyContainer: {
       width: '100%',

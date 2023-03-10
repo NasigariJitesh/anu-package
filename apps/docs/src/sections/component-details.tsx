@@ -18,7 +18,7 @@ interface ComponentDetailsProps {
 const ComponentDetails = ({ mainHeading, heading, subTitle, mainDescription }: ComponentDetailsProps) => {
   const styles = getStyles();
   return (
-    <Container disableGutters sx={{ width: ['90vw', undefined, undefined, '600px', '750px'] }}>
+    <Container disableGutters sx={styles.container as never}>
       {mainHeading ? <Typography.Headline style={styles.mainHeading}>{mainHeading}</Typography.Headline> : null}
       {mainDescription ? (
         <Typography.Headline style={styles.mainDescription}>{mainDescription}</Typography.Headline>
@@ -33,6 +33,7 @@ const getStyles = () => {
   const { colors } = getTheme();
 
   const styles = {
+    container: { width: ['90vw', '90vw', '550px', '600px', '750px'] },
     heading: {
       color: colors.$onSurface,
       fontFamily: source.style.fontFamily,
