@@ -1,7 +1,13 @@
+import Seo from 'components/seo';
 import IconButtonDoc from 'screens/components/icon-button';
 
 const IconButton = () => {
-  return <IconButtonDoc />;
+  return (
+    <>
+      <Seo title='Icon Button' />
+      <IconButtonDoc />
+    </>
+  );
 };
 
 export default IconButton;

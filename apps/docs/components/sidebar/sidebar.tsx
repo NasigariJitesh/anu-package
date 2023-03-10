@@ -153,8 +153,8 @@ const Sidebar = () => {
               title: 'Buttons',
               components: [
                 {
-                  title: 'Regular',
-                  link: '/components/button/regular',
+                  title: 'Common',
+                  link: '/components/button/common',
                   variants: [],
                 },
                 {
@@ -215,7 +215,7 @@ const Sidebar = () => {
 const style = {
   container: {
     width: 210,
-    zIndex: 1,
+    flex: 1,
   },
   heading: {
     fontFamily: source.style.fontFamily,
