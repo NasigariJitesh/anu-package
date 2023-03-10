@@ -1,9 +1,24 @@
+/* eslint-disable react-native/no-inline-styles */
 import { Container, SegmentedButton, SegmentedButtonGroup } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+import { ScrollView } from 'react-native';
 import { ContentValues } from 'src/sections/content';
-
+const style = {
+  margin: 15,
+};
+const flexStyle = {
+  flexWrap: 'wrap',
+  // < 576 = 90vw
+  // 576
+  //
+  // 990 px
+  // > 1200px
+  width: ['90vw', undefined, undefined, '600px', '750px'],
+} as const;
 export const segmentedButtonDocumentation: ContentValues = {
   mainHeading: 'Button',
+  mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
+
   heading: 'Segmented Buttons',
   subTitle:
     'Segmented buttons help people select options, switch views, or sort elements. There are two types of segmented buttons: single-select and multi-select.',
@@ -45,6 +60,11 @@ export const segmentedButtonDocumentation: ContentValues = {
       type: '(id: string) => void (optional)',
     },
     {
+      name: 'containerStyle (Group Property)',
+      description: 'The style for the segmented button group container.',
+      type: 'StyleProp<ViewStyle> (optional)',
+    },
+    {
       name: 'style',
       description: 'The styles for the segmented button component.',
       type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
@@ -57,60 +77,48 @@ export const segmentedButtonDocumentation: ContentValues = {
   ],
   examples: [
     {
-      name: 'Basic',
-      id: 'basic',
+      name: 'Default',
+      id: 'default',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
-          <SegmentedButtonGroup>
-            <SegmentedButton id='segmentedButton1' title='Button 1' />
-            <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
-            <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
-            <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} />
-          </SegmentedButtonGroup>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
+          <ScrollView showsHorizontalScrollIndicator={false} horizontal>
+            <SegmentedButtonGroup containerStyle={style}>
+              <SegmentedButton id='segmentedButton1' title='Button 1' />
+              <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
+              <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
+              <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} />
+            </SegmentedButtonGroup>
+          </ScrollView>
         </Container>
       ),
-      code: `<Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 700 }}>
-      <SegmentedButtonGroup>
-        <SegmentedButton id='segmentedButton1' title='Button 1' />
-        <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
-        <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
-        <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} />
-      </SegmentedButtonGroup>
-    </Container>`,
+      code: `<SegmentedButtonGroup>
+  <SegmentedButton id='segmentedButton1' title='Button 1' />
+  <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
+  <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
+  <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} />
+</SegmentedButtonGroup>`,
     },
     {
-      name: 'Multi Select',
-      id: 'multi-select',
+      name: 'Multi Select Segmented Button',
+      id: 'multi-select-segmented-button',
       component: (
-        <Container
-          disableGutters
-          flexDirection='row'
-          align='center'
-          justify='space-around'
-          sx={{ width: '100%', maxWidth: 700 }}
-        >
-          <SegmentedButtonGroup multiSelect>
-            <SegmentedButton id='segmentedButton1' title='Button 1' />
-            <SegmentedButton id='segmentedButton2' title='Button 2' />
-            <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
-            <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} disabled />
-          </SegmentedButtonGroup>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
+          <ScrollView showsHorizontalScrollIndicator={false} horizontal>
+            <SegmentedButtonGroup multiSelect containerStyle={style}>
+              <SegmentedButton id='segmentedButton1' title='Button 1' />
+              <SegmentedButton id='segmentedButton2' title='Button 2' />
+              <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
+              <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} disabled />
+            </SegmentedButtonGroup>
+          </ScrollView>
         </Container>
       ),
-      code: `<Container disableGutters flexDirection='row' align='center' justify='space-around' sx={{ width: '100%', maxWidth: 700 }}>
-      <SegmentedButtonGroup multiSelect>
-        <SegmentedButton id='segmentedButton1' title='Button 1' />
-        <SegmentedButton id='segmentedButton2' title='Button 2' />
-        <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
-        <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} disabled />
-      </SegmentedButtonGroup>
-    </Container>`,
+      code: `<SegmentedButtonGroup multiSelect>
+  <SegmentedButton id='segmentedButton1' title='Button 1' />
+  <SegmentedButton id='segmentedButton2' title='Button 2' />
+  <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
+  <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} disabled />
+</SegmentedButtonGroup>`,
     },
   ],
 };
@@ -119,18 +127,12 @@ export const segmentedButtonIndex: HeadingProps = {
   heading: 'Segmented Button',
   links: [
     {
-      components: [
-        {
-          title: 'Basic',
-          link: '#basic',
-        },
-        {
-          title: 'Multi Select',
-          link: '#multi-select',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'Default',
+      link: '#default',
+    },
+    {
+      title: 'Multi Select Segmented Button ',
+      link: '#multi-select-segmented-button',
     },
     {
       link: '#props',

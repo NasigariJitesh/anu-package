@@ -3,9 +3,9 @@ import '../public/fonts/font.css';
 
 import Navbar from 'components/navbar';
 import RightSidebar from 'components/right-sidebar';
+import SEO from 'components/seo';
 import Sidebar from 'components/sidebar';
 import { AppProps } from 'next/app';
-import Head from 'next/head';
 import { View } from 'react-native';
 import RootLayout from 'screens/common/provider';
 
@@ -16,9 +16,7 @@ import RootLayout from 'screens/common/provider';
 export default function App(props: AppProps) {
   return (
     <RootLayout>
-      <Head>
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-      </Head>
+      <SEO />
       <Navbar />
       <View
         style={{

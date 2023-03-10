@@ -154,7 +154,7 @@ const Sidebar = () => {
               components: [
                 {
                   title: 'Common',
-                  link: '/components/button/regular',
+                  link: '/components/button/common',
                   variants: [],
                 },
                 {
@@ -215,6 +215,7 @@ const Sidebar = () => {
 const style = {
   container: {
     width: 210,
+    flex: 1,
   },
   heading: {
     fontFamily: source.style.fontFamily,

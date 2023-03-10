@@ -64,6 +64,10 @@ export interface ButtonProps extends RNButtonProps {
  */
 export interface RegularButtonProps extends ButtonProps {
   size: 'medium';
+  /**
+   * The icon component or the icon props for material icons.
+   */
+  icon?: IconType | ReactElement;
 }
 
 /**
@@ -87,6 +91,11 @@ export interface IconButtonProps extends Omit<ButtonProps, 'title' | 'type' | 'l
    * Whether the icon button is toggle-able
    */
   toggle?: boolean;
+
+  /**
+   * Whether the toggle-able icon button is selected or not
+   */
+  selected?: boolean;
 }
 
 /**

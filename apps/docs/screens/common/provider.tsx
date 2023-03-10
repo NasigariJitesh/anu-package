@@ -41,7 +41,6 @@ export default function RootLayout(props: { children: ReactChildren }) {
     if (width >= 900 || width <= 0) return;
 
     toggleIsOpen(false);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 

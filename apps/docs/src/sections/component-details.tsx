@@ -18,7 +18,7 @@ interface ComponentDetailsProps {
 const ComponentDetails = ({ mainHeading, heading, subTitle, mainDescription }: ComponentDetailsProps) => {
   const styles = getStyles();
   return (
-    <Container disableGutters>
+    <Container disableGutters sx={{ width: ['90vw', undefined, undefined, '600px', '750px'] }}>
       {mainHeading ? <Typography.Headline style={styles.mainHeading}>{mainHeading}</Typography.Headline> : null}
       {mainDescription ? (
         <Typography.Headline style={styles.mainDescription}>{mainDescription}</Typography.Headline>

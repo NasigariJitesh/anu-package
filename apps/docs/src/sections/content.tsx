@@ -31,7 +31,7 @@ const Content = ({ values }: ContentProps) => {
   if (isOpen && width < 900) return null;
 
   return (
-    <Container style={styles.container}>
+    <Container style={styles.container as never}>
       <div
         id='root-scroll'
         style={{
@@ -55,9 +55,12 @@ const Content = ({ values }: ContentProps) => {
 const getStyles = () => {
   const styles = {
     container: {
-      // width: '100%',
+      maxWidth: 900,
       flex: 1,
       alignSelf: 'baseline',
+      zIndex: 1,
+      width: ['90vw', undefined, undefined, '600px', '750px'],
+
       // paddingHorizontal: 20,
     },
   } as const;

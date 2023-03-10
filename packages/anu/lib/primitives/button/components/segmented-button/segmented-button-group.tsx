@@ -29,7 +29,7 @@ export const SegmentedButtonGroup = (props: SegmentedButtonGroupProps) => {
   if (props.children.length > 5) throw new Error('Maximum of 5 SegmentedButtons are allowed');
 
   return (
-    <Container disableGutters flexDirection='row' align='center' justify='center'>
+    <Container disableGutters flexDirection='row' align='center' justify='center' style={props.containerStyle}>
       {props.children.map((c, index): React.ReactElement => {
         // if (typeof c.type !== 'string' && c.type.name === 'SegmentedButton') {
         let p;

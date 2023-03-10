@@ -1,6 +1,6 @@
 import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'common/types';
 import { ReactElement } from 'react';
-import { ButtonProps as RNButtonProps, StyleProp, TextStyle } from 'react-native';
+import { ButtonProps as RNButtonProps, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import { SegmentedButton } from '../components/segmented-button/segmented-button';
 import { IconType } from './button';
@@ -60,4 +60,8 @@ export interface SegmentedButtonGroupProps {
    */
   onPress?: (id: string) => void;
   children: React.ReactElement<typeof SegmentedButton>[];
+  /**
+   * style for the segmented button group container
+   */
+  containerStyle?: StyleProp<ViewStyle>;
 }
