@@ -145,12 +145,12 @@ const Sidebar = () => {
           heading='Components'
           links={[
             {
-              title: 'Badges',
+              title: 'Badge',
               components: [],
               link: '/components/badge',
             },
             {
-              title: 'Buttons',
+              title: 'Button',
               components: [
                 {
                   title: 'Common',
