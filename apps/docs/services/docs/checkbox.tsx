@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { Checkbox, Container } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ContentValues } from 'src/sections/content';
@@ -143,7 +144,7 @@ export const checkBoxDocumentation: ContentValues = {
           <Checkbox id='label' label='Label' containerStyle={style} />
           <Checkbox id='labelLeft' label='Left' labelPlacement='left' containerStyle={style} />
           <Checkbox id='labelRight' label='Right' labelPlacement='right' containerStyle={style} />
-          <Checkbox id='labelTop' label='Top' labelPlacement='top' containerStyle={style} />
+          <Checkbox id='labelTop' label='Top' labelPlacement='top' containerStyle={{ ...style, marginTop: -1 }} />
           <Checkbox id='labelBottom' label='Bottom' labelPlacement='bottom' containerStyle={style} />
         </Container>
       ),
