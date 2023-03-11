@@ -10,15 +10,11 @@ const flexStyle = {
   // 990 px
   // > 1200px
   width: ['90vw', '90vw', '550px', '600px', '750px'],
+  paddingHorizontal: 10,
 } as const;
 
 const style = {
   margin: 15,
-};
-
-const otherStyle = {
-  marginVertical: 15,
-  marginHorizontal: 25,
 };
 
 export const badgeDocumentation: ContentValues = {
@@ -126,22 +122,23 @@ export const badgeDocumentation: ContentValues = {
       id: 'position',
       component: (
         <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
-          <Container disableGutters style={otherStyle}>
+          <Container disableGutters style={style}>
             <Badge value='new' position='topLeft'>
               <Icon name='notifications' />
             </Badge>
           </Container>
-          <Container disableGutters style={otherStyle}>
-            <Badge value='new' position='topRight'>
-              <Icon name='notifications' />
-            </Badge>
-          </Container>
-          <Container disableGutters style={otherStyle}>
+          <Container disableGutters style={style}>
             <Badge value='new' position='bottomLeft'>
               <Icon name='notifications' />
             </Badge>
           </Container>
-          <Container disableGutters style={otherStyle}>
+          <Container disableGutters style={style}>
+            <Badge value='new' position='topRight'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
+
+          <Container disableGutters style={style}>
             <Badge value='new' position='bottomRight'>
               <Icon name='notifications' />
             </Badge>
@@ -151,10 +148,10 @@ export const badgeDocumentation: ContentValues = {
       code: `<Badge value='new' position='topLeft'>
   <Icon name='notifications' />
 </Badge>
-<Badge value='new' position='topRight'>
+<Badge value='new' position='bottomLeft'>
   <Icon name='notifications' />
 </Badge>
-<Badge value='new' position='bottomLeft'>
+<Badge value='new' position='topRight'>
   <Icon name='notifications' />
 </Badge>
 <Badge value='new' position='bottomRight'>
