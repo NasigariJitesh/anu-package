@@ -44,8 +44,8 @@ const TextField = (props: Partial<TextFieldProps>) => {
 
   const style = getTextFieldStyles(finalProps);
   const containerStyle = getTextFieldContainerStyle(finalProps);
-  const leadingIconContainerStyle = getLeadingContainerStyle();
-  const trailingIconContainerStyle = getTrailingContainerStyle();
+  const leadingIconContainerStyle = getLeadingContainerStyle(finalProps);
+  const trailingIconContainerStyle = getTrailingContainerStyle(finalProps);
   const innerContainerStyle = getInnerContainerStyle();
   const errorStyle = getErrorStyle();
   const supportingTextStyle = getSupportingTextStyle();

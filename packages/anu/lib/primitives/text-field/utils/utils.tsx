@@ -98,8 +98,8 @@ export const getTextFieldStyles = (props?: TextFieldProps) => {
     height: '100%',
     alignText: 'center',
     flex: 1,
-    backgroundColor: 'transparent',
     position: 'relative' as const,
+    backgroundColor: 'transparent',
   };
 
   if (props?.disabled)
@@ -113,14 +113,15 @@ export const getTextFieldStyles = (props?: TextFieldProps) => {
 /**
  * To generate style for the leading icon component
  *
+ * @param props
  * @returns style of the leading icon
  */
-export const getLeadingContainerStyle = () => {
+export const getLeadingContainerStyle = (props: TextFieldProps) => {
   const style = {
     paddingLeft: 8,
     paddingVertical: 16,
     color: 'inherit',
-    backgroundColor: 'transparent',
+    backgroundColor: props.disabled ? 'inherit' : 'transparent',
   };
 
   return style;
@@ -129,10 +130,16 @@ export const getLeadingContainerStyle = () => {
 /**
  * To generate style for the trailing icon component
  *
+ * @param props
  * @returns style of the trailing icon
  */
-export const getTrailingContainerStyle = () => {
-  const style = { paddingRight: 8, paddingVertical: 16, color: 'inherit', backgroundColor: 'transparent' };
+export const getTrailingContainerStyle = (props: TextFieldProps) => {
+  const style = {
+    paddingRight: 8,
+    paddingVertical: 16,
+    color: 'inherit',
+    backgroundColor: props.disabled ? 'inherit' : 'transparent',
+  };
 
   return style;
 };
