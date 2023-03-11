@@ -39,5 +39,5 @@ export const defaultProps: TextFieldProps = {
   autoComplete: undefined,
   cursorColor: undefined,
   verticalAlign: undefined,
-  style: {},
+  label: 'Text Field',
 };
