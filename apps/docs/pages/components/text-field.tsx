@@ -4,7 +4,8 @@ import TextFieldDoc from 'screens/components/text-field';
 const TextField = () => {
   return (
     <>
-      <Seo title='Text field' /> <TextFieldDoc />
+      <Seo title='Text field' />
+      <TextFieldDoc />
     </>
   );
 };

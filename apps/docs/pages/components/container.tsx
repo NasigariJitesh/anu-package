@@ -4,7 +4,8 @@ import ContainerDoc from 'screens/components/container';
 const Container = () => {
   return (
     <>
-      <Seo title='Container' /> <ContainerDoc />
+      <Seo title='Container' />
+      <ContainerDoc />
     </>
   );
 };
