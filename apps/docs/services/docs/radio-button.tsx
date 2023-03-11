@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { Container } from 'anu/lib';
 import { Radio, RadioButtonGroup } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
@@ -104,7 +105,7 @@ export const radioDocumentation: ContentValues = {
           <Radio id='label' label='Label' containerStyle={style} />
           <Radio id='labelLeft' label='Left' labelPlacement='left' containerStyle={style} />
           <Radio id='labelRight' label='Right' labelPlacement='right' containerStyle={style} />
-          <Radio id='labelTop' label='Top' labelPlacement='top' containerStyle={style} />
+          <Radio id='labelTop' label='Top' labelPlacement='top' containerStyle={{ ...style, marginTop: -1 }} />
           <Radio id='labelBottom' label='Bottom' labelPlacement='bottom' containerStyle={style} />
         </Container>
       ),
