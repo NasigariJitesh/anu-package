@@ -23,7 +23,6 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const transitionLineHeight = useRef(new Animated.Value(style.fontSize)).current;
 
   const [, setValue] = useState(0);
-
   const animatedViewStyle: Animated.WithAnimatedObject<ViewStyle> = {
     top: transitionTopCoordinate,
     maxWidth: 'calc(100% - 16px)',
@@ -44,6 +43,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
   useEffect(() => {
     transitionTopCoordinate.addListener((arguments_) => setValue(arguments_.value));
+    if (props.value?.length && props.value?.length > 0) transitionIn();
   }, []);
 
   useEffect(() => {
@@ -58,20 +58,18 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
    * When the component is in focus, this transition is supposed to be triggered
    */
   const transitionIn = () => {
-    if (props.value) return;
-
-    const transitionValue =
-      (props.height / 2) * -1 +
-      (props.variant === 'outlined'
-        ? Math.floor((style.fontSize * 0.75) / -15)
-        : Math.floor((style.fontSize * 0.75) / 1.5));
+    // const transitionValue =
+    //   (props.height / 2) * -1 +
+    //   (props.variant === 'outlined'
+    //     ? Math.floor((style.fontSize * 0.75) / -15)
+    //     : Math.floor((style.fontSize * 0.75) / 1.5));
 
     Animated.timing(transitionTopCoordinate, {
       toValue:
         (props.height / 2) * -1 +
         (props.variant === 'outlined'
           ? Math.floor((style.fontSize * 0.75) / -15)
-          : Math.floor((style.fontSize * 0.75) / 1.5)),
+          : Math.floor(style.fontSize * 0.75) / 1.25),
       duration: DURATION,
       useNativeDriver: true,
       delay: DELAY,
@@ -96,7 +94,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
    * When the component get's out of focus, this transition is supposed to be triggered
    */
   const transitionOut = () => {
-    if (props.value) return;
+    if (props.value?.length && props.value?.length > 0) return;
 
     Animated.timing(transitionTopCoordinate, {
       toValue: 0,
@@ -127,7 +125,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   return (
     <Animated.View style={animatedViewStyle}>
       <Animated.Text onPress={onLabelPressedHandler} numberOfLines={1} ellipsizeMode='tail' style={animatedTextStyle}>
-        {props.placeholder}
+        {props.label}
       </Animated.Text>
     </Animated.View>
   );

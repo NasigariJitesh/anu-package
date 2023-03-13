@@ -7,19 +7,10 @@ export const containerDocumentation: ContentValues = {
   mainDescription: 'Container helps you arrange your components clearly on the screen',
   examples: [
     {
-      name: 'Basic',
-      id: 'basic',
-      component: <Container maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
-      code: "<Container maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
-    },
-    {
-      name: 'Fixed',
-      id: 'fixed',
-      component: <Container width={300} fixed sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
-      code: `<Container
- width={300}
- fixed
- sx={{ backgroundColor: '#c1c1c1', height: 200 }} />`,
+      name: 'Default',
+      id: 'default',
+      component: <Container width={800} maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
+      code: "<Container width={800} maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
     },
   ],
   properties: [
@@ -80,18 +71,8 @@ export const containerIndex: HeadingProps = {
   heading: 'Container',
   links: [
     {
-      components: [
-        {
-          title: 'Basic',
-          link: '#basic',
-        },
-        {
-          title: 'Fixed',
-          link: '#fixed',
-        },
-      ],
-      title: 'Examples',
-      link: '#example',
+      title: 'Default',
+      link: '#default',
     },
     {
       link: '#props',
