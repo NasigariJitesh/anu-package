@@ -1,5 +1,6 @@
 import { Provider } from 'anu/common/context';
 import { ReactChildren } from 'anu/common/types';
+import AnuLocalizationProvider from 'anu/lib/advanced/smart-localization/components/provider';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -52,7 +53,9 @@ export default function RootLayout(props: { children: ReactChildren }) {
 
   return (
     <Provider theme={{}}>
-      <MenuContent.Provider value={{ isOpen, toggleMenu }}>{children}</MenuContent.Provider>
+      <AnuLocalizationProvider default='en'>
+        <MenuContent.Provider value={{ isOpen, toggleMenu }}>{children}</MenuContent.Provider>
+      </AnuLocalizationProvider>
     </Provider>
   );
 }
