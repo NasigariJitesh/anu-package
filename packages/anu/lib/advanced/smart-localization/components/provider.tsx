@@ -5,10 +5,10 @@ import { AnuLocalizationContext, AnuLocalizationProviderProps } from '../types';
 /**
  * Context to make localization work through out the application
  */
-const LocalizationContext = createContext<AnuLocalizationContext>({
+export const LocalizationContext = createContext<AnuLocalizationContext>({
   defaultLocale: 'en',
   currentLocale: 'en',
-  onLocaleSwitch: () => {},
+  switchLocale: () => {},
 });
 
 export const useAnuLocalization = () => {
@@ -18,12 +18,12 @@ export const useAnuLocalization = () => {
 const AnuLocalizationProvider: FC<AnuLocalizationProviderProps> = (props) => {
   const [currentLocale, setCurrentLocale] = useState(props.default);
 
-  const onLocaleSwitch = (selectedLocale: string) => {
+  const switchLocale = (selectedLocale: string) => {
     setCurrentLocale(selectedLocale);
   };
 
   return (
-    <LocalizationContext.Provider value={{ defaultLocale: props.default, currentLocale, onLocaleSwitch }}>
+    <LocalizationContext.Provider value={{ defaultLocale: props.default, currentLocale, switchLocale }}>
       {props.children}
     </LocalizationContext.Provider>
   );

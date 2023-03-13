@@ -16,14 +16,14 @@ export const getLocalizedTranslation = (key: string, locale: string) => {
     if (!file[key]) {
       console.error(`No Translation in place for ${key} in ${locale}.json`);
 
-      if (process.env.NODE_ENV === 'dev') return 'NO_TRANSLATION';
+      if (process.env.NODE_ENV === 'development') return 'NO_TRANSLATION';
     }
 
     return file[key];
   } catch {
     console.error(`The file ${locale}.json is not found in the services/locale directory.`);
 
-    if (process.env.NODE_ENV === 'dev') return 'LOCALE_FILE_NOT_FOUND';
+    if (process.env.NODE_ENV === 'development') return 'LOCALE_FILE_NOT_FOUND';
 
     return '';
   }

@@ -91,7 +91,7 @@ export interface AnuLocalizationContext {
    * @param selectedLanguage - the new language that is selected
    * @returns nothing! :P
    */
-  onLocaleSwitch: (selectedLocale: string) => void;
+  switchLocale: (selectedLocale: string) => void;
 }
 
 export interface AnuLocalizationProviderProps {
