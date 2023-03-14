@@ -35,7 +35,7 @@ const Content = ({ values }: ContentProps) => {
       <div
         id='root-scroll'
         style={{
-          height: 'calc(100vh - 90px)',
+          height: 'calc(100vh - 95px)',
           overflowY: 'scroll',
         }}
       >

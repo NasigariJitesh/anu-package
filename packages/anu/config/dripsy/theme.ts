@@ -1,5 +1,6 @@
 import { DripsyBaseTheme, DripsyCustomTheme, DripsyFinalTheme, makeTheme, useDripsyTheme } from 'dripsy';
 import lodash from 'lodash';
+export { makeTheme } from 'dripsy';
 
 export const themeColors = {
   $text: '#46464f', // @deprecated
@@ -43,7 +44,7 @@ export const themeColors = {
  * @param theme - new theme to extend
  */
 const mergeThemes = (theme: DripsyBaseTheme & DripsyCustomTheme) => {
-  return lodash.merge(theme, defaultTheme);
+  return lodash.merge(defaultTheme, theme);
 };
 
 const generateColors = (colors: Record<string, string>) => {

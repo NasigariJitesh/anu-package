@@ -19,7 +19,7 @@ export const getContainerStyles = (props: Partial<ContainerProps>, theme: Dripsy
     flexDirection,
     alignItems: align,
     justifyContent: justify,
-    backgroundColor: theme.colors?.$background as string,
+    backgroundColor: 'transparent',
     width: '100%',
   };
 

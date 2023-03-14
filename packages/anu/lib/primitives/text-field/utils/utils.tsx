@@ -1,5 +1,5 @@
 import { getColorInRGBA } from 'common/utils';
-import { getTheme } from 'config/dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 import { StyleProp, TextStyle } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -8,11 +8,11 @@ import { TextFieldProps } from '../types';
 /**
  * To generate theme for the text field component
  *
+ * @param theme
+ * @param theme.colors
  * @returns theme of the text field
  */
-const getTextFieldTheme = () => {
-  const { colors } = getTheme();
-
+const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
   const theme = {
     filled: {
       backgroundColor: colors.$surfaceVariant,
@@ -81,12 +81,12 @@ const getTextFieldTheme = () => {
 /**
  * To generate style for the text field component of dripsy
  *
+ * @param theme
+ * @param theme.colors
  * @param props
  * @returns style of the dripsy text field
  */
-export const getTextFieldStyles = (props?: TextFieldProps) => {
-  const { colors } = getTheme();
-
+export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFieldProps) => {
   let common = {
     fontSize: 16,
     lineHeight: 24,
@@ -105,7 +105,7 @@ export const getTextFieldStyles = (props?: TextFieldProps) => {
   if (props?.disabled)
     common = {
       ...common,
-      color: 'inherit',
+      color: 'inherit' as never,
     };
   return common;
 };
@@ -148,15 +148,17 @@ export const getTrailingContainerStyle = (props: TextFieldProps) => {
  * To generate style for the container of the text field
  *
  * @param {Partial<TextFieldProps>} props - The properties of the text field
+ * @param dripsyTheme
  * @returns style of the text field container
  */
-export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>) => {
+export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>, dripsyTheme: DripsyFinalTheme) => {
   const { style: propStyle, variant, error, disabled } = props;
 
-  const theme = getTextFieldTheme();
+  const theme = getTextFieldTheme(dripsyTheme);
 
   const style = theme[variant ?? 'filled'];
-  const { colors } = getTheme();
+
+  const { colors } = dripsyTheme;
 
   let finalStyle = {
     ...style,
@@ -214,10 +216,11 @@ export const getErrors = (message?: string | string[]) => {
 /**
  * to generate the error message style
  *
+ * @param theme
  * @returns style of the error message
  */
-export const getErrorStyle = () => {
-  const { colors } = getTheme();
+export const getErrorStyle = (theme: DripsyFinalTheme) => {
+  const { colors } = theme;
 
   const style: StyleProp<TextStyle> = {
     fontSize: 12,
@@ -232,10 +235,11 @@ export const getErrorStyle = () => {
 /**
  * to generate the supporting text style
  *
+ * @param theme
  * @returns style of the supporting text
  */
-export const getSupportingTextStyle = () => {
-  const { colors } = getTheme();
+export const getSupportingTextStyle = (theme: DripsyFinalTheme) => {
+  const { colors } = theme;
 
   const style: StyleProp<TextStyle> = {
     fontSize: 12,

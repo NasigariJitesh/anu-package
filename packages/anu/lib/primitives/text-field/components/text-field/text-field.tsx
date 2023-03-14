@@ -1,4 +1,5 @@
 import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
+import { useTheme } from 'config/dripsy';
 import { Pressable, TextInput, useSx } from 'dripsy';
 import Container from 'lib/primitives/layout';
 import Typography from 'lib/primitives/typography';
@@ -39,16 +40,18 @@ const TextField = (props: Partial<TextFieldProps>) => {
   const pressableReference = useRef<View | null>(null);
   const textInputReference = useRef<RNTextInput | null>(null);
 
+  const theme = useTheme();
+
   const finalProps = { ...defaultProps, ...props };
   const { variant, sx, ...componentProps } = finalProps;
 
-  const style = getTextFieldStyles(finalProps);
-  const containerStyle = getTextFieldContainerStyle(finalProps);
+  const style = getTextFieldStyles(theme, finalProps);
+  const containerStyle = getTextFieldContainerStyle(finalProps, theme);
   const leadingIconContainerStyle = getLeadingContainerStyle(finalProps);
   const trailingIconContainerStyle = getTrailingContainerStyle(finalProps);
   const innerContainerStyle = getInnerContainerStyle();
-  const errorStyle = getErrorStyle();
-  const supportingTextStyle = getSupportingTextStyle();
+  const errorStyle = getErrorStyle(theme);
+  const supportingTextStyle = getSupportingTextStyle(theme);
 
   const [errors, setErrors] = useState(getErrors(props.errorMessage));
   const generateStyles = (state: PressableStateCallbackType) => {

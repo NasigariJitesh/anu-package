@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { getTheme } from 'config/dripsy';
+import { useTheme } from 'config/dripsy';
 import { useEffect, useRef, useState } from 'react';
 import { Animated, TextStyle, ViewStyle } from 'react-native';
 
@@ -15,8 +15,10 @@ const DELAY = 100; // in milliseconds
  * @param props - Text input label props
  */
 const TextFieldLabel = (props: TextInputLabelProps) => {
-  const style = getTextFieldStyles();
-  const { colors } = getTheme();
+  const theme = useTheme();
+  const style = getTextFieldStyles(theme);
+
+  const { colors } = theme;
 
   const transitionTopCoordinate = useRef(new Animated.Value(0)).current;
   const transitionFontSize = useRef(new Animated.Value(style.fontSize)).current;
