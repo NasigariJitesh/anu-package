@@ -62,13 +62,18 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
    * When the component is in focus, this transition is supposed to be triggered
    */
   const transitionIn = () => {
-    if (props.value?.length && props.value?.length > 0) return;
+    // const transitionValue =
+    //   (props.height / 2) * -1 +
+    //   (props.variant === 'outlined'
+    //     ? Math.floor((style.fontSize * 0.75) / -15)
+    //     : Math.floor((style.fontSize * 0.75) / 1.5));
 
     Animated.timing(transitionTopCoordinate, {
       toValue:
-        props.variant === 'outlined'
-          ? props.height / -2 + Math.floor((style.fontSize * 0.7) / -15)
-          : (props.height / 4) * -1,
+        (props.height / 2) * -1 +
+        (props.variant === 'outlined'
+          ? Math.floor((style.fontSize * 0.75) / -15)
+          : Math.floor(style.fontSize * 0.75) / 1.25),
       duration: DURATION,
       useNativeDriver: true,
       delay: DELAY,
