@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { generateHoverStyles } from 'common/utils';
+import { useTheme } from 'config/dripsy';
 import { Pressable, useSx } from 'dripsy';
 import { Container, Typography } from 'lib/primitives';
 import { useEffect, useState } from 'react';
@@ -17,13 +18,14 @@ import { defaultProps } from './default';
 export const Radio = (props: RadioButtonProps) => {
   const [isOn, setIsOn] = useState(isSelected(props));
 
+  const theme = useTheme();
   const finalProps = { ...defaultProps, ...props };
+
+  const { radioStyles, pressableStyles, selectedIconStyles } = getRadioButtonStyles(finalProps, isOn, theme);
 
   useEffect(() => {
     setIsOn(isSelected(props));
   }, [props.selected]);
-
-  const { radioStyles, pressableStyles, selectedIconStyles } = getRadioButtonStyles(finalProps, isOn);
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, pressableStyles, useSx);
