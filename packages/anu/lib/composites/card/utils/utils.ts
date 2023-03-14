@@ -1,6 +1,5 @@
 import { getMaxWidthInPixels } from 'common/utils';
-import { getTheme } from 'config/dripsy/theme';
-import { SxProp } from 'dripsy';
+import { DripsyFinalTheme, SxProp } from 'dripsy';
 import { StyleProp, ViewStyle } from 'react-native';
 
 import { CardProps } from './../types/card';
@@ -9,24 +8,38 @@ import { CardProps } from './../types/card';
  * To generate the card styling props
  *
  * @param {Partial<CardProps>}props - the properties of the card component
+ * @param theme
  * @returns style properties for the card component
  */
-export const getCardStyles = (props: Partial<CardProps>): { style: StyleProp<ViewStyle>; sx: SxProp } => {
+export const getCardStyles = (
+  props: Partial<CardProps>,
+  theme: DripsyFinalTheme,
+): { style: StyleProp<ViewStyle>; sx: SxProp } => {
   const { style, sx } = getCommonCardStyles(props);
-  const { colors } = getTheme();
+  const { colors } = theme;
+
   switch (props.variant) {
     case 'outlined': {
       {
         return {
           style: {
             ...style,
+
+            shadowOffset: {
+              width: 0,
+              height: 3,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 1,
+
             backgroundColor: 'transparent',
             borderWidth: 1,
-            borderColor: colors.$shadow,
+            borderColor: colors?.$shadow as string,
           },
           sx: {
             ...sx,
-            color: colors.$primary,
+            color: colors?.$primary as string,
           },
         };
       }
@@ -36,11 +49,18 @@ export const getCardStyles = (props: Partial<CardProps>): { style: StyleProp<Vie
         return {
           style: {
             ...style,
-            backgroundColor: colors.$primary,
+            shadowOffset: {
+              width: 0,
+              height: 3,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 1,
+            backgroundColor: colors?.$primary as string,
           },
           sx: {
             ...sx,
-            color: colors.$primary,
+            color: colors?.$primary as string,
           },
         };
       }
@@ -50,8 +70,8 @@ export const getCardStyles = (props: Partial<CardProps>): { style: StyleProp<Vie
       return {
         style: {
           ...style,
-          backgroundColor: colors.$background,
-          shadowColor: colors.$primary + 90,
+          backgroundColor: colors?.$background as string,
+          shadowColor: (colors?.$primary as string) + 90,
           shadowOffset: {
             width: 0,
             height: 3,
@@ -62,7 +82,7 @@ export const getCardStyles = (props: Partial<CardProps>): { style: StyleProp<Vie
         },
         sx: {
           ...sx,
-          color: colors.$primary,
+          color: colors?.$primary as string,
         },
       };
     }
@@ -72,11 +92,11 @@ export const getCardStyles = (props: Partial<CardProps>): { style: StyleProp<Vie
           ...style,
           backgroundColor: 'transparent',
           borderWidth: 1,
-          borderColor: colors.$shadow,
+          borderColor: colors?.$shadow as string,
         },
         sx: {
           ...sx,
-          color: colors.$primary,
+          color: colors?.$primary as string,
         },
       };
     }

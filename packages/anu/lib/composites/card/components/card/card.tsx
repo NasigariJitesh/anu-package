@@ -1,4 +1,5 @@
 import { getCombinedStylesForView } from 'common/utils';
+import { useTheme } from 'config/dripsy/theme';
 import { Container } from 'lib/primitives';
 
 import { CardProps } from '../../types/card';
@@ -11,12 +12,15 @@ import { defaultProps, defaultSxProps } from './default';
  * @param {Partial<CardProps>} props - all the properties related to the card component
  */
 const Card = (props: Partial<CardProps>) => {
-  const finalProps = { ...defaultProps, sx: defaultSxProps, ...props };
-  const { style, sx } = getCardStyles(finalProps);
+  const theme = useTheme();
+
+  const finalProps = { ...defaultProps, sx: defaultSxProps(theme), ...props };
+
+  const { style, sx } = getCardStyles(finalProps, theme);
   const { variant, onHover, ...componentProps } = finalProps;
 
   return (
-    <Container {...componentProps} style={getCombinedStylesForView(style, props.style)} sx={sx}>
+    <Container {...componentProps} style={getCombinedStylesForView(style, finalProps.style)} sx={sx}>
       {props.children}
     </Container>
   );

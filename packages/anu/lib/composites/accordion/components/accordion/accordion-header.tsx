@@ -1,3 +1,4 @@
+import { useTheme } from 'config/dripsy/theme';
 import Icon from 'lib/primitives/icon/components/icon';
 import { Container } from 'lib/primitives/layout/components/container/container';
 import Typography from 'lib/primitives/typography/components';
@@ -14,7 +15,7 @@ import { useAccordionContext } from './accordion';
 const RenderIcon = (props: AccordionHeaderProps) => {
   const { collapse } = useAccordionContext();
 
-  const style = getAccordionHeaderStyles();
+  const style = getAccordionHeaderStyles(useTheme());
 
   if (props.icon?.collapsed && collapse) return <>{props.icon.collapsed}</>;
   else if (props.icon?.open && !collapse) return <>{props.icon.open}</>;
@@ -34,7 +35,7 @@ const RenderIcon = (props: AccordionHeaderProps) => {
  * @param props - header props for accordion
  */
 const AccordionHeader = (props: AccordionHeaderProps) => {
-  const style = getAccordionHeaderStyles();
+  const style = getAccordionHeaderStyles(useTheme());
 
   return (
     <Container sx={style.container} disableGutters flexDirection='row' align='center'>
