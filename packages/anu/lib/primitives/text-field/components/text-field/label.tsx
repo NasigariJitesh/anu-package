@@ -21,6 +21,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const { colors } = theme;
 
   const transitionTopCoordinate = useRef(new Animated.Value(0)).current;
+
   const transitionFontSize = useRef(new Animated.Value(style.fontSize)).current;
   const transitionLineHeight = useRef(new Animated.Value(style.fontSize)).current;
 
@@ -45,6 +46,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
   useEffect(() => {
     transitionTopCoordinate.addListener((arguments_) => setValue(arguments_.value));
+
     if (props.value?.length && props.value?.length > 0) transitionIn();
   }, []);
 
@@ -60,18 +62,13 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
    * When the component is in focus, this transition is supposed to be triggered
    */
   const transitionIn = () => {
-    // const transitionValue =
-    //   (props.height / 2) * -1 +
-    //   (props.variant === 'outlined'
-    //     ? Math.floor((style.fontSize * 0.75) / -15)
-    //     : Math.floor((style.fontSize * 0.75) / 1.5));
+    if (props.value?.length && props.value?.length > 0) return;
 
     Animated.timing(transitionTopCoordinate, {
       toValue:
-        (props.height / 2) * -1 +
-        (props.variant === 'outlined'
-          ? Math.floor((style.fontSize * 0.75) / -15)
-          : Math.floor(style.fontSize * 0.75) / 1.25),
+        props.variant === 'outlined'
+          ? props.height / -2 + Math.floor((style.fontSize * 0.7) / -15)
+          : (props.height / 4) * -1,
       duration: DURATION,
       useNativeDriver: true,
       delay: DELAY,
@@ -79,14 +76,14 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
     Animated.timing(transitionLineHeight, {
       toValue: style.lineHeight,
-      duration: 500,
+      duration: DURATION,
       useNativeDriver: true,
       delay: DELAY,
     }).start();
 
     Animated.timing(transitionFontSize, {
       toValue: style.fontSize * 0.75,
-      duration: 500,
+      duration: DURATION,
       useNativeDriver: true,
       delay: DELAY,
     }).start();

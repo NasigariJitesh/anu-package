@@ -17,15 +17,16 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
     filled: {
       backgroundColor: colors.$surfaceVariant,
       color: colors.$onSurfaceVariant,
-      height: 56,
+      height: 60,
       justifyContent: 'center',
       paddingVertical: 0,
       paddingHorizontal: 0,
-      borderBottomWidth: 1,
       borderBottomStyle: 'solid',
       borderTopLeftRadius: 4,
       borderTopRightRadius: 4,
+      borderBottomWidth: 2,
       borderBottomColor: colors.$onSurfaceVariant,
+
       '@disable': {
         borderBottomColor: getColorInRGBA(colors.$onSurface, 38),
         backgroundColor: getColorInRGBA(colors.$onSurface, 4),
@@ -35,12 +36,10 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
         borderBottomColor: colors.$onSurface,
       },
       '@focus': {
-        borderBottomWidth: 2,
         borderBottomColor: colors.$primary,
         color: colors.$primary,
       },
       '@press': {
-        borderBottomWidth: 2,
         borderBottomColor: colors.$primary,
         color: colors.$primary,
       },
@@ -100,6 +99,7 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
     flex: 1,
     position: 'relative' as const,
     backgroundColor: 'transparent',
+    top: props?.variant === 'filled' ? 5 : 0,
   };
 
   if (props?.disabled)
@@ -107,6 +107,7 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
       ...common,
       color: 'inherit' as never,
     };
+
   return common;
 };
 

@@ -54,6 +54,7 @@ const TextField = (props: Partial<TextFieldProps>) => {
   const supportingTextStyle = getSupportingTextStyle(theme);
 
   const [errors, setErrors] = useState(getErrors(props.errorMessage));
+
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, containerStyle, useSx);
   };
