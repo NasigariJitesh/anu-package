@@ -76,18 +76,25 @@ export type HTMLType = HeadingType | LabelType | BodyType;
 export interface TypographyProps extends TextProps {
   /**
    * How to align the text of a typography component
+   *
+   * @see {@link TextAlign}
    */
   align: TextAlign;
 
   /**
    *  The type scale for the typography component
+   *
+   * @see {@link TypeScales}
    */
   scale: TypeScales;
 
   /**
    * The tokens for the selected type scale in the typography component
+   *
+   * @see {@link DisplayTokens}
    */
   size: DisplayTokens;
+
   /**
    * The styles for the typography component
    */
@@ -114,6 +121,11 @@ export interface HeadlineProps extends TypographyProps {
  * Props for the title component
  */
 export interface TitleProps extends TypographyProps {
+  /**
+   * Different tags that can be used to render this component on web.
+   *
+   * @see {@link HeadingType}
+   */
   component: HeadingType;
   scale: 'title';
 }

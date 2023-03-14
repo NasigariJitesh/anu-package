@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "anu/*": ["./*"],
       "common/*": ["./common/*"],
       "config/*": ["./config/*"],
       "lib/*": ["./lib/*"]

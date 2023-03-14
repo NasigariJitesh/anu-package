@@ -33,8 +33,6 @@ describe('Testing for Typography.Title', () => {
 
     const commonResult = renderer.getRenderOutput();
 
-    console.log(commonResult);
-
     expect(commonResult).toMatchSnapshot();
   });
 
@@ -42,8 +40,6 @@ describe('Testing for Typography.Title', () => {
     renderer.render(<RenderComponent {...result.props} component='h4' />);
 
     const commonResult = renderer.getRenderOutput();
-
-    console.log(commonResult);
 
     expect(commonResult).toMatchSnapshot();
   });
@@ -53,8 +49,6 @@ describe('Testing for Typography.Title', () => {
 
     const commonResult = renderer.getRenderOutput();
 
-    console.log(commonResult);
-
     expect(commonResult).toMatchSnapshot();
   });
 
@@ -62,8 +56,6 @@ describe('Testing for Typography.Title', () => {
     renderer.render(<RenderComponent {...result.props} component='h6' />);
 
     const commonResult = renderer.getRenderOutput();
-
-    console.log(commonResult);
 
     expect(commonResult).toMatchSnapshot();
   });
