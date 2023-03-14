@@ -1,4 +1,4 @@
-import { getTheme } from 'anu/config';
+import { useTheme } from 'anu/config';
 import { Container, FlatList, Typography } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
@@ -17,8 +17,6 @@ import { textFieldIndex } from 'services/docs/text-field';
 import { typographyIndex } from 'services/docs/typography';
 import { translations } from 'services/localization';
 import { TextLink } from 'solito/link';
-
-const theme = getTheme();
 
 const source = Source_Sans_Pro({
   weight: ['400', '600'],
@@ -62,6 +60,7 @@ const Group = (props: HeadingProps) => {
 
 const Components = (props: { links: ComponentLinks[] | undefined }) => {
   const { pathname } = useRouter();
+  const theme = useTheme();
 
   return (
     <FlatList
@@ -69,7 +68,13 @@ const Components = (props: { links: ComponentLinks[] | undefined }) => {
       data={props.links}
       renderItem={({ item }) => {
         return (
-          <Typography.Title style={[style.componentName, pathname === item.link ? style.active : {}]}>
+          <Typography.Title
+            style={[
+              style.componentName,
+              // eslint-disable-next-line react-native/no-inline-styles
+              pathname === item.link ? { color: theme.colors?.$primary as never, opacity: 1 } : {},
+            ]}
+          >
             <TextLink href={item.link}>{item.title}</TextLink>
           </Typography.Title>
         );
@@ -206,10 +211,6 @@ const style = {
   componentList: {
     marginVertical: 15,
     marginLeft: 15,
-  },
-  active: {
-    color: theme.colors.$primary,
-    opacity: 1,
   },
 } as const;
 

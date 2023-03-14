@@ -1,4 +1,4 @@
-import { getTheme } from 'anu/config';
+import { useTheme } from 'anu/config';
 import { Container, Icon, Typography } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
@@ -11,8 +11,6 @@ const source = Source_Sans_Pro({
   style: 'normal',
   subsets: ['latin'],
 });
-
-const theme = getTheme();
 
 const ToggleTheme = () => {
   const [isLightTheme, toggleLightTheme] = useState(false);
@@ -97,8 +95,10 @@ const MetaData = () => {
 };
 
 const Navbar = () => {
+  const theme = useTheme();
+
   return (
-    <nav style={style.navbar}>
+    <nav style={{ ...style.navbar, boxShadow: `1px 2px ${theme.colors?.$surfaceVariant}` }}>
       <Container sx={style.container} flexDirection='row' justify='space-between' align='center'>
         <Typography.Display size='medium' style={style.title}>
           Anu
@@ -116,7 +116,6 @@ const style = {
     height: 70,
     display: 'flex',
     justifyContent: 'center',
-    boxShadow: `1px 2px ${theme.colors.$surfaceVariant}`,
   },
   title: {
     width: '100%',

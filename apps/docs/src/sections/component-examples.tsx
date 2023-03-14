@@ -1,7 +1,7 @@
 import { ReactChildren } from 'anu/common/types';
-import { getTheme } from 'anu/config';
+import { useTheme } from 'anu/config';
 import { Container, Typography } from 'anu/lib';
-import { ScrollView } from 'dripsy';
+import { DripsyFinalTheme, ScrollView } from 'dripsy';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
@@ -30,7 +30,9 @@ interface ComponentExampleProps {
   examples: Example[];
 }
 const ComponentExamples = ({ examples }: ComponentExampleProps) => {
-  const styles = getStyles();
+  const theme = useTheme();
+
+  const styles = getStyles(theme);
 
   const renderExample = (example: Example, index: number) => {
     return (
@@ -96,9 +98,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
   );
 };
 
-const getStyles = () => {
-  const { colors } = getTheme();
-
+const getStyles = ({ colors }: DripsyFinalTheme) => {
   const styles = {
     container: {
       // marginBottom: 30,
@@ -113,7 +113,7 @@ const getStyles = () => {
       width: '100%',
     },
     heading: {
-      color: colors.$onSurface,
+      color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,
       fontSize: 22,
       fontWeight: '600',
@@ -121,14 +121,14 @@ const getStyles = () => {
       marginBottom: 15,
     },
     name: {
-      color: colors.$onSurface,
+      color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,
       fontSize: 22,
       fontWeight: '600',
       lineHeight: 22,
     },
     description: {
-      color: colors.$onSurface,
+      color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,
       fontSize: 16,
       fontWeight: '400',
@@ -142,10 +142,10 @@ const getStyles = () => {
       fontWeight: '400',
     },
     divider: {
-      color: colors.$onSurface,
+      color: colors?.$onSurface as never,
     },
     codeArea: {
-      backgroundColor: colors.$surfaceVariant,
+      backgroundColor: colors?.$surfaceVariant as never,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
       padding: '5px',
       borderRadius: 10,

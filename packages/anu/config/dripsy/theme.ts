@@ -1,7 +1,7 @@
-import { DripsyBaseTheme, DripsyCustomTheme, makeTheme, useDripsyTheme } from 'dripsy';
+import { DripsyBaseTheme, DripsyCustomTheme, DripsyFinalTheme, makeTheme, useDripsyTheme } from 'dripsy';
 import lodash from 'lodash';
 
-const themeColors = {
+export const themeColors = {
   $text: '#46464f', // @deprecated
 
   // new codes
@@ -76,7 +76,7 @@ export const defaultTheme = makeTheme({
  *
  */
 export const useTheme = () => {
-  return useDripsyTheme().theme;
+  return useDripsyTheme().theme as DripsyFinalTheme;
 };
 
 /**
@@ -84,7 +84,7 @@ export const useTheme = () => {
  *
  * @param theme - The theme object for the project
  */
-export const extendTheme = (theme: DripsyBaseTheme & DripsyCustomTheme) => {
+export const extendTheme = (theme: DripsyBaseTheme) => {
   const result = mergeThemes(theme);
 
   return makeTheme(result);

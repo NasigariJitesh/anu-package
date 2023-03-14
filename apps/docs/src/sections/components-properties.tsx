@@ -1,6 +1,7 @@
 import { getColorInRGBA } from 'anu/common/utils';
-import { getTheme } from 'anu/config';
+import { useTheme } from 'anu/config';
 import { Container, Divider, Typography } from 'anu/lib';
+import { DripsyFinalTheme } from 'dripsy';
 import { Source_Sans_Pro } from 'next/font/google';
 
 import { translations } from '../../services/localization';
@@ -23,7 +24,9 @@ interface ComponentPropertiesProps {
 }
 
 const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
-  const styles = getStyles();
+  const theme = useTheme();
+
+  const styles = getStyles(theme);
 
   const renderProperty = (prop: Property, index: number, isLast: boolean) => {
     return (
@@ -55,9 +58,7 @@ const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
   );
 };
 
-const getStyles = () => {
-  const { colors } = getTheme();
-
+const getStyles = ({ colors }: DripsyFinalTheme) => {
   const styles = {
     container: {
       marginVertical: 30,
@@ -67,7 +68,7 @@ const getStyles = () => {
       width: '100%',
     },
     heading: {
-      color: colors.$onSurface,
+      color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,
       fontSize: 22,
       fontWeight: '600',
@@ -76,7 +77,7 @@ const getStyles = () => {
     },
 
     name: {
-      color: colors.$onSurface,
+      color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,
       fontSize: 18,
       fontWeight: '600',
@@ -84,14 +85,14 @@ const getStyles = () => {
       marginRight: 8,
     },
     type: {
-      color: getColorInRGBA(colors.$onSurface, 80),
+      color: getColorInRGBA(colors?.$onSurface as string, 80),
       fontFamily: source.style.fontFamily,
       fontSize: 12,
       fontWeight: '600',
       lineHeight: 18,
     },
     otherDetails: {
-      color: colors.$onSurface,
+      color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,
       fontSize: 14,
       fontWeight: '400',
@@ -99,7 +100,7 @@ const getStyles = () => {
       marginTop: 8,
     },
     divider: {
-      color: colors.$onSurface,
+      color: colors?.$onSurface as never,
       marginBottom: 8,
     },
   } as const;

@@ -1,4 +1,4 @@
-import { getTheme } from 'config/dripsy/theme';
+import { DripsyFinalTheme } from 'dripsy';
 
 import { TypographyProps } from '../types';
 
@@ -6,38 +6,39 @@ import { TypographyProps } from '../types';
  * get the font styles based on the type of the component
  *
  * @param {TypographyProps} props - props of the display component
+ * @param theme
  */
-export const getFontStyles = (props: TypographyProps) => {
+export const getFontStyles = (props: TypographyProps, theme: DripsyFinalTheme) => {
   let styles;
 
   switch (props.scale) {
     case 'display': {
-      styles = getDisplayFontStyles(props.size);
+      styles = getDisplayFontStyles(props.size, theme);
       break;
     }
 
     case 'headline': {
-      styles = getHeadlineFontStyles(props.size);
+      styles = getHeadlineFontStyles(props.size, theme);
       break;
     }
 
     case 'title': {
-      styles = getTitleFontStyles(props.size);
+      styles = getTitleFontStyles(props.size, theme);
       break;
     }
 
     case 'label': {
-      styles = getLabelFontStyles(props.size);
+      styles = getLabelFontStyles(props.size, theme);
       break;
     }
 
     case 'body': {
-      styles = getBodyFontStyles(props.size);
+      styles = getBodyFontStyles(props.size, theme);
       break;
     }
 
     default: {
-      styles = getBodyFontStyles(props.size);
+      styles = getBodyFontStyles(props.size, theme);
       break;
     }
   }
@@ -50,9 +51,7 @@ export const getFontStyles = (props: TypographyProps) => {
   return { ...styles, ...resetStyles };
 };
 
-const getDisplayFontStyles = (size: TypographyProps['size']) => {
-  const theme = getTheme();
-
+const getDisplayFontStyles = (size: TypographyProps['size'], theme: DripsyFinalTheme) => {
   switch (size) {
     case 'large': {
       return {
@@ -85,9 +84,7 @@ const getDisplayFontStyles = (size: TypographyProps['size']) => {
   }
 };
 
-const getHeadlineFontStyles = (size: TypographyProps['size']) => {
-  const theme = getTheme();
-
+const getHeadlineFontStyles = (size: TypographyProps['size'], theme: DripsyFinalTheme) => {
   switch (size) {
     case 'large': {
       return {
@@ -120,9 +117,7 @@ const getHeadlineFontStyles = (size: TypographyProps['size']) => {
   }
 };
 
-const getTitleFontStyles = (size: TypographyProps['size']) => {
-  const theme = getTheme();
-
+const getTitleFontStyles = (size: TypographyProps['size'], theme: DripsyFinalTheme) => {
   switch (size) {
     case 'large': {
       return {
@@ -158,9 +153,7 @@ const getTitleFontStyles = (size: TypographyProps['size']) => {
   }
 };
 
-const getLabelFontStyles = (size: TypographyProps['size']) => {
-  const theme = getTheme();
-
+const getLabelFontStyles = (size: TypographyProps['size'], theme: DripsyFinalTheme) => {
   switch (size) {
     case 'large': {
       return {
@@ -197,9 +190,7 @@ const getLabelFontStyles = (size: TypographyProps['size']) => {
   }
 };
 
-const getBodyFontStyles = (size: TypographyProps['size']) => {
-  const theme = getTheme();
-
+const getBodyFontStyles = (size: TypographyProps['size'], theme: DripsyFinalTheme) => {
   switch (size) {
     case 'large': {
       return {

@@ -1,4 +1,5 @@
 import { getCombinedStylesForText } from 'common/utils';
+import { useTheme } from 'config/dripsy';
 
 import { TitleProps } from '../../types';
 import { getFontStyles } from '../../utils';
@@ -13,7 +14,7 @@ import { defaultProps } from './default';
 const Title = (props: Partial<TitleProps>) => {
   const restOfTheProps = { ...defaultProps, ...props };
 
-  const styles = getFontStyles(restOfTheProps);
+  const styles = getFontStyles(restOfTheProps, useTheme());
 
   return (
     <RenderComponent {...restOfTheProps} style={getCombinedStylesForText(styles, restOfTheProps.style)}>

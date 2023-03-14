@@ -1,12 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
-import { getTheme } from 'anu/config';
+import { useTheme } from 'anu/config';
 import { Accordion, Container, FlatList, Typography } from 'anu/lib';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
 import { useMenuContext } from 'screens/common/provider';
 import { TextLink } from 'solito/link';
-
-const theme = getTheme();
 
 const source = Source_Sans_Pro({
   weight: ['400', '600'],
@@ -102,13 +100,19 @@ const Components = (props: { links: ComponentLinks[] }) => {
 
 const Categories = (props: { links: Link[] }) => {
   const { pathname } = useRouter();
+  const theme = useTheme();
 
   return (
     <FlatList
       data={props.links}
       renderItem={({ item }) => {
         return (
-          <Typography.Title style={[style.categoryName, pathname === item.link ? style.active : {}]}>
+          <Typography.Title
+            style={[
+              style.categoryName,
+              pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
+            ]}
+          >
             <TextLink href={item.link}>{item.title}</TextLink>
           </Typography.Title>
         );
@@ -258,7 +262,6 @@ const style = {
     marginLeft: 15,
   },
   active: {
-    color: theme.colors.$primary,
     opacity: 1,
     fontWeight: '600',
   },
