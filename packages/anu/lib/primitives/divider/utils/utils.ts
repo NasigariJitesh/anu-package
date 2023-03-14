@@ -1,23 +1,21 @@
-import { getTheme } from 'config/dripsy/theme';
-import { SxProp } from 'dripsy';
+import { DripsyFinalTheme, SxProp } from 'dripsy';
 import { ContainerJustify } from 'lib/primitives/layout/types';
 import { StyleProp, ViewStyle } from 'react-native';
 
 import { DividerProps } from '../types';
 import { DividerPattern, DividerTextAlign } from './../types/divider';
 
-const { colors } = getTheme();
-
 /**
  * To generate the divider styling props
  *
  *  @param {Partial<DividerProps>} props - The properties of the divider component
+ *  @param {DripsyFinalTheme} theme - dripsy theme
  *  @returns style properties for the divider component
  */
-export const getDividerStyle = (props: Partial<DividerProps>) => {
+export const getDividerStyle = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
   const { variant, orientation } = props;
   // eslint-disable-next-line prefer-const
-  let { style, sx } = getDividerCommonStyles(props);
+  let { style, sx } = getDividerCommonStyles(props, theme);
   switch (variant) {
     case 'full-width': {
       return {
@@ -80,12 +78,16 @@ export const getDividerStyle = (props: Partial<DividerProps>) => {
  * To generate the common styling props of divider
  *
  *  @param {Partial<DividerProps>} props - The properties of the divider component
+ *  @param {DripsyFinalTheme} theme - dripsy theme
  *  @returns common style properties for the divider component
  */
-const getDividerCommonStyles = (props: Partial<DividerProps>) => {
+const getDividerCommonStyles = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
+  const { colors } = theme;
+
   const { orientation, textAlign, pattern, borderWidth } = props;
   const style: StyleProp<ViewStyle> = { overflow: 'visible' };
-  const sx: SxProp = { color: props.style?.color ?? colors.$text };
+  const sx: SxProp = { color: props.style?.color ?? (colors?.text as string) };
+
   switch (orientation) {
     case 'vertical': {
       return {
@@ -96,7 +98,7 @@ const getDividerCommonStyles = (props: Partial<DividerProps>) => {
           marginHorizontal: '8px',
           alignItems: 'flex-end' as const,
           justifyContent: getAlignment(textAlign),
-          borderLeft: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props)}`,
+          borderLeft: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props, theme)}`,
         },
         sx: { ...sx, alignSelf: 'stretch' },
       };
@@ -110,7 +112,7 @@ const getDividerCommonStyles = (props: Partial<DividerProps>) => {
           marginVertical: '16px',
           alignItems: 'center' as const,
           justifyContent: getAlignment(textAlign),
-          borderTop: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props)}`,
+          borderTop: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props, theme)}`,
         },
         sx: sx,
       };
@@ -124,7 +126,7 @@ const getDividerCommonStyles = (props: Partial<DividerProps>) => {
           alignItems: 'center' as const,
           marginVertical: '8px',
           justifyContent: getAlignment(textAlign),
-          borderLeft: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props)}`,
+          borderLeft: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props, theme)}`,
         },
 
         sx: sx,
@@ -183,11 +185,14 @@ const getBorderStyle = (pattern?: DividerPattern) => {
  * To generate the color of the divider
  *
  *  @param {Partial<DividerProps>} props - The properties of the divider component
+ *  @param {DripsyFinalTheme} theme - dripsy theme
  *  @returns color of the divider
  */
-const getColor = (props: Partial<DividerProps>) => {
+const getColor = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
+  const { colors } = theme;
+
   const { light, style } = props;
-  const color = style?.color ? String(style?.color) : colors.$primary;
+  const color = style?.color ? String(style?.color) : (colors?.$primary as string);
   return light ? color + '90' : color;
 };
 
@@ -200,3 +205,15 @@ const getColor = (props: Partial<DividerProps>) => {
 const getBorderWidthInPixels = (width?: string | number) => {
   return typeof width === 'string' ? width : width?.toString() + 'px';
 };
+
+/**
+ * Default text style
+ *
+ *  @param {DripsyFinalTheme} theme - dripsy theme
+ */
+export const defaultTextStyle = (theme: DripsyFinalTheme) =>
+  ({
+    backgroundColor: theme.colors?.$background as never,
+    paddingHorizontal: '4px',
+    color: theme.colors?.$text as never,
+  } as const);

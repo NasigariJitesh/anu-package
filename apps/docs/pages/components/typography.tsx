@@ -5,7 +5,7 @@ const Typography = () => {
   return (
     <>
       <SEO title='Typography' />
-      <TypographyDoc />
+      {/* <TypographyDoc /> */}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { DripsyBaseTheme, DripsyCustomTheme, makeTheme } from 'dripsy';
+import { DripsyBaseTheme, DripsyCustomTheme, makeTheme, useDripsyTheme } from 'dripsy';
 import lodash from 'lodash';
 
 const themeColors = {
@@ -75,8 +75,8 @@ export const defaultTheme = makeTheme({
  * Fetch the theme of the app
  *
  */
-export const getTheme = () => {
-  return defaultTheme;
+export const useTheme = () => {
+  return useDripsyTheme().theme;
 };
 
 /**

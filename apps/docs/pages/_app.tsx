@@ -18,7 +18,7 @@ export default function App(props: AppProps) {
     <RootLayout>
       <SEO />
       <Navbar />
-      <View
+      {/* <View
         style={{
           flexDirection: 'row',
           maxWidth: 1440,
@@ -31,7 +31,7 @@ export default function App(props: AppProps) {
         <Sidebar />
         <props.Component {...props.pageProps} />
         <RightSidebar />
-      </View>
+      </View> */}
     </RootLayout>
   );
 }

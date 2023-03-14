@@ -1,7 +1,7 @@
 import { getTheme } from 'config/dripsy/theme';
 import { SxProp } from 'dripsy';
 
-import { CardProps, CardVariant } from '../../types/card';
+import { CardProps } from '../../types/card';
 
 const { colors } = getTheme();
 
@@ -9,7 +9,7 @@ const { colors } = getTheme();
  * Default Properties of the card component
  */
 export const defaultProps: Partial<CardProps> = {
-  variant: 'elevated' as CardVariant,
+  variant: 'elevated' as const,
   style: {
     backgroundColor: colors.$background,
     shadowColor: colors.$primary + 90,
