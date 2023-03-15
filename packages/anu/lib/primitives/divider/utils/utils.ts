@@ -86,7 +86,7 @@ const getDividerCommonStyles = (props: Partial<DividerProps>, theme: DripsyFinal
 
   const { orientation, textAlign, pattern, borderWidth } = props;
   const style: StyleProp<ViewStyle> = { overflow: 'visible' };
-  const sx: SxProp = { color: props.style?.color ?? (colors?.text as string) };
+  const sx: SxProp = { color: props.style?.color ?? (colors?.$onBackground as string) };
 
   switch (orientation) {
     case 'vertical': {
@@ -215,5 +215,5 @@ export const defaultTextStyle = (theme: DripsyFinalTheme) =>
   ({
     backgroundColor: theme.colors?.$background as never,
     paddingHorizontal: '4px',
-    color: theme.colors?.$text as never,
+    color: theme.colors?.$onBackground as never,
   } as const);

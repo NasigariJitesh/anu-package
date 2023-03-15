@@ -3,8 +3,6 @@ import lodash from 'lodash';
 export { makeTheme } from 'dripsy';
 
 export const lightThemeColors = {
-  $text: '#1b1b1f', // @deprecated
-
   // new codes
   $primary: '#4d53b7',
   $onPrimary: '#ffffff',
@@ -39,8 +37,6 @@ export const lightThemeColors = {
 } as const;
 
 export const darkThemeColors = {
-  $text: '#E5E1E6', // @deprecated
-
   // new codes
   $primary: '#BFC2FF',
   $onPrimary: '#1A1F88',
@@ -66,12 +62,12 @@ export const darkThemeColors = {
   $surfaceVariant: '#46464F',
   $onSurfaceVariant: '#C7C5D0',
   $outlineVariant: '#46464F',
-  $shadow: '#FFFFFF',
-  $surfaceTint: '',
+  $shadow: '#000000',
+  $surfaceTint: '#090C7D',
   $inverseSurface: '#E5E1E6',
   $inverseOnSurface: '#303034',
   $inversePrimary: '#4D53B7',
-  $scrim: '#FFFFFF',
+  $scrim: '#000000',
 } as const;
 
 /**
