@@ -1,6 +1,7 @@
 import { Provider } from 'anu/common/context';
 import { ReactChildren } from 'anu/common/types';
 import { makeTheme } from 'anu/config';
+import { AnuLocalizationProvider } from 'anu/lib/advanced';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -73,9 +74,13 @@ export default function RootLayout(props: {
 
   return (
     <Provider theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
-      <View style={{ backgroundColor: backgroundColor }}>
-        <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme }}>{children}</MenuContent.Provider>
-      </View>
+      <AnuLocalizationProvider default='en'>
+        <View style={{ backgroundColor: backgroundColor }}>
+          <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme }}>
+            {children}
+          </MenuContent.Provider>
+        </View>
+      </AnuLocalizationProvider>
     </Provider>
   );
 }
