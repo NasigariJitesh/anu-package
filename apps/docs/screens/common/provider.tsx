@@ -1,5 +1,6 @@
 import { Provider } from 'anu/common/context';
 import { ReactChildren } from 'anu/common/types';
+import { makeTheme } from 'anu/config';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -7,6 +8,8 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const MenuContent = createContext({
   isOpen: false,
   toggleMenu: () => {},
+  isDarkTheme: true,
+  toggleTheme: () => {},
 });
 
 export const useMenuContext = () => useContext(MenuContent);
@@ -15,13 +18,24 @@ export const useMenuContext = () => useContext(MenuContent);
  *
  * @param props
  * @param props.children
+ * @param props.backgroundColor
+ * @param props.setBackgroundColor
  */
-export default function RootLayout(props: { children: ReactChildren }) {
+export default function RootLayout(props: {
+  children: ReactChildren;
+  backgroundColor: string;
+  setBackgroundColor: (value: string) => void;
+}) {
   const [isOpen, toggleIsOpen] = useState(true);
+  const [isDarkTheme, toggleDarkTheme] = useState(true);
   const [isAdjustedToResize, toggleIsAdjustedToResize] = useState(false);
 
   const { width } = useWindowDimensions();
   const { pathname } = useRouter();
+
+  useEffect(() => {
+    props.setBackgroundColor(isDarkTheme ? '#1B1B1F' : '#fffbff');
+  }, []);
 
   useEffect(() => {
     if (width <= 0) return;
@@ -48,11 +62,15 @@ export default function RootLayout(props: { children: ReactChildren }) {
     toggleIsOpen((previousState) => !previousState);
   };
 
+  const toggleTheme = () => {
+    toggleDarkTheme((previousState) => !previousState);
+  };
+
   const { children } = props;
 
   return (
-    <Provider theme={{}}>
-      <MenuContent.Provider value={{ isOpen, toggleMenu }}>{children}</MenuContent.Provider>
+    <Provider theme={makeTheme({}, 'dark')}>
+      <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme }}>{children}</MenuContent.Provider>
     </Provider>
   );
 }

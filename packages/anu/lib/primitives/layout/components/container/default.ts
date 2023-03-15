@@ -1,6 +1,7 @@
 import { getTheme } from 'config/dripsy/theme';
 
 import { ContainerProps } from '../../types';
+
 const theme = getTheme();
 
 /**
@@ -13,7 +14,7 @@ export const defaultProps: ContainerProps = {
   fixed: false,
   disableGutters: false,
   style: {
-    backgroundColor: theme.colors.$background,
+    backgroundColor: theme.colors.$backgroundColor,
     width: '100%',
   },
 };

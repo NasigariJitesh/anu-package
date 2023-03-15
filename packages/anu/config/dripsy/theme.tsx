@@ -2,7 +2,7 @@ import { DripsyBaseTheme, DripsyCustomTheme, DripsyFinalTheme, makeTheme, useDri
 import lodash from 'lodash';
 export { makeTheme } from 'dripsy';
 
-export const themeColors = {
+export const lightThemeColors = {
   $text: '#46464f', // @deprecated
 
   // new codes
@@ -38,13 +38,58 @@ export const themeColors = {
   $scrim: '#000000',
 } as const;
 
+export const darkThemeColors = {
+  $text: '#46464f', // @deprecated
+
+  // new codes
+  $primary: '#BFC2FF',
+  $onPrimary: '#1A1F88',
+  $primaryContainer: '#343A9E',
+  $onPrimaryContainer: '#E0E0FF',
+  $secondary: '#FFB0CA',
+  $onSecondary: '#640036',
+  $secondaryContainer: '#87154E',
+  $onSecondaryContainer: '#FFD9E3',
+  $tertiary: '#CFCB55',
+  $onTertiary: '#333200',
+  $tertiaryContainer: '#4B4900',
+  $onTertiaryContainer: '#ECE76E',
+  $error: '#FFB4AB',
+  $onError: '#690005',
+  $errorContainer: '#93000A',
+  $onErrorContainer: '#FFDAD6',
+  $background: '#1B1B1F',
+  $onBackground: '#E5E1E6',
+  $surface: '#1B1B1F',
+  $onSurface: '#E5E1E6',
+  $outline: '#918F9A',
+  $surfaceVariant: '#46464F',
+  $onSurfaceVariant: '#C7C5D0',
+  $outlineVariant: '#46464F',
+  $shadow: '#FFFFFF',
+  $surfaceTint: '',
+  $inverseSurface: '#E5E1E6',
+  $inverseOnSurface: '#303034',
+  $inversePrimary: '#4D53B7',
+  $scrim: '#FFFFFF',
+} as const;
+
 /**
  *  This will replace the default theme properties with the new properties extended by the user
  *
  * @param theme - new theme to extend
+ * @param mode - Weather you want a light or a dark mode
  */
-const mergeThemes = (theme: DripsyBaseTheme & DripsyCustomTheme) => {
-  return lodash.merge(defaultTheme, theme);
+const mergeThemes = (theme: DripsyBaseTheme & DripsyCustomTheme, mode: 'light' | 'dark') => {
+  const t = makeTheme({
+    colors: generateColors(mode === 'light' ? lightThemeColors : darkThemeColors),
+    reactNativeTypesOnly: true,
+
+    fontSizes: [57, 45, 36, 32, 28, 24, 22, 16, 14, 12, 11],
+    lineHeights: [64, 52, 44, 40, 36, 32, 28, 24, 20, 16],
+  });
+
+  return lodash.merge(t, theme);
 };
 
 const generateColors = (colors: Record<string, string>) => {
@@ -65,7 +110,7 @@ const generateColors = (colors: Record<string, string>) => {
  *  This is the default theme for the app.
  */
 export const defaultTheme = makeTheme({
-  colors: generateColors(themeColors),
+  colors: generateColors(darkThemeColors),
   reactNativeTypesOnly: true,
 
   fontSizes: [57, 45, 36, 32, 28, 24, 22, 16, 14, 12, 11],
@@ -92,9 +137,10 @@ export const useTheme = () => {
  * Extend the default dripsy theme of the component
  *
  * @param theme - The theme object for the project
+ * @param mode - Weather you want a light or a dark mode. Default is lite
  */
-export const extendTheme = (theme: DripsyBaseTheme) => {
-  const result = mergeThemes(theme);
+export const extendTheme = (theme: DripsyBaseTheme & DripsyCustomTheme, mode: 'light' | 'dark' = 'light') => {
+  const result = mergeThemes(theme, mode);
 
   return makeTheme(result);
 };

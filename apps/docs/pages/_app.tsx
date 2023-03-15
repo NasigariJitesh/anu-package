@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react-native/no-inline-styles */
 import '../public/fonts/font.css';
 
@@ -6,6 +7,8 @@ import RightSidebar from 'components/right-sidebar';
 import SEO from 'components/seo';
 import Sidebar from 'components/sidebar';
 import { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useState } from 'react';
 import { View } from 'react-native';
 import RootLayout from 'screens/common/provider';
 
@@ -14,8 +17,15 @@ import RootLayout from 'screens/common/provider';
  * @param props App props
  */
 export default function App(props: AppProps) {
+  const [backgroundColor, setBackgroundColor] = useState('');
+
+  const customCss = `body {backgroundColor: ${backgroundColor}}`;
+
   return (
-    <RootLayout>
+    <RootLayout backgroundColor={backgroundColor} setBackgroundColor={setBackgroundColor}>
+      <Head>
+        <style>{customCss}</style>
+      </Head>
       <SEO />
       <Navbar />
       <View
