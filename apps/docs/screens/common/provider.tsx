@@ -42,6 +42,8 @@ export default function RootLayout(props: {
   }, []);
 
   useEffect(() => {
+    console.log(width);
+
     if (width <= 0) return;
 
     if (width >= 900) {

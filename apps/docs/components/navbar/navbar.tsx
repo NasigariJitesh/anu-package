@@ -2,7 +2,6 @@ import { useTheme } from 'anu/config';
 import { Container, Icon, Typography } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
-import { useEffect } from 'react';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useMenuContext } from 'screens/common/provider';
 
@@ -24,13 +23,6 @@ const ToggleTheme = () => {
 
 const ToggleMenu = () => {
   const { isOpen, toggleMenu } = useMenuContext();
-
-  useEffect(() => {
-    return () => {
-      if (!isOpen) toggleMenu();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return isOpen ? (
     <Icon name='close' size={24} onPress={toggleMenu} />
