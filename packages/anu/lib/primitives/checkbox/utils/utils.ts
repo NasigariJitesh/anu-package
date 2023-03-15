@@ -1,5 +1,5 @@
 import { getColorInRGBA } from 'common/utils';
-import { getTheme } from 'config/dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 import { GetButtonStylesReturnType } from 'lib/primitives/button/utils';
 
 import { CheckboxProps } from '../types/checkbox';
@@ -7,10 +7,11 @@ import { CheckboxProps } from '../types/checkbox';
 /**
  * This is a central store for all the check box style
  *
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns checkbox theme
  */
-const getCheckboxTheme = () => {
-  const themeColors = getTheme().colors;
+const getCheckboxTheme = (theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   const checkboxTheme = {
     common: {
@@ -142,9 +143,10 @@ const getCheckboxTheme = () => {
  *
  * @param props - props of the button component
  * @param selected - state of the checkbox
+ * @param {DripsyFinalTheme} theme - theme of the library
  */
-export const getCheckboxStyles = (props: CheckboxProps, selected: boolean) => {
-  const { checkboxTheme, checkboxStateLayerTheme, selectedIconTheme } = getCheckboxTheme();
+export const getCheckboxStyles = (props: CheckboxProps, selected: boolean, theme: DripsyFinalTheme) => {
+  const { checkboxTheme, checkboxStateLayerTheme, selectedIconTheme } = getCheckboxTheme(theme);
   const { indeterminate, error, style, color, disabled } = props;
 
   let key: keyof typeof checkboxTheme;

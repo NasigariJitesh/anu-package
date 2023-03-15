@@ -60,7 +60,6 @@ const getStyles = () => {
       alignSelf: 'baseline',
       zIndex: 1,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
-      // paddingHorizontal: 20,
     },
   } as const;
   return styles;

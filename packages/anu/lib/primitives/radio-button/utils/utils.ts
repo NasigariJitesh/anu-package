@@ -1,5 +1,5 @@
 import { getColorInRGBA } from 'common/utils';
-import { getTheme } from 'config/dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 import { GetButtonStylesReturnType } from 'lib/primitives/button/utils';
 
 import { RadioButtonProps } from './../types/radio-button';
@@ -7,10 +7,11 @@ import { RadioButtonProps } from './../types/radio-button';
 /**
  * This is a central store for all the radio button style
  *
+ * @param theme
  * @returns radio button theme
  */
-const getRadioButtonTheme = () => {
-  const themeColors = getTheme().colors;
+const getRadioButtonTheme = (theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   const radioButtonTheme = {
     common: {
@@ -99,9 +100,10 @@ const getRadioButtonTheme = () => {
  *
  * @param props - props of the button component
  * @param selected - state of the radio button
+ * @param theme
  */
-export const getRadioButtonStyles = (props: RadioButtonProps, selected: boolean) => {
-  const { radioButtonTheme, radioButtonPressableLayerTheme, selectedIconTheme } = getRadioButtonTheme();
+export const getRadioButtonStyles = (props: RadioButtonProps, selected: boolean, theme: DripsyFinalTheme) => {
+  const { radioButtonTheme, radioButtonPressableLayerTheme, selectedIconTheme } = getRadioButtonTheme(theme);
 
   const key: keyof typeof radioButtonTheme = selected ? 'on' : 'off';
 

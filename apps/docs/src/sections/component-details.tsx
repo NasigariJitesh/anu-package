@@ -1,5 +1,3 @@
-import { useTheme } from 'anu/config';
-import { DripsyFinalTheme } from 'dripsy';
 import { Container, Typography } from 'lib';
 import { Source_Sans_Pro } from 'next/font/google';
 
@@ -17,9 +15,8 @@ interface ComponentDetailsProps {
 }
 
 const ComponentDetails = ({ mainHeading, heading, subTitle, mainDescription }: ComponentDetailsProps) => {
-  const theme = useTheme();
+  const styles = getStyles();
 
-  const styles = getStyles(theme);
   return (
     <Container disableGutters sx={styles.container as never}>
       {mainHeading ? <Typography.Headline style={styles.mainHeading}>{mainHeading}</Typography.Headline> : null}
@@ -32,11 +29,10 @@ const ComponentDetails = ({ mainHeading, heading, subTitle, mainDescription }: C
   );
 };
 
-const getStyles = ({ colors }: DripsyFinalTheme) => {
+const getStyles = () => {
   const styles = {
     container: { width: ['90vw', '90vw', '550px', '600px', '750px'] },
     heading: {
-      color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,
       fontSize: 24,
       fontWeight: '600',
@@ -44,7 +40,6 @@ const getStyles = ({ colors }: DripsyFinalTheme) => {
       marginBottom: 10,
     },
     mainHeading: {
-      color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,
       fontSize: 32,
       fontWeight: '600',
@@ -52,14 +47,12 @@ const getStyles = ({ colors }: DripsyFinalTheme) => {
       lineHeight: 38,
     },
     mainDescription: {
-      color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,
       fontSize: 16,
       lineHeight: 24,
       marginBottom: 20,
     },
     subTitle: {
-      color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,
       fontSize: 16,
       lineHeight: 24,

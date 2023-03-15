@@ -142,7 +142,7 @@ export const regularButtonDocumentation: ContentValues = {
   ],
 };
 export const regularButtonIndex: HeadingProps = {
-  heading: 'Regular Button',
+  heading: 'Common Button',
   links: [
     {
       title: 'Elevated buttons',

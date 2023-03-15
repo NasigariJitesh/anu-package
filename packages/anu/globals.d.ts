@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import { defaultTheme } from './config/dripsy/theme';
 
 declare namespace NodeJS {
@@ -9,10 +10,8 @@ declare namespace NodeJS {
 type MyTheme = typeof defaultTheme;
 
 declare module 'dripsy' {
-  interface DripsyFinalTheme extends MyTheme {
+  interface DripsyCustomTheme extends MyTheme {
     colors: {
-      $text: 'string'; // @deprecated
-
       // new codes
       $primary: 'string';
       $onPrimary: 'string';
@@ -39,7 +38,7 @@ declare module 'dripsy' {
       $onSurfaceVariant: 'string';
       $outlineVariant: 'string';
       $shadow: 'string';
-      $surfaceTint: 'string';
+      $surfaceTint: '';
       $inverseSurface: 'string';
       $inverseOnSurface: 'string';
       $inversePrimary: 'string';

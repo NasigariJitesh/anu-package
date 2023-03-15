@@ -46,6 +46,7 @@ export const getFontStyles = (props: TypographyProps, theme: DripsyFinalTheme) =
   const resetStyles = {
     margin: 0,
     padding: 0,
+    color: theme.colors.$onSurface,
   };
 
   return { ...styles, ...resetStyles };
@@ -58,6 +59,7 @@ const getDisplayFontStyles = (size: TypographyProps['size'], theme: DripsyFinalT
         lineHeight: theme.lineHeights[0],
         fontSize: theme.fontSizes[0],
         fontWeight: '400' as const,
+        color: theme.colors,
       };
     }
     case 'medium': {

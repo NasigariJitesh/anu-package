@@ -1,12 +1,15 @@
-import { ContainerProps } from '../../types';
+import { DripsyFinalTheme } from 'dripsy';
 
-/**
- * Default Properties of the container component
- */
-export const defaultProps: ContainerProps = {
-  align: 'flex-start',
-  justify: 'flex-start',
-  flexDirection: 'column',
-  fixed: false,
-  disableGutters: false,
+export const defaultProps = (theme: DripsyFinalTheme) => {
+  return {
+    align: 'flex-start' as const,
+    justify: 'flex-start' as const,
+    flexDirection: 'column' as const,
+    fixed: false,
+    disableGutters: false,
+    style: {
+      backgroundColor: theme.colors.$background,
+      width: '100%',
+    },
+  };
 };

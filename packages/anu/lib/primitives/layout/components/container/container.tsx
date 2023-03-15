@@ -1,5 +1,5 @@
 import { getCombinedStylesForView } from 'common/utils';
-import { useTheme } from 'config/dripsy/theme';
+import { useTheme } from 'config/dripsy';
 import { View } from 'dripsy';
 import React from 'react';
 
@@ -13,12 +13,14 @@ import { defaultProps } from './default';
  * @param {ContainerProps} props - all the properties related to the container component
  */
 export const Container = (props: ContainerProps) => {
-  const finalProps = { ...defaultProps, ...props };
+  const d = defaultProps(useTheme());
 
-  const { style, sx } = getContainerStyles(finalProps, useTheme());
+  const finalProps = { ...d, ...props };
+
+  const { style, sx } = getContainerStyles(finalProps);
 
   return (
-    <View {...finalProps} style={getCombinedStylesForView(style, finalProps.style)} sx={sx}>
+    <View {...finalProps} style={getCombinedStylesForView(style, props.style)} sx={sx}>
       {props.children}
     </View>
   );

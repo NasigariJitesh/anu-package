@@ -1,12 +1,15 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react-native/no-inline-styles */
 import '../public/fonts/font.css';
 
+import { Container } from 'anu/lib';
 import Navbar from 'components/navbar';
 import RightSidebar from 'components/right-sidebar';
 import SEO from 'components/seo';
 import Sidebar from 'components/sidebar';
 import { AppProps } from 'next/app';
-import { View } from 'react-native';
+import Head from 'next/head';
+import { useState } from 'react';
 import RootLayout from 'screens/common/provider';
 
 /**
@@ -14,24 +17,32 @@ import RootLayout from 'screens/common/provider';
  * @param props App props
  */
 export default function App(props: AppProps) {
+  const [backgroundColor, setBackgroundColor] = useState('');
+
   return (
-    <RootLayout>
-      <SEO />
-      <Navbar />
-      <View
-        style={{
-          flexDirection: 'row',
-          maxWidth: 1440,
-          width: '100%',
-          alignSelf: 'center',
-          justifyContent: 'space-between',
-          marginTop: 20,
-        }}
-      >
-        <Sidebar />
-        <props.Component {...props.pageProps} />
-        <RightSidebar />
-      </View>
+    <RootLayout backgroundColor={backgroundColor} setBackgroundColor={setBackgroundColor}>
+      <Container disableGutters>
+        <SEO />
+        <Head>
+          <style>{`body { background-color: ${backgroundColor} !important; }`}</style>
+        </Head>
+        <Navbar />
+        <Container
+          disableGutters
+          style={{
+            flexDirection: 'row',
+            maxWidth: 1440,
+            width: '100%',
+            alignSelf: 'center',
+            justifyContent: 'space-between',
+            marginTop: 20,
+          }}
+        >
+          <Sidebar />
+          <props.Component {...props.pageProps} />
+          <RightSidebar />
+        </Container>
+      </Container>
     </RootLayout>
   );
 }

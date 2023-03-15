@@ -1,5 +1,5 @@
 import { getColorInRGBA } from 'common/utils';
-import { getTheme } from 'config/dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 
 import { FABProps } from '../types';
 
@@ -7,10 +7,11 @@ import { FABProps } from '../types';
  * To get the colors for the sub components of the FAB based on FABColor prop value
  *
  * @param color - value of the FABColor property
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns colors for the sub components of FAB
  */
-const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
-  const themeColors = getTheme().colors;
+const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface', theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   switch (color) {
     case 'primary': {
@@ -48,11 +49,13 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
  * This is a central store for all the fab styles
  *
  * @param props - props of the fab component
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns fab theme
  */
-const getFABTheme = (props: FABProps) => {
-  const themeColors = getTheme().colors;
-  const { containerColor, stateLayerColor, iconColor } = getColors(props.FABColor);
+const getFABTheme = (props: FABProps, theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
+  const { containerColor, stateLayerColor, iconColor } = getColors(props.FABColor, theme);
+
   const fabTheme = {
     common: {
       justifyContent: 'center' as const,
@@ -197,10 +200,11 @@ const getFABTheme = (props: FABProps) => {
  * To Get the styles for the FAB
  *
  * @param props - props of the FAB component
+ * @param {DripsyFinalTheme} defaultTheme - theme of the library
  * @returns the styles for the  FAB
  */
-export const getFABStyles = (props: FABProps) => {
-  const { fabTheme, fabPressableLayerTheme, fabIconTheme } = getFABTheme(props);
+export const getFABStyles = (props: FABProps, defaultTheme: DripsyFinalTheme) => {
+  const { fabTheme, fabPressableLayerTheme, fabIconTheme } = getFABTheme(props, defaultTheme);
 
   const { size, containerStyle } = props;
 

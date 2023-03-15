@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useTheme } from 'anu/config';
 import { generateHoverStyles } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
 import { Container, Icon, Typography } from 'lib/primitives';
@@ -18,7 +19,9 @@ export const Checkbox = (props: CheckboxProps) => {
   const [isSelected, setIsSelected] = useState(props.selected ?? false);
   const finalProps = { ...defaultProps, ...props };
 
-  const { checkboxStyles, layerStyles, selectedIconStyles } = getCheckboxStyles(props, isSelected);
+  const theme = useTheme();
+
+  const { checkboxStyles, layerStyles, selectedIconStyles } = getCheckboxStyles(props, isSelected, theme);
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, layerStyles, useSx);

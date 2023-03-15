@@ -2,7 +2,7 @@ import { useTheme } from 'anu/config';
 import { Container, Icon, Typography } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useMenuContext } from 'screens/common/provider';
 
@@ -13,16 +13,12 @@ const source = Source_Sans_Pro({
 });
 
 const ToggleTheme = () => {
-  const [isLightTheme, toggleLightTheme] = useState(false);
+  const { isDarkTheme, toggleTheme } = useMenuContext();
 
-  const onIconPressedHandler = () => {
-    toggleLightTheme((previousState) => !previousState);
-  };
-
-  return isLightTheme ? (
-    <Icon name='brightness-2' size={24} onPress={onIconPressedHandler} />
+  return isDarkTheme ? (
+    <Icon name='wb-sunny' size={24} onPress={toggleTheme} />
   ) : (
-    <Icon name='wb-sunny' size={24} onPress={onIconPressedHandler} />
+    <Icon name='brightness-2' size={24} onPress={toggleTheme} />
   );
 };
 
@@ -69,6 +65,7 @@ const ToggleMenu = () => {
 
 const MetaData = () => {
   const { width } = useWindowDimensions();
+  const { colors } = useTheme();
 
   const RenderToggleMenu = () => {
     if (!width) return <ToggleMenu />;
@@ -85,7 +82,7 @@ const MetaData = () => {
         <ToggleTheme />
       </li>
       <li style={style.listItem}>
-        <MaterialCommunityIcon name='github' size={24} />
+        <MaterialCommunityIcon color={colors?.$onBackground as string} name='github' size={24} />
       </li>
       <li style={style.listItem}>
         <RenderToggleMenu />
@@ -98,7 +95,12 @@ const Navbar = () => {
   const theme = useTheme();
 
   return (
-    <nav style={{ ...style.navbar, boxShadow: `1px 2px ${theme.colors?.$surfaceVariant}` }}>
+    <nav
+      style={{
+        ...style.navbar,
+        boxShadow: `1px 2px ${theme.colors?.$surfaceVariant}`,
+      }}
+    >
       <Container sx={style.container} flexDirection='row' justify='space-between' align='center'>
         <Typography.Display size='medium' style={style.title}>
           Anu

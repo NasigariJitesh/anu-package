@@ -1,14 +1,16 @@
 /* eslint-disable unicorn/no-nested-ternary */
 import { getColorInRGBA } from 'common/utils';
-import { getTheme } from 'config/dripsy/theme';
+import { DripsyFinalTheme } from 'dripsy';
 
 import { ChipContainerStyle, ChipProps } from '../types';
 
 /**
  * This is a central store for all the default chip styles
+ *
+ * @param {DripsyFinalTheme} theme - theme of the library
  */
-const getChipTheme = () => {
-  const themeColors = getTheme().colors;
+const getChipTheme = (theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   const chipTheme = {
     common: {
@@ -518,11 +520,12 @@ export type GetChipStylesReturnType = ChipContainerStyle;
  * Get the styles for the chip
  *
  * @param props - props of the chip component
+ * @param {DripsyFinalTheme} theme - theme of the library
  */
-export const getStyles = (props: ChipProps) => {
+export const getStyles = (props: ChipProps, theme: DripsyFinalTheme) => {
   //@ts-expect-error REASON not available for few types of chips
   const { type, elevated, selected, style, disabled } = props;
-  const { chipTheme, stateLayerTheme, iconStyleTheme } = getChipTheme();
+  const { chipTheme, stateLayerTheme, iconStyleTheme } = getChipTheme(theme);
 
   let key: keyof typeof chipTheme;
 

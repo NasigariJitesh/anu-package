@@ -1,17 +1,18 @@
-import { getTheme } from 'config/dripsy/theme';
+import { DripsyFinalTheme } from 'dripsy';
 
 import { IconProps } from '../types';
 
 /**
  * This is a central store for all the default button style
  *
+ * @param theme - current theme of the system
  * @returns icon theme
  */
-const getIconTheme = () => {
-  const themeColors = getTheme().colors;
+const getIconTheme = (theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   const iconTheme = {
-    color: themeColors.$text,
+    color: themeColors.$onBackground,
   };
 
   return iconTheme;
@@ -26,9 +27,13 @@ export type GetIconStylesReturnType = IconProps['style'];
  * Get the icon styles
  *
  * @param {IconProps} props - props of the button component
+ * @param defaultTheme - current theme of the system
  */
-export const getIconStyles = (props: IconProps): GetIconStylesReturnType & { margin: number; padding: number } => {
-  const theme = getIconTheme();
+export const getIconStyles = (
+  props: IconProps,
+  defaultTheme: DripsyFinalTheme,
+): GetIconStylesReturnType & { margin: number; padding: number } => {
+  const theme = getIconTheme(defaultTheme);
 
   const styles: GetIconStylesReturnType = {
     color: theme.color,
@@ -39,7 +44,5 @@ export const getIconStyles = (props: IconProps): GetIconStylesReturnType & { mar
     padding: 0,
   };
 
-  const customStyle = props.style as Record<string, never>;
-
-  return { ...styles, ...resetStyles, ...customStyle };
+  return { ...styles, ...resetStyles };
 };

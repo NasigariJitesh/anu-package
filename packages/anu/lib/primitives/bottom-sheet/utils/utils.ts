@@ -1,4 +1,4 @@
-import { getTheme } from 'config/dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 import { ViewProps } from 'react-native';
 
 import { BottomSheetProps } from '../types';
@@ -6,10 +6,11 @@ import { BottomSheetProps } from '../types';
 /**
  * This is a central store for all the default bottom sheet style
  *
+ * @param {DripsyFinalTheme} theme - current theme of the system
  * @returns sheet theme
  */
-const getBottomSheetTheme = () => {
-  const themeColors = getTheme().colors;
+const getBottomSheetTheme = (theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   const sheetTheme = {
     container: {
@@ -41,10 +42,14 @@ const getBottomSheetTheme = () => {
  *  get styles for the bottom sheet component
  *
  *  @param {BottomSheetProps} props - The properties of the bottom sheet component
+ *  @param {DripsyFinalTheme} defaultTheme - theme of the library
  *  @returns style properties for the container component
  */
-export const getBottomSheetStyles = (props: BottomSheetProps & { height: number; startCoordinate: number }) => {
-  const theme = getBottomSheetTheme();
+export const getBottomSheetStyles = (
+  props: BottomSheetProps & { height: number; startCoordinate: number },
+  defaultTheme: DripsyFinalTheme,
+) => {
+  const theme = getBottomSheetTheme(defaultTheme);
 
   const container: ViewProps['style'] = {
     ...theme.container,

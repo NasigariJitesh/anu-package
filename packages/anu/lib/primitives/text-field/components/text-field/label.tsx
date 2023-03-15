@@ -21,6 +21,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const { colors } = theme;
 
   const transitionTopCoordinate = useRef(new Animated.Value(0)).current;
+
   const transitionFontSize = useRef(new Animated.Value(style.fontSize)).current;
   const transitionLineHeight = useRef(new Animated.Value(style.fontSize)).current;
 
@@ -45,6 +46,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
   useEffect(() => {
     transitionTopCoordinate.addListener((arguments_) => setValue(arguments_.value));
+
     if (props.value?.length && props.value?.length > 0) transitionIn();
   }, []);
 
@@ -79,14 +81,14 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
     Animated.timing(transitionLineHeight, {
       toValue: style.lineHeight,
-      duration: 500,
+      duration: DURATION,
       useNativeDriver: true,
       delay: DELAY,
     }).start();
 
     Animated.timing(transitionFontSize, {
       toValue: style.fontSize * 0.75,
-      duration: 500,
+      duration: DURATION,
       useNativeDriver: true,
       delay: DELAY,
     }).start();

@@ -1,5 +1,5 @@
 import { getColorInRGBA } from 'common/utils';
-import { getTheme } from 'config/dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 
 import { IconButtonProps } from '../types';
 import { GetButtonStylesReturnType } from './button';
@@ -7,10 +7,11 @@ import { GetButtonStylesReturnType } from './button';
 /**
  * This is a central store for all the icon button styles
  *
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns icon button theme
  */
-const getIconButtonTheme = () => {
-  const themeColors = getTheme().colors;
+const getIconButtonTheme = (theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   const iconButtonTheme = {
     common: {
@@ -414,10 +415,11 @@ const getIconButtonTheme = () => {
  *
  * @param props - props of the icon button component
  * @param selected - state of the button
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns the styles for the  icon
  */
-export const getIconButtonStyles = (props: IconButtonProps, selected: boolean) => {
-  const { iconButtonTheme, iconButtonPressableLayerTheme, iconTheme } = getIconButtonTheme();
+export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, theme: DripsyFinalTheme) => {
+  const { iconButtonTheme, iconButtonPressableLayerTheme, iconTheme } = getIconButtonTheme(theme);
 
   const commonTheme = iconButtonTheme.common;
 
