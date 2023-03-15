@@ -1,4 +1,5 @@
 import { getCombinedStylesForText, getCombinedStylesForView } from 'common/utils';
+import { useTheme } from 'config/dripsy';
 import { Container, Typography } from 'lib/primitives';
 
 import { BadgeProps, NumberBadgeProps, StringBadgeProps } from '../types';
@@ -15,11 +16,13 @@ const Badge = (props: BadgeProps) => {
     ? ({ ...defaultProps, ...props } satisfies NumberBadgeProps)
     : ({ ...defaultProps, ...props } satisfies StringBadgeProps);
 
+  const theme = useTheme();
+
   const containerStyle = getContainerStyle(props);
 
-  const contentStyle = getContentStyle(props);
+  const contentStyle = getContentStyle(props, theme);
 
-  const { style: badgeStyle, sx: badgeSx } = getBadgeStyle(props);
+  const { style: badgeStyle, sx: badgeSx } = getBadgeStyle(props, theme);
 
   return (
     <Container disableGutters style={containerStyle}>

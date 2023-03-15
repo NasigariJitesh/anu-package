@@ -1,5 +1,4 @@
-import { getTheme } from 'config/dripsy/theme';
-import { Sx, SxProp } from 'dripsy';
+import { DripsyFinalTheme, Sx, SxProp } from 'dripsy';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import { BadgeProps, NumberBadgeProps } from '../types';
@@ -67,13 +66,14 @@ export const getBadgeValue = (props: BadgeProps): string => {
 /**
  * To generate styles for  the badge
  *
- * @param {BadgeProps}props - the  properties of the badge component
+ * @param {BadgeProps} props - the  properties of the badge component
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns {{style: StyleProp<ViewStyle>, sx: SxProp}} styles for the badge
  */
-export const getBadgeStyle = (props: BadgeProps) => {
+export const getBadgeStyle = (props: BadgeProps, theme: DripsyFinalTheme) => {
   const { position, overlap } = props;
 
-  const { colors } = getTheme();
+  const { colors } = theme;
 
   let style: StyleProp<ViewStyle> = {
     minWidth: 6,
@@ -131,12 +131,13 @@ export const getBadgeStyle = (props: BadgeProps) => {
  * To generate styles for  the badge content
  *
  * @param {BadgeProps}props - the  properties of the badge component
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns {{style: StyleProp<ViewStyle>, sx: SxProp}} styles for the badge content
  */
-export const getContentStyle = (props: BadgeProps) => {
+export const getContentStyle = (props: BadgeProps, theme: DripsyFinalTheme) => {
   const propSx = props.sx as Sx;
 
-  const { colors } = getTheme();
+  const { colors } = theme;
 
   const style: StyleProp<TextStyle> = {
     fontSize: 11,
