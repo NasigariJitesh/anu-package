@@ -1,4 +1,4 @@
-import { getTheme } from 'config/dripsy/theme';
+import { DripsyFinalTheme } from 'dripsy';
 import { ViewProps } from 'react-native';
 
 import { SwitchProps } from '../types';
@@ -6,10 +6,11 @@ import { SwitchProps } from '../types';
 /**
  * This is a central store for all the default switch style
  *
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns switch theme
  */
-const getSwitchTheme = () => {
-  const themeColors = getTheme().colors;
+const getSwitchTheme = (theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   const switchTheme = {
     track: {
@@ -39,13 +40,14 @@ const getSwitchTheme = () => {
 /**
  * Get the switch styles
  *
+ * @param {DripsyFinalTheme} defaultTheme - theme of the library
  * @param {SwitchProps} props - props of the switch component
  */
-export const getSwitchStyles = (props: SwitchProps) => {
-  const theme = getSwitchTheme();
+export const getSwitchStyles = (props: SwitchProps, defaultTheme: DripsyFinalTheme) => {
+  const theme = getSwitchTheme(defaultTheme);
 
   const thumb: ViewProps['style'] = {
-    backgroundColor: getThumbColor(props),
+    backgroundColor: getThumbColor(props, defaultTheme),
     ...(theme.thumb as Record<string, unknown>),
     ...(props.thumbStyle as Record<string, never>),
   };
@@ -65,11 +67,12 @@ export const getSwitchStyles = (props: SwitchProps) => {
 /**
  * Get thumb color based on the properties of the switch
  *
+ * @param {DripsyFinalTheme} defaultTheme - theme of the library
  * @param props - props of the switch component
  */
 
-const getThumbColor = (props: SwitchProps) => {
-  const theme = getSwitchTheme();
+const getThumbColor = (props: SwitchProps, defaultTheme: DripsyFinalTheme) => {
+  const theme = getSwitchTheme(defaultTheme);
 
   if (props.thumbColor) return props.thumbColor;
 

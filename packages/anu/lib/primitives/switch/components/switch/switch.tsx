@@ -1,3 +1,4 @@
+import { useTheme } from 'config/dripsy';
 import { Pressable } from 'dripsy';
 import { useRef, useState } from 'react';
 import { Animated, PressableStateCallbackType, Switch as RNSwitch } from 'react-native';
@@ -41,7 +42,9 @@ const Switch = (props: Partial<SwitchProps>) => {
     new Animated.Value(finalProps.value ? finalProps.size * 0.75 : finalProps.size / 2),
   ).current;
 
-  const styles = getSwitchStyles({ ...finalProps, value: isOn });
+  const theme = useTheme();
+
+  const styles = getSwitchStyles({ ...finalProps, value: isOn }, theme);
   const hiddenInputStyle = { display: 'none' } as const;
 
   const onChangeHandler = () => {

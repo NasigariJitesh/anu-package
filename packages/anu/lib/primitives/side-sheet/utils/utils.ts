@@ -1,4 +1,4 @@
-import { getTheme } from 'config/dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 import { ViewProps } from 'react-native';
 
 import { SideSheetProps } from '../types';
@@ -6,10 +6,11 @@ import { SideSheetProps } from '../types';
 /**
  * This is a central store for all the default side sheet style
  *
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns sheet theme
  */
-const getSideSheetTheme = () => {
-  const themeColors = getTheme().colors;
+const getSideSheetTheme = (theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   const sheetTheme = {
     container: {
@@ -40,10 +41,14 @@ const getSideSheetTheme = () => {
  *  get styles for the side sheet component
  *
  *  @param {SideSheetProps} props - The properties of the side sheet component
+ *  @param {DripsyFinalTheme} defaultTheme - theme of the library
  *  @returns style properties for the side sheet component
  */
-export const getSideSheetStyles = (props: SideSheetProps & { width: number; startCoordinate: number }) => {
-  const theme = getSideSheetTheme();
+export const getSideSheetStyles = (
+  props: SideSheetProps & { width: number; startCoordinate: number },
+  defaultTheme: DripsyFinalTheme,
+) => {
+  const theme = getSideSheetTheme(defaultTheme);
 
   let container: ViewProps['style'] = {
     ...theme.container,

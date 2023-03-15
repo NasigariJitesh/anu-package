@@ -1,3 +1,4 @@
+import { useTheme } from 'config/dripsy';
 import Icon from 'lib/primitives/icon';
 import { View } from 'react-native';
 
@@ -10,7 +11,9 @@ import { getStyles } from '../../utils';
  * @param {ChipProps} props - all the props related to the component
  */
 export const LeadingIcon = (props: ChipProps) => {
-  const { iconStyle } = getStyles(props);
+  const theme = useTheme();
+
+  const { iconStyle } = getStyles(props, theme);
 
   if (props.type !== 'suggestion' && props.leadingIcon) {
     return (
@@ -35,7 +38,9 @@ export const LeadingIcon = (props: ChipProps) => {
  * @param {ChipProps} props - all the props related to the component
  */
 export const TrailingIcon = (props: ChipProps) => {
-  const { iconStyle } = getStyles(props);
+  const theme = useTheme();
+
+  const { iconStyle } = getStyles(props, theme);
 
   if (props.type === 'input' && props.trailingIcon) {
     return (

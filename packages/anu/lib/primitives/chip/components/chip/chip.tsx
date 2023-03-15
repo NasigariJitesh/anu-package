@@ -1,4 +1,5 @@
 import { generateHoverStyles } from 'common/utils';
+import { useTheme } from 'config/dripsy';
 import { Pressable, useSx } from 'dripsy';
 import { Container } from 'lib/index';
 import Typography from 'lib/primitives/typography';
@@ -17,7 +18,8 @@ import { LeadingIcon, TrailingIcon } from './icon';
 const Chip = (props: Partial<ChipProps> & { value: string }) => {
   const restOfTheProps = { ...defaultProps, ...props };
 
-  const { styles, layerStyles } = getStyles(restOfTheProps);
+  const theme = useTheme();
+  const { styles, layerStyles } = getStyles(restOfTheProps, theme);
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, layerStyles, useSx);

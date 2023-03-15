@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+import { useTheme } from 'config/dripsy';
 import { forwardRef, useCallback, useImperativeHandle } from 'react';
 import { SafeAreaView } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
@@ -49,7 +50,9 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
   const isSideSheetActive = useSharedValue(false);
   const context = useSharedValue({ x: startCoordinate }); // same as start coordinate
 
-  const styles = getSideSheetStyles({ ...finalProps, width, startCoordinate });
+  const theme = useTheme();
+
+  const styles = getSideSheetStyles({ ...finalProps, width, startCoordinate }, theme);
 
   /**
    * this is a hook to create smooth scroll
