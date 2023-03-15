@@ -1,5 +1,5 @@
 import { getColorInRGBA } from 'common/utils';
-import { getTheme } from 'config/dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 import { GetButtonStylesReturnType } from 'lib/primitives/button/utils';
 
 import { SegmentedButtonProps } from '../types/segmented-button';
@@ -7,10 +7,11 @@ import { SegmentedButtonProps } from '../types/segmented-button';
 /**
  * This is a central store for all the segmented button style
  *
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns segmented button theme
  */
-export const getSegmentedButtonTheme = () => {
-  const themeColors = getTheme().colors;
+export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   const segmentedButtonTheme = {
     common: {
@@ -147,8 +148,9 @@ export const getSegmentedButtonTheme = () => {
  *
  * @param props - props of the button component
  * @param selected - state of the segmented button
+ * @param {DripsyFinalTheme} theme - theme of the library
  */
-export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: boolean) => {
+export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: boolean, theme: DripsyFinalTheme) => {
   const {
     segmentedButtonStateLayerTheme,
     segmentedButtonTheme,
@@ -156,9 +158,9 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
     segmentedLabelTheme,
     segmentedFirstButtonTheme,
     segmentedLastButtonTheme,
-  } = getSegmentedButtonTheme();
+  } = getSegmentedButtonTheme(theme);
 
-  const themeColors = getTheme().colors;
+  const themeColors = theme.colors;
 
   const key: keyof typeof segmentedButtonTheme = selected ? 'on' : 'off';
 

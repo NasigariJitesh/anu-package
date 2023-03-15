@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+import { useTheme } from 'anu/config';
 import { generateHoverStyles } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
 import { Container, Icon, Typography } from 'lib/primitives';
@@ -18,13 +18,11 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
   const [selected, setSelected] = useState(isSelected(props));
   const finalProps = { ...defaultProps, ...props };
 
-  useEffect(() => {
-    setSelected(isSelected(props));
-  }, [props.selected]);
+  const theme = useTheme();
 
   // eslint-disable-next-line prefer-const
   let { buttonStyles, layerStyles, iconStyles, labelStyles, segmentedFirstButtonTheme, segmentedLastButtonTheme } =
-    getSegmentedButtonStyles(finalProps, selected);
+    getSegmentedButtonStyles(finalProps, selected, theme);
 
   if (props.isFirst) {
     buttonStyles = { ...buttonStyles, ...segmentedFirstButtonTheme };
@@ -35,6 +33,10 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
     buttonStyles = { ...buttonStyles, ...segmentedLastButtonTheme };
     layerStyles = { ...layerStyles, ...segmentedLastButtonTheme };
   }
+
+  useEffect(() => {
+    setSelected(isSelected(props));
+  }, [props]);
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, layerStyles, useSx);

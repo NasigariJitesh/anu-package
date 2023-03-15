@@ -40,8 +40,8 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
 /**
  * Get the switch styles
  *
- * @param {DripsyFinalTheme} defaultTheme - theme of the library
  * @param {SwitchProps} props - props of the switch component
+ * @param {DripsyFinalTheme} defaultTheme - theme of the library
  */
 export const getSwitchStyles = (props: SwitchProps, defaultTheme: DripsyFinalTheme) => {
   const theme = getSwitchTheme(defaultTheme);
