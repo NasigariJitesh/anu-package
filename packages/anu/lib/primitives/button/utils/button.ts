@@ -1,15 +1,16 @@
 import { getColorInRGBA } from 'common/utils';
-import { getTheme } from 'config/dripsy/theme';
+import { DripsyFinalTheme } from 'dripsy';
 
 import { ButtonContainerStyle, ButtonProps, RegularButtonProps } from '../types';
 
 /**
  * This is a central store for all the default button style
  *
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns button theme
  */
-const getButtonTheme = () => {
-  const themeColors = getTheme().colors;
+const getButtonTheme = (theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   const buttonTheme = {
     common: {
@@ -213,9 +214,10 @@ export type GetButtonStylesReturnType = ButtonContainerStyle;
  * Get the button styles based on the type of the component
  *
  * @param {ButtonProps} props - props of the button component
+ * @param {DripsyFinalTheme} theme - theme of the library
  */
-export const getButtonStyles = (props: ButtonProps) => {
-  const { styles: regularStyles, stateLayerStyles } = getRegularButtonStyles(props);
+export const getButtonStyles = (props: ButtonProps, theme: DripsyFinalTheme) => {
+  const { styles: regularStyles, stateLayerStyles } = getRegularButtonStyles(props, theme);
   const styles = regularStyles;
   const layerStyles = stateLayerStyles;
 
@@ -240,9 +242,13 @@ export const getButtonStyles = (props: ButtonProps) => {
  * Get the styles when button is disabled
  *
  * @param props - props of the button component
+ * @param {DripsyFinalTheme} defaultTheme - theme of the library
  */
-export const getDisabledButtonStyles = (props: ButtonProps): GetButtonStylesReturnType => {
-  const { buttonTheme } = getButtonTheme();
+export const getDisabledButtonStyles = (
+  props: ButtonProps,
+  defaultTheme: DripsyFinalTheme,
+): GetButtonStylesReturnType => {
+  const { buttonTheme } = getButtonTheme(defaultTheme);
 
   const theme = buttonTheme[props.type];
 
@@ -255,10 +261,11 @@ export const getDisabledButtonStyles = (props: ButtonProps): GetButtonStylesRetu
  * Get the styles for the regular button
  *
  * @param props - props of the button component
+ * @param {DripsyFinalTheme} defaultTheme - theme of the library
  */
-const getRegularButtonStyles = (props: ButtonProps) => {
-  const { buttonTheme, stateLayerTheme } = getButtonTheme();
-  const { colors } = getTheme();
+const getRegularButtonStyles = (props: ButtonProps, defaultTheme: DripsyFinalTheme) => {
+  const { buttonTheme, stateLayerTheme } = getButtonTheme(defaultTheme);
+  const { colors } = defaultTheme;
 
   const theme = buttonTheme[props.type];
   const commonTheme = buttonTheme.common;
@@ -308,7 +315,7 @@ const getRegularButtonStyles = (props: ButtonProps) => {
     }
   }
 
-  const disabledStyles = getDisabledButtonStyles(props);
+  const disabledStyles = getDisabledButtonStyles(props, defaultTheme);
 
   if (props.disabled && props.type === 'outlined')
     stateLayerStyles = { ...stateLayerStyles, borderColor: getColorInRGBA(colors.$onSurface, 12) };

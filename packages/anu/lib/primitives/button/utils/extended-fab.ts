@@ -1,5 +1,5 @@
 import { getColorInRGBA } from 'common/utils';
-import { getTheme } from 'config/dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 
 import { ExtendedFABProps } from '../types';
 
@@ -7,10 +7,11 @@ import { ExtendedFABProps } from '../types';
  * To get the colors for the sub components of the Extended FAB based on FABColor prop value
  *
  * @param color - value of the FABColor property
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns colors for the sub components of Extended FAB
  */
-const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
-  const themeColors = getTheme().colors;
+const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface', theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
 
   switch (color) {
     case 'primary': {
@@ -44,11 +45,12 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface') => {
  * This is a central store for all the extended fab styles
  *
  * @param props - props of the extended extended fab component
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns extended fab theme
  */
-const getExtendedFABTheme = (props: ExtendedFABProps) => {
-  const themeColors = getTheme().colors;
-  const { containerColor, stateLayerColor } = getColors(props.FABColor);
+const getExtendedFABTheme = (props: ExtendedFABProps, theme: DripsyFinalTheme) => {
+  const themeColors = theme.colors;
+  const { containerColor, stateLayerColor } = getColors(props.FABColor, theme);
   const fabTheme = {
     common: {
       justifyContent: 'center' as const,
@@ -132,10 +134,11 @@ const getExtendedFABTheme = (props: ExtendedFABProps) => {
  * To Get the styles for the Extended FAB
  *
  * @param props - props of the Extended FAB component
+ * @param {DripsyFinalTheme} theme - theme of the library
  * @returns the styles for the  icon
  */
-export const getExtendedFABStyles = (props: ExtendedFABProps) => {
-  const { fabTheme, fabPressableLayerTheme, fabIconTheme, labelTheme } = getExtendedFABTheme(props);
+export const getExtendedFABStyles = (props: ExtendedFABProps, theme: DripsyFinalTheme) => {
+  const { fabTheme, fabPressableLayerTheme, fabIconTheme, labelTheme } = getExtendedFABTheme(props, theme);
 
   const { containerStyle } = props;
 

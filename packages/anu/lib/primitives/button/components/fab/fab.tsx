@@ -1,3 +1,4 @@
+import { useTheme } from 'anu/config';
 import { generateHoverStyles } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
 import { Container } from 'lib/primitives';
@@ -17,7 +18,9 @@ import { defaultProps } from './default';
 const FAB = (props: FABProps) => {
   const restOfTheProps = { ...defaultProps, ...props };
 
-  const { containerStyles, pressableStyles, iconStyles } = getFABStyles(restOfTheProps);
+  const theme = useTheme();
+
+  const { containerStyles, pressableStyles, iconStyles } = getFABStyles(restOfTheProps, theme);
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, pressableStyles, useSx);

@@ -12,8 +12,6 @@ type MyTheme = typeof defaultTheme;
 declare module 'dripsy' {
   interface DripsyCustomTheme extends MyTheme {
     colors: {
-      $text: 'string'; // @deprecated
-
       // new codes
       $primary: 'string';
       $onPrimary: 'string';
