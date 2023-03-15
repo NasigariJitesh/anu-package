@@ -1,3 +1,4 @@
+import { useTheme } from 'anu/config';
 import { generateHoverStyles } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
 import { Container, Icon } from 'lib/primitives';
@@ -18,7 +19,8 @@ const IconButton = (props: IconButtonProps) => {
 
   const [isSelected, toggleSelected] = useState(restOfTheProps.selected);
 
-  const { containerStyles, pressableStyles, iconStyles } = getIconButtonStyles(restOfTheProps, isSelected);
+  const theme = useTheme();
+  const { containerStyles, pressableStyles, iconStyles } = getIconButtonStyles(restOfTheProps, isSelected, theme);
 
   useEffect(() => {
     toggleSelected(restOfTheProps.selected ?? false);

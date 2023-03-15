@@ -1,3 +1,4 @@
+import { useTheme } from 'anu/config';
 import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
 import { Icon } from 'lib/index';
@@ -14,7 +15,9 @@ import { getButtonStyles, getLabelStyles } from '../../utils';
  * @param {ButtonProps} props - all the props related to the component
  */
 export const RenderComponent = (props: ButtonProps) => {
-  const { styles, stateLayerStyles } = getButtonStyles(props);
+  const theme = useTheme();
+
+  const { styles, stateLayerStyles } = getButtonStyles(props, theme);
   const labelStyles = getLabelStyles(props);
 
   const generateStyles = (state: PressableStateCallbackType) => {

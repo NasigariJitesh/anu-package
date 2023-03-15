@@ -121,14 +121,6 @@ export const defaultTheme = makeTheme({
  * Fetch the theme of the app
  *
  */
-export const getTheme = () => {
-  return defaultTheme;
-};
-
-/**
- * Fetch the theme of the app
- *
- */
 export const useTheme = () => {
   return useDripsyTheme().theme as DripsyFinalTheme;
 };
