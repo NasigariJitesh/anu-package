@@ -3,7 +3,7 @@ import lodash from 'lodash';
 export { makeTheme } from 'dripsy';
 
 export const lightThemeColors = {
-  $text: '#46464f', // @deprecated
+  $text: '#1b1b1f', // @deprecated
 
   // new codes
   $primary: '#4d53b7',
@@ -39,7 +39,7 @@ export const lightThemeColors = {
 } as const;
 
 export const darkThemeColors = {
-  $text: '#46464f', // @deprecated
+  $text: '#E5E1E6', // @deprecated
 
   // new codes
   $primary: '#BFC2FF',

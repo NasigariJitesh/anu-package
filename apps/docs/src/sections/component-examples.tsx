@@ -139,7 +139,7 @@ const getStyles = ({ colors }: DripsyFinalTheme) => {
       fontFamily: firaCode.style.fontFamily,
       backgroundColor: 'transparent',
       fontSize: 14,
-      fontWeight: '400',
+      color: colors?.$onSurface as never,
     },
     divider: {
       color: colors?.$onSurface as never,
