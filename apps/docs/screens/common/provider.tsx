@@ -37,6 +37,7 @@ export default function RootLayout(props: {
 
   useEffect(() => {
     setBackgroundColor(isDarkTheme ? '#1B1B1F' : '#fffbff');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
