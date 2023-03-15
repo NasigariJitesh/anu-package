@@ -26,6 +26,7 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       borderTopRightRadius: 4,
       borderBottomWidth: 2,
       borderBottomColor: colors.$onSurfaceVariant,
+      cursor: 'text',
 
       '@disable': {
         borderBottomColor: getColorInRGBA(colors.$onSurface, 38),
@@ -55,6 +56,7 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       borderStyle: 'solid',
       borderRadius: 4,
       borderColor: colors.$outline,
+      cursor: 'text',
 
       '@disable': {
         borderColor: getColorInRGBA(colors.$onSurface, 12),
