@@ -6,7 +6,7 @@ import { Animated, TextStyle, ViewStyle } from 'react-native';
 import { TextInputLabelProps } from '../../types';
 import { getTextFieldStyles } from '../../utils';
 
-const DURATION = 250; // in milliseconds
+const DURATION = 200; // in milliseconds
 const DELAY = 100; // in milliseconds
 
 /**
@@ -26,9 +26,10 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const transitionLineHeight = useRef(new Animated.Value(style.fontSize)).current;
 
   const [, setValue] = useState(0);
+
   const animatedViewStyle: Animated.WithAnimatedObject<ViewStyle> = {
-    top: transitionTopCoordinate,
     maxWidth: 'calc(100% - 16px)',
+    top: transitionTopCoordinate,
     position: 'absolute',
     justifyContent: 'center',
     paddingHorizontal: 14,
@@ -62,18 +63,8 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
    * When the component is in focus, this transition is supposed to be triggered
    */
   const transitionIn = () => {
-    // const transitionValue =
-    //   (props.height / 2) * -1 +
-    //   (props.variant === 'outlined'
-    //     ? Math.floor((style.fontSize * 0.75) / -15)
-    //     : Math.floor((style.fontSize * 0.75) / 1.5));
-
     Animated.timing(transitionTopCoordinate, {
-      toValue:
-        (props.height / 2) * -1 +
-        (props.variant === 'outlined'
-          ? Math.floor((style.fontSize * 0.75) / -15)
-          : Math.floor(style.fontSize * 0.75) / 1.25),
+      toValue: props.variant === 'outlined' ? props.height * -0.52 : props.height * -0.3,
       duration: DURATION,
       useNativeDriver: true,
       delay: DELAY,

@@ -17,7 +17,7 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
     filled: {
       backgroundColor: colors.$surfaceVariant,
       color: colors.$onSurfaceVariant,
-      height: 60,
+      height: 64,
       justifyContent: 'center',
       paddingVertical: 0,
       paddingHorizontal: 0,
@@ -55,6 +55,7 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       borderStyle: 'solid',
       borderRadius: 4,
       borderColor: colors.$outline,
+
       '@disable': {
         borderColor: getColorInRGBA(colors.$onSurface, 12),
         color: getColorInRGBA(colors.$onSurface, 38),
@@ -97,9 +98,9 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
     height: '100%',
     alignText: 'center',
     flex: 1,
+    cursor: 'text',
     position: 'relative' as const,
     backgroundColor: 'transparent',
-    top: props?.variant === 'filled' ? 5 : 0,
   };
 
   if (props?.disabled)
@@ -189,6 +190,7 @@ export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>, drips
             ...finalStyle,
             borderBottomColor: colors.$error,
             color: colors.$error,
+
             '@hover': {
               ...finalStyle['@hover'],
               borderBottomColor: colors.$onErrorContainer,

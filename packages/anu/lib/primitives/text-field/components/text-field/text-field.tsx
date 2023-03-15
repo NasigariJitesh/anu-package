@@ -34,7 +34,6 @@ import TextFieldLabel from './label';
  */
 const TextField = (props: Partial<TextFieldProps>) => {
   const [focus, setOnFocus] = useState<PressableStateCallbackType>({ pressed: false });
-  const [height, setHeight] = useState(56);
   const [value, setValue] = useState(props.value);
 
   const pressableReference = useRef<View | null>(null);
@@ -47,12 +46,14 @@ const TextField = (props: Partial<TextFieldProps>) => {
 
   const style = getTextFieldStyles(theme, finalProps);
   const containerStyle = getTextFieldContainerStyle(finalProps, theme);
+
   const leadingIconContainerStyle = getLeadingContainerStyle(finalProps);
   const trailingIconContainerStyle = getTrailingContainerStyle(finalProps);
   const innerContainerStyle = getInnerContainerStyle();
   const errorStyle = getErrorStyle(theme);
   const supportingTextStyle = getSupportingTextStyle(theme);
 
+  const [height, setHeight] = useState(containerStyle.height as number);
   const [errors, setErrors] = useState(getErrors(props.errorMessage));
 
   const generateStyles = (state: PressableStateCallbackType) => {
@@ -76,7 +77,7 @@ const TextField = (props: Partial<TextFieldProps>) => {
   };
 
   useEffect(() => {
-    pressableReference.current?.measure((x, y, width, h) => {
+    pressableReference.current?.measure((x, y, w, h) => {
       setHeight(h);
     });
   }, []);
@@ -90,11 +91,12 @@ const TextField = (props: Partial<TextFieldProps>) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.error]);
+
   return (
     <Container disableGutters style={finalProps.containerStyle}>
       <Pressable
-        ref={textInputReference}
-        accessibilityRole='button'
+        ref={pressableReference}
+        accessibilityRole='none'
         style={(state) => generateStyles({ ...focus, hovered: state.hovered })}
         {...finalProps.pressableProps}
         disabled={finalProps.disabled}
