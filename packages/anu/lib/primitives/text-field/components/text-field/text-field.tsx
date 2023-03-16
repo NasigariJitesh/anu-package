@@ -55,7 +55,7 @@ const TextField = (props: Partial<TextFieldProps>) => {
   const errorStyle = getErrorStyle(theme);
   const supportingTextStyle = getSupportingTextStyle(theme);
   const onFocusStyles =
-    isTextFieldVisible || value ? ({ paddingTop: variant === 'filled' ? 8 : 0 } as const) : ({ height: 0 } as const);
+    isTextFieldVisible || value ? ({ paddingTop: variant === 'filled' ? 14 : 0 } as const) : ({ height: 0 } as const);
 
   const [height, setHeight] = useState(containerStyle.height as number);
   const [errors, setErrors] = useState(getErrors(props.errorMessage));
