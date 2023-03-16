@@ -99,7 +99,7 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
     fontWeight: '400' as const,
     outline: 'none',
     // paddingTop: props?.variant === 'filled' ? 8 : 0,
-    paddingHorizontal: 16,
+    paddingHorizontal: 18,
     color: colors.$onSurface,
     letterSpacing: 0.5,
     caretColor: props?.error ? colors.$error : colors.$primary,
