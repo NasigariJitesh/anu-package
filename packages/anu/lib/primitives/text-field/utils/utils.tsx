@@ -17,7 +17,9 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
     filled: {
       backgroundColor: colors.$surfaceVariant,
       color: colors.$onSurfaceVariant,
-      height: 64,
+      height: 56,
+      minWidth: '245px',
+      width: '100%',
       justifyContent: 'center',
       paddingVertical: 0,
       paddingHorizontal: 0,
@@ -50,6 +52,8 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       backgroundColor: colors.$background,
       color: colors.$onSurfaceVariant,
       height: 56,
+      minWidth: '245px',
+      width: '100%',
       paddingVertical: 0,
       paddingHorizontal: 0,
       borderWidth: 1,
@@ -92,16 +96,14 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
   let common = {
     fontSize: 16,
     lineHeight: 24,
+    fontWeight: '400' as const,
     outline: 'none',
-    paddingVertical: 8,
+    // paddingTop: props?.variant === 'filled' ? 8 : 0,
     paddingHorizontal: 16,
     color: colors.$onSurface,
+    letterSpacing: 0.5,
     caretColor: props?.error ? colors.$error : colors.$primary,
-    height: '100%',
-    alignText: 'center',
-    flex: 1,
-    cursor: 'text',
-    position: 'relative' as const,
+
     backgroundColor: 'transparent',
   };
 
@@ -261,5 +263,5 @@ export const getErrorIcon = () => {
 };
 
 export const getInnerContainerStyle = () => {
-  return { backgroundColor: 'inherit', height: '100%', borderRadius: 4, color: 'inherit' };
+  return { backgroundColor: 'inherit', height: '100%', borderRadius: 4, color: 'inherit', flex: 1 };
 };

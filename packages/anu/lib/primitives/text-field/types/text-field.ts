@@ -86,4 +86,6 @@ export interface TextInputLabelProps extends TextFieldProps {
   states?: PressableStateCallbackType;
   height: number;
   textInputRef: MutableRefObject<RNTextInput | null>;
+  isFocused: boolean;
+  toggleIsFocused: (value: boolean) => void;
 }
