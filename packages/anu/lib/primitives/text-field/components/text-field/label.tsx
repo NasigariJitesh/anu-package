@@ -41,7 +41,9 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
     lineHeight: transitionLineHeight,
     letterSpacing: transitionLetterSpacing,
     paddingHorizontal: 2,
-    color: props.placeholderTextColor || (props.isFocused || props.value ? 'inherit' : colors.$onSurfaceVariant),
+    color:
+      props.placeholderTextColor ||
+      (props.isFocused || props.value || props.disabled ? 'inherit' : colors.$onSurfaceVariant),
     backgroundColor: props.variant === 'outlined' ? colors.$background : undefined,
   };
 
