@@ -17,7 +17,9 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
     filled: {
       backgroundColor: colors.$surfaceVariant,
       color: colors.$onSurfaceVariant,
-      height: 60,
+      height: 56,
+      minWidth: '245px',
+      width: '100%',
       justifyContent: 'center',
       paddingVertical: 0,
       paddingHorizontal: 0,
@@ -26,6 +28,7 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       borderTopRightRadius: 4,
       borderBottomWidth: 2,
       borderBottomColor: colors.$onSurfaceVariant,
+      cursor: 'text',
 
       '@disable': {
         borderBottomColor: getColorInRGBA(colors.$onSurface, 38),
@@ -49,12 +52,16 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       backgroundColor: colors.$background,
       color: colors.$onSurfaceVariant,
       height: 56,
+      minWidth: '245px',
+      width: '100%',
       paddingVertical: 0,
       paddingHorizontal: 0,
       borderWidth: 1,
       borderStyle: 'solid',
       borderRadius: 4,
       borderColor: colors.$outline,
+      cursor: 'text',
+
       '@disable': {
         borderColor: getColorInRGBA(colors.$onSurface, 12),
         color: getColorInRGBA(colors.$onSurface, 38),
@@ -89,17 +96,15 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
   let common = {
     fontSize: 16,
     lineHeight: 24,
+    fontWeight: '400' as const,
     outline: 'none',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
+    // paddingTop: props?.variant === 'filled' ? 8 : 0,
+    paddingHorizontal: 18,
     color: colors.$onSurface,
+    letterSpacing: 0.5,
     caretColor: props?.error ? colors.$error : colors.$primary,
-    height: '100%',
-    alignText: 'center',
-    flex: 1,
-    position: 'relative' as const,
+
     backgroundColor: 'transparent',
-    top: props?.variant === 'filled' ? 5 : 0,
   };
 
   if (props?.disabled)
@@ -189,6 +194,7 @@ export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>, drips
             ...finalStyle,
             borderBottomColor: colors.$error,
             color: colors.$error,
+
             '@hover': {
               ...finalStyle['@hover'],
               borderBottomColor: colors.$onErrorContainer,
@@ -257,5 +263,5 @@ export const getErrorIcon = () => {
 };
 
 export const getInnerContainerStyle = () => {
-  return { backgroundColor: 'inherit', height: '100%', borderRadius: 4, color: 'inherit' };
+  return { backgroundColor: 'inherit', height: '100%', borderRadius: 4, color: 'inherit', flex: 1 };
 };

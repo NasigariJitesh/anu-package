@@ -34,8 +34,6 @@ import TextFieldLabel from './label';
  */
 const TextField = (props: Partial<TextFieldProps>) => {
   const [focus, setOnFocus] = useState<PressableStateCallbackType>({ pressed: false });
-  const [height, setHeight] = useState(56);
-  const [value, setValue] = useState(props.value);
 
   const pressableReference = useRef<View | null>(null);
   const textInputReference = useRef<RNTextInput | null>(null);
@@ -45,14 +43,21 @@ const TextField = (props: Partial<TextFieldProps>) => {
   const finalProps = { ...defaultProps, ...props };
   const { variant, sx, ...componentProps } = finalProps;
 
+  const [value, setValue] = useState(finalProps.value);
+  const [isTextFieldVisible, toggleTextFieldVisible] = useState(!!value && !props.disabled);
+
   const style = getTextFieldStyles(theme, finalProps);
   const containerStyle = getTextFieldContainerStyle(finalProps, theme);
+
   const leadingIconContainerStyle = getLeadingContainerStyle(finalProps);
   const trailingIconContainerStyle = getTrailingContainerStyle(finalProps);
   const innerContainerStyle = getInnerContainerStyle();
   const errorStyle = getErrorStyle(theme);
   const supportingTextStyle = getSupportingTextStyle(theme);
+  const onFocusStyles =
+    isTextFieldVisible || value ? ({ paddingTop: variant === 'filled' ? 14 : 0 } as const) : ({ height: 0 } as const);
 
+  const [height, setHeight] = useState(containerStyle.height as number);
   const [errors, setErrors] = useState(getErrors(props.errorMessage));
 
   const generateStyles = (state: PressableStateCallbackType) => {
@@ -73,10 +78,20 @@ const TextField = (props: Partial<TextFieldProps>) => {
   const onTextInputBlur = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
     setOnFocus(() => ({ focused: false, pressed: false }));
     if (props.onBlur) props.onBlur(event);
+    toggleTextFieldVisible(false);
+  };
+
+  const onTextInputPressedHandler = () => {
+    if (!isTextFieldVisible) {
+      toggleTextFieldVisible(true);
+      setOnFocus(() => ({ focused: true, pressed: true }));
+
+      textInputReference.current?.focus();
+    }
   };
 
   useEffect(() => {
-    pressableReference.current?.measure((x, y, width, h) => {
+    pressableReference.current?.measure((x, y, w, h) => {
       setHeight(h);
     });
   }, []);
@@ -90,14 +105,16 @@ const TextField = (props: Partial<TextFieldProps>) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.error]);
+
   return (
     <Container disableGutters style={finalProps.containerStyle}>
       <Pressable
-        ref={textInputReference}
-        accessibilityRole='button'
+        ref={pressableReference}
+        accessibilityRole='none'
         style={(state) => generateStyles({ ...focus, hovered: state.hovered })}
         {...finalProps.pressableProps}
         disabled={finalProps.disabled}
+        onPress={onTextInputPressedHandler}
       >
         <Container disableGutters flexDirection='row' sx={innerContainerStyle}>
           {/* TODO: Put the icon components in another file */}
@@ -106,22 +123,25 @@ const TextField = (props: Partial<TextFieldProps>) => {
               {finalProps.leadingIcon}
             </Container>
           ) : null}
-          <Container disableGutters flexDirection='row' sx={innerContainerStyle}>
+          <Container disableGutters flexDirection='column' justify='center' sx={innerContainerStyle}>
             <TextFieldLabel
               {...finalProps}
-              textInputRef={textInputReference}
               height={height}
+              textInputRef={textInputReference}
               states={focus}
               value={value}
+              isFocused={isTextFieldVisible}
+              toggleIsFocused={toggleTextFieldVisible}
             />
             <TextInput
               ref={textInputReference}
               {...componentProps}
+              value={value}
               onChangeText={onTextChangeHandler}
               onFocus={onTextInputFocus}
               onBlur={onTextInputBlur}
               placeholder={undefined}
-              style={getCombinedStylesForText(style, finalProps.textInputStyle)}
+              style={[onFocusStyles, getCombinedStylesForText(style, finalProps.textInputStyle)]}
             />
           </Container>
           {finalProps.error ? (

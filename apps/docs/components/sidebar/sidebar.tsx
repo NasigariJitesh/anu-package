@@ -61,6 +61,7 @@ const Group = (props: HeadingProps) => {
 
 const RenderItem = ({ item }: { item: ComponentLinks }) => {
   const { pathname } = useRouter();
+  const theme = useTheme();
 
   return (
     <>
@@ -69,7 +70,10 @@ const RenderItem = ({ item }: { item: ComponentLinks }) => {
           title={
             <Accordion.Header
               iconProps={{ size: 18, style: { opacity: 0.7 } }}
-              style={[style.componentName, pathname === item.link ? style.active : {}]}
+              style={[
+                style.componentName,
+                pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
+              ]}
             >
               {item.title}
             </Accordion.Header>
@@ -80,7 +84,12 @@ const RenderItem = ({ item }: { item: ComponentLinks }) => {
           </Accordion.Children>
         </Accordion.Container>
       ) : (
-        <Typography.Title style={[style.componentName, pathname === item.link ? style.active : {}]}>
+        <Typography.Title
+          style={[
+            style.componentName,
+            pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
+          ]}
+        >
           <TextLink href={item.link}>{item.title}</TextLink>
         </Typography.Title>
       )}

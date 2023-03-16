@@ -29,13 +29,13 @@ const nextConfig = withExpo({
   async redirects() {
     return [
       {
-        source: '/components/button',
-        destination: '/components/button/common',
-        permanent: true,
-      },
-      {
         source: '/',
         destination: '/components/badge',
+        permanent: false,
+      },
+      {
+        source: '/components/button',
+        destination: '/components/button/common',
         permanent: true,
       },
     ];

@@ -1,4 +1,4 @@
-import { DripsyBaseTheme, DripsyCustomTheme, DripsyFinalTheme, makeTheme, useDripsyTheme } from 'dripsy';
+import { DripsyCustomTheme, makeTheme, useDripsyTheme } from 'dripsy';
 import lodash from 'lodash';
 export { makeTheme } from 'dripsy';
 
@@ -76,7 +76,7 @@ export const darkThemeColors = {
  * @param theme - new theme to extend
  * @param mode - Weather you want a light or a dark mode
  */
-const mergeThemes = (theme: DripsyBaseTheme & DripsyCustomTheme, mode: 'light' | 'dark') => {
+const mergeThemes = (theme: Partial<DripsyCustomTheme>, mode: 'light' | 'dark') => {
   const t = makeTheme({
     colors: generateColors(mode === 'light' ? lightThemeColors : darkThemeColors),
     reactNativeTypesOnly: true,
@@ -118,7 +118,7 @@ export const defaultTheme = makeTheme({
  *
  */
 export const useTheme = () => {
-  return useDripsyTheme().theme as DripsyFinalTheme;
+  return useDripsyTheme().theme;
 };
 
 /**
@@ -127,8 +127,8 @@ export const useTheme = () => {
  * @param theme - The theme object for the project
  * @param mode - Weather you want a light or a dark mode. Default is lite
  */
-export const extendTheme = (theme: DripsyBaseTheme & DripsyCustomTheme, mode: 'light' | 'dark' = 'light') => {
+export const extendTheme = (theme: Partial<DripsyCustomTheme> = {}, mode: 'light' | 'dark' = 'light') => {
   const result = mergeThemes(theme, mode);
 
-  return makeTheme(result);
+  return makeTheme(result) as DripsyCustomTheme;
 };
