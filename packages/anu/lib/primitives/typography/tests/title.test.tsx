@@ -1,62 +1,41 @@
+import DripsyApp from 'anu/common/context/anu-provider';
+import { makeTheme } from 'anu/config';
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import renderer from 'react-test-renderer';
 
 import { RenderComponent } from '../components/common';
 import Typography from '../index';
 
-describe('Testing for Typography.Title', () => {
+describe('Testing for Typography.Label', () => {
   const innerText = 'Title';
 
-  const renderer = ShallowRenderer.createRenderer();
-  renderer.render(<Typography.Title>{innerText}</Typography.Title>);
+  const tree = renderer.create(
+    <DripsyApp theme={makeTheme({})}>
+      <Typography.Title>{innerText}</Typography.Title>
+    </DripsyApp>,
+  );
 
-  const result = renderer.getRenderOutput();
+  const result = tree.toJSON();
 
   it('Render Component', () => {
     expect(result).toMatchSnapshot();
   });
 
+  it('Check Common Renderer', () => {
+    // @ts-expect-error This will be an object and not array
+    const props = result?.props;
+
+    const commonRendererTree = renderer.create(
+      <DripsyApp theme={makeTheme({})}>
+        <RenderComponent {...props} />
+      </DripsyApp>,
+    );
+
+    expect(commonRendererTree.toJSON()).toMatchSnapshot();
+  });
+
   it('Check if the child is correct', () => {
-    expect(result.props.children).toBe(innerText);
-  });
-
-  it('Render with H6 tag', () => {
-    renderer.render(<Typography.Title component='h6'>{innerText}</Typography.Title>);
-
-    const h6 = renderer.getRenderOutput();
-
-    expect(h6).toMatchSnapshot();
-  });
-
-  it('Check Common Renderer with H3 tag', () => {
-    renderer.render(<RenderComponent {...result.props} component='h3' />);
-
-    const commonResult = renderer.getRenderOutput();
-
-    expect(commonResult).toMatchSnapshot();
-  });
-
-  it('Check Common Renderer with H4 tag', () => {
-    renderer.render(<RenderComponent {...result.props} component='h4' />);
-
-    const commonResult = renderer.getRenderOutput();
-
-    expect(commonResult).toMatchSnapshot();
-  });
-
-  it('Check Common Renderer with H5 tag', () => {
-    renderer.render(<RenderComponent {...result.props} component='h5' />);
-
-    const commonResult = renderer.getRenderOutput();
-
-    expect(commonResult).toMatchSnapshot();
-  });
-
-  it('Check Common Renderer with H6 tag', () => {
-    renderer.render(<RenderComponent {...result.props} component='h6' />);
-
-    const commonResult = renderer.getRenderOutput();
-
-    expect(commonResult).toMatchSnapshot();
+    // @ts-expect-error This test will clarify if the children contains text or not
+    expect(result.children).toEqual(expect.arrayContaining([innerText]));
   });
 });

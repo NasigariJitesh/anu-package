@@ -1,30 +1,41 @@
+import DripsyApp from 'anu/common/context/anu-provider';
+import { makeTheme } from 'anu/config';
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import renderer from 'react-test-renderer';
 
 import { RenderComponent } from '../components/common';
 import Typography from '../index';
 
-describe('Testing for Typography.Headline', () => {
+describe('Testing for Typography.Label', () => {
   const innerText = 'Headline';
 
-  const renderer = ShallowRenderer.createRenderer();
-  renderer.render(<Typography.Headline>{innerText}</Typography.Headline>);
+  const tree = renderer.create(
+    <DripsyApp theme={makeTheme({})}>
+      <Typography.Headline>{innerText}</Typography.Headline>
+    </DripsyApp>,
+  );
 
-  const result = renderer.getRenderOutput();
+  const result = tree.toJSON();
 
   it('Render Component', () => {
     expect(result).toMatchSnapshot();
   });
 
   it('Check Common Renderer', () => {
-    renderer.render(<RenderComponent {...result.props} />);
+    // @ts-expect-error This will be an object and not array
+    const props = result?.props;
 
-    const commonResult = renderer.getRenderOutput();
+    const commonRendererTree = renderer.create(
+      <DripsyApp theme={makeTheme({})}>
+        <RenderComponent {...props} />
+      </DripsyApp>,
+    );
 
-    expect(commonResult).toMatchSnapshot();
+    expect(commonRendererTree.toJSON()).toMatchSnapshot();
   });
 
   it('Check if the child is correct', () => {
-    expect(result.props.children).toBe(innerText);
+    // @ts-expect-error This test will clarify if the children contains text or not
+    expect(result.children).toEqual(expect.arrayContaining([innerText]));
   });
 });
