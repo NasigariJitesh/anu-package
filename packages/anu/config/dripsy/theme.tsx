@@ -1,4 +1,4 @@
-import { DripsyBaseTheme, DripsyCustomTheme, DripsyFinalTheme, makeTheme, useDripsyTheme } from 'dripsy';
+import { DripsyCustomTheme, makeTheme, useDripsyTheme } from 'dripsy';
 import lodash from 'lodash';
 export { makeTheme } from 'dripsy';
 
