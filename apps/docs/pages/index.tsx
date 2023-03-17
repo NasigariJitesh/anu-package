@@ -87,6 +87,15 @@ const Home = () => {
             <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
           </Container>
         </Container>
+        <Container
+          disableGutters
+          flexDirection='column'
+          align='center'
+          style={sx(style.footerContainerForLargeScreens)}
+        >
+          <LocalizedTypography.Body localeKey='home:about1' style={sx(style.about)} />
+          <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
+        </Container>
       </Container>
     </>
   );
@@ -104,8 +113,16 @@ const styles = (theme?: DripsyFinalTheme) => {
     },
 
     footerContainer: {
-      bottom: [0, 0, -80, -80, -80] as never,
-      marginTop: [20, 20, 0, 0, 0] as never,
+      marginTop: 20,
+      display: ['flex', 'flex', 'flex', 'none', 'none'],
+    },
+
+    footerContainerForLargeScreens: {
+      display: ['none', 'none', 'none', 'flex', 'flex'] as never,
+      position: 'absolute',
+      bottom: 0,
+      left: '50%',
+      transform: 'translate(-50%, 0)' as never,
     },
 
     center: {
