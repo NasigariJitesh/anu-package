@@ -67,8 +67,15 @@ const Home = () => {
             />
           </Container>
           <LocalizedTypography.Display localeKey='home:mainHeading' style={sx(style.mainHeading)} />
-          <LocalizedTypography.Headline style={sx(style.subHeading)} localeKey='home:subHeading' />
-          <Container disableGutters sx={{ flexDirection: ['column', 'column', 'column', 'row', 'row'] }}>
+          {/* <LocalizedTypography.Headline style={sx(style.subHeading)} localeKey='home:subHeading' /> */}
+          <Container
+            disableGutters
+            sx={{
+              flexDirection: ['column', 'column', 'column', 'row', 'row'],
+              width: '100%',
+              justifyContent: ['center', 'center', 'center', 'center', 'center'],
+            }}
+          >
             <List heading='home:list1-heading' list={['home:list1-item1', 'home:list1-item2']} />
             <List heading='home:list2-heading' list={['home:list2-item1']} />
           </Container>
@@ -139,7 +146,7 @@ const styles = (theme?: DripsyFinalTheme) => {
       flexWrap: 'wrap',
       textAlign: 'center',
       maxWidth: '90vw',
-      marginBottom: 10,
+      marginVertical: 30,
     },
 
     subHeading: {
@@ -153,7 +160,7 @@ const styles = (theme?: DripsyFinalTheme) => {
 
     imageContainer: {
       overflow: 'visible',
-      marginVertical: 20,
+      marginVertical: 30,
     },
 
     image: {
@@ -164,6 +171,8 @@ const styles = (theme?: DripsyFinalTheme) => {
 
     listAndHeadingContainer: {
       flexDirection: ['column', 'column', 'row', 'row', 'row'] as never,
+      marginHorizontal: [0, 0, 35, 35, 35] as never,
+      alignSelf: 'center',
     },
 
     listContainer: {
@@ -188,13 +197,15 @@ const styles = (theme?: DripsyFinalTheme) => {
 
     codeContainer: {
       flexDirection: ['column', 'column', 'row', 'row', 'row'] as never,
+      marginTop: 30,
     },
 
     codeArea: {
       backgroundColor: theme?.colors?.$surfaceVariant as never,
       padding: 10,
       borderRadius: 10,
-      marginVertical: 20,
+      // marginHorizontal: 30,
+      marginBottom: [20, 20, 0, 0, 0] as never,
     },
 
     code: {
