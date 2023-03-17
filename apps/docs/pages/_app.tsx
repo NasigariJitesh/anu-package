@@ -21,8 +21,8 @@ export default function App(props: AppProps) {
 
   return (
     <>
+      <SEO />
       <RootLayout backgroundColor={backgroundColor} setBackgroundColor={setBackgroundColor}>
-        <SEO />
         <Container disableGutters>
           <Head>
             <style>{`body { background-color: ${backgroundColor} !important; }`}</style>
