@@ -57,7 +57,7 @@ const Home = () => {
   return (
     <>
       {isDarkTheme ? <ParticlesDark /> : <ParticlesLight />}
-      <Container style={sx(style.container)}>
+      <Container style={style.container}>
         <Container disableGutters flexDirection='column' justify='center' align='center' style={style.center}>
           <Container disableGutters style={style.imageContainer}>
             <img
@@ -109,12 +109,11 @@ const styles = (theme?: DripsyFinalTheme) => {
       height: 'calc(100vh - 80px)',
       overflow: 'scroll',
       marginTop: -20,
-      paddingTop: [20, 20, 0, 0, 0] as never,
     },
 
     footerContainer: {
       marginTop: 20,
-      display: ['flex', 'flex', 'flex', 'none', 'none'],
+      display: ['flex', 'flex', 'flex', 'none', 'none'] as never,
     },
 
     footerContainerForLargeScreens: {
@@ -127,9 +126,7 @@ const styles = (theme?: DripsyFinalTheme) => {
 
     center: {
       zIndex: 1,
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)' as never,
+      width: '100%',
     },
 
     mainHeading: {
