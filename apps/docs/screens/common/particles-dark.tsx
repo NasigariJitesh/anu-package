@@ -59,10 +59,10 @@ const Home = () => {
         value: '#ffffff',
       },
       links: {
-        color: theme.colors?.$secondary as string,
+        color: '#ffffff',
         distance: 150,
         enable: true,
-        opacity: 0.5,
+        opacity: 0.7,
         width: 1,
       },
       collisions: {

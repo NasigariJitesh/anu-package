@@ -56,13 +56,13 @@ const Home = () => {
     },
     particles: {
       color: {
-        value: '#ffffff',
+        value: '#3E1515',
       },
       links: {
-        color: theme.colors?.$secondary as string,
+        color: '#E35656',
         distance: 150,
         enable: true,
-        opacity: 0.5,
+        opacity: 0.7,
         width: 1,
       },
       collisions: {

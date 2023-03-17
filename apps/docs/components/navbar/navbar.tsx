@@ -2,6 +2,8 @@ import { useTheme } from 'anu/config';
 import { Container, Icon, Typography } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
+import Image from 'next/image';
+import Link from 'next/link';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useMenuContext } from 'screens/common/provider';
 
@@ -86,6 +88,8 @@ const MetaData = () => {
 const Navbar = () => {
   const theme = useTheme();
 
+  const { isDarkTheme } = useMenuContext();
+
   return (
     <nav
       style={{
@@ -95,10 +99,14 @@ const Navbar = () => {
       }}
     >
       <Container sx={style.container} flexDirection='row' justify='space-between' align='center'>
-        <Typography.Display size='medium' style={style.title}>
-          Anu
-        </Typography.Display>
-        {/* <Links /> */}
+        <Link href={'/'}>
+          <Image
+            src={isDarkTheme ? '/img/icon_dark_theme.svg' : '/img/icon_light_theme.svg'}
+            alt='Anu'
+            width={45}
+            height={45}
+          />
+        </Link>
         <MetaData />
       </Container>
     </nav>
