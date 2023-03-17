@@ -56,7 +56,7 @@ export const typographyDocumentation: ContentValues = {
     {
       name: 'Title',
       id: 'title',
-      description: '',
+      description: 'A title is used to label or describe a section, page, or component.',
       component: (
         <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
           <Typography.Title style={style} size='large'>
@@ -77,7 +77,7 @@ export const typographyDocumentation: ContentValues = {
     {
       name: 'Body',
       id: 'body',
-      description: '',
+      description: 'A body is used to display the main content or information.',
       component: (
         <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
           <Typography.Body style={style} size='large'>
@@ -98,7 +98,8 @@ export const typographyDocumentation: ContentValues = {
     {
       name: 'Label',
       id: 'label',
-      description: '',
+      description:
+        'A label is used to describe or provide additional information about a form field or any other user interface component.',
       component: (
         <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
           <Typography.Label style={style} size='large'>
