@@ -25,7 +25,6 @@ const Home = () => {
   const options: RecursivePartial<IOptions> = {
     background: {
       color: {
-        // value: theme.colors?.$primary as string,
         value: theme.colors?.$background as string,
       },
     },
@@ -44,13 +43,13 @@ const Home = () => {
       },
       modes: {
         push: {
-          quantity: 4,
-          speed: 5,
+          quantity: 2,
+          speed: 1,
         },
         repulse: {
-          distance: 200,
+          distance: 50,
           duration: 0.4,
-          speed: 5,
+          speed: 1,
         },
       },
     },
@@ -58,6 +57,7 @@ const Home = () => {
       color: {
         value: '#ffffff',
       },
+
       links: {
         color: '#ffffff',
         distance: 150,
@@ -73,7 +73,7 @@ const Home = () => {
         outModes: {
           default: 'bounce',
         },
-        random: false,
+        random: true,
         speed: 1,
         straight: false,
       },
@@ -82,7 +82,7 @@ const Home = () => {
           enable: true,
           area: 800,
         },
-        value: 40,
+        value: 30,
       },
       opacity: {
         value: 0.5,
@@ -91,7 +91,7 @@ const Home = () => {
         type: 'circle',
       },
       size: {
-        value: { min: 1, max: 10 },
+        value: { min: 1, max: 3 },
       },
     },
     detectRetina: true,

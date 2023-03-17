@@ -57,8 +57,8 @@ const Home = () => {
   return (
     <>
       {isDarkTheme ? <ParticlesDark /> : <ParticlesLight />}
-      <Container style={style.container}>
-        <Container flexDirection='column' align='center' style={style.center}>
+      <Container style={sx(style.container)}>
+        <Container disableGutters flexDirection='column' justify='center' align='center' style={style.center}>
           <Container disableGutters style={style.imageContainer}>
             <img
               src={isDarkTheme ? 'img/logo_dark_theme.svg' : 'img/logo_light_theme.svg'}
@@ -68,11 +68,11 @@ const Home = () => {
           </Container>
           <LocalizedTypography.Display localeKey='home:mainHeading' style={sx(style.mainHeading)} />
           <LocalizedTypography.Headline style={sx(style.subHeading)} localeKey='home:subHeading' />
-          <Container sx={{ flexDirection: ['column', 'column', 'column', 'row', 'row'] }}>
+          <Container disableGutters sx={{ flexDirection: ['column', 'column', 'column', 'row', 'row'] }}>
             <List heading='home:list1-heading' list={['home:list1-item1', 'home:list1-item2']} />
             <List heading='home:list2-heading' list={['home:list2-item1']} />
           </Container>
-          <Container style={sx(style.codeContainer)} align='center'>
+          <Container disableGutters style={sx(style.codeContainer)} align='center'>
             <Container disableGutters style={sx(style.codeArea)}>
               <Typography.Body style={style.code}>npm install @anu/material-ui</Typography.Body>
             </Container>
@@ -82,10 +82,10 @@ const Home = () => {
               </Link>
             </Container>
           </Container>
-        </Container>
-        <Container flexDirection='column' align='center' style={sx(style.footerContainer)}>
-          <LocalizedTypography.Body localeKey='home:about1' style={sx(style.about)} />
-          <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
+          <Container disableGutters flexDirection='column' align='center' style={sx(style.footerContainer)}>
+            <LocalizedTypography.Body localeKey='home:about1' style={sx(style.about)} />
+            <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
+          </Container>
         </Container>
       </Container>
     </>
@@ -100,24 +100,21 @@ const styles = (theme?: DripsyFinalTheme) => {
       height: 'calc(100vh - 80px)',
       overflow: 'scroll',
       marginTop: -20,
+      paddingTop: 20,
+      // paddingTop: [40, 40, 0, 0, 0] as never,
     },
 
     footerContainer: {
-      bottom: 0,
-      zIndex: 1,
-      left: '50%',
-      position: [undefined, 'absolute', 'absolute', 'absolute', 'absolute'] as never,
-      marginTop: 20,
-      transform: 'translate(-50%, 0)' as never,
-      width: '100%',
+      bottom: [0, 0, -100, -100, -100] as never,
+
+      marginTop: [20, 20, 0, 0, 0] as never,
     },
 
     center: {
       zIndex: 1,
-      top: '45%',
+      top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)' as never,
-      flexWrap: 'wrap',
     },
 
     mainHeading: {
@@ -125,7 +122,7 @@ const styles = (theme?: DripsyFinalTheme) => {
       lineHeight: [34, undefined, undefined, undefined, undefined] as never,
       fontWeight: '600',
       fontFamily: source.style.fontFamily,
-      flex: 1,
+      // flex: 1,
       flexWrap: 'wrap',
       textAlign: 'center',
       maxWidth: '90vw',
@@ -142,6 +139,7 @@ const styles = (theme?: DripsyFinalTheme) => {
     },
 
     imageContainer: {
+      overflow: 'visible',
       marginVertical: 20,
     },
 
