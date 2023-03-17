@@ -29,7 +29,7 @@ export default function RootLayout(props: {
   setBackgroundColor: (value: string) => void;
 }) {
   const [isOpen, toggleIsOpen] = useState(true);
-  const [isDarkTheme, toggleDarkTheme] = useState(false);
+  const [isDarkTheme, toggleDarkTheme] = useState(true);
   const [isAdjustedToResize, toggleIsAdjustedToResize] = useState(false);
 
   const { width } = useWindowDimensions();

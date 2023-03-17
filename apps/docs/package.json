@@ -16,7 +16,11 @@
     "react-native-safe-area-context": "4.4.1",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.7",
-    "solito": "^2.3.0"
+    "react-tsparticles": "^2.9.3",
+    "solito": "^2.3.0",
+    "tsparticles": "^2.9.3",
+    "tsparticles-interaction-particles-links": "^2.9.3",
+    "tsparticles-preset-triangles": "^2.9.3"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

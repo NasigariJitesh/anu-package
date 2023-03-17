@@ -91,6 +91,7 @@ const Navbar = () => {
       style={{
         ...style.navbar,
         boxShadow: `1px 2px ${theme.colors?.$surfaceVariant}`,
+        backgroundColor: theme.colors?.$background as string,
       }}
     >
       <Container sx={style.container} flexDirection='row' justify='space-between' align='center'>
@@ -110,6 +111,7 @@ const style = {
     height: 70,
     display: 'flex',
     justifyContent: 'center',
+    zIndex: 1,
   },
   title: {
     width: '100%',

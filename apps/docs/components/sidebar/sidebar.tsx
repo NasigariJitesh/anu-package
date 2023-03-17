@@ -141,8 +141,10 @@ const Index = (props: HeadingProps) => {
 
 const Sidebar = () => {
   const { isOpen } = useMenuContext();
+  const { pathname } = useRouter();
 
   if (!isOpen) return null;
+  if (pathname === '/') return null;
 
   return (
     <div

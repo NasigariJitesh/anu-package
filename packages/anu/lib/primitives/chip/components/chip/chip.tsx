@@ -25,7 +25,13 @@ const Chip = (props: Partial<ChipProps> & { value: string }) => {
     return generateHoverStyles(state, layerStyles, useSx);
   };
 
-  const textStyle = { color: 'inherit', paddingHorizontal: '8px', cursor: 'inherit' };
+  const textStyle = {
+    color: 'inherit',
+    paddingHorizontal: '8px',
+    cursor: 'inherit',
+    fontFamily: 'inherit',
+    fontWeight: 'inherit' as never,
+  };
 
   return (
     //@ts-expect-error
