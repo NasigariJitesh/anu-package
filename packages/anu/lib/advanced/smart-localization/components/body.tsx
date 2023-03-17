@@ -5,9 +5,9 @@ import { getLocalizedTranslation } from '../utils/utils';
 import { useAnuLocalization } from './provider';
 
 /**
- * Component for Localized Typography Display variant
+ * Component for Localized Typography body variant
  *
- * @param {Partial<LocalizedDisplayProps> & { localeKey: string }} props - all the props related to the component
+ * @param {Partial<LocalizedBodyProps> & { localeKey: string }} props - all the props related to the component
  */
 const LocalizedDisplay: React.FC<Partial<LocalizedBodyProps> & { localeKey: string }> = (props) => {
   const { currentLocale } = useAnuLocalization();
