@@ -100,13 +100,11 @@ const styles = (theme?: DripsyFinalTheme) => {
       height: 'calc(100vh - 80px)',
       overflow: 'scroll',
       marginTop: -20,
-      paddingTop: 20,
-      // paddingTop: [40, 40, 0, 0, 0] as never,
+      paddingTop: [20, 20, 0, 0, 0] as never,
     },
 
     footerContainer: {
-      bottom: [0, 0, -100, -100, -100] as never,
-
+      bottom: [0, 0, -80, -80, -80] as never,
       marginTop: [20, 20, 0, 0, 0] as never,
     },
 
