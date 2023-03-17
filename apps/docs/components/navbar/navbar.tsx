@@ -4,6 +4,7 @@ import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useMenuContext } from 'screens/common/provider';
 
@@ -62,9 +63,11 @@ const MetaData = () => {
   const { colors } = useTheme();
 
   const RenderToggleMenu = () => {
+    const { pathname } = useRouter();
+
     if (!width) return <ToggleMenu />;
 
-    return width < 900 ? <ToggleMenu /> : null;
+    return width < 900 && pathname !== '/' ? <ToggleMenu /> : null;
   };
 
   return (

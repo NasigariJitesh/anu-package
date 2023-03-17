@@ -25,7 +25,6 @@ const Home = () => {
   const options: RecursivePartial<IOptions> = {
     background: {
       color: {
-        // value: theme.colors?.$primary as string,
         value: theme.colors?.$background as string,
       },
     },

@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import { useTheme } from 'anu/config';
 import { Button, Chip, Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
-import { DripsyFinalTheme } from 'dripsy';
+import { DripsyFinalTheme, useSx } from 'dripsy';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
-import Image from 'next/image';
 import ParticlesDark from 'screens/common/particles-dark';
 import ParticlesLight from 'screens/common/particles-light';
 import { useMenuContext } from 'screens/common/provider';
@@ -27,12 +27,13 @@ interface ListProps {
 
 const List = (props: ListProps) => {
   const style = styles();
+  const sx = useSx();
 
   const { getTranslation } = useAnuLocalization();
 
   return (
-    <Container flexDirection='row' align='center'>
-      <LocalizedTypography.Title localeKey={props.heading} style={style.listHeading} />
+    <Container style={sx(style.listAndHeadingContainer)} align='center'>
+      <LocalizedTypography.Title localeKey={props.heading} style={sx(style.listHeading)} />
       <FlatList
         data={props.list}
         horizontal
@@ -49,6 +50,7 @@ const Home = () => {
   const { isDarkTheme } = useMenuContext();
   const theme = useTheme();
   const { getTranslation } = useAnuLocalization();
+  const sx = useSx();
 
   const style = styles(theme);
 
@@ -58,21 +60,20 @@ const Home = () => {
       <Container style={style.container}>
         <Container flexDirection='column' align='center' style={style.center}>
           <Container disableGutters style={style.imageContainer}>
-            <Image
+            <img
               src={isDarkTheme ? 'img/logo_dark_theme.svg' : 'img/logo_light_theme.svg'}
-              alt='Anu - Component Library for React Native + Web'
-              width={300}
-              height={160}
+              alt={'Anu - ' + getTranslation('home:mainHeading')}
+              style={style.image}
             />
           </Container>
-          <LocalizedTypography.Display localeKey='home:mainHeading' style={style.mainHeading} />
-          <LocalizedTypography.Headline style={style.subHeading} localeKey='home:subHeading' />
-          <Container flexDirection='row'>
+          <LocalizedTypography.Display localeKey='home:mainHeading' style={sx(style.mainHeading)} />
+          <LocalizedTypography.Headline style={sx(style.subHeading)} localeKey='home:subHeading' />
+          <Container sx={{ flexDirection: ['column', 'column', 'column', 'row', 'row'] }}>
             <List heading='home:list1-heading' list={['home:list1-item1', 'home:list1-item2']} />
             <List heading='home:list2-heading' list={['home:list2-item1']} />
           </Container>
-          <Container style={style.codeContainer} flexDirection='row' align='center'>
-            <Container disableGutters style={style.codeArea}>
+          <Container style={sx(style.codeContainer)} align='center'>
+            <Container disableGutters style={sx(style.codeArea)}>
               <Typography.Body style={style.code}>npm install @anu/material-ui</Typography.Body>
             </Container>
             <Container>
@@ -82,9 +83,9 @@ const Home = () => {
             </Container>
           </Container>
         </Container>
-        <Container flexDirection='column' align='center' style={style.footerContainer}>
-          <LocalizedTypography.Body localeKey='home:about1' style={style.about} />
-          <LocalizedTypography.Body localeKey='home:about2' style={style.about} />
+        <Container flexDirection='column' align='center' style={sx(style.footerContainer)}>
+          <LocalizedTypography.Body localeKey='home:about1' style={sx(style.about)} />
+          <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
         </Container>
       </Container>
     </>
@@ -94,51 +95,75 @@ const Home = () => {
 const styles = (theme?: DripsyFinalTheme) => {
   return {
     container: {
-      overflow: 'hidden',
       position: 'absolute',
       width: '100%',
-      height: '85vh',
+      height: 'calc(100vh - 80px)',
+      overflow: 'scroll',
+      marginTop: -20,
     },
 
     footerContainer: {
       bottom: 0,
       zIndex: 1,
       left: '50%',
-      position: 'absolute',
+      position: [undefined, 'absolute', 'absolute', 'absolute', 'absolute'] as never,
+      marginTop: 20,
       transform: 'translate(-50%, 0)' as never,
+      width: '100%',
     },
 
     center: {
       zIndex: 1,
-      top: '50%',
+      top: '45%',
       left: '50%',
-      transform: 'translate(-50%, calc(-50% - 50px))' as never,
+      transform: 'translate(-50%, -50%)' as never,
+      flexWrap: 'wrap',
     },
 
     mainHeading: {
-      fontSize: 36,
+      fontSize: [28, 32, 32, 32, 32] as never,
+      lineHeight: [34, undefined, undefined, undefined, undefined] as never,
       fontWeight: '600',
       fontFamily: source.style.fontFamily,
+      flex: 1,
+      flexWrap: 'wrap',
+      textAlign: 'center',
+      maxWidth: '90vw',
+      marginBottom: 10,
     },
 
     subHeading: {
       fontSize: 24,
+      marginBottom: 10,
       fontWeight: '400',
       fontFamily: source.style.fontFamily,
-      marginVertical: 10,
+      display: ['none', 'none', 'flex', 'flex', 'flex', 'flex'] as never,
+      textAlign: 'center',
     },
 
     imageContainer: {
-      marginBottom: 40,
+      marginVertical: 20,
     },
 
-    listContainer: {},
+    image: {
+      height: '100%',
+      width: '70vw',
+      maxWidth: 250,
+    },
+
+    listAndHeadingContainer: {
+      flexDirection: ['column', 'column', 'row', 'row', 'row'] as never,
+    },
+
+    listContainer: {
+      marginVertical: 5,
+    },
 
     listHeading: {
       fontWeight: '400',
       fontFamily: source.style.fontFamily,
       marginHorizontal: 10,
-      fontSize: 22,
+      fontSize: [16, 16, 22, 22, 22] as never,
       opacity: 0.7,
     },
 
@@ -147,16 +172,18 @@ const styles = (theme?: DripsyFinalTheme) => {
       marginVertical: 2,
       fontWeight: '600',
       fontFamily: source.style.fontFamily,
+      fontSize: 14,
     },
 
     codeContainer: {
-      marginVertical: 20,
+      flexDirection: ['column', 'column', 'row', 'row', 'row'] as never,
     },
 
     codeArea: {
       backgroundColor: theme?.colors?.$surfaceVariant as never,
       padding: 10,
       borderRadius: 10,
+      marginVertical: 20,
     },
 
     code: {
@@ -170,7 +197,8 @@ const styles = (theme?: DripsyFinalTheme) => {
       fontFamily: source.style.fontFamily,
       fontSize: 14,
       fontWeight: '400',
-      marginVertical: 5,
+      marginVertical: [undefined, undefined, '5px', '5px', '5px'] as never,
+      textAlign: 'center',
     },
   } as const;
 };

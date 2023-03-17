@@ -1,5 +1,6 @@
 import { getCombinedStylesForText } from 'common/utils';
 import { useTheme } from 'config/dripsy';
+import { useSx } from 'dripsy';
 
 import { DisplayProps } from '../../types';
 import { getFontStyles } from '../../utils';

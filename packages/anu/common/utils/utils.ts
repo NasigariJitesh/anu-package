@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { ExtendedHoverStyles } from 'common/types';
-import { useSx as SxType } from 'dripsy';
+import { SxProp, useSx as SxType } from 'dripsy';
 import { PressableStateCallbackType, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 /**
