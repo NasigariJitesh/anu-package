@@ -7,7 +7,7 @@ type AnuProviderProps = DripsyAppProps;
 /**
  * Provider to wrap the app with.
  *
- * @param {ReactChildren} props - The JSX to be rendered inside as children along with the custom theme
+ * @param {AnuProviderProps} props - Props for the provider including children
  */
 function DripsyApp(props: AnuProviderProps) {
   const { children, ...rest } = props;
