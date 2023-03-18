@@ -73,7 +73,7 @@ export default function RootLayout(props: {
   };
 
   return (
-    <Provider theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
+    <Provider ssr theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
       <AnuLocalizationProvider default='en'>
         <View style={{ backgroundColor: backgroundColor }}>
           <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme }}>

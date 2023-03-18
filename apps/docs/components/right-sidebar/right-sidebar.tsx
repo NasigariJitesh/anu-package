@@ -167,8 +167,10 @@ const RenderIndex = () => {
 
 const RightSidebar = () => {
   const { width } = useWindowDimensions();
+  const { pathname } = useRouter();
 
   if (!width || width <= 1024) return null;
+  if (pathname === '/') return null;
 
   return (
     <Container sx={style.container}>

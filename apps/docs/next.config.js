@@ -29,7 +29,7 @@ const nextConfig = withExpo({
   async redirects() {
     return [
       {
-        source: '/',
+        source: '/components',
         destination: '/components/badge',
         permanent: false,
       },

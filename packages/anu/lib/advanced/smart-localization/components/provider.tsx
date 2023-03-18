@@ -1,6 +1,7 @@
 import { createContext, FC, useContext, useState } from 'react';
 
 import { AnuLocalizationContext, AnuLocalizationProviderProps } from '../types';
+import { getLocalizedTranslation } from '../utils';
 
 /**
  * Context to make localization work through out the application
@@ -9,6 +10,7 @@ export const LocalizationContext = createContext<AnuLocalizationContext>({
   defaultLocale: 'en',
   currentLocale: 'en',
   switchLocale: () => {},
+  getTranslation: () => '',
 });
 
 export const useAnuLocalization = () => {
@@ -22,8 +24,12 @@ const AnuLocalizationProvider: FC<AnuLocalizationProviderProps> = (props) => {
     setCurrentLocale(selectedLocale);
   };
 
+  const getTranslation = (key: string, value = currentLocale) => {
+    return getLocalizedTranslation(key, value);
+  };
+
   return (
-    <LocalizationContext.Provider value={{ defaultLocale: props.default, currentLocale, switchLocale }}>
+    <LocalizationContext.Provider value={{ defaultLocale: props.default, currentLocale, switchLocale, getTranslation }}>
       {props.children}
     </LocalizationContext.Provider>
   );

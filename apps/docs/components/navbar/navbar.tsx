@@ -2,6 +2,9 @@ import { useTheme } from 'anu/config';
 import { Container, Icon, Typography } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useMenuContext } from 'screens/common/provider';
 
@@ -60,9 +63,11 @@ const MetaData = () => {
   const { colors } = useTheme();
 
   const RenderToggleMenu = () => {
+    const { pathname } = useRouter();
+
     if (!width) return <ToggleMenu />;
 
-    return width < 900 ? <ToggleMenu /> : null;
+    return width < 900 && pathname !== '/' ? <ToggleMenu /> : null;
   };
 
   return (
@@ -86,18 +91,25 @@ const MetaData = () => {
 const Navbar = () => {
   const theme = useTheme();
 
+  const { isDarkTheme } = useMenuContext();
+
   return (
     <nav
       style={{
         ...style.navbar,
         boxShadow: `1px 2px ${theme.colors?.$surfaceVariant}`,
+        backgroundColor: theme.colors?.$background as string,
       }}
     >
       <Container sx={style.container} flexDirection='row' justify='space-between' align='center'>
-        <Typography.Display size='medium' style={style.title}>
-          Anu
-        </Typography.Display>
-        {/* <Links /> */}
+        <Link href={'/'}>
+          <Image
+            src={isDarkTheme ? '/img/icon_dark_theme.svg' : '/img/icon_light_theme.svg'}
+            alt='Anu'
+            width={45}
+            height={45}
+          />
+        </Link>
         <MetaData />
       </Container>
     </nav>
@@ -110,6 +122,7 @@ const style = {
     height: 70,
     display: 'flex',
     justifyContent: 'center',
+    zIndex: 1,
   },
   title: {
     width: '100%',

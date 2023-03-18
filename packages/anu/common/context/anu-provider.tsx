@@ -1,22 +1,20 @@
-import { ReactChildren } from 'common/types';
+import { DripsyAppProps } from 'anu/config/dripsy/provider';
 import { DripsyProvider } from 'config/dripsy';
 import { PortalProvider } from 'config/portals';
-import { DripsyCustomTheme } from 'dripsy';
 
-interface AnuProviderProps {
-  children: ReactChildren;
-  theme: DripsyCustomTheme;
-}
+type AnuProviderProps = DripsyAppProps;
 
 /**
  * Provider to wrap the app with.
  *
- * @param {ReactChildren} props - The JSX to be rendered inside as children along with the custom theme
+ * @param {AnuProviderProps} props - Props for the provider including children
  */
 function DripsyApp(props: AnuProviderProps) {
+  const { children, ...rest } = props;
+
   return (
-    <DripsyProvider theme={props.theme}>
-      <PortalProvider>{props.children}</PortalProvider>
+    <DripsyProvider {...rest}>
+      <PortalProvider>{children}</PortalProvider>
     </DripsyProvider>
   );
 }

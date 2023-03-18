@@ -20,29 +20,31 @@ export default function App(props: AppProps) {
   const [backgroundColor, setBackgroundColor] = useState('');
 
   return (
-    <RootLayout backgroundColor={backgroundColor} setBackgroundColor={setBackgroundColor}>
-      <Container disableGutters>
-        <SEO />
-        <Head>
-          <style>{`body { background-color: ${backgroundColor} !important; }`}</style>
-        </Head>
-        <Navbar />
-        <Container
-          disableGutters
-          style={{
-            flexDirection: 'row',
-            maxWidth: 1440,
-            width: '100%',
-            alignSelf: 'center',
-            justifyContent: 'space-between',
-            marginTop: 20,
-          }}
-        >
-          <Sidebar />
-          <props.Component {...props.pageProps} />
-          <RightSidebar />
+    <>
+      <SEO />
+      <RootLayout backgroundColor={backgroundColor} setBackgroundColor={setBackgroundColor}>
+        <Container disableGutters>
+          <Head>
+            <style>{`body { background-color: ${backgroundColor} !important; }`}</style>
+          </Head>
+          <Navbar />
+          <Container
+            disableGutters
+            style={{
+              flexDirection: 'row',
+              maxWidth: 1440,
+              width: '100%',
+              alignSelf: 'center',
+              justifyContent: 'space-between',
+              marginTop: 20,
+            }}
+          >
+            <Sidebar />
+            <props.Component {...props.pageProps} />
+            <RightSidebar />
+          </Container>
         </Container>
-      </Container>
-    </RootLayout>
+      </RootLayout>
+    </>
   );
 }
