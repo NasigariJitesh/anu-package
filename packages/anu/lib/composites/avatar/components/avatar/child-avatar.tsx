@@ -1,10 +1,10 @@
 import { getCombinedStylesForView } from 'common/utils';
 import { useTheme } from 'config/dripsy';
-import { Container } from 'lib';
+import { Container, Typography } from 'lib';
 import React from 'react';
 
 import { ChildrenAvatarProps } from '../../types';
-import { getChildrenAvatarStyle } from '../../utils';
+import { getLetterAvatarStyle } from '../../utils';
 import { defaultChildrenProps } from './default';
 
 /**
@@ -17,7 +17,7 @@ const ChildrenAvatar = (props: ChildrenAvatarProps) => {
   const finalProps = { ...defaultChildrenProps, ...props };
 
   const { size, variant, children, ...otherProps } = finalProps;
-  const { containerStyle, containerSx } = getChildrenAvatarStyle(finalProps, theme);
+  const { containerStyle, containerSx, typographyStyle } = getLetterAvatarStyle(finalProps, theme);
 
   return (
     <Container
@@ -26,7 +26,11 @@ const ChildrenAvatar = (props: ChildrenAvatarProps) => {
       style={getCombinedStylesForView(containerStyle, otherProps.style)}
       sx={{ ...containerSx, ...otherProps.sx }}
     >
-      <>{children}</>
+      {typeof children === 'string' || children instanceof String ? (
+        <Typography.Body style={typographyStyle}>{children}</Typography.Body>
+      ) : (
+        <>{children}</>
+      )}
     </Container>
   );
 };

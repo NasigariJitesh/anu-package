@@ -1,8 +1,9 @@
 import { DripsyFinalTheme, Sx } from 'dripsy';
+import { ReactElement } from 'react';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { ImageStyle } from 'react-native';
 
-import { ChildrenAvatarProps, ImageAvatarProps, LetterAvatarProps } from './../types/avatar';
+import { AvatarGroupProps, ChildrenAvatarProps, ImageAvatarProps, LetterAvatarProps } from './../types/avatar';
 
 const getImageAvatarTheme = (theme: DripsyFinalTheme, variant?: 'circle' | 'rounded') => {
   const imageTheme = {
@@ -91,7 +92,7 @@ export const getImageAvatarStyle = (props: ImageAvatarProps, theme: DripsyFinalT
   return { imageStyle };
 };
 
-export const getLetterAvatarStyle = (props: LetterAvatarProps, theme: DripsyFinalTheme) => {
+export const getLetterAvatarStyle = (props: LetterAvatarProps | ChildrenAvatarProps, theme: DripsyFinalTheme) => {
   const { variant, size } = props;
 
   const { containerTheme, extendedContainerTheme, typographyTheme } = getLetterAvatarTheme(theme, variant);
@@ -104,13 +105,73 @@ export const getLetterAvatarStyle = (props: LetterAvatarProps, theme: DripsyFina
   return { containerStyle, containerSx, typographyStyle };
 };
 
-export const getChildrenAvatarStyle = (props: ChildrenAvatarProps, theme: DripsyFinalTheme) => {
-  const { variant, size } = props;
+export const getAvatarGroupStyle = (props: AvatarGroupProps, theme: DripsyFinalTheme) => {
+  const baseZIndex = (props.children[0] as ReactElement).props.style?.zIndex ?? 0;
+  const marginRight = props.spacing ? props.spacing - 8 : -8;
 
-  const { containerTheme, extendedContainerTheme } = getLetterAvatarTheme(theme, variant);
+  const excessAvatarStyle: ViewStyle = {
+    backgroundColor: theme.colors.$primaryContainer,
+  };
 
-  const containerStyle: StyleProp<ViewStyle> = { ...containerTheme.common, ...containerTheme[size ?? 'medium'] };
-  const containerSx: Sx = { ...extendedContainerTheme.common, ...extendedContainerTheme[size ?? 'medium'] };
+  const excessAvatarSx = {
+    color: theme.colors.$onPrimaryContainer,
+  };
 
-  return { containerStyle, containerSx };
+  const groupStyle: ViewStyle = {
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+  };
+
+  return { excessAvatarStyle, excessAvatarSx, groupStyle, baseZIndex, marginRight };
+};
+
+export const getAvatarContainerStyle = (
+  avatar: ReactElement,
+  zIndex: number,
+  marginRight: number,
+  theme: DripsyFinalTheme,
+  size: string,
+) => {
+  const { style } = avatar.props;
+
+  let height = 36;
+  let width = 36;
+
+  if (style === undefined) {
+    switch (size) {
+      case 'large': {
+        height = 44;
+        width = 44;
+        break;
+      }
+      case 'small': {
+        height = 28;
+        width = 28;
+        break;
+      }
+      default: {
+        height = 36;
+        width = 36;
+      }
+    }
+  } else {
+    const { height: styleHeight, width: styleWidth } = style;
+    if (styleHeight != undefined) height = styleHeight + 4;
+    if (styleWidth != undefined) width = styleWidth + 4;
+  }
+
+  const dimension = height >= width ? height : width;
+
+  const containerStyle = {
+    height: dimension,
+    width: dimension,
+    borderRadius: dimension / 2,
+    padding: 2,
+    backgroundColor: theme.colors.$surface,
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+    marginRight,
+    zIndex,
+  };
+  return containerStyle;
 };

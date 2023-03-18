@@ -1,5 +1,10 @@
+import { Sx } from 'dripsy';
 import { ContainerProps, Icon, Image, ImageProps } from 'lib';
 import { ReactElement } from 'react';
+import { StyleProp } from 'react-native';
+import { ViewStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
+
+import Avatar from '../components/avatar/avatar';
 
 type IconType = ReactElement<typeof Icon>;
 type ImageType = ReactElement<typeof Image>;
@@ -21,3 +26,20 @@ export interface ChildrenAvatarProps extends Omit<ContainerProps, 'children' | '
 }
 
 export type AvatarProps = LetterAvatarProps | ImageAvatarProps | ChildrenAvatarProps;
+
+interface CommonAvatarGroupProps extends Omit<ContainerProps, 'children'> {
+  children: ReactElement<typeof Avatar>[];
+  excessAvatarStyle?: StyleProp<ViewStyle>;
+  excessAvatarSx?: Sx;
+  spacing?: number;
+}
+
+interface MaxAvatarGroupProps extends CommonAvatarGroupProps {
+  max: number;
+}
+
+interface TotalAvatarGroupProps extends CommonAvatarGroupProps {
+  total: number;
+}
+
+export type AvatarGroupProps = MaxAvatarGroupProps | TotalAvatarGroupProps;

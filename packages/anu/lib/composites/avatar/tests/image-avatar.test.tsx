@@ -45,7 +45,7 @@ describe('Testing for Image Avatar Circle', () => {
       <ImageAvatar
         size='large'
         source={{
-          uri: 'https://static.toiimg.com/thumb/resizemode-4,msid-76729750,imgsize-249247,width-720/76729750.jpg',
+          uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
         }}
         onLoadStart={() => {}}
         onLoad={() => {}}
@@ -55,7 +55,7 @@ describe('Testing for Image Avatar Circle', () => {
       <ImageAvatar
         size='small'
         source={{
-          uri: 'https://stati.toiimg.com/thumb/resizemode-4,msid-76729750,imgsize-249247,width-720/76729750.jpg',
+          uri: 'https://images.pexels.com/photos/220453/pels-photo-220453.jpeg',
         }}
         onError={() => {}}
         variant='circle'

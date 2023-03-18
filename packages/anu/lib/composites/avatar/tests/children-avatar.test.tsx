@@ -45,11 +45,6 @@ describe('Testing for Children Avatar Rounded', () => {
 
     expect(commonRendererTree.toJSON()).toMatchSnapshot();
   });
-
-  it('Check if the child is correct', () => {
-    // @ts-expect-error This test will clarify if the children contains text or not
-    expect(result[0].children).toEqual(expect.arrayContaining([name]));
-  });
 });
 
 describe('Testing for Children Avatar Circle', () => {
@@ -88,10 +83,5 @@ describe('Testing for Children Avatar Circle', () => {
     );
 
     expect(commonRendererTree.toJSON()).toMatchSnapshot();
-  });
-
-  it('Check if the child is correct', () => {
-    // @ts-expect-error This test will clarify if the children contains text or not
-    expect(result[0].children).toEqual(expect.arrayContaining([name]));
   });
 });
