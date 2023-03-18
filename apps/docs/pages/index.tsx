@@ -58,7 +58,7 @@ const Home = () => {
     <>
       {isDarkTheme ? <ParticlesDark /> : <ParticlesLight />}
       <Container style={style.container}>
-        <Container disableGutters flexDirection='column' justify='center' align='center' style={style.center}>
+        <Container disableGutters flexDirection='column' justify='center' align='center' style={sx(style.center)}>
           <Container disableGutters style={style.imageContainer}>
             <img
               src={isDarkTheme ? 'img/logo_dark_theme.svg' : 'img/logo_light_theme.svg'}
@@ -67,7 +67,6 @@ const Home = () => {
             />
           </Container>
           <LocalizedTypography.Display localeKey='home:mainHeading' style={sx(style.mainHeading)} />
-          {/* <LocalizedTypography.Headline style={sx(style.subHeading)} localeKey='home:subHeading' /> */}
           <Container
             disableGutters
             sx={{
@@ -132,9 +131,10 @@ const styles = (theme?: DripsyFinalTheme) => {
     },
 
     center: {
+      alignSelf: 'center',
       zIndex: 1,
       width: '100%',
-      height: '100%',
+      height: ['100vh', '100vh', '100%', '100%', '100%'] as never,
     },
 
     mainHeading: {
@@ -142,25 +142,16 @@ const styles = (theme?: DripsyFinalTheme) => {
       lineHeight: [34, undefined, undefined, undefined, undefined] as never,
       fontWeight: '600',
       fontFamily: source.style.fontFamily,
-      // flex: 1,
       flexWrap: 'wrap',
       textAlign: 'center',
       maxWidth: '90vw',
-      marginVertical: 30,
-    },
-
-    subHeading: {
-      fontSize: 24,
-      marginBottom: 10,
-      fontWeight: '400',
-      fontFamily: source.style.fontFamily,
-      display: ['none', 'none', 'flex', 'flex', 'flex', 'flex'] as never,
-      textAlign: 'center',
+      marginTop: [0, 30, 30, 30, 30] as never,
+      marginBottom: [20, 30, 30, 30, 30] as never,
     },
 
     imageContainer: {
       overflow: 'visible',
-      marginVertical: 30,
+      marginBottom: 30,
     },
 
     image: {
@@ -204,7 +195,7 @@ const styles = (theme?: DripsyFinalTheme) => {
       backgroundColor: theme?.colors?.$surfaceVariant as never,
       padding: 10,
       borderRadius: 10,
-      // marginHorizontal: 30,
+      marginHorizontal: [0, 0, 20, 30, 30] as never,
       marginBottom: [20, 20, 0, 0, 0] as never,
     },
 
