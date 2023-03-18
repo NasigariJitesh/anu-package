@@ -12,6 +12,7 @@ const nextConfig = withExpo({
     'anu',
     'react-native-vector-icons',
     '@expo/html-elements',
+    'expo-image',
     '@dripsy/core',
     'dripsy',
     // Add more React Native / Expo packages here...

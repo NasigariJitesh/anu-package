@@ -1,0 +1,97 @@
+/* eslint-disable unicorn/prefer-module */
+import DripsyApp from 'anu/common/context/anu-provider';
+import { makeTheme } from 'anu/config';
+import { Icon, Image } from 'anu/lib';
+import React from 'react';
+import renderer from 'react-test-renderer';
+
+import Avatar from '../components';
+import ChildrenAvatar from '../components/avatar/child-avatar';
+
+describe('Testing for Children Avatar Rounded', () => {
+  const name = 'NJ';
+
+  const tree = renderer.create(
+    <DripsyApp theme={makeTheme({})}>
+      <ChildrenAvatar>{name}</ChildrenAvatar>
+      <ChildrenAvatar size='large'>
+        <DripsyApp theme={makeTheme({})}>
+          <Icon name='menu' />
+        </DripsyApp>
+      </ChildrenAvatar>
+      <ChildrenAvatar size='small'>
+        <Image alt='test' source={require('../utils/placeholder.png')} />
+      </ChildrenAvatar>
+    </DripsyApp>,
+  );
+
+  const result = tree.toJSON();
+
+  it('Render Component', () => {
+    expect(result).toMatchSnapshot();
+  });
+
+  it('Check Common Renderer', () => {
+    // @ts-expect-error This will be an array and not object
+    const props = [result[0]?.props, result[1]?.props, result[2]?.props];
+
+    const commonRendererTree = renderer.create(
+      <DripsyApp theme={makeTheme({})}>
+        <Avatar {...props[0]} />
+        <Avatar {...props[1]} />
+        <Avatar {...props[2]} />
+      </DripsyApp>,
+    );
+
+    expect(commonRendererTree.toJSON()).toMatchSnapshot();
+  });
+
+  it('Check if the child is correct', () => {
+    // @ts-expect-error This test will clarify if the children contains text or not
+    expect(result[0].children).toEqual(expect.arrayContaining([name]));
+  });
+});
+
+describe('Testing for Children Avatar Circle', () => {
+  const name = 'NJ';
+
+  const tree = renderer.create(
+    <DripsyApp theme={makeTheme({})}>
+      <ChildrenAvatar variant='circle'>{name}</ChildrenAvatar>
+      <ChildrenAvatar size='large' variant='circle'>
+        <DripsyApp theme={makeTheme({})}>
+          <Icon name='menu' />
+        </DripsyApp>
+      </ChildrenAvatar>
+      <ChildrenAvatar size='small' variant='circle'>
+        <Image alt='test' source={require('../utils/placeholder.png')} />
+      </ChildrenAvatar>
+    </DripsyApp>,
+  );
+
+  const result = tree.toJSON();
+
+  it('Render Component', () => {
+    expect(result).toMatchSnapshot();
+  });
+
+  it('Check Common Renderer', () => {
+    // @ts-expect-error This will be an array and not object
+    const props = [result[0]?.props, result[1]?.props, result[2]?.props];
+
+    const commonRendererTree = renderer.create(
+      <DripsyApp theme={makeTheme({})}>
+        <Avatar {...props[0]} />
+        <Avatar {...props[1]} />
+        <Avatar {...props[2]} />
+      </DripsyApp>,
+    );
+
+    expect(commonRendererTree.toJSON()).toMatchSnapshot();
+  });
+
+  it('Check if the child is correct', () => {
+    // @ts-expect-error This test will clarify if the children contains text or not
+    expect(result[0].children).toEqual(expect.arrayContaining([name]));
+  });
+});
