@@ -1,6 +1,6 @@
 import { Chip, Container } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
@@ -33,37 +33,43 @@ export const chipDocumentation: ContentValues = {
     },
     {
       name: 'selected',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       description: 'Whether the chip is selected',
       defaultValue: 'false',
     },
     {
       name: 'elevated',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       description: 'Whether the chip has an elevated style',
     },
 
     {
       name: 'leadingIcon',
-      type: 'Icon (optional)',
+      type: 'Icon',
+      optional: true,
       description: 'Icon to be displayed before (to left of) the chip content',
     },
 
     {
       name: 'trailingIcon',
-      type: 'Icon (optional)',
+      type: 'Icon',
+      optional: true,
       description: 'Icon to be displayed after (to right of) the chip content',
     },
 
     {
       name: 'style',
       description: 'The styles for the chip component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'disabled',
       description: 'If true, the component is disabled.',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
   ],

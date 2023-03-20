@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Container } from 'anu/lib';
 import { Radio, RadioButtonGroup } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
@@ -30,12 +30,14 @@ export const radioDocumentation: ContentValues = {
     {
       name: 'selected',
       description: 'Id of the selected radio button.',
-      type: 'string (optional)',
+      type: 'string',
+      optional: true,
     },
     {
       name: 'label',
       description: 'The label to display with the radio button.',
-      type: 'string (optional)',
+      type: 'string',
+      optional: true,
     },
     {
       name: 'labelPlacement',
@@ -46,33 +48,39 @@ export const radioDocumentation: ContentValues = {
     {
       name: 'disabled',
       description: 'If true, the component is disabled.',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'color',
       description: 'The color of the radio button component.',
-      type: 'string (optional)',
+      type: 'string',
+      optional: true,
     },
     {
       name: 'style',
       description: 'The styles for the radio button component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'labelStyle',
       description: 'The styles for the label of the radio button.',
-      type: 'StyleProp<TextStyle> (optional)',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'containerStyle',
       description: 'The styles for the container of the radio button.',
-      type: 'StyleProp<ViewStyle> (optional)',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'onPress',
       description: 'The callback when there is a press or click on the radio button.',
-      type: '(id: string) => void (optional)',
+      type: '(id: string) => void',
+      optional: true,
     },
   ],
   examples: [

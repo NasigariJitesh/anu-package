@@ -1,6 +1,6 @@
 import { Container, IconButton } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
@@ -34,24 +34,28 @@ export const iconButtonDocumentation: ContentValues = {
     {
       name: 'toggle',
       description: 'Whether the icon button is toggle-able.',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'selected',
       description: 'Whether the toggle-able icon button is selected or not.',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'containerStyle',
       description: 'The styles for the icon button component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'pressableProps',
       description: 'The properties of the pressable component of react native (except sx)',
-      type: 'pressableProps (optional)',
+      type: 'pressableProps',
+      optional: true,
     },
   ],
   examples: [

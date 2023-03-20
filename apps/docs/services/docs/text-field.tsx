@@ -1,6 +1,6 @@
 import { Container, Icon, TextField } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
@@ -34,65 +34,77 @@ export const textFieldDocumentation: ContentValues = {
     },
     {
       name: 'leadingIcon',
-      type: 'ReactNode (optional)',
+      type: 'ReactNode',
+      optional: true,
       description: 'Icon to be displayed to left of the text field',
     },
 
     {
       name: 'trailingIcon',
-      type: 'ReactNode (optional)',
+      type: 'ReactNode',
+      optional: true,
       description: 'Icon to be displayed to right of the text field',
     },
     {
       name: 'disabled',
       description: 'If true, the component is disabled.',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'supportingText',
       description: 'Support text need to be displayed with the text field.',
-      type: 'string (optional)',
+      type: 'string',
+      optional: true,
     },
     {
       name: 'errorMessage',
       description: 'Error messages need to be displayed with the text field.',
-      type: 'string | string[] (optional)',
+      type: 'string | string[]',
+      optional: true,
     },
     {
       name: 'supportingTextStyle',
       description: 'Styles for the supporting text of text field.',
-      type: 'StyleProp<TextStyle> (optional)',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'errorMessageStyle',
       description: 'Styles for the error messages of text field.',
-      type: 'StyleProp<TextStyle> (optional)',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'containerStyle',
       description: 'Styles for container of the text field component.',
-      type: 'StyleProp<ViewStyle> (optional)',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'textInputStyle',
       description: 'Styles for the text input of the text field component.',
-      type: 'StyleProp<TextStyle> (optional)',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'style',
       description: 'The styles for the text field component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'pressableProps',
       description: 'The properties of the pressable component of react native (except sx)',
-      type: 'pressableProps (optional)',
+      type: 'pressableProps',
+      optional: true,
     },
     {
       name: 'sx',
       description: 'The system prop that allows defining system overrides as well as additional CSS styles.',
-      type: 'Sx (optional)',
+      type: 'Sx',
+      optional: true,
     },
   ],
   examples: [

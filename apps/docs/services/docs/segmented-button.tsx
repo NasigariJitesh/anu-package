@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Container, SegmentedButton, SegmentedButtonGroup } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ScrollView } from 'react-native';
-import { ContentValues } from 'src/sections/content';
 const style = {
   margin: 15,
 };
@@ -35,44 +35,52 @@ export const segmentedButtonDocumentation: ContentValues = {
     },
     {
       name: 'selected',
-      type: 'string | string[] (optional)',
+      type: 'string | string[]',
+      optional: true,
       description: 'The ids of selected members of the segmented button group',
     },
     {
       name: 'icon',
       description: 'The icon component or the icon props for material icons.',
-      type: 'IconType | ReactElement (optional)',
+      type: 'IconType | ReactElement',
+      optional: true,
     },
     {
       name: 'onSelect',
       description: 'The callback when there is a press or click on the segmented button.',
-      type: '(id: string) => void (optional)',
+      type: '(id: string) => void',
+      optional: true,
     },
     {
       name: 'multiSelect (Group Property)',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       description: 'whether the multiple segmented buttons can be selected at once',
       defaultValue: 'false',
     },
     {
       name: 'onPress (Group Property)',
       description: 'The callback when there is a press or click on the segmented buttons.',
-      type: '(id: string) => void (optional)',
+      type: '(id: string) => void',
+      optional: true,
     },
     {
       name: 'containerStyle (Group Property)',
       description: 'The style for the segmented button group container.',
-      type: 'StyleProp<ViewStyle> (optional)',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'style',
       description: 'The styles for the segmented button component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'titleStyle',
       description: 'The styles for the label of the button.',
-      type: 'StyleProp<TextStyle> (optional)',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
   ],
   examples: [

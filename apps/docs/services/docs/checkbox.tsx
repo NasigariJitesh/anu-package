@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Checkbox, Container } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
@@ -28,17 +28,20 @@ export const checkBoxDocumentation: ContentValues = {
     {
       name: 'selected',
       description: 'Whether the checkbox is selected',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
     },
     {
       name: 'indeterminate',
       description: 'If true, the component appears indeterminate.',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
     },
     {
       name: 'label',
       description: 'The label to display with the checkbox.',
-      type: 'string (optional)',
+      type: 'string',
+      optional: true,
     },
     {
       name: 'labelPlacement',
@@ -49,50 +52,59 @@ export const checkBoxDocumentation: ContentValues = {
     {
       name: 'disabled',
       description: 'If true, the component is disabled.',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'error',
       description: 'Whether an error occurred regarding to the checkbox.',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'iconSize',
       description: 'The size of the checked icon.',
-      type: 'number (optional)',
+      type: 'number',
+      optional: true,
       defaultValue: '18',
     },
     {
       name: 'color',
       description: 'The color of the checkbox component.',
-      type: 'string (optional)',
+      type: 'string',
+      optional: true,
     },
     {
       name: 'style',
       description: 'The styles for the checkbox component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'iconStyle',
       description: 'The styles for the checked Icon.',
-      type: 'StyleProp<TextStyle> (optional)',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'labelStyle',
       description: 'The styles for the label of the checkbox.',
-      type: 'StyleProp<TextStyle> (optional)',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'containerStyle',
       description: 'The styles for the container of the checkbox.',
-      type: 'StyleProp<ViewStyle> (optional)',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'onPress',
       description: 'The callback when there is a press or click on the checkbox.',
-      type: '(id: string) => void (optional)',
+      type: '(id: string) => void',
+      optional: true,
     },
   ],
   examples: [

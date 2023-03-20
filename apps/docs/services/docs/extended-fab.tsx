@@ -1,6 +1,6 @@
 import { Container, ExtendedFAB } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
@@ -47,17 +47,20 @@ export const extendedFABDocumentation: ContentValues = {
     {
       name: 'containerStyle',
       description: 'The styles for the regular button component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'titleStyle',
       description: 'The styles for the label of the button.',
-      type: 'StyleProp<TextStyle> (optional)',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'pressableProps',
       description: 'The properties of the pressable component of react native (except sx)',
-      type: 'pressableProps (optional)',
+      type: 'pressableProps',
+      optional: true,
     },
   ],
   examples: [

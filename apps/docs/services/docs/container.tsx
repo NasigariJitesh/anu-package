@@ -1,6 +1,6 @@
 import { Container } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 export const containerDocumentation: ContentValues = {
   mainHeading: 'Container',
@@ -35,24 +35,28 @@ export const containerDocumentation: ContentValues = {
     {
       name: 'style',
       description: 'The styles for the container component.',
-      type: 'StyleProp<ViewStyle> (optional)',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'disableGutters',
       description: 'If true, the left and right padding is removed.',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'fixed',
       description: 'If true, sets the max-width to match the min-width of the current breakpoint.',
-      type: 'boolean (optional)',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'width',
       description: 'The width of the container in pixels or percentage.',
-      type: 'number | string (optional)',
+      type: 'number | string',
+      optional: true,
     },
     {
       name: 'maxWidth',
@@ -62,7 +66,8 @@ export const containerDocumentation: ContentValues = {
     {
       name: 'sx',
       description: 'The system prop that allows defining system overrides as well as additional CSS styles.',
-      type: 'Sx (optional)',
+      type: 'Sx',
+      optional: true,
     },
   ],
 };

@@ -1,6 +1,6 @@
 import { Container, Typography } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
@@ -143,7 +143,8 @@ export const typographyDocumentation: ContentValues = {
     {
       name: 'style',
       description: 'The styles for the typography component',
-      type: 'StyleProp<TextStyle> (optional)',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'htmlFor',
