@@ -16,51 +16,50 @@ const flexStyle = {
   width: ['90vw', '90vw', '550px', '600px', '750px'],
 } as const;
 export const FABDocumentation: ContentValues = {
-  mainHeading: 'Button',
-  mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
-  heading: 'Floating Action Buttons',
-  subTitle:
-    'The FAB represents the most important action on a screen. It puts key actions within reach. There are three sizes of floating action buttons: FAB, small FAB, and large FAB.',
+  mainHeading: 'FABDocumentation:mainHeading',
+  mainDescription: 'FABDocumentation:mainDescription',
+  heading: 'FABDocumentation:heading',
+  subTitle: 'FABDocumentation:subTitle',
   properties: [
     {
       name: 'size',
       type: "'small' | 'medium' | 'large'",
-      description: 'The size of the floating action button',
+      description: 'FABDocumentation:property-size-description',
       defaultValue: "'medium'",
     },
     {
       name: 'icon',
-      description: 'The icon component or the icon props for material icons.',
+      description: 'FABDocumentation:property-icon-description',
       type: 'IconType | ReactElement',
     },
     {
       name: 'FABColor',
-      description: 'The theme color of the FAB.',
+      description: 'FABDocumentation:property-FABColor-description',
       type: "'primary' | 'secondary' | 'surface' | 'tertiary'",
       defaultValue: "'primary'",
     },
     {
       name: 'lowered',
-      description: 'Whether the FAB is lowered than usual FAB elevation.',
+      description: 'FABDocumentation:property-lowered-description',
       type: 'boolean',
       defaultValue: 'false',
     },
     {
       name: 'containerStyle',
-      description: 'The styles for the regular button component.',
+      description: 'FABDocumentation:property-containerStyle-description',
       type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
       optional: true,
     },
     {
       name: 'pressableProps',
-      description: 'The properties of the pressable component of react native (except sx)',
+      description: 'FABDocumentation:property-pressableProps-description',
       type: 'pressableProps',
       optional: true,
     },
   ],
   examples: [
     {
-      name: 'Default',
+      name: 'FABDocumentation:example1-name',
       id: 'default',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -76,7 +75,7 @@ export const FABDocumentation: ContentValues = {
 <FAB FABColor='surface' size='medium' icon={{ name: 'phone' }} />`,
     },
     {
-      name: 'Small FAB',
+      name: 'FABDocumentation:example2-name',
       id: 'small-fab',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -92,7 +91,7 @@ export const FABDocumentation: ContentValues = {
 <FAB FABColor='surface' size='small' icon={{ name: 'phone' }} />`,
     },
     {
-      name: 'Large FAB',
+      name: 'FABDocumentation:example3-name',
       id: 'large-fab',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -108,7 +107,7 @@ export const FABDocumentation: ContentValues = {
 <FAB FABColor='surface' size='large' icon={{ name: 'phone' }} />`,
     },
     {
-      name: 'FAB - Lowered',
+      name: 'FABDocumentation:example4-name',
       id: 'large-fab-lowered',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -121,27 +120,27 @@ export const FABDocumentation: ContentValues = {
 };
 
 export const FABIndex: HeadingProps = {
-  heading: 'FAB',
+  heading: 'FABDocumentation:heading',
   links: [
     {
-      title: 'Default',
+      title: 'FABDocumentation:example1-name',
       link: '#default',
     },
     {
-      title: 'Small FAB',
+      title: 'FABDocumentation:example2-name',
       link: '#small-fab',
     },
     {
-      title: 'Large FAB',
+      title: 'FABDocumentation:example3-name',
       link: '#large-fab',
     },
     {
-      title: 'FAB - Lowered',
+      title: 'FABDocumentation:example4-name',
       link: '#fab-lowered',
     },
     {
       link: '#props',
-      title: 'Props',
+      title: 'content:props',
       components: [],
     },
   ],
