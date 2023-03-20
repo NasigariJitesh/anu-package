@@ -1,10 +1,50 @@
 import { Container, IconButton } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+import { useState } from 'react';
 import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
 };
+
+const IconWithToggle = () => {
+  const [toggleState, setToggleState] = useState(true);
+
+  return (
+    <Container disableGutters flexDirection='row' sx={flexStyle as never}>
+      <IconButton
+        type='filled'
+        icon={{ name: 'outlined-flag' }}
+        toggle={toggleState}
+        selected={false}
+        containerStyle={style}
+        onPress={() => {
+          setToggleState(!toggleState);
+          console.log(toggleState);
+        }}
+      />
+
+      <IconButton type='filled' icon={{ name: 'flag' }} toggle={toggleState} selected={true} containerStyle={style} />
+      <IconButton
+        type='filled'
+        icon={{ name: 'outlined-flag' }}
+        toggle={toggleState}
+        selected={false}
+        disabled
+        containerStyle={style}
+      />
+      <IconButton
+        type='filled'
+        icon={{ name: 'flag' }}
+        toggle={toggleState}
+        selected={true}
+        disabled
+        containerStyle={style}
+      />
+    </Container>
+  );
+};
+
 const flexStyle = {
   flexWrap: 'wrap',
   // < 576 = 90vw
@@ -73,22 +113,7 @@ We support Material Icons from react native vector icons package, you can refer 
       name: 'Filled icon button - Toggle',
       id: 'filled-icon-button-toggle',
       description: "Toggle doesn't automatically update the icon or icon variant, it needs to be changed manually",
-      component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='filled' icon={{ name: 'outlined-flag' }} toggle selected={false} containerStyle={style} />
-
-          <IconButton type='filled' icon={{ name: 'flag' }} toggle selected={true} containerStyle={style} />
-          <IconButton
-            type='filled'
-            icon={{ name: 'outlined-flag' }}
-            toggle
-            selected={false}
-            disabled
-            containerStyle={style}
-          />
-          <IconButton type='filled' icon={{ name: 'flag' }} toggle selected={true} disabled containerStyle={style} />
-        </Container>
-      ),
+      component: <IconWithToggle />,
       code: `<IconButton type='filled' icon={{ name: 'outlined-flag' }} toggle selected={false} />
 <IconButton type='filled' icon={{ name: 'flag' }} toggle selected={true} />
 <IconButton type='filled' icon={{ name: 'outlined-flag' }} toggle selected={false} disabled />
