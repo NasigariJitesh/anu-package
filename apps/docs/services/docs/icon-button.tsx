@@ -1,4 +1,4 @@
-import { Container, IconButton } from 'anu/lib';
+import { Container, IconButton, IconButtonType } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { useState } from 'react';
 import { ContentValues } from 'src/sections/content';
@@ -7,37 +7,29 @@ const style = {
   margin: 15,
 };
 
-const IconWithToggle = () => {
+const IconWithToggle = ({ type }: { type: 'filled' | 'tonal' | 'outlined' | 'standard' }) => {
   const [toggleState, setToggleState] = useState(true);
 
   return (
     <Container disableGutters flexDirection='row' sx={flexStyle as never}>
       <IconButton
-        type='filled'
-        icon={{ name: 'outlined-flag' }}
-        toggle={toggleState}
-        selected={false}
-        containerStyle={style}
+        type={type as IconButtonType}
+        icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+        toggle
+        selected={toggleState}
         onPress={() => {
           setToggleState(!toggleState);
-          console.log(toggleState);
         }}
-      />
-
-      <IconButton type='filled' icon={{ name: 'flag' }} toggle={toggleState} selected={true} containerStyle={style} />
-      <IconButton
-        type='filled'
-        icon={{ name: 'outlined-flag' }}
-        toggle={toggleState}
-        selected={false}
-        disabled
         containerStyle={style}
       />
       <IconButton
-        type='filled'
-        icon={{ name: 'flag' }}
-        toggle={toggleState}
-        selected={true}
+        type={type as IconButtonType}
+        icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+        toggle
+        selected={toggleState}
+        onPress={() => {
+          setToggleState(!toggleState);
+        }}
         disabled
         containerStyle={style}
       />
@@ -113,11 +105,26 @@ We support Material Icons from react native vector icons package, you can refer 
       name: 'Filled icon button - Toggle',
       id: 'filled-icon-button-toggle',
       description: "Toggle doesn't automatically update the icon or icon variant, it needs to be changed manually",
-      component: <IconWithToggle />,
-      code: `<IconButton type='filled' icon={{ name: 'outlined-flag' }} toggle selected={false} />
-<IconButton type='filled' icon={{ name: 'flag' }} toggle selected={true} />
-<IconButton type='filled' icon={{ name: 'outlined-flag' }} toggle selected={false} disabled />
-<IconButton type='filled' icon={{ name: 'flag' }} toggle selected={true} disabled />`,
+      component: <IconWithToggle type='filled' />,
+      code: `<IconButton
+  type='filled'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+/>
+<IconButton
+  type='filled'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+  disabled
+/>`,
     },
 
     {
@@ -136,25 +143,26 @@ We support Material Icons from react native vector icons package, you can refer 
     {
       name: 'Filled tonal icon button - Toggle',
       id: 'filled-tonal-icon-button-toggle',
-      component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='tonal' icon={{ name: 'outlined-flag' }} toggle selected={false} containerStyle={style} />
-          <IconButton type='tonal' icon={{ name: 'flag' }} toggle selected={true} containerStyle={style} />
-          <IconButton
-            type='tonal'
-            icon={{ name: 'outlined-flag' }}
-            toggle
-            selected={false}
-            disabled
-            containerStyle={style}
-          />
-          <IconButton type='tonal' icon={{ name: 'flag' }} toggle selected={true} disabled containerStyle={style} />
-        </Container>
-      ),
-      code: `<IconButton type='tonal' icon={{ name: 'outlined-flag' }} toggle selected={false} />
-<IconButton type='tonal' icon={{ name: 'flag' }} toggle selected={true} />
-<IconButton type='tonal' icon={{ name: 'outlined-flag' }} toggle selected={false} disabled />
-<IconButton type='tonal' icon={{ name: 'flag' }} toggle selected={true} disabled />`,
+      component: <IconWithToggle type='tonal' />,
+      code: `<IconButton
+  type='tonal'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+/>
+<IconButton
+  type='tonal'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+  disabled
+/>`,
     },
 
     {
@@ -173,25 +181,26 @@ We support Material Icons from react native vector icons package, you can refer 
     {
       name: 'Outlined icon button - Toggle',
       id: 'outlined-icon-button-toggle',
-      component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='outlined' icon={{ name: 'outlined-flag' }} toggle selected={false} containerStyle={style} />
-          <IconButton type='outlined' icon={{ name: 'flag' }} toggle selected={true} containerStyle={style} />
-          <IconButton
-            type='outlined'
-            icon={{ name: 'outlined-flag' }}
-            toggle
-            selected={false}
-            disabled
-            containerStyle={style}
-          />
-          <IconButton type='outlined' icon={{ name: 'flag' }} toggle selected={true} disabled containerStyle={style} />
-        </Container>
-      ),
-      code: `<IconButton type='outlined' icon={{ name: 'outlined-flag' }} toggle selected={false} />
-<IconButton type='outlined' icon={{ name: 'flag' }} toggle selected={true} />
-<IconButton type='outlined' icon={{ name: 'outlined-flag' }} toggle selected={false} disabled />
-<IconButton type='outlined' icon={{ name: 'flag' }} toggle selected={true} disabled />`,
+      component: <IconWithToggle type='outlined' />,
+      code: `<IconButton
+  type='outlined'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+/>
+<IconButton
+  type='outlined'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+  disabled
+/>`,
     },
 
     {
@@ -210,25 +219,26 @@ We support Material Icons from react native vector icons package, you can refer 
     {
       name: 'Standard icon button - Toggle',
       id: 'standard-icon-button-toggle',
-      component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='standard' icon={{ name: 'outlined-flag' }} toggle selected={false} containerStyle={style} />
-          <IconButton type='standard' icon={{ name: 'flag' }} toggle selected={true} containerStyle={style} />
-          <IconButton
-            type='standard'
-            icon={{ name: 'outlined-flag' }}
-            toggle
-            selected={false}
-            disabled
-            containerStyle={style}
-          />
-          <IconButton type='standard' icon={{ name: 'flag' }} toggle selected={true} disabled containerStyle={style} />
-        </Container>
-      ),
-      code: `<IconButton type='standard' icon={{ name: 'outlined-flag' }} toggle selected={false} />
-<IconButton type='standard' icon={{ name: 'flag' }} toggle selected={true} />
-<IconButton type='standard' icon={{ name: 'outlined-flag' }} toggle selected={false} disabled />
-<IconButton type='standard' icon={{ name: 'flag' }} toggle selected={true} disabled />`,
+      component: <IconWithToggle type='standard' />,
+      code: `<IconButton
+  type='standard'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+/>
+<IconButton
+  type='standard'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+  disabled
+/>`,
     },
   ],
 };
