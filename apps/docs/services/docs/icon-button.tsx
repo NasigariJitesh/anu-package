@@ -1,10 +1,42 @@
-import { Container, IconButton } from 'anu/lib';
+import { Container, IconButton, IconButtonType } from 'anu/lib';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+import { useState } from 'react';
 import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
 };
+
+const IconWithToggle = ({ type }: { type: 'filled' | 'tonal' | 'outlined' | 'standard' }) => {
+  const [toggleState, setToggleState] = useState(true);
+
+  return (
+    <Container disableGutters flexDirection='row' sx={flexStyle as never}>
+      <IconButton
+        type={type as IconButtonType}
+        icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+        toggle
+        selected={toggleState}
+        onPress={() => {
+          setToggleState(!toggleState);
+        }}
+        containerStyle={style}
+      />
+      <IconButton
+        type={type as IconButtonType}
+        icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+        toggle
+        selected={toggleState}
+        onPress={() => {
+          setToggleState(!toggleState);
+        }}
+        disabled
+        containerStyle={style}
+      />
+    </Container>
+  );
+};
+
 const flexStyle = {
   flexWrap: 'wrap',
   // < 576 = 90vw
@@ -18,8 +50,9 @@ export const iconButtonDocumentation: ContentValues = {
   mainHeading: 'Button',
   mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
   heading: 'Icon Buttons',
-  subTitle:
-    'Icon buttons help people take supplementary actions with a single tap. There are four types of icon buttons: filled, filled tonal, outlined, and standard.',
+  subTitle: `Icon buttons help people take supplementary actions with a single tap. There are four types of icon buttons: filled, filled tonal, outlined, and standard.
+
+We support Material Icons from react native vector icons package, you can refer the icon names from their site`,
   properties: [
     {
       name: 'type',
@@ -71,32 +104,27 @@ export const iconButtonDocumentation: ContentValues = {
     {
       name: 'Filled icon button - Toggle',
       id: 'filled-icon-button-toggle',
-      component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='filled' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} />
-          <IconButton
-            type='filled'
-            icon={{ name: 'favorite' }}
-            toggle
-            selected={true}
-            disabled
-            containerStyle={style}
-          />
-          <IconButton type='filled' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} />
-          <IconButton
-            type='filled'
-            icon={{ name: 'favorite' }}
-            toggle
-            selected={false}
-            disabled
-            containerStyle={style}
-          />
-        </Container>
-      ),
-      code: `<IconButton type='filled' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} />
-<IconButton type='filled' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} disabled />
-<IconButton type='filled' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} />
-<IconButton type='filled' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} disabled />`,
+      description: "Toggle doesn't automatically update the icon or icon variant, it needs to be changed manually",
+      component: <IconWithToggle type='filled' />,
+      code: `<IconButton
+  type='filled'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+/>
+<IconButton
+  type='filled'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+  disabled
+/>`,
     },
 
     {
@@ -115,25 +143,26 @@ export const iconButtonDocumentation: ContentValues = {
     {
       name: 'Filled tonal icon button - Toggle',
       id: 'filled-tonal-icon-button-toggle',
-      component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='tonal' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} />
-          <IconButton type='tonal' icon={{ name: 'favorite' }} toggle selected={true} disabled containerStyle={style} />
-          <IconButton type='tonal' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} />
-          <IconButton
-            type='tonal'
-            icon={{ name: 'favorite' }}
-            toggle
-            selected={false}
-            disabled
-            containerStyle={style}
-          />
-        </Container>
-      ),
-      code: `<IconButton type='tonal' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} />
-<IconButton type='tonal' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} disabled />
-<IconButton type='tonal' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} />
-<IconButton type='tonal' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} disabled />`,
+      component: <IconWithToggle type='tonal' />,
+      code: `<IconButton
+  type='tonal'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+/>
+<IconButton
+  type='tonal'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+  disabled
+/>`,
     },
 
     {
@@ -152,32 +181,26 @@ export const iconButtonDocumentation: ContentValues = {
     {
       name: 'Outlined icon button - Toggle',
       id: 'outlined-icon-button-toggle',
-      component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='outlined' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} />
-          <IconButton
-            type='outlined'
-            icon={{ name: 'favorite' }}
-            toggle
-            selected={true}
-            disabled
-            containerStyle={style}
-          />
-          <IconButton type='outlined' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} />
-          <IconButton
-            type='outlined'
-            icon={{ name: 'favorite' }}
-            toggle
-            selected={false}
-            disabled
-            containerStyle={style}
-          />
-        </Container>
-      ),
-      code: `<IconButton type='outlined' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} />
-<IconButton type='outlined' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} disabled />
-<IconButton type='outlined' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} />
-<IconButton type='outlined' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} disabled />`,
+      component: <IconWithToggle type='outlined' />,
+      code: `<IconButton
+  type='outlined'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+/>
+<IconButton
+  type='outlined'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+  disabled
+/>`,
     },
 
     {
@@ -196,32 +219,26 @@ export const iconButtonDocumentation: ContentValues = {
     {
       name: 'Standard icon button - Toggle',
       id: 'standard-icon-button-toggle',
-      component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='standard' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} />
-          <IconButton
-            type='standard'
-            icon={{ name: 'favorite' }}
-            toggle
-            selected={true}
-            disabled
-            containerStyle={style}
-          />
-          <IconButton type='standard' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} />
-          <IconButton
-            type='standard'
-            icon={{ name: 'favorite' }}
-            toggle
-            selected={false}
-            disabled
-            containerStyle={style}
-          />
-        </Container>
-      ),
-      code: `<IconButton type='standard' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} />
-<IconButton type='standard' icon={{ name: 'favorite' }} toggle selected={true} containerStyle={style} disabled />
-<IconButton type='standard' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} />
-<IconButton type='standard' icon={{ name: 'favorite' }} toggle selected={false} containerStyle={style} disabled />`,
+      component: <IconWithToggle type='standard' />,
+      code: `<IconButton
+  type='standard'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+/>
+<IconButton
+  type='standard'
+  icon={{ name: toggleState ? 'flag' : 'outlined-flag' }}
+  toggle
+  selected={toggleState}
+  onPress={() => {
+    setToggleState(!toggleState);
+  }}
+  disabled
+/>`,
     },
   ],
 };
