@@ -17,99 +17,97 @@ const flexStyle = {
 } as const;
 
 export const textFieldDocumentation: ContentValues = {
-  mainHeading: 'Text Field',
-  mainDescription:
-    'Text fields allow users to enter text into a UI. They typically appear in forms and dialogs. There are two types of text fields: filled and outlined.',
+  mainHeading: 'textFieldDocumentation:mainHeading',
+  mainDescription: 'textFieldDocumentation:mainDescription',
   properties: [
     {
       name: 'variant',
       type: "'outlined' | 'filled'",
-      description: 'The type of the text field',
+      description: 'textFieldDocumentation:property-variant-description',
       defaultValue: "'outlined' ",
     },
     {
       name: 'label',
       type: 'string',
-      description: 'The label for the text field',
+      description: 'textFieldDocumentation:property-label-description',
     },
     {
       name: 'leadingIcon',
       type: 'ReactNode',
       optional: true,
-      description: 'Icon to be displayed to left of the text field',
+      description: 'textFieldDocumentation:property-leadingIcon-description',
     },
-
     {
       name: 'trailingIcon',
       type: 'ReactNode',
       optional: true,
-      description: 'Icon to be displayed to right of the text field',
+      description: 'textFieldDocumentation:property-trailingIcon-description',
     },
     {
       name: 'disabled',
-      description: 'If true, the component is disabled.',
+      description: 'textFieldDocumentation:property-disabled-description',
       type: 'boolean',
       optional: true,
       defaultValue: 'false',
     },
     {
       name: 'supportingText',
-      description: 'Support text need to be displayed with the text field.',
+      description: 'textFieldDocumentation:property-supportingText-description',
       type: 'string',
       optional: true,
     },
     {
       name: 'errorMessage',
-      description: 'Error messages need to be displayed with the text field.',
+      description: 'textFieldDocumentation:property-errorMessage-description',
       type: 'string | string[]',
       optional: true,
     },
     {
       name: 'supportingTextStyle',
-      description: 'Styles for the supporting text of text field.',
+      description: 'textFieldDocumentation:property-supportingTextStyle-description',
       type: 'StyleProp<TextStyle>',
       optional: true,
     },
     {
       name: 'errorMessageStyle',
-      description: 'Styles for the error messages of text field.',
+      description: 'textFieldDocumentation:property-errorMessageStyle-description',
       type: 'StyleProp<TextStyle>',
       optional: true,
     },
     {
       name: 'containerStyle',
-      description: 'Styles for container of the text field component.',
+      description: 'textFieldDocumentation:property-containerStyle-description',
       type: 'StyleProp<ViewStyle>',
       optional: true,
     },
     {
       name: 'textInputStyle',
-      description: 'Styles for the text input of the text field component.',
+      description: 'textFieldDocumentation:property-textInputStyle-description',
       type: 'StyleProp<TextStyle>',
       optional: true,
     },
     {
       name: 'style',
-      description: 'The styles for the text field component.',
+      description: 'textFieldDocumentation:property-style-description',
       type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
       optional: true,
     },
     {
       name: 'pressableProps',
-      description: 'The properties of the pressable component of react native (except sx)',
+      description: 'textFieldDocumentation:property-pressableProps-description',
       type: 'pressableProps',
       optional: true,
     },
     {
       name: 'sx',
-      description: 'The system prop that allows defining system overrides as well as additional CSS styles.',
+      description: 'textFieldDocumentation:property-sx-description',
       type: 'Sx',
       optional: true,
     },
   ],
   examples: [
     {
-      name: 'Filled Text Field',
+      name: 'textFieldDocumentation:example1-name',
       id: 'filled-text-field',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -149,7 +147,7 @@ export const textFieldDocumentation: ContentValues = {
 <TextField variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' disabled/>`,
     },
     {
-      name: 'Filled Text Field - with Icons',
+      name: 'textFieldDocumentation:example2-name',
       id: 'filled-text-field-with-icons',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -200,7 +198,7 @@ export const textFieldDocumentation: ContentValues = {
 <TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit' name='close' />} disabled/>`,
     },
     {
-      name: 'Outlined Text Field',
+      name: 'textFieldDocumentation:example3-name',
       id: 'outlined-text-field',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -240,7 +238,7 @@ export const textFieldDocumentation: ContentValues = {
 <TextField variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text' disabled/>`,
     },
     {
-      name: 'Outlined Text Field - with Icons',
+      name: 'textFieldDocumentation:example4-name',
       id: 'outlined-text-field-with-icons',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -291,7 +289,7 @@ export const textFieldDocumentation: ContentValues = {
 <TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit' name='close' />} disabled/>`,
     },
     {
-      name: 'Error text field',
+      name: 'textFieldDocumentation:example5-name',
       id: 'error-text-field',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -324,31 +322,31 @@ export const textFieldDocumentation: ContentValues = {
 };
 
 export const textFieldIndex: HeadingProps = {
-  heading: 'Text Field',
+  heading: 'textFieldDocumentation:mainHeading',
   links: [
     {
-      title: 'Filled Text Field ',
+      title: 'textFieldDocumentation:example1-name',
       link: '#filled-text-field',
     },
     {
-      title: 'Filled Text Field - with Icons',
+      title: 'textFieldDocumentation:example2-name',
       link: '#filled-text-field-with-icons',
     },
     {
-      title: 'Outlined Text Field',
+      title: 'textFieldDocumentation:example3-name',
       link: '#outlined-text-field',
     },
     {
-      title: 'Outlined Text Field - with Icons',
+      title: 'textFieldDocumentation:example4-name',
       link: '#outlined-text-field-with-icons',
     },
     {
-      title: 'Error text field',
+      title: 'textFieldDocumentation:example5-name',
       link: '#error-text-field',
     },
     {
       link: '#props',
-      title: 'Props',
+      title: 'content:props',
       components: [],
     },
   ],
