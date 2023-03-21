@@ -1,10 +1,11 @@
 import { useTheme } from 'anu/config';
-import { Container, Icon, Typography } from 'anu/lib';
+import { Container, Icon, Typography, useAnuLocalization } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useMenuContext } from 'screens/common/provider';
 
@@ -92,6 +93,14 @@ const Navbar = () => {
   const theme = useTheme();
 
   const { isDarkTheme } = useMenuContext();
+
+  const { locale } = useRouter();
+  const { switchLocale, defaultLocale } = useAnuLocalization();
+
+  useEffect(() => {
+    if (locale) switchLocale(locale.includes('en') ? 'en' : locale);
+    else switchLocale(defaultLocale.includes('en') ? 'en' : defaultLocale);
+  }, [locale]);
 
   return (
     <nav
