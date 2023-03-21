@@ -25,6 +25,7 @@ export default function App(props: AppProps) {
       <RootLayout backgroundColor={backgroundColor} setBackgroundColor={setBackgroundColor}>
         <Container disableGutters>
           <Head>
+            <meta name='viewport' content='width=device-width, initial-scale=1' />
             <style>{`body { background-color: ${backgroundColor} !important; }`}</style>
           </Head>
           <Navbar />
@@ -36,7 +37,6 @@ export default function App(props: AppProps) {
               width: '100%',
               alignSelf: 'center',
               justifyContent: 'space-between',
-              marginTop: 20,
             }}
           >
             <Sidebar />

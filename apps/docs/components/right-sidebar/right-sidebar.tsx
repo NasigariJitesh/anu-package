@@ -182,6 +182,7 @@ const RightSidebar = () => {
 const style = {
   container: {
     width: 210,
+    paddingTop: 20,
   },
   preHeading: {
     fontFamily: source.style.fontFamily,
