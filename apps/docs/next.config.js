@@ -3,8 +3,8 @@ const { withExpo } = require('@expo/next-adapter');
 /** @type {import('next').NextConfig} */
 const nextConfig = withExpo({
   i18n: {
-    locales: ['en-US', 'fr'],
-    defaultLocale: 'en-US',
+    locales: ['en-US', 'fr', 'en'],
+    defaultLocale: 'en',
   },
 
   reactStrictMode: true,

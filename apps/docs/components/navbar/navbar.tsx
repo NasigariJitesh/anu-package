@@ -5,7 +5,7 @@ import { Source_Sans_Pro } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useMenuContext } from 'screens/common/provider';
 
@@ -98,7 +98,8 @@ const Navbar = () => {
   const { switchLocale } = useAnuLocalization();
 
   useEffect(() => {
-    if (locale != undefined) switchLocale(locale.includes('en') ? 'en' : locale);
+    if (locale) switchLocale(locale.includes('en') ? 'en' : locale);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale]);
 
   return (
