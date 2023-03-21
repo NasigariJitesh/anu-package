@@ -5,7 +5,7 @@ import { Source_Sans_Pro } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useMenuContext } from 'screens/common/provider';
 
@@ -95,11 +95,10 @@ const Navbar = () => {
   const { isDarkTheme } = useMenuContext();
 
   const { locale } = useRouter();
-  const { switchLocale, defaultLocale } = useAnuLocalization();
+  const { switchLocale } = useAnuLocalization();
 
   useEffect(() => {
-    if (locale) switchLocale(locale.includes('en') ? 'en' : locale);
-    else switchLocale(defaultLocale.includes('en') ? 'en' : defaultLocale);
+    if (locale != undefined) switchLocale(locale.includes('en') ? 'en' : locale);
   }, [locale]);
 
   return (
