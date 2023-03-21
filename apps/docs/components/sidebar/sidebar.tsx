@@ -236,6 +236,7 @@ const style = {
   container: {
     width: 210,
     flex: 1,
+    paddingTop: 20,
   },
   heading: {
     fontFamily: source.style.fontFamily,

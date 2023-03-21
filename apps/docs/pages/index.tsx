@@ -2,6 +2,7 @@
 import { useTheme } from 'anu/config';
 import { Button, Chip, Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
 import { DripsyFinalTheme, useSx } from 'dripsy';
+import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import ParticlesDark from 'screens/common/particles-dark';
 import ParticlesLight from 'screens/common/particles-light';
@@ -50,9 +51,10 @@ const Home = () => {
   const { isDarkTheme } = useMenuContext();
   const theme = useTheme();
   const { getTranslation } = useAnuLocalization();
+  const { height } = useWindowDimensions();
   const sx = useSx();
 
-  const style = styles(theme);
+  const style = styles(theme, height);
 
   return (
     <>
@@ -107,14 +109,13 @@ const Home = () => {
   );
 };
 
-const styles = (theme?: DripsyFinalTheme) => {
+const styles = (theme?: DripsyFinalTheme, height?: number) => {
   return {
     container: {
       position: 'absolute',
       width: '100%',
-      height: 'calc(100vh - 80px)',
+      height: `${(height || 0) - 70}px`,
       overflow: 'scroll',
-      marginTop: -20,
     },
 
     footerContainer: {
@@ -132,9 +133,9 @@ const styles = (theme?: DripsyFinalTheme) => {
 
     center: {
       alignSelf: 'center',
-      zIndex: 1,
+      paddingVertical: 10,
       width: '100%',
-      height: ['100vh', '100vh', '100%', '100%', '100%'] as never,
+      height: [undefined, undefined, '100%', '100%', '100%'] as never,
     },
 
     mainHeading: {

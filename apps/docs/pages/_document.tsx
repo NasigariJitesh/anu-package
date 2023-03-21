@@ -46,9 +46,6 @@ html, body, #__next {
   scroll-behavior: smooth; !important
 }
 
-canvas {
-   position: 'unset !important'
-}
 
 body {
   /* Allows you to scroll below the viewport; default value is visible */
