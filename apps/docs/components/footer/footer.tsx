@@ -27,6 +27,12 @@ export interface FooterProps {
   links: FooterSection[];
 }
 
+/**
+ * Footer Component
+ *
+ * @param {FooterProps}props - props for the footer component
+ * @returns
+ */
 const Footer = (props: FooterProps) => {
   const { isDarkTheme } = useMenuContext();
   const { getTranslation } = useAnuLocalization();
