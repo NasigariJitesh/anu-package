@@ -126,6 +126,7 @@ const styles = (width: number, theme: DripsyFinalTheme) => {
     },
 
     imageCaption: {
+      marginTop: 15,
       fontFamily: source.style.fontFamily,
       fontSize: 16,
       color: theme.colors?.$onSurface as never,
