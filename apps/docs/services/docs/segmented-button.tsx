@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Container, SegmentedButton, SegmentedButtonGroup } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { ScrollView } from 'react-native';
-import { ContentValues } from 'src/sections/content';
 const style = {
   margin: 15,
 };
@@ -16,68 +16,74 @@ const flexStyle = {
   width: ['90vw', '90vw', '550px', '600px', '750px'],
 } as const;
 export const segmentedButtonDocumentation: ContentValues = {
-  mainHeading: 'Button',
-  mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
-
-  heading: 'Segmented Buttons',
-  subTitle:
-    'Segmented buttons help people select options, switch views, or sort elements. There are two types of segmented buttons: single-select and multi-select.',
+  mainHeading: 'segmentedButtonDocumentation:mainHeading',
+  mainDescription: 'segmentedButtonDocumentation:mainDescription',
+  heading: 'segmentedButtonDocumentation:heading',
+  subTitle: 'segmentedButtonDocumentation:subTitle',
   properties: [
     {
       name: 'id',
-      description: 'Id of the segmented button.',
+      description: 'segmentedButtonDocumentation:property-id-description',
       type: 'string',
     },
     {
       name: 'title',
       type: 'string',
-      description: 'The label/title for the regular button',
+      description: 'segmentedButtonDocumentation:property-title-description',
     },
     {
       name: 'selected',
-      type: 'string | string[] (optional)',
-      description: 'The ids of selected members of the segmented button group',
+      type: 'string | string[]',
+      optional: true,
+      description: 'segmentedButtonDocumentation:property-selected-description',
     },
     {
       name: 'icon',
-      description: 'The icon component or the icon props for material icons.',
-      type: 'IconType | ReactElement (optional)',
+      description: 'segmentedButtonDocumentation:property-icon-description',
+      type: 'IconType | ReactElement',
+      optional: true,
     },
     {
       name: 'onSelect',
-      description: 'The callback when there is a press or click on the segmented button.',
-      type: '(id: string) => void (optional)',
+      description: 'segmentedButtonDocumentation:property-onSelect-description',
+      type: '(id: string) => void',
+      optional: true,
     },
     {
       name: 'multiSelect (Group Property)',
-      type: 'boolean (optional)',
-      description: 'whether the multiple segmented buttons can be selected at once',
+      type: 'boolean',
+      optional: true,
+      description: 'segmentedButtonDocumentation:property-multiSelect (Group Property)-description',
       defaultValue: 'false',
     },
     {
       name: 'onPress (Group Property)',
-      description: 'The callback when there is a press or click on the segmented buttons.',
-      type: '(id: string) => void (optional)',
+      description: 'segmentedButtonDocumentation:property-onPress (Group Property)-description',
+      type: '(id: string) => void',
+      optional: true,
     },
     {
       name: 'containerStyle (Group Property)',
-      description: 'The style for the segmented button group container.',
-      type: 'StyleProp<ViewStyle> (optional)',
+      description: 'segmentedButtonDocumentation:property-containerStyle (Group Property)-description',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'style',
-      description: 'The styles for the segmented button component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      description: 'segmentedButtonDocumentation:property-style-description',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'titleStyle',
-      description: 'The styles for the label of the button.',
-      type: 'StyleProp<TextStyle> (optional)',
+      description: 'segmentedButtonDocumentation:property-titleStyle-description',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
   ],
   examples: [
     {
-      name: 'Default',
+      name: 'segmentedButtonDocumentation:example1-name',
       id: 'default',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -91,15 +97,15 @@ export const segmentedButtonDocumentation: ContentValues = {
           </ScrollView>
         </Container>
       ),
-      code: `<SegmentedButtonGroup>
-  <SegmentedButton id='segmentedButton1' title='Button 1' />
-  <SegmentedButton id='segmentedButton2' title='Button 2' disabled />
-  <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
-  <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} />
+      code: `<SegmentedButtonGroup> 
+  <SegmentedButton id='segmentedButton1' title='Button 1' /> 
+  <SegmentedButton id='segmentedButton2' title='Button 2' disabled /> 
+  <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} /> 
+  <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} /> 
 </SegmentedButtonGroup>`,
     },
     {
-      name: 'Multi Select Segmented Button',
+      name: 'segmentedButtonDocumentation:example2-name',
       id: 'multi-select-segmented-button',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -113,30 +119,30 @@ export const segmentedButtonDocumentation: ContentValues = {
           </ScrollView>
         </Container>
       ),
-      code: `<SegmentedButtonGroup multiSelect>
-  <SegmentedButton id='segmentedButton1' title='Button 1' />
-  <SegmentedButton id='segmentedButton2' title='Button 2' />
-  <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
-  <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} disabled />
+      code: `<SegmentedButtonGroup multiSelect> 
+  <SegmentedButton id='segmentedButton1' title='Button 1' /> 
+  <SegmentedButton id='segmentedButton2' title='Button 2' /> 
+  <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} /> 
+  <SegmentedButton id='segmentedButton4' title='Button 4' icon={{ name: 'add' }} disabled /> 
 </SegmentedButtonGroup>`,
     },
   ],
 };
 
 export const segmentedButtonIndex: HeadingProps = {
-  heading: 'Segmented Button',
+  heading: 'segmentedButtonDocumentation:heading',
   links: [
     {
-      title: 'Default',
+      title: 'segmentedButtonDocumentation:example1-name',
       link: '#default',
     },
     {
-      title: 'Multi Select Segmented Button ',
+      title: 'segmentedButtonDocumentation:example2-name',
       link: '#multi-select-segmented-button',
     },
     {
       link: '#props',
-      title: 'Props',
+      title: 'content:props',
       components: [],
     },
   ],

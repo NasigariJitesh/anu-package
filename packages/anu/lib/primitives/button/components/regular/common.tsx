@@ -29,7 +29,13 @@ export const RenderComponent = (props: ButtonProps) => {
 
     if (icon)
       return 'name' in icon ? (
-        <Icon size={18} color='inherit' name={icon.name as never} {...icon.props} style={icon.props?.style} />
+        <Icon
+          size={18}
+          name={icon.name as never}
+          {...icon.props}
+          //@ts-expect-error reason: the style type will always be text style only
+          style={getCombinedStylesForText({ color: 'inherit' }, icon.props?.style)}
+        />
       ) : (
         icon
       );

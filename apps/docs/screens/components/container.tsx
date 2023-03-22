@@ -1,5 +1,5 @@
+import Content from 'components/content';
 import { containerDocumentation } from 'services/docs/container';
-import Content from 'src/sections/content';
 
 const Container = () => {
   return <Content values={containerDocumentation} />;
