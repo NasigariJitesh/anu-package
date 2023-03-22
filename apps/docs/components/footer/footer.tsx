@@ -31,7 +31,6 @@ export interface FooterProps {
  * Footer Component
  *
  * @param {FooterProps}props - props for the footer component
- * @returns
  */
 const Footer = (props: FooterProps) => {
   const { isDarkTheme } = useMenuContext();
