@@ -1,5 +1,5 @@
+import Content from 'components/content';
 import { typographyDocumentation } from 'services/docs/typography';
-import Content from 'src/sections/content';
 
 const Typography = () => {
   return <Content values={typographyDocumentation} />;

@@ -1,10 +1,8 @@
 import { getColorInRGBA } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { Container, Divider, Typography } from 'anu/lib';
+import { Container, Divider, LocalizedTypography, Typography } from 'anu/lib';
 import { DripsyFinalTheme } from 'dripsy';
 import { Source_Sans_Pro } from 'next/font/google';
-
-import { translations } from '../../services/localization';
 
 const source = Source_Sans_Pro({
   weight: ['400', '600'],
@@ -17,6 +15,7 @@ export interface Property {
   type: string;
   defaultValue?: string;
   description: string;
+  optional?: boolean;
 }
 
 interface ComponentPropertiesProps {
@@ -33,14 +32,24 @@ const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
       <Container key={index} disableGutters style={styles.propertyContainer}>
         <Container disableGutters flexDirection='row' align='flex-end'>
           <Typography.Headline style={styles.name}>{prop.name}</Typography.Headline>
-          <Typography.Body style={styles.type}>{prop.type}</Typography.Body>
+          <Typography.Body style={styles.type}>
+            <Typography.Body style={styles.type}>{prop.type}</Typography.Body>
+            {prop.optional ? (
+              <Typography.Body style={styles.type}>
+                {' ('}
+                <LocalizedTypography.Body style={styles.type} localeKey={'content:prop-optional'} />
+                {')'}
+              </Typography.Body>
+            ) : null}
+          </Typography.Body>
         </Container>
 
-        <Typography.Body style={styles.otherDetails}>{prop.description}</Typography.Body>
+        <LocalizedTypography.Body style={styles.otherDetails} localeKey={prop.description} />
 
         {prop.defaultValue ? (
-          <Typography.Body style={styles.otherDetails}>
-            {translations('en', 'defaultValue')} : {prop.defaultValue}
+          <Typography.Body>
+            <LocalizedTypography.Body style={styles.otherDetails} localeKey='content:defaultValue' /> :{' '}
+            <Typography.Body style={styles.otherDetails}>{prop.defaultValue}</Typography.Body>
           </Typography.Body>
         ) : null}
 
@@ -51,7 +60,7 @@ const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
 
   return (
     <Container nativeID='props' disableGutters sx={styles.container as never}>
-      <Typography.Headline style={styles.heading}>{translations('en', 'props')}</Typography.Headline>
+      <LocalizedTypography.Headline style={styles.heading} localeKey='content:props' />
       <Divider variant='full-width' light style={styles.divider} />
       {properties.map((prop, index) => renderProperty(prop, index, index === properties.length - 1))}
     </Container>

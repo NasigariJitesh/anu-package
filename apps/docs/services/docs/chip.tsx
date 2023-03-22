@@ -1,6 +1,6 @@
 import { Chip, Container } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
@@ -16,60 +16,62 @@ const flexStyle = {
   width: ['90vw', '90vw', '550px', '600px', '750px'],
 } as const;
 export const chipDocumentation: ContentValues = {
-  mainHeading: 'Chips',
-  mainDescription:
-    'Chips help people enter information, make selections, filter content, or trigger actions. There are four types of chips: assist, filter, input, and suggestion.',
+  mainHeading: 'chipDocumentation:mainHeading',
+  mainDescription: 'chipDocumentation:mainDescription',
   properties: [
     {
       name: 'type',
       type: "'assist' | 'filter' | 'input' | 'suggestion'",
-      description: 'The type of the chip.',
+      description: 'chipDocumentation:property-type-description',
       defaultValue: 'suggestion',
     },
     {
       name: 'value',
       type: 'string',
-      description: 'The content of the chip.',
+      description: 'chipDocumentation:property-value-description',
     },
     {
       name: 'selected',
-      type: 'boolean (optional)',
-      description: 'Whether the chip is selected',
+      type: 'boolean',
+      optional: true,
+      description: 'chipDocumentation:property-selected-description',
       defaultValue: 'false',
     },
     {
       name: 'elevated',
-      type: 'boolean (optional)',
-      description: 'Whether the chip has an elevated style',
+      type: 'boolean',
+      optional: true,
+      description: 'chipDocumentation:property-elevated-description',
     },
-
     {
       name: 'leadingIcon',
-      type: 'Icon (optional)',
-      description: 'Icon to be displayed before (to left of) the chip content',
+      type: 'Icon',
+      optional: true,
+      description: 'chipDocumentation:property-leadingIcon-description',
     },
-
     {
       name: 'trailingIcon',
-      type: 'Icon (optional)',
-      description: 'Icon to be displayed after (to right of) the chip content',
+      type: 'Icon',
+      optional: true,
+      description: 'chipDocumentation:property-trailingIcon-description',
     },
-
     {
       name: 'style',
-      description: 'The styles for the chip component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      description: 'chipDocumentation:property-style-description',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'disabled',
-      description: 'If true, the component is disabled.',
-      type: 'boolean (optional)',
+      description: 'chipDocumentation:property-disabled-description',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
   ],
   examples: [
     {
-      name: 'Assist Chip',
+      name: 'chipDocumentation:example1-name',
       id: 'assist-chip',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -87,19 +89,19 @@ export const chipDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<Chip type='assist' value='Assist' />
-<Chip type='assist' value='Assist' elevated />
-<Chip leadingIcon={{ name: 'person' }} type='assist' value='Assist' />
-<Chip leadingIcon={{ name: 'person' }} elevated type='assist' value='Assist' />
-
-<Chip type='assist' value='Assist' disabled />
-<Chip type='assist' value='Assist' elevated disabled />
-<Chip leadingIcon={{ name: 'person' }} type='assist' value='Assist' disabled />
+      code: `<Chip type='assist' value='Assist' /> 
+<Chip type='assist' value='Assist' elevated /> 
+<Chip leadingIcon={{ name: 'person' }} type='assist' value='Assist' /> 
+<Chip leadingIcon={{ name: 'person' }} elevated type='assist' value='Assist' /> 
+ 
+<Chip type='assist' value='Assist' disabled /> 
+<Chip type='assist' value='Assist' elevated disabled /> 
+<Chip leadingIcon={{ name: 'person' }} type='assist' value='Assist' disabled /> 
 <Chip leadingIcon={{ name: 'person' }} elevated type='assist' value='Assist' disabled />`,
-      description: 'Assist chip only has a leading icon and can be used only as an informative chip',
+      description: 'chipDocumentation:example1-description',
     },
     {
-      name: 'Filter Chip',
+      name: 'chipDocumentation:example2-name',
       id: 'filter-chip',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -117,19 +119,19 @@ export const chipDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<Chip type='filter' value='Filter' />
-<Chip type='filter' value='Filter' elevated />
-<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' />
-<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' elevated />
-
-<Chip type='filter' value='Filter' disabled />
-<Chip type='filter' value='Filter' elevated disabled />
-<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' disabled />
+      code: `<Chip type='filter' value='Filter' /> 
+<Chip type='filter' value='Filter' elevated /> 
+<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' /> 
+<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' elevated /> 
+ 
+<Chip type='filter' value='Filter' disabled /> 
+<Chip type='filter' value='Filter' elevated disabled /> 
+<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' disabled /> 
 <Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' elevated disabled />`,
-      description: 'Filter chip has a leading icon and can be used as a selectable chip',
+      description: 'chipDocumentation:example2-description',
     },
     {
-      name: 'Filter Chip - Selected',
+      name: 'chipDocumentation:example3-name',
       id: 'filter-chip-selected',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -155,19 +157,19 @@ export const chipDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<Chip type='filter' value='Filter' selected />
-<Chip type='filter' value='Filter' selected elevated />
-<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' selected />
-<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' selected elevated />
-
-<Chip type='filter' value='Filter' selected disabled />
-<Chip type='filter' value='Filter' selected elevated disabled />
-<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' selected disabled />
+      code: `<Chip type='filter' value='Filter' selected /> 
+<Chip type='filter' value='Filter' selected elevated /> 
+<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' selected /> 
+<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' selected elevated /> 
+ 
+<Chip type='filter' value='Filter' selected disabled /> 
+<Chip type='filter' value='Filter' selected elevated disabled /> 
+<Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' selected disabled /> 
 <Chip leadingIcon={{ name: 'filter-alt' }} type='filter' value='Filter' selected elevated disabled />`,
-      description: 'Filter chip has a leading icon and can be used as a selectable chip',
+      description: 'chipDocumentation:example3-description',
     },
     {
-      name: 'Input Chip',
+      name: 'chipDocumentation:example4-name',
       id: 'input-chip',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -198,19 +200,19 @@ export const chipDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<Chip type='input' value='Input' />
-<Chip leadingIcon={{ name: 'add' }} type='input' value='Input' />
-<Chip trailingIcon={{ name: 'close' }} type='input' value='Input' />
-<Chip leadingIcon={{ name: 'filter-alt' }} trailingIcon={{ name: 'close' }} type='input' value='Input' />
-
-<Chip type='input' value='Input' disabled/>
-<Chip leadingIcon={{ name: 'add' }} type='input' value='Input' disabled/>
-<Chip trailingIcon={{ name: 'close' }} type='input' value='Input' disabled/>
+      code: `<Chip type='input' value='Input' /> 
+<Chip leadingIcon={{ name: 'add' }} type='input' value='Input' /> 
+<Chip trailingIcon={{ name: 'close' }} type='input' value='Input' /> 
+<Chip leadingIcon={{ name: 'filter-alt' }} trailingIcon={{ name: 'close' }} type='input' value='Input' /> 
+ 
+<Chip type='input' value='Input' disabled/> 
+<Chip leadingIcon={{ name: 'add' }} type='input' value='Input' disabled/> 
+<Chip trailingIcon={{ name: 'close' }} type='input' value='Input' disabled/> 
 <Chip leadingIcon={{ name: 'filter-alt' }} trailingIcon={{ name: 'close' }} type='input' value='Input' disabled/>`,
-      description: 'Input chip has both leading and trailing icon and can be used as a selectable chip',
+      description: 'chipDocumentation:example4-description',
     },
     {
-      name: 'Input Chip - Selected',
+      name: 'chipDocumentation:example5-name',
       id: 'input-chip-selected',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -243,19 +245,19 @@ export const chipDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<Chip type='input' value='Input' selected />
-<Chip leadingIcon={{ name: 'add' }} type='input' value='Input' selected />
-<Chip trailingIcon={{ name: 'close' }} type='input' value='Input' selected />
-<Chip leadingIcon={{ name: 'filter-alt' }} trailingIcon={{ name: 'close' }} type='input' value='Input' selected />
-
-<Chip type='input' value='Input' selected disabled/>
-<Chip leadingIcon={{ name: 'add' }} type='input' value='Input' selected disabled/>
-<Chip trailingIcon={{ name: 'close' }} type='input' value='Input' selected disabled/>
+      code: `<Chip type='input' value='Input' selected /> 
+<Chip leadingIcon={{ name: 'add' }} type='input' value='Input' selected /> 
+<Chip trailingIcon={{ name: 'close' }} type='input' value='Input' selected /> 
+<Chip leadingIcon={{ name: 'filter-alt' }} trailingIcon={{ name: 'close' }} type='input' value='Input' selected /> 
+ 
+<Chip type='input' value='Input' selected disabled/> 
+<Chip leadingIcon={{ name: 'add' }} type='input' value='Input' selected disabled/> 
+<Chip trailingIcon={{ name: 'close' }} type='input' value='Input' selected disabled/> 
 <Chip leadingIcon={{ name: 'filter-alt' }} trailingIcon={{ name: 'close' }} type='input' value='Input' selected disabled/>`,
-      description: 'Input chip has both leading and trailing icon and can be used as a selectable chip',
+      description: 'chipDocumentation:example5-description',
     },
     {
-      name: 'Suggestion Chip',
+      name: 'chipDocumentation:example6-name',
       id: 'suggestion-chip',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -269,15 +271,15 @@ export const chipDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<Chip type='suggestion' value='Suggestion' />
-<Chip type='suggestion' value='Suggestion' elevated />
-
-<Chip type='suggestion' value='Suggestion' disabled />
+      code: `<Chip type='suggestion' value='Suggestion' /> 
+<Chip type='suggestion' value='Suggestion' elevated /> 
+ 
+<Chip type='suggestion' value='Suggestion' disabled /> 
 <Chip type='suggestion' value='Suggestion' elevated disabled />`,
-      description: 'Suggestion chip has no icon and can be used as a selectable chip',
+      description: 'chipDocumentation:example6-description',
     },
     {
-      name: 'Suggestion Chip - Selected',
+      name: 'chipDocumentation:example7-name',
       id: 'suggestion-chip-selected',
       component: (
         <Container disableGutters sx={flexStyle as never}>
@@ -291,50 +293,49 @@ export const chipDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<Chip type='suggestion' value='Suggestion' selected />
-<Chip type='suggestion' value='Suggestion' selected elevated />
-
-<Chip type='suggestion' value='Suggestion' selected disabled />
+      code: `<Chip type='suggestion' value='Suggestion' selected /> 
+<Chip type='suggestion' value='Suggestion' selected elevated /> 
+ 
+<Chip type='suggestion' value='Suggestion' selected disabled /> 
 <Chip type='suggestion' value='Suggestion' selected elevated disabled />`,
-      description: 'Suggestion chip has no icon and can be used as a selectable chip',
+      description: 'chipDocumentation:example7-description',
     },
   ],
 };
-
 export const chipIndex: HeadingProps = {
-  heading: 'Chip',
+  heading: 'chipDocumentation:mainHeading',
   links: [
     {
-      title: 'Assist Chip',
+      title: 'chipDocumentation:example1-name',
       link: '#assist-chip',
     },
     {
-      title: 'Filter Chip',
+      title: 'chipDocumentation:example2-name',
       link: '#filter-chip',
     },
     {
-      title: 'Filter Chip - Selected',
+      title: 'chipDocumentation:example3-name',
       link: '#filter-chip-selected',
     },
     {
-      title: 'Input Chip',
+      title: 'chipDocumentation:example4-name',
       link: '#input-chip',
     },
     {
-      title: 'Input Chip - Selected',
+      title: 'chipDocumentation:example5-name',
       link: '#input-chip-selected',
     },
     {
-      title: 'Suggestion Chip',
+      title: 'chipDocumentation:example6-name',
       link: '#suggestion-chip',
     },
     {
-      title: 'Suggestion Chip - Selected',
+      title: 'chipDocumentation:example7-name',
       link: '#suggestion-chip-selected',
     },
     {
       link: '#props',
-      title: 'Props',
+      title: 'content:props',
       components: [],
     },
   ],

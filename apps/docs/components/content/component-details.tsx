@@ -1,4 +1,4 @@
-import { Container, Typography } from 'lib';
+import { Container, LocalizedTypography } from 'lib';
 import { Source_Sans_Pro } from 'next/font/google';
 
 const source = Source_Sans_Pro({
@@ -19,12 +19,12 @@ const ComponentDetails = ({ mainHeading, heading, subTitle, mainDescription }: C
 
   return (
     <Container disableGutters sx={styles.container as never}>
-      {mainHeading ? <Typography.Headline style={styles.mainHeading}>{mainHeading}</Typography.Headline> : null}
+      {mainHeading ? <LocalizedTypography.Headline style={styles.mainHeading} localeKey={mainHeading} /> : null}
       {mainDescription ? (
-        <Typography.Headline style={styles.mainDescription}>{mainDescription}</Typography.Headline>
+        <LocalizedTypography.Headline style={styles.mainDescription} localeKey={mainDescription} />
       ) : null}
-      <Typography.Headline style={styles.heading}>{heading}</Typography.Headline>
-      {subTitle ? <Typography.Body style={styles.subTitle}>{subTitle}</Typography.Body> : null}
+      {heading ? <LocalizedTypography.Headline style={styles.heading} localeKey={heading} /> : null}
+      {subTitle ? <LocalizedTypography.Body style={styles.subTitle} localeKey={subTitle} /> : null}
     </Container>
   );
 };

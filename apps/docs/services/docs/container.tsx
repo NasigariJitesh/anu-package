@@ -1,13 +1,13 @@
 import { Container } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 export const containerDocumentation: ContentValues = {
-  mainHeading: 'Container',
-  mainDescription: 'Container helps you arrange your components clearly on the screen',
+  mainHeading: 'containerDocumentation:mainHeading',
+  mainDescription: 'containerDocumentation:mainDescription',
   examples: [
     {
-      name: 'Default',
+      name: 'containerDocumentation:example1-name',
       id: 'default',
       component: <Container width={800} maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
       code: "<Container width={800} maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
@@ -17,66 +17,71 @@ export const containerDocumentation: ContentValues = {
     {
       name: 'flexDirection',
       type: "'row' | 'row-reverse' | 'column' | 'column-reverse' (optional)",
-      description: 'The direction in which the children components are positioned',
+      description: 'containerDocumentation:property-flexDirection-description',
       defaultValue: "'column'",
     },
     {
       name: 'align',
       type: "'center' | 'flex-start' | 'flex-end' (optional)",
-      description: 'The alignment of all items on the cross axis',
+      description: 'containerDocumentation:property-align-description',
       defaultValue: "'flex-start'",
     },
     {
       name: 'justify',
-      description: 'The alignment of all items on the main axis.',
+      description: 'containerDocumentation:property-justify-description',
       type: "'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' (optional)",
       defaultValue: "'flex-start'",
     },
     {
       name: 'style',
-      description: 'The styles for the container component.',
-      type: 'StyleProp<ViewStyle> (optional)',
+      description: 'containerDocumentation:property-style-description',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'disableGutters',
-      description: 'If true, the left and right padding is removed.',
-      type: 'boolean (optional)',
+      description: 'containerDocumentation:property-disableGutters-description',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'fixed',
-      description: 'If true, sets the max-width to match the min-width of the current breakpoint.',
-      type: 'boolean (optional)',
+      description: 'containerDocumentation:property-fixed-description',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'width',
-      description: 'The width of the container in pixels or percentage.',
-      type: 'number | string (optional)',
+      description: 'containerDocumentation:property-width-description',
+      type: 'number | string',
+      optional: true,
     },
     {
       name: 'maxWidth',
-      description: 'The maximum width of the container in breakpoints, pixels or percentage.',
+      description: 'containerDocumentation:property-maxWidth-description',
       type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | number | string (optional)",
     },
     {
       name: 'sx',
-      description: 'The system prop that allows defining system overrides as well as additional CSS styles.',
-      type: 'Sx (optional)',
+      description: 'containerDocumentation:property-sx-description',
+      type: 'Sx',
+      optional: true,
     },
   ],
 };
 
 export const containerIndex: HeadingProps = {
-  heading: 'Container',
+  heading: 'containerDocumentation:mainHeading',
   links: [
     {
-      title: 'Default',
+      title: 'containerDocumentation:example1-name',
       link: '#default',
     },
     {
       link: '#props',
-      title: 'Props',
+      title: 'content:props',
       components: [],
     },
   ],

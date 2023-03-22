@@ -1,5 +1,5 @@
 import { useTheme } from 'anu/config';
-import { Container, FlatList, Typography } from 'anu/lib';
+import { Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
@@ -15,7 +15,6 @@ import { regularButtonIndex } from 'services/docs/regular-button';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
 import { textFieldIndex } from 'services/docs/text-field';
 import { typographyIndex } from 'services/docs/typography';
-import { translations } from 'services/localization';
 import { TextLink } from 'solito/link';
 
 const source = Source_Sans_Pro({
@@ -40,6 +39,8 @@ export interface HeadingProps {
 }
 
 const Group = (props: HeadingProps) => {
+  const { getTranslation } = useAnuLocalization();
+
   return (
     <FlatList
       contentContainerStyle={style.groupList}
@@ -48,7 +49,7 @@ const Group = (props: HeadingProps) => {
         return (
           <>
             <Typography.Title style={style.groupName}>
-              <TextLink href={item.link ?? '#'}>{item.title}</TextLink>
+              <TextLink href={item.link ?? '#'}>{getTranslation(item.title)}</TextLink>
             </Typography.Title>
             <Components links={item.components} />
           </>
@@ -86,8 +87,8 @@ const Components = (props: { links: ComponentLinks[] | undefined }) => {
 const Index = (props: HeadingProps) => {
   return (
     <>
-      <Typography.Body style={style.preHeading}>{translations('en', 'onThisPage')}</Typography.Body>
-      <Typography.Title style={style.heading}>{props.heading}</Typography.Title>
+      <LocalizedTypography.Body style={style.preHeading} localeKey='rightSideBar:onThisPage' />
+      <LocalizedTypography.Title style={style.heading} localeKey={props.heading} />
       <Group {...props} />
     </>
   );
