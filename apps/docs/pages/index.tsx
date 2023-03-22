@@ -55,9 +55,8 @@ const Home = () => {
   const sx = useSx();
 
   const style = styles(theme, height);
-
   return (
-    <>
+    <Container disableGutters sx={{ width: '100%', height: height - 70, position: 'relative' }}>
       {isDarkTheme ? <ParticlesDark /> : <ParticlesLight />}
       <Container style={style.container}>
         <Container disableGutters flexDirection='column' justify='center' align='center' style={sx(style.center)}>
@@ -105,7 +104,7 @@ const Home = () => {
           <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
         </Container>
       </Container>
-    </>
+    </Container>
   );
 };
 
@@ -114,7 +113,7 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
     container: {
       position: 'absolute',
       width: '100%',
-      height: `${(height || 0) - 70}px`,
+      height: '100%',
       overflow: 'scroll',
     },
 

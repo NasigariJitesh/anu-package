@@ -10,5 +10,19 @@
   "home:list1-item2": "TypeScript",
   "home:list2-heading": "Supported Design Systems",
   "home:list2-item1": "Material design",
-  "home:button:getting-started": "Getting started"
+  "home:button:getting-started": "Getting started",
+
+  "footer:image-caption": "Component library for React Native and React Native Web",
+  "footer:list1-heading": "Releases",
+
+  "footer:list2-heading": "Links",
+  "footer:list2-item1-title": "Getting Started",
+  "footer:list2-item2-title": "Configuration",
+  "footer:list2-item3-title": "Theming",
+  "footer:list2-item4-title": "Components",
+  "footer:list3-heading": "Community",
+  "footer:list3-item1-title": "Discord",
+  "footer:list3-item2-title": "Github",
+  "footer:list3-item3-title": "Bug Report",
+  "footer:bottomLine": "Made with ❤️\nby MockTheta"
 }
