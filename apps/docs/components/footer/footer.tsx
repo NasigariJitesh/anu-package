@@ -4,6 +4,9 @@ import { Container, LocalizedTypography, Typography, useAnuLocalization } from '
 import { DripsyFinalTheme, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
+import Image from 'next/image';
+import CanadaFlag from 'public/img/canada.png';
+import IndiaFlag from 'public/img/india.png';
 import React from 'react';
 import { useMenuContext } from 'screens/common/provider';
 import { TextLink } from 'solito/link';
@@ -83,6 +86,10 @@ const Footer = (props: FooterProps) => {
       </Container>
       <Container disableGutters style={sx(style.bottomContainer)}>
         <LocalizedTypography.Body style={sx(style.bottomLine)} localeKey='footer:bottomLine' />
+        <Image alt='india-flag' src={IndiaFlag} height={16} />
+        <Typography.Body style={sx(style.bottomLine)}> & </Typography.Body>
+
+        <Image alt='canada-flag' src={CanadaFlag} height={16} />
       </Container>
     </footer>
   );
@@ -96,7 +103,10 @@ const styles = (width: number, theme: DripsyFinalTheme) => {
     bottomContainer: {
       width: '100%',
       alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'row' as const,
       backgroundColor: theme.colors?.$surface as never,
+      paddingVertical: 30,
     },
 
     footerContainer: {
@@ -159,7 +169,6 @@ const styles = (width: number, theme: DripsyFinalTheme) => {
       fontWeight: '400',
       fontFamily: source.style.fontFamily,
       fontSize: 16,
-      marginVertical: 30,
       lineHeight: 22,
       color: theme.colors?.$onSurface as never,
       textAlign: 'center' as const,
