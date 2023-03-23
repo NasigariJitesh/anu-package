@@ -8,9 +8,6 @@ import { ImageAvatarProps } from '../../types';
 import { getImageAvatarStyle } from '../../utils';
 import placeHolder from '../../utils/placeholder.png';
 
-const defaultImageProps: ImageAvatarProps = {
-  source: {},
-};
 /**
  * Component for Image avatar
  *
@@ -19,7 +16,7 @@ const defaultImageProps: ImageAvatarProps = {
 const ImageAvatar = (props: ImageAvatarProps) => {
   const [error, setError] = useState(false);
   const theme = useTheme();
-  const finalProps: ImageAvatarProps = { ...defaultImageProps, ...props };
+  const finalProps: ImageAvatarProps = { ...props };
 
   const { size, variant, alt, source, ...otherProps } = finalProps;
 
