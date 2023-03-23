@@ -51,7 +51,6 @@ const ImageAvatar = (props: ImageAvatarProps) => {
   };
 
   if (error) {
-    console.log('native error');
     return (
       <Image
         alt={alt ?? ''}
