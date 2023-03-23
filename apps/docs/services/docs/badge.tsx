@@ -1,6 +1,6 @@
 import { Badge, Container, Icon } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const flexStyle = {
   flexWrap: 'wrap',
@@ -18,61 +18,66 @@ const style = {
 };
 
 export const badgeDocumentation: ContentValues = {
-  mainHeading: 'Badge',
-  mainDescription:
-    'Badges are used to display a small amount of information, typically a number or a short status message, on top of an icon or avatar.',
+  mainHeading: 'badgeDocumentation:mainHeading',
+  mainDescription: 'badgeDocumentation:mainDescription',
   properties: [
     {
       name: 'value',
       type: 'string | number',
-      description: 'The content of the badge',
+      description: 'badgeDocumentation:property-value-description',
     },
     {
       name: 'showZero',
-      type: 'boolean (optional)',
-      description: 'whether the badge should be displayed when value is zero',
+      type: 'boolean',
+      optional: true,
+      description: 'badgeDocumentation:property-showZero-description',
       defaultValue: 'false',
     },
     {
       name: 'maxValue',
-      type: 'boolean (optional)',
-      description: 'Beyond this, the content will be shown as + appended to max value ',
+      type: 'boolean',
+      optional: true,
+      description: 'badgeDocumentation:property-maxValue-description',
       defaultValue: '100',
     },
 
     {
       name: 'overlap',
-      type: "'circular' | 'rectangular' (optional)",
-      description: 'The shape of the overlaying container of the badge.',
+      type: "'circular' | 'rectangular'",
+      optional: true,
+      description: 'badgeDocumentation:property-overlap-description',
       defaultValue: 'rectangular',
     },
     {
       name: 'position',
-      description: 'The position of the badge.',
+      description: 'badgeDocumentation:property-position-description',
       type: " 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' (optional)",
       defaultValue: 'topRight',
     },
     {
       name: 'contentStyle',
-      description: 'The styles for the badge content.',
-      type: 'StyleProp<TextStyle> (optional)',
+      description: 'badgeDocumentation:property-contentStyle-description',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'style',
-      description: 'The styles for the badge.',
-      type: 'StyleProp<ViewStyle> (optional)',
+      description: 'badgeDocumentation:property-style-description',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'sx',
-      description: 'The extended styles for the badge.',
-      type: 'Sx (optional)',
+      description: 'badgeDocumentation:property-sx-description',
+      type: 'Sx',
+      optional: true,
     },
   ],
   examples: [
     {
-      name: 'Notification Badge',
+      name: 'badgeDocumentation:example1-name',
       id: 'notification',
-      description: 'Notification badges are used to provide a visual indicator of new or updated information.',
+      description: 'badgeDocumentation:example1-description',
       component: (
         <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
           <Container disableGutters style={style}>
@@ -103,9 +108,9 @@ export const badgeDocumentation: ContentValues = {
 </Badge>`,
     },
     {
-      name: 'Status Badge',
+      name: 'badgeDocumentation:example2-name',
       id: 'status',
-      description: 'Status badges are used to provide a visual indicator of status of a component or information.',
+      description: 'badgeDocumentation:example2-description',
       component: (
         <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
           <Badge value='new'>
@@ -118,7 +123,7 @@ export const badgeDocumentation: ContentValues = {
 </Badge>`,
     },
     {
-      name: 'Badge - with Position',
+      name: 'badgeDocumentation:example3-name',
       id: 'position',
       component: (
         <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
@@ -162,23 +167,23 @@ export const badgeDocumentation: ContentValues = {
 };
 
 export const badgeIndex: HeadingProps = {
-  heading: 'Badge',
+  heading: 'badgeDocumentation:mainHeading',
   links: [
     {
-      title: 'Notification Badge',
+      title: 'badgeDocumentation:example1-name',
       link: '#notification',
     },
     {
-      title: 'Status Badge',
+      title: 'badgeDocumentation:example2-name',
       link: '#status',
     },
     {
-      title: 'Badge - with Position',
+      title: 'badgeDocumentation:example3-name',
       link: '#position',
     },
     {
       link: '#props',
-      title: 'Props',
+      title: 'content:props',
       components: [],
     },
   ],

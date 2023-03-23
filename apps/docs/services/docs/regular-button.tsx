@@ -1,6 +1,6 @@
 import { Button, Container } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
@@ -17,47 +17,50 @@ const flexStyle = {
 } as const;
 
 export const regularButtonDocumentation: ContentValues = {
-  mainHeading: 'Button',
-  mainDescription: 'Buttons help users navigate, interact, and engage with websites and apps.',
+  mainHeading: 'regularButtonDocumentation:mainHeading',
+  mainDescription: 'regularButtonDocumentation:mainDescription',
 
-  heading: 'Common Buttons',
-  subTitle:
-    'Buttons help people initiate actions, from sending an email, to sharing a document, to liking a post.There are five types of regular buttons: elevated, filled, filled tonal, outlined, and text.',
+  heading: 'regularButtonDocumentation:heading',
+  subTitle: 'regularButtonDocumentation:subTitle',
   properties: [
     {
       name: 'title',
       type: 'string',
-      description: 'The label/title for the regular button',
+      description: 'regularButtonDocumentation:property-title-description',
     },
     {
       name: 'type',
       type: "'elevated' | 'filled' | 'tonal' | 'outlined' | 'text'",
-      description: 'The type of the regular button',
+      description: 'regularButtonDocumentation:property-type-description',
     },
     {
       name: 'icon',
-      description: 'The icon component or the icon props for material icons.',
-      type: 'IconType | ReactElement (optional)',
+      description: 'regularButtonDocumentation:property-icon-description',
+      type: 'IconType | ReactElement',
+      optional: true,
     },
     {
       name: 'containerStyle',
-      description: 'The styles for the regular button component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      description: 'regularButtonDocumentation:property-containerStyle-description',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'labelStyle',
-      description: 'The styles for the label of the button.',
-      type: 'StyleProp<TextStyle> (optional)',
+      description: 'regularButtonDocumentation:property-labelStyle-description',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'pressableProps',
-      description: 'The properties of the pressable component of react native (except sx)',
-      type: 'pressableProps (optional)',
+      description: 'regularButtonDocumentation:property-pressableProps-description',
+      type: 'pressableProps',
+      optional: true,
     },
   ],
   examples: [
     {
-      name: 'Elevated buttons',
+      name: 'regularButtonDocumentation:example1-name',
       id: 'elevated-buttons',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -73,7 +76,7 @@ export const regularButtonDocumentation: ContentValues = {
 <Button.Elevated icon={{ name: 'add' }} title='Disabled' disabled />`,
     },
     {
-      name: 'Filled buttons',
+      name: 'regularButtonDocumentation:example2-name',
       id: 'filled-buttons',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -90,7 +93,7 @@ export const regularButtonDocumentation: ContentValues = {
     },
 
     {
-      name: 'Filled tonal buttons',
+      name: 'regularButtonDocumentation:example3-name',
       id: 'filled-tonal-buttons',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -107,7 +110,7 @@ export const regularButtonDocumentation: ContentValues = {
     },
 
     {
-      name: 'Outlined buttons',
+      name: 'regularButtonDocumentation:example4-name',
       id: 'outlined-buttons',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -124,7 +127,7 @@ export const regularButtonDocumentation: ContentValues = {
     },
 
     {
-      name: 'Text buttons',
+      name: 'regularButtonDocumentation:example5-name',
       id: 'text-buttons',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -142,35 +145,35 @@ export const regularButtonDocumentation: ContentValues = {
   ],
 };
 export const regularButtonIndex: HeadingProps = {
-  heading: 'Common Button',
+  heading: 'regularButtonDocumentation:heading',
   links: [
     {
-      title: 'Elevated buttons',
+      title: 'regularButtonDocumentation:example1-name',
       link: '#elevated-buttons',
     },
     {
-      title: 'Filled buttons',
+      title: 'regularButtonDocumentation:example2-name',
       link: '#filled-buttons',
     },
 
     {
-      title: 'Filled tonal buttons',
+      title: 'regularButtonDocumentation:example3-name',
       link: '#filled-tonal-buttons',
     },
 
     {
-      title: 'Outlined buttons',
+      title: 'regularButtonDocumentation:example4-name',
       link: '#outlined-buttons',
     },
 
     {
-      title: 'Text buttons',
+      title: 'regularButtonDocumentation:example5-name',
       link: '#text-buttons',
     },
 
     {
       link: '#props',
-      title: 'Props',
+      title: 'content:props',
     },
   ],
 };
