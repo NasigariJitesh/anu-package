@@ -51,7 +51,7 @@ const Home = () => {
   const { isDarkTheme } = useMenuContext();
   const theme = useTheme();
   const { getTranslation } = useAnuLocalization();
-  const { height } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
   const sx = useSx();
 
   const style = styles(theme, height);
@@ -72,7 +72,7 @@ const Home = () => {
             disableGutters
             sx={{
               flexDirection: ['column', 'column', 'column', 'row', 'row'],
-              width: '100%',
+              width: width,
               justifyContent: ['center', 'center', 'center', 'center', 'center'],
             }}
           >
@@ -162,7 +162,6 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
 
     listAndHeadingContainer: {
       flexDirection: ['column', 'column', 'row', 'row', 'row'] as never,
-      marginHorizontal: [0, 0, 35, 35, 35] as never,
       alignSelf: 'center',
     },
 
@@ -176,6 +175,7 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
       marginHorizontal: 10,
       fontSize: [16, 16, 22, 22, 22] as never,
       opacity: 0.7,
+      textAlign: 'center' as const,
     },
 
     listItem: {
