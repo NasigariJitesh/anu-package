@@ -1,10 +1,9 @@
 import { Sx } from 'dripsy';
 import { ContainerProps, Icon, Image, ImageProps } from 'lib';
 import { ReactElement } from 'react';
-import { StyleProp } from 'react-native';
-import { ViewStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
+import { StyleProp, ViewStyle } from 'react-native';
 
-import Avatar from '../components/avatar/avatar';
+import Avatar from '../components/avatar';
 
 type IconType = ReactElement<typeof Icon>;
 type ImageType = ReactElement<typeof Image>;

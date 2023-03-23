@@ -1,9 +1,5 @@
-import { ChildrenAvatarProps, LetterAvatarProps } from './../../types/avatar';
+import { ChildrenAvatarProps, LetterAvatarProps } from './../../types';
 
-export const defaultLetterProps: LetterAvatarProps = {
-  name: 'Anu',
-};
+export const defaultLetterProps: Omit<LetterAvatarProps, 'name'> = {};
 
-export const defaultChildrenProps: ChildrenAvatarProps = {
-  children: 'AN',
-};
+export const defaultChildrenProps: Omit<ChildrenAvatarProps, 'children'> = {};
