@@ -85,7 +85,7 @@ const Home = () => {
               <Typography.Body style={style.code}>npm install @anu/material-ui</Typography.Body>
             </Container>
             <Container>
-              <Link href={'/components'}>
+              <Link href={'/getting-started'}>
                 <Button.Filled title={getTranslation('home:button:getting-started')} />
               </Link>
             </Container>

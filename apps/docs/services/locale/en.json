@@ -240,5 +240,20 @@
   "textFieldDocumentation:example2-name": "Filled Text Field - with Icons",
   "textFieldDocumentation:example3-name": "Outlined Text Field",
   "textFieldDocumentation:example4-name": "Outlined Text Field - with Icons",
-  "textFieldDocumentation:example5-name": "Error text field"
+  "textFieldDocumentation:example5-name": "Error text field",
+
+  "getting-started:mainHeading": "Getting Started",
+  "getting-started:mainDescription": "You can follow the steps listed below to use Anu with your React native or React native web application.",
+  "getting-started:step1:title": "Install Aṇu",
+  "getting-started:step2:title": "Transpile module",
+  "getting-started:step2:description": "Add “anu” to the transpile packages in next.config.js file",
+  "getting-started:step3:title": "Provider",
+  "getting-started:step3:description": "Import the provider into App.tsx file.",
+  "getting-started:step4:title": "For Next.js",
+  "getting-started:step4:description": "You need to follow this step only if you are using Next.js. If not, feel free to skip these steps.",
+  "getting-started:step4.1:title": "1. Add “anu” to the transpile packages in next.config.js file.",
+  "getting-started:step4.2:title": "2. Import the provider into _app.tsx file.",
+  "getting-started:step4.3:title": "3. Create a file in public/fonts directory called fonts.css and add the following code.",
+  "getting-started:step4.4:title": "4. Go to node_modules/react-native-vector-icons/Fonts and copy the MaterialIcons.ttf into your next/public/font directory.",
+  "getting-started:step4.5:title": "5. Now import font.css into _app.tsx file, on the top of all imports."
 }
