@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
-import { Container, FlatList, Icon, LocalizedTypography } from 'anu/lib';
+import { Container, FlatList, Icon, LocalizedTypography, useAnuLocalization } from 'anu/lib';
 import ComponentDetails from 'components/content/component-details';
 import SEO from 'components/seo';
 import { DripsyFinalTheme, ScrollView, useSx } from 'dripsy';
@@ -122,6 +122,7 @@ const CodeArea = (props: { code: string }) => {
 const Step = (props: StepProps) => {
   const theme = useTheme();
   const sx = useSx();
+  const { getTranslation } = useAnuLocalization();
 
   const styles = getStyles(theme);
 
@@ -129,8 +130,14 @@ const Step = (props: StepProps) => {
     <Container disableGutters nativeID={props.id} style={styles.examplesContainer}>
       <LocalizedTypography.Headline style={sx(styles.stepTitle)} localeKey={props.title} />
       {props.description ? (
-        <LocalizedTypography.Body style={sx(styles.stepDescription)} localeKey={props.description} />
+        <div
+          style={sx(styles.stepDescription)}
+          dangerouslySetInnerHTML={{ __html: getTranslation(props.description) }}
+        />
       ) : null}
+      {/* {props.description ? (
+        <LocalizedTypography.Body style={sx(styles.stepDescription)} localeKey={props.description} />
+      ) : null} */}
       <CodeArea code={props.code} />
     </Container>
   );
@@ -139,6 +146,7 @@ const Step = (props: StepProps) => {
 const ForNextJS = () => {
   const theme = useTheme();
   const sx = useSx();
+  const { getTranslation } = useAnuLocalization();
 
   const styles = getStyles(theme);
 
@@ -195,12 +203,18 @@ export default App;`,
   return (
     <Container nativeID='with-next' disableGutters style={styles.examplesContainer}>
       <LocalizedTypography.Headline style={sx(styles.stepTitle)} localeKey={'getting-started:step4:title'} />
-      <LocalizedTypography.Body style={sx(styles.stepDescription)} localeKey={'getting-started:step4:description'} />
+      <LocalizedTypography.Body
+        style={sx({ ...styles.stepDescription })}
+        localeKey={'getting-started:step4:description'}
+      />
       <FlatList
         renderItem={({ item }) => {
           return (
-            <Container disableGutters>
-              <LocalizedTypography.Body style={styles.stepDescription} localeKey={item.title} />
+            <Container disableGutters sx={{ marginVertical: '15px' }}>
+              <div
+                style={sx(styles.stepDescription)}
+                dangerouslySetInnerHTML={{ __html: getTranslation(item.title) }}
+              />
               {item.code ? <CodeArea code={item.code} /> : null}
             </Container>
           );
@@ -226,21 +240,6 @@ const GettingStarted = () => {
             mainDescription={'getting-started:mainDescription'}
           />
           <Step id='installation' code='npm install anu' title='getting-started:step1:title' />
-          {/* <Step
-          id='transpile-package'
-          description='getting-started:step2:description'
-          code={`const nextConfig = withExpo({
-  transpilePackages: [
-    'react-native',
-    'react-native-web',
-    'expo',
-    'anu',
-    'react-native-vector-icons',
-    // Add more React Native / Expo packages here...
-  ]
-});`}
-          title='getting-started:step2:title'
-        /> */}
           <Step
             id='provider'
             description='getting-started:step3:description'
@@ -308,6 +307,7 @@ const getStyles = ({ colors }: DripsyFinalTheme, height?: number) => {
       fontWeight: '600',
       lineHeight: 22,
       maxWidth: '750px',
+      marginBottom: '15px',
     },
 
     stepDescription: {
@@ -316,8 +316,7 @@ const getStyles = ({ colors }: DripsyFinalTheme, height?: number) => {
       width: ['90vw', '90vw', '550px', '600px', '750px'] as never,
       fontSize: 16,
       fontWeight: '400',
-      lineHeight: 20,
-      marginTop: 15,
+      lineHeight: '20px',
     },
   } as const;
   return styles;
