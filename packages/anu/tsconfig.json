@@ -10,5 +10,5 @@
     }
   },
   "exclude": ["node_modules"],
-  "include": ["globals.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["globals.d.ts", "index.d.ts", "**/*.ts", "**/*.tsx"]
 }

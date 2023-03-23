@@ -6,40 +6,24 @@ import { ImageErrorEventData, ImageLoadEventData, NativeSyntheticEvent } from 'r
 
 import { ImageAvatarProps } from '../../types';
 import { getImageAvatarStyle } from '../../utils';
-import { defaultImageProps } from './default';
+import placeHolder from '../../utils/placeholder.png';
 
+const defaultImageProps: ImageAvatarProps = {
+  source: {},
+};
 /**
  * Component for Image avatar
  *
  * @param {ImageAvatarProps} props - all the properties related to the image avatar component
  */
 const ImageAvatar = (props: ImageAvatarProps) => {
-  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const theme = useTheme();
   const finalProps: ImageAvatarProps = { ...defaultImageProps, ...props };
 
-  const { size, variant, alt, ...otherProps } = finalProps;
-
-  const { source } = otherProps;
+  const { size, variant, alt, source, ...otherProps } = finalProps;
 
   const { imageStyle } = getImageAvatarStyle(finalProps, theme);
-
-  /**
-   * Handler for the onLoadStart callback of the image
-   */
-  const onLoadStartHandler = () => {
-    setIsLoading(true);
-    if (finalProps.onLoadStart) finalProps.onLoadStart();
-  };
-
-  /**
-   * Handler for the onLoadEnd callback of the image
-   */
-  const onLoadEndHandler = () => {
-    setIsLoading(false);
-    if (finalProps.onLoadEnd) finalProps.onLoadEnd();
-  };
 
   /**
    * Handler for the onError callback of the image
@@ -66,18 +50,25 @@ const ImageAvatar = (props: ImageAvatarProps) => {
    */
   const onLoadHandler = (event: NativeSyntheticEvent<ImageLoadEventData>) => {
     setError(false);
-    setIsLoading(false);
     if (finalProps.onLoad) finalProps.onLoad(event);
   };
+
+  if (error)
+    return (
+      <Image
+        alt={alt ?? ''}
+        {...otherProps}
+        source={{ uri: placeHolder.src }}
+        style={getCombinedStylesForImage(imageStyle, finalProps.style)}
+      />
+    );
 
   return (
     <Image
       alt={alt ?? ''}
       {...otherProps}
-      source={error || isLoading ? defaultImageProps.source : source}
+      source={source}
       style={getCombinedStylesForImage(imageStyle, finalProps.style)}
-      onLoadStart={onLoadStartHandler}
-      onLoadEnd={onLoadEndHandler}
       onError={onErrorHandler}
       onPartialLoad={onPartialLoadHandler}
       onLoad={onLoadHandler}

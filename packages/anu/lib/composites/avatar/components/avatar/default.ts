@@ -1,13 +1,4 @@
-/* eslint-disable unicorn/prefer-module */
-/* eslint-disable @typescript-eslint/no-var-requires */
-import { ChildrenAvatarProps, ImageAvatarProps, LetterAvatarProps } from './../../types/avatar';
-
-const Placeholder = require('../../utils/placeholder.png');
-
-export const defaultImageProps: ImageAvatarProps = {
-  source: Placeholder,
-  alt: 'avatar',
-};
+import { ChildrenAvatarProps, LetterAvatarProps } from './../../types/avatar';
 
 export const defaultLetterProps: LetterAvatarProps = {
   name: 'Anu',

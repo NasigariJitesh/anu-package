@@ -7,6 +7,7 @@ import renderer from 'react-test-renderer';
 
 import Avatar from '../components';
 import ChildrenAvatar from '../components/avatar/child-avatar';
+import placeholder from '../utils/placeholder.png';
 
 describe('Testing for Children Avatar Rounded', () => {
   const name = 'NJ';
@@ -20,7 +21,7 @@ describe('Testing for Children Avatar Rounded', () => {
         </DripsyApp>
       </ChildrenAvatar>
       <ChildrenAvatar size='small'>
-        <Image alt='test' source={require('../utils/placeholder.png')} />
+        <Image alt='test' source={{ uri: placeholder.src }} />
       </ChildrenAvatar>
     </DripsyApp>,
   );
@@ -59,7 +60,7 @@ describe('Testing for Children Avatar Circle', () => {
         </DripsyApp>
       </ChildrenAvatar>
       <ChildrenAvatar size='small' variant='circle'>
-        <Image alt='test' source={require('../utils/placeholder.png')} />
+        <Image alt='test' source={{ uri: placeholder.src }} />
       </ChildrenAvatar>
     </DripsyApp>,
   );

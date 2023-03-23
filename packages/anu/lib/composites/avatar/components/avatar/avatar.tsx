@@ -11,13 +11,11 @@ import LetterAvatar from './letter-avatar';
  * @param {AvatarProps} props - all the properties related to the container component
  */
 const Avatar = (props: AvatarProps) => {
-  return 'source' in props ? (
-    <ImageAvatar {...(props as ImageAvatarProps)} />
-  ) : 'name' in props ? (
-    <LetterAvatar {...(props as LetterAvatarProps)} />
-  ) : (
-    <ChildrenAvatar {...props} />
-  );
+  if ('source' in props) return <ImageAvatar {...(props as ImageAvatarProps)} />;
+
+  if ('children' in props) return <ChildrenAvatar {...props} />;
+
+  return <LetterAvatar {...(props as LetterAvatarProps)} />;
 };
 
 export default Avatar;

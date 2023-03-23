@@ -1,23 +1,14 @@
-/* eslint-disable no-secrets/no-secrets */
-/* eslint-disable unicorn/prefer-module */
-import { Icon, Image, LocalizedTypography } from 'anu/lib';
+import { Container } from 'anu/lib';
 import Avatar from 'anu/lib/composites/avatar/';
-import AvatarGroup from 'anu/lib/composites/avatar/components/avatar/avatar-group';
+import Image from 'public/img/logo_light_theme.svg';
 
 /**
  *
  */
 export default function Example() {
   return (
-    <AvatarGroup max={5}>
-      <Avatar name='Jitesh' size='large' />
-      <Avatar name='Jitesh' />
-      <Avatar name='Jitesh' />
-      <Avatar name='Jitesh' />
-      <Avatar name='Jitesh' />
-      <Avatar name='Jitesh' />
-      <Avatar name='Jitesh' />
-      <Avatar name='Jitesh' />
-    </AvatarGroup>
+    <Container sx={{ backgroundColor: 'red', height: 250, width: 250, margin: 10, padding: 10 }}>
+      <Avatar source={{ uri: Image.src }} size='large' />
+    </Container>
   );
 }
