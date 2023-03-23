@@ -1,6 +1,6 @@
 import { ReactChildren } from 'anu/common/types';
 import { useTheme } from 'anu/config';
-import { Container, Typography } from 'anu/lib';
+import { Container, LocalizedTypography } from 'anu/lib';
 import { DripsyFinalTheme, ScrollView } from 'dripsy';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -37,9 +37,9 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
   const renderExample = (example: Example, index: number) => {
     return (
       <Container nativeID={example.id} key={index} disableGutters style={styles.examplesContainer as never}>
-        <Typography.Headline style={styles.name}>{example.name}</Typography.Headline>
+        <LocalizedTypography.Headline style={styles.name} localeKey={example.name} />
         {example.description ? (
-          <Typography.Body style={styles.description}>{example.description}</Typography.Body>
+          <LocalizedTypography.Body style={styles.description} localeKey={example.description} />
         ) : null}
 
         <Container disableGutters sx={styles.examplesComponentContainer as never}>

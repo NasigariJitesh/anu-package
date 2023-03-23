@@ -2,6 +2,11 @@ const { withExpo } = require('@expo/next-adapter');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withExpo({
+  i18n: {
+    locales: ['en-US', 'fr', 'en'],
+    defaultLocale: 'en',
+  },
+
   reactStrictMode: true,
   swcMinify: true,
   transpilePackages: [
@@ -30,7 +35,7 @@ const nextConfig = withExpo({
   async redirects() {
     return [
       {
-        source: '/',
+        source: '/components',
         destination: '/components/badge',
         permanent: false,
       },

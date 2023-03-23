@@ -1,20 +1,19 @@
 import { Container, Typography } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
 };
 
 export const typographyDocumentation: ContentValues = {
-  mainHeading: 'Typography',
-  mainDescription:
-    'Typography is used to arrange the typefaces to create a visually appealing and effective communication design.',
+  mainHeading: 'typographyDocumentation:mainHeading',
+  mainDescription: 'typographyDocumentation:mainDescription',
   examples: [
     {
-      name: 'Display',
+      name: 'typographyDocumentation:example1-name',
       id: 'display',
-      description: 'Displays are often used for large, attention-grabbing headlines or titles.',
+      description: 'typographyDocumentation:example1-description',
       component: (
         <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
           <Typography.Display style={style} size='large'>
@@ -33,9 +32,9 @@ export const typographyDocumentation: ContentValues = {
 <Typography.Display size='small'>d3. Display</Typography.Display>`,
     },
     {
-      name: 'Headline',
+      name: 'typographyDocumentation:example2-name',
       id: 'headline',
-      description: 'Headlines in graphic design are typically used for the main title or headline.',
+      description: 'typographyDocumentation:example2-description',
       component: (
         <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
           <Typography.Headline style={style} size='large'>
@@ -54,9 +53,9 @@ export const typographyDocumentation: ContentValues = {
 <Typography.Headline size='small'>d3. Headline</Typography.Headline>`,
     },
     {
-      name: 'Title',
+      name: 'typographyDocumentation:example3-name',
       id: 'title',
-      description: '',
+      description: 'typographyDocumentation:example3-description',
       component: (
         <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
           <Typography.Title style={style} size='large'>
@@ -75,9 +74,9 @@ export const typographyDocumentation: ContentValues = {
 <Typography.Title size='small'>t3. Title</Typography.Title>`,
     },
     {
-      name: 'Body',
+      name: 'typographyDocumentation:example4-name',
       id: 'body',
-      description: '',
+      description: 'typographyDocumentation:example4-description',
       component: (
         <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
           <Typography.Body style={style} size='large'>
@@ -96,9 +95,9 @@ export const typographyDocumentation: ContentValues = {
 <Typography.Body size='small'>b3. Body</Typography.Body>`,
     },
     {
-      name: 'Label',
+      name: 'typographyDocumentation:example5-name',
       id: 'label',
-      description: '',
+      description: 'typographyDocumentation:example5-description',
       component: (
         <Container disableGutters flexDirection='column' align='flex-start' justify='space-between'>
           <Typography.Label style={style} size='large'>
@@ -121,63 +120,64 @@ export const typographyDocumentation: ContentValues = {
     {
       name: 'children',
       type: 'JSX.Element',
-      description: 'Content that needs to be displayed',
+      description: 'typographyDocumentation:property-children-description',
     },
     {
       name: 'size',
       type: "'large' | 'medium' | 'small' (optional)",
-      description: 'The size of the typography component',
+      description: 'typographyDocumentation:property-size-description',
       defaultValue: "'medium'",
     },
     {
       name: 'component',
-      description: 'The type of HTML component that needs to be rendered',
+      description: 'typographyDocumentation:property-component-description',
       type: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' (optional)",
     },
     {
       name: 'align',
-      description: 'How to align the text of a typography component',
+      description: 'typographyDocumentation:property-align-description',
       type: "'center' | 'auto' | 'justify' | 'left' | 'right' (optional)",
     },
     {
       name: 'style',
-      description: 'The styles for the typography component',
-      type: 'StyleProp<TextStyle> (optional)',
+      description: 'typographyDocumentation:property-style-description',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'htmlFor',
-      description: 'Only for Label. This can be used as "for" property in label component for web',
+      description: 'typographyDocumentation:property-htmlFor-description',
       type: 'string',
     },
   ],
 };
 
 export const typographyIndex: HeadingProps = {
-  heading: 'Typography',
+  heading: 'typographyDocumentation:mainHeading',
   links: [
     {
-      title: 'Display',
+      title: 'typographyDocumentation:example1-name',
       link: '#display',
     },
     {
-      title: 'Headline',
+      title: 'typographyDocumentation:example2-name',
       link: '#headline',
     },
     {
-      title: 'Title',
+      title: 'typographyDocumentation:example3-name',
       link: '#title',
     },
     {
-      title: 'Body',
+      title: 'typographyDocumentation:example4-name',
       link: '#body',
     },
     {
-      title: 'Label',
+      title: 'typographyDocumentation:example5-name',
       link: '#label',
     },
     {
       link: '#props',
-      title: 'Props',
+      title: 'content:props',
       components: [],
     },
   ],

@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Container } from 'anu/lib';
 import { Radio, RadioButtonGroup } from 'anu/lib';
+import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { ContentValues } from 'src/sections/content';
 
 const style = {
   margin: 15,
@@ -18,66 +18,73 @@ const flexStyle = {
 } as const;
 
 export const radioDocumentation: ContentValues = {
-  mainHeading: 'Radio',
-
-  mainDescription: 'Radio buttons allow users to select one option from a set.',
+  mainHeading: 'radioDocumentation:mainHeading',
+  mainDescription: 'radioDocumentation:mainDescription',
   properties: [
     {
       name: 'id',
-      description: 'Id of the radio button item.',
+      description: 'radioDocumentation:property-id-description',
       type: 'string',
     },
     {
       name: 'selected',
-      description: 'Id of the selected radio button.',
-      type: 'string (optional)',
+      description: 'radioDocumentation:property-selected-description',
+      type: 'string',
+      optional: true,
     },
     {
       name: 'label',
-      description: 'The label to display with the radio button.',
-      type: 'string (optional)',
+      description: 'radioDocumentation:property-label-description',
+      type: 'string',
+      optional: true,
     },
     {
       name: 'labelPlacement',
-      description: 'Position where the label should be placed.',
+      description: 'radioDocumentation:property-labelPlacement-description',
       type: "'left' | 'right' | 'top' | 'bottom' (optional)",
       defaultValue: 'right',
     },
     {
       name: 'disabled',
-      description: 'If true, the component is disabled.',
-      type: 'boolean (optional)',
+      description: 'radioDocumentation:property-disabled-description',
+      type: 'boolean',
+      optional: true,
       defaultValue: 'false',
     },
     {
       name: 'color',
-      description: 'The color of the radio button component.',
-      type: 'string (optional)',
+      description: 'radioDocumentation:property-color-description',
+      type: 'string',
+      optional: true,
     },
     {
       name: 'style',
-      description: 'The styles for the radio button component.',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles (optional)',
+      description: 'radioDocumentation:property-style-description',
+      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      optional: true,
     },
     {
       name: 'labelStyle',
-      description: 'The styles for the label of the radio button.',
-      type: 'StyleProp<TextStyle> (optional)',
+      description: 'radioDocumentation:property-labelStyle-description',
+      type: 'StyleProp<TextStyle>',
+      optional: true,
     },
     {
       name: 'containerStyle',
-      description: 'The styles for the container of the radio button.',
-      type: 'StyleProp<ViewStyle> (optional)',
+      description: 'radioDocumentation:property-containerStyle-description',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'onPress',
-      description: 'The callback when there is a press or click on the radio button.',
-      type: '(id: string) => void (optional)',
+      description: 'radioDocumentation:property-onPress-description',
+      type: '(id: string) => void',
+      optional: true,
     },
   ],
   examples: [
     {
-      name: 'Default',
+      name: 'radioDocumentation:example1-name',
       id: 'default',
       code: `<Radio id='basic' />
 <Radio id='disabled' disabled />
@@ -93,7 +100,7 @@ export const radioDocumentation: ContentValues = {
       ),
     },
     {
-      name: 'Radio Button - with Label',
+      name: 'radioDocumentation:example2-name',
       id: 'radio-button-label',
       code: `<Radio id='label' label='Label' />
 <Radio id='labelLeft' label='Left' labelPlacement='left' />
@@ -111,12 +118,13 @@ export const radioDocumentation: ContentValues = {
       ),
     },
     {
-      name: 'Radio Button - Group',
+      name: 'radioDocumentation:example3-name',
       id: 'radio-button-group',
+      // eslint-disable-next-line no-secrets/no-secrets
       code: `<RadioButtonGroup flexDirection='row'>
-  <Radio id='button1' label='Button 1' />
-  <Radio id='button2' label='Button 2' />
-  <Radio id='button3' label='Button 3' />
+<Radio id='button1' label='Button 1' />
+<Radio id='button2' label='Button 2' />
+<Radio id='button3' label='Button 3' />
 </RadioButtonGroup>`,
       component: (
         <Container flexDirection='row' sx={flexStyle as never}>
@@ -132,23 +140,23 @@ export const radioDocumentation: ContentValues = {
 };
 
 export const radioButtonIndex: HeadingProps = {
-  heading: 'Regular Button',
+  heading: 'radioDocumentation:mainHeading',
   links: [
     {
-      title: 'Default',
+      title: 'radioDocumentation:example1-name',
       link: '#default',
     },
     {
-      title: 'Radio Button - with Label',
+      title: 'radioDocumentation:example2-name',
       link: '#radio-button-label',
     },
     {
-      title: 'Radio Button - Group',
+      title: 'radioDocumentation:example3-name',
       link: '#radio-button-group',
     },
     {
       link: '#props',
-      title: 'Props',
+      title: 'content:props',
       components: [],
     },
   ],

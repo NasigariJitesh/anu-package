@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
-import { Accordion, Container, FlatList, Typography } from 'anu/lib';
+import { Accordion, Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
 import { useMenuContext } from 'screens/common/provider';
@@ -32,6 +32,8 @@ interface HeadingProps {
 const Group = (props: HeadingProps) => {
   const { pathname } = useRouter();
 
+  const { getTranslation } = useAnuLocalization();
+
   return (
     <FlatList
       contentContainerStyle={style.groupList}
@@ -41,7 +43,7 @@ const Group = (props: HeadingProps) => {
           <Accordion.Container
             title={
               <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.groupName}>
-                {item.title}
+                {getTranslation(item.title)}
               </Accordion.Header>
             }
           >
@@ -51,7 +53,7 @@ const Group = (props: HeadingProps) => {
           </Accordion.Container>
         ) : (
           <Typography.Title style={[style.groupName, pathname === item.link ? style.active : {}]}>
-            <TextLink href={item.link}>{item.title}</TextLink>
+            <TextLink href={item.link}>{getTranslation(item.title)}</TextLink>
           </Typography.Title>
         );
       }}
@@ -62,6 +64,7 @@ const Group = (props: HeadingProps) => {
 const RenderItem = ({ item }: { item: ComponentLinks }) => {
   const { pathname } = useRouter();
   const theme = useTheme();
+  const { getTranslation } = useAnuLocalization();
 
   return (
     <>
@@ -75,7 +78,7 @@ const RenderItem = ({ item }: { item: ComponentLinks }) => {
                 pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
               ]}
             >
-              {item.title}
+              {getTranslation(item.title)}
             </Accordion.Header>
           }
         >
@@ -90,7 +93,7 @@ const RenderItem = ({ item }: { item: ComponentLinks }) => {
             pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
           ]}
         >
-          <TextLink href={item.link}>{item.title}</TextLink>
+          <TextLink href={item.link}>{getTranslation(item.title)}</TextLink>
         </Typography.Title>
       )}
     </>
@@ -110,6 +113,7 @@ const Components = (props: { links: ComponentLinks[] }) => {
 const Categories = (props: { links: Link[] }) => {
   const { pathname } = useRouter();
   const theme = useTheme();
+  const { getTranslation } = useAnuLocalization();
 
   return (
     <FlatList
@@ -122,7 +126,7 @@ const Categories = (props: { links: Link[] }) => {
               pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
             ]}
           >
-            <TextLink href={item.link}>{item.title}</TextLink>
+            <TextLink href={item.link}>{getTranslation(item.title)}</TextLink>
           </Typography.Title>
         );
       }}
@@ -133,7 +137,7 @@ const Categories = (props: { links: Link[] }) => {
 const Index = (props: HeadingProps) => {
   return (
     <>
-      <Typography.Title style={style.heading}>{props.heading}</Typography.Title>
+      <LocalizedTypography.Title style={style.heading} localeKey={props.heading} />
       <Group {...props} />
     </>
   );
@@ -141,8 +145,10 @@ const Index = (props: HeadingProps) => {
 
 const Sidebar = () => {
   const { isOpen } = useMenuContext();
+  const { pathname } = useRouter();
 
   if (!isOpen) return null;
+  if (pathname === '/') return null;
 
   return (
     <div
@@ -155,38 +161,38 @@ const Sidebar = () => {
     >
       <Container sx={style.container}>
         <Index
-          heading='Components'
+          heading='leftSideBar:title'
           links={[
             {
-              title: 'Badge',
+              title: 'leftSideBar:badge',
               components: [],
               link: '/components/badge',
             },
             {
-              title: 'Button',
+              title: 'leftSideBar:button',
               components: [
                 {
-                  title: 'Common',
+                  title: 'leftSideBar:button-common',
                   link: '/components/button/common',
                   variants: [],
                 },
                 {
-                  title: 'FAB',
+                  title: 'leftSideBar:button-fab',
                   link: '/components/button/fab',
                   variants: [],
                 },
                 {
-                  title: 'Extended FAB',
+                  title: 'leftSideBar:button-extended-fab',
                   link: '/components/button/extended-fab',
                   variants: [],
                 },
                 {
-                  title: 'Icon buttons',
+                  title: 'leftSideBar:button-icon',
                   link: '/components/button/icon',
                   variants: [],
                 },
                 {
-                  title: 'Segmented buttons',
+                  title: 'leftSideBar:button-segmented',
                   link: '/components/button/segmented',
                   variants: [],
                 },
@@ -194,32 +200,32 @@ const Sidebar = () => {
               link: '/components/button',
             },
             {
-              title: 'Checkbox',
+              title: 'leftSideBar:checkbox',
               link: '/components/checkbox',
               components: [],
             },
             {
-              title: 'Chips',
+              title: 'leftSideBar:chips',
               link: '/components/chip',
               components: [],
             },
             {
-              title: 'Container',
+              title: 'leftSideBar:container',
               link: '/components/container',
               components: [],
             },
             {
-              title: 'Radio Button',
+              title: 'leftSideBar:radio',
               link: '/components/radio-button',
               components: [],
             },
             {
-              title: 'Typography',
+              title: 'leftSideBar:typography',
               link: '/components/typography',
               components: [],
             },
             {
-              title: 'Text Fields',
+              title: 'leftSideBar:text-fields',
               link: '/components/text-field',
               components: [],
             },
@@ -234,6 +240,7 @@ const style = {
   container: {
     width: 210,
     flex: 1,
+    paddingTop: 20,
   },
   heading: {
     fontFamily: source.style.fontFamily,

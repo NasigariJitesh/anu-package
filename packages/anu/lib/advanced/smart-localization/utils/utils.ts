@@ -19,7 +19,7 @@ export const getLocalizedTranslation = (key: string, locale: string) => {
       if (process.env.NODE_ENV === 'development') return 'NO_TRANSLATION';
     }
 
-    return file[key];
+    return file[key] as string;
   } catch {
     console.error(`The file ${locale}.json is not found in the services/locale directory.`);
 

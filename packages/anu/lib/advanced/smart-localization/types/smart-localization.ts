@@ -92,6 +92,15 @@ export interface AnuLocalizationContext {
    * @returns nothing! :P
    */
   switchLocale: (selectedLocale: string) => void;
+
+  /**
+   * Fetch the localized string based on the current locale for a key
+   *
+   * @param key - unique key to identify the translation in the file.
+   * @param locale - locale which you want to fetch the translation from.
+   * @returns translated string from the correct file
+   */
+  getTranslation: (key: string, locale?: string) => string;
 }
 
 export interface AnuLocalizationProviderProps {

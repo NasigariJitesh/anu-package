@@ -19,11 +19,14 @@ const defaultProps: SEOProps = {
 const SEO = (props: Partial<SEOProps>) => {
   const { title, description, siteTitle, config } = { ...defaultProps, ...props };
 
+  const imageUrl = 'https://anu-mt.vercel.app/img/icon_dark_theme.svg';
+
   return (
     <Head>
       {title ? <title>{`${title} | ${siteTitle}`}</title> : <title>{siteTitle}</title>}
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <meta name='description' content={description} />
+      <meta property='og:image' content={imageUrl} />
       <meta property='og:type' content='website' />
       <meta property='og:title' content={title} />
       <meta property='og:description' content={description} />
