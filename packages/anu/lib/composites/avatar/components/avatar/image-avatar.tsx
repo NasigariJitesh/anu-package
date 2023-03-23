@@ -4,9 +4,9 @@ import { Image } from 'lib';
 import React, { useState } from 'react';
 import { ImageErrorEventData, ImageLoadEventData, NativeSyntheticEvent } from 'react-native';
 
+import placeHolder from '../../assets/placeholder.png';
 import { ImageAvatarProps } from '../../types';
 import { getImageAvatarStyle } from '../../utils';
-import placeHolder from '../../utils/placeholder.png';
 
 /**
  * Component for Image avatar
