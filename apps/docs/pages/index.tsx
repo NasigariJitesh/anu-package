@@ -54,7 +54,8 @@ const Home = () => {
   const { height, width } = useWindowDimensions();
   const sx = useSx();
 
-  const style = styles(theme, height);
+  const style = styles(theme);
+
   return (
     <Container disableGutters sx={{ width: '100%', height: height - 70, position: 'relative' }}>
       {isDarkTheme ? <ParticlesDark /> : <ParticlesLight />}
@@ -72,7 +73,7 @@ const Home = () => {
             disableGutters
             sx={{
               flexDirection: ['column', 'column', 'column', 'row', 'row'],
-              width: width,
+              width: width * 0.9,
               justifyContent: ['center', 'center', 'center', 'center', 'center'],
             }}
           >
@@ -108,7 +109,7 @@ const Home = () => {
   );
 };
 
-const styles = (theme?: DripsyFinalTheme, height?: number) => {
+const styles = (theme?: DripsyFinalTheme) => {
   return {
     container: {
       position: 'absolute',

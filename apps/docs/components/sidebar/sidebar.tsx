@@ -154,9 +154,10 @@ const Sidebar = () => {
     <div
       id='root-scroll'
       style={{
-        height: 'calc(100vh - 90px)',
         overflowY: 'scroll',
         width: '210px',
+        position: 'sticky',
+        top: 70,
       }}
     >
       <Container sx={style.container}>

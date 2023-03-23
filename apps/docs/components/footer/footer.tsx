@@ -36,7 +36,7 @@ export interface FooterProps {
  * @param {FooterProps}props - props for the footer component
  */
 const Footer = (props: FooterProps) => {
-  const { isDarkTheme } = useMenuContext();
+  const { isDarkTheme, isOpen } = useMenuContext();
   const { getTranslation } = useAnuLocalization();
   const { width } = useWindowDimensions();
   const theme = useTheme();
@@ -64,6 +64,8 @@ const Footer = (props: FooterProps) => {
       <LocalizedTypography.Body style={sx(style.listItem)} localeKey={item.title} />
     );
   };
+
+  if (isOpen && width < 900) return null;
 
   return (
     <footer style={style.container}>

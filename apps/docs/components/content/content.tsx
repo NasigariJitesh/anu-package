@@ -24,11 +24,11 @@ interface ContentProps {
 
 const Content = ({ values }: ContentProps) => {
   const { isOpen } = useMenuContext();
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const { mainHeading, heading, subTitle, properties, examples, mainDescription } = values;
 
-  const styles = getStyles(height);
+  const styles = getStyles();
 
   if (isOpen && width < 900) return null;
 
@@ -46,7 +46,7 @@ const Content = ({ values }: ContentProps) => {
   );
 };
 
-const getStyles = (height: number) => {
+const getStyles = () => {
   const styles = {
     container: {
       maxWidth: 900,
@@ -54,7 +54,6 @@ const getStyles = (height: number) => {
       alignSelf: 'baseline',
       zIndex: 1,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
-      height: `${height - 70}px`,
       paddingTop: 20,
       overflow: 'scroll',
     },
