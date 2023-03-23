@@ -255,5 +255,12 @@
   "getting-started:step4.2:title": "2. Import the provider into _app.tsx file.",
   "getting-started:step4.3:title": "3. Create a file in public/fonts directory called fonts.css and add the following code.",
   "getting-started:step4.4:title": "4. Go to node_modules/react-native-vector-icons/Fonts and copy the MaterialIcons.ttf into your next/public/font directory.",
-  "getting-started:step4.5:title": "5. Now import font.css into _app.tsx file, on the top of all imports."
+  "getting-started:step4.5:title": "5. Now import font.css into _app.tsx file, on the top of all imports.",
+
+  "getting-started-index:mainHeading": "Getting Started",
+  "getting-started-index:title-1": "Pre-requisites",
+  "getting-started-index:title-2": "Install Aṇu",
+  "getting-started-index:title-3": "Transpile module",
+  "getting-started-index:title-4": "Provider",
+  "getting-started-index:title-5": "For Next.js"
 }

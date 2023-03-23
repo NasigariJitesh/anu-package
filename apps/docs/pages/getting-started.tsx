@@ -1,9 +1,11 @@
+/* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
-import { Container, FlatList, LocalizedTypography } from 'anu/lib';
+import { Container, FlatList, Icon, LocalizedTypography } from 'anu/lib';
 import ComponentDetails from 'components/content/component-details';
 import SEO from 'components/seo';
 import { DripsyFinalTheme, ScrollView, useSx } from 'dripsy';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
+import { useEffect, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
@@ -28,51 +30,92 @@ const firaCode = Fira_Code({
 });
 
 const CodeArea = (props: { code: string }) => {
+  const [isCopiedToClipboard, toggleCopyToClipboard] = useState(false);
+  const [timeOut, updateTimeOut] = useState<NodeJS.Timeout | null>(null);
+
+  const sx = useSx();
   const theme = useTheme();
 
   const styles = getStyles(theme);
 
+  useEffect(() => {
+    return () => {
+      if (timeOut) clearTimeout(timeOut);
+    };
+  }, [timeOut]);
+
+  const onPressedHandler = () => {
+    if (isCopiedToClipboard) return;
+
+    toggleCopyToClipboard(true);
+
+    navigator.clipboard.writeText(props.code);
+
+    updateTimeOut(
+      setTimeout(() => {
+        toggleCopyToClipboard(false);
+      }, 3000),
+    );
+  };
+
   return (
-    <ScrollView
-      horizontal
-      sx={styles.codeArea as never}
-      id={undefined}
-      aria-label={undefined}
-      aria-busy={undefined}
-      aria-checked={undefined}
-      aria-disabled={undefined}
-      aria-expanded={undefined}
-      aria-selected={undefined}
-      aria-labelledby={undefined}
-      aria-valuemax={undefined}
-      aria-valuemin={undefined}
-      aria-valuenow={undefined}
-      aria-valuetext={undefined}
-      aria-hidden={undefined}
-      aria-live={undefined}
-      aria-modal={undefined}
-      role={undefined}
-      stickyHeaderHiddenOnScroll={undefined}
-      StickyHeaderComponent={undefined}
-      onPointerEnter={undefined}
-      onPointerEnterCapture={undefined}
-      onPointerLeave={undefined}
-      onPointerLeaveCapture={undefined}
-      onPointerMove={undefined}
-      onPointerMoveCapture={undefined}
-      onPointerCancel={undefined}
-      onPointerCancelCapture={undefined}
-      onPointerDown={undefined}
-      onPointerDownCapture={undefined}
-      onPointerUp={undefined}
-      onPointerUpCapture={undefined}
-      automaticallyAdjustKeyboardInsets={undefined}
-      automaticallyAdjustsScrollIndicatorInsets={undefined}
-    >
-      <SyntaxHighlighter language='text' style={arduinoLight} customStyle={styles.code}>
-        {props.code}
-      </SyntaxHighlighter>
-    </ScrollView>
+    <Container disableGutters style={{ position: 'relative' }}>
+      <Icon
+        name={isCopiedToClipboard ? 'check' : 'content-copy'}
+        size={18}
+        onPress={onPressedHandler}
+        style={sx({
+          position: 'absolute',
+          zIndex: 2,
+          right: '5px',
+          top: '19px',
+          borderRadius: '8px',
+          padding: '8px',
+          color: isCopiedToClipboard ? 'green' : (theme.colors?.$onBackground as string),
+          backgroundColor: theme?.colors?.$background as never,
+        })}
+      />
+      <ScrollView
+        horizontal
+        sx={styles.codeArea as never}
+        id={undefined}
+        aria-label={undefined}
+        aria-busy={undefined}
+        aria-checked={undefined}
+        aria-disabled={undefined}
+        aria-expanded={undefined}
+        aria-selected={undefined}
+        aria-labelledby={undefined}
+        aria-valuemax={undefined}
+        aria-valuemin={undefined}
+        aria-valuenow={undefined}
+        aria-valuetext={undefined}
+        aria-hidden={undefined}
+        aria-live={undefined}
+        aria-modal={undefined}
+        role={undefined}
+        stickyHeaderHiddenOnScroll={undefined}
+        StickyHeaderComponent={undefined}
+        onPointerEnter={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeave={undefined}
+        onPointerLeaveCapture={undefined}
+        onPointerMove={undefined}
+        onPointerMoveCapture={undefined}
+        onPointerCancel={undefined}
+        onPointerCancelCapture={undefined}
+        onPointerDown={undefined}
+        onPointerDownCapture={undefined}
+        onPointerUp={undefined}
+        onPointerUpCapture={undefined}
+        automaticallyAdjustKeyboardInsets={undefined}
+        automaticallyAdjustsScrollIndicatorInsets={undefined}
+      >
+        <SyntaxHighlighter language='text' style={arduinoLight} customStyle={styles.code}>
+          {props.code}
+        </SyntaxHighlighter>
+      </ScrollView>
+    </Container>
   );
 };
 
@@ -150,7 +193,7 @@ export default App;`,
   ];
 
   return (
-    <Container disableGutters style={styles.examplesContainer}>
+    <Container nativeID='with-next' disableGutters style={styles.examplesContainer}>
       <LocalizedTypography.Headline style={sx(styles.stepTitle)} localeKey={'getting-started:step4:title'} />
       <LocalizedTypography.Body style={sx(styles.stepDescription)} localeKey={'getting-started:step4:description'} />
       <FlatList
