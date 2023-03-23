@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AvatarProps, ImageAvatarProps, LetterAvatarProps } from '../../types';
+import { AvatarProps } from '../../types';
 import ChildrenAvatar from './child-avatar';
 import ImageAvatar from './image-avatar';
 import LetterAvatar from './letter-avatar';
@@ -11,11 +11,11 @@ import LetterAvatar from './letter-avatar';
  * @param {AvatarProps} props - all the properties related to the container component
  */
 const Avatar = (props: AvatarProps) => {
-  if ('source' in props) return <ImageAvatar {...(props as ImageAvatarProps)} />;
+  if ('source' in props) return <ImageAvatar {...props} />;
 
-  if ('children' in props) return <ChildrenAvatar {...props} />;
+  if ('name' in props) return <LetterAvatar {...props} />;
 
-  return <LetterAvatar {...(props as LetterAvatarProps)} />;
+  return <ChildrenAvatar {...props} />;
 };
 
 export default Avatar;

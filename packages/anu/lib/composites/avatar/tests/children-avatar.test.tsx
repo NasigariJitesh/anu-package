@@ -5,9 +5,9 @@ import { Icon, Image } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
+import placeholder from '../assets/placeholder.png';
 import Avatar from '../components';
 import ChildrenAvatar from '../components/avatar/child-avatar';
-import placeholder from '../utils/placeholder.png';
 
 describe('Testing for Children Avatar Rounded', () => {
   const name = 'NJ';

@@ -5,9 +5,9 @@ import { makeTheme } from 'anu/config';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
+import placeholder from '../assets/placeholder.png';
 import Avatar from '../components';
 import ImageAvatar from '../components/avatar/image-avatar';
-import placeholder from '../utils/placeholder.png';
 
 describe('Testing for Image Avatar Rounded', () => {
   const tree = renderer.create(
