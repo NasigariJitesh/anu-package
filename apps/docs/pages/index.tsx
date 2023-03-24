@@ -62,7 +62,7 @@ const Home = () => {
     <>
       {isDarkTheme ? <ParticlesDark /> : <ParticlesLight />}
       <Container disableGutters style={style.container}>
-        <Container disableGutters flexDirection='column' justify='center' align='center' style={sx(style.center)}>
+        <Container flexDirection='column' justify='center' align='center' style={sx(style.center)}>
           <Container disableGutters style={style.imageContainer}>
             <img
               src={isDarkTheme ? 'img/logo_dark_theme.svg' : 'img/logo_light_theme.svg'}
@@ -97,12 +97,7 @@ const Home = () => {
             <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
           </Container>
         </Container>
-        <Container
-          disableGutters
-          flexDirection='column'
-          align='center'
-          style={sx(style.footerContainerForLargeScreens)}
-        >
+        <Container flexDirection='column' align='center' style={sx(style.footerContainerForLargeScreens)}>
           <LocalizedTypography.Body localeKey='home:about1' style={sx(style.about)} />
           <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
         </Container>
