@@ -44,6 +44,7 @@
   "leftSideBar:radio": "Radio Button",
   "leftSideBar:typography": "Typography",
   "leftSideBar:text-fields": "Text Fields",
+  "leftSideBar:credits": "Credits",
 
   "badgeDocumentation:mainHeading": "Badge",
   "badgeDocumentation:mainDescription": "Badges are used to display a small amount of information, typically a number or a short status message, on top of an icon or avatar.",
@@ -279,5 +280,14 @@
   "getting-started-index:title-2": "Install Aṇu",
   "getting-started-index:title-3": "Transpile module",
   "getting-started-index:title-4": "Provider",
-  "getting-started-index:title-5": "For Next.js"
+  "getting-started-index:title-5": "For Next.js",
+
+  "credits:mainHeading": "Credits",
+  "credits:mainDescription": "These packages have provided an essential foundation that enabled us to deliver high-quality results. Their work has saved us countless hours of development time and allowed us to deliver a superior product.",
+  "credits:packages:heading": "Packages used",
+  "credits:packages:item-1": "1. <a class=\"documentation-link\" href=\"https://github.com/nandorojo/dripsy\">nandorojo/dripsy<a/> - Responsive, unstyled UI primitives for React Native + Web",
+  "credits:packages:item-2": "2. <a class=\"documentation-link\" href=\"https://github.com/gorhom/react-native-portal\">gorhom/react-native-portal</a> - A simplified portal implementation for React Native & Web.",
+  "credits:packages:item-3": "3. Flag icons created by <a class=\"documentation-link\" href=\"https://www.flaticon.com/free-icons/india\" title=\"india icons\">Roundicons - Flaticon</a>",
+  "credits-index:mainHeading": "Credits",
+  "credits-index:title-1": "Packages used"
 }

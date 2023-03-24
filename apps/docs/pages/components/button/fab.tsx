@@ -4,7 +4,7 @@ import FABDoc from 'screens/components/fab';
 const FAB = () => {
   return (
     <>
-      <Seo title='FAB' />
+      <Seo title='FABDocumentation:heading' />
       <FABDoc />
     </>
   );

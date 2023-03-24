@@ -3,7 +3,7 @@ import RadioButtonDoc from 'screens/components/radio-button';
 const RadioButton = () => {
   return (
     <>
-      <Seo title='Radio Button' />
+      <Seo title='radioDocumentation:mainHeading' />
       <RadioButtonDoc />
     </>
   );
