@@ -10,6 +10,7 @@ import { containerIndex } from 'services/docs/container';
 import { extendedFABIndex } from 'services/docs/extended-fab';
 import { FABIndex } from 'services/docs/fab';
 import { iconButtonIndex } from 'services/docs/icon-button';
+import { installationIndex } from 'services/docs/installation';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
@@ -158,9 +159,15 @@ const RenderIndex = () => {
         return <Index {...textFieldIndex} />;
       }
     }
+
+    case '/getting-started': {
+      {
+        return <Index {...installationIndex} />;
+      }
+    }
     default: {
       {
-        return <Index {...typographyIndex} />;
+        return null;
       }
     }
   }

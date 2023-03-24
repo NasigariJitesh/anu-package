@@ -23,6 +23,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
     } as const,
     assist: {
       backgroundColor: 'transparent',
