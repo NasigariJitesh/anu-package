@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-color-literals */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @next/next/no-img-element */
 import { useTheme } from 'anu/config';
 import { Container, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
@@ -69,29 +71,28 @@ const Footer = (props: FooterProps) => {
 
   return (
     <footer style={style.container}>
-      <Container
-        disableGutters
-        // eslint-disable-next-line react-native/no-inline-styles, react-native/no-color-literals
-        style={[sx(style.footerContainer), { backgroundColor: isDarkTheme ? '#404040' : '#EEEEEE' }]}
-      >
-        <Container disableGutters style={sx(style.imageContainer)}>
-          <img
-            src={isDarkTheme ? '/img/logo_dark_theme.svg' : '/img/logo_light_theme.svg'}
-            alt={'Anu - ' + getTranslation('home:mainHeading')}
-            style={sx(style.image)}
-          />
-          <LocalizedTypography.Body style={sx(style.imageCaption)} localeKey='footer:image-caption' />
+      <Container disableGutters style={{ width: '100%', backgroundColor: isDarkTheme ? '#404040' : '#EEEEEE' }}>
+        <Container disableGutters style={sx(style.footerContainer)}>
+          <Container disableGutters style={sx(style.imageContainer)}>
+            <img
+              src={isDarkTheme ? '/img/logo_dark_theme.svg' : '/img/logo_light_theme.svg'}
+              alt={'Anu - ' + getTranslation('home:mainHeading')}
+              style={sx(style.image)}
+            />
+            <LocalizedTypography.Body style={sx(style.imageCaption)} localeKey='footer:image-caption' />
+          </Container>
+          {props.links.map((section, id) => (
+            <Section {...section} key={id} />
+          ))}
         </Container>
-        {props.links.map((section, id) => (
-          <Section {...section} key={id} />
-        ))}
       </Container>
-      <Container disableGutters style={sx(style.bottomContainer)}>
-        <LocalizedTypography.Body style={sx(style.bottomLine)} localeKey='footer:bottomLine' />
-        <Image alt='india-flag' src={IndiaFlag} height={16} />
-        <Typography.Body style={sx(style.bottomLine)}> & </Typography.Body>
-
-        <Image alt='canada-flag' src={CanadaFlag} height={16} />
+      <Container disableGutters style={{ width: '100%' }}>
+        <Container disableGutters style={sx(style.bottomContainer)}>
+          <LocalizedTypography.Body style={sx(style.bottomLine)} localeKey='footer:bottomLine' />
+          <Image alt='india-flag' src={IndiaFlag} height={16} />
+          <Typography.Body style={sx(style.bottomLine)}> {'  &  '} </Typography.Body>
+          <Image alt='canada-flag' src={CanadaFlag} height={16} />
+        </Container>
       </Container>
     </footer>
   );
@@ -102,6 +103,7 @@ const styles = (width: number, theme: DripsyFinalTheme) => {
     container: {
       width: '100%',
     },
+
     bottomContainer: {
       width: '100%',
       alignItems: 'center',
@@ -109,6 +111,8 @@ const styles = (width: number, theme: DripsyFinalTheme) => {
       flexDirection: 'row' as const,
       backgroundColor: theme.colors?.$surface as never,
       paddingVertical: 30,
+      maxWidth: '1440px',
+      alignSelf: 'center',
     },
 
     footerContainer: {
@@ -120,6 +124,8 @@ const styles = (width: number, theme: DripsyFinalTheme) => {
       flexWrap: 'wrap' as const,
       justifyContent: 'space-between' as const,
       flexDirection: 'row' as const,
+      maxWidth: '1440px',
+      alignSelf: 'center',
     },
 
     imageContainer: {
