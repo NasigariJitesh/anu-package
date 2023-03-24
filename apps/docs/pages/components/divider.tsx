@@ -4,7 +4,7 @@ import DividerDoc from 'screens/components/divider';
 const Divider = () => {
   return (
     <>
-      <Seo title='Divider' />
+      <Seo title='dividerDocumentation:mainHeading' />
       <DividerDoc />
     </>
   );
