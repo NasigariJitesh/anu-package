@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@gorhom/portal": "^1.0.14",
-    "dripsy": "^3.10.0"
+    "dripsy": "^3.10.0",
+    "expo-image": "^1.0.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^9.0.1",
     "@testing-library/jest-native": "^5.4.2",
     "@testing-library/react-native": "^11.5.4",
     "@types/jest": "^29.4.0",
