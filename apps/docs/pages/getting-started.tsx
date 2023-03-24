@@ -224,9 +224,8 @@ export default App;`,
 };
 
 const GettingStarted = () => {
-  const { height } = useWindowDimensions();
   const theme = useTheme();
-  const styles = getStyles(theme, height);
+  const styles = getStyles(theme);
 
   return (
     <>
@@ -265,7 +264,7 @@ export default App;`}
   );
 };
 
-const getStyles = ({ colors }: DripsyFinalTheme, height?: number) => {
+const getStyles = ({ colors }: DripsyFinalTheme) => {
   const styles = {
     container: {
       maxWidth: 900,
@@ -273,7 +272,6 @@ const getStyles = ({ colors }: DripsyFinalTheme, height?: number) => {
       alignSelf: 'baseline',
       zIndex: 1,
       width: ['90vw', '90vw', '550px', '600px', '750px'] as never,
-      height: `${(height || 0) - 70}px`,
       paddingTop: 20,
       overflow: 'scroll',
     },
