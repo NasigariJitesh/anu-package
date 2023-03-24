@@ -47,7 +47,7 @@ export default function App(props: AppProps) {
             <props.Component {...props.pageProps} />
             <RightSidebar />
           </Container>
-          <Footer {...footerLinks} />
+          {props.router.pathname === '/' ? null : <Footer {...footerLinks} />}
         </Container>
       </RootLayout>
     </>

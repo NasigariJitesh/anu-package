@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { useTheme } from 'anu/config';
 import { Button, Chip, Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import Footer from 'components/footer';
 import { DripsyFinalTheme, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import ParticlesDark from 'screens/common/particles-dark';
 import ParticlesLight from 'screens/common/particles-light';
 import { useMenuContext } from 'screens/common/provider';
+import { footerLinks } from 'services/docs/footer';
 import { Link } from 'solito/link';
 
 const source = Source_Sans_Pro({
@@ -54,12 +56,12 @@ const Home = () => {
   const { height, width } = useWindowDimensions();
   const sx = useSx();
 
-  const style = styles(theme);
+  const style = styles(theme, height);
 
   return (
-    <Container disableGutters sx={{ width: '100%', height: height - 70, position: 'relative' }}>
+    <>
       {isDarkTheme ? <ParticlesDark /> : <ParticlesLight />}
-      <Container style={style.container}>
+      <Container disableGutters style={style.container}>
         <Container disableGutters flexDirection='column' justify='center' align='center' style={sx(style.center)}>
           <Container disableGutters style={style.imageContainer}>
             <img
@@ -104,17 +106,18 @@ const Home = () => {
           <LocalizedTypography.Body localeKey='home:about1' style={sx(style.about)} />
           <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
         </Container>
+        <Footer {...footerLinks} />
       </Container>
-    </Container>
+    </>
   );
 };
 
-const styles = (theme?: DripsyFinalTheme) => {
+const styles = (theme?: DripsyFinalTheme, height?: number) => {
   return {
     container: {
       position: 'absolute',
       width: '100%',
-      height: '100%',
+      height: `${(height || 0) - 80}px`,
       overflow: 'scroll',
     },
 
