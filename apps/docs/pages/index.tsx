@@ -113,7 +113,6 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
       position: 'absolute',
       width: '100%',
       height: `${(height || 0) - 70}px`,
-      overflow: 'scroll',
     },
 
     footerContainer: {
@@ -124,7 +123,7 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
     footerContainerForLargeScreens: {
       display: ['none', 'none', 'none', 'flex', 'flex'] as never,
       position: 'absolute',
-      bottom: 0,
+      bottom: '15px',
       left: '50%',
       transform: 'translate(-50%, 0)' as never,
     },
