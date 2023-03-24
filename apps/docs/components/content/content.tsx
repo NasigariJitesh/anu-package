@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Container } from 'anu/lib';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
+import { View } from 'react-native';
 import { useMenuContext } from 'screens/common/provider';
 
 import ComponentDetails from './component-details';
@@ -32,6 +33,7 @@ const Content = ({ values }: ContentProps) => {
 
   return (
     <Container nativeID='root-scroll' style={styles.container as never}>
+      <View nativeID='top' style={{ position: 'absolute', top: -70, height: 10, width: 10, zIndex: -10 }} />
       <ComponentDetails
         mainHeading={mainHeading}
         heading={heading}
@@ -53,7 +55,6 @@ const getStyles = () => {
       zIndex: 1,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
       paddingTop: 20,
-      overflow: 'scroll',
     },
   } as const;
   return styles;

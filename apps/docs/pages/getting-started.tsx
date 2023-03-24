@@ -6,7 +6,7 @@ import SEO from 'components/seo';
 import { DripsyFinalTheme, ScrollView, useSx } from 'dripsy';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import { useEffect, useState } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { View } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
@@ -231,6 +231,7 @@ const GettingStarted = () => {
     <>
       <SEO title='Getting Started' />
       <Container nativeID='root-scroll' sx={styles.container}>
+        <View nativeID='top' style={{ position: 'absolute', top: -70, height: 10, width: 10, zIndex: -10 }} />
         <Container disableGutters sx={{ maxWidth: '750px' }}>
           <ComponentDetails
             mainHeading={'getting-started:mainHeading'}
