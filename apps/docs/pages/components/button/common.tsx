@@ -4,7 +4,7 @@ import RegularButtonDoc from 'screens/components/regular-button';
 const RegularButton = () => {
   return (
     <>
-      <SEO title='Common Button' />
+      <SEO title='regularButtonDocumentation:heading' />
       <RegularButtonDoc />
     </>
   );

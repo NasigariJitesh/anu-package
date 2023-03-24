@@ -45,6 +45,8 @@
   "leftSideBar:radio": "Bouton radio",
   "leftSideBar:typography": "Typographie",
   "leftSideBar:text-fields": "Champs de texte",
+  "leftSideBar:credits": "Crédits",
+
   "badgeDocumentation:mainHeading": "Badge",
   "badgeDocumentation:mainDescription": "Les badges sont utilisés pour afficher une petite quantité d'informations, généralement un numéro ou un court message d'état, au-dessus d'une icône ou d'un avatar.",
   "badgeDocumentation:example1-name": "Badge de notification",
@@ -292,5 +294,14 @@
   "getting-started-index:title-2": "Installer Aṇu",
   "getting-started-index:title-3": "Module de transpilation",
   "getting-started-index:title-4": "Fournisseur",
-  "getting-started-index:title-5": "Pour Next.js"
+  "getting-started-index:title-5": "Pour Next.js",
+
+  "credits:mainHeading": "Crédits",
+  "credits:mainDescription": "Ces packages ont fourni une base essentielle qui nous a permis de fournir des résultats de haute qualité. Leur travail nous a fait économiser d'innombrables heures de développement et nous a permis de livrer un produit de qualité supérieure.",
+  "credits:packages:heading": "Forfaits utilisés",
+  "credits:packages:item-1": "1. <a class=\"documentation-link\" href=\"https://github.com/nandorojo/dripsy\">nandorojo/dripsy<a/> - Primitives d'interface utilisateur réactives et sans style pour React Native + Web",
+  "credits:packages:item-2": "2. <a class=\"documentation-link\" href=\"https://github.com/gorhom/react-native-portal\">gorhom/react-native-portal</a> - Une implémentation de portail simplifiée pour React Native & Web.",
+  "credits:packages:item-3": "3. Icônes de drapeau créées par <a class=\"documentation-link\" href=\"https://www.flaticon.com/free-icons/india\" title=\"india icons\">Roundicons - Flaticon</a>",
+  "credits-index:mainHeading": "Crédits",
+  "credits-index:title-1": "Forfaits utilisés"
 }

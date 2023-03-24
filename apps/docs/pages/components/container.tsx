@@ -4,7 +4,7 @@ import ContainerDoc from 'screens/components/container';
 const Container = () => {
   return (
     <>
-      <Seo title='Container' />
+      <Seo title='containerDocumentation:mainHeading' />
       <ContainerDoc />
     </>
   );

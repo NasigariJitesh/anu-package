@@ -4,7 +4,7 @@ import CheckboxDoc from 'screens/components/checkbox';
 const Checkbox = () => {
   return (
     <>
-      <SEO title='Checkbox' />
+      <SEO title='checkBoxDocumentation:mainHeading' />
       <CheckboxDoc />
     </>
   );

@@ -7,6 +7,7 @@ import { badgeIndex } from 'services/docs/badge';
 import { checkboxIndex } from 'services/docs/checkbox';
 import { chipIndex } from 'services/docs/chip';
 import { containerIndex } from 'services/docs/container';
+import { creditsIndex } from 'services/docs/credits';
 import { dividerIndex } from 'services/docs/divider';
 import { extendedFABIndex } from 'services/docs/extended-fab';
 import { FABIndex } from 'services/docs/fab';
@@ -169,6 +170,12 @@ const RenderIndex = () => {
     case '/getting-started': {
       {
         return <Index {...installationIndex} />;
+      }
+    }
+
+    case '/credits': {
+      {
+        return <Index {...creditsIndex} />;
       }
     }
     default: {

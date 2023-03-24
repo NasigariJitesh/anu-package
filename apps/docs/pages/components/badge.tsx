@@ -4,7 +4,7 @@ import BadgeDoc from 'screens/components/badge';
 const Badge = () => {
   return (
     <>
-      <SEO title='Badge' />
+      <SEO title='badgeDocumentation:mainHeading' />
       <BadgeDoc />
     </>
   );

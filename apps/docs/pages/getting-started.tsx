@@ -229,7 +229,7 @@ const GettingStarted = () => {
 
   return (
     <>
-      <SEO title='Getting Started' />
+      <SEO title='getting-started:mainHeading' />
       <Container nativeID='root-scroll' sx={styles.container}>
         <View nativeID='top' style={{ position: 'absolute', top: -70, height: 10, width: 10, zIndex: -10 }} />
         <Container disableGutters sx={{ maxWidth: '750px' }}>
