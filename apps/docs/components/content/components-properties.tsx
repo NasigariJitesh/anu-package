@@ -3,6 +3,7 @@ import { useTheme } from 'anu/config';
 import { Container, Divider, LocalizedTypography, Typography } from 'anu/lib';
 import { DripsyFinalTheme } from 'dripsy';
 import { Source_Sans_Pro } from 'next/font/google';
+import { View } from 'react-native';
 
 const source = Source_Sans_Pro({
   weight: ['400', '600'],
@@ -59,7 +60,8 @@ const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
   };
 
   return (
-    <Container nativeID='props' disableGutters sx={styles.container as never}>
+    <Container disableGutters sx={styles.container as never}>
+      <View nativeID='props' style={styles.invisible} />
       <LocalizedTypography.Headline style={styles.heading} localeKey='content:props' />
       <Divider variant='full-width' light style={styles.divider} />
       {properties.map((prop, index) => renderProperty(prop, index, index === properties.length - 1))}
@@ -111,6 +113,13 @@ const getStyles = ({ colors }: DripsyFinalTheme) => {
     divider: {
       color: colors?.$onSurface as never,
       marginBottom: 8,
+    },
+    invisible: {
+      position: 'absolute',
+      top: -80,
+      height: 10,
+      width: 10,
+      zIndex: -10,
     },
   } as const;
 
