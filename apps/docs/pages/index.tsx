@@ -112,7 +112,7 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
     container: {
       position: 'absolute',
       width: '100%',
-      height: `${(height || 0) - 80}px`,
+      height: `${(height || 0) - 70}px`,
       overflow: 'scroll',
     },
 
