@@ -10,7 +10,22 @@
   "home:list2-heading": "Systèmes de conception pris en charge",
   "home:list2-item1": "Material design",
   "home:button:getting-started": "Commencer",
+
+  "footer:image-caption": "Bibliothèque de composants pour React Native et React Native Web",
+
+  "footer:list1-heading": "Liens",
+  "footer:list1-item1-title": "Commencer",
+  "footer:list1-item2-title": "Configuration",
+  "footer:list1-item3-title": "Thème",
+  "footer:list1-item4-title": "Composants",
+  "footer:list1-item5-title": "Versions",
+  "footer:list2-heading": "Communauté",
+  "footer:list2-item1-title": "Discord",
+  "footer:list2-item2-title": "Github",
+  "footer:list2-item3-title": "Rapport de bug",
+  "footer:bottomLine": "Fabriqué avec ❤️ à ",
   "content:props": "Accessoires",
+
   "content:prop-optional": "facultatif",
   "content:defaultValue": "Valeur par défaut",
   "rightSideBar:onThisPage": "Sur cette page",

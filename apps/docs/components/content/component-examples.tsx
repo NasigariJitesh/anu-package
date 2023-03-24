@@ -3,6 +3,7 @@ import { useTheme } from 'anu/config';
 import { Container, LocalizedTypography } from 'anu/lib';
 import { DripsyFinalTheme, ScrollView } from 'dripsy';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
+import { View } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
@@ -36,7 +37,8 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
 
   const renderExample = (example: Example, index: number) => {
     return (
-      <Container nativeID={example.id} key={index} disableGutters style={styles.examplesContainer as never}>
+      <Container key={index} disableGutters style={styles.examplesContainer as never}>
+        <View nativeID={example.id} style={styles.invisible} />
         <LocalizedTypography.Headline style={styles.name} localeKey={example.name} />
         {example.description ? (
           <LocalizedTypography.Body style={styles.description} localeKey={example.description} />
@@ -149,6 +151,13 @@ const getStyles = ({ colors }: DripsyFinalTheme) => {
       width: ['90vw', '90vw', '550px', '600px', '750px'],
       padding: '5px',
       borderRadius: 10,
+    },
+    invisible: {
+      position: 'absolute',
+      top: -80,
+      height: 10,
+      width: 10,
+      zIndex: -10,
     },
   } as const;
   return styles;

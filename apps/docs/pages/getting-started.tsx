@@ -6,7 +6,7 @@ import SEO from 'components/seo';
 import { DripsyFinalTheme, ScrollView, useSx } from 'dripsy';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import { useEffect, useState } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { View } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
@@ -224,14 +224,14 @@ export default App;`,
 };
 
 const GettingStarted = () => {
-  const { height } = useWindowDimensions();
   const theme = useTheme();
-  const styles = getStyles(theme, height);
+  const styles = getStyles(theme);
 
   return (
     <>
       <SEO title='Getting Started' />
       <Container nativeID='root-scroll' sx={styles.container}>
+        <View nativeID='top' style={{ position: 'absolute', top: -70, height: 10, width: 10, zIndex: -10 }} />
         <Container disableGutters sx={{ maxWidth: '750px' }}>
           <ComponentDetails
             mainHeading={'getting-started:mainHeading'}
@@ -265,7 +265,7 @@ export default App;`}
   );
 };
 
-const getStyles = ({ colors }: DripsyFinalTheme, height?: number) => {
+const getStyles = ({ colors }: DripsyFinalTheme) => {
   const styles = {
     container: {
       maxWidth: 900,
@@ -273,7 +273,6 @@ const getStyles = ({ colors }: DripsyFinalTheme, height?: number) => {
       alignSelf: 'baseline',
       zIndex: 1,
       width: ['90vw', '90vw', '550px', '600px', '750px'] as never,
-      height: `${(height || 0) - 70}px`,
       paddingTop: 20,
       overflow: 'scroll',
     },

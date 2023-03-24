@@ -191,6 +191,8 @@ const style = {
   container: {
     width: 210,
     paddingTop: 20,
+    position: 'sticky',
+    top: 70,
   },
   preHeading: {
     fontFamily: source.style.fontFamily,

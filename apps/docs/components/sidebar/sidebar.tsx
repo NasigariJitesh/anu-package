@@ -29,6 +29,10 @@ interface HeadingProps {
   links: SubIndex[];
 }
 
+const onLinkPress = () => {
+  document.querySelector('#top')?.scrollIntoView();
+};
+
 const Group = (props: HeadingProps) => {
   const { pathname } = useRouter();
   const theme = useTheme();
@@ -53,6 +57,10 @@ const Group = (props: HeadingProps) => {
           </Accordion.Container>
         ) : (
           <Typography.Title
+            onPress={() => {
+              console.log(document.querySelector('#top'));
+              document.querySelector('#top')?.scrollIntoView();
+            }}
             style={[
               style.groupName,
               pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
@@ -93,6 +101,7 @@ const RenderItem = ({ item }: { item: ComponentLinks }) => {
         </Accordion.Container>
       ) : (
         <Typography.Title
+          onPress={onLinkPress}
           style={[
             style.componentName,
             pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
@@ -126,6 +135,7 @@ const Categories = (props: { links: Link[] }) => {
       renderItem={({ item }) => {
         return (
           <Typography.Title
+            onPress={onLinkPress}
             style={[
               style.categoryName,
               pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
@@ -155,6 +165,7 @@ const HeadingLink = (props: { link: string; title: string }) => {
 
   return (
     <Typography.Title
+      onPress={onLinkPress}
       style={[
         style.headingLink,
         pathname === props.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
@@ -176,9 +187,10 @@ const Sidebar = () => {
     <div
       id='root-scroll'
       style={{
-        height: 'calc(100vh - 90px)',
         overflowY: 'scroll',
         width: '210px',
+        position: 'sticky',
+        top: 80,
       }}
     >
       <Container sx={style.container}>
@@ -263,7 +275,6 @@ const style = {
   container: {
     width: 210,
     flex: 1,
-    paddingTop: 20,
   },
   heading: {
     fontFamily: source.style.fontFamily,

@@ -132,6 +132,7 @@ const style = {
     display: 'flex',
     justifyContent: 'center',
     zIndex: 1,
+    position: 'fixed',
   },
   title: {
     width: '100%',
