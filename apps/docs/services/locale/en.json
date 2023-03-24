@@ -41,6 +41,7 @@
   "leftSideBar:checkbox": "Checkbox",
   "leftSideBar:chips": "Chips",
   "leftSideBar:container": "Container",
+  "leftSideBar:divider": "Divider",
   "leftSideBar:radio": "Radio Button",
   "leftSideBar:typography": "Typography",
   "leftSideBar:text-fields": "Text Fields",
