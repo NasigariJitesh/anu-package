@@ -1,4 +1,5 @@
-import { makeTheme, Provider } from 'anu';
+import { Provider } from 'anu/common/context';
+import { makeTheme } from 'anu/config';
 import { SafeAreaView } from 'dripsy';
 
 import { Home } from './src/screens';

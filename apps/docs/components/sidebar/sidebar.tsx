@@ -31,7 +31,7 @@ interface HeadingProps {
 
 const Group = (props: HeadingProps) => {
   const { pathname } = useRouter();
-
+  const theme = useTheme();
   const { getTranslation } = useAnuLocalization();
 
   return (
@@ -52,7 +52,12 @@ const Group = (props: HeadingProps) => {
             </Accordion.Children>
           </Accordion.Container>
         ) : (
-          <Typography.Title style={[style.groupName, pathname === item.link ? style.active : {}]}>
+          <Typography.Title
+            style={[
+              style.groupName,
+              pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
+            ]}
+          >
             <TextLink href={item.link}>{getTranslation(item.title)}</TextLink>
           </Typography.Title>
         );
@@ -143,6 +148,23 @@ const Index = (props: HeadingProps) => {
   );
 };
 
+const HeadingLink = (props: { link: string; title: string }) => {
+  const { pathname } = useRouter();
+  const theme = useTheme();
+  const { getTranslation } = useAnuLocalization();
+
+  return (
+    <Typography.Title
+      style={[
+        style.headingLink,
+        pathname === props.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
+      ]}
+    >
+      <TextLink href={props.link}>{getTranslation(props.title)}</TextLink>
+    </Typography.Title>
+  );
+};
+
 const Sidebar = () => {
   const { isOpen } = useMenuContext();
   const { pathname } = useRouter();
@@ -160,8 +182,9 @@ const Sidebar = () => {
       }}
     >
       <Container sx={style.container}>
+        <HeadingLink link='/getting-started' title='leftSideBar:getting-started' />
         <Index
-          heading='leftSideBar:title'
+          heading='leftSideBar:components'
           links={[
             {
               title: 'leftSideBar:badge',
@@ -280,6 +303,15 @@ const style = {
   active: {
     opacity: 1,
     fontWeight: '600',
+  },
+
+  headingLink: {
+    fontFamily: source.style.fontFamily,
+    fontSize: 18,
+    fontWeight: '600',
+    flexWrap: 'wrap',
+    opacity: 0.7,
+    marginVertical: 15,
   },
 } as const;
 
