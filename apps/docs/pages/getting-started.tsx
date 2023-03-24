@@ -13,7 +13,7 @@ import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 interface StepProps {
   title: string;
   description?: string;
-  code: string;
+  code?: string;
   id: string;
 }
 
@@ -131,14 +131,11 @@ const Step = (props: StepProps) => {
       <LocalizedTypography.Headline style={sx(styles.stepTitle)} localeKey={props.title} />
       {props.description ? (
         <div
-          style={sx(styles.stepDescription)}
+          style={sx({ ...styles.stepDescription })}
           dangerouslySetInnerHTML={{ __html: getTranslation(props.description) }}
         />
       ) : null}
-      {/* {props.description ? (
-        <LocalizedTypography.Body style={sx(styles.stepDescription)} localeKey={props.description} />
-      ) : null} */}
-      <CodeArea code={props.code} />
+      {props.code ? <CodeArea code={props.code} /> : null}
     </Container>
   );
 };
@@ -203,10 +200,11 @@ export default App;`,
   return (
     <Container nativeID='with-next' disableGutters style={styles.examplesContainer}>
       <LocalizedTypography.Headline style={sx(styles.stepTitle)} localeKey={'getting-started:step4:title'} />
-      <LocalizedTypography.Body
-        style={sx({ ...styles.stepDescription })}
-        localeKey={'getting-started:step4:description'}
+      <div
+        style={sx(styles.stepDescription)}
+        dangerouslySetInnerHTML={{ __html: getTranslation('getting-started:step4:description') }}
       />
+
       <FlatList
         renderItem={({ item }) => {
           return (
@@ -259,6 +257,7 @@ const App = () => {
 export default App;`}
             title='getting-started:step3:title'
           />
+          <Step id='icons' description='getting-started:step5:description' title='getting-started:step5:title' />
           <ForNextJS />
         </Container>
       </Container>

@@ -46,6 +46,10 @@ html, body, #__next {
   scroll-behavior: smooth; !important
 }
 
+.documentation-link, .document-link:visited {
+  color: #1b1b1f
+}
+
 
 body {
   /* Allows you to scroll below the viewport; default value is visible */
