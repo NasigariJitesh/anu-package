@@ -2,7 +2,7 @@ import { getCombinedStylesForImage } from 'common/utils';
 import { useTheme } from 'config/dripsy';
 import { Image } from 'lib';
 import React, { useState } from 'react';
-import { ImageErrorEventData, ImageLoadEventData, NativeSyntheticEvent, Platform } from 'react-native';
+import { ImageErrorEventData, ImageLoadEventData, NativeSyntheticEvent } from 'react-native';
 
 import placeHolder from '../../assets/placeholder.png';
 import { ImageAvatarProps } from '../../types';

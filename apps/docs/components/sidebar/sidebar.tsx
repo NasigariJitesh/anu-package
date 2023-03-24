@@ -199,6 +199,11 @@ const Sidebar = () => {
           heading='leftSideBar:components'
           links={[
             {
+              title: 'leftSideBar:avatar',
+              components: [],
+              link: '/components/avatar',
+            },
+            {
               title: 'leftSideBar:badge',
               components: [],
               link: '/components/badge',

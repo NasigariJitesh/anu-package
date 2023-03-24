@@ -10,18 +10,18 @@ const getImageAvatarTheme = (theme: DripsyFinalTheme, variant?: 'circle' | 'roun
     common: {
       height: 32,
       width: 32,
-      borderRadius: variant === 'circle' ? 16 : 4,
+      borderRadius: variant === 'circle' ? 100 : 4,
     },
     medium: {},
     small: {
       height: 24,
       width: 24,
-      borderRadius: variant === 'circle' ? 12 : 4,
+      borderRadius: variant === 'circle' ? 100 : 4,
     },
     large: {
       height: 40,
       width: 40,
-      borderRadius: variant === 'circle' ? 20 : 4,
+      borderRadius: variant === 'circle' ? 100 : 4,
     },
   };
   return { imageTheme };
@@ -32,7 +32,7 @@ const getLetterAvatarTheme = (theme: DripsyFinalTheme, variant?: 'circle' | 'rou
     common: {
       height: 32,
       width: 32,
-      borderRadius: variant === 'circle' ? 16 : 4,
+      borderRadius: variant === 'circle' ? 100 : 4,
       backgroundColor: theme.colors.$primary,
       alignItems: 'center' as const,
       justifyContent: 'center' as const,
@@ -41,18 +41,19 @@ const getLetterAvatarTheme = (theme: DripsyFinalTheme, variant?: 'circle' | 'rou
     small: {
       height: 24,
       width: 24,
-      borderRadius: variant === 'circle' ? 12 : 4,
+      borderRadius: variant === 'circle' ? 100 : 4,
     },
     large: {
       height: 40,
       width: 40,
-      borderRadius: variant === 'circle' ? 20 : 4,
+      borderRadius: variant === 'circle' ? 100 : 4,
     },
   };
 
   const extendedContainerTheme = {
     common: {
       color: theme.colors.$onPrimary,
+      overflow: 'hidden',
     },
     small: {},
     medium: {},

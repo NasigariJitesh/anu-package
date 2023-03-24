@@ -3,6 +3,7 @@ import { Container, FlatList, LocalizedTypography, Typography, useAnuLocalizatio
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
+import { avatarIndex } from 'services/docs/avatar';
 import { badgeIndex } from 'services/docs/badge';
 import { checkboxIndex } from 'services/docs/checkbox';
 import { chipIndex } from 'services/docs/chip';
@@ -103,6 +104,11 @@ const RenderIndex = () => {
     case '/components/typography': {
       {
         return <Index {...typographyIndex} />;
+      }
+    }
+    case '/components/avatar': {
+      {
+        return <Index {...avatarIndex} />;
       }
     }
     case '/components/badge': {
