@@ -4,7 +4,7 @@ import ChipDoc from 'screens/components/chip';
 const Chip = () => {
   return (
     <>
-      <Seo title='Chip' />
+      <Seo title='chipDocumentation:mainHeading' />
       <ChipDoc />
     </>
   );

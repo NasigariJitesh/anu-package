@@ -254,18 +254,20 @@ const Sidebar = () => {
               link: '/components/radio-button',
               components: [],
             },
-            {
-              title: 'leftSideBar:typography',
-              link: '/components/typography',
-              components: [],
-            },
+
             {
               title: 'leftSideBar:text-fields',
               link: '/components/text-field',
               components: [],
             },
+            {
+              title: 'leftSideBar:typography',
+              link: '/components/typography',
+              components: [],
+            },
           ]}
         />
+        <HeadingLink link='/credits' title='leftSideBar:credits' />
       </Container>
     </div>
   );
@@ -305,7 +307,7 @@ const style = {
     marginBottom: 10,
   },
   groupList: {
-    marginVertical: 15,
+    marginTop: 15,
   },
   componentList: {
     marginVertical: 15,
