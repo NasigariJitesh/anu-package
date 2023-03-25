@@ -1,7 +1,5 @@
 import { Container } from 'anu/lib';
 import Avatar from 'anu/lib/composites/avatar/';
-import image from 'assets/icon.png';
-import { Typography } from 'lib/primitives';
 
 const HomeScreen = () => {
   return (
