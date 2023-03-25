@@ -4,7 +4,7 @@ import TypographyDoc from 'screens/components/typography';
 const Typography = () => {
   return (
     <>
-      <SEO title='Typography' />
+      <SEO title='typographyDocumentation:mainHeading' />
       <TypographyDoc />
     </>
   );

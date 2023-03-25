@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { useTheme } from 'anu/config';
 import { Button, Chip, Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import Footer from 'components/footer';
 import { DripsyFinalTheme, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import ParticlesDark from 'screens/common/particles-dark';
 import ParticlesLight from 'screens/common/particles-light';
 import { useMenuContext } from 'screens/common/provider';
+import { footerLinks } from 'services/docs/footer';
 import { Link } from 'solito/link';
 
 const source = Source_Sans_Pro({
@@ -51,7 +53,7 @@ const Home = () => {
   const { isDarkTheme } = useMenuContext();
   const theme = useTheme();
   const { getTranslation } = useAnuLocalization();
-  const { height } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
   const sx = useSx();
 
   const style = styles(theme, height);
@@ -59,8 +61,8 @@ const Home = () => {
   return (
     <>
       {isDarkTheme ? <ParticlesDark /> : <ParticlesLight />}
-      <Container style={style.container}>
-        <Container disableGutters flexDirection='column' justify='center' align='center' style={sx(style.center)}>
+      <Container disableGutters style={style.container}>
+        <Container flexDirection='column' justify='center' align='center' style={sx(style.center)}>
           <Container disableGutters style={style.imageContainer}>
             <img
               src={isDarkTheme ? 'img/logo_dark_theme.svg' : 'img/logo_light_theme.svg'}
@@ -73,7 +75,7 @@ const Home = () => {
             disableGutters
             sx={{
               flexDirection: ['column', 'column', 'column', 'row', 'row'],
-              width: '100%',
+              width: width * 0.9,
               justifyContent: ['center', 'center', 'center', 'center', 'center'],
             }}
           >
@@ -85,7 +87,7 @@ const Home = () => {
               <Typography.Body style={style.code}>npm install @anu/material-ui</Typography.Body>
             </Container>
             <Container>
-              <Link href={'/components'}>
+              <Link href={'/getting-started'}>
                 <Button.Filled title={getTranslation('home:button:getting-started')} />
               </Link>
             </Container>
@@ -95,15 +97,11 @@ const Home = () => {
             <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
           </Container>
         </Container>
-        <Container
-          disableGutters
-          flexDirection='column'
-          align='center'
-          style={sx(style.footerContainerForLargeScreens)}
-        >
+        <Container flexDirection='column' align='center' style={sx(style.footerContainerForLargeScreens)}>
           <LocalizedTypography.Body localeKey='home:about1' style={sx(style.about)} />
           <LocalizedTypography.Body localeKey='home:about2' style={sx(style.about)} />
         </Container>
+        <Footer {...footerLinks} />
       </Container>
     </>
   );
@@ -115,7 +113,6 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
       position: 'absolute',
       width: '100%',
       height: `${(height || 0) - 70}px`,
-      overflow: 'scroll',
     },
 
     footerContainer: {
@@ -126,7 +123,7 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
     footerContainerForLargeScreens: {
       display: ['none', 'none', 'none', 'flex', 'flex'] as never,
       position: 'absolute',
-      bottom: 0,
+      bottom: '15px',
       left: '50%',
       transform: 'translate(-50%, 0)' as never,
     },
@@ -163,7 +160,6 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
 
     listAndHeadingContainer: {
       flexDirection: ['column', 'column', 'row', 'row', 'row'] as never,
-      marginHorizontal: [0, 0, 35, 35, 35] as never,
       alignSelf: 'center',
     },
 
@@ -177,6 +173,7 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
       marginHorizontal: 10,
       fontSize: [16, 16, 22, 22, 22] as never,
       opacity: 0.7,
+      textAlign: 'center' as const,
     },
 
     listItem: {

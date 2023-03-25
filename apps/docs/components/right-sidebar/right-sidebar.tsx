@@ -7,9 +7,11 @@ import { badgeIndex } from 'services/docs/badge';
 import { checkboxIndex } from 'services/docs/checkbox';
 import { chipIndex } from 'services/docs/chip';
 import { containerIndex } from 'services/docs/container';
+import { creditsIndex } from 'services/docs/credits';
 import { extendedFABIndex } from 'services/docs/extended-fab';
 import { FABIndex } from 'services/docs/fab';
 import { iconButtonIndex } from 'services/docs/icon-button';
+import { installationIndex } from 'services/docs/installation';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
@@ -158,9 +160,21 @@ const RenderIndex = () => {
         return <Index {...textFieldIndex} />;
       }
     }
+
+    case '/getting-started': {
+      {
+        return <Index {...installationIndex} />;
+      }
+    }
+
+    case '/credits': {
+      {
+        return <Index {...creditsIndex} />;
+      }
+    }
     default: {
       {
-        return <Index {...typographyIndex} />;
+        return null;
       }
     }
   }
@@ -184,6 +198,8 @@ const style = {
   container: {
     width: 210,
     paddingTop: 20,
+    position: 'sticky',
+    top: 70,
   },
   preHeading: {
     fontFamily: source.style.fontFamily,

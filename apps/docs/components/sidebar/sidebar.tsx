@@ -29,9 +29,13 @@ interface HeadingProps {
   links: SubIndex[];
 }
 
+const onLinkPress = () => {
+  document.querySelector('#top')?.scrollIntoView();
+};
+
 const Group = (props: HeadingProps) => {
   const { pathname } = useRouter();
-
+  const theme = useTheme();
   const { getTranslation } = useAnuLocalization();
 
   return (
@@ -52,7 +56,16 @@ const Group = (props: HeadingProps) => {
             </Accordion.Children>
           </Accordion.Container>
         ) : (
-          <Typography.Title style={[style.groupName, pathname === item.link ? style.active : {}]}>
+          <Typography.Title
+            onPress={() => {
+              console.log(document.querySelector('#top'));
+              document.querySelector('#top')?.scrollIntoView();
+            }}
+            style={[
+              style.groupName,
+              pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
+            ]}
+          >
             <TextLink href={item.link}>{getTranslation(item.title)}</TextLink>
           </Typography.Title>
         );
@@ -88,6 +101,7 @@ const RenderItem = ({ item }: { item: ComponentLinks }) => {
         </Accordion.Container>
       ) : (
         <Typography.Title
+          onPress={onLinkPress}
           style={[
             style.componentName,
             pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
@@ -121,6 +135,7 @@ const Categories = (props: { links: Link[] }) => {
       renderItem={({ item }) => {
         return (
           <Typography.Title
+            onPress={onLinkPress}
             style={[
               style.categoryName,
               pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
@@ -143,6 +158,24 @@ const Index = (props: HeadingProps) => {
   );
 };
 
+const HeadingLink = (props: { link: string; title: string }) => {
+  const { pathname } = useRouter();
+  const theme = useTheme();
+  const { getTranslation } = useAnuLocalization();
+
+  return (
+    <Typography.Title
+      onPress={onLinkPress}
+      style={[
+        style.headingLink,
+        pathname === props.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
+      ]}
+    >
+      <TextLink href={props.link}>{getTranslation(props.title)}</TextLink>
+    </Typography.Title>
+  );
+};
+
 const Sidebar = () => {
   const { isOpen } = useMenuContext();
   const { pathname } = useRouter();
@@ -154,14 +187,16 @@ const Sidebar = () => {
     <div
       id='root-scroll'
       style={{
-        height: 'calc(100vh - 90px)',
         overflowY: 'scroll',
         width: '210px',
+        position: 'sticky',
+        top: 80,
       }}
     >
       <Container sx={style.container}>
+        <HeadingLink link='/getting-started' title='leftSideBar:getting-started' />
         <Index
-          heading='leftSideBar:title'
+          heading='leftSideBar:components'
           links={[
             {
               title: 'leftSideBar:badge',
@@ -219,18 +254,20 @@ const Sidebar = () => {
               link: '/components/radio-button',
               components: [],
             },
-            {
-              title: 'leftSideBar:typography',
-              link: '/components/typography',
-              components: [],
-            },
+
             {
               title: 'leftSideBar:text-fields',
               link: '/components/text-field',
               components: [],
             },
+            {
+              title: 'leftSideBar:typography',
+              link: '/components/typography',
+              components: [],
+            },
           ]}
         />
+        <HeadingLink link='/credits' title='leftSideBar:credits' />
       </Container>
     </div>
   );
@@ -240,7 +277,6 @@ const style = {
   container: {
     width: 210,
     flex: 1,
-    paddingTop: 20,
   },
   heading: {
     fontFamily: source.style.fontFamily,
@@ -271,7 +307,7 @@ const style = {
     marginBottom: 10,
   },
   groupList: {
-    marginVertical: 15,
+    marginTop: 15,
   },
   componentList: {
     marginVertical: 15,
@@ -280,6 +316,15 @@ const style = {
   active: {
     opacity: 1,
     fontWeight: '600',
+  },
+
+  headingLink: {
+    fontFamily: source.style.fontFamily,
+    fontSize: 18,
+    fontWeight: '600',
+    flexWrap: 'wrap',
+    opacity: 0.7,
+    marginVertical: 15,
   },
 } as const;
 

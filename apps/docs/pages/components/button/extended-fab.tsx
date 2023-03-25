@@ -4,7 +4,7 @@ import ExtendedFABDoc from 'screens/components/extend-fab';
 const ExtendedFAB = () => {
   return (
     <>
-      <SEO title='Extended FAB' />
+      <SEO title='extendedFABDocumentation:heading' />
       <ExtendedFABDoc />
     </>
   );
