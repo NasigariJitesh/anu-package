@@ -23,4 +23,5 @@ module.exports = {
       version: 'detect',
     },
   },
+  ignorePatterns: ['index.js'],
 };

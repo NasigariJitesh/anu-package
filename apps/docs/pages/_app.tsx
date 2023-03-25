@@ -33,11 +33,12 @@ export default function App(props: AppProps) {
             <style>{`body { background-color: ${backgroundColor} !important; }`}</style>
           </Head>
           <Navbar />
+
           <Container
             disableGutters
             style={{
               flexDirection: 'row',
-              maxWidth: 1440,
+              maxWidth: props.router.pathname === '/' ? undefined : 1440,
               width: width,
               marginTop: 70,
               alignSelf: 'center',

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { ExtendedHoverStyles } from 'common/types';
 import { useSx as SxType } from 'dripsy';
-import { PressableStateCallbackType, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { ImageStyle, PressableStateCallbackType, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 /**
  * To convert the maxWidth into pixels
@@ -94,5 +94,16 @@ export const getCombinedStylesForText = (defaultStyle: StyleProp<TextStyle>, cus
  * @returns Combined Styles
  */
 export const getCombinedStylesForView = (defaultStyle: StyleProp<ViewStyle>, customStyles: StyleProp<ViewStyle>) => {
+  return Array.isArray(customStyles) ? [defaultStyle, ...customStyles] : [defaultStyle, customStyles];
+};
+
+/**
+ * Merge all the styles based on the type, if its an array of styles or object
+ *
+ * @param defaultStyle
+ * @param customStyles
+ * @returns Combined Styles
+ */
+export const getCombinedStylesForImage = (defaultStyle: StyleProp<ImageStyle>, customStyles: StyleProp<ImageStyle>) => {
   return Array.isArray(customStyles) ? [defaultStyle, ...customStyles] : [defaultStyle, customStyles];
 };

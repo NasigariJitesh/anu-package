@@ -195,6 +195,7 @@ const Sidebar = () => {
     >
       <Container sx={style.container}>
         <HeadingLink link='/getting-started' title='leftSideBar:getting-started' />
+        <HeadingLink link='/theming' title='leftSideBar:theming' />
         <Index
           heading='leftSideBar:components'
           links={[
@@ -289,6 +290,7 @@ const style = {
     fontWeight: '600',
     flexWrap: 'wrap',
     opacity: 0.7,
+    marginTop: 10,
   },
   groupName: {
     fontSize: 18,
@@ -329,7 +331,7 @@ const style = {
     fontWeight: '600',
     flexWrap: 'wrap',
     opacity: 0.7,
-    marginVertical: 15,
+    marginTop: 10,
   },
 } as const;
 

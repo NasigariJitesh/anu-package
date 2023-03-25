@@ -17,6 +17,7 @@ import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
 import { textFieldIndex } from 'services/docs/text-field';
+import { themingIndex } from 'services/docs/theming';
 import { typographyIndex } from 'services/docs/typography';
 import { TextLink } from 'solito/link';
 
@@ -176,6 +177,12 @@ const RenderIndex = () => {
     case '/credits': {
       {
         return <Index {...creditsIndex} />;
+      }
+    }
+
+    case '/theming': {
+      {
+        return <Index {...themingIndex} />;
       }
     }
     default: {
