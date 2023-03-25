@@ -51,6 +51,7 @@ const getStyles = () => {
       fontSize: 16,
       lineHeight: 24,
       marginBottom: 20,
+      fontWeight: '400',
     },
     subTitle: {
       fontFamily: source.style.fontFamily,

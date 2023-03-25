@@ -60,6 +60,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -ms-overflow-style: scrollbar;
 }
+
+ul#additional-links-list {
+  list-style: initial;
+}
+
+
 `;
 
 export default class MyDocument extends Document {
