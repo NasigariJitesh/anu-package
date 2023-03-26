@@ -9,6 +9,8 @@ import placeholder from '../assets/placeholder.png';
 import Avatar from '../components';
 import ChildrenAvatar from '../components/avatar/child-avatar';
 
+jest.useFakeTimers();
+
 describe('Testing for Children Avatar Rounded', () => {
   const name = 'NJ';
 
@@ -16,9 +18,7 @@ describe('Testing for Children Avatar Rounded', () => {
     <DripsyApp theme={makeTheme({})}>
       <ChildrenAvatar>{name}</ChildrenAvatar>
       <ChildrenAvatar size='large'>
-        <DripsyApp theme={makeTheme({})}>
-          <Icon name='menu' />
-        </DripsyApp>
+        <Icon name='menu' />
       </ChildrenAvatar>
       <ChildrenAvatar size='small'>
         <Image alt='test' source={{ uri: placeholder.src }} />
