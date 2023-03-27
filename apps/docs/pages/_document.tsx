@@ -47,7 +47,7 @@ html, body, #__next {
 }
 
 .documentation-link, .document-link:visited {
-  color: #1b1b1f
+  color: inherit
 }
 
 
