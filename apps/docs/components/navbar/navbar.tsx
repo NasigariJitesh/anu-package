@@ -181,7 +181,9 @@ const style = {
     alignItems: 'center',
     margin: '0 0 0 24px',
   },
-  disableLinkStyle: { textDecoration: 'none' },
+  disableLinkStyle: {
+    textDecoration: 'none',
+  },
 } as const;
 
 export default Navbar;
