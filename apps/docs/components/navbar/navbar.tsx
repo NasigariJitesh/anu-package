@@ -89,6 +89,11 @@ const MetaData = () => {
         </Link>
       </li>
       <li style={style.listItem}>
+        <Link href='https://discord.gg/S5pxcHyHXR' style={style.disableLinkStyle}>
+          <MaterialCommunityIcon color={colors?.$onBackground as string} name='discord' size={24} />
+        </Link>
+      </li>
+      <li style={style.listItem}>
         <Typography.Body
           style={style.text}
           onPress={() => {
