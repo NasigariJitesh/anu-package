@@ -5,7 +5,7 @@ import { AnuLocalizationProvider } from 'anu/lib/advanced';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { useColorScheme, View } from 'react-native';
 
 const MenuContent = createContext({
   isOpen: false,
@@ -28,12 +28,14 @@ export default function RootLayout(props: {
   backgroundColor: string;
   setBackgroundColor: (value: string) => void;
 }) {
+  const colorScheme = useColorScheme();
+
   const [isOpen, toggleIsOpen] = useState(true);
-  const [isDarkTheme, toggleDarkTheme] = useState(false);
+  const [isDarkTheme, toggleDarkTheme] = useState(colorScheme === 'dark');
   const [isAdjustedToResize, toggleIsAdjustedToResize] = useState(false);
 
   const { width } = useWindowDimensions();
-  const { pathname, defaultLocale } = useRouter();
+  const { pathname, locale } = useRouter();
   const { backgroundColor, setBackgroundColor, children } = props;
 
   useEffect(() => {
@@ -74,7 +76,7 @@ export default function RootLayout(props: {
 
   return (
     <Provider ssr theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
-      <AnuLocalizationProvider default={defaultLocale || 'en'}>
+      <AnuLocalizationProvider default={locale?.includes('fr') ? 'fr' : 'en'}>
         <View style={{ backgroundColor: backgroundColor }}>
           <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme }}>
             {children}

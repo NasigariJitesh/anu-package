@@ -16,10 +16,9 @@
 
   "footer:list1-heading": "Links",
   "footer:list1-item1-title": "Getting Started",
-  "footer:list1-item2-title": "Configuration",
-  "footer:list1-item3-title": "Theming",
-  "footer:list1-item4-title": "Components",
-  "footer:list1-item5-title": "Releases",
+  "footer:list1-item2-title": "Theming",
+  "footer:list1-item3-title": "Components",
+  "footer:list1-item4-title": "Releases",
   "footer:list2-heading": "Community",
   "footer:list2-item1-title": "Discord",
   "footer:list2-item2-title": "Github",
