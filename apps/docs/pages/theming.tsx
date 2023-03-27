@@ -4,11 +4,13 @@ import { Container, FlatList, Icon, LocalizedTypography, useAnuLocalization } fr
 import ComponentDetails from 'components/content/component-details';
 import SEO from 'components/seo';
 import { DripsyFinalTheme, ScrollView, useSx } from 'dripsy';
+import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import { useMenuContext } from 'screens/common/provider';
 
 interface StepProps {
   title: string;
@@ -280,6 +282,10 @@ const AdditionalLinks = () => {
 const Theming = () => {
   const theme = useTheme();
   const styles = getStyles(theme);
+  const { isOpen } = useMenuContext();
+  const { width } = useWindowDimensions();
+
+  if (isOpen && width < 900) return null;
 
   return (
     <>

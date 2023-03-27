@@ -5,6 +5,7 @@ const nextConfig = withExpo({
   i18n: {
     locales: ['en-US', 'fr', 'en'],
     defaultLocale: 'en',
+    localeDetection: true,
   },
 
   reactStrictMode: true,
