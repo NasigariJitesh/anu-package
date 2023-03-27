@@ -35,7 +35,7 @@ export default function RootLayout(props: {
   const [isAdjustedToResize, toggleIsAdjustedToResize] = useState(false);
 
   const { width } = useWindowDimensions();
-  const { pathname, defaultLocale } = useRouter();
+  const { pathname, locale } = useRouter();
   const { backgroundColor, setBackgroundColor, children } = props;
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export default function RootLayout(props: {
 
   return (
     <Provider ssr theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
-      <AnuLocalizationProvider default={defaultLocale || 'en'}>
+      <AnuLocalizationProvider default={locale?.includes('fr') ? 'fr' : 'en'}>
         <View style={{ backgroundColor: backgroundColor }}>
           <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme }}>
             {children}
