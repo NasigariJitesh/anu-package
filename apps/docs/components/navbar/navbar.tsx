@@ -84,7 +84,9 @@ const MetaData = () => {
         <ToggleTheme />
       </li>
       <li style={style.listItem}>
-        <MaterialCommunityIcon color={colors?.$onBackground as string} name='github' size={24} />
+        <Link href='https://github.com/mocktheta/anu/' style={style.disableLinkStyle}>
+          <MaterialCommunityIcon color={colors?.$onBackground as string} name='github' size={24} />
+        </Link>
       </li>
       <li style={style.listItem}>
         <Typography.Body
@@ -174,6 +176,7 @@ const style = {
     alignItems: 'center',
     margin: '0 0 0 24px',
   },
+  disableLinkStyle: { textDecoration: 'none' },
 } as const;
 
 export default Navbar;
