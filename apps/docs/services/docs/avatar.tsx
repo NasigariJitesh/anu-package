@@ -155,7 +155,7 @@ export const avatarDocumentation: ContentValues = {
 <Avatar source={{ uri: 'https://i.pravatar.cc/' }} size='large' variant='circle' />`,
     },
     {
-      name: 'avatarDocumentation:example1-name',
+      name: 'avatarDocumentation:example4-name',
       id: 'group',
       component: (
         <Container disableGutters sx={flexStyle as never}>
