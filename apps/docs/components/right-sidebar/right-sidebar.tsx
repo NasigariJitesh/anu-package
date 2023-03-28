@@ -91,11 +91,11 @@ const Components = (props: { links: ComponentLinks[] | undefined }) => {
 
 const Index = (props: HeadingProps) => {
   return (
-    <>
+    <Container disableGutters style={style.indexContainer}>
       <LocalizedTypography.Body style={style.preHeading} localeKey='rightSideBar:onThisPage' />
       <LocalizedTypography.Title style={style.heading} localeKey={props.heading} />
       <Group {...props} />
-    </>
+    </Container>
   );
 };
 
@@ -199,7 +199,7 @@ const RightSidebar = () => {
   const sx = useSx();
   const { pathname } = useRouter();
 
-  if (!width || width <= 1024) return null;
+  if (!width || width <= 1060) return null;
   if (pathname === '/') return null;
 
   return (
@@ -253,6 +253,9 @@ const style = {
     paddingTop: 20,
     position: 'sticky',
     top: 70,
+  },
+  indexContainer: {
+    marginBottom: 10,
   },
   preHeading: {
     fontFamily: source.style.fontFamily,

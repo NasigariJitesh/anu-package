@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
-import { Accordion, Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import { Accordion, Container, FlatList, Typography, useAnuLocalization } from 'anu/lib';
 import { ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
@@ -28,6 +28,7 @@ interface SubIndex {
 
 interface HeadingProps {
   heading: string;
+  headingLink: string;
   links: SubIndex[];
 }
 
@@ -151,9 +152,21 @@ const Categories = (props: { links: Link[] }) => {
 };
 
 const Index = (props: HeadingProps) => {
+  const { pathname } = useRouter();
+  const theme = useTheme();
+  const { getTranslation } = useAnuLocalization();
   return (
     <>
-      <LocalizedTypography.Title style={style.heading} localeKey={props.heading} />
+      <Typography.Title
+        onPress={onLinkPress}
+        style={[
+          style.headingLink,
+          pathname.includes('components') ? { ...style.active, color: theme.colors?.$primary as never } : {},
+        ]}
+      >
+        <TextLink href={props.headingLink}>{getTranslation(props.heading)}</TextLink>
+      </Typography.Title>
+
       <Group {...props} />
     </>
   );
@@ -237,6 +250,7 @@ const Sidebar = () => {
           <HeadingLink link='/theming' title='leftSideBar:theming' />
           <Index
             heading='leftSideBar:components'
+            headingLink='/components'
             links={[
               {
                 title: 'leftSideBar:badge',
@@ -323,6 +337,7 @@ const style = {
   container: {
     width: 240,
     flex: 1,
+    marginBottom: 10,
   },
   heading: {
     fontFamily: source.style.fontFamily,
