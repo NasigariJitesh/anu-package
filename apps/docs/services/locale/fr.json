@@ -59,6 +59,8 @@
   "avatarDocumentation:example4-name": "Avatars groupés",
   "avatarDocumentation:example4-description": "Ce sont des avatars qui représentent un groupe d’utilisateurs ou de membres. Ils peuvent être utilisés pour montrer les membres d’une équipe, d’un groupe de discussion ou d’une communauté.",
   "avatarDocumentation:example5-name": "Avatar - avec enfants",
+  "avatarDocumentation:example-6name": "Avatar - mise en oeuvre pour le Web",
+  "avatarDocumentation:example-7name": "Avatar - mise en oeuvre pour mobile (Android, iOS)",
 
   "avatarDocumentation:property-size-description": "La taille de l’avatar.",
   "avatarDocumentation:property-variant-description": "La variante de l’avatar, qu’il soit circulaire ou arrondi.",

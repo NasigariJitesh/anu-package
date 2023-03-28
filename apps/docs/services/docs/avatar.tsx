@@ -229,6 +229,30 @@ export const avatarDocumentation: ContentValues = {
   <Image source={{ uri: 'https://i.pravatar.cc/?img=13' }} alt='avatar' style={{ height: 40, width: 40 }} />
 </Avatar>`,
     },
+    {
+      name: 'avatarDocumentation:example6-name',
+      id: 'avatar-web',
+      component: (
+        <Container disableGutters sx={flexStyle as never}>
+          <Avatar source={{ uri: image.src }} style={style} />
+        </Container>
+      ),
+      code: `import image from 'assets/avatar-placeholder.png';
+
+<Avatar source={{ uri: image.src }} />`,
+    },
+    {
+      name: 'avatarDocumentation:example7-name',
+      id: 'avatar-mobile',
+      component: (
+        <Container disableGutters sx={flexStyle as never}>
+          <Avatar source={{ uri: image.src }} style={style} />
+        </Container>
+      ),
+      code: `import image from 'assets/avatar-placeholder.png';
+
+<Avatar source={image} />`,
+    },
   ],
 };
 
@@ -254,6 +278,14 @@ export const avatarIndex: HeadingProps = {
     {
       title: 'avatarDocumentation:example5-name',
       link: '#children',
+    },
+    {
+      title: 'avatarDocumentation:example6-name',
+      link: '#avatar-web',
+    },
+    {
+      title: 'avatarDocumentation:example7-name',
+      link: '#avatar-mobile',
     },
     {
       link: '#props',
