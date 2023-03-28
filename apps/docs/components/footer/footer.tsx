@@ -72,7 +72,7 @@ const Footer = (props: FooterProps) => {
   if (isOpen && width < 900) return null;
 
   return (
-    <footer style={{ ...style.container, marginTop: router.pathname === '/' ? 0 : 50 }}>
+    <footer style={{ ...style.container, marginTop: router.pathname == '/' ? 0 : 50 }}>
       <Container disableGutters style={{ width: '100%', backgroundColor: isDarkTheme ? '#404040' : '#EEEEEE' }}>
         <Container disableGutters style={sx(style.footerContainer)}>
           <Container disableGutters style={sx(style.imageContainer)}>
