@@ -2,7 +2,6 @@ import { getCombinedStylesForImage } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Image } from 'lib';
 
-import PlaceHolderImage from '../../../assets/placeholder.png';
 import { ImageAvatarProps } from '../../../types';
 import { getImageAvatarStyle } from '../../../utils';
 
@@ -14,15 +13,15 @@ import { getImageAvatarStyle } from '../../../utils';
  */
 const FallbackImage = (props: ImageAvatarProps) => {
   const theme = useTheme();
-
+  const link = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
   const { imageStyle } = getImageAvatarStyle(props, theme);
+  const { size, variant, alt, source, ...otherProps } = props;
 
   return (
-    // @ts-ignore
     <Image
-      {...props}
-      alt={props.alt ?? ''}
-      source={PlaceHolderImage}
+      {...otherProps}
+      alt={alt ?? ''}
+      source={{ uri: link }}
       style={getCombinedStylesForImage(imageStyle, props.style)}
     />
   );
