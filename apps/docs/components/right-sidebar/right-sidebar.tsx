@@ -1,5 +1,6 @@
 import { useTheme } from 'anu/config';
 import { Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import { ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
@@ -194,7 +195,8 @@ const RenderIndex = () => {
 };
 
 const RightSidebar = () => {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
+  const sx = useSx();
   const { pathname } = useRouter();
 
   if (!width || width <= 1024) return null;
@@ -202,7 +204,45 @@ const RightSidebar = () => {
 
   return (
     <Container sx={style.container}>
-      <RenderIndex />
+      <ScrollView
+        id={undefined}
+        scrollEnabled
+        showsVerticalScrollIndicator={false}
+        style={sx({ maxHeight: height - 70, paddingBottom: '5px' })}
+        aria-label={undefined}
+        aria-busy={undefined}
+        aria-checked={undefined}
+        aria-disabled={undefined}
+        aria-expanded={undefined}
+        aria-selected={undefined}
+        aria-labelledby={undefined}
+        aria-valuemax={undefined}
+        aria-valuemin={undefined}
+        aria-valuenow={undefined}
+        aria-valuetext={undefined}
+        aria-hidden={undefined}
+        aria-live={undefined}
+        aria-modal={undefined}
+        role={undefined}
+        onPointerDown={undefined}
+        onPointerDownCapture={undefined}
+        onPointerMove={undefined}
+        onPointerMoveCapture={undefined}
+        onPointerUp={undefined}
+        onPointerUpCapture={undefined}
+        onPointerCancel={undefined}
+        onPointerCancelCapture={undefined}
+        onPointerEnter={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeave={undefined}
+        onPointerLeaveCapture={undefined}
+        stickyHeaderHiddenOnScroll={undefined}
+        StickyHeaderComponent={undefined}
+        automaticallyAdjustKeyboardInsets={undefined}
+        automaticallyAdjustsScrollIndicatorInsets={undefined}
+      >
+        <RenderIndex />
+      </ScrollView>
     </Container>
   );
 };

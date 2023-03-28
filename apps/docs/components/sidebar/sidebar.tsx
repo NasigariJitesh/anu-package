@@ -1,6 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
 import { Accordion, Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import { ScrollView, useSx } from 'dripsy';
+import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
 import { useMenuContext } from 'screens/common/provider';
@@ -58,7 +60,6 @@ const Group = (props: HeadingProps) => {
         ) : (
           <Typography.Title
             onPress={() => {
-              console.log(document.querySelector('#top'));
               document.querySelector('#top')?.scrollIntoView();
             }}
             style={[
@@ -179,6 +180,8 @@ const HeadingLink = (props: { link: string; title: string }) => {
 const Sidebar = () => {
   const { isOpen } = useMenuContext();
   const { pathname } = useRouter();
+  const { height } = useWindowDimensions();
+  const sx = useSx();
 
   if (!isOpen) return null;
   if (pathname === '/') return null;
@@ -187,101 +190,138 @@ const Sidebar = () => {
     <div
       id='root-scroll'
       style={{
-        overflowY: 'scroll',
-        width: '210px',
+        width: '240px',
         position: 'sticky',
         top: 80,
       }}
     >
-      <Container sx={style.container}>
-        <HeadingLink link='/getting-started' title='leftSideBar:getting-started' />
-        <HeadingLink link='/theming' title='leftSideBar:theming' />
-        <Index
-          heading='leftSideBar:components'
-          links={[
-            {
-              title: 'leftSideBar:badge',
-              components: [],
-              link: '/components/badge',
-            },
-            {
-              title: 'leftSideBar:button',
-              components: [
-                {
-                  title: 'leftSideBar:button-common',
-                  link: '/components/button/common',
-                  variants: [],
-                },
-                {
-                  title: 'leftSideBar:button-fab',
-                  link: '/components/button/fab',
-                  variants: [],
-                },
-                {
-                  title: 'leftSideBar:button-extended-fab',
-                  link: '/components/button/extended-fab',
-                  variants: [],
-                },
-                {
-                  title: 'leftSideBar:button-icon',
-                  link: '/components/button/icon',
-                  variants: [],
-                },
-                {
-                  title: 'leftSideBar:button-segmented',
-                  link: '/components/button/segmented',
-                  variants: [],
-                },
-              ],
-              link: '/components/button',
-            },
-            {
-              title: 'leftSideBar:checkbox',
-              link: '/components/checkbox',
-              components: [],
-            },
-            {
-              title: 'leftSideBar:chips',
-              link: '/components/chip',
-              components: [],
-            },
-            {
-              title: 'leftSideBar:container',
-              link: '/components/container',
-              components: [],
-            },
-            {
-              title: 'leftSideBar:divider',
-              link: '/components/divider',
-              components: [],
-            },
-            {
-              title: 'leftSideBar:radio',
-              link: '/components/radio-button',
-              components: [],
-            },
+      <ScrollView
+        id={undefined}
+        scrollEnabled
+        showsVerticalScrollIndicator={false}
+        style={sx({ maxHeight: height - 80 })}
+        aria-label={undefined}
+        aria-busy={undefined}
+        aria-checked={undefined}
+        aria-disabled={undefined}
+        aria-expanded={undefined}
+        aria-selected={undefined}
+        aria-labelledby={undefined}
+        aria-valuemax={undefined}
+        aria-valuemin={undefined}
+        aria-valuenow={undefined}
+        aria-valuetext={undefined}
+        aria-hidden={undefined}
+        aria-live={undefined}
+        aria-modal={undefined}
+        role={undefined}
+        onPointerDown={undefined}
+        onPointerDownCapture={undefined}
+        onPointerMove={undefined}
+        onPointerMoveCapture={undefined}
+        onPointerUp={undefined}
+        onPointerUpCapture={undefined}
+        onPointerCancel={undefined}
+        onPointerCancelCapture={undefined}
+        onPointerEnter={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeave={undefined}
+        onPointerLeaveCapture={undefined}
+        stickyHeaderHiddenOnScroll={undefined}
+        StickyHeaderComponent={undefined}
+        automaticallyAdjustKeyboardInsets={undefined}
+        automaticallyAdjustsScrollIndicatorInsets={undefined}
+      >
+        <Container sx={style.container}>
+          <HeadingLink link='/getting-started' title='leftSideBar:getting-started' />
+          <HeadingLink link='/theming' title='leftSideBar:theming' />
+          <Index
+            heading='leftSideBar:components'
+            links={[
+              {
+                title: 'leftSideBar:badge',
+                components: [],
+                link: '/components/badge',
+              },
+              {
+                title: 'leftSideBar:button',
+                components: [
+                  {
+                    title: 'leftSideBar:button-common',
+                    link: '/components/button/common',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:button-fab',
+                    link: '/components/button/fab',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:button-extended-fab',
+                    link: '/components/button/extended-fab',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:button-icon',
+                    link: '/components/button/icon',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:button-segmented',
+                    link: '/components/button/segmented',
+                    variants: [],
+                  },
+                ],
+                link: '/components/button',
+              },
+              {
+                title: 'leftSideBar:checkbox',
+                link: '/components/checkbox',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:chips',
+                link: '/components/chip',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:container',
+                link: '/components/container',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:divider',
+                link: '/components/divider',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:radio',
+                link: '/components/radio-button',
+                components: [],
+              },
 
-            {
-              title: 'leftSideBar:text-fields',
-              link: '/components/text-field',
-              components: [],
-            },
-            {
-              title: 'leftSideBar:typography',
-              link: '/components/typography',
-              components: [],
-            },
-          ]}
-        />
-        <HeadingLink link='/credits' title='leftSideBar:credits' />
-      </Container>
+              {
+                title: 'leftSideBar:text-fields',
+                link: '/components/text-field',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:typography',
+                link: '/components/typography',
+                components: [],
+              },
+            ]}
+          />
+          <HeadingLink link='/credits' title='leftSideBar:credits' />
+        </Container>
+      </ScrollView>
     </div>
   );
 };
 
 const style = {
   container: {
-    width: 210,
+    width: 240,
     flex: 1,
   },
   heading: {
@@ -315,6 +355,7 @@ const style = {
   },
   groupList: {
     marginTop: 15,
+    marginLeft: 15,
   },
   componentList: {
     marginVertical: 15,
