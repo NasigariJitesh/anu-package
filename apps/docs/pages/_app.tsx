@@ -36,6 +36,7 @@ export default function App(props: AppProps) {
 
           <Container
             disableGutters
+            justify='space-between'
             style={{
               flexDirection: 'row',
               maxWidth: props.router.pathname === '/' ? undefined : 1440,

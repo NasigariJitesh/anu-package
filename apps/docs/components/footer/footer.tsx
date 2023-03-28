@@ -7,6 +7,7 @@ import { DripsyFinalTheme, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import CanadaFlag from 'public/img/canada.png';
 import IndiaFlag from 'public/img/india.png';
 import React from 'react';
@@ -43,6 +44,7 @@ const Footer = (props: FooterProps) => {
   const { width } = useWindowDimensions();
   const theme = useTheme();
   const style = styles(width, theme);
+  const router = useRouter();
 
   const sx = useSx();
 
@@ -70,7 +72,7 @@ const Footer = (props: FooterProps) => {
   if (isOpen && width < 900) return null;
 
   return (
-    <footer style={style.container}>
+    <footer style={{ ...style.container, marginTop: router.pathname == '/' ? 0 : 50 }}>
       <Container disableGutters style={{ width: '100%', backgroundColor: isDarkTheme ? '#404040' : '#EEEEEE' }}>
         <Container disableGutters style={sx(style.footerContainer)}>
           <Container disableGutters style={sx(style.imageContainer)}>
