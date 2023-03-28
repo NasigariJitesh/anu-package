@@ -34,10 +34,10 @@ export const dividerDocumentation: ContentValues = {
           <Divider orientation='horizontal' variant='full-width' />
           <Typography.Body>Item 2</Typography.Body>
 
-          <Container disableGutters flexDirection='row' sx={{ ...flexStyle, marginTop: 15 } as never}>
-            <Icon name='home' style={style} />
+          <Container disableGutters flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
+            <Typography.Body>Item 1</Typography.Body>
             <Divider orientation='vertical' variant='full-height' />
-            <Icon name='menu' style={style} />
+            <Typography.Body>Item 2</Typography.Body>
           </Container>
         </Container>
       ),
@@ -60,16 +60,21 @@ export const dividerDocumentation: ContentValues = {
           <Typography.Body>Item 4</Typography.Body>
           <Divider variant='right-inset' orientation='horizontal' />
 
-          <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <Icon name='align-horizontal-left' style={style} />
+          <Container
+            disableGutters
+            align='center'
+            flexDirection='row'
+            sx={{ ...flexStyle, marginTop: 30, height: 50 } as never}
+          >
+            <Typography.Body>Item 1</Typography.Body>
             <Divider variant='full-height' orientation='vertical' />
-            <Icon name='align-horizontal-right' style={style} />
+            <Typography.Body>Item 2</Typography.Body>
             <Divider variant='middle' orientation='vertical' />
-            <Icon name='align-horizontal-center' style={style} />
+            <Typography.Body>Item 3</Typography.Body>
             <Divider variant='top-inset' orientation='vertical' />
-            <Icon name='align-vertical-center' style={style} />
+            <Typography.Body>Item 4</Typography.Body>
             <Divider variant='bottom-inset' orientation='vertical' />
-            <Icon name='align-vertical-top' style={style} />
+            <Typography.Body>Item 5</Typography.Body>
           </Container>
         </Container>
       ),
@@ -121,15 +126,6 @@ export const dividerDocumentation: ContentValues = {
       description: 'dividerDocumentation:example4-description',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <Icon name='align-horizontal-left' style={otherStyle} />
-            <Divider text='Center' orientation='vertical' />
-            <Icon name='align-horizontal-right' style={otherStyle} />
-            <Divider text='Start' orientation='vertical' align='start' />
-            <Icon name='align-horizontal-center' style={otherStyle} />
-            <Divider text='End' orientation='vertical' align='end' />
-            <Icon name='align-vertical-center' style={otherStyle} />
-          </Container>
           <Typography.Body>Item 1</Typography.Body>
           <Divider text='Center' />
           <Typography.Body>Item 2</Typography.Body>
@@ -140,6 +136,20 @@ export const dividerDocumentation: ContentValues = {
           <Divider>
             <Chip value='Chip' />
           </Divider>
+          <Container
+            disableGutters
+            align='center'
+            flexDirection='row'
+            sx={{ ...flexStyle, marginTop: 30, height: 100 } as never}
+          >
+            <Typography.Body>Item 1</Typography.Body>
+            <Divider text='Center' orientation='vertical' />
+            <Typography.Body>Item 2</Typography.Body>
+            <Divider text='Start' orientation='vertical' align='start' />
+            <Typography.Body>Item 3</Typography.Body>
+            <Divider text='End' orientation='vertical' align='end' />
+            <Typography.Body>Item 4</Typography.Body>
+          </Container>
         </Container>
       ),
       code: `<Divider text='Center' orientation='vertical' />
@@ -250,9 +260,4 @@ export const dividerIndex: HeadingProps = {
     },
 
     {
-      link: '#props',
-      title: 'content:props',
-      components: [],
-    },
-  ],
-};
+      link: '#p
