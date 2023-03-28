@@ -7,22 +7,19 @@ export const footerLinks: FooterProps = {
       items: [
         {
           title: 'footer:list1-item1-title',
-          link: '#',
+          link: '/getting-started',
         },
         {
           title: 'footer:list1-item2-title',
-          link: '#',
+          link: '/theming',
         },
         {
           title: 'footer:list1-item3-title',
-          link: '#',
-        },
-        {
-          title: 'footer:list1-item4-title',
           link: '/components/badge',
         },
         {
-          title: 'footer:list1-item5-title',
+          title: 'footer:list1-item4-title',
+          link: '/',
         },
       ],
     },
@@ -35,11 +32,11 @@ export const footerLinks: FooterProps = {
         },
         {
           title: 'footer:list2-item2-title',
-          link: '#',
+          link: 'https://github.com/mocktheta/anu',
         },
         {
           title: 'footer:list2-item3-title',
-          link: '#',
+          link: 'https://github.com/mocktheta/anu/issues',
         },
       ],
     },

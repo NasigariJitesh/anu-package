@@ -4,8 +4,10 @@ import { Container, FlatList, LocalizedTypography, useAnuLocalization } from 'an
 import ComponentDetails from 'components/content/component-details';
 import SEO from 'components/seo';
 import { DripsyFinalTheme, useSx } from 'dripsy';
+import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { View } from 'react-native';
+import { useMenuContext } from 'screens/common/provider';
 
 const source = Source_Sans_Pro({
   weight: ['400', '600'],
@@ -47,6 +49,11 @@ const PackagesUsed = () => {
 const Credits = () => {
   const theme = useTheme();
   const styles = getStyles(theme);
+
+  const { isOpen } = useMenuContext();
+  const { width } = useWindowDimensions();
+
+  if (isOpen && width < 900) return null;
 
   return (
     <>

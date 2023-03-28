@@ -6,9 +6,10 @@ import SEO from 'components/seo';
 import { DripsyFinalTheme, ScrollView, useSx } from 'dripsy';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { useWindowDimensions, View } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import { useMenuContext } from 'screens/common/provider';
 
 interface StepProps {
   title: string;
@@ -127,7 +128,9 @@ const Step = (props: StepProps) => {
   const styles = getStyles(theme);
 
   return (
-    <Container disableGutters nativeID={props.id} style={styles.examplesContainer}>
+    <Container disableGutters style={styles.examplesContainer}>
+      <View nativeID={props.id} style={{ position: 'absolute', top: -90, height: 10, width: 10, zIndex: -10 }} />
+
       <LocalizedTypography.Headline style={sx(styles.stepTitle)} localeKey={props.title} />
       {props.description ? (
         <div
@@ -198,7 +201,9 @@ export default App;`,
   ];
 
   return (
-    <Container nativeID='with-next' disableGutters style={styles.examplesContainer}>
+    <Container disableGutters style={styles.examplesContainer}>
+      <View nativeID='with-next' style={{ position: 'absolute', top: -90, height: 10, width: 10, zIndex: -10 }} />
+
       <LocalizedTypography.Headline style={sx(styles.stepTitle)} localeKey={'getting-started:step4:title'} />
       <div
         style={sx(styles.stepDescription)}
@@ -227,21 +232,25 @@ const GettingStarted = () => {
   const theme = useTheme();
   const styles = getStyles(theme);
 
+  const { isOpen } = useMenuContext();
+  const { width } = useWindowDimensions();
+
+  if (isOpen && width < 900) return null;
+
   return (
-    <>
+    <Container nativeID='root-scroll' sx={styles.container}>
       <SEO title='getting-started:mainHeading' />
-      <Container nativeID='root-scroll' sx={styles.container}>
-        <View nativeID='top' style={{ position: 'absolute', top: -70, height: 10, width: 10, zIndex: -10 }} />
-        <Container disableGutters sx={{ maxWidth: '750px' }}>
-          <ComponentDetails
-            mainHeading={'getting-started:mainHeading'}
-            mainDescription={'getting-started:mainDescription'}
-          />
-          <Step id='installation' code='npm install anu' title='getting-started:step1:title' />
-          <Step
-            id='provider'
-            description='getting-started:step3:description'
-            code={`import { Provider } from 'anu/common/context';
+      <View nativeID='top' style={{ position: 'absolute', top: -70, height: 10, width: 10, zIndex: -10 }} />
+      <Container disableGutters sx={{ maxWidth: '750px' }}>
+        <ComponentDetails
+          mainHeading={'getting-started:mainHeading'}
+          mainDescription={'getting-started:mainDescription'}
+        />
+        <Step id='installation' code='npm install anu' title='getting-started:step1:title' />
+        <Step
+          id='provider'
+          description='getting-started:step3:description'
+          code={`import { Provider } from 'anu/common/context';
 import { makeTheme } from 'anu/config';
 
 const theme = makeTheme({});
@@ -255,13 +264,12 @@ const App = () => {
 };
 
 export default App;`}
-            title='getting-started:step3:title'
-          />
-          <Step id='icons' description='getting-started:step5:description' title='getting-started:step5:title' />
-          <ForNextJS />
-        </Container>
+          title='getting-started:step3:title'
+        />
+        <Step id='icons' description='getting-started:step5:description' title='getting-started:step5:title' />
+        <ForNextJS />
       </Container>
-    </>
+    </Container>
   );
 };
 
@@ -274,7 +282,6 @@ const getStyles = ({ colors }: DripsyFinalTheme) => {
       zIndex: 1,
       width: ['90vw', '90vw', '550px', '600px', '750px'] as never,
       paddingTop: 20,
-      overflow: 'scroll',
     },
 
     examplesContainer: {

@@ -5,7 +5,7 @@ import { Source_Sans_Pro } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useMenuContext } from 'screens/common/provider';
 
@@ -62,6 +62,10 @@ const ToggleMenu = () => {
 const MetaData = () => {
   const { width } = useWindowDimensions();
   const { colors } = useTheme();
+  const router = useRouter();
+  const { currentLocale } = useAnuLocalization();
+
+  const [locale, setLocale] = useState(currentLocale);
 
   const RenderToggleMenu = () => {
     const { pathname } = useRouter();
@@ -80,7 +84,26 @@ const MetaData = () => {
         <ToggleTheme />
       </li>
       <li style={style.listItem}>
-        <MaterialCommunityIcon color={colors?.$onBackground as string} name='github' size={24} />
+        <Link href='https://github.com/mocktheta/anu/' style={style.disableLinkStyle}>
+          <MaterialCommunityIcon color={colors?.$onBackground as string} name='github' size={24} />
+        </Link>
+      </li>
+      <li style={style.listItem}>
+        <Link href='https://discord.gg/S5pxcHyHXR' style={style.disableLinkStyle}>
+          <MaterialCommunityIcon color={colors?.$onBackground as string} name='discord' size={24} />
+        </Link>
+      </li>
+      <li style={style.listItem}>
+        <Typography.Body
+          style={style.text}
+          onPress={() => {
+            router.push(router.pathname, router.pathname, { locale: locale === 'en' ? 'fr' : 'en' });
+
+            setLocale(locale === 'en' ? 'fr' : 'en');
+          }}
+        >
+          {locale === 'en' ? 'FR' : 'EN'}
+        </Typography.Body>
       </li>
       <li style={style.listItem}>
         <RenderToggleMenu />
@@ -156,7 +179,10 @@ const style = {
   listItem: {
     display: 'flex',
     alignItems: 'center',
-    margin: '0 0 0 32px',
+    margin: '0 0 0 24px',
+  },
+  disableLinkStyle: {
+    textDecoration: 'none',
   },
 } as const;
 
