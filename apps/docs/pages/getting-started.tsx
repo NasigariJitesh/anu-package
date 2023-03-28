@@ -128,7 +128,9 @@ const Step = (props: StepProps) => {
   const styles = getStyles(theme);
 
   return (
-    <Container disableGutters nativeID={props.id} style={styles.examplesContainer}>
+    <Container disableGutters style={styles.examplesContainer}>
+      <View nativeID={props.id} style={{ position: 'absolute', top: -90, height: 10, width: 10, zIndex: -10 }} />
+
       <LocalizedTypography.Headline style={sx(styles.stepTitle)} localeKey={props.title} />
       {props.description ? (
         <div
@@ -199,7 +201,9 @@ export default App;`,
   ];
 
   return (
-    <Container nativeID='with-next' disableGutters style={styles.examplesContainer}>
+    <Container disableGutters style={styles.examplesContainer}>
+      <View nativeID='with-next' style={{ position: 'absolute', top: -90, height: 10, width: 10, zIndex: -10 }} />
+
       <LocalizedTypography.Headline style={sx(styles.stepTitle)} localeKey={'getting-started:step4:title'} />
       <div
         style={sx(styles.stepDescription)}
