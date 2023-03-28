@@ -251,6 +251,11 @@ const Sidebar = () => {
               components: [],
             },
             {
+              title: 'leftSideBar:divider',
+              link: '/components/divider',
+              components: [],
+            },
+            {
               title: 'leftSideBar:radio',
               link: '/components/radio-button',
               components: [],

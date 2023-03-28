@@ -29,20 +29,50 @@ export type DividerOrientation = 'horizontal' | 'vertical';
 /**
  * The Divider text align type
  */
-export type DividerTextAlign = 'center' | 'start' | 'end';
+export type DividerAlign = 'center' | 'start' | 'end';
 
 /**
  * Props for the divider component
  */
 export interface DividerProps {
-  variant: DividerVariant;
-  pattern: DividerPattern;
-  orientation: DividerOrientation;
-  borderWidth: number | string;
+  /**
+   * Variant of divider that decides width for horizontal, height for vertical dividers
+   */
+  variant?: DividerVariant;
+  /**
+   * The pattern of the dividing line
+   */
+  pattern?: DividerPattern;
+  /**
+   * Whether the divider is vertical or horizontal.
+   */
+  orientation?: DividerOrientation;
+  /**
+   * The thickness or weight of the divider line.
+   */
+  thickness?: number | string;
+  /**
+   * If true, the divider is displayed in a lighter shade of the color given in style.
+   */
   light?: boolean;
+  /**
+   * The component that is to be displayed on the divider
+   */
   children?: ReactChildren;
+  /**
+   * "The text that is to be displayed on the divider.
+   */
   text?: string;
-  textAlign?: DividerTextAlign;
+  /**
+   * The alignment of text/children on the divider.
+   */
+  align?: DividerAlign;
+  /**
+   * The styles for the text on the divider
+   */
   textStyle?: StyleProp<TextStyle>;
+  /**
+   * The styles for the divider component
+   */
   style?: Sx;
 }

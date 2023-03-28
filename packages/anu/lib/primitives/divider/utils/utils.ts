@@ -3,7 +3,8 @@ import { ContainerJustify } from 'lib/primitives/layout/types';
 import { StyleProp, ViewStyle } from 'react-native';
 
 import { DividerProps } from '../types';
-import { DividerPattern, DividerTextAlign } from './../types/divider';
+import { getColorInRGBA } from './../../../../common/utils/utils';
+import { DividerAlign, DividerPattern } from './../types/divider';
 
 /**
  * To generate the divider styling props
@@ -25,7 +26,7 @@ export const getDividerStyle = (props: Partial<DividerProps>, theme: DripsyFinal
     }
     case 'full-height': {
       return {
-        style: { ...style, height: '100%' },
+        style: { ...style, margin: 0 },
         sx: sx,
       };
     }
@@ -84,7 +85,9 @@ export const getDividerStyle = (props: Partial<DividerProps>, theme: DripsyFinal
 const getDividerCommonStyles = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
   const { colors } = theme;
 
-  const { orientation, textAlign, pattern, borderWidth } = props;
+  const { orientation, align, pattern, thickness } = props;
+  let borderWidth = thickness;
+  if (pattern === 'double-line' && thickness && thickness < 3) borderWidth = 3;
   const style: StyleProp<ViewStyle> = { overflow: 'visible' };
   const sx: SxProp = { color: props.style?.color ?? (colors?.$onBackground as string) };
 
@@ -96,8 +99,8 @@ const getDividerCommonStyles = (props: Partial<DividerProps>, theme: DripsyFinal
           width: '0px',
           flexDirection: 'column' as const,
           marginHorizontal: '8px',
-          alignItems: 'flex-end' as const,
-          justifyContent: getAlignment(textAlign),
+          alignItems: 'center' as const,
+          justifyContent: getAlignment(align),
           borderLeft: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props, theme)}`,
         },
         sx: { ...sx, alignSelf: 'stretch' },
@@ -111,7 +114,7 @@ const getDividerCommonStyles = (props: Partial<DividerProps>, theme: DripsyFinal
           flexDirection: 'row' as const,
           marginVertical: '16px',
           alignItems: 'center' as const,
-          justifyContent: getAlignment(textAlign),
+          justifyContent: getAlignment(align),
           borderTop: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props, theme)}`,
         },
         sx: sx,
@@ -125,7 +128,7 @@ const getDividerCommonStyles = (props: Partial<DividerProps>, theme: DripsyFinal
           flexDirection: 'column' as const,
           alignItems: 'center' as const,
           marginVertical: '8px',
-          justifyContent: getAlignment(textAlign),
+          justifyContent: getAlignment(align),
           borderLeft: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props, theme)}`,
         },
 
@@ -138,10 +141,10 @@ const getDividerCommonStyles = (props: Partial<DividerProps>, theme: DripsyFinal
 /**
  * To generate the divider text alignment
  *
- *  @param {DividerTextAlign} align - The text align property of the divider component
+ *  @param {DividerAlign} align - The text align property of the divider component
  *  @returns text alignment for the divider
  */
-const getAlignment = (align?: DividerTextAlign) => {
+const getAlignment = (align?: DividerAlign) => {
   switch (align) {
     case 'start': {
       return 'flex-start' as ContainerJustify;
@@ -193,7 +196,7 @@ const getColor = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
 
   const { light, style } = props;
   const color = style?.color ? String(style?.color) : (colors?.$primary as string);
-  return light ? color + '90' : color;
+  return light ? getColorInRGBA(color, 75) : color;
 };
 
 /**
@@ -216,4 +219,9 @@ export const defaultTextStyle = (theme: DripsyFinalTheme) =>
     backgroundColor: theme.colors?.$background as never,
     paddingHorizontal: '4px',
     color: theme.colors?.$onBackground as never,
+    textAlignVertical: 'center',
   } as const);
+
+export const childrenContainerStyle = (theme: DripsyFinalTheme) => {
+  return { paddingHorizontal: '4px', backgroundColor: theme.colors.$background };
+};

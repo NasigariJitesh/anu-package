@@ -5,6 +5,6 @@ export const defaultProps: Partial<DividerProps> = {
   variant: 'middle',
   pattern: 'line',
   orientation: 'horizontal',
-  light: false,
-  borderWidth: 1,
+  light: true,
+  thickness: 1,
 };

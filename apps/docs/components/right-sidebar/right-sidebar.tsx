@@ -8,6 +8,7 @@ import { checkboxIndex } from 'services/docs/checkbox';
 import { chipIndex } from 'services/docs/chip';
 import { containerIndex } from 'services/docs/container';
 import { creditsIndex } from 'services/docs/credits';
+import { dividerIndex } from 'services/docs/divider';
 import { extendedFABIndex } from 'services/docs/extended-fab';
 import { FABIndex } from 'services/docs/fab';
 import { iconButtonIndex } from 'services/docs/icon-button';
@@ -119,6 +120,11 @@ const RenderIndex = () => {
     case '/components/container': {
       {
         return <Index {...containerIndex} />;
+      }
+    }
+    case '/components/divider': {
+      {
+        return <Index {...dividerIndex} />;
       }
     }
     case '/components/button/extended-fab': {
