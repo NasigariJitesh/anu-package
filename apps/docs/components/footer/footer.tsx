@@ -86,7 +86,7 @@ const Footer = (props: FooterProps) => {
           ))}
         </Container>
       </Container>
-      <Container disableGutters style={{ width: '100%' }}>
+      <Container disableGutters style={{ width: '100%', backgroundColor: theme.colors?.$surface as never }}>
         <Container disableGutters style={sx(style.bottomContainer)}>
           <LocalizedTypography.Body style={sx(style.bottomLine)} localeKey='footer:bottomLine' />
           <Image alt='india-flag' src={IndiaFlag} height={16} />
@@ -102,6 +102,7 @@ const styles = (width: number, theme: DripsyFinalTheme) => {
   return {
     container: {
       width: '100%',
+      backgroundColor: theme.colors?.$background as string,
     },
 
     bottomContainer: {
@@ -109,7 +110,6 @@ const styles = (width: number, theme: DripsyFinalTheme) => {
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row' as const,
-      backgroundColor: theme.colors?.$surface as never,
       paddingVertical: 30,
       maxWidth: '1440px',
       alignSelf: 'center',
