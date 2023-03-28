@@ -1,4 +1,4 @@
-import { Chip, Container, Divider, Icon, Typography } from 'anu/lib';
+import { Chip, Container, Divider, Typography } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 
