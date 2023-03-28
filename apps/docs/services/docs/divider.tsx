@@ -3,11 +3,11 @@ import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 
 const style = {
-  margin: 15,
+  marginVertical: 15,
 };
-
 const otherStyle = {
-  margin: 30,
+  marginHorizontal: 30,
+  marginVertical: 30,
 };
 
 const flexStyle = {
@@ -35,9 +35,9 @@ export const dividerDocumentation: ContentValues = {
           <Typography.Body>Item 2</Typography.Body>
 
           <Container disableGutters flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
-            <Typography.Body>Item 1</Typography.Body>
+            <Typography.Body style={style}>Item 1</Typography.Body>
             <Divider orientation='vertical' variant='full-height' />
-            <Typography.Body>Item 2</Typography.Body>
+            <Typography.Body style={style}>Item 2</Typography.Body>
           </Container>
         </Container>
       ),
@@ -60,21 +60,16 @@ export const dividerDocumentation: ContentValues = {
           <Typography.Body>Item 4</Typography.Body>
           <Divider variant='right-inset' orientation='horizontal' />
 
-          <Container
-            disableGutters
-            align='center'
-            flexDirection='row'
-            sx={{ ...flexStyle, marginTop: 30, height: 50 } as never}
-          >
-            <Typography.Body>Item 1</Typography.Body>
+          <Container disableGutters align='center' flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
+            <Typography.Body style={style}>Item 1</Typography.Body>
             <Divider variant='full-height' orientation='vertical' />
-            <Typography.Body>Item 2</Typography.Body>
+            <Typography.Body style={style}>Item 2</Typography.Body>
             <Divider variant='middle' orientation='vertical' />
-            <Typography.Body>Item 3</Typography.Body>
+            <Typography.Body style={style}>Item 3</Typography.Body>
             <Divider variant='top-inset' orientation='vertical' />
-            <Typography.Body>Item 4</Typography.Body>
+            <Typography.Body style={style}>Item 4</Typography.Body>
             <Divider variant='bottom-inset' orientation='vertical' />
-            <Typography.Body>Item 5</Typography.Body>
+            <Typography.Body style={style}>Item 5</Typography.Body>
           </Container>
         </Container>
       ),
@@ -136,19 +131,14 @@ export const dividerDocumentation: ContentValues = {
           <Divider>
             <Chip value='Chip' />
           </Divider>
-          <Container
-            disableGutters
-            align='center'
-            flexDirection='row'
-            sx={{ ...flexStyle, marginTop: 30, height: 100 } as never}
-          >
-            <Typography.Body>Item 1</Typography.Body>
+          <Container disableGutters align='center' flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
+            <Typography.Body style={[style, otherStyle]}>Item 1</Typography.Body>
             <Divider text='Center' orientation='vertical' />
-            <Typography.Body>Item 2</Typography.Body>
+            <Typography.Body style={[style, otherStyle]}>Item 2</Typography.Body>
             <Divider text='Start' orientation='vertical' align='start' />
-            <Typography.Body>Item 3</Typography.Body>
+            <Typography.Body style={[style, otherStyle]}>Item 3</Typography.Body>
             <Divider text='End' orientation='vertical' align='end' />
-            <Typography.Body>Item 4</Typography.Body>
+            <Typography.Body style={[style, otherStyle]}>Item 4</Typography.Body>
           </Container>
         </Container>
       ),
@@ -260,4 +250,9 @@ export const dividerIndex: HeadingProps = {
     },
 
     {
-      link: '#p
+      link: '#props',
+      title: 'content:props',
+      components: [],
+    },
+  ],
+};
