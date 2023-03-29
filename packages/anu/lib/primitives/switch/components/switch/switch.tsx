@@ -142,7 +142,7 @@ const Switch = (props: Partial<SwitchProps>) => {
             },
           ]}
         >
-          {isOn ? finalProps.icon.true : finalProps.icon.false}
+          {isOn ? finalProps.iconOn : finalProps.iconOff}
         </Animated.View>
       </Pressable>
       <RNSwitch {...finalProps} style={hiddenInputStyle} value={isOn} onValueChange={onChangeHandler} />
