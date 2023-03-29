@@ -44,14 +44,14 @@ const Switch = (props: Partial<SwitchProps>) => {
 
   const theme = useTheme();
 
-  const styles = getSwitchStyles({ ...finalProps, value: isOn }, theme);
+  const styles = getSwitchStyles(finalProps, isOn, theme);
   const hiddenInputStyle = { display: 'none' } as const;
 
-  const onChangeHandler = () => {
-    if (finalProps.onValueChange) finalProps.onValueChange(!isOn);
+  const onChangeHandler = (currentValue: boolean) => {
+    if (finalProps.onValueChange) finalProps.onValueChange(!currentValue);
 
     // if on, user is switching it off hence, off transition
-    if (isOn) transitionOff();
+    if (currentValue) transitionOff();
     else transitionOn();
 
     toggleIsOn((previous) => !previous);
@@ -66,14 +66,14 @@ const Switch = (props: Partial<SwitchProps>) => {
     Animated.timing(transitionTop, {
       toValue: finalProps.size * 0.125,
       duration: TRANSITION_DURATION,
-      useNativeDriver: true,
+      useNativeDriver: false,
       delay: DELAY_DURATION,
     }).start();
 
     Animated.timing(transitionLeft, {
       toValue: finalProps.size,
       duration: TRANSITION_DURATION,
-      useNativeDriver: true,
+      useNativeDriver: false,
       delay: DELAY_DURATION,
     }).start();
 
@@ -81,7 +81,7 @@ const Switch = (props: Partial<SwitchProps>) => {
       toValue: finalProps.size * 0.75,
       duration: TRANSITION_DURATION,
       delay: DELAY_DURATION,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   };
 
@@ -94,35 +94,38 @@ const Switch = (props: Partial<SwitchProps>) => {
       toValue: finalProps.size * 0.25,
       delay: DELAY_DURATION,
       duration: TRANSITION_DURATION,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
 
     Animated.timing(transitionLeft, {
       toValue: finalProps.size * 0.2,
       delay: DELAY_DURATION,
       duration: TRANSITION_DURATION,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
 
     Animated.timing(transitionSize, {
       toValue: finalProps.size / 2,
       delay: DELAY_DURATION,
       duration: TRANSITION_DURATION,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   };
 
   return (
     <Pressable accessibilityRole='switch' {...finalProps} sx={{ position: 'relative' }}>
       {/* Track Component */}
-      <Pressable style={(states) => getFocus(states, toggleIsTrackFocused, isTrackFocused)} onPress={onChangeHandler}>
+      <Pressable
+        style={(states) => getFocus(states, toggleIsTrackFocused, isTrackFocused)}
+        onPress={() => onChangeHandler(isOn)}
+      >
         <Animated.View style={styles.track} />
       </Pressable>
       {/* Thumb Component */}
       <Pressable
         style={(states) => getFocus(states, toggleIsThumbFocused, isThumbFocused)}
         sx={{ position: 'absolute' }}
-        onPress={onChangeHandler}
+        onPress={() => onChangeHandler(isOn)}
       >
         <Animated.View
           style={[
