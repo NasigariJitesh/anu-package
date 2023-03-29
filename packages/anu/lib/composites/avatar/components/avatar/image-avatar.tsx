@@ -1,12 +1,12 @@
 import { getCombinedStylesForImage } from 'common/utils';
 import { useTheme } from 'config/dripsy';
 import { Image } from 'lib';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ImageErrorEventData, ImageLoadEventData, NativeSyntheticEvent } from 'react-native';
 
-import placeHolder from '../../assets/placeholder.png';
 import { ImageAvatarProps } from '../../types';
 import { getImageAvatarStyle } from '../../utils';
+import FallbackImage from './fallback-image';
 
 /**
  * Component for Image avatar
@@ -25,7 +25,7 @@ const ImageAvatar = (props: ImageAvatarProps) => {
   /**
    * Handler for the onError callback of the image
    *
-   * @param {NativeSyntheticEvent<ImageErrorEventData>}event - error event
+   * @param {NativeSyntheticEvent<ImageErrorEventData>} event - error event
    */
   const onErrorHandler = (event: NativeSyntheticEvent<ImageErrorEventData>) => {
     setError(true);
@@ -50,15 +50,7 @@ const ImageAvatar = (props: ImageAvatarProps) => {
     if (finalProps.onLoad) finalProps.onLoad(event);
   };
 
-  if (error)
-    return (
-      <Image
-        alt={alt ?? ''}
-        {...otherProps}
-        source={{ uri: placeHolder.src }}
-        style={getCombinedStylesForImage(imageStyle, finalProps.style)}
-      />
-    );
+  if (error) return <FallbackImage {...finalProps} />;
 
   return (
     <Image

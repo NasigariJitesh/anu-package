@@ -17,6 +17,7 @@ export interface Property {
   defaultValue?: string;
   description: string;
   optional?: boolean;
+  groupProperty?: boolean;
 }
 
 interface ComponentPropertiesProps {
@@ -32,7 +33,17 @@ const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
     return (
       <Container key={index} disableGutters style={styles.propertyContainer}>
         <Container disableGutters flexDirection='row' align='flex-end'>
-          <Typography.Headline style={styles.name}>{prop.name}</Typography.Headline>
+          <Typography.Headline style={styles.name}>
+            <Typography.Headline style={styles.name}>{prop.name}</Typography.Headline>
+            {prop.groupProperty ? (
+              <Typography.Body style={styles.type}>
+                {' ('}
+                <LocalizedTypography.Body style={styles.type} localeKey={'content:prop-groupProperty'} />
+                {')'}
+              </Typography.Body>
+            ) : null}
+          </Typography.Headline>
+          <Typography.Body style={styles.type}>{'  '} </Typography.Body>
           <Typography.Body style={styles.type}>
             <Typography.Body style={styles.type}>{prop.type}</Typography.Body>
             {prop.optional ? (
@@ -93,7 +104,6 @@ const getStyles = ({ colors }: DripsyFinalTheme) => {
       fontSize: 18,
       fontWeight: '600',
       lineHeight: 22,
-      marginRight: 8,
     },
     type: {
       color: getColorInRGBA(colors?.$onSurface as string, 80),

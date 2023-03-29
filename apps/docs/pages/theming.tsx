@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
 import { Container, FlatList, Icon, LocalizedTypography, useAnuLocalization } from 'anu/lib';
@@ -266,7 +267,7 @@ const AdditionalLinks = () => {
       <ul id='additional-links-list'>
         {links.map((item) => {
           return (
-            <li key={item} style={{ marginLeft: 15 }}>
+            <li key={item} style={{ marginLeft: 15, color: theme.colors?.$onSurface as string }}>
               <div
                 style={sx({ ...styles.stepDescription })}
                 dangerouslySetInnerHTML={{ __html: getTranslation(item) }}
