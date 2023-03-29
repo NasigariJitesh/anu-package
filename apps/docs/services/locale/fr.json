@@ -45,6 +45,7 @@
   "leftSideBar:container": "Conteneur",
   "leftSideBar:divider": "Diviseur",
   "leftSideBar:radio": "Bouton radio",
+  "leftSideBar:switch": "Switch",
   "leftSideBar:typography": "Typographie",
   "leftSideBar:text-fields": "Champs de texte",
   "leftSideBar:credits": "Crédits",

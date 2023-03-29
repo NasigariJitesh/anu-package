@@ -18,6 +18,7 @@ import { installationIndex } from 'services/docs/installation';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
+import { switchIndex } from 'services/docs/switch';
 import { textFieldIndex } from 'services/docs/text-field';
 import { themingIndex } from 'services/docs/theming';
 import { typographyIndex } from 'services/docs/typography';
@@ -167,6 +168,11 @@ const RenderIndex = () => {
     case '/components/radio-button': {
       {
         return <Index {...radioButtonIndex} />;
+      }
+    }
+    case '/components/switch': {
+      {
+        return <Index {...switchIndex} />;
       }
     }
     case '/components/text-field': {

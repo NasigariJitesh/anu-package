@@ -313,6 +313,11 @@ const Sidebar = () => {
                 link: '/components/radio-button',
                 components: [],
               },
+              {
+                title: 'leftSideBar:switch',
+                link: '/components/switch',
+                components: [],
+              },
 
               {
                 title: 'leftSideBar:text-fields',
