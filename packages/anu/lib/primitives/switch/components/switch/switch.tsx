@@ -56,6 +56,8 @@ const Switch = (props: Partial<SwitchProps>) => {
     return () => {
       transitionSize.removeAllListeners();
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onChangeHandler = () => {
