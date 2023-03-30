@@ -1,5 +1,6 @@
+/* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
-import { Checkbox, Container } from 'anu/lib';
+import { Container, Icon, Switch } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 
@@ -21,89 +22,43 @@ export const switchDocumentation: ContentValues = {
   mainDescription: 'switchDocumentation:mainDescription',
   properties: [
     {
-      name: 'id',
-      description: 'switchDocumentation:property-id-description',
-      type: 'string',
-    },
-    {
-      name: 'selected',
-      description: 'switchDocumentation:property-selected-description',
+      name: 'value',
+      description: 'switchDocumentation:property-value-description',
       type: 'boolean',
-      optional: true,
     },
     {
-      name: 'indeterminate',
-      description: 'switchDocumentation:property-indeterminate-description',
-      type: 'boolean',
-      optional: true,
-    },
-    {
-      name: 'label',
-      description: 'switchDocumentation:property-label-description',
-      type: 'string',
-      optional: true,
-    },
-    {
-      name: 'labelPlacement',
-      description: 'switchDocumentation:property-labelPlacement-description',
-      type: "'left' | 'right' | 'top' | 'bottom' (optional)",
-      defaultValue: "'right'",
-    },
-    {
-      name: 'disabled',
-      description: 'switchDocumentation:property-disabled-description',
-      type: 'boolean',
-      optional: true,
-      defaultValue: 'false',
-    },
-    {
-      name: 'error',
-      description: 'switchDocumentation:property-error-description',
-      type: 'boolean',
-      optional: true,
-      defaultValue: 'false',
-    },
-    {
-      name: 'iconSize',
-      description: 'switchDocumentation:property-iconSize-description',
+      name: 'size',
+      description: 'switchDocumentation:property-size-description',
       type: 'number',
-      optional: true,
-      defaultValue: '18',
     },
     {
-      name: 'color',
-      description: 'switchDocumentation:property-color-description',
-      type: 'string',
+      name: 'iconOn',
+      description: 'switchDocumentation:property-iconOn-description',
+      type: 'React.ReactElement',
       optional: true,
     },
     {
-      name: 'style',
-      description: 'switchDocumentation:property-style-description',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
+      name: 'iconOff',
+      description: 'switchDocumentation:property-iconOff-description',
+      type: 'React.ReactElement',
       optional: true,
     },
     {
-      name: 'iconStyle',
-      description: 'switchDocumentation:property-iconStyle-description',
-      type: 'StyleProp<TextStyle>',
+      name: 'onChange',
+      description: 'switchDocumentation:property-onChange-description',
+      type: '(() => Promise<void> | void)',
       optional: true,
     },
     {
-      name: 'labelStyle',
-      description: 'switchDocumentation:property-labelStyle-description',
-      type: 'StyleProp<TextStyle>',
-      optional: true,
-    },
-    {
-      name: 'containerStyle',
-      description: 'switchDocumentation:property-containerStyle-description',
+      name: 'thumbStyle',
+      description: 'switchDocumentation:property-thumbStyle-description',
       type: 'StyleProp<ViewStyle>',
       optional: true,
     },
     {
-      name: 'onPress',
-      description: 'switchDocumentation:property-onPress-description',
-      type: '(id: string) => void',
+      name: 'trackStyle',
+      description: 'switchDocumentation:property-trackStyle-description',
+      type: 'StyleProp<ViewStyle>',
       optional: true,
     },
   ],
@@ -111,52 +66,48 @@ export const switchDocumentation: ContentValues = {
     {
       name: 'switchDocumentation:example1-name',
       id: 'default',
-      code: `<Checkbox id='basic' /> 
-<Checkbox id='disabled' disabled /> 
-<Checkbox id='error' error /> 
-<Checkbox id='selected' selected /> 
-<Checkbox id='selected-disabled' selected disabled /> 
-<Checkbox id='selected-error' selected error />`,
+      code: `<Switch value={true} />
+<Switch value={false} />
+<Switch value={true} disabled />
+<Switch value={false} disabled />`,
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Checkbox id='basic' containerStyle={style} />
-          <Checkbox id='disabled' disabled containerStyle={style} />
-          <Checkbox id='error' error containerStyle={style} />
-          <Checkbox id='selected' selected containerStyle={style} />
-          <Checkbox id='selected-disabled' selected disabled containerStyle={style} />
-          <Checkbox id='selected-error' selected error containerStyle={style} />
+          <Container disableGutters sx={style as never}>
+            <Switch value={true} />
+          </Container>
+          <Container disableGutters sx={style as never}>
+            <Switch value={false} />
+          </Container>
+          <Container disableGutters sx={style as never}>
+            <Switch value={true} disabled />
+          </Container>
+          <Container disableGutters sx={style as never}>
+            <Switch value={false} disabled />
+          </Container>
         </Container>
       ),
     },
     {
       name: 'switchDocumentation:example2-name',
-      id: 'checkbox-indeterminate',
-      code: `<Checkbox id='indeterminate' indeterminate /> 
-<Checkbox id='indeterminate-disabled' indeterminate disabled /> 
-<Checkbox id='indeterminate-error' indeterminate error />`,
+      id: 'icon',
+      code: `<Switch value={true} iconOn={<Icon name='check' style={{ color: '#00006E' }} />} />
+<Switch value={false} iconOff={<Icon name='check' size={12} style={{ color: '#fff' }} />} />
+<Switch value={true} disabled iconOn={<Icon name='check' style={{ color: '#4D53B73E' }} />} />
+<Switch value={false} disabled iconOff={<Icon name='check' size={12} style={{ color: '#E4E1EC' }} />} />`,
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Checkbox id='indeterminate' indeterminate containerStyle={style} />
-          <Checkbox id='indeterminate-disabled' indeterminate disabled containerStyle={style} />
-          <Checkbox id='indeterminate-error' indeterminate error containerStyle={style} />
-        </Container>
-      ),
-    },
-    {
-      name: 'switchDocumentation:example3-name',
-      id: 'checkbox-label',
-      code: `<Checkbox id='label' label='Label' /> 
-<Checkbox id='labelLeft' label='Left' labelPlacement='left' /> 
-<Checkbox id='labelRight' label='Right' labelPlacement='right' /> 
-<Checkbox id='labelTop' label='Top' labelPlacement='top' /> 
-<Checkbox id='labelBottom' label='Bottom' labelPlacement='bottom' />`,
-      component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Checkbox id='label' label='Label' containerStyle={style} />
-          <Checkbox id='labelLeft' label='Left' labelPlacement='left' containerStyle={style} />
-          <Checkbox id='labelRight' label='Right' labelPlacement='right' containerStyle={style} />
-          <Checkbox id='labelTop' label='Top' labelPlacement='top' containerStyle={{ ...style, marginTop: -1 }} />
-          <Checkbox id='labelBottom' label='Bottom' labelPlacement='bottom' containerStyle={style} />
+          <Container disableGutters sx={style as never}>
+            <Switch value={true} iconOn={<Icon name='check' style={{ color: '#4D53B7' }} />} />
+          </Container>
+          <Container disableGutters sx={style as never}>
+            <Switch value={false} iconOff={<Icon name='check' size={12} style={{ color: '#fff' }} />} />
+          </Container>
+          <Container disableGutters sx={style as never}>
+            <Switch value={true} disabled iconOn={<Icon name='check' style={{ color: '#4D53B73E' }} />} />
+          </Container>
+          <Container disableGutters sx={style as never}>
+            <Switch value={false} disabled iconOff={<Icon name='check' size={12} style={{ color: '#E4E1EC' }} />} />
+          </Container>
         </Container>
       ),
     },
@@ -172,11 +123,7 @@ export const switchIndex: HeadingProps = {
     },
     {
       title: 'switchDocumentation:example2-name',
-      link: '#checkbox-indeterminate',
-    },
-    {
-      title: 'switchDocumentation:example3-name',
-      link: '#checkbox-label',
+      link: '#icon',
     },
     {
       link: '#props',
