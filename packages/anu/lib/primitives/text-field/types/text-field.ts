@@ -89,3 +89,8 @@ export interface TextInputLabelProps extends TextFieldProps {
   isFocused: boolean;
   toggleIsFocused: (value: boolean) => void;
 }
+
+export interface TextFieldReferenceProps {
+  focus: () => void;
+  blur: () => void;
+}

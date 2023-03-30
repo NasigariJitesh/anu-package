@@ -1,9 +1,10 @@
+/* eslint-disable react/display-name */
 import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
 import { useTheme } from 'config/dripsy';
 import { Pressable, TextInput, useSx } from 'dripsy';
 import Container from 'lib/primitives/layout';
 import Typography from 'lib/primitives/typography';
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import {
   NativeSyntheticEvent,
   PressableStateCallbackType,
@@ -12,7 +13,7 @@ import {
   View,
 } from 'react-native';
 
-import { TextFieldProps } from '../../types';
+import { TextFieldProps, TextFieldReferenceProps } from '../../types';
 import {
   getErrorIcon,
   getErrors,
@@ -32,8 +33,8 @@ import TextFieldLabel from './label';
  *
  * @param {Partial<TextFieldProps>} props - the properties of the text field component
  */
-const TextField = (props: Partial<TextFieldProps>) => {
-  const [focus, setOnFocus] = useState<PressableStateCallbackType>({ pressed: false });
+const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps>>((props, reference) => {
+  const [focusState, setOnFocus] = useState<PressableStateCallbackType>({ pressed: false });
 
   const pressableReference = useRef<View | null>(null);
   const textInputReference = useRef<RNTextInput | null>(null);
@@ -41,9 +42,9 @@ const TextField = (props: Partial<TextFieldProps>) => {
   const theme = useTheme();
 
   const finalProps = { ...defaultProps, ...props };
-  const { variant, sx, ...componentProps } = finalProps;
+  const { variant, sx, value: propsValue, ...componentProps } = finalProps;
 
-  const [value, setValue] = useState(finalProps.value);
+  const [value, setValue] = useState(propsValue);
   const [isTextFieldVisible, toggleTextFieldVisible] = useState(!!value && !props.disabled);
 
   const style = getTextFieldStyles(theme, finalProps);
@@ -59,6 +60,20 @@ const TextField = (props: Partial<TextFieldProps>) => {
 
   const [height, setHeight] = useState(containerStyle.height as number);
   const [errors, setErrors] = useState(getErrors(props.errorMessage));
+
+  const focus = useCallback(() => {
+    textInputReference.current?.focus();
+    toggleTextFieldVisible(true);
+    setOnFocus(() => ({ focused: true, pressed: true }));
+  }, [textInputReference]);
+
+  const blur = useCallback(() => {
+    textInputReference.current?.blur();
+    toggleTextFieldVisible(false);
+    setOnFocus(() => ({ focused: false, pressed: false }));
+  }, [textInputReference]);
+
+  useImperativeHandle(reference, () => ({ focus, blur }), [focus, blur]);
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, containerStyle, useSx);
@@ -91,7 +106,7 @@ const TextField = (props: Partial<TextFieldProps>) => {
   };
 
   useEffect(() => {
-    pressableReference.current?.measure((x, y, w, h) => {
+    pressableReference.current?.measure((_x, _y, _w, h) => {
       setHeight(h);
     });
   }, []);
@@ -106,12 +121,16 @@ const TextField = (props: Partial<TextFieldProps>) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.error]);
 
+  useEffect(() => {
+    console.log(propsValue, value);
+  }, [propsValue]);
+
   return (
     <Container disableGutters style={finalProps.containerStyle}>
       <Pressable
         ref={pressableReference}
         accessibilityRole='none'
-        style={(state) => generateStyles({ ...focus, hovered: state.hovered })}
+        style={(state) => generateStyles({ ...focusState, hovered: state.hovered })}
         {...finalProps.pressableProps}
         disabled={finalProps.disabled}
         onPress={onTextInputPressedHandler}
@@ -124,15 +143,17 @@ const TextField = (props: Partial<TextFieldProps>) => {
             </Container>
           ) : null}
           <Container disableGutters flexDirection='column' justify='center' sx={innerContainerStyle}>
-            <TextFieldLabel
-              {...finalProps}
-              height={height}
-              textInputRef={textInputReference}
-              states={focus}
-              value={value}
-              isFocused={isTextFieldVisible}
-              toggleIsFocused={toggleTextFieldVisible}
-            />
+            {finalProps.label == '' ? null : (
+              <TextFieldLabel
+                {...finalProps}
+                height={height}
+                textInputRef={textInputReference}
+                states={focusState}
+                value={value}
+                isFocused={isTextFieldVisible}
+                toggleIsFocused={toggleTextFieldVisible}
+              />
+            )}
             <TextInput
               ref={textInputReference}
               {...componentProps}
@@ -169,6 +190,6 @@ const TextField = (props: Partial<TextFieldProps>) => {
         ))}
     </Container>
   );
-};
+});
 
 export default TextField;
