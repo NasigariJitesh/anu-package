@@ -14,6 +14,7 @@ import { dividerIndex } from 'services/docs/divider';
 import { extendedFABIndex } from 'services/docs/extended-fab';
 import { FABIndex } from 'services/docs/fab';
 import { iconButtonIndex } from 'services/docs/icon-button';
+import { imageIndex } from 'services/docs/image';
 import { installationIndex } from 'services/docs/installation';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
@@ -104,11 +105,6 @@ const RenderIndex = () => {
   const { pathname } = useRouter();
 
   switch (pathname) {
-    case '/components/typography': {
-      {
-        return <Index {...typographyIndex} />;
-      }
-    }
     case '/components/avatar': {
       {
         return <Index {...avatarIndex} />;
@@ -119,21 +115,7 @@ const RenderIndex = () => {
         return <Index {...badgeIndex} />;
       }
     }
-    case '/components/chip': {
-      {
-        return <Index {...chipIndex} />;
-      }
-    }
-    case '/components/container': {
-      {
-        return <Index {...containerIndex} />;
-      }
-    }
-    case '/components/divider': {
-      {
-        return <Index {...dividerIndex} />;
-      }
-    }
+
     case '/components/button/extended-fab': {
       {
         return <Index {...extendedFABIndex} />;
@@ -164,6 +146,26 @@ const RenderIndex = () => {
         return <Index {...checkboxIndex} />;
       }
     }
+    case '/components/chip': {
+      {
+        return <Index {...chipIndex} />;
+      }
+    }
+    case '/components/container': {
+      {
+        return <Index {...containerIndex} />;
+      }
+    }
+    case '/components/divider': {
+      {
+        return <Index {...dividerIndex} />;
+      }
+    }
+    case '/components/image': {
+      {
+        return <Index {...imageIndex} />;
+      }
+    }
     case '/components/radio-button': {
       {
         return <Index {...radioButtonIndex} />;
@@ -172,6 +174,11 @@ const RenderIndex = () => {
     case '/components/text-field': {
       {
         return <Index {...textFieldIndex} />;
+      }
+    }
+    case '/components/typography': {
+      {
+        return <Index {...typographyIndex} />;
       }
     }
 

@@ -1,9 +1,11 @@
+/* eslint-disable react-native/no-inline-styles */
 import { getColorInRGBA } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Divider, LocalizedTypography, Typography } from 'anu/lib';
 import { DripsyFinalTheme } from 'dripsy';
 import { Source_Sans_Pro } from 'next/font/google';
 import { View } from 'react-native';
+import { TextLink } from 'solito/link';
 
 const source = Source_Sans_Pro({
   weight: ['400', '600'],
@@ -22,9 +24,13 @@ export interface Property {
 
 interface ComponentPropertiesProps {
   properties: Property[];
+  externalProperties?: {
+    title: string;
+    link: string;
+  };
 }
 
-const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
+const ComponentProperties = ({ properties, externalProperties }: ComponentPropertiesProps) => {
   const theme = useTheme();
 
   const styles = getStyles(theme);
@@ -76,6 +82,17 @@ const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
       <LocalizedTypography.Headline style={styles.heading} localeKey='content:props' />
       <Divider variant='full-width' light style={styles.divider} />
       {properties.map((prop, index) => renderProperty(prop, index, index === properties.length - 1))}
+
+      {externalProperties ? (
+        <Container disableGutters style={styles.externalPropsContainer}>
+          <TextLink href={externalProperties.link}>
+            <Typography.Headline style={styles.name}>
+              {'...'}
+              <LocalizedTypography.Headline style={styles.name} localeKey={externalProperties.title} />
+            </Typography.Headline>
+          </TextLink>
+        </Container>
+      ) : null}
     </Container>
   );
 };
@@ -83,12 +100,13 @@ const ComponentProperties = ({ properties }: ComponentPropertiesProps) => {
 const getStyles = ({ colors }: DripsyFinalTheme) => {
   const styles = {
     container: {
-      marginVertical: 30,
+      marginTop: 30,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
     },
     propertyContainer: {
       width: '100%',
     },
+    externalPropsContainer: { marginTop: 32, marginBottom: 12 },
     heading: {
       color: colors?.$onSurface as never,
       fontFamily: source.style.fontFamily,

@@ -15,6 +15,10 @@ export interface ContentValues {
   subTitle?: string;
   properties: Property[];
   examples: Example[];
+  externalProperties?: {
+    title: string;
+    link: string;
+  };
 }
 
 interface ContentProps {
@@ -25,7 +29,7 @@ const Content = ({ values }: ContentProps) => {
   const { isOpen } = useMenuContext();
   const { width } = useWindowDimensions();
 
-  const { mainHeading, heading, subTitle, properties, examples, mainDescription } = values;
+  const { mainHeading, heading, subTitle, properties, examples, mainDescription, externalProperties } = values;
 
   const styles = getStyles();
 
@@ -41,7 +45,7 @@ const Content = ({ values }: ContentProps) => {
         mainDescription={mainDescription}
       />
       <ComponentExamples examples={examples} />
-      <ComponentProperties properties={properties} />
+      <ComponentProperties properties={properties} externalProperties={externalProperties} />
     </Container>
   );
 };
