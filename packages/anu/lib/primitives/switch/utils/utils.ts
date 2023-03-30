@@ -24,6 +24,9 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
     },
 
     thumb: {
+      transitionTimingFunction: 'ease',
+      transitionProperty: 'all',
+      transitionDuration: '.2s',
       borderRadius: 10_000,
       position: 'absolute',
       zIndex: 4,
