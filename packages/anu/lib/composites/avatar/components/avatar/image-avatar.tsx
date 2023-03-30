@@ -18,7 +18,7 @@ const ImageAvatar = (props: ImageAvatarProps) => {
   const theme = useTheme();
   const finalProps: ImageAvatarProps = { ...props };
 
-  const { size, variant, alt, source, ...otherProps } = finalProps;
+  const { size, variant, alt, ...otherProps } = finalProps;
 
   const { imageStyle } = getImageAvatarStyle(finalProps, theme);
 
@@ -56,7 +56,6 @@ const ImageAvatar = (props: ImageAvatarProps) => {
     <Image
       alt={alt ?? ''}
       {...otherProps}
-      source={source}
       style={getCombinedStylesForImage(imageStyle, finalProps.style)}
       onError={onErrorHandler}
       onPartialLoad={onPartialLoadHandler}

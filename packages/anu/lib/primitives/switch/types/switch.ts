@@ -6,10 +6,8 @@ type RNSwitchType = Omit<RNSwitchProps, 'ios_backgroundColor' | 'onChange' | 'st
  * Interface for the switch component
  */
 export interface SwitchProps extends RNSwitchType {
-  icon: {
-    true?: React.ReactElement | null | undefined;
-    false?: React.ReactElement | null | undefined;
-  };
+  iconOn?: React.ReactElement | null | undefined;
+  iconOff?: React.ReactElement | null | undefined;
   onChange?: (() => Promise<void> | void) | null | undefined;
   /**
    * Use this to adjust the size of the component, else might misbehave during switching

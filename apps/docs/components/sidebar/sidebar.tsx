@@ -253,6 +253,11 @@ const Sidebar = () => {
             headingLink='/components'
             links={[
               {
+                title: 'leftSideBar:avatar',
+                components: [],
+                link: '/components/avatar',
+              },
+              {
                 title: 'leftSideBar:badge',
                 components: [],
                 link: '/components/badge',
@@ -307,6 +312,11 @@ const Sidebar = () => {
                 title: 'leftSideBar:divider',
                 link: '/components/divider',
                 components: [],
+              },
+              {
+                title: 'leftSideBar:image',
+                components: [],
+                link: '/components/image',
               },
               {
                 title: 'leftSideBar:radio',
