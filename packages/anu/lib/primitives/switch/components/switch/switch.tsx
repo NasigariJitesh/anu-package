@@ -76,8 +76,6 @@ const Switch = (props: Partial<SwitchProps>) => {
    *  switch transitioning to on position
    */
   const transitionOn = () => {
-    console.log('triggered transitionOn');
-
     Animated.timing(transitionTop, {
       toValue: finalProps.size * 0.125,
       duration: TRANSITION_DURATION,
@@ -105,8 +103,6 @@ const Switch = (props: Partial<SwitchProps>) => {
    * switch transitioning back to off position
    */
   const transitionOff = () => {
-    console.log('triggered transitionOff');
-
     Animated.timing(transitionTop, {
       toValue: finalProps.size * 0.25,
       delay: DELAY_DURATION,
