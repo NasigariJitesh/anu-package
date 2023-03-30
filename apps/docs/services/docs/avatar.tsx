@@ -100,28 +100,28 @@ export const avatarDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
-            <Avatar source={{ uri: image.src }} size='small' style={style} />
-            <Avatar source={{ uri: image.src }} size='medium' style={style} />
-            <Avatar source={{ uri: image.src }} size='large' style={style} />
-            <Avatar source={{ uri: image.src }} style={[style, otherStyle]} />
+            <Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='small' style={style} />
+            <Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='medium' style={style} />
+            <Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='large' style={style} />
+            <Avatar source={{ uri: 'https://abc.com/abc.jpg' }} style={[style, otherStyle]} />
           </Container>
           <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
-            <Avatar source={{ uri: image.src }} size='small' variant='circle' style={style} />
-            <Avatar source={{ uri: image.src }} size='medium' variant='circle' style={style} />
-            <Avatar source={{ uri: image.src }} size='large' variant='circle' style={style} />
-            <Avatar source={{ uri: image.src }} variant='circle' style={[style, otherStyle]} />
+            <Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='small' variant='circle' style={style} />
+            <Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='medium' variant='circle' style={style} />
+            <Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='large' variant='circle' style={style} />
+            <Avatar source={{ uri: 'https://abc.com/abc.jpg' }} variant='circle' style={[style, otherStyle]} />
           </Container>
         </Container>
       ),
-      code: `<Avatar source={{ uri: image.src }} size='small' />
-<Avatar source={{ uri: image.src }} size='medium' />
-<Avatar source={{ uri: image.src }} size='large' />
-<Avatar source={{ uri: image.src }} style={{height: 60, width: 60 }} />
+      code: `<Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='small' />
+<Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='medium' />
+<Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='large' />
+<Avatar source={{ uri: 'https://abc.com/abc.jpg' }} style={{height: 60, width: 60 }} />
 
-<Avatar source={{ uri: image.src }} size='small' variant='circle' />
-<Avatar source={{ uri: image.src }} size='medium' variant='circle' />
-<Avatar source={{ uri: image.src }} size='large' variant='circle' />
-<Avatar source={{ uri: image.src }} variant='circle' style={{ height: 60, width: 60 }} />`,
+<Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='small' variant='circle' />
+<Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='medium' variant='circle' />
+<Avatar source={{ uri: 'https://abc.com/abc.jpg' }} size='large' variant='circle' />
+<Avatar source={{ uri: 'https://abc.com/abc.jpg' }} variant='circle' style={{ height: 60, width: 60 }} />`,
     },
 
     {
