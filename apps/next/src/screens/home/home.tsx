@@ -1,9 +1,6 @@
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
-import { Container, Image, Switch } from 'anu/lib';
-import Avatar from 'anu/lib/composites/avatar/';
-
-import IMAGE from '../../../assets/icon.png';
+import { Container, Switch } from 'anu/lib';
 
 const HomeScreen = () => {
   return (
