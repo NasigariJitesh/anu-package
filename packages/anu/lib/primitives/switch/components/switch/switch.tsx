@@ -30,7 +30,7 @@ const getFocus = (state: PressableStateCallbackType, updateState: (value: boolea
 const Switch = (props: Partial<SwitchProps>) => {
   const finalProps = { ...defaultProps, ...props };
 
-  const [isOn, toggleIsOn] = useState(finalProps.value);
+  const isOn = finalProps.value;
   const [isTrackFocused, toggleIsTrackFocused] = useState(false);
   const [isThumbFocused, toggleIsThumbFocused] = useState(false);
 
@@ -48,26 +48,20 @@ const Switch = (props: Partial<SwitchProps>) => {
   useEffect(() => {
     transitionSize.addListener((arguments_) => setValue(arguments_.value));
 
+    // if on, user just switched it on hence, on transition
     if (finalProps.value) transitionOn();
     else transitionOff();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
 
     return () => {
       transitionSize.removeAllListeners();
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [finalProps.value]);
 
   const onChangeHandler = () => {
     if (finalProps.onValueChange) finalProps.onValueChange(!isOn);
 
-    // if on, user is switching it off hence, off transition
-    if (isOn) transitionOff();
-    else transitionOn();
-
-    toggleIsOn((previous) => !previous);
     toggleIsThumbFocused(false);
     toggleIsTrackFocused(false);
   };
@@ -96,6 +90,9 @@ const Switch = (props: Partial<SwitchProps>) => {
       delay: DELAY_DURATION,
       useNativeDriver: true,
     }).start();
+
+    toggleIsThumbFocused(false);
+    toggleIsTrackFocused(false);
   };
 
   /**
