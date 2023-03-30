@@ -45,26 +45,23 @@ const Switch = (props: Partial<SwitchProps>) => {
   const styles = getSwitchStyles(finalProps, isOn, theme);
   const hiddenInputStyle = { display: 'none' } as const;
 
-  // useEffect(() => {
-  //   // console.log('isOn', isOn);
-  //   // console.log('isThumbFocused', isThumbFocused);
-  //   // console.log('isTrackFocused', isTrackFocused);
-
-  //   if (isOn) transitionOn();
-  //   else transitionOff();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [isOn]);
-
   useEffect(() => {
     transitionSize.addListener((arguments_) => setValue(arguments_.value));
 
     if (finalProps.value) transitionOn();
     else transitionOff();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    return () => {
+      transitionSize.removeAllListeners();
+    };
   }, []);
 
   const onChangeHandler = () => {
     if (finalProps.onValueChange) finalProps.onValueChange(!isOn);
 
+    // if on, user is switching it off hence, off transition
     if (isOn) transitionOff();
     else transitionOn();
 
