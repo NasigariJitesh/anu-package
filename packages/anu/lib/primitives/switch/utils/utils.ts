@@ -24,6 +24,9 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
     },
 
     thumb: {
+      transitionTimingFunction: 'ease',
+      transitionProperty: 'all',
+      transitionDuration: '.2s',
       borderRadius: 10_000,
       position: 'absolute',
       zIndex: 4,
@@ -41,20 +44,21 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
  * Get the switch styles
  *
  * @param {SwitchProps} props - props of the switch component
+ * @param state
  * @param {DripsyFinalTheme} defaultTheme - theme of the library
  */
-export const getSwitchStyles = (props: SwitchProps, defaultTheme: DripsyFinalTheme) => {
+export const getSwitchStyles = (props: SwitchProps, state: boolean, defaultTheme: DripsyFinalTheme) => {
   const theme = getSwitchTheme(defaultTheme);
 
   const thumb: ViewProps['style'] = {
-    backgroundColor: getThumbColor(props, defaultTheme),
+    backgroundColor: getThumbColor(props, state, defaultTheme),
     ...(theme.thumb as Record<string, unknown>),
     ...(props.thumbStyle as Record<string, never>),
   };
 
   const track: ViewProps['style'] = {
-    backgroundColor: props.value ? theme.track.color.on : theme.track.color.off + 10,
-    borderColor: props.trackColor ?? props.value ? 'transparent' : theme.track.color.off,
+    backgroundColor: state ? theme.track.color.on : theme.track.color.off + 10,
+    borderColor: props.trackColor ?? state ? 'transparent' : theme.track.color.off,
     ...theme.track,
     ...(props.trackStyle as Record<string, never>),
     height: props.size,
@@ -71,10 +75,10 @@ export const getSwitchStyles = (props: SwitchProps, defaultTheme: DripsyFinalThe
  * @param props - props of the switch component
  */
 
-const getThumbColor = (props: SwitchProps, defaultTheme: DripsyFinalTheme) => {
+const getThumbColor = (props: SwitchProps, state: boolean, defaultTheme: DripsyFinalTheme) => {
   const theme = getSwitchTheme(defaultTheme);
 
   if (props.thumbColor) return props.thumbColor;
 
-  return props.value ? theme.thumb.color.on : theme.thumb.color.off;
+  return state ? theme.thumb.color.on : theme.thumb.color.off;
 };
