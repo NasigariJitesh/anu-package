@@ -34,9 +34,11 @@ export interface FooterProps {
 }
 
 const onLinkPress = () => {
-  document.querySelector('#top')?.scrollIntoView({
-    behavior: 'smooth',
-  });
+  setTimeout(() => {
+    document.querySelector('#top')?.scrollIntoView({
+      behavior: 'smooth',
+    });
+  }, 1);
 };
 
 /**

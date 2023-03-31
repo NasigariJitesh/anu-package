@@ -33,9 +33,11 @@ interface HeadingProps {
 }
 
 const onLinkPress = () => {
-  document.querySelector('#top')?.scrollIntoView({
-    behavior: 'smooth',
-  });
+  setTimeout(() => {
+    document.querySelector('#top')?.scrollIntoView({
+      behavior: 'smooth',
+    });
+  }, 1);
 };
 
 const Group = (props: HeadingProps) => {
@@ -215,14 +217,14 @@ const Sidebar = () => {
       style={{
         width: '240px',
         position: 'sticky',
-        top: 0,
+        top: 70,
       }}
     >
       <ScrollView
         id={undefined}
         scrollEnabled
         showsVerticalScrollIndicator={false}
-        style={sx({ maxHeight: height })}
+        style={sx({ maxHeight: height - 80 })}
         aria-label={undefined}
         aria-busy={undefined}
         aria-checked={undefined}
