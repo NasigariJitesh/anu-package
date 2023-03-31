@@ -69,6 +69,10 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
    */
   errorMessage?: string | string[];
   /**
+   * Whether to show default Error messages
+   */
+  noDefaultErrorMessage?: boolean;
+  /**
    * styles for the error message
    */
   errorMessageStyle?: StyleProp<TextStyle>;
