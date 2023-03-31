@@ -1,8 +1,8 @@
 import { getMaxWidthInPixels } from 'common/utils';
 import { DripsyFinalTheme, SxProp } from 'dripsy';
-import { StyleProp, ViewStyle } from 'react-native';
+import { ImageStyle, StyleProp, ViewStyle } from 'react-native';
 
-import { CardProps } from './../types/card';
+import { CardMediaProps, CardProps } from './../types/card';
 
 /**
  * To generate the card styling props
@@ -35,11 +35,11 @@ export const getCardStyles = (
 
             backgroundColor: 'transparent',
             borderWidth: 1,
-            borderColor: colors?.$shadow as string,
+            borderColor: colors?.$outline as string,
           },
           sx: {
             ...sx,
-            color: colors?.$primary as string,
+            color: colors?.$onSurface as string,
           },
         };
       }
@@ -56,11 +56,11 @@ export const getCardStyles = (
             shadowOpacity: 0.25,
             shadowRadius: 3.84,
             elevation: 1,
-            backgroundColor: colors?.$primary as string,
+            backgroundColor: colors?.$primaryContainer as string,
           },
           sx: {
             ...sx,
-            color: colors?.$primary as string,
+            color: colors?.$onPrimaryContainer as string,
           },
         };
       }
@@ -70,8 +70,8 @@ export const getCardStyles = (
       return {
         style: {
           ...style,
-          backgroundColor: colors?.$background as string,
-          shadowColor: (colors?.$primary as string) + 90,
+          backgroundColor: colors?.$surface as string,
+          shadowColor: colors?.$shadow as string,
           shadowOffset: {
             width: 0,
             height: 3,
@@ -82,7 +82,7 @@ export const getCardStyles = (
         },
         sx: {
           ...sx,
-          color: colors?.$primary as string,
+          color: colors?.$onSurface as string,
         },
       };
     }
@@ -90,13 +90,19 @@ export const getCardStyles = (
       return {
         style: {
           ...style,
-          backgroundColor: 'transparent',
-          borderWidth: 1,
-          borderColor: colors?.$shadow as string,
+          backgroundColor: colors?.$surface as string,
+          shadowColor: colors?.$shadow as string,
+          shadowOffset: {
+            width: 0,
+            height: 3,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 1,
         },
         sx: {
           ...sx,
-          color: colors?.$primary as string,
+          color: colors?.$onSurface as string,
         },
       };
     }
@@ -119,6 +125,7 @@ export const getCommonCardStyles = (props: Partial<CardProps>) => {
     justifyContent: justify,
     padding: 0.6,
     borderRadius: 12,
+    overflow: 'hidden',
   };
 
   if (maxWidth) sxStyle = { ...sxStyle, maxWidth: getMaxWidthInPixels(maxWidth) };
@@ -126,4 +133,113 @@ export const getCommonCardStyles = (props: Partial<CardProps>) => {
   if (width) containerStyle = { ...containerStyle, width };
 
   return { style: containerStyle, sx: sxStyle };
+};
+
+export const getCardContentStyle = () => {
+  const style = {
+    margin: 16,
+    width: 'calc(100% - 32px)',
+  };
+  const sx = {
+    color: 'inherit',
+  };
+
+  return { style, sx };
+};
+
+export const getCardTitleStyle = (theme: DripsyFinalTheme) => {
+  const style = {
+    margin: 16,
+    width: 'calc(100% - 32px)',
+  };
+  const sx = {
+    color: 'inherit',
+  };
+  const titleStyle = {
+    fontSize: theme.fontSizes[7],
+    lineHeight: theme.lineHeights[7],
+    textAlignVertical: 'center' as const,
+  };
+  const subTitleStyle = {
+    fontSize: theme.fontSizes[8],
+    lineHeight: theme.lineHeights[8],
+    marginTop: '6px',
+    textAlignVertical: 'center' as const,
+  };
+
+  return { style, sx, titleStyle, subTitleStyle };
+};
+
+export const getCardMediaStyle = (props: CardMediaProps) => {
+  const style: ImageStyle = {
+    height: props.height,
+    width: '100%',
+  };
+
+  return { style };
+};
+
+export const getCardActionsStyle = () => {
+  const style = {
+    margin: 16,
+    width: 'calc(100% - 32px)',
+  };
+  const sx = {
+    color: 'inherit',
+  };
+
+  return { style, sx };
+};
+
+export const getCardHeaderStyle = (theme: DripsyFinalTheme) => {
+  const containerStyle = {
+    position: 'relative',
+    width: '100%',
+    alignItems: 'center',
+  } as const;
+  const avatarContainerStyle = {
+    marginVertical: 16,
+    marginLeft: 16,
+  };
+  const headingContainerStyle = {
+    marginVertical: 16,
+    marginLeft: 16,
+  };
+  const actionContainerStyle = {
+    position: 'absolute' as const,
+    right: '16px',
+  };
+  const imageContainerStyle = {
+    position: 'absolute',
+    right: 0,
+    borderRightRadius: 12,
+    overflow: 'hidden',
+  } as const;
+
+  const headingStyle = {
+    fontSize: theme.fontSizes[7],
+    lineHeight: theme.lineHeights[7],
+    textAlignVertical: 'center' as const,
+  };
+  const subHeadingStyle = {
+    fontSize: theme.fontSizes[8],
+    lineHeight: theme.lineHeights[8],
+    marginTop: '4px',
+    textAlignVertical: 'center' as const,
+  };
+
+  const sx = {
+    color: 'inherit',
+  };
+
+  return {
+    containerStyle,
+    avatarContainerStyle,
+    headingContainerStyle,
+    actionContainerStyle,
+    imageContainerStyle,
+    headingStyle,
+    subHeadingStyle,
+    sx,
+  };
 };

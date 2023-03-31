@@ -1,0 +1,29 @@
+import { getCombinedStylesForView } from 'common/utils';
+import { Container } from 'lib/primitives';
+
+import { CardContentProps } from '../../types/card';
+import { getCardContentStyle } from '../../utils';
+import { defaultProps } from './default';
+
+/**
+ * Component for Card Content
+ *
+ * @param {CardContentProps} props - all the properties related to the card content
+ */
+const CardContent = (props: CardContentProps) => {
+  const finalProps = { ...defaultProps, ...props };
+
+  const { style, sx } = getCardContentStyle();
+
+  return (
+    <Container
+      disableGutters
+      style={getCombinedStylesForView(style, finalProps.style)}
+      sx={{ ...sx, ...finalProps.sx }}
+    >
+      {finalProps.children}
+    </Container>
+  );
+};
+
+export default CardContent;
