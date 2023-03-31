@@ -37,7 +37,11 @@ const Content = ({ values }: ContentProps) => {
 
   return (
     <Container nativeID='root-scroll' style={styles.container as never}>
-      <View nativeID='top' style={{ position: 'absolute', top: -70, height: 10, width: 10, zIndex: -10 }} />
+      <View
+        nativeID='top'
+        // @ts-expect-error
+        style={{ position: 'absolute', top: -70, height: 10, width: 10, zIndex: -10, scrollBehavior: 'smooth' }}
+      />
       <ComponentDetails
         mainHeading={mainHeading}
         heading={heading}
@@ -59,6 +63,7 @@ const getStyles = () => {
       zIndex: 1,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
       paddingTop: 20,
+      scrollBehavior: 'smooth',
     },
   } as const;
   return styles;

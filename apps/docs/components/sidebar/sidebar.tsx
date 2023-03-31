@@ -33,7 +33,9 @@ interface HeadingProps {
 }
 
 const onLinkPress = () => {
-  document.querySelector('#top')?.scrollIntoView();
+  document.querySelector('#top')?.scrollIntoView({
+    behavior: 'smooth',
+  });
 };
 
 const Group = (props: HeadingProps) => {
@@ -60,15 +62,15 @@ const Group = (props: HeadingProps) => {
           </Accordion.Container>
         ) : (
           <Typography.Title
-            onPress={() => {
-              document.querySelector('#top')?.scrollIntoView();
-            }}
+            onPress={onLinkPress}
             style={[
               style.groupName,
               pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
             ]}
           >
-            <TextLink href={item.link}>{getTranslation(item.title)}</TextLink>
+            <TextLink scroll={false} href={item.link}>
+              {getTranslation(item.title)}
+            </TextLink>
           </Typography.Title>
         );
       }}
@@ -109,7 +111,9 @@ const RenderItem = ({ item }: { item: ComponentLinks }) => {
             pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
           ]}
         >
-          <TextLink href={item.link}>{getTranslation(item.title)}</TextLink>
+          <TextLink scroll={false} href={item.link}>
+            {getTranslation(item.title)}
+          </TextLink>
         </Typography.Title>
       )}
     </>
@@ -143,7 +147,9 @@ const Categories = (props: { links: Link[] }) => {
               pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
             ]}
           >
-            <TextLink href={item.link}>{getTranslation(item.title)}</TextLink>
+            <TextLink scroll={false} href={item.link}>
+              {getTranslation(item.title)}
+            </TextLink>
           </Typography.Title>
         );
       }}
@@ -164,7 +170,9 @@ const Index = (props: HeadingProps) => {
           pathname.includes('components') ? { ...style.active, color: theme.colors?.$primary as never } : {},
         ]}
       >
-        <TextLink href={props.headingLink}>{getTranslation(props.heading)}</TextLink>
+        <TextLink scroll={false} href={props.headingLink}>
+          {getTranslation(props.heading)}
+        </TextLink>
       </Typography.Title>
 
       <Group {...props} />
@@ -185,7 +193,9 @@ const HeadingLink = (props: { link: string; title: string }) => {
         pathname === props.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
       ]}
     >
-      <TextLink href={props.link}>{getTranslation(props.title)}</TextLink>
+      <TextLink scroll={false} href={props.link}>
+        {getTranslation(props.title)}
+      </TextLink>
     </Typography.Title>
   );
 };
@@ -205,14 +215,14 @@ const Sidebar = () => {
       style={{
         width: '240px',
         position: 'sticky',
-        top: 80,
+        top: 0,
       }}
     >
       <ScrollView
         id={undefined}
         scrollEnabled
         showsVerticalScrollIndicator={false}
-        style={sx({ maxHeight: height - 80 })}
+        style={sx({ maxHeight: height })}
         aria-label={undefined}
         aria-busy={undefined}
         aria-checked={undefined}
@@ -250,7 +260,7 @@ const Sidebar = () => {
           <HeadingLink link='/theming' title='leftSideBar:theming' />
           <Index
             heading='leftSideBar:components'
-            headingLink='/components'
+            headingLink='/components/avatar'
             links={[
               {
                 title: 'leftSideBar:avatar',
@@ -347,7 +357,8 @@ const style = {
   container: {
     width: 240,
     flex: 1,
-    marginBottom: 10,
+    marginVertical: 10,
+    scrollBehavior: 'smooth',
   },
   heading: {
     fontFamily: source.style.fontFamily,

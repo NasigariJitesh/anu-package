@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import CanadaFlag from 'public/img/canada.png';
 import IndiaFlag from 'public/img/india.png';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMenuContext } from 'screens/common/provider';
 import { TextLink } from 'solito/link';
 
@@ -33,6 +33,12 @@ export interface FooterProps {
   links: FooterSection[];
 }
 
+const onLinkPress = () => {
+  document.querySelector('#top')?.scrollIntoView({
+    behavior: 'smooth',
+  });
+};
+
 /**
  * Footer Component
  *
@@ -46,7 +52,13 @@ const Footer = (props: FooterProps) => {
   const style = styles(width, theme);
   const router = useRouter();
 
+  const [isRendered, toggleIsRendered] = useState(false);
+
   const sx = useSx();
+
+  useEffect(() => {
+    toggleIsRendered(true);
+  }, []);
 
   const Section = (section: FooterSection) => {
     return (
@@ -61,8 +73,10 @@ const Footer = (props: FooterProps) => {
 
   const Item = (item: FooterSectionItem) => {
     return item.link ? (
-      <Typography.Body style={sx(style.listItem)}>
-        <TextLink href={item.link}>{getTranslation(item.title)}</TextLink>
+      <Typography.Body onPress={onLinkPress} style={sx(style.listItem)}>
+        <TextLink scroll={false} href={item.link}>
+          {getTranslation(item.title)}
+        </TextLink>
       </Typography.Body>
     ) : (
       <LocalizedTypography.Body style={sx(style.listItem)} localeKey={item.title} />
@@ -70,6 +84,8 @@ const Footer = (props: FooterProps) => {
   };
 
   if (isOpen && width < 900) return null;
+
+  if (!isRendered) return null;
 
   return (
     <footer style={{ ...style.container, marginTop: router.pathname == '/' ? 0 : 50 }}>
