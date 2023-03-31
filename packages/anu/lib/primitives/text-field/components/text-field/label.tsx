@@ -50,6 +50,10 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   useEffect(() => {
     transitionTopCoordinate.addListener((arguments_) => setValue(arguments_.value));
     if (props.value?.length && props.value?.length > 0) transitionIn();
+
+    return () => {
+      transitionTopCoordinate.removeAllListeners();
+    };
   }, []);
 
   useEffect(() => {

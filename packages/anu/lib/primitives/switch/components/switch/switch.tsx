@@ -1,6 +1,6 @@
 import { useTheme } from 'config/dripsy';
 import { Pressable } from 'dripsy';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Animated, PressableStateCallbackType, Switch as RNSwitch } from 'react-native';
 
 import { SwitchProps } from '../../types';
@@ -30,31 +30,38 @@ const getFocus = (state: PressableStateCallbackType, updateState: (value: boolea
 const Switch = (props: Partial<SwitchProps>) => {
   const finalProps = { ...defaultProps, ...props };
 
-  const [isOn, toggleIsOn] = useState(finalProps.value);
+  const isOn = finalProps.value;
   const [isTrackFocused, toggleIsTrackFocused] = useState(false);
   const [isThumbFocused, toggleIsThumbFocused] = useState(false);
 
-  const transitionTop = useRef(
-    new Animated.Value(finalProps.value ? finalProps.size * 0.125 : finalProps.size * 0.25),
-  ).current;
-  const transitionLeft = useRef(new Animated.Value(finalProps.value ? finalProps.size : finalProps.size * 0.2)).current;
-  const transitionSize = useRef(
-    new Animated.Value(finalProps.value ? finalProps.size * 0.75 : finalProps.size / 2),
-  ).current;
+  const transitionTop = useRef(new Animated.Value(finalProps.size * 0.25)).current;
+  const transitionLeft = useRef(new Animated.Value(finalProps.size * 0.2)).current;
+  const transitionSize = useRef(new Animated.Value(finalProps.size / 2)).current;
+
+  const [, setValue] = useState(0);
 
   const theme = useTheme();
 
-  const styles = getSwitchStyles({ ...finalProps, value: isOn }, theme);
+  const styles = getSwitchStyles(finalProps, isOn, theme);
   const hiddenInputStyle = { display: 'none' } as const;
+
+  useEffect(() => {
+    transitionSize.addListener((arguments_) => setValue(arguments_.value));
+
+    // if on, user just switched it on hence, on transition
+    if (finalProps.value) transitionOn();
+    else transitionOff();
+
+    return () => {
+      transitionSize.removeAllListeners();
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [finalProps.value]);
 
   const onChangeHandler = () => {
     if (finalProps.onValueChange) finalProps.onValueChange(!isOn);
 
-    // if on, user is switching it off hence, off transition
-    if (isOn) transitionOff();
-    else transitionOn();
-
-    toggleIsOn((previous) => !previous);
     toggleIsThumbFocused(false);
     toggleIsTrackFocused(false);
   };
@@ -83,6 +90,9 @@ const Switch = (props: Partial<SwitchProps>) => {
       delay: DELAY_DURATION,
       useNativeDriver: true,
     }).start();
+
+    toggleIsThumbFocused(false);
+    toggleIsTrackFocused(false);
   };
 
   /**
@@ -139,7 +149,7 @@ const Switch = (props: Partial<SwitchProps>) => {
             },
           ]}
         >
-          {isOn ? finalProps.icon.true : finalProps.icon.false}
+          {isOn ? finalProps.iconOn : finalProps.iconOff}
         </Animated.View>
       </Pressable>
       <RNSwitch {...finalProps} style={hiddenInputStyle} value={isOn} onValueChange={onChangeHandler} />
