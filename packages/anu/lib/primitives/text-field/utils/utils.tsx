@@ -178,6 +178,18 @@ export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: D
       variant === 'outlined'
         ? {
             ...finalStyle,
+            borderColor: colors.$error,
+            color: colors.$error,
+            '@hover': {
+              ...finalStyle['@hover'],
+              borderColor: colors.$onErrorContainer,
+              color: colors.$onErrorContainer,
+            },
+            '@focus': { ...finalStyle['@focus'], borderColor: colors.$error, color: colors.$error },
+            '@press': { ...finalStyle['@press'], borderColor: colors.$error, color: colors.$error },
+          }
+        : {
+            ...finalStyle,
             borderBottomColor: colors.$error,
             color: colors.$error,
 
@@ -188,18 +200,6 @@ export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: D
             },
             '@focus': { ...finalStyle['@focus'], borderBottomColor: colors.$error, color: colors.$error },
             '@press': { ...finalStyle['@press'], borderBottomColor: colors.$error, color: colors.$error },
-          }
-        : {
-            ...finalStyle,
-            borderColor: colors.$error,
-            color: colors.$error,
-            '@hover': {
-              ...finalStyle['@hover'],
-              borderColor: colors.$onErrorContainer,
-              color: colors.$onErrorContainer,
-            },
-            '@focus': { ...finalStyle['@focus'], borderColor: colors.$error, color: colors.$error },
-            '@press': { ...finalStyle['@press'], borderColor: colors.$error, color: colors.$error },
           };
   }
 

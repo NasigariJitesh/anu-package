@@ -22,13 +22,14 @@ interface IndividualOTPFieldProps {
  * The function generate initial otp value array
  *
  * @param {string}value - value given to the otp field
- * @param {number}numberOfDigits -n total number of digits in the otp
+ * @param {number}numberOfDigits - total number of digits in the otp
+ * @param {'alphabetic' | 'alphanumeric' | 'numeric'}type - type of the otp field
  * @returns {string[]}array of length equal to number of digits in otp containing either each digit or empty space
  */
-const getInitialArray = (value: string, numberOfDigits: number) => {
+const getInitialArray = (value: string, numberOfDigits: number, type?: 'alphabetic' | 'alphanumeric' | 'numeric') => {
   const array: string[] = Array.from({ length: numberOfDigits });
   for (const [index, char] of [...value].entries()) {
-    if (index < numberOfDigits) array.splice(index, 1, char);
+    if (index < numberOfDigits && validateValue(char, type)) array.splice(index, 1, char);
   }
   return array;
 };
@@ -103,7 +104,9 @@ const IndividualOTPField = ({
 const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
   const theme = useTheme();
-  const [otpValue, setOTPValue] = useState<Array<string>>(getInitialArray(finalProps.value, finalProps.numberOfDigits));
+  const [otpValue, setOTPValue] = useState<Array<string>>(
+    getInitialArray(finalProps.value, finalProps.numberOfDigits, finalProps.type),
+  );
 
   const references = useRef<(TextFieldReferenceProps | null)[]>([]);
   const textInputStyle = getOTPTextInputStyle();
