@@ -1,3 +1,4 @@
+import { getColorInRGBA } from 'common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 import { ViewProps } from 'react-native';
 
@@ -15,11 +16,29 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
   const switchTheme = {
     track: {
       borderRadius: 25,
-      borderWidth: 1,
+      borderWidth: 2,
       zIndex: 0,
       color: {
-        off: themeColors.$shadow,
+        off: themeColors.$surfaceVariant,
         on: themeColors.$primary,
+      },
+      borderColor: {
+        off: themeColors.$outline,
+        on: 'transparent',
+      },
+    },
+
+    trackDisabled: {
+      borderRadius: 25,
+      borderWidth: 2,
+      zIndex: 0,
+      color: {
+        off: getColorInRGBA(themeColors.$surfaceVariant, 12),
+        on: getColorInRGBA(themeColors.$onSurface, 12),
+      },
+      borderColor: {
+        off: getColorInRGBA(themeColors.$onSurface, 12),
+        on: 'transparent',
       },
     },
 
@@ -29,10 +48,27 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
       transitionDuration: '.2s',
       borderRadius: 10_000,
       position: 'absolute',
+      alignItems: 'center',
+      justifyContent: 'center',
       zIndex: 4,
-      color: {
-        off: themeColors.$shadow,
-        on: themeColors.$background,
+      backgroundColor: {
+        off: themeColors.$outline,
+        on: themeColors.$onPrimary,
+      },
+    },
+
+    thumbDisabled: {
+      transitionTimingFunction: 'ease',
+      transitionProperty: 'all',
+      transitionDuration: '.2s',
+      borderRadius: 10_000,
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'absolute',
+      zIndex: 4,
+      backgroundColor: {
+        off: getColorInRGBA(themeColors.$onSurface, 38),
+        on: getColorInRGBA(themeColors.$surface, 99),
       },
     },
   };
@@ -51,15 +87,18 @@ export const getSwitchStyles = (props: SwitchProps, state: boolean, defaultTheme
   const theme = getSwitchTheme(defaultTheme);
 
   const thumb: ViewProps['style'] = {
+    ...(props.disabled ? theme.thumbDisabled : (theme.thumb as Record<string, unknown>)),
     backgroundColor: getThumbColor(props, state, defaultTheme),
-    ...(theme.thumb as Record<string, unknown>),
+
     ...(props.thumbStyle as Record<string, never>),
   };
 
+  const trackTheme = props.disabled ? theme.trackDisabled : theme.track;
+
   const track: ViewProps['style'] = {
-    backgroundColor: state ? theme.track.color.on : theme.track.color.off + 10,
-    borderColor: props.trackColor ?? state ? 'transparent' : theme.track.color.off,
-    ...theme.track,
+    ...trackTheme,
+    backgroundColor: state ? trackTheme.color.on : trackTheme.color.off,
+    borderColor: props.trackColor ?? state ? trackTheme.borderColor.on : trackTheme.borderColor.off,
     ...(props.trackStyle as Record<string, never>),
     height: props.size,
     width: props.size * 2,
@@ -80,5 +119,7 @@ const getThumbColor = (props: SwitchProps, state: boolean, defaultTheme: DripsyF
 
   if (props.thumbColor) return props.thumbColor;
 
-  return state ? theme.thumb.color.on : theme.thumb.color.off;
+  if (props.disabled) return state ? theme.thumbDisabled.backgroundColor.on : theme.thumbDisabled.backgroundColor.off;
+
+  return state ? theme.thumb.backgroundColor.on : theme.thumb.backgroundColor.off;
 };

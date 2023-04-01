@@ -16,13 +16,21 @@ const DELAY_DURATION = 50;
  * @param state - pressable states
  * @param updateState - method to update React state
  * @param value - value of the boolean state
+ * @param updateHover - method to update hover state
  */
-const getFocus = (state: PressableStateCallbackType, updateState: (value: boolean) => void, value: boolean) => {
+const getFocus = (
+  state: PressableStateCallbackType,
+  updateState: (value: boolean) => void,
+  value: boolean,
+  updateHover: (value: boolean) => void,
+) => {
   if (!value && (state.focused || state.pressed)) {
     updateState(true);
   } else if (value && !state.focused) {
     updateState(false);
   }
+  if (state.hovered) updateHover(true);
+  else updateHover(false);
 
   return {};
 };
@@ -33,6 +41,8 @@ const Switch = (props: Partial<SwitchProps>) => {
   const isOn = finalProps.value;
   const [isTrackFocused, toggleIsTrackFocused] = useState(false);
   const [isThumbFocused, toggleIsThumbFocused] = useState(false);
+  const [isTrackHovered, toggleIsTrackHovered] = useState(false);
+  const [isThumbHovered, toggleIsThumbHovered] = useState(false);
 
   const transitionTop = useRef(new Animated.Value(finalProps.size * 0.25)).current;
   const transitionLeft = useRef(new Animated.Value(finalProps.size * 0.2)).current;
@@ -125,12 +135,15 @@ const Switch = (props: Partial<SwitchProps>) => {
   return (
     <Pressable accessibilityRole='switch' {...finalProps} sx={{ position: 'relative' }}>
       {/* Track Component */}
-      <Pressable style={(states) => getFocus(states, toggleIsTrackFocused, isTrackFocused)} onPress={onChangeHandler}>
+      <Pressable
+        style={(states) => getFocus(states, toggleIsTrackFocused, isTrackFocused, toggleIsTrackHovered)}
+        onPress={onChangeHandler}
+      >
         <Animated.View style={styles.track} />
       </Pressable>
       {/* Thumb Component */}
       <Pressable
-        style={(states) => getFocus(states, toggleIsThumbFocused, isThumbFocused)}
+        style={(states) => getFocus(states, toggleIsThumbFocused, isThumbFocused, toggleIsThumbHovered)}
         sx={{ position: 'absolute' }}
         onPress={onChangeHandler}
       >
@@ -143,8 +156,11 @@ const Switch = (props: Partial<SwitchProps>) => {
               height: transitionSize,
               width: transitionSize,
               backgroundColor:
-                isThumbFocused || isTrackFocused
-                  ? `${styles.thumb.backgroundColor?.toString()}90`
+                isThumbFocused || isTrackFocused || isTrackHovered || isThumbHovered
+                  ? // eslint-disable-next-line unicorn/no-nested-ternary
+                    isOn
+                    ? theme.colors.$primaryContainer
+                    : theme.colors.$onSurfaceVariant
                   : styles.thumb.backgroundColor,
             },
           ]}
