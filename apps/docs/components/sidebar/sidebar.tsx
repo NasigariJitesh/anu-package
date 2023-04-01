@@ -217,7 +217,7 @@ const Sidebar = () => {
       style={{
         width: '240px',
         position: 'sticky',
-        top: 70,
+        top: 0,
       }}
     >
       <ScrollView
