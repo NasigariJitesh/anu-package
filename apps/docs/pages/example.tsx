@@ -12,17 +12,13 @@ import {
   Container,
   IconButton,
   Image,
-  Switch,
   Typography,
 } from 'anu/lib';
-import { useState } from 'react';
 
 /**
  *
  */
 export default function Example() {
-  const [value, setValue] = useState(false);
-
   return (
     <Container>
       <Card variant='filled' width={300}>

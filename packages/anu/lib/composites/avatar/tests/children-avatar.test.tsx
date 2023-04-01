@@ -1,11 +1,11 @@
 /* eslint-disable unicorn/prefer-module */
+import placeholder from 'anu/assets/avatar-placeholder.png';
 import DripsyApp from 'anu/common/context/anu-provider';
 import { makeTheme } from 'anu/config';
 import { Icon, Image } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import placeholder from '../assets/placeholder.png';
 import Avatar from '../components';
 import ChildrenAvatar from '../components/avatar/child-avatar';
 

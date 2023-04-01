@@ -66,26 +66,6 @@ export const getCardStyles = (
       }
     }
 
-    case 'elevated': {
-      return {
-        style: {
-          ...style,
-          backgroundColor: colors?.$surface as string,
-          shadowColor: colors?.$shadow as string,
-          shadowOffset: {
-            width: 0,
-            height: 3,
-          },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.84,
-          elevation: 1,
-        },
-        sx: {
-          ...sx,
-          color: colors?.$onSurface as string,
-        },
-      };
-    }
     default: {
       return {
         style: {
