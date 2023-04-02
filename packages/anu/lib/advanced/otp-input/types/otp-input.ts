@@ -5,6 +5,8 @@ export interface OTPInputProps {
   numberOfDigits: number;
   value: string;
   onValueChange?: (value: string) => void;
+  onSubmit?: (value: string) => void;
+
   type?: 'alphabetic' | 'alphanumeric' | 'numeric';
   hideValue?: boolean;
   error?: boolean;

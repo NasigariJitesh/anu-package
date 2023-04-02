@@ -3,7 +3,7 @@ import { getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, TextField, TextFieldReferenceProps, Typography } from 'lib';
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
-import { StyleProp, TextStyle } from 'react-native';
+import { NativeSyntheticEvent, StyleProp, TextInputKeyPressEventData, TextStyle } from 'react-native';
 
 import { OTPInputProps } from '../types';
 import { getErrorStyle, getOTPFieldStyle, getOTPTextInputStyle } from '../utils';
@@ -16,6 +16,7 @@ interface IndividualOTPFieldProps {
   index: number;
   textInputStyle: StyleProp<TextStyle>;
   onValueChangeHandler: (value: string, index: number) => void;
+  onSubmitHandler: () => void;
 }
 
 /**
@@ -67,6 +68,7 @@ const validateValue = (value: string, type?: 'alphabetic' | 'alphanumeric' | 'nu
  * @param param0.index - index of the digit in otp value
  * @param param0.textInputStyle - style for the text input field
  * @param param0.onValueChangeHandler - the handle for the callback when any value is changed in text field
+ * @param param0.onSubmitHandler
  */
 const IndividualOTPField = ({
   inputProps,
@@ -75,8 +77,18 @@ const IndividualOTPField = ({
   index,
   textInputStyle,
   onValueChangeHandler,
+  onSubmitHandler,
 }: IndividualOTPFieldProps) => {
   const style = getOTPFieldStyle(inputProps.numberOfDigits, index);
+
+  const onKeyPressHandler = (event: NativeSyntheticEvent<TextInputKeyPressEventData>, digit: string) => {
+    if (digit == '' && event.nativeEvent.key == 'Backspace') {
+      if (index === 0) references.current[0]?.focus();
+      else references.current[index - 1]?.focus();
+    } else if (event.nativeEvent.key == 'Enter') {
+      onSubmitHandler();
+    }
+  };
 
   return (
     <TextField
@@ -92,6 +104,7 @@ const IndividualOTPField = ({
       onChangeText={(text) => onValueChangeHandler(text, index)}
       error={inputProps.error}
       noDefaultErrorMessage={true}
+      onKeyPress={(event) => onKeyPressHandler(event, value)}
     />
   );
 };
@@ -129,10 +142,7 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
     const array = [...otpValue];
 
     if (validateValue(recentValue, finalProps.type)) {
-      if (recentValue == '') {
-        if (index === 0) references.current[0]?.focus();
-        else references.current[index - 1]?.focus();
-      } else {
+      if (recentValue != '') {
         if (index === finalProps.numberOfDigits - 1) references.current[index]?.blur();
         else references.current[index + 1]?.focus();
       }
@@ -143,6 +153,10 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
 
       if (finalProps.onValueChange) finalProps.onValueChange(array.join(''));
     }
+  };
+
+  const onSubmitHandler = () => {
+    if (props.onSubmit) props.onSubmit(otpValue.join(''));
   };
 
   return (
@@ -157,6 +171,7 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
             textInputStyle={textInputStyle}
             value={value}
             key={index}
+            onSubmitHandler={onSubmitHandler}
           />
         ))}
       </Container>

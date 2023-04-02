@@ -37,7 +37,7 @@ describe('Testing for OTP Field Outlined', () => {
   });
 });
 
-describe('Testing for Outlined Text field Events without ref', () => {
+describe('Testing for Outlined Otp field Events without ref', () => {
   it('should trigger focus handler', () => {
     render(
       <DripsyApp theme={makeTheme({})}>
@@ -151,9 +151,59 @@ describe('Testing for Outlined Text field Events without ref', () => {
     );
     act(() => fireEvent(screen.getByTestId('text-field-test-field-1'), 'onPress'));
   });
+
+  it('should trigger keypress handler', () => {
+    render(
+      <DripsyApp theme={makeTheme({})}>
+        <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' />
+      </DripsyApp>,
+    );
+    act(() => {
+      fireEvent(screen.getByTestId('text-field-test-field-3'), 'onKeyPress', { nativeEvent: { key: 'Backspace' } });
+    });
+  });
+
+  it('should trigger keypress handler for first input', () => {
+    render(
+      <DripsyApp theme={makeTheme({})}>
+        <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' />
+      </DripsyApp>,
+    );
+    act(() => {
+      fireEvent(screen.getByTestId('text-field-test-field-1'), 'onKeyPress', { nativeEvent: { key: 'Backspace' } });
+    });
+  });
+
+  it('should trigger keypress handler and onSubmit', () => {
+    render(
+      <DripsyApp theme={makeTheme({})}>
+        <OtpInput
+          numberOfDigits={4}
+          value='1234'
+          variant='outlined'
+          testID='text-field-test'
+          onSubmit={(value) => console.log(value)}
+        />
+      </DripsyApp>,
+    );
+    act(() =>
+      fireEvent(screen.getByTestId('text-field-test-field-3'), 'onKeyPress', { nativeEvent: { key: 'Enter' } }),
+    );
+  });
+
+  it('should trigger keypress handler without onSubmit', () => {
+    render(
+      <DripsyApp theme={makeTheme({})}>
+        <OtpInput numberOfDigits={4} value='1234' variant='outlined' testID='text-field-test' />
+      </DripsyApp>,
+    );
+    act(() =>
+      fireEvent(screen.getByTestId('text-field-test-field-3'), 'onKeyPress', { nativeEvent: { key: 'Enter' } }),
+    );
+  });
 });
 
-describe('Testing for Outlined Text field with ref', () => {
+describe('Testing for Outlined Otp field Events with ref', () => {
   const reference = React.createRef<TextFieldReferenceProps>();
 
   it('Focus using ref', async () => {
