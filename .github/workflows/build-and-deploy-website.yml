@@ -29,6 +29,7 @@ jobs:
       - name: Build
         run: |
           yarn
+          mkdir .vercel
           touch .vercel/project.json
           echo {"projectId":"${VERCEL_PROJECT_ID}","orgId":"${VERCEL_ORG_ID}"} > .vercel/project.json
         env:
