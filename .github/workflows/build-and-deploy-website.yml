@@ -24,6 +24,7 @@ jobs:
       - name: Build
         run: |
           cd apps/next
+          npm install -g vercel
           npm run build:web
           echo {"projectId":"${VERCEL_PROJECT_ID}","orgId":"${VERCEL_ORG_ID}"} > dist/.vercel/project.json
         env:
