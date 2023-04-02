@@ -46,6 +46,7 @@
   "leftSideBar:divider": "Divider",
   "leftSideBar:image": "Image",
   "leftSideBar:radio": "Radio Button",
+  "leftSideBar:switch": "Switch",
   "leftSideBar:typography": "Typography",
   "leftSideBar:text-fields": "Text Fields",
   "leftSideBar:credits": "Credits",
@@ -281,6 +282,19 @@
   "radioDocumentation:example1-name": "Default",
   "radioDocumentation:example2-name": "Radio Button - with Label",
   "radioDocumentation:example3-name": "Radio Button - Group",
+
+  "switchDocumentation:mainHeading": "Switch",
+  "switchDocumentation:mainDescription": "A switch allows users to toggle between two states, typically on and off, by clicking or tapping on it. It is commonly used to turn settings or features on or off in various types of user interfaces.",
+  "switchDocumentation:property-value-description": "The value/state of the switch.",
+  "switchDocumentation:property-size-description": "Size of the component (Use this to adjust the size of the component, else might misbehave during switching).",
+  "switchDocumentation:property-iconOn-description": "The icon to display with the switch when it is on.",
+  "switchDocumentation:property-iconOff-description": "The icon to display with the switch when it is off.",
+  "switchDocumentation:property-onChange-description": "The callback function to be executed when the state of switch is changed.",
+  "switchDocumentation:property-thumbStyle-description": "Styles for the thumb of the Switch.",
+  "switchDocumentation:property-trackStyle-description": "Styles for the track of the Switch.",
+
+  "switchDocumentation:example1-name": "Default",
+  "switchDocumentation:example2-name": "Switch - with icon",
 
   "typographyDocumentation:mainHeading": "Typography",
   "typographyDocumentation:mainDescription": "Typography is used to arrange the typefaces to create a visually appealing and effective communication design.",

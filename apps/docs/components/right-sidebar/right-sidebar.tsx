@@ -19,6 +19,7 @@ import { installationIndex } from 'services/docs/installation';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
+import { switchIndex } from 'services/docs/switch';
 import { textFieldIndex } from 'services/docs/text-field';
 import { themingIndex } from 'services/docs/theming';
 import { typographyIndex } from 'services/docs/typography';
@@ -45,6 +46,15 @@ export interface HeadingProps {
   links: SubIndex[];
 }
 
+const onLinkPress = (link?: string) => {
+  if (!link) return;
+
+  document.querySelector(link)?.scrollIntoView({ behavior: 'smooth' });
+
+  // update link with the new hash
+  window.history.replaceState({}, '', link);
+};
+
 const Group = (props: HeadingProps) => {
   const { getTranslation } = useAnuLocalization();
 
@@ -55,8 +65,8 @@ const Group = (props: HeadingProps) => {
       renderItem={({ item }) => {
         return (
           <>
-            <Typography.Title style={style.groupName}>
-              <TextLink href={item.link ?? '#'}>{getTranslation(item.title)}</TextLink>
+            <Typography.Title onPress={() => onLinkPress(item.link)} style={style.groupName}>
+              {getTranslation(item.title)}
             </Typography.Title>
             <Components links={item.components} />
           </>
@@ -169,6 +179,11 @@ const RenderIndex = () => {
     case '/components/radio-button': {
       {
         return <Index {...radioButtonIndex} />;
+      }
+    }
+    case '/components/switch': {
+      {
+        return <Index {...switchIndex} />;
       }
     }
     case '/components/text-field': {

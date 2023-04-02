@@ -12,6 +12,7 @@ import {
   Container,
   IconButton,
   Image,
+  OTPInput,
   Typography,
 } from 'anu/lib';
 
@@ -21,19 +22,11 @@ import {
 export default function Example() {
   return (
     <Container>
+      <Container sx={{ margin: 10, padding: 10 }}>
+        <OTPInput numberOfDigits={6} value='123456788' variant='filled' onSubmit={(a) => console.log(a)} />
+      </Container>
       <Container flexDirection='row'>
         <Card variant='filled' width={300} sx={{ margin: 10 }}>
-          {/* <CardHeader
-            heading='Heading'
-            subHeading='subHeading'
-            avatar={<Avatar name='N' variant='circle' size='large' />}
-            action={<IconButton type='standard' icon={{ name: 'more-vert' }} />}
-          /> */}
-          {/* <CardMedia
-            source={{
-              uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
-            }}
-          /> */}
           <CardTitle type='default' title='Title' subTitle='Hellooo' />
           <CardContent>
             <Typography.Body>
@@ -46,12 +39,6 @@ export default function Example() {
           </CardActions>
         </Card>
         <Card variant='elevated' width={300} sx={{ margin: 10 }}>
-          <CardHeader
-            heading='Heading'
-            subHeading='subHeading'
-            avatar={<Avatar name='N' variant='circle' size='large' />}
-            action={<IconButton type='standard' icon={{ name: 'more-vert' }} />}
-          />
           <CardMedia
             source={{
               uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
