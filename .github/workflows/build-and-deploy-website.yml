@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-deploy:
 
     runs-on: ubuntu-latest
 
@@ -28,10 +28,8 @@ jobs:
 
       - name: Build
         run: |
-          cd apps/next
-          yarn
           yarn build:web
-          echo {"projectId":"${VERCEL_PROJECT_ID}","orgId":"${VERCEL_ORG_ID}"} > dist/.vercel/project.json
+          echo {"projectId":"${VERCEL_PROJECT_ID}","orgId":"${VERCEL_ORG_ID}"} > .vercel/project.json
         env:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
