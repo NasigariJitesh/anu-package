@@ -20,12 +20,17 @@ jobs:
           # update the Node version to meet your needs
           node-version: 18
           cache: npm
+          
+      - name: Dependencies
+        run: |
+          npm install -g yarn
+          npm install -g vercel
 
       - name: Build
         run: |
           cd apps/next
-          npm install -g vercel
-          npm run build:web
+          yarn
+          yarn build:web
           echo {"projectId":"${VERCEL_PROJECT_ID}","orgId":"${VERCEL_ORG_ID}"} > dist/.vercel/project.json
         env:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
