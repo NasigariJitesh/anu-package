@@ -18,7 +18,6 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       backgroundColor: colors.$surfaceVariant,
       color: colors.$onSurfaceVariant,
       height: 56,
-      minWidth: '245px',
       width: '100%',
       justifyContent: 'center',
       paddingVertical: 0,
@@ -52,7 +51,6 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       backgroundColor: colors.$background,
       color: colors.$onSurfaceVariant,
       height: 56,
-      minWidth: '245px',
       width: '100%',
       paddingVertical: 0,
       paddingHorizontal: 0,
@@ -153,16 +151,16 @@ export const getTrailingContainerStyle = (props: TextFieldProps) => {
 /**
  * To generate style for the container of the text field
  *
- * @param {Partial<TextFieldProps>} props - The properties of the text field
+ * @param {TextFieldProps} props - The properties of the text field
  * @param dripsyTheme
  * @returns style of the text field container
  */
-export const getTextFieldContainerStyle = (props: Partial<TextFieldProps>, dripsyTheme: DripsyFinalTheme) => {
+export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: DripsyFinalTheme) => {
   const { style: propStyle, variant, error, disabled } = props;
 
   const theme = getTextFieldTheme(dripsyTheme);
 
-  const style = theme[variant ?? 'filled'];
+  const style = theme[variant];
 
   const { colors } = dripsyTheme;
 
