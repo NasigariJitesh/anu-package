@@ -1,4 +1,4 @@
-import { getMaxWidthInPixels } from 'common/utils';
+import { getColorInRGBA, getMaxWidthInPixels } from 'common/utils';
 import { DripsyFinalTheme, SxProp } from 'dripsy';
 import { ImageStyle, StyleProp, ViewStyle } from 'react-native';
 
@@ -33,7 +33,7 @@ export const getCardStyles = (
             shadowRadius: 3.84,
             elevation: 1,
 
-            backgroundColor: 'transparent',
+            backgroundColor: colors?.$surface as string,
             borderWidth: 1,
             borderColor: colors?.$outline as string,
           },
@@ -56,11 +56,11 @@ export const getCardStyles = (
             shadowOpacity: 0.25,
             shadowRadius: 3.84,
             elevation: 1,
-            backgroundColor: colors?.$primaryContainer as string,
+            backgroundColor: getColorInRGBA(colors?.$primary, 14),
           },
           sx: {
             ...sx,
-            color: colors?.$onPrimaryContainer as string,
+            color: colors?.$onSurface as string,
           },
         };
       }
@@ -70,7 +70,7 @@ export const getCardStyles = (
       return {
         style: {
           ...style,
-          backgroundColor: colors?.$surface as string,
+          backgroundColor: getColorInRGBA(colors?.$primary, 5),
           shadowColor: colors?.$shadow as string,
           shadowOffset: {
             width: 0,
@@ -103,7 +103,6 @@ export const getCommonCardStyles = (props: Partial<CardProps>) => {
     flexDirection: flexDirection,
     alignItems: align,
     justifyContent: justify,
-    padding: 0.6,
     borderRadius: 12,
     overflow: 'hidden',
   };
