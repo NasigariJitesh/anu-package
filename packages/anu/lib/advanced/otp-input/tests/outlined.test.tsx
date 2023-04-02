@@ -88,7 +88,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
           variant='outlined'
           testID='text-field-test'
           type='numeric'
-          onValueChange={(value) => console.log(value)}
+          onValueChange={(value) => value}
         />
       </DripsyApp>,
     );
@@ -182,7 +182,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
           value='1234'
           variant='outlined'
           testID='text-field-test'
-          onSubmit={(value) => console.log(value)}
+          onSubmit={(value) => value}
         />
       </DripsyApp>,
     );

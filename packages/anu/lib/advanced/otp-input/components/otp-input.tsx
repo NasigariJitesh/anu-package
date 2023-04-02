@@ -43,7 +43,7 @@ const getInitialArray = (value: string, numberOfDigits: number, type?: 'alphabet
  * @returns {boolean} - whether the value is valid according to type of otp
  */
 const validateValue = (value: string, type?: 'alphabetic' | 'alphanumeric' | 'numeric') => {
-  if (value === '') return true;
+  if (!value) return true;
 
   switch (type) {
     case 'alphanumeric': {
@@ -82,12 +82,10 @@ const IndividualOTPField = ({
   const style = getOTPFieldStyle(inputProps.numberOfDigits, index);
 
   const onKeyPressHandler = (event: NativeSyntheticEvent<TextInputKeyPressEventData>, digit: string) => {
-    if (digit == '' && event.nativeEvent.key == 'Backspace') {
+    if (digit === '' && event.nativeEvent.key == 'Backspace') {
       if (index === 0) references.current[0]?.focus();
       else references.current[index - 1]?.focus();
-    } else if (event.nativeEvent.key == 'Enter') {
-      onSubmitHandler();
-    }
+    } else if (event.nativeEvent.key == 'Enter') onSubmitHandler();
   };
 
   return (
@@ -117,6 +115,7 @@ const IndividualOTPField = ({
 const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
   const theme = useTheme();
+
   const [otpValue, setOTPValue] = useState<Array<string>>(
     getInitialArray(finalProps.value, finalProps.numberOfDigits, finalProps.type),
   );
@@ -142,7 +141,7 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
     const array = [...otpValue];
 
     if (validateValue(recentValue, finalProps.type)) {
-      if (recentValue != '') {
+      if (recentValue !== '') {
         if (index === finalProps.numberOfDigits - 1) references.current[index]?.blur();
         else references.current[index + 1]?.focus();
       }

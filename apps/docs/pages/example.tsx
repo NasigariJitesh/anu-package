@@ -1,6 +1,5 @@
 /* eslint-disable no-secrets/no-secrets */
 import { Container, OTPInput } from 'anu/lib';
-import Avatar from 'anu/lib/composites/avatar/';
 
 /**
  *
