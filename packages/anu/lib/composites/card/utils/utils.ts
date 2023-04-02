@@ -25,14 +25,6 @@ export const getCardStyles = (
           style: {
             ...style,
 
-            shadowOffset: {
-              width: 0,
-              height: 3,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            elevation: 1,
-
             backgroundColor: colors?.$surface as string,
             borderWidth: 1,
             borderColor: colors?.$outline as string,
@@ -49,13 +41,6 @@ export const getCardStyles = (
         return {
           style: {
             ...style,
-            shadowOffset: {
-              width: 0,
-              height: 3,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            elevation: 1,
             backgroundColor: getColorInRGBA(colors?.$primary, 14),
           },
           sx: {
