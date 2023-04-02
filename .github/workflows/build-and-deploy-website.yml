@@ -30,7 +30,7 @@ jobs:
           yarn
           mkdir .vercel
           touch .vercel/project.json
-          echo `{"projectId": "he","orgId":"${VERCEL_ORG_ID}"}` > .vercel/project.json
+          echo "{"projectId": "he","orgId":\"${VERCEL_ORG_ID}\"}" > .vercel/project.json
         env:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
