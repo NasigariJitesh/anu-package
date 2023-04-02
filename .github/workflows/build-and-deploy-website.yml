@@ -1,0 +1,44 @@
+name: Build & Deploy to anu.dev
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+        
+      # a standard step for GitHub actions on Node
+      # https://github.com/actions/setup-node
+      - uses: actions/setup-node@v3
+        with:
+          # update the Node version to meet your needs
+          node-version: 18
+          cache: npm
+          
+      - name: Dependencies
+        run: |
+          npm install -g yarn
+          npm install -g vercel
+
+      - name: Build
+        run: |
+          yarn
+          mkdir .vercel
+          touch .vercel/project.json
+          echo `{"projectId": "he","orgId":"${VERCEL_ORG_ID}"}` > .vercel/project.json
+        env:
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: Deploy
+        run: |
+          cat .vercel/project.json
+          vercel deploy --prod --token ${VERCEL_TOKEN}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
