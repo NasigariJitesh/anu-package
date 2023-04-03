@@ -231,6 +231,7 @@ describe('Testing for Card - Horizontal', () => {
           }}
           cardOrientation='horizontal'
           width={100}
+          height={undefined}
         />
         <Container>
           <CardTitle type='custom'>
