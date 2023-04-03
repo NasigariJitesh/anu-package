@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/prefer-module */
-import placeholder from 'anu/assets/placeholder.png';
+import placeholder from 'anu/assets/avatar-placeholder.png';
 import DripsyApp from 'anu/common/context/anu-provider';
 import { makeTheme } from 'anu/config';
 import { Icon, Image } from 'anu/lib';
