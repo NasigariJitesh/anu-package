@@ -20,7 +20,7 @@ const Card = (props: Partial<CardProps>) => {
   const { variant, onHover, ...componentProps } = finalProps;
 
   return (
-    <Container {...componentProps} style={getCombinedStylesForView(style, finalProps.style)} sx={sx}>
+    <Container disableGutters {...componentProps} style={getCombinedStylesForView(style, finalProps.style)} sx={sx}>
       {props.children}
     </Container>
   );

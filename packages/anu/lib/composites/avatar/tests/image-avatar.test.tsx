@@ -1,11 +1,11 @@
 /* eslint-disable unicorn/prefer-module */
 import { fireEvent, render, screen } from '@testing-library/react-native';
+import placeholder from 'anu/assets/avatar-placeholder.png';
 import DripsyApp from 'anu/common/context/anu-provider';
 import { makeTheme } from 'anu/config';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import placeholder from '../assets/placeholder.png';
 import Avatar from '../components';
 import ImageAvatar from '../components/avatar/image-avatar';
 

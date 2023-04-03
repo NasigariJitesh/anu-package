@@ -36,7 +36,7 @@ const nextConfig = withExpo({
     return [
       {
         source: '/components',
-        destination: '/components/badge',
+        destination: '/components/avatar',
         permanent: false,
       },
       {

@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @next/next/no-img-element */
 import { useTheme } from 'anu/config';
 import { Button, Chip, Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
@@ -5,6 +6,7 @@ import Footer from 'components/footer';
 import { DripsyFinalTheme, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
+import { View } from 'react-native';
 import ParticlesDark from 'screens/common/particles-dark';
 import ParticlesLight from 'screens/common/particles-light';
 import { useMenuContext } from 'screens/common/provider';
@@ -62,6 +64,7 @@ const Home = () => {
     <>
       {isDarkTheme ? <ParticlesDark /> : <ParticlesLight />}
       <Container disableGutters style={style.container}>
+        <View nativeID='top' style={{ position: 'absolute', top: -70, height: 1, width: 1, zIndex: -10 }} />
         <Container flexDirection='column' justify='center' align='center' style={sx(style.center)}>
           <Container disableGutters style={style.imageContainer}>
             <img

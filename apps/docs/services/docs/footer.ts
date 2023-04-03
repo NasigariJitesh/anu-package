@@ -15,7 +15,7 @@ export const footerLinks: FooterProps = {
         },
         {
           title: 'footer:list1-item3-title',
-          link: '/components/badge',
+          link: '/components/avatar',
         },
         {
           title: 'footer:list1-item4-title',
