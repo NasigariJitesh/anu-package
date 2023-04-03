@@ -69,6 +69,10 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
    */
   errorMessage?: string | string[];
   /**
+   * Whether to show default Error messages
+   */
+  noDefaultErrorMessage?: boolean;
+  /**
    * styles for the error message
    */
   errorMessageStyle?: StyleProp<TextStyle>;
@@ -88,4 +92,9 @@ export interface TextInputLabelProps extends TextFieldProps {
   textInputRef: MutableRefObject<RNTextInput | null>;
   isFocused: boolean;
   toggleIsFocused: (value: boolean) => void;
+}
+
+export interface TextFieldReferenceProps {
+  focus: () => void;
+  blur: () => void;
 }

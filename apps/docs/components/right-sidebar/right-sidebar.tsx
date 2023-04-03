@@ -46,6 +46,15 @@ export interface HeadingProps {
   links: SubIndex[];
 }
 
+const onLinkPress = (link?: string) => {
+  if (!link) return;
+
+  document.querySelector(link)?.scrollIntoView({ behavior: 'smooth' });
+
+  // update link with the new hash
+  window.history.replaceState({}, '', link);
+};
+
 const Group = (props: HeadingProps) => {
   const { getTranslation } = useAnuLocalization();
 
@@ -56,8 +65,8 @@ const Group = (props: HeadingProps) => {
       renderItem={({ item }) => {
         return (
           <>
-            <Typography.Title style={style.groupName}>
-              <TextLink href={item.link ?? '#'}>{getTranslation(item.title)}</TextLink>
+            <Typography.Title onPress={() => onLinkPress(item.link)} style={style.groupName}>
+              {getTranslation(item.title)}
             </Typography.Title>
             <Components links={item.components} />
           </>
