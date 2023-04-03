@@ -6,6 +6,7 @@ import { Container } from 'anu/lib';
 import Footer from 'components/footer';
 import Navbar from 'components/navbar';
 import RightSidebar from 'components/right-sidebar';
+import Scripts from 'components/scripts';
 import SEO from 'components/seo';
 import Sidebar from 'components/sidebar';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
@@ -27,6 +28,7 @@ export default function App(props: AppProps) {
   return (
     <>
       <SEO />
+      <Scripts />
       <RootLayout backgroundColor={backgroundColor} setBackgroundColor={setBackgroundColor}>
         <Container disableGutters sx={{ height: height, width: width, overflow: 'scroll' }}>
           <Head>
