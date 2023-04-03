@@ -20,7 +20,6 @@ const CardHeader = (props: CardHeaderProps) => {
     actionContainerStyle,
     avatarContainerStyle,
     headingContainerStyle,
-    imageContainerStyle,
     headingStyle,
     subHeadingStyle,
     sx,
@@ -42,10 +41,6 @@ const CardHeader = (props: CardHeaderProps) => {
       {'action' in finalProps && finalProps.action ? (
         <Container disableGutters style={actionContainerStyle} sx={sx}>
           {finalProps.action}
-        </Container>
-      ) : 'image' in finalProps && finalProps.image ? (
-        <Container disableGutters style={imageContainerStyle} sx={sx}>
-          {finalProps.image}
         </Container>
       ) : null}
     </Container>

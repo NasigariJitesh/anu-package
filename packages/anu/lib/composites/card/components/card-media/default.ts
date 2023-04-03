@@ -4,10 +4,9 @@ import { CardMediaProps } from './../../types/card';
 /**
  * Default Properties of the card component
  */
-export const defaultProps: CardMediaProps = {
+export const defaultProps: Partial<CardMediaProps> = {
   source: {
     uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
   },
-  height: 188,
-  width: '100%',
+  cardOrientation: 'vertical',
 };

@@ -9,10 +9,23 @@ import { StyleProp, TextStyle, ViewStyle } from 'react-native';
  */
 export type CardVariant = 'outlined' | 'filled' | 'elevated';
 
-export interface CardProps extends Omit<ContainerProps, 'fixed' | 'disableGutters' | 'variant'> {
-  onHover: (event: MouseEvent) => void;
-  variant: CardVariant;
+interface CommonCardProps extends Omit<ContainerProps, 'fixed' | 'disableGutters' | 'variant'> {
+  variant?: CardVariant;
+  orientation?: 'horizontal' | 'vertical';
+  height?: number | string;
 }
+
+interface VerticalCardProps extends CommonCardProps {
+  orientation?: 'vertical';
+  width: number | string;
+}
+
+interface HorizontalCardProps extends CommonCardProps {
+  orientation: 'horizontal';
+  height: number | string;
+}
+
+export type CardProps = HorizontalCardProps | VerticalCardProps;
 
 export interface CardContentProps {
   children: ReactChildren;
@@ -41,25 +54,29 @@ interface CustomCardTitleProps {
 
 export type CardTitleProps = DefaultCardTitleProps | CustomCardTitleProps;
 
-export interface CardMediaProps extends Omit<ImageProps, 'height' | 'width'> {
+interface CommonCardMediaProps extends Omit<ImageProps, 'height' | 'width'> {
   height?: number | string;
   width?: number | string;
+  cardOrientation?: 'horizontal' | 'vertical';
 }
 
-interface CommonCardHeaderProps {
+interface HorizontalCardMediaProps extends CommonCardMediaProps {
+  width: number | string;
+  cardOrientation: 'horizontal';
+}
+
+interface VerticalCardMediaProps extends CommonCardMediaProps {
+  height: number | string;
+  cardOrientation?: 'vertical';
+}
+
+export type CardMediaProps = HorizontalCardMediaProps | VerticalCardMediaProps;
+
+export interface CardHeaderProps {
   avatar?: ReactChildren;
   heading: string;
   headingStyle?: StyleProp<TextStyle>;
   subHeading?: string;
   subHeadingStyle?: StyleProp<TextStyle>;
-}
-
-interface ImageCardHeaderProps extends CommonCardHeaderProps {
-  image?: ReactChildren;
-}
-
-interface ActionCardHeaderProps extends CommonCardHeaderProps {
   action?: ReactChildren;
 }
-
-export type CardHeaderProps = ImageCardHeaderProps | ActionCardHeaderProps;

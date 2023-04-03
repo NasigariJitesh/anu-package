@@ -11,7 +11,7 @@ import { defaultProps } from './default';
  * @param {CardMediaProps} props - all the properties related to the card actions
  */
 const CardMedia = (props: CardMediaProps) => {
-  const finalProps = { ...defaultProps, ...props };
+  const finalProps = { ...defaultProps, ...props } as CardMediaProps;
 
   const { style } = getCardMediaStyle(finalProps);
 
