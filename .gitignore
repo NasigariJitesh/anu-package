@@ -41,4 +41,4 @@ __snapshots__
 coverage
 
 
-**/.env
+app/docs/.env
