@@ -217,14 +217,14 @@ const Sidebar = () => {
       style={{
         width: '240px',
         position: 'sticky',
-        top: 80,
+        top: 0,
       }}
     >
       <ScrollView
         id={undefined}
         scrollEnabled
         showsVerticalScrollIndicator={false}
-        style={sx({ maxHeight: height - 80 })}
+        style={sx({ maxHeight: height - 70 })}
         aria-label={undefined}
         aria-busy={undefined}
         aria-checked={undefined}
