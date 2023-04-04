@@ -117,15 +117,9 @@ export const otpInputDocumentation: ContentValues = {
       name: 'otpInputDocumentation:example1-name',
       id: 'filled-otp-input',
       component: (
-        <Container disableGutters sx={flexStyle as never}>
-          <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} />
-            <OTPInput value='1234' variant='filled' numberOfDigits={4} containerStyle={style} />
-          </Container>
-          <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            {/* <OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} disabled /> */}
-            {/* <OTPInput value='1234' variant='filled' numberOfDigits={4} containerStyle={style} disabled /> */}
-          </Container>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
+          <OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} />
+          <OTPInput value='1234' variant='filled' numberOfDigits={4} containerStyle={style} />
         </Container>
       ),
       code: `<OTPInput value='' variant='filled' numberOfDigits={4} />
@@ -135,38 +129,26 @@ export const otpInputDocumentation: ContentValues = {
       name: 'otpInputDocumentation:example2-name',
       id: 'outlined-otp-input',
       component: (
-        <Container disableGutters sx={flexStyle as never}>
-          <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} />
-            <OTPInput value='1234' variant='outlined' numberOfDigits={4} containerStyle={style} />
-          </Container>
-          <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            {/* <OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} disabled /> */}
-            {/* <OTPInput value='1234' variant='outlined' numberOfDigits={4} containerStyle={style} disabled /> */}
-          </Container>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
+          <OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} />
+          <OTPInput value='1234' variant='outlined' numberOfDigits={4} containerStyle={style} />
         </Container>
       ),
       code: `<OTPInput value='' variant='outlined' numberOfDigits={4} />
 <OTPInput value='1234' variant='outlined' numberOfDigits={4} />
-
-<OTPInput value='' variant='outlined' numberOfDigits={4} disabled />`,
+`,
     },
     {
       name: 'otpInputDocumentation:example3-name',
       id: 'error',
       component: (
-        <Container disableGutters sx={flexStyle as never}>
-          <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} error />
-            <OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} error />
-          </Container>
+        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
+          <OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} error />
+          <OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} error />
         </Container>
       ),
-      code: `<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value=''/>
-<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit' name='close' />} />
-
-<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='' disabled/>
-<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit' name='close' />} disabled/>`,
+      code: `<OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} error />
+<OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} error />`,
     },
   ],
 };
