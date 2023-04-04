@@ -9,15 +9,15 @@ import { defaultProps, defaultSxProps } from './default';
 /**
  * Component for Container
  *
- * @param {Partial<CardProps>} props - all the properties related to the card component
+ * @param {CardProps} props - all the properties related to the card component
  */
-const Card = (props: Partial<CardProps>) => {
+const Card = (props: CardProps) => {
   const theme = useTheme();
 
   const finalProps = { ...defaultProps, sx: defaultSxProps(theme), ...props };
 
   const { style, sx } = getCardStyles(finalProps, theme);
-  const { variant, onHover, ...componentProps } = finalProps;
+  const { variant, ...componentProps } = finalProps;
 
   return (
     <Container disableGutters {...componentProps} style={getCombinedStylesForView(style, finalProps.style)} sx={sx}>

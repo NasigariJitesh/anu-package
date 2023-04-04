@@ -6,6 +6,12 @@ import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
 import { avatarIndex } from 'services/docs/avatar';
 import { badgeIndex } from 'services/docs/badge';
+import { cardIndex } from 'services/docs/card';
+import { cardActionsIndex } from 'services/docs/card-actions';
+import { cardContentIndex } from 'services/docs/card-content';
+import { cardHeaderIndex } from 'services/docs/card-header';
+import { cardMediaIndex } from 'services/docs/card-media';
+import { cardTitleIndex } from 'services/docs/card-title';
 import { checkboxIndex } from 'services/docs/checkbox';
 import { chipIndex } from 'services/docs/chip';
 import { containerIndex } from 'services/docs/container';
@@ -150,6 +156,36 @@ const RenderIndex = () => {
     case '/components/button/segmented': {
       {
         return <Index {...segmentedButtonIndex} />;
+      }
+    }
+    case '/components/card': {
+      {
+        return <Index {...cardIndex} />;
+      }
+    }
+    case '/components/card/header': {
+      {
+        return <Index {...cardHeaderIndex} />;
+      }
+    }
+    case '/components/card/media': {
+      {
+        return <Index {...cardMediaIndex} />;
+      }
+    }
+    case '/components/card/title': {
+      {
+        return <Index {...cardTitleIndex} />;
+      }
+    }
+    case '/components/card/content': {
+      {
+        return <Index {...cardContentIndex} />;
+      }
+    }
+    case '/components/card/actions': {
+      {
+        return <Index {...cardActionsIndex} />;
       }
     }
     case '/components/checkbox': {

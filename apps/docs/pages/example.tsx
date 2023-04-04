@@ -11,7 +11,6 @@ import {
   CardTitle,
   Container,
   IconButton,
-  Image,
   OTPInput,
   Typography,
 } from 'anu/lib';
@@ -43,6 +42,7 @@ export default function Example() {
             source={{
               uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
             }}
+            height={150}
           />
           <CardTitle type='default' title='Title' subTitle='Hellooo' />
           <CardContent>
@@ -66,6 +66,7 @@ export default function Example() {
             source={{
               uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
             }}
+            height={150}
           />
           <CardTitle type='default' title='Title' subTitle='Hellooo' />
           <CardContent>
@@ -80,36 +81,32 @@ export default function Example() {
         </Card>
       </Container>
       <Container flexDirection='row'>
-        <Card variant='filled' width={300} sx={{ margin: 10 }}>
-          <CardHeader
-            heading='Heading'
-            subHeading='subHeading'
-            avatar={<Avatar name='N' variant='circle' size='large' />}
-            image={
-              <Image
-                source={{
-                  uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
-                }}
-                alt='header'
-                style={{ height: 80, width: 80 }}
-              />
-            }
+        <Card variant='elevated' orientation='horizontal' height={250} sx={{ margin: 10 }}>
+          <CardMedia
+            source={{
+              uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
+            }}
+            cardOrientation='horizontal'
+            width={'30%'}
           />
+          <Container>
+            <CardHeader heading='Heading' subHeading='subHeading' />
+            <CardContent>
+              <Typography.Body>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+              </Typography.Body>
+            </CardContent>
+            <CardActions justify='flex-end'>
+              <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+              <Button.Filled title='Action' />
+            </CardActions>
+          </Container>
         </Card>
         <Card variant='elevated' width={300} sx={{ margin: 10 }}>
           <CardHeader
             heading='Heading'
             subHeading='subHeading'
             avatar={<Avatar name='N' variant='circle' size='large' />}
-            image={
-              <Image
-                source={{
-                  uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
-                }}
-                alt='header'
-                style={{ height: 80, width: 80 }}
-              />
-            }
           />
         </Card>
         <Card variant='outlined' width={300} sx={{ margin: 10 }}>
@@ -117,15 +114,6 @@ export default function Example() {
             heading='Heading'
             subHeading='subHeading'
             avatar={<Avatar name='N' variant='circle' size='large' />}
-            image={
-              <Image
-                source={{
-                  uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
-                }}
-                alt='header'
-                style={{ height: 80, width: 80 }}
-              />
-            }
           />
         </Card>
       </Container>
