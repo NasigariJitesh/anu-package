@@ -331,6 +331,22 @@ const Sidebar = () => {
                 link: '/components/image',
               },
               {
+                title: 'leftSideBar:input-fields',
+                link: '/components/input-fields/text-field',
+                components: [
+                  {
+                    title: 'leftSideBar:text-fields',
+                    link: '/components/input-fields/text-field',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:otp-input',
+                    link: '/components/input-fields/otp-input',
+                    variants: [],
+                  },
+                ],
+              },
+              {
                 title: 'leftSideBar:radio',
                 link: '/components/radio-button',
                 components: [],
@@ -341,11 +357,6 @@ const Sidebar = () => {
                 components: [],
               },
 
-              {
-                title: 'leftSideBar:text-fields',
-                link: '/components/text-field',
-                components: [],
-              },
               {
                 title: 'leftSideBar:typography',
                 link: '/components/typography',
