@@ -46,8 +46,9 @@ export const checkBoxDocumentation: ContentValues = {
     {
       name: 'labelPlacement',
       description: 'checkBoxDocumentation:property-labelPlacement-description',
-      type: "'left' | 'right' | 'top' | 'bottom' (optional)",
+      type: "'left' | 'right' | 'top' | 'bottom'",
       defaultValue: "'right'",
+      optional: true,
     },
     {
       name: 'disabled',

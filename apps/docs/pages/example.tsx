@@ -81,7 +81,7 @@ export default function Example() {
         </Card>
       </Container>
       <Container flexDirection='row'>
-        <Card variant='filled' orientation='horizontal' height={250} sx={{ margin: 10 }}>
+        <Card variant='elevated' orientation='horizontal' height={250} sx={{ margin: 10 }}>
           <CardMedia
             source={{
               uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
