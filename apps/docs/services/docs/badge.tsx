@@ -51,8 +51,9 @@ export const badgeDocumentation: ContentValues = {
     {
       name: 'position',
       description: 'badgeDocumentation:property-position-description',
-      type: " 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' (optional)",
+      type: " 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'",
       defaultValue: 'topRight',
+      optional: true,
     },
     {
       name: 'contentStyle',

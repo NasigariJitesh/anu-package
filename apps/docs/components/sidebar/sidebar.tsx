@@ -217,7 +217,7 @@ const Sidebar = () => {
       style={{
         width: '240px',
         position: 'sticky',
-        top: 0,
+        top: 80,
       }}
     >
       <ScrollView
@@ -304,6 +304,42 @@ const Sidebar = () => {
                   },
                 ],
                 link: '/components/button',
+              },
+              {
+                title: 'leftSideBar:card',
+                components: [
+                  {
+                    title: 'leftSideBar:card',
+                    link: '/components/card',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:card-header',
+                    link: '/components/card/header',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:card-media',
+                    link: '/components/card/media',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:card-title',
+                    link: '/components/card/title',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:card-content',
+                    link: '/components/card/content',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:card-actions',
+                    link: '/components/card/actions',
+                    variants: [],
+                  },
+                ],
+                link: '/components/card',
               },
               {
                 title: 'leftSideBar:checkbox',

@@ -4,6 +4,7 @@ import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { View } from 'react-native';
 import { useMenuContext } from 'screens/common/provider';
 
+import AdditionalInformation, { AdditionalInformationProps } from './additional-info';
 import ComponentDetails from './component-details';
 import ComponentExamples, { Example } from './component-examples';
 import ComponentProperties, { Property } from './components-properties';
@@ -19,6 +20,7 @@ export interface ContentValues {
     title: string;
     link: string;
   };
+  additionalInformation?: AdditionalInformationProps;
 }
 
 interface ContentProps {
@@ -29,7 +31,16 @@ const Content = ({ values }: ContentProps) => {
   const { isOpen } = useMenuContext();
   const { width } = useWindowDimensions();
 
-  const { mainHeading, heading, subTitle, properties, examples, mainDescription, externalProperties } = values;
+  const {
+    mainHeading,
+    heading,
+    subTitle,
+    properties,
+    examples,
+    mainDescription,
+    externalProperties,
+    additionalInformation,
+  } = values;
 
   const styles = getStyles();
 
@@ -50,6 +61,7 @@ const Content = ({ values }: ContentProps) => {
       />
       <ComponentExamples examples={examples} />
       <ComponentProperties properties={properties} externalProperties={externalProperties} />
+      {additionalInformation ? <AdditionalInformation {...additionalInformation} /> : null}
     </Container>
   );
 };

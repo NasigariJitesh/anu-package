@@ -100,7 +100,7 @@ const ComponentProperties = ({ properties, externalProperties }: ComponentProper
 const getStyles = ({ colors }: DripsyFinalTheme) => {
   const styles = {
     container: {
-      marginTop: 30,
+      marginVertical: 30,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
     },
     propertyContainer: {
