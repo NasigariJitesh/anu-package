@@ -22,6 +22,7 @@ import { FABIndex } from 'services/docs/fab';
 import { iconButtonIndex } from 'services/docs/icon-button';
 import { imageIndex } from 'services/docs/image';
 import { installationIndex } from 'services/docs/installation';
+import { otpInputIndex } from 'services/docs/otp-input';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
@@ -212,6 +213,16 @@ const RenderIndex = () => {
         return <Index {...imageIndex} />;
       }
     }
+    case '/components/input-fields/text-field': {
+      {
+        return <Index {...textFieldIndex} />;
+      }
+    }
+    case '/components/input-fields/otp-input': {
+      {
+        return <Index {...otpInputIndex} />;
+      }
+    }
     case '/components/radio-button': {
       {
         return <Index {...radioButtonIndex} />;
@@ -222,11 +233,7 @@ const RenderIndex = () => {
         return <Index {...switchIndex} />;
       }
     }
-    case '/components/text-field': {
-      {
-        return <Index {...textFieldIndex} />;
-      }
-    }
+
     case '/components/typography': {
       {
         return <Index {...typographyIndex} />;

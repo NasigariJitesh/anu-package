@@ -56,8 +56,8 @@ export const cardTitleDocumentation: ContentValues = {
         </Container>
       ),
       code: `<Card variant='elevated' width={360}>
-      <CardTitle title='Title' subTitle='subTitle' />
-    </Card>`,
+  <CardTitle title='Title' subTitle='subTitle' />
+</Card>`,
     },
     {
       name: 'cardTitleDocumentation:example2-name',
