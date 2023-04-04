@@ -123,16 +123,13 @@ export const otpInputDocumentation: ContentValues = {
             <OTPInput value='1234' variant='filled' numberOfDigits={4} containerStyle={style} />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} disabled />
-            <OTPInput value='1234' variant='filled' numberOfDigits={4} containerStyle={style} disabled />
+            {/* <OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} disabled /> */}
+            {/* <OTPInput value='1234' variant='filled' numberOfDigits={4} containerStyle={style} disabled /> */}
           </Container>
         </Container>
       ),
       code: `<OTPInput value='' variant='filled' numberOfDigits={4} />
-<OTPInput value='1234' variant='filled' numberOfDigits={4} />
-
-<OTPInput value='' variant='filled' numberOfDigits={4}} disabled />
-<OTPInput value='1234' variant='filled' numberOfDigits={4} disabled />`,
+<OTPInput value='1234' variant='filled' numberOfDigits={4} />`,
     },
     {
       name: 'otpInputDocumentation:example2-name',
@@ -144,16 +141,15 @@ export const otpInputDocumentation: ContentValues = {
             <OTPInput value='1234' variant='outlined' numberOfDigits={4} containerStyle={style} />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} disabled />
-            <OTPInput value='1234' variant='outlined' numberOfDigits={4} containerStyle={style} disabled />
+            {/* <OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} disabled /> */}
+            {/* <OTPInput value='1234' variant='outlined' numberOfDigits={4} containerStyle={style} disabled /> */}
           </Container>
         </Container>
       ),
       code: `<OTPInput value='' variant='outlined' numberOfDigits={4} />
 <OTPInput value='1234' variant='outlined' numberOfDigits={4} />
 
-<OTPInput value='' variant='outlined' numberOfDigits={4}} disabled />
-<OTPInput value='1234' variant='outlined' numberOfDigits={4} disabled />`,
+<OTPInput value='' variant='outlined' numberOfDigits={4} disabled />`,
     },
     {
       name: 'otpInputDocumentation:example3-name',
