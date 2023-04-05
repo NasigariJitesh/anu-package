@@ -51,6 +51,12 @@ export const textFieldDocumentation: ContentValues = {
       defaultValue: 'false',
     },
     {
+      name: 'errorMessage',
+      description: 'textFieldDocumentation:property-errorMessage-description',
+      type: 'string[]',
+      optional: true,
+    },
+    {
       name: 'supportingText',
       description: 'textFieldDocumentation:property-supportingText-description',
       type: 'string',
@@ -86,6 +92,7 @@ export const textFieldDocumentation: ContentValues = {
       type: 'StyleProp<TextStyle>',
       optional: true,
     },
+
     {
       name: 'style',
       description: 'textFieldDocumentation:property-style-description',
@@ -112,7 +119,13 @@ export const textFieldDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <TextField variant='filled' label='Label Text' supportingText='Supporting text' containerStyle={style} />
+            <TextField
+              value=''
+              variant='filled'
+              label='Label Text'
+              supportingText='Supporting text'
+              containerStyle={style}
+            />
             <TextField
               variant='filled'
               label='Label Text'
@@ -123,6 +136,7 @@ export const textFieldDocumentation: ContentValues = {
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
             <TextField
+              value=''
               variant='filled'
               label='Label Text'
               supportingText='Supporting text'
@@ -140,10 +154,10 @@ export const textFieldDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<TextField variant='filled' label='Label Text' supportingText='Supporting text' />
+      code: `<TextField variant='filled' label='Label Text' supportingText='Supporting text' value='' />
 <TextField variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' />
 
-<TextField variant='filled' label='Label Text' supportingText='Supporting text' disabled/>
+<TextField variant='filled' label='Label Text' supportingText='Supporting text' value='' disabled/>
 <TextField variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' disabled/>`,
     },
     {
@@ -158,6 +172,7 @@ export const textFieldDocumentation: ContentValues = {
               label='Label Text'
               supportingText='Supporting text'
               containerStyle={style}
+              value=''
             />
             <TextField
               leadingIcon={<Icon color='inherit' name='search' />}
@@ -177,6 +192,7 @@ export const textFieldDocumentation: ContentValues = {
               supportingText='Supporting text'
               disabled
               containerStyle={style}
+              value=''
             />
             <TextField
               leadingIcon={<Icon color='inherit' name='search' />}
@@ -191,10 +207,10 @@ export const textFieldDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' />
+      code: `<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value=''/>
 <TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit' name='close' />} />
 
-<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' disabled/>
+<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='' disabled/>
 <TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit' name='close' />} disabled/>`,
     },
     {
@@ -203,7 +219,13 @@ export const textFieldDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <TextField variant='outlined' label='Label Text' supportingText='Supporting text' containerStyle={style} />
+            <TextField
+              value=''
+              variant='outlined'
+              label='Label Text'
+              supportingText='Supporting text'
+              containerStyle={style}
+            />
             <TextField
               variant='outlined'
               label='Label Text'
@@ -214,6 +236,7 @@ export const textFieldDocumentation: ContentValues = {
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
             <TextField
+              value=''
               variant='outlined'
               label='Label Text'
               supportingText='Supporting text'
@@ -231,10 +254,10 @@ export const textFieldDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<TextField variant='outlined' label='Label Text' supportingText='Supporting text' />
+      code: `<TextField variant='outlined' label='Label Text' supportingText='Supporting text' value=''/>
 <TextField variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text' />
 
-<TextField variant='outlined' label='Label Text' supportingText='Supporting text' disabled/>
+<TextField variant='outlined' label='Label Text' supportingText='Supporting text' value='' disabled/>
 <TextField variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text' disabled/>`,
     },
     {
@@ -244,6 +267,7 @@ export const textFieldDocumentation: ContentValues = {
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
             <TextField
+              value=''
               leadingIcon={<Icon color='inherit' name='search' />}
               variant='outlined'
               label='Label Text'
@@ -262,6 +286,7 @@ export const textFieldDocumentation: ContentValues = {
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
             <TextField
+              value=''
               leadingIcon={<Icon color='inherit' name='search' />}
               variant='outlined'
               label='Label Text'
@@ -282,10 +307,10 @@ export const textFieldDocumentation: ContentValues = {
           </Container>
         </Container>
       ),
-      code: `<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' />
+      code: `<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='' />
 <TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit'name='close' />} />
 
-<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' disabled/>
+<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='' disabled/>
 <TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit' name='close' />} disabled/>`,
     },
     {

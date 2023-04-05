@@ -1,5 +1,5 @@
 import { getColorInRGBA, getMaxWidthInPixels } from 'common/utils';
-import { DripsyFinalTheme, SxProp } from 'dripsy';
+import { DripsyFinalTheme, Sx } from 'dripsy';
 import { ImageStyle, StyleProp, ViewStyle } from 'react-native';
 
 import { CardMediaProps, CardProps } from './../types/card';
@@ -14,7 +14,7 @@ import { CardMediaProps, CardProps } from './../types/card';
 export const getCardStyles = (
   props: Partial<CardProps>,
   theme: DripsyFinalTheme,
-): { style: StyleProp<ViewStyle>; sx: SxProp } => {
+): { style: StyleProp<ViewStyle>; sx: Sx } => {
   const { style, sx } = getCommonCardStyles(props);
   const { colors } = theme;
 
@@ -81,9 +81,9 @@ export const getCardStyles = (
  * @returns common style properties for the card component
  */
 export const getCommonCardStyles = (props: Partial<CardProps>) => {
-  const { flexDirection, maxWidth, align, justify, width, sx } = props;
+  const { flexDirection, maxWidth, align, justify, width, sx, height, orientation } = props;
 
-  let sxStyle: SxProp = { ...sx };
+  let sxStyle: Sx = { ...sx };
   let containerStyle: StyleProp<ViewStyle> = {
     flexDirection: flexDirection,
     alignItems: align,
@@ -95,6 +95,10 @@ export const getCommonCardStyles = (props: Partial<CardProps>) => {
   if (maxWidth) sxStyle = { ...sxStyle, maxWidth: getMaxWidthInPixels(maxWidth) };
 
   if (width) containerStyle = { ...containerStyle, width };
+
+  if (height) containerStyle = { ...containerStyle, height };
+
+  if (orientation === 'horizontal') containerStyle = { ...containerStyle, flexDirection: 'row' };
 
   return { style: containerStyle, sx: sxStyle };
 };
@@ -136,8 +140,8 @@ export const getCardTitleStyle = (theme: DripsyFinalTheme) => {
 
 export const getCardMediaStyle = (props: CardMediaProps) => {
   const style: ImageStyle = {
-    height: props.height,
-    width: '100%',
+    height: props.cardOrientation === 'horizontal' ? props.height ?? '100%' : props.height,
+    width: props.cardOrientation === 'vertical' ? props.width ?? '100%' : props.width,
   };
 
   return { style };
@@ -173,12 +177,6 @@ export const getCardHeaderStyle = (theme: DripsyFinalTheme) => {
     position: 'absolute' as const,
     right: '16px',
   };
-  const imageContainerStyle = {
-    position: 'absolute',
-    right: 0,
-    borderRightRadius: 12,
-    overflow: 'hidden',
-  } as const;
 
   const headingStyle = {
     fontSize: theme.fontSizes[7],
@@ -201,7 +199,6 @@ export const getCardHeaderStyle = (theme: DripsyFinalTheme) => {
     avatarContainerStyle,
     headingContainerStyle,
     actionContainerStyle,
-    imageContainerStyle,
     headingStyle,
     subHeadingStyle,
     sx,

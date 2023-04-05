@@ -217,14 +217,14 @@ const Sidebar = () => {
       style={{
         width: '240px',
         position: 'sticky',
-        top: 0,
+        top: 70,
       }}
     >
       <ScrollView
         id={undefined}
         scrollEnabled
         showsVerticalScrollIndicator={false}
-        style={sx({ maxHeight: height - 80 })}
+        style={sx({ maxHeight: height - 70 })}
         aria-label={undefined}
         aria-busy={undefined}
         aria-checked={undefined}
@@ -306,6 +306,42 @@ const Sidebar = () => {
                 link: '/components/button',
               },
               {
+                title: 'leftSideBar:card',
+                components: [
+                  {
+                    title: 'leftSideBar:card',
+                    link: '/components/card',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:card-header',
+                    link: '/components/card/header',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:card-media',
+                    link: '/components/card/media',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:card-title',
+                    link: '/components/card/title',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:card-content',
+                    link: '/components/card/content',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:card-actions',
+                    link: '/components/card/actions',
+                    variants: [],
+                  },
+                ],
+                link: '/components/card',
+              },
+              {
                 title: 'leftSideBar:checkbox',
                 link: '/components/checkbox',
                 components: [],
@@ -331,6 +367,22 @@ const Sidebar = () => {
                 link: '/components/image',
               },
               {
+                title: 'leftSideBar:input-fields',
+                link: '/components/input-fields/text-field',
+                components: [
+                  {
+                    title: 'leftSideBar:text-fields',
+                    link: '/components/input-fields/text-field',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:otp-input',
+                    link: '/components/input-fields/otp-input',
+                    variants: [],
+                  },
+                ],
+              },
+              {
                 title: 'leftSideBar:radio',
                 link: '/components/radio-button',
                 components: [],
@@ -341,11 +393,6 @@ const Sidebar = () => {
                 components: [],
               },
 
-              {
-                title: 'leftSideBar:text-fields',
-                link: '/components/text-field',
-                components: [],
-              },
               {
                 title: 'leftSideBar:typography',
                 link: '/components/typography',

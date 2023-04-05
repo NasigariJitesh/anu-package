@@ -201,6 +201,17 @@ describe('Testing for Outlined Otp field Events without ref', () => {
       fireEvent(screen.getByTestId('text-field-test-field-3'), 'onKeyPress', { nativeEvent: { key: 'Enter' } }),
     );
   });
+
+  it('should trigger keypress handler with other key', () => {
+    render(
+      <DripsyApp theme={makeTheme({})}>
+        <OtpInput numberOfDigits={4} value='1234' variant='outlined' testID='text-field-test' />
+      </DripsyApp>,
+    );
+    act(() =>
+      fireEvent(screen.getByTestId('text-field-test-field-3'), 'onKeyPress', { nativeEvent: { key: 'Space' } }),
+    );
+  });
 });
 
 describe('Testing for Outlined Otp field Events with ref', () => {
