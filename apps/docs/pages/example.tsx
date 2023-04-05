@@ -14,6 +14,7 @@ import {
   OTPInput,
   Typography,
 } from 'anu/lib';
+import { FileUpload } from 'anu/lib/advanced';
 
 /**
  *
@@ -21,7 +22,14 @@ import {
 export default function Example() {
   return (
     <Container>
-      <Container sx={{ margin: 10, padding: 10 }}>
+      <FileUpload
+        category='icon-button'
+        icon={{ name: 'delete' }}
+        type='standard'
+        variant='image'
+        onUpload={(data) => console.log(data)}
+      />
+      {/* <Container sx={{ margin: 10, padding: 10 }}>
         <OTPInput numberOfDigits={6} value='123456788' variant='filled' onSubmit={(a) => console.log(a)} />
       </Container>
       <Container flexDirection='row'>
@@ -116,7 +124,7 @@ export default function Example() {
             avatar={<Avatar name='N' variant='circle' size='large' />}
           />
         </Card>
-      </Container>
+      </Container> */}
     </Container>
   );
 }

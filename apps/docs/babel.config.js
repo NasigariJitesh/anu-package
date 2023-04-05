@@ -8,6 +8,18 @@ module.exports = function (api) {
       require.resolve('expo-router/babel'),
       '@babel/plugin-proposal-export-namespace-from',
       [
+        'expo-document-picker',
+        {
+          iCloudContainerEnvironment: 'Production',
+        },
+      ],
+      [
+        'expo-image-picker',
+        {
+          photosPermission: 'The app accesses your photos to let you share them with your friends.',
+        },
+      ],
+      [
         'module-resolver',
         {
           alias: {
