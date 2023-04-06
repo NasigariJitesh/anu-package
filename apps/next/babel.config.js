@@ -11,7 +11,7 @@ module.exports = function (api) {
     presets: ['babel-preset-expo'],
     plugins: [
       '@expo/html-elements/babel',
-      '@babel/plugin-proposal-export-namespace-from',
+
       // ...(useClassTransform ? ['@babel/plugin-proposal-class-properties'] : []),
       // 'react-native-reanimated/plugin',
       [
@@ -29,6 +29,8 @@ module.exports = function (api) {
           },
         },
       ],
+      '@babel/plugin-proposal-export-namespace-from',
+      'react-native-reanimated/plugin',
     ],
   };
 };

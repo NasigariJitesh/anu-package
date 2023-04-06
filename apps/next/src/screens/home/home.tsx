@@ -1,6 +1,6 @@
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
-import { Container, Switch } from 'anu/lib';
+import { Container, Typography } from 'anu/lib';
 
 const HomeScreen = () => {
   return (
@@ -9,7 +9,7 @@ const HomeScreen = () => {
       justify='center'
       sx={{ backgroundColor: 'red', height: 250, width: 250, margin: 10, padding: 10 }}
     >
-      <Switch />
+      <Typography.Title>Heyy</Typography.Title>
       {/* <Container>
         <Image
           alt={'hey'}

@@ -1,4 +1,4 @@
-import { Typography } from 'anu';
+import { Typography } from 'anu/lib';
 
 /**
  *
