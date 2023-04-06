@@ -11,6 +11,8 @@ const nextConfig = withExpo({
   reactStrictMode: true,
   swcMinify: true,
   transpilePackages: [
+    'react-native-reanimated',
+    'react-native-gesture-handler',
     'react-native',
     'react-native-web',
     'expo',
@@ -28,6 +30,7 @@ const nextConfig = withExpo({
   experimental: {
     forceSwcTransforms: true,
     appDir: false,
+    swcPlugins: [['react-native-reanimated-swc-plugin']],
   },
   eslint: {
     ignoreDuringBuilds: true,

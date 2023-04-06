@@ -1,5 +1,9 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react-native/no-inline-styles */
+import 'setimmediate';
+import 'raf/polyfill';
+import 'react-native-reanimated';
+import 'react-native-gesture-handler';
 import '../public/fonts/font.css';
 
 import { Container } from 'anu/lib';
@@ -13,6 +17,7 @@ import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useState } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import RootLayout from 'screens/common/provider';
 import { footerLinks } from 'services/docs/footer';
 
@@ -26,7 +31,7 @@ export default function App(props: AppProps) {
   const { height, width } = useWindowDimensions();
 
   return (
-    <>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <SEO />
       <Scripts />
       <RootLayout backgroundColor={backgroundColor} setBackgroundColor={setBackgroundColor}>
@@ -48,12 +53,12 @@ export default function App(props: AppProps) {
             }}
           >
             <Sidebar />
-            <props.Component {...props.pageProps} />
+            {/* <props.Component {...props.pageProps} /> */}
             <RightSidebar />
           </Container>
           {props.router.pathname === '/' ? null : <Footer {...footerLinks} />}
         </Container>
       </RootLayout>
-    </>
+    </GestureHandlerRootView>
   );
 }
