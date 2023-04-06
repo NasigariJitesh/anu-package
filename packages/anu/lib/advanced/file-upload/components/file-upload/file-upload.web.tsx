@@ -16,15 +16,18 @@ const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: B
     copyToCacheDirectory: props.copyToCacheDirectory,
   });
 
-  if (result.type === 'success') {
-    const file = new Blob([result.uri], { type: 'text/plain' });
+  if (result.type === 'success' && result.output) {
     if (props.variant === 'image' && props.optimization) {
-      const compressedImage = await compressFile(file, props.optimizationConfig);
-      updateFiles([compressedImage]);
-      if (props.onUpload) props.onUpload(compressedImage);
+      const compressedImages = [];
+      for (const file of result.output) {
+        const compressedImage = await compressFile(file, props.optimizationConfig);
+        compressedImages.push(compressedImage);
+      }
+      updateFiles(compressedImages);
+      if (props.onUpload) props.onUpload(compressedImages);
     } else {
-      updateFiles([file]);
-      if (props.onUpload) props.onUpload(file);
+      updateFiles([...result.output]);
+      if (props.onUpload) props.onUpload([...result.output]);
     }
   } else updateFiles([]);
 };
@@ -56,7 +59,6 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
 
   const renderButton = (buttonProps: FileUploadProps) => {
     let propsForButton: CommonButtonProps;
-
     if (buttonProps.variant === 'image') {
       const {
         onUpload,
@@ -72,10 +74,11 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
       propsForButton = otherButtonProps;
     } else {
       const {
-        onUpload,
+        // onUpload,
         variant,
         multiple,
         sortable,
+
         fileType,
         copyToCacheDirectory,
 
@@ -138,15 +141,22 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
         );
       }
       default: {
-        return <></>;
+        {
+          return <></>;
+        }
       }
     }
   };
 
   return (
-    <Container disableGutters width={400}>
+    <Container disableGutters sx={{ height: 500, width: 500 }}>
       {renderButton(props)}
-      <UploadList data={files} deleteData={deleteFile} variant={props.variant} />
+      <UploadList
+        data={files}
+        deleteData={deleteFile}
+        variant={props.variant}
+        previewStyle={props.variant === 'image' ? props.previewStyle : undefined}
+      />
     </Container>
   );
 });
