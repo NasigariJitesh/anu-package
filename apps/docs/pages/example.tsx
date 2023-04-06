@@ -15,8 +15,8 @@ import {
   Typography,
 } from 'anu/lib';
 import { FileUpload, FileUploadReferenceProps } from 'anu/lib/advanced';
-import { DocumentResult } from 'expo-document-picker';
-import { useRef, useState } from 'react';
+import { FileDropZone } from 'anu/lib/advanced/file-upload/components';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  *
@@ -33,11 +33,19 @@ export default function Example() {
         category='regular'
         icon={{ name: 'delete' }}
         type='filled'
-        variant='image'
-        previewStyle='list'
         multiple
-        fileType='image/*'
-        onUpload={(data: Blob | Blob[]) => {
+        variant='file'
+        onChange={(data: Blob | Blob[] | null) => {
+          console.log(data);
+        }}
+      />
+
+      <FileDropZone
+        multiple
+        listPosition='right'
+        variant='image'
+        fileType={{ image: ['image/png', 'image/jpeg'] }}
+        onChange={(data: Blob | Blob[] | null) => {
           console.log(data);
         }}
       />

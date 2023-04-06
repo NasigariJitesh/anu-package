@@ -12,6 +12,7 @@
     "compressorjs": "^1.2.1",
     "dripsy": "^3.10.0",
     "expo-document-picker": "^11.2.2",
+    "react-dropzone": "^14.2.3",
     "react-native-draggable-flatlist": "^4.0.1"
   },
   "devDependencies": {

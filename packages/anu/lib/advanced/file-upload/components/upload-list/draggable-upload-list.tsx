@@ -1,10 +1,10 @@
-import { getColorInRGBA } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Icon, IconButton, Image, Typography } from 'anu/lib/primitives';
-import { DripsyFinalTheme } from 'dripsy';
 import { useState } from 'react';
-import { Pressable, PressableStateCallbackType, ScrollView } from 'react-native';
-import DraggableFlatList, { NestableDraggableFlatList, RenderItemParams } from 'react-native-draggable-flatlist';
+import { Pressable, PressableStateCallbackType } from 'react-native';
+import DraggableFlatList, { RenderItemParams } from 'react-native-draggable-flatlist';
+
+import { getUploadListStyles } from '../../utils';
 
 interface UploadListProps {
   data: Blob[] | File[];
@@ -38,7 +38,7 @@ const RegularListItem = (props: ListItemProps) => {
   const { id, dataItem, single, deleteData, variant, error, errorMessage } = props;
   const theme = useTheme();
 
-  const styles = getStyles(theme, single);
+  const styles = getUploadListStyles(theme, single);
 
   return (
     <Pressable
@@ -90,7 +90,7 @@ const PreviewListItem = (props: ListItemProps) => {
   const { id, dataItem, single, deleteData, error, errorMessage } = props;
   const theme = useTheme();
 
-  const styles = getStyles(theme, single);
+  const styles = getUploadListStyles(theme, single);
   const url = URL.createObjectURL(dataItem);
 
   return (
@@ -144,7 +144,7 @@ const CarouselListItem = (props: ListItemProps) => {
   const { id, dataItem, single, deleteData, error, errorMessage } = props;
   const theme = useTheme();
 
-  const styles = getStyles(theme, single);
+  const styles = getUploadListStyles(theme, single);
   const url = URL.createObjectURL(dataItem);
 
   return (
@@ -189,9 +189,6 @@ const CarouselListItem = (props: ListItemProps) => {
 };
 
 const UploadList = (props: UploadListProps) => {
-  const theme = useTheme();
-  const styles = getStyles(theme, props.data.length <= 1, props.previewStyle === 'carousel');
-
   const RenderItem = (renderItemProps: RenderItemParams<Blob>) => {
     const index = renderItemProps.getIndex();
     const propList = {
@@ -245,94 +242,6 @@ const UploadList = (props: UploadListProps) => {
     //   })}
     // </ScrollView>
   );
-};
-
-const getStyles = (theme: DripsyFinalTheme, single?: boolean, isHorizontal?: boolean) => {
-  const styles = {
-    listItem: {
-      width: '100%',
-      minHeight: 48,
-      marginVertical: 5,
-    },
-    container: {
-      marginTop: 15,
-      marginLeft: single ? 0 : -16,
-      width: '100%',
-      flexDirection: isHorizontal ? ('row' as const) : ('column' as const),
-    },
-    fileIcon: {
-      margin: 16,
-      color: theme.colors.$surfaceVariant,
-    },
-    dragIcon: {
-      color: getColorInRGBA(theme.colors.$surfaceVariant, 75),
-    },
-    dragIconContainer: {
-      width: 16,
-      height: 16,
-    },
-    deleteIcon: {
-      margin: 16,
-      color: theme.colors.$error,
-    },
-    carouselDeleteIcon: {
-      color: theme.colors.$surface,
-    },
-    fileName: {
-      fontSize: theme.fontSizes[7],
-      lineHeight: theme.lineHeights[7],
-      flexGrow: 1,
-    },
-    listItemContainer: {
-      flexDirection: 'row' as const,
-      alignItems: 'center' as const,
-    },
-    errorMessage: {
-      fontSize: theme.fontSizes[9],
-      lineHeight: theme.lineHeights[9],
-      flexGrow: 1,
-      marginTop: 5,
-      marginHorizontal: 16,
-      color: theme.colors.$error,
-    },
-    listPreviewImage: {
-      height: 48,
-      width: 48,
-      borderRadius: 4,
-      marginRight: 16,
-    },
-    carouselItem: {
-      margin: 16,
-    },
-    carouselListItem: {
-      height: 120,
-      width: 120,
-      borderRadius: 4,
-      position: 'relative' as const,
-    },
-    carouselDragIconContainer: {
-      position: 'absolute' as const,
-      top: 8,
-      left: 8,
-      borderRadius: 100,
-      backgroundColor: getColorInRGBA(theme.colors.$onSurface, 10),
-    },
-    carouselDeleteButton: {
-      position: 'absolute' as const,
-      top: 0,
-      right: 0,
-      '@hover': {
-        backgroundColor: getColorInRGBA(theme.colors.$onSurface, 10),
-      },
-    },
-    carouselImage: {
-      height: 120,
-      width: 120,
-      borderRadius: 4,
-    },
-  };
-
-  return styles;
 };
 
 export default UploadList;

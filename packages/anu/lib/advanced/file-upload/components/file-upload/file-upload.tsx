@@ -7,8 +7,15 @@ import { forwardRef, useCallback, useImperativeHandle, useMemo, useState } from 
 
 import { FileUploadProps, FileUploadReferenceProps } from '../../types';
 import { compressFile } from '../../utils';
-import UploadList from '../upload-list/draggable-upload-list';
+import UploadList from '../upload-list';
+import { defaultProps } from './default';
 
+/**
+ * Function to handle file upload
+ *
+ * @param props - props of the file upload component
+ * @param updateFiles - function to update the uploaded files to existing files list
+ */
 const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: Blob[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
@@ -21,15 +28,18 @@ const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: B
     if (props.variant === 'image' && props.optimization) {
       const compressedImage = await compressFile(file, props.optimizationConfig);
       updateFiles([compressedImage]);
-      if (props.onUpload) props.onUpload(compressedImage);
     } else {
       updateFiles([file]);
-      if (props.onUpload) props.onUpload(file);
     }
   } else updateFiles([]);
 };
 
+/**
+ * File Upload Component
+ */
 const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props, reference) => {
+  //@ts-expect-error
+  const finalProps: FileUploadProps = { ...defaultProps, ...props };
   const [isUploadingState, setIsUploadingState] = useState(false);
   const [files, setFiles] = useState<Blob[]>([]);
 
@@ -40,11 +50,13 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   const handleUpload = useMemo(() => handleFileUpload, []);
 
   const updateFiles = (resultFiles: Blob[]) => {
-    if (props.multiple) {
+    if (finalProps.multiple) {
       const allFiles = [...files, ...resultFiles];
       setFiles(allFiles);
+      if (finalProps.onChange) finalProps.onChange(allFiles);
     } else {
       setFiles(resultFiles);
+      if (finalProps.onChange) finalProps.onChange(resultFiles[0]);
     }
   };
 
@@ -52,6 +64,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
     const array = [...files];
     array.splice(index, 1);
     setFiles(array);
+    if (finalProps.onChange) finalProps.onChange(array.length > 0 ? array : null);
   };
 
   const renderButton = (buttonProps: FileUploadProps) => {
@@ -59,25 +72,28 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
 
     if (buttonProps.variant === 'image') {
       const {
-        onUpload,
+        onChange,
         variant,
         multiple,
         sortable,
         optimization,
 
         previewStyle,
+        style,
         ...otherButtonProps
       } = buttonProps;
 
       propsForButton = otherButtonProps;
     } else {
       const {
-        onUpload,
+        onChange,
         variant,
         multiple,
         sortable,
         fileType,
         copyToCacheDirectory,
+        style,
+        containerStyle,
 
         ...otherButtonProps
       } = buttonProps;
@@ -92,7 +108,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
             onPress={async (event) => {
               if (propsForButton.onPress) propsForButton.onPress(event);
               setIsUploadingState(true);
-              await handleUpload(props, updateFiles);
+              await handleUpload(finalProps, updateFiles);
               setIsUploadingState(false);
             }}
           />
@@ -105,7 +121,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
             onPress={async (event) => {
               if (propsForButton.onPress) propsForButton.onPress(event);
               setIsUploadingState(true);
-              await handleUpload(props, updateFiles);
+              await handleUpload(finalProps, updateFiles);
               setIsUploadingState(false);
             }}
           />
@@ -118,7 +134,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
             onPress={async (event) => {
               if (propsForButton.onPress) propsForButton.onPress(event);
               setIsUploadingState(true);
-              await handleUpload(props, updateFiles);
+              await handleUpload(finalProps, updateFiles);
               setIsUploadingState(false);
             }}
           />
@@ -131,7 +147,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
             onPress={async (event) => {
               if (propsForButton.onPress) propsForButton.onPress(event);
               setIsUploadingState(true);
-              await handleUpload(props, updateFiles);
+              await handleUpload(finalProps, updateFiles);
               setIsUploadingState(false);
             }}
           />
@@ -144,9 +160,14 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   };
 
   return (
-    <Container disableGutters width={400}>
-      {renderButton(props)}
-      <UploadList data={files} deleteData={deleteFile} variant={props.variant} />
+    <Container disableGutters style={finalProps.style}>
+      {renderButton(finalProps)}
+      <UploadList
+        data={files}
+        deleteData={deleteFile}
+        variant={finalProps.variant}
+        previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
+      />
     </Container>
   );
 });

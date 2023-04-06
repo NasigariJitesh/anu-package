@@ -19,7 +19,7 @@ const nextConfig = withExpo({
     'solito',
     'anu',
     'react-native-vector-icons',
-    'react-native-draggable-flatlist',
+    // 'react-native-draggable-flatlist',
     '@expo/html-elements',
     '@dripsy/core',
     'dripsy',

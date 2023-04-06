@@ -1,15 +1,15 @@
-import { getColorInRGBA } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Icon, IconButton, Image, Typography } from 'anu/lib/primitives';
-import { DripsyFinalTheme } from 'dripsy';
 import { useState } from 'react';
 import { Pressable, PressableStateCallbackType, ScrollView } from 'react-native';
+
+import { getUploadListStyles } from '../../utils';
 
 interface UploadListProps {
   data: Blob[] | File[];
   errors?: boolean[];
   errorMessages?: string[];
-  variant: 'image' | 'file';
+  variant?: 'image' | 'file';
   sortable?: boolean;
   previewStyle?: 'list' | 'carousel';
   deleteData: (index: number) => void;
@@ -21,10 +21,16 @@ interface ListItemProps {
   error?: boolean;
   errorMessage?: string;
   single?: boolean;
-  variant: 'image' | 'file';
+  variant?: 'image' | 'file';
   deleteData: (index: number) => void;
 }
 
+/**
+ * To check whether an item is hovered pressed or focused
+ *
+ * @param state - state of pressable
+ * @returns {boolean} - true if an item is hovered pressed or focused
+ */
 const hoverFromState = (state: PressableStateCallbackType) => {
   if (state.hovered) return true;
   else if (state.pressed) return true;
@@ -32,12 +38,17 @@ const hoverFromState = (state: PressableStateCallbackType) => {
   else return false;
 };
 
+/**
+ * To Render a regular list item
+ 
+ * @param props - props for the list item
+ */
 const RegularListItem = (props: ListItemProps) => {
   const [hovered, setHovered] = useState(false);
   const { id, dataItem, single, deleteData, variant, error, errorMessage } = props;
   const theme = useTheme();
 
-  const styles = getStyles(theme, single);
+  const styles = getUploadListStyles(theme, single);
 
   return (
     <Pressable
@@ -84,12 +95,17 @@ const RegularListItem = (props: ListItemProps) => {
   );
 };
 
+/**
+ * To Render a image preview list item
+ 
+ * @param props - props for the list item
+ */
 const PreviewListItem = (props: ListItemProps) => {
   const [hovered, setHovered] = useState(false);
   const { id, dataItem, single, deleteData, error, errorMessage } = props;
   const theme = useTheme();
 
-  const styles = getStyles(theme, single);
+  const styles = getUploadListStyles(theme, single);
   const url = URL.createObjectURL(dataItem);
 
   return (
@@ -138,12 +154,17 @@ const PreviewListItem = (props: ListItemProps) => {
   );
 };
 
+/**
+ * To Render a image carousel list item
+ 
+ * @param props - props for the list item
+ */
 const CarouselListItem = (props: ListItemProps) => {
   const [hovered, setHovered] = useState(false);
   const { id, dataItem, single, deleteData, error, errorMessage } = props;
   const theme = useTheme();
 
-  const styles = getStyles(theme, single);
+  const styles = getUploadListStyles(theme, single);
   const url = URL.createObjectURL(dataItem);
 
   return (
@@ -187,9 +208,14 @@ const CarouselListItem = (props: ListItemProps) => {
   );
 };
 
+/**
+ * Uploaded Files List Component
+ *
+ * @param props - props for the uploaded Files List Component
+ */
 const UploadList = (props: UploadListProps) => {
   const theme = useTheme();
-  const styles = getStyles(theme, props.data.length <= 1, props.previewStyle === 'carousel');
+  const styles = getUploadListStyles(theme, props.data.length <= 1, props.previewStyle === 'carousel');
   return (
     <ScrollView horizontal={props.previewStyle === 'carousel'} style={styles.container}>
       {props.data.map((dataItem, index) => {
@@ -217,94 +243,6 @@ const UploadList = (props: UploadListProps) => {
       })}
     </ScrollView>
   );
-};
-
-const getStyles = (theme: DripsyFinalTheme, single?: boolean, isHorizontal?: boolean) => {
-  const styles = {
-    listItem: {
-      width: '100%',
-      minHeight: 48,
-      marginVertical: 5,
-    },
-    container: {
-      marginTop: 15,
-      marginLeft: single ? 0 : -16,
-      width: '100%',
-      flexDirection: isHorizontal ? ('row' as const) : ('column' as const),
-    },
-    fileIcon: {
-      margin: 16,
-      color: theme.colors.$surfaceVariant,
-    },
-    dragIcon: {
-      color: getColorInRGBA(theme.colors.$surfaceVariant, 75),
-    },
-    dragIconContainer: {
-      width: 16,
-      height: 16,
-    },
-    deleteIcon: {
-      margin: 16,
-      color: theme.colors.$error,
-    },
-    carouselDeleteIcon: {
-      color: theme.colors.$surface,
-    },
-    fileName: {
-      fontSize: theme.fontSizes[7],
-      lineHeight: theme.lineHeights[7],
-      flexGrow: 1,
-    },
-    listItemContainer: {
-      flexDirection: 'row' as const,
-      alignItems: 'center' as const,
-    },
-    errorMessage: {
-      fontSize: theme.fontSizes[9],
-      lineHeight: theme.lineHeights[9],
-      flexGrow: 1,
-      marginTop: 5,
-      marginHorizontal: 16,
-      color: theme.colors.$error,
-    },
-    listPreviewImage: {
-      height: 48,
-      width: 48,
-      borderRadius: 4,
-      marginRight: 16,
-    },
-    carouselItem: {
-      margin: 16,
-    },
-    carouselListItem: {
-      height: 120,
-      width: 120,
-      borderRadius: 4,
-      position: 'relative' as const,
-    },
-    carouselDragIconContainer: {
-      position: 'absolute' as const,
-      top: 8,
-      left: 8,
-      borderRadius: 100,
-      backgroundColor: getColorInRGBA(theme.colors.$onSurface, 10),
-    },
-    carouselDeleteButton: {
-      position: 'absolute' as const,
-      top: 0,
-      right: 0,
-      '@hover': {
-        backgroundColor: getColorInRGBA(theme.colors.$onSurface, 10),
-      },
-    },
-    carouselImage: {
-      height: 120,
-      width: 120,
-      borderRadius: 4,
-    },
-  };
-
-  return styles;
 };
 
 export default UploadList;

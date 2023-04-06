@@ -1,4 +1,6 @@
+import { getColorInRGBA } from 'anu/common/utils';
 import Compressor from 'compressorjs';
+import { DripsyFinalTheme } from 'dripsy';
 
 import { Config } from '../types';
 
@@ -48,4 +50,128 @@ export const getBase64 = async (file: File | Blob) => {
       reject(error);
     });
   });
+};
+
+export const getDropZoneStyles = (theme: DripsyFinalTheme) => {
+  const dropZoneStyle = {
+    backgroundColor: getColorInRGBA(theme.colors.$surfaceVariant, 70),
+    borderColor: getColorInRGBA(theme.colors.$outline, 70),
+    borderRadius: 4,
+    borderStyle: 'dashed',
+    borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 180,
+    width: 360,
+  } as const;
+
+  const divStyle = {
+    height: '100%',
+    width: '100%',
+  };
+
+  const childrenContainerStyle = {
+    height: '100%',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+  } as const;
+  const buttonContainerStyle = {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    marginVertical: 4,
+  } as const;
+
+  return { dropZoneStyle, divStyle, childrenContainerStyle, buttonContainerStyle };
+};
+
+export const getUploadListStyles = (theme: DripsyFinalTheme, single?: boolean, isHorizontal?: boolean) => {
+  const styles = {
+    listItem: {
+      width: '100%',
+      minHeight: 48,
+      marginVertical: 5,
+    },
+    container: {
+      marginTop: 15,
+      marginLeft: single ? 0 : -16,
+      width: '100%',
+      flexDirection: isHorizontal ? ('row' as const) : ('column' as const),
+    },
+    fileIcon: {
+      margin: 16,
+      color: theme.colors.$onSurfaceVariant,
+    },
+    dragIcon: {
+      color: getColorInRGBA(theme.colors.$surfaceVariant, 75),
+    },
+    dragIconContainer: {
+      width: 16,
+      height: 16,
+    },
+    deleteIcon: {
+      margin: 16,
+      color: theme.colors.$error,
+    },
+    carouselDeleteIcon: {
+      color: theme.colors.$surface,
+    },
+    fileName: {
+      fontSize: theme.fontSizes[7],
+      lineHeight: theme.lineHeights[7],
+      flexGrow: 1,
+    },
+    listItemContainer: {
+      flexDirection: 'row' as const,
+      alignItems: 'center' as const,
+    },
+    errorMessage: {
+      fontSize: theme.fontSizes[9],
+      lineHeight: theme.lineHeights[9],
+      flexGrow: 1,
+      marginTop: 5,
+      marginHorizontal: 16,
+      color: theme.colors.$error,
+    },
+    listPreviewImage: {
+      height: 48,
+      width: 48,
+      borderRadius: 4,
+      marginRight: 16,
+    },
+    carouselItem: {
+      margin: 16,
+    },
+    carouselListItem: {
+      height: 120,
+      width: 120,
+      borderRadius: 4,
+      position: 'relative' as const,
+    },
+    carouselDragIconContainer: {
+      position: 'absolute' as const,
+      top: 8,
+      left: 8,
+      borderRadius: 100,
+      backgroundColor: getColorInRGBA(theme.colors.$onSurface, 10),
+    },
+    carouselDeleteButton: {
+      position: 'absolute' as const,
+      top: 0,
+      right: 0,
+      '@hover': {
+        backgroundColor: getColorInRGBA(theme.colors.$onSurface, 10),
+      },
+    },
+    carouselImage: {
+      height: 120,
+      width: 120,
+      borderRadius: 4,
+    },
+  };
+
+  return styles;
 };
