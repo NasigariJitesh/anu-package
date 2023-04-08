@@ -11,9 +11,7 @@ import { SideSheetProps } from '../../types';
  * @param props - side sheet props along with scrollTo function
  */
 const Header = (props: SideSheetProps & { scrollTo: (destination: number) => void }) => {
-  if (!props.headerProps) return null;
-
-  const { headline, onBackButtonPress, onCloseButtonPress } = props.headerProps;
+  const { headline, onBackButtonPress, onCloseButtonPress, width } = props;
 
   const onCloseButtonPressHandler = () => {
     props.scrollTo(0);
@@ -23,7 +21,7 @@ const Header = (props: SideSheetProps & { scrollTo: (destination: number) => voi
 
   return (
     <Container
-      maxWidth={props.width}
+      maxWidth={width}
       sx={{ backgroundColor: 'red' }}
       flexDirection='row'
       align='center'
