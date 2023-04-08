@@ -6,6 +6,7 @@ import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
 import { avatarIndex } from 'services/docs/avatar';
 import { badgeIndex } from 'services/docs/badge';
+import { bottomSheetIndex } from 'services/docs/bottom-sheet';
 import { cardIndex } from 'services/docs/card';
 import { cardActionsIndex } from 'services/docs/card-actions';
 import { cardContentIndex } from 'services/docs/card-content';
@@ -130,6 +131,11 @@ const RenderIndex = () => {
     case '/components/badge': {
       {
         return <Index {...badgeIndex} />;
+      }
+    }
+    case '/components/bottom-sheet': {
+      {
+        return <Index {...bottomSheetIndex} />;
       }
     }
 

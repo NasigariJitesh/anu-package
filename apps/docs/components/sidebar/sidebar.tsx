@@ -275,6 +275,11 @@ const Sidebar = () => {
                 link: '/components/badge',
               },
               {
+                title: 'leftSideBar:bottom-sheet',
+                components: [],
+                link: '/components/bottom-sheet',
+              },
+              {
                 title: 'leftSideBar:button',
                 components: [
                   {
