@@ -24,9 +24,11 @@ const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: B
   });
 
   if (result.type === 'success') {
-    const file = new Blob([result.uri], { type: 'text/plain' });
+    const file = new File([result.uri], result.name);
+
     if (props.variant === 'image' && props.optimization) {
       const compressedImage = await compressFile(file, props.optimizationConfig);
+
       updateFiles([compressedImage]);
     } else {
       updateFiles([file]);
@@ -48,7 +50,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   useImperativeHandle(reference, () => ({ isUploading, files }), [isUploading, files]);
 
   const handleUpload = useMemo(() => handleFileUpload, []);
-
+  console.log('mobile');
   const updateFiles = (resultFiles: Blob[]) => {
     if (finalProps.multiple) {
       const allFiles = [...files, ...resultFiles];

@@ -1,15 +1,14 @@
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
-import { Container, Typography } from 'anu/lib';
+import { Container, FileUpload, Icon, IconButton, Typography } from 'anu/lib';
 
 const HomeScreen = () => {
   return (
-    <Container
-      align='center'
-      justify='center'
-      sx={{ backgroundColor: 'red', height: 250, width: 250, margin: 10, padding: 10 }}
-    >
+    <Container align='center' justify='center' sx={{ height: 250, width: '100%', margin: 10, padding: 10 }}>
       <Typography.Title>Heyy</Typography.Title>
+      <FileUpload category='regular' size='medium' type='elevated' title='Upload' />
+      <Icon name='favorite' color='red' size={19} />
+
       {/* <Container>
         <Image
           alt={'hey'}

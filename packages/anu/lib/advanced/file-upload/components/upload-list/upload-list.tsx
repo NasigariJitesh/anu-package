@@ -29,13 +29,17 @@ interface ListItemProps {
  * To check whether an item is hovered pressed or focused
  *
  * @param state - state of pressable
+ * @param setHovered
  * @returns {boolean} - true if an item is hovered pressed or focused
  */
-const hoverFromState = (state: PressableStateCallbackType) => {
-  if (state.hovered) return true;
-  else if (state.pressed) return true;
-  else if (state.focused) return true;
-  else return false;
+const hoverFromState = (
+  state: PressableStateCallbackType,
+  setHovered: React.Dispatch<React.SetStateAction<boolean>>,
+) => {
+  if (state.hovered) setHovered(true);
+  else if (state.pressed) setHovered(true);
+  else if (state.focused) setHovered(true);
+  else setHovered(false);
 };
 
 /**
@@ -53,7 +57,7 @@ const RegularListItem = (props: ListItemProps) => {
   return (
     <Pressable
       style={(state) => {
-        setHovered(hoverFromState(state));
+        // hoverFromState(state, setHovered);
         return styles.listItem;
       }}
     >
@@ -76,13 +80,13 @@ const RegularListItem = (props: ListItemProps) => {
         >
           {dataItem.name}
         </Typography.Body>
-        <IconButton
+        {/* <IconButton
           icon={{ name: 'delete-outline', props: { size: 16, style: styles.deleteIcon } }}
           type='standard'
           onPress={() => {
             deleteData(id);
           }}
-        />
+        /> */}
       </Container>
       {error === true ? (
         <Container disableGutters>
@@ -110,8 +114,9 @@ const PreviewListItem = (props: ListItemProps) => {
 
   return (
     <Pressable
+      key={id}
       style={(state) => {
-        setHovered(hoverFromState(state));
+        hoverFromState(state, setHovered);
         return styles.listItem;
       }}
     >
@@ -168,10 +173,10 @@ const CarouselListItem = (props: ListItemProps) => {
   const url = URL.createObjectURL(dataItem);
 
   return (
-    <Container disableGutters style={styles.carouselItem}>
+    <Container disableGutters style={styles.carouselItem} key={id}>
       <Pressable
         style={(state) => {
-          setHovered(hoverFromState(state));
+          hoverFromState(state, setHovered);
           return styles.carouselListItem;
         }}
       >
@@ -231,13 +236,14 @@ const UploadList = (props: UploadListProps) => {
 
         switch (props.previewStyle) {
           case 'list': {
-            return <PreviewListItem {...propList} />;
+            return <PreviewListItem key={index} {...propList} />;
           }
           case 'carousel': {
-            return <CarouselListItem {...propList} />;
+            return <CarouselListItem key={index} {...propList} />;
           }
           default: {
-            return <RegularListItem {...propList} />;
+            console.log('default');
+            return <RegularListItem key={index} {...propList} />;
           }
         }
       })}
