@@ -1,8 +1,9 @@
 import { ReactChildren } from 'anu/common/types';
 import { useTheme } from 'anu/config';
-import { Container, LocalizedTypography } from 'anu/lib';
-import { DripsyFinalTheme, ScrollView } from 'dripsy';
+import { Container, Icon, LocalizedTypography } from 'anu/lib';
+import { DripsyFinalTheme, ScrollView, useSx } from 'dripsy';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
+import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
@@ -30,23 +31,63 @@ export interface Example {
 interface ComponentExampleProps {
   examples: Example[];
 }
-const ComponentExamples = ({ examples }: ComponentExampleProps) => {
+
+const RenderExample = (example: Example, index: number) => {
   const theme = useTheme();
 
   const styles = getStyles(theme);
+  const sx = useSx();
 
-  const renderExample = (example: Example, index: number) => {
-    return (
-      <Container key={index} disableGutters style={styles.examplesContainer as never}>
-        <View nativeID={example.id} style={styles.invisible} />
-        <LocalizedTypography.Headline style={styles.name} localeKey={example.name} />
-        {example.description ? (
-          <LocalizedTypography.Body style={styles.description} localeKey={example.description} />
-        ) : null}
+  const [isCopiedToClipboard, toggleCopyToClipboard] = useState(false);
+  const [timeOut, updateTimeOut] = useState<NodeJS.Timeout | null>(null);
 
-        <Container disableGutters sx={styles.examplesComponentContainer as never}>
-          {example.component}
-        </Container>
+  useEffect(() => {
+    return () => {
+      if (timeOut) clearTimeout(timeOut);
+    };
+  }, [timeOut]);
+
+  const onPressedHandler = () => {
+    if (isCopiedToClipboard) return;
+
+    toggleCopyToClipboard(true);
+
+    navigator.clipboard.writeText(example.code);
+
+    updateTimeOut(
+      setTimeout(() => {
+        toggleCopyToClipboard(false);
+      }, 3000),
+    );
+  };
+
+  return (
+    <Container key={index} disableGutters style={styles.examplesContainer as never}>
+      <View nativeID={example.id} style={styles.invisible} />
+      <LocalizedTypography.Headline style={styles.name} localeKey={example.name} />
+      {example.description ? (
+        <LocalizedTypography.Body style={styles.description} localeKey={example.description} />
+      ) : null}
+
+      <Container disableGutters sx={styles.examplesComponentContainer as never}>
+        {example.component}
+      </Container>
+      <Container disableGutters style={styles.codeContainer}>
+        <Icon
+          name={isCopiedToClipboard ? 'check' : 'content-copy'}
+          size={18}
+          onPress={onPressedHandler}
+          style={sx({
+            position: 'absolute',
+            zIndex: 2,
+            right: '5px',
+            top: '4px',
+            borderRadius: '8px',
+            padding: '8px',
+            color: isCopiedToClipboard ? 'green' : (theme.colors?.$onBackground as string),
+            backgroundColor: theme?.colors?.$background as never,
+          })}
+        />
         <ScrollView
           horizontal
           sx={styles.codeArea as never}
@@ -87,15 +128,22 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
             {example.code}
           </SyntaxHighlighter>
         </ScrollView>
-        {/* <Divider variant='full-width' light style={styles.divider} /> */}
       </Container>
-    );
-  };
+      {/* <Divider variant='full-width' light style={styles.divider} /> */}
+    </Container>
+  );
+};
+
+const ComponentExamples = ({ examples }: ComponentExampleProps) => {
+  const theme = useTheme();
+
+  const styles = getStyles(theme);
+  const sx = useSx();
 
   return (
     <Container disableGutters sx={styles.container as never}>
       {/* <Typography.Headline style={styles.heading}>{translations('en', 'examples')}</Typography.Headline> */}
-      {examples.map((example, index) => renderExample(example, index))}
+      {examples.map((example, index) => RenderExample(example, index))}
     </Container>
   );
 };
@@ -110,6 +158,10 @@ const getStyles = ({ colors }: DripsyFinalTheme) => {
       marginVertical: 20,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
     },
+    codeContainer: {
+      position: 'relative',
+    },
+
     examplesComponentContainer: {
       marginVertical: 20,
       width: '100%',
