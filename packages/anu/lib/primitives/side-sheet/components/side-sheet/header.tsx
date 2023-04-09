@@ -1,9 +1,9 @@
-import { View } from 'dripsy';
 import { IconButton } from 'lib/primitives/button/components/icon-button';
 import Container from 'lib/primitives/layout/components/container';
 import Typography from 'lib/primitives/typography/components';
 
 import { SideSheetProps } from '../../types';
+import { getHeaderStyles } from '../../utils';
 
 /**
  * Display the header part for the side sheet
@@ -19,32 +19,39 @@ const Header = (props: SideSheetProps & { scrollTo: (destination: number) => voi
     if (onCloseButtonPress) onCloseButtonPress();
   };
 
+  const { backIconStyle, closeIconStyle, containerStyle, headingStyle } = getHeaderStyles();
+
   return (
     <Container
+      disableGutters
       maxWidth={width}
-      sx={{ backgroundColor: 'red' }}
       flexDirection='row'
       align='center'
       justify='space-between'
+      style={containerStyle}
     >
-      <View>
+      <Container flexDirection='row' align='center' disableGutters>
         {onBackButtonPress ? (
           <IconButton
             onPress={onBackButtonPress}
             icon={{
               name: 'arrow-back',
             }}
+            containerStyle={backIconStyle}
             type='standard'
           />
         ) : null}
-        <Typography.Title size='small'>{headline}</Typography.Title>
-      </View>
+        <Typography.Title size='small' style={headingStyle}>
+          {headline}
+        </Typography.Title>
+      </Container>
       <IconButton
         onPress={onCloseButtonPressHandler}
         icon={{
           name: 'clear',
         }}
         type='standard'
+        containerStyle={closeIconStyle}
       />
     </Container>
   );

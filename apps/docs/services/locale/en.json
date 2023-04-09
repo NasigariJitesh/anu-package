@@ -419,8 +419,9 @@
   "radioDocumentation:example3-name": "Radio Button - Group",
 
   "sideSheetDocumentation:mainHeading": "Side Sheet",
-  "sideSheetDocumentation:mainDescription": "",
-  "sideSheetDocumentation:example1-name": "Default",
+  "sideSheetDocumentation:mainDescription": "A Side sheet is a type of modal dialog that slides in from the side of the screen to display additional information or functionality related to the current view or task.\n\nSide Sheets can be used to display information that doesn’t fit within the main view, or to provide additional controls or actions related to the current task.",
+  "sideSheetDocumentation:example1-name": "Standard Side Sheet",
+  "sideSheetDocumentation:example1-description": "Standard side sheets appear on the right side of the primary screen and display content that complements the screen’s primary content.\n\nA Standard Side Sheet can be customized with various styles and options, and with other components.",
   "sideSheetDocumentation:property-width-description": "The width of the side sheet.",
   "sideSheetDocumentation:property-startCoordinate-description": "Initial coordinate for the sheet to stay at.\n-100 will show 100px of it when closed (when align='right')\n - 100 will show 100px of it when closed (when align='left')",
   "sideSheetDocumentation:property-damping-description": "Damping for animations.",
