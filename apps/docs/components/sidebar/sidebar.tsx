@@ -275,6 +275,11 @@ const Sidebar = () => {
                 link: '/components/badge',
               },
               {
+                title: 'leftSideBar:bottom-sheet',
+                components: [],
+                link: '/components/bottom-sheet',
+              },
+              {
                 title: 'leftSideBar:button',
                 components: [
                   {
@@ -386,6 +391,11 @@ const Sidebar = () => {
                 title: 'leftSideBar:radio',
                 link: '/components/radio-button',
                 components: [],
+              },
+              {
+                title: 'leftSideBar:side-sheet',
+                components: [],
+                link: '/components/side-sheet',
               },
               {
                 title: 'leftSideBar:switch',

@@ -1,26 +1,6 @@
 import { ReactChildren } from 'common/types';
 import { ViewProps } from 'react-native';
 
-export interface SideSheetHeaderProps {
-  /**
-   * This is the title that will be shown in the header
-   */
-  headline?: string;
-  /**
-   * If this is provided, back button will be visible, else hidden in the header
-   *
-   * @returns
-   */
-  onBackButtonPress?: () => void;
-
-  /**
-   * This can be used to close the opened side bar
-   *
-   * @returns
-   */
-  onCloseButtonPress?: () => void;
-}
-
 export type SideSheetAlign = 'left' | 'right';
 
 export interface SideSheetProps extends Omit<ViewProps, 'style'> {
@@ -73,9 +53,22 @@ export interface SideSheetProps extends Omit<ViewProps, 'style'> {
   align?: SideSheetAlign;
 
   /**
-   * Props for the header
+   * This is the title that will be shown in the header
    */
-  headerProps?: SideSheetHeaderProps;
+  headline?: string;
+  /**
+   * If this is provided, back button will be visible, else hidden in the header
+   *
+   * @returns
+   */
+  onBackButtonPress?: () => void;
+
+  /**
+   * This can be used to close the opened side bar
+   *
+   * @returns
+   */
+  onCloseButtonPress?: () => void;
 }
 
 export interface SideSheetReferenceProps {
