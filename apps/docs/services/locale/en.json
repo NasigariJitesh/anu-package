@@ -107,7 +107,8 @@
 
   "bottomSheetDocumentation:mainHeading": "Bottom Sheet",
   "bottomSheetDocumentation:mainDescription": "The bottom sheet is a type opf modal dialog or component that slides up from the bottom of the screen to display additional content or actions",
-  "bottomSheetDocumentation:example1-name": "Default",
+  "bottomSheetDocumentation:example1-name": "Standard bottom sheet",
+  "bottomSheetDocumentation:example1-description": "A Standard bottom sheet typically includes a header section with a title, some description along with controls, actions, and information.\n\nAlso, it can be customized with various styles and options, including list items with icons, separators, and others.",
   "bottomSheetDocumentation:property-height-description": "The height of the bottom sheet.",
   "bottomSheetDocumentation:property-startCoordinate-description": "TInitial coordinate for the sheet to stay at",
   "bottomSheetDocumentation:property-damping-description": "Damping for animations.",

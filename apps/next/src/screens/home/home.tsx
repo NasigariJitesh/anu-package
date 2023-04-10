@@ -1,15 +1,12 @@
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
-import { Container, Switch } from 'anu/lib';
+import { BottomSheet, Checkbox, Container, Image, RadioButtonGroup, Typography } from 'anu/lib';
+import RadioButton from 'anu/lib/primitives/radio-button';
 
 const HomeScreen = () => {
   return (
-    <Container
-      align='center'
-      justify='center'
-      sx={{ backgroundColor: 'red', height: 250, width: 250, margin: 10, padding: 10 }}
-    >
-      <Switch />
+    <Container align='center' justify='center' disableGutters sx={{ height: '100%', width: '100%' }}>
+      {/* <Switch /> */}
       {/* <Container>
         <Image
           alt={'hey'}
@@ -17,6 +14,13 @@ const HomeScreen = () => {
           style={{ height: 100, width: 100 }}
         />
       </Container> */}
+      <BottomSheet>
+        <Typography.Body>Industry</Typography.Body>
+        <Checkbox id='Software' label='Software' />
+        <Checkbox id='Marketing' label='Marketing' />
+        <Checkbox id='Designing' label='Designing' />
+        <Checkbox id='Hardware' label='Hardware' />
+      </BottomSheet>
     </Container>
   );
 };
