@@ -1,6 +1,7 @@
 import { getColorInRGBA } from 'anu/common/utils';
 import Compressor from 'compressorjs';
 import { DripsyFinalTheme } from 'dripsy';
+import { Accept } from 'react-dropzone';
 
 import { Config } from '../types';
 
@@ -32,15 +33,31 @@ export const compressFile = async (file: File | Blob, config?: Config): Promise<
     : file;
 };
 
+// export const getImageAttachment = (uri_attachment: Blob, mimetype_attachment: string) => {
+//   return new Promise((RESOLVE, REJECT) => {
+//     // Fetch attachment
+//     RNFetchBlob.fetch('GET',).then((response) => {
+//       const base64String = response.data;
+//       const imageBase64 = 'data:' + mimetype_attachment + ';base64,' + base64String;
+//       // Return base64 image
+//       RESOLVE(imageBase64);
+//     });
+//   }).catch((error) => {
+//     // error handling
+//     console.log('Error:', error);
+//   });
+// };
+
 /**
  *
  * @param file File object
  * @returns base64 string of the file, that may be used to display the file if it is an image
  */
-export const getBase64 = async (file: File | Blob) => {
-  return new Promise((resolve: (value: string) => void, reject) => {
+export const getBase64 = (file: File | Blob) => {
+  const base64 = new Promise((resolve: (value: string) => void, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
+    console.log(file, 'file');
     reader.addEventListener('load', function () {
       if (typeof reader.result === 'string') resolve(reader.result);
       else reject(new Error('error converting file to base64'));
@@ -50,6 +67,8 @@ export const getBase64 = async (file: File | Blob) => {
       reject(error);
     });
   });
+
+  return base64;
 };
 
 export const getDropZoneStyles = (theme: DripsyFinalTheme) => {
@@ -174,4 +193,16 @@ export const getUploadListStyles = (theme: DripsyFinalTheme, single?: boolean, i
   };
 
   return styles;
+};
+
+export const getFileTypes = (accept?: Accept) => {
+  if (accept === undefined) return;
+
+  let types: string[] = [];
+
+  for (const key of Object.keys(accept)) {
+    types = [...types, ...accept[key]];
+  }
+
+  return types;
 };

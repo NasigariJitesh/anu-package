@@ -1,11 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @next/next/no-img-element */
 import { useTheme } from 'anu/config';
-import { Button, Chip, Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import { Button, Chip, Container, FlatList, Icon, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
 import Footer from 'components/footer';
 import { DripsyFinalTheme, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
+import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import ParticlesDark from 'screens/common/particles-dark';
 import ParticlesLight from 'screens/common/particles-light';
@@ -51,6 +52,56 @@ const List = (props: ListProps) => {
   );
 };
 
+const Installation = () => {
+  const [isCopiedToClipboard, toggleCopyToClipboard] = useState(false);
+  const [timeOut, updateTimeOut] = useState<NodeJS.Timeout | null>(null);
+
+  const theme = useTheme();
+
+  const style = styles(theme);
+  const sx = useSx();
+
+  const code = 'npm install @anu-dev/core';
+
+  useEffect(() => {
+    return () => {
+      if (timeOut) clearTimeout(timeOut);
+    };
+  }, [timeOut]);
+
+  const onPressedHandler = () => {
+    if (isCopiedToClipboard) return;
+
+    toggleCopyToClipboard(true);
+
+    navigator.clipboard.writeText(code);
+
+    updateTimeOut(
+      setTimeout(() => {
+        toggleCopyToClipboard(false);
+      }, 3000),
+    );
+  };
+
+  return (
+    <Container disableGutters style={sx(style.codeArea)}>
+      <Typography.Body style={style.code}>{code}</Typography.Body>
+      <Icon
+        name={isCopiedToClipboard ? 'check' : 'content-copy'}
+        size={16}
+        onPress={onPressedHandler}
+        style={sx({
+          marginLeft: '16px',
+          borderRadius: '8px',
+          padding: '8px',
+          color: isCopiedToClipboard ? 'green' : (theme.colors?.$onBackground as string),
+          backgroundColor: theme?.colors?.$background as never,
+        })}
+      />
+    </Container>
+  );
+};
+
 const Home = () => {
   const { isDarkTheme } = useMenuContext();
   const theme = useTheme();
@@ -86,9 +137,7 @@ const Home = () => {
             <List heading='home:list2-heading' list={['home:list2-item1']} />
           </Container>
           <Container disableGutters style={sx(style.codeContainer)} align='center'>
-            <Container disableGutters style={sx(style.codeArea)}>
-              <Typography.Body style={style.code}>npm install @anu/material-ui</Typography.Body>
-            </Container>
+            <Installation />
             <Container>
               <Link href={'/getting-started'}>
                 <Button.Filled title={getTranslation('home:button:getting-started')} />
@@ -198,6 +247,8 @@ const styles = (theme?: DripsyFinalTheme, height?: number) => {
       borderRadius: 10,
       marginHorizontal: [0, 0, 20, 30, 30] as never,
       marginBottom: [20, 20, 0, 0, 0] as never,
+      flexDirection: 'row',
+      alignItems: 'center',
     },
 
     code: {

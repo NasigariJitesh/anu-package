@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+import { useTheme } from 'anu/config';
 import { forwardRef, useCallback, useImperativeHandle } from 'react';
 import { useWindowDimensions, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
@@ -51,7 +52,8 @@ const BottomSheet = forwardRef<BottomSheetReferenceProps, BottomSheetProps>((pro
   const isBottomSheetActive = useSharedValue(false);
   const context = useSharedValue({ y: 0 });
 
-  const styles = getBottomSheetStyles({ ...finalProps, height });
+  const theme = useTheme();
+  const styles = getBottomSheetStyles({ ...finalProps, height }, theme);
 
   const borderRadiusMax = styles.container.borderRadius as number;
 

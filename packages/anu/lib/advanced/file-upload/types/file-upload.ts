@@ -13,7 +13,7 @@ type BasicFileUploadProps = CommonButtonProps & {
   variant?: 'image' | 'file';
   multiple?: boolean;
   sortable?: boolean;
-  onChange?: (data: Blob | Blob[] | null) => void;
+  onChange?: (data: Blob | Blob[] | null, fileUri?: string | string[] | null) => void;
   fileType?: MimeType | MimeType[];
   copyToCacheDirectory?: boolean;
   listPosition?: 'left' | 'right' | 'bottom';

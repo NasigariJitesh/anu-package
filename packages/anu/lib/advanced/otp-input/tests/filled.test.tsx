@@ -45,3 +45,17 @@ describe('Testing for OTP Field Filled with excess value digits', () => {
     expect(result).toMatchSnapshot();
   });
 });
+
+describe('Testing for OTP Field Filled with excess value digits', () => {
+  const tree = renderer.create(
+    <DripsyApp theme={makeTheme({})}>
+      <OtpInput numberOfDigits={4} value='968523' variant='filled' disabled />
+    </DripsyApp>,
+  );
+
+  const result = tree.toJSON();
+
+  it('Render Component', () => {
+    expect(result).toMatchSnapshot();
+  });
+});

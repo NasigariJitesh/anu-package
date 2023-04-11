@@ -217,14 +217,14 @@ const Sidebar = () => {
       style={{
         width: '240px',
         position: 'sticky',
-        top: 80,
+        top: 70,
       }}
     >
       <ScrollView
         id={undefined}
         scrollEnabled
         showsVerticalScrollIndicator={false}
-        style={sx({ maxHeight: height - 80 })}
+        style={sx({ maxHeight: height - 70 })}
         aria-label={undefined}
         aria-busy={undefined}
         aria-checked={undefined}
@@ -273,6 +273,11 @@ const Sidebar = () => {
                 title: 'leftSideBar:badge',
                 components: [],
                 link: '/components/badge',
+              },
+              {
+                title: 'leftSideBar:bottom-sheet',
+                components: [],
+                link: '/components/bottom-sheet',
               },
               {
                 title: 'leftSideBar:button',
@@ -367,9 +372,30 @@ const Sidebar = () => {
                 link: '/components/image',
               },
               {
+                title: 'leftSideBar:input-fields',
+                link: '/components/input-fields/text-field',
+                components: [
+                  {
+                    title: 'leftSideBar:text-fields',
+                    link: '/components/input-fields/text-field',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:otp-input',
+                    link: '/components/input-fields/otp-input',
+                    variants: [],
+                  },
+                ],
+              },
+              {
                 title: 'leftSideBar:radio',
                 link: '/components/radio-button',
                 components: [],
+              },
+              {
+                title: 'leftSideBar:side-sheet',
+                components: [],
+                link: '/components/side-sheet',
               },
               {
                 title: 'leftSideBar:switch',
@@ -377,11 +403,6 @@ const Sidebar = () => {
                 components: [],
               },
 
-              {
-                title: 'leftSideBar:text-fields',
-                link: '/components/text-field',
-                components: [],
-              },
               {
                 title: 'leftSideBar:typography',
                 link: '/components/typography',

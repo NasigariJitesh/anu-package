@@ -1,3 +1,4 @@
+import { ReactChildren } from 'anu/common/types';
 import { ContainerProps } from 'anu/lib/primitives';
 import { Accept } from 'react-dropzone';
 import { StyleProp, ViewStyle } from 'react-native';
@@ -5,11 +6,13 @@ import { StyleProp, ViewStyle } from 'react-native';
 import { Config } from './file-upload';
 
 interface BasicFileDropZoneProps extends Omit<ContainerProps, 'variant'> {
+  children: ReactChildren;
+  dragActivePlaceholder?: ReactChildren;
   variant?: 'image' | 'file';
   sortable?: boolean;
   disabled?: boolean;
   multiple?: boolean;
-  onChange?: (data: Blob | Blob[] | null) => void;
+  onChange?: (data: Blob | Blob[] | null, fileUri?: string | string[] | null) => void;
   onSubmit?: () => void;
   fileType?: Accept;
   style?: StyleProp<ViewStyle>;

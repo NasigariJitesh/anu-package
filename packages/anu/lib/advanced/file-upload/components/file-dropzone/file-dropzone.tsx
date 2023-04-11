@@ -1,31 +1,68 @@
 /* eslint-disable react/display-name */
+import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Button, Container } from 'anu/lib/primitives';
-import React, { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+import * as FilePicker from 'expo-document-picker';
+import React, { forwardRef, useImperativeHandle, useMemo, useState } from 'react';
+import { Pressable } from 'react-native';
 
 import { FileDropZoneProps, FileDropZoneReferenceProps } from '../../types';
-import { compressFile, getDropZoneStyles } from '../../utils';
+import { compressFile, getDropZoneStyles, getFileTypes } from '../../utils';
 import UploadList from '../upload-list';
 import { defaultProps } from './default';
+
+/**
+ * Function to handle file upload
+ *
+ * @param props - props of the file upload component
+ * @param updateFiles - function to update the uploaded files to existing files list
+ */
+const handleFileUpload = async (props: FileDropZoneProps, updateFiles: { (files: Blob[], uris: string[]): void }) => {
+  const result = await FilePicker.getDocumentAsync({
+    multiple: props.multiple,
+    type: getFileTypes(props.fileType),
+  });
+  if (result.type === 'success') {
+    const file = new File([result.uri], result.name, { type: result.mimeType });
+
+    if (props.variant === 'image' && props.optimization) {
+      const compressedImage = await compressFile(file, props.optimizationConfig);
+
+      updateFiles([compressedImage], [result.uri]);
+    } else {
+      updateFiles([file], [result.uri]);
+    }
+  }
+};
 
 const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
 
   const [files, setFiles] = useState<Blob[]>([]);
+  const [fileUris, setFileUris] = useState<string[]>([]);
 
   useImperativeHandle(reference, () => ({ files }), [files]);
 
-  const updateFiles = (resultFiles: Blob[]) => {
-    if (finalProps.multiple)
-      setFiles((previous) => {
-        const a = [...previous, ...resultFiles];
-        if (finalProps.onChange) finalProps.onChange(a);
-        return a;
-      });
-    else {
+  const onCancel = () => {
+    setFiles([]);
+  };
+
+  const theme = useTheme();
+  const { dropZoneStyle, childrenContainerStyle, buttonContainerStyle } = getDropZoneStyles(theme);
+
+  const handleUpload = useMemo(() => handleFileUpload, []);
+
+  const updateFiles = (resultFiles: Blob[], resultUris: string[]) => {
+    if (finalProps.multiple) {
+      const allFiles = [...files, ...resultFiles];
+      const allUris = [...fileUris, ...resultUris];
+      setFiles(allFiles);
+      setFileUris(allUris);
+      if (finalProps.onChange) finalProps.onChange(allFiles, allUris);
+    } else {
       setFiles(resultFiles);
-      if (finalProps.onChange) finalProps.onChange(resultFiles[0]);
+      setFileUris(resultUris);
+      if (finalProps.onChange) finalProps.onChange(resultFiles[0], resultUris[0]);
     }
   };
 
@@ -33,53 +70,36 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
     const array = [...files];
     array.splice(index, 1);
     setFiles(array);
-    if (finalProps.onChange) finalProps.onChange(array.length > 0 ? array : null);
+    const uriArray = [...fileUris];
+    uriArray.splice(index, 1);
+    setFileUris(uriArray);
+    if (finalProps.onChange)
+      finalProps.onChange(array.length > 0 ? array : null, uriArray.length > 0 ? uriArray : null);
   };
-
-  const onCancel = () => {
-    setFiles([]);
-  };
-
-  const onDrop = useCallback(async (acceptedFiles: File[]) => {
-    if (finalProps.variant === 'image' && finalProps.optimization) {
-      const compressedImages = [];
-      for (const file of acceptedFiles) {
-        const compressedImage = await compressFile(file, finalProps.optimizationConfig);
-        compressedImages.push(compressedImage);
-      }
-      updateFiles(compressedImages);
-    } else {
-      updateFiles(acceptedFiles);
-    }
-  }, []);
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: finalProps.fileType,
-    disabled: finalProps.disabled,
-    multiple: finalProps.multiple,
-  });
-  const theme = useTheme();
-  const { dropZoneStyle, divStyle, childrenContainerStyle, buttonContainerStyle } = getDropZoneStyles(theme);
 
   return (
     <Container disableGutters style={finalProps.style}>
       <Container disableGutters>
-        <Container disableGutters style={dropZoneStyle}>
-          <div {...getRootProps()} style={divStyle}>
-            <input {...getInputProps()} />
+        <Pressable
+          onPress={async () => {
+            await handleUpload(finalProps, updateFiles);
+          }}
+        >
+          <Container disableGutters style={getCombinedStylesForView(dropZoneStyle, props.dropZoneStyle)}>
             <Container disableGutters style={childrenContainerStyle}>
-              {isDragActive ? <p>Drop the files here ...</p> : <p>Drag and drop files here or click</p>}
+              {props.children}
             </Container>
-          </div>
-        </Container>
+          </Container>
+        </Pressable>
         <Container disableGutters style={buttonContainerStyle}>
           <Button.Text title='Submit' onPress={finalProps.onSubmit} />
           <Button.Text title='Cancel' onPress={onCancel} />
         </Container>
       </Container>
+
       <UploadList
         data={files}
+        uriData={fileUris}
         deleteData={deleteFile}
         variant={finalProps.variant}
         previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}

@@ -1,5 +1,5 @@
 import { FileDropZoneProps } from '../../types';
 
-export const defaultProps: FileDropZoneProps = {
+export const defaultProps: Omit<FileDropZoneProps, 'children'> = {
   variant: 'image',
 };

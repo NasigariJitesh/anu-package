@@ -34,7 +34,7 @@ const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: B
     } else {
       updateFiles([...result.output]);
     }
-  } else updateFiles([]);
+  }
 };
 
 /**

@@ -246,7 +246,7 @@ const GettingStarted = () => {
           mainHeading={'getting-started:mainHeading'}
           mainDescription={'getting-started:mainDescription'}
         />
-        <Step id='installation' code='npm install anu' title='getting-started:step1:title' />
+        <Step id='installation' code='npm install @anu-dev/core' title='getting-started:step1:title' />
         <Step
           id='provider'
           description='getting-started:step3:description'
