@@ -17,6 +17,7 @@ interface BasicFileDropZoneProps extends Omit<ContainerProps, 'variant'> {
   fileType?: Accept;
   style?: StyleProp<ViewStyle>;
   dropZoneStyle?: StyleProp<ViewStyle>;
+  errors?: { error: boolean; errorMessage: string }[];
 }
 
 interface ImageFileDropZoneProps extends BasicFileDropZoneProps {

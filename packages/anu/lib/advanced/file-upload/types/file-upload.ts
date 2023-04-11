@@ -18,6 +18,7 @@ type BasicFileUploadProps = CommonButtonProps & {
   copyToCacheDirectory?: boolean;
   listPosition?: 'left' | 'right' | 'bottom';
   style?: StyleProp<ViewStyle>;
+  errors?: { error: boolean; errorMessage: string }[];
 };
 
 type ImageFileUploadProps = BasicFileUploadProps & {

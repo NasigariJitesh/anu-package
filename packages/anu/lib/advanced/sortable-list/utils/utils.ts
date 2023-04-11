@@ -189,15 +189,16 @@ export function convertToDataWithId<T>(data: Array<T>, keyExtractor: { (item: T,
   return newArray;
 }
 
-export const getMovableItemComponentStyle = (height: number) => {
+export const getMovableItemComponentStyle = (height: number, width: number) => {
   const style = {
     flexDirection: 'row',
     alignItems: 'center',
     height,
-    width: '100%',
+    width,
+    padding: 5,
   } as const;
 
-  const animatedViewStyle = { width: '100%' };
+  const animatedViewStyle = { height, width };
 
   return { style, animatedViewStyle };
 };

@@ -1,13 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/display-name */
+import { getCombinedStylesForView } from 'anu/common/utils';
 import { CommonButtonProps, Container, ExtendedFAB, FAB, IconButton } from 'anu/lib/primitives';
 import { RegularButton } from 'anu/lib/primitives/button/components/regular';
 import * as FilePicker from 'expo-document-picker';
 import { forwardRef, useCallback, useImperativeHandle, useMemo, useState } from 'react';
 
 import { FileUploadProps, FileUploadReferenceProps } from '../../types';
-import { compressFile } from '../../utils';
-import UploadList from '../upload-list/draggable-upload-list';
+import { compressFile, getFileUploadStyle } from '../../utils';
+import UploadList from '../upload-list';
 import { defaultProps } from './default';
 
 /**
@@ -19,7 +20,7 @@ import { defaultProps } from './default';
 const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: Blob[], uris: string[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
-    type: props.fileType,
+    type: props.fileType ?? props.variant === 'image' ? 'image/*' : undefined,
     copyToCacheDirectory: props.copyToCacheDirectory,
   });
   if (result.type === 'success') {
@@ -50,6 +51,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   useImperativeHandle(reference, () => ({ isUploading, files }), [isUploading, files]);
 
   const handleUpload = useMemo(() => handleFileUpload, []);
+  const defaultContainerStyle = getFileUploadStyle();
 
   const updateFiles = (resultFiles: Blob[], resultUris: string[]) => {
     if (finalProps.multiple) {
@@ -72,6 +74,24 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
     const uriArray = [...fileUris];
     uriArray.splice(index, 1);
     setFileUris(uriArray);
+    if (finalProps.onChange)
+      finalProps.onChange(array.length > 0 ? array : null, uriArray.length > 0 ? uriArray : null);
+  };
+
+  const onSortHandler = (from: number, to: number) => {
+    const array = [...files];
+    const file = array[from];
+    const uriArray = [...fileUris];
+    const uri = uriArray[from];
+    if (file === undefined || uri === undefined) return;
+    array.splice(from, 1);
+    array.splice(to, 0, file);
+    setFiles(array);
+
+    uriArray.splice(from, 1);
+    uriArray.splice(to, 0, uri);
+    setFileUris(uriArray);
+
     if (finalProps.onChange)
       finalProps.onChange(array.length > 0 ? array : null, uriArray.length > 0 ? uriArray : null);
   };
@@ -169,15 +189,20 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   };
 
   return (
-    <Container disableGutters style={finalProps.style}>
-      <UploadList
-        data={files}
-        uriData={fileUris}
-        deleteData={deleteFile}
-        variant={finalProps.variant}
-        previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
-      />
+    <Container disableGutters style={getCombinedStylesForView(defaultContainerStyle, finalProps.style)}>
       {renderButton(finalProps)}
+      <Container disableGutters>
+        <UploadList
+          errors={finalProps.errors}
+          sortable={finalProps.sortable}
+          data={[...files]}
+          uriData={[...fileUris]}
+          onSort={onSortHandler}
+          deleteData={deleteFile}
+          variant={finalProps.variant}
+          previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
+        />
+      </Container>
     </Container>
   );
 });

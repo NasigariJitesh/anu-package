@@ -1,12 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/display-name */
+import { getCombinedStylesForView } from 'anu/common/utils';
 import { CommonButtonProps, Container, ExtendedFAB, FAB, IconButton } from 'anu/lib/primitives';
 import { RegularButton } from 'anu/lib/primitives/button/components/regular';
 import * as FilePicker from 'expo-document-picker';
 import { forwardRef, useCallback, useImperativeHandle, useMemo, useState } from 'react';
 
 import { FileUploadProps, FileUploadReferenceProps } from '../../types';
-import { compressFile } from '../../utils';
+import { compressFile, getFileUploadStyle } from '../../utils';
 import UploadList from '../upload-list';
 import { defaultProps } from './default';
 
@@ -19,7 +20,7 @@ import { defaultProps } from './default';
 const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: Blob[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
-    type: props.fileType,
+    type: props.fileType ?? props.variant === 'image' ? 'image/*' : undefined,
     copyToCacheDirectory: props.copyToCacheDirectory,
   });
 
@@ -52,6 +53,8 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
 
   const handleUpload = useMemo(() => handleFileUpload, []);
 
+  const defaultContainerStyle = getFileUploadStyle();
+
   const updateFiles = (resultFiles: Blob[]) => {
     if (finalProps.multiple) {
       const allFiles = [...files, ...resultFiles];
@@ -67,6 +70,17 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
     const array = [...files];
     array.splice(index, 1);
     setFiles(array);
+    if (finalProps.onChange) finalProps.onChange(array.length > 0 ? array : null);
+  };
+
+  const onSortHandler = (from: number, to: number) => {
+    const array = [...files];
+    const file = array[from];
+    if (file === undefined) return;
+    array.splice(from, 1);
+    array.splice(to, 0, file);
+    setFiles(array);
+
     if (finalProps.onChange) finalProps.onChange(array.length > 0 ? array : null);
   };
 
@@ -162,14 +176,19 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   };
 
   return (
-    <Container disableGutters style={finalProps.style}>
+    <Container disableGutters style={getCombinedStylesForView(defaultContainerStyle, finalProps.style)}>
       {renderButton(finalProps)}
-      <UploadList
-        data={files}
-        deleteData={deleteFile}
-        variant={finalProps.variant}
-        previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
-      />
+      <Container disableGutters>
+        <UploadList
+          errors={finalProps.errors}
+          sortable={finalProps.sortable}
+          data={[...files]}
+          onSort={onSortHandler}
+          deleteData={deleteFile}
+          variant={finalProps.variant}
+          previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
+        />
+      </Container>
     </Container>
   );
 });

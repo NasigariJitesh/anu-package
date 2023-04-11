@@ -36,16 +36,19 @@ export default function MovableItem<T>(props: MovableItemProps<T>) {
     onSortEnd,
     onSortStart,
     itemWidth = 200,
+    containerWidth,
   } = props;
 
   const [moving, setMoving] = useState(false);
   const [initialPosition, setInitialPosition] = useState(positions.value[id]);
+
   const positionY = useSharedValue(positions.value[id] * itemHeight);
+
   const top = useSharedValue(positions.value[id] * itemHeight);
   const upperBound = useDerivedValue(() => lowerBound.value + containerHeight);
   const targetLowerBound = useSharedValue(lowerBound.value);
 
-  const { style, animatedViewStyle } = getMovableItemComponentStyle(itemHeight);
+  const { style, animatedViewStyle } = getMovableItemComponentStyle(itemHeight, itemWidth);
 
   const theme = useTheme();
 
@@ -152,8 +155,8 @@ export default function MovableItem<T>(props: MovableItemProps<T>) {
     onFinish() {
       const finishPosition = positions.value[id] * itemHeight;
       top.value = withTiming(finishPosition);
-      if (onSortEnd) runOnJS(onSortEnd)(finishPosition);
-      if (onSort) runOnJS(onSort)(initialPosition, finishPosition);
+      if (onSortEnd) runOnJS(onSortEnd)(positions.value[id]);
+      if (onSort) runOnJS(onSort)(initialPosition, positions.value[id]);
       runOnJS(setMoving)(false);
     },
   });
@@ -166,17 +169,14 @@ export default function MovableItem<T>(props: MovableItemProps<T>) {
       top: top.value,
       zIndex: moving ? 1 : 0,
       shadowColor: theme.colors.$shadow,
-      shadowOffset: {
-        height: 0,
-        width: 0,
-      },
+
       shadowOpacity: withSpring(moving ? 0.2 : 0),
       shadowRadius: 10,
     };
   }, [moving]);
 
   return (
-    <Container width={itemWidth}>
+    <Container width={containerWidth} sx={{ paddingRight: 10 }}>
       <Animated.View style={animatedStyle}>
         <BlurView intensity={moving ? 100 : 0} tint='light'>
           <PanGestureHandler onGestureEvent={gestureHandler}>

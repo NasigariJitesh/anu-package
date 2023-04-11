@@ -85,8 +85,7 @@ export const getDropZoneStyles = (theme: DripsyFinalTheme) => {
   } as const;
 
   const divStyle = {
-    height: '100%',
-    width: '100%',
+    flex: 1,
   };
 
   const childrenContainerStyle = {
@@ -195,8 +194,8 @@ export const getUploadListStyles = (theme: DripsyFinalTheme, single?: boolean, i
   return styles;
 };
 
-export const getFileTypes = (accept?: Accept) => {
-  if (accept === undefined) return;
+export const getFileTypes = (accept?: Accept, variant?: 'image' | 'file') => {
+  if (accept === undefined) return variant === 'image' ? ['image/*'] : undefined;
 
   let types: string[] = [];
 
@@ -205,4 +204,12 @@ export const getFileTypes = (accept?: Accept) => {
   }
 
   return types;
+};
+
+export const getFileUploadStyle = () => {
+  const style = {
+    width: 280,
+    align: 'center',
+  } as const;
+  return style;
 };

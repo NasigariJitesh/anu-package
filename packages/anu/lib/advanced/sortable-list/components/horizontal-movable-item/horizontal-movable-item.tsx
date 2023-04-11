@@ -45,7 +45,7 @@ export default function HorizontalMovableItem<T>(props: HorizontalMovableItemPro
   const upperBound = useDerivedValue(() => lowerBound.value + containerWidth);
   const targetLowerBound = useSharedValue(lowerBound.value);
 
-  const { style, animatedViewStyle } = getMovableItemComponentStyle(itemWidth);
+  const { style, animatedViewStyle } = getMovableItemComponentStyle(itemHeight, itemWidth);
 
   const theme = useTheme();
 
@@ -152,8 +152,8 @@ export default function HorizontalMovableItem<T>(props: HorizontalMovableItemPro
     onFinish() {
       const finishPosition = positions.value[id] * itemWidth;
       left.value = withTiming(finishPosition);
-      if (onSortEnd) runOnJS(onSortEnd)(finishPosition);
-      if (onSort) runOnJS(onSort)(initialPosition, finishPosition);
+      if (onSortEnd) runOnJS(onSortEnd)(positions.value[id]);
+      if (onSort) runOnJS(onSort)(initialPosition, positions.value[id]);
       runOnJS(setMoving)(false);
     },
   });
@@ -166,10 +166,6 @@ export default function HorizontalMovableItem<T>(props: HorizontalMovableItemPro
       left: left.value,
       zIndex: moving ? 1 : 0,
       shadowColor: theme.colors.$shadow,
-      shadowOffset: {
-        height: 0,
-        width: 0,
-      },
       shadowOpacity: withSpring(moving ? 0.2 : 0),
       shadowRadius: 10,
     };

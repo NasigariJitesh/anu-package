@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
@@ -18,16 +19,25 @@ export default function SortableList<T>(props: SortableListProps<T>) {
 
   const { containerHeight = 330, containerWidth = 350, horizontal, data, keyExtractor } = finalProps;
 
-  const dataWithId = convertToDataWithId(data, keyExtractor);
+  const [dataWithId, setDataWithId] = useState(convertToDataWithId(data, keyExtractor));
+
+  useEffect(() => {
+    setDataWithId(convertToDataWithId(data, keyExtractor));
+  }, [data]);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <SafeAreaView style={{ flex: 1 }}>
           {horizontal ? (
-            <HorizontalList {...finalProps} data={dataWithId} containerWidth={containerWidth} />
+            <HorizontalList
+              {...finalProps}
+              data={dataWithId}
+              containerHeight={containerHeight}
+              containerWidth={containerWidth}
+            />
           ) : (
-            <List {...finalProps} data={dataWithId} containerHeight={containerHeight} />
+            <List {...finalProps} data={dataWithId} containerHeight={containerHeight} containerWidth={containerWidth} />
           )}
         </SafeAreaView>
       </SafeAreaProvider>

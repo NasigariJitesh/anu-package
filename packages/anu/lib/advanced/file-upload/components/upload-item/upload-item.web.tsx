@@ -14,6 +14,7 @@ interface ListItemProps {
   variant?: 'image' | 'file';
   deleteData: (index: number) => void;
   previewStyle?: 'list' | 'carousel';
+  sortable?: boolean;
 }
 
 /**
@@ -39,7 +40,7 @@ const hoverFromState = (
  */
 const RegularListItem = (props: ListItemProps) => {
   const [hovered, setHovered] = useState(false);
-  const { id, dataItem, single, deleteData, variant, error, errorMessage } = props;
+  const { id, dataItem, single, deleteData, variant, error, errorMessage, sortable } = props;
   const theme = useTheme();
 
   const styles = getUploadListStyles(theme, single);
@@ -52,7 +53,7 @@ const RegularListItem = (props: ListItemProps) => {
       }}
     >
       <Container disableGutters style={styles.listItemContainer}>
-        {!single && (
+        {!single && sortable && (
           <Container disableGutters style={styles.dragIconContainer}>
             {hovered ? <Icon name='drag-indicator' size={16} style={styles.dragIcon} /> : null}
           </Container>
@@ -96,7 +97,7 @@ const RegularListItem = (props: ListItemProps) => {
  */
 const PreviewListItem = (props: ListItemProps) => {
   const [hovered, setHovered] = useState(false);
-  const { id, dataItem, single, deleteData, error, errorMessage } = props;
+  const { id, dataItem, single, deleteData, error, errorMessage, sortable } = props;
   const theme = useTheme();
 
   const styles = getUploadListStyles(theme, single);
@@ -111,7 +112,7 @@ const PreviewListItem = (props: ListItemProps) => {
       }}
     >
       <Container disableGutters style={styles.listItemContainer}>
-        {!single && (
+        {!single && sortable && (
           <Container disableGutters style={styles.dragIconContainer}>
             {hovered ? <Icon name='drag-indicator' size={16} style={styles.dragIcon} /> : null}
           </Container>
@@ -156,7 +157,7 @@ const PreviewListItem = (props: ListItemProps) => {
  */
 const CarouselListItem = (props: ListItemProps) => {
   const [hovered, setHovered] = useState(false);
-  const { id, dataItem, single, deleteData, error, errorMessage } = props;
+  const { id, dataItem, single, deleteData, error, errorMessage, sortable } = props;
   const theme = useTheme();
 
   const styles = getUploadListStyles(theme, single);
@@ -177,7 +178,7 @@ const CarouselListItem = (props: ListItemProps) => {
           alt={dataItem.name}
         />
 
-        {!single && (
+        {!single && sortable && (
           <Container disableGutters style={styles.carouselDragIconContainer}>
             {hovered ? <Icon name='drag-indicator' size={16} style={styles.dragIcon} /> : null}
           </Container>

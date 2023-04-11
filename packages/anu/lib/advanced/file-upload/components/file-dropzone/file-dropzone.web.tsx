@@ -40,6 +40,17 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
     setFiles([]);
   };
 
+  const onSortHandler = (from: number, to: number) => {
+    const array = [...files];
+    const file = array[from];
+    if (file === undefined) return;
+    array.splice(from, 1);
+    array.splice(to, 0, file);
+    setFiles(array);
+
+    if (finalProps.onChange) finalProps.onChange(array.length > 0 ? array : null);
+  };
+
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     if (finalProps.variant === 'image' && finalProps.optimization) {
       const compressedImages = [];
@@ -56,7 +67,24 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: finalProps.fileType,
+    accept:
+      finalProps.fileType ?? finalProps.variant === 'image'
+        ? {
+            'image/*': [
+              '.jpeg',
+              '.png',
+              '.webp',
+              '.svg+xml',
+              '.tiff',
+              '.png',
+              '.gif',
+              '.vnd.microsoft.icon',
+              '.jpeg',
+              '.avif',
+              '.bmp',
+            ],
+          }
+        : undefined,
     disabled: finalProps.disabled,
     multiple: finalProps.multiple,
   });
@@ -79,12 +107,17 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
           <Button.Text title='Cancel' onPress={onCancel} />
         </Container>
       </Container>
-      <UploadList
-        data={files}
-        deleteData={deleteFile}
-        variant={finalProps.variant}
-        previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
-      />
+      <Container disableGutters>
+        <UploadList
+          errors={finalProps.errors}
+          sortable={finalProps.sortable}
+          data={[...files]}
+          onSort={onSortHandler}
+          deleteData={deleteFile}
+          variant={finalProps.variant}
+          previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
+        />
+      </Container>
     </Container>
   );
 });

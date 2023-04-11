@@ -16,7 +16,6 @@ export interface MovableItemProps<T> {
   index: number;
   id: string;
   item: T;
-  containerHeight: number;
   positions: SharedValue<{ [id: string]: number }>;
   lowerBound: SharedValue<number>;
   autoScrollDirection: SharedValue<ScrollDirection>;
@@ -27,12 +26,12 @@ export interface MovableItemProps<T> {
   renderItem: (item: T, index: number) => React.ReactNode;
   onSortStart?: (from: number) => void;
   onSortEnd?: (to: number) => void;
+  containerHeight: number;
+  containerWidth: number;
 }
 
-export interface HorizontalMovableItemProps<T>
-  extends Omit<MovableItemProps<T>, 'autoScrollDirection' | 'containerHeight'> {
+export interface HorizontalMovableItemProps<T> extends Omit<MovableItemProps<T>, 'autoScrollDirection'> {
   autoScrollDirection: SharedValue<ScrollDirectionHorizontal>;
-  containerWidth: number;
 }
 
 export interface ListProps<T> {
@@ -44,9 +43,6 @@ export interface ListProps<T> {
   onSortStart?: (from: number) => void;
   onSortEnd?: (to: number) => void;
   containerHeight: number;
-}
-
-export interface HorizontalListProps<T> extends Omit<ListProps<T>, 'containerHeight'> {
   containerWidth: number;
 }
 

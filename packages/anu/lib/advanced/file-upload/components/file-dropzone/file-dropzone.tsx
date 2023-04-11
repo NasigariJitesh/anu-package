@@ -20,7 +20,7 @@ import { defaultProps } from './default';
 const handleFileUpload = async (props: FileDropZoneProps, updateFiles: { (files: Blob[], uris: string[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
-    type: getFileTypes(props.fileType),
+    type: getFileTypes(props.fileType, props.variant),
   });
   if (result.type === 'success') {
     const file = new File([result.uri], result.name, { type: result.mimeType });
@@ -77,6 +77,24 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
       finalProps.onChange(array.length > 0 ? array : null, uriArray.length > 0 ? uriArray : null);
   };
 
+  const onSortHandler = (from: number, to: number) => {
+    const array = [...files];
+    const file = array[from];
+    const uriArray = [...fileUris];
+    const uri = uriArray[from];
+    if (file === undefined || uri === undefined) return;
+    array.splice(from, 1);
+    array.splice(to, 0, file);
+    setFiles(array);
+
+    uriArray.splice(from, 1);
+    uriArray.splice(to, 0, uri);
+    setFileUris(uriArray);
+
+    if (finalProps.onChange)
+      finalProps.onChange(array.length > 0 ? array : null, uriArray.length > 0 ? uriArray : null);
+  };
+
   return (
     <Container disableGutters style={finalProps.style}>
       <Container disableGutters>
@@ -96,14 +114,18 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
           <Button.Text title='Cancel' onPress={onCancel} />
         </Container>
       </Container>
-
-      <UploadList
-        data={files}
-        uriData={fileUris}
-        deleteData={deleteFile}
-        variant={finalProps.variant}
-        previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
-      />
+      <Container disableGutters sx={{ flex: 1 }}>
+        <UploadList
+          errors={finalProps.errors}
+          sortable={finalProps.sortable}
+          data={[...files]}
+          uriData={[...fileUris]}
+          onSort={onSortHandler}
+          deleteData={deleteFile}
+          variant={finalProps.variant}
+          previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
+        />
+      </Container>
     </Container>
   );
 });

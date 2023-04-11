@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
 import Animated, {
   scrollTo,
   useAnimatedReaction,
@@ -6,7 +8,7 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 
-import { HorizontalListProps, ScrollDirectionHorizontal } from '../../types';
+import { ListProps, ScrollDirectionHorizontal } from '../../types';
 import { listToObject } from '../../utils';
 import HorizontalMovableItem from '../horizontal-movable-item';
 
@@ -14,12 +16,33 @@ import HorizontalMovableItem from '../horizontal-movable-item';
  *
  * @param props
  */
-export default function HorizontalList<T>(props: HorizontalListProps<T>) {
-  const { data, itemHeight = 60, itemWidth = 200, renderItem, onSort, onSortEnd, onSortStart, containerWidth } = props;
+export default function HorizontalList<T>(props: ListProps<T>) {
+  const {
+    data,
+    itemHeight = 60,
+    itemWidth = 200,
+    renderItem,
+    onSort,
+    onSortEnd,
+    onSortStart,
+    containerWidth,
+    containerHeight,
+  } = props;
   const positions = useSharedValue(listToObject(data));
+
+  const [positionsState, setPositionsState] = useState(listToObject(data));
+
   const scrollX = useSharedValue(0);
   const autoScroll = useSharedValue(ScrollDirectionHorizontal.None);
   const scrollViewReference = useAnimatedRef<Animated.ScrollView>();
+
+  useEffect(() => {
+    positions.value = positionsState;
+  }, [positionsState]);
+
+  useEffect(() => {
+    setPositionsState(listToObject(data));
+  }, [data]);
 
   useAnimatedReaction(
     () => scrollX.value,
@@ -37,7 +60,7 @@ export default function HorizontalList<T>(props: HorizontalListProps<T>) {
   const animatedScrollViewStyle = {
     flex: 1,
     position: 'relative',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     flexDirection: 'row',
   } as const;
 
@@ -53,7 +76,7 @@ export default function HorizontalList<T>(props: HorizontalListProps<T>) {
       }}
     >
       {data.map((item, index) => {
-        return (
+        return positions.value[item.id] === undefined ? null : (
           <HorizontalMovableItem
             index={index}
             key={item.id}
@@ -63,6 +86,7 @@ export default function HorizontalList<T>(props: HorizontalListProps<T>) {
             autoScrollDirection={autoScroll}
             itemsCount={data.length}
             containerWidth={containerWidth}
+            containerHeight={containerHeight}
             item={item.value}
             itemHeight={itemHeight}
             itemWidth={itemWidth}

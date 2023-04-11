@@ -42,7 +42,6 @@ export default function Example() {
 
       <FileDropZone
         multiple
-        listPosition='right'
         variant='image'
         fileType={{ image: ['image/png', 'image/jpeg'] }}
         onChange={(data: Blob | Blob[] | null) => {
