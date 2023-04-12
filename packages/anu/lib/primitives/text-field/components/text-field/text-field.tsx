@@ -115,6 +115,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.error]);
 
+    console.log(finalProps.trailingIcon);
     return (
       <Container disableGutters style={finalProps.containerStyle}>
         <Pressable
@@ -159,7 +160,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                 {getErrorIcon()}
               </Container>
             ) : null}
-            {finalProps.trailingIcon && !finalProps.error && finalProps.noDefaultErrorMessage ? (
+
+            {finalProps.trailingIcon && !finalProps.error ? (
               <Container disableGutters style={trailingIconContainerStyle}>
                 {finalProps.trailingIcon}
               </Container>
