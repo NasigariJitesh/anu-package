@@ -20,7 +20,9 @@ interface CommonAutoCompleteProps {
   value: string;
   direction?: 'rtl' | 'ltr';
   hideDropDownButton?: boolean;
-  flatListProps: FlatListProps<Options>;
+  showResults?: boolean;
+  toggleShowResults?: (value: React.SetStateAction<boolean>) => void;
+  flatListProps: Omit<FlatListProps<Options>, 'data'>;
 }
 
 export interface StandardAutoCompleteProps

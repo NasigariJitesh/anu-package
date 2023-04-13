@@ -13,6 +13,7 @@ import {
   Container,
   IconButton,
   OTPInput,
+  PhoneInput,
   SearchBar,
   Typography,
 } from 'anu/lib';
@@ -38,7 +39,7 @@ export default function Example() {
   ];
 
   return (
-    <Container sx={{ width: '100%', height: '100%' }}>
+    <Container sx={{ width: '100%', height: '100%', marginTop: 100 }}>
       {/* <Container sx={{ margin: 10, padding: 10 }}>
         <OTPInput numberOfDigits={6} value='123456788' variant='filled' onSubmit={(a) => console.log(a)} />
       </Container>
@@ -159,9 +160,9 @@ export default function Example() {
         hideDropDownButton={false}
       /> */}
 
-      <SearchBar
+      {/* <SearchBar
         data={data}
-        flatListProps={{ data: data, renderItem: ListRenderItem }}
+        flatListProps={{ renderItem: ListRenderItem }}
         value={text}
         onChangeText={(value: string) => {
           setText(value);
@@ -173,6 +174,15 @@ export default function Example() {
         debounce
         debounceDuration={1000}
         clearText={() => setText('')}
+      /> */}
+      <PhoneInput
+        value={text}
+        onChangeText={(value: string) => {
+          setText(value);
+          console.log(value);
+        }}
+        variant={'outlined'}
+        flatListProps={{}}
       />
     </Container>
   );

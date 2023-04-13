@@ -111,9 +111,9 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
         errorArray.push('Please provide a valid input');
 
         setErrors([...errorArray]);
-      }
+      } else setErrors(getErrors(props.errorMessage));
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.error]);
+    }, [props.error, props.errorMessage]);
 
     return (
       <Container disableGutters style={finalProps.containerStyle}>
@@ -172,7 +172,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
             {finalProps?.supportingText}
           </Typography.Body>
         ) : null}
-        {props.error &&
+        {finalProps.error &&
           errors?.map((error, index) => (
             <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
               {error}

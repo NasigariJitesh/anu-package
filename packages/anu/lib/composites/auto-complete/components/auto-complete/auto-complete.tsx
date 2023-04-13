@@ -23,11 +23,9 @@ import { defaultProps } from './default';
  */
 const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
-
   const [results, setResults] = useState<Options[]>(finalProps.data);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(finalProps.showResults ?? false);
   const textInputReference = useRef<RNTextInput | null>(null);
-
   const theme = useTheme();
 
   const focus = useCallback(() => {
@@ -91,11 +89,14 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
     return showButton ? (
       <IconButton
         icon={{
-          name: open ? 'arrow-drop-up' : 'arrow-drop-down',
+          name: finalProps.showResults ?? open ? 'arrow-drop-up' : 'arrow-drop-down',
           props: { style: { color: theme.colors.$onSurfaceVariant } },
         }}
         type='standard'
-        onPress={() => setOpen((previous) => !previous)}
+        onPress={() => {
+          setOpen((previous) => !previous);
+          if (finalProps.toggleShowResults) finalProps.toggleShowResults((previous) => !previous);
+        }}
       />
     ) : null;
   };
@@ -116,6 +117,7 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
         autoCompleteContainerStyle,
         autoCompleteStyle,
         data,
+        showResults,
         caseSensitive,
         filterOnChange,
         debounce,
@@ -149,10 +151,12 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
             onChangeText={onChangeHandler}
             style={getCombinedStylesForText(defaultInputAreaStyle, inputAreaStyle)}
             onFocus={(event) => {
-              focusEventHandler(event, true, onFocus);
+              if (showResults === undefined) focusEventHandler(event, true, onFocus);
+              else if (onFocus) onFocus(event);
             }}
             onBlur={(event) => {
-              focusEventHandler(event, false, onBlur);
+              if (showResults === undefined) focusEventHandler(event, false, onBlur);
+              else if (onBlur) onBlur(event);
             }}
             placeholderTextColor={placeholderTextColor ?? theme.colors.$onSurfaceVariant}
           />
@@ -169,6 +173,7 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
         resultContainerStyle,
         autoCompleteContainerStyle,
         data,
+        showResults,
         caseSensitive,
         filterOnChange,
         debounce,
@@ -187,13 +192,15 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
       return (
         <TextField
           {...textFieldProps}
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={{ ...textFieldProps.style, position: 'relative' }}
           ref={textInputReference}
           onChangeText={onChangeHandler}
           placeholderTextColor={placeholderTextColor ?? theme.colors.$onSurfaceVariant}
           leadingIcon={
             <Container disableGutters flexDirection='row' align='center' justify='center'>
-              <DropDownButton showButton={direction === 'rtl' && hideDropDownButton !== true} />
               {leadingIcon}
+              <DropDownButton showButton={direction === 'rtl' && hideDropDownButton !== true} />
             </Container>
           }
           trailingIcon={
@@ -203,10 +210,12 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
             </Container>
           }
           onFocus={(event) => {
-            focusEventHandler(event, true, onFocus);
+            if (showResults === undefined) focusEventHandler(event, true, onFocus);
+            else if (onFocus) onFocus(event);
           }}
           onBlur={(event) => {
-            focusEventHandler(event, false, onBlur);
+            if (showResults === undefined) focusEventHandler(event, false, onBlur);
+            else if (onBlur) onBlur(event);
           }}
         />
       );
@@ -219,7 +228,7 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
       style={getCombinedStylesForView(defaultAutoCorrectContainerStyle, finalProps.autoCompleteContainerStyle)}
     >
       {renderField()}
-      {open ? (
+      {finalProps.showResults ?? open ? (
         <Container
           disableGutters
           style={getCombinedStylesForView(defaultResultsContainerStyle, finalProps.resultContainerStyle)}

@@ -222,7 +222,7 @@ export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: D
  * @returns error message array
  */
 export const getErrors = (message?: string | string[]) => {
-  return typeof message === 'string' ? [message] : message ?? [];
+  return Array.isArray(message) ? message : [message];
 };
 
 /**
