@@ -1,3 +1,3 @@
 import { FlatList } from 'react-native';
 
-export type FlatListProps = React.ComponentProps<typeof FlatList>;
+export type FlatListProps<T> = React.ComponentProps<typeof FlatList<T>>;

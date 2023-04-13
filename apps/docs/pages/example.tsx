@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-secrets/no-secrets */
 import {
+  AutoComplete,
   Avatar,
   Button,
   Card,
@@ -12,16 +13,33 @@ import {
   Container,
   IconButton,
   OTPInput,
+  SearchBar,
   Typography,
 } from 'anu/lib';
+import { Options } from 'anu/lib/composites/auto-complete/types';
+import { useState } from 'react';
 
 /**
  *
  */
 export default function Example() {
+  const [text, setText] = useState('');
+  const ListRenderItem = ({ item }: { item: Options }) => {
+    return <Typography.Body>{item.value as string} </Typography.Body>;
+  };
+
+  const data = [
+    { id: 'hello', value: 'Hello' },
+    { id: 'abcd', value: 'Abcd' },
+    { id: 'efgh', value: 'Efgh' },
+    { id: 'ijkl', value: 'Ijkl' },
+    { id: 'lmno', value: 'LMNO' },
+    { id: 'pqrs', value: 'PQRS' },
+  ];
+
   return (
-    <Container>
-      <Container sx={{ margin: 10, padding: 10 }}>
+    <Container sx={{ width: '100%', height: '100%' }}>
+      {/* <Container sx={{ margin: 10, padding: 10 }}>
         <OTPInput numberOfDigits={6} value='123456788' variant='filled' onSubmit={(a) => console.log(a)} />
       </Container>
       <Container flexDirection='row'>
@@ -116,7 +134,46 @@ export default function Example() {
             avatar={<Avatar name='N' variant='circle' size='large' />}
           />
         </Card>
-      </Container>
+      </Container> */}
+      {/* <AutoComplete
+        variant='standard'
+        placeholder='AutoComplete'
+        direction='rtl'
+        value={text}
+        onChangeText={(value: string) => {
+          setText(value);
+          console.log(value);
+        }}
+        data={[
+          { id: 'hello', value: 'Hello' },
+          { id: 'abcd', value: 'Abcd' },
+          { id: 'efgh', value: 'Efgh' },
+          { id: 'ijkl', value: 'Ijkl' },
+          { id: 'lmno', value: 'LMNO' },
+          { id: 'pqrs', value: 'PQRS' },
+        ]}
+        renderItem={ListRenderItem}
+        caseSensitive
+        debounce
+        autoCompleteContainerStyle={{ width: 300, height: 300 }}
+        hideDropDownButton={false}
+      /> */}
+
+      <SearchBar
+        data={data}
+        flatListProps={{ data: data, renderItem: ListRenderItem }}
+        value={text}
+        onChangeText={(value: string) => {
+          setText(value);
+          console.log(value);
+        }}
+        filterOnChange={(key: string) => data.filter((item) => item.id.includes(key))}
+        type={'full-screen'}
+        containerStyle={{ width: '100%' }}
+        debounce
+        debounceDuration={1000}
+        clearText={() => setText('')}
+      />
     </Container>
   );
 }
