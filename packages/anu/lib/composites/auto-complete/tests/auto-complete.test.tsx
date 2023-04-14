@@ -18,7 +18,7 @@ describe('Testing for Auto Complete', () => {
       <AutoComplete
         value='Hey'
         data={data}
-        flatListProps={{ data: data, renderItem: ListRenderItem }}
+        flatListProps={{ renderItem: ListRenderItem }}
         onChangeText={(text: string) => {}}
         caseSensitive={false}
         filterOnChange={() => []}
@@ -40,7 +40,7 @@ describe('Testing for Outlined Auto Complete', () => {
         value='Hey'
         variant='outlined'
         data={data}
-        flatListProps={{ data: data, renderItem: ListRenderItem }}
+        flatListProps={{ renderItem: ListRenderItem }}
         onChangeText={(text: string) => {}}
       />
     </DripsyApp>,
@@ -61,7 +61,7 @@ describe('Testing for Standard Auto Complete', () => {
         variant='standard'
         disabled
         data={data}
-        flatListProps={{ data: data, renderItem: ListRenderItem }}
+        flatListProps={{ renderItem: ListRenderItem }}
         onChangeText={(text: string) => {}}
       />
     </DripsyApp>,
@@ -81,7 +81,7 @@ describe('Testing for Filled Auto Complete', () => {
         value='Hey'
         variant='filled'
         data={data}
-        flatListProps={{ data: data, renderItem: ListRenderItem }}
+        flatListProps={{ renderItem: ListRenderItem }}
         onChangeText={(text: string) => {}}
         hideDropDownButton
       />
@@ -104,7 +104,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
           value='Hey'
           variant='outlined'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
           onFocus={() => {}}
         />
@@ -123,7 +123,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
           variant='outlined'
           data={data}
           caseSensitive
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
           onBlur={() => {}}
         />
@@ -142,7 +142,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
           variant='outlined'
           data={data}
           filterOnChange={() => []}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
         />
       </DripsyApp>,
@@ -159,7 +159,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
           value='Hey'
           variant='outlined'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
         />
       </DripsyApp>,
@@ -181,7 +181,7 @@ describe('Testing for Outlined Auto Complete with ref', () => {
           value='Hey'
           variant='outlined'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
           leadingIcon={<Icon name='close' />}
           trailingIcon={<Icon name='close' />}
@@ -201,7 +201,7 @@ describe('Testing for Outlined Auto Complete with ref', () => {
           value='Hey'
           variant='outlined'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
           leadingIcon={<Icon name='close' />}
           trailingIcon={<Icon name='close' />}
@@ -223,7 +223,7 @@ describe('Testing for standard Auto Complete Events without ref', () => {
           value='Hey'
           variant='standard'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
           debounce
           direction='rtl'
@@ -243,7 +243,7 @@ describe('Testing for standard Auto Complete Events without ref', () => {
           value='Hey'
           variant='standard'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
           hideDropDownButton
         />
@@ -262,7 +262,7 @@ describe('Testing for standard Auto Complete Events without ref', () => {
           variant='standard'
           data={data}
           caseSensitive={false}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
           direction='ltr'
           hideDropDownButton
@@ -278,16 +278,37 @@ describe('Testing for standard Auto Complete Events without ref', () => {
       <DripsyApp theme={makeTheme({})}>
         <AutoComplete
           testID='auto-complete-test'
-          value='Hey'
+          value=''
           variant='standard'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
         />
       </DripsyApp>,
     );
 
     fireEvent(screen.getByTestId('auto-complete-test'), 'onPress');
+
+    fireEvent(screen.getByRole('button'), 'onPress');
+    fireEvent(screen.getByRole('button'), 'onPress');
+  });
+
+  it('should trigger press handler', () => {
+    render(
+      <DripsyApp theme={makeTheme({})}>
+        <AutoComplete
+          testID='auto-complete-test'
+          value=''
+          variant='standard'
+          data={data}
+          flatListProps={{ renderItem: ListRenderItem }}
+          onChangeText={(text: string) => {}}
+        />
+      </DripsyApp>,
+    );
+
+    fireEvent(screen.getByTestId('auto-complete-test'), 'onPress');
+
     fireEvent(screen.getByRole('button'), 'onPress');
     fireEvent(screen.getByRole('button'), 'onPress');
   });
@@ -305,7 +326,7 @@ describe('Testing for standard Auto Complete with ref', () => {
           value='Hey'
           variant='standard'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
           direction='rtl'
           hideDropDownButton={false}
@@ -325,10 +346,31 @@ describe('Testing for standard Auto Complete with ref', () => {
           value='Hey'
           variant='standard'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
           direction='ltr'
           hideDropDownButton={false}
+          toggleShowResults={(value) => {}}
+          debounce={false}
+        />
+      </DripsyApp>,
+    );
+
+    reference.current?.focus();
+    reference.current?.blur();
+  });
+  it('Blur using ref', async () => {
+    render(
+      <DripsyApp theme={makeTheme({})}>
+        <AutoComplete
+          ref={reference}
+          testID='auto-complete-test'
+          value='Hey'
+          variant='standard'
+          data={data}
+          flatListProps={{ renderItem: ListRenderItem }}
+          onChangeText={(text: string) => {}}
+          direction='ltr'
           debounce={false}
         />
       </DripsyApp>,

@@ -61,9 +61,10 @@ export const getSearchBarStyle = (
   };
 
   const activeDockedSearchBarStyle = {
-    height: 72,
+    height: 56,
     borderBottomRadius: 0,
-    borderTopRadius: 100,
+    borderTopLeftRadius: 28,
+    borderTopRightRadius: 28,
     backgroundColor: theme.colors.$surface,
     shadowOffset: {
       width: 0,

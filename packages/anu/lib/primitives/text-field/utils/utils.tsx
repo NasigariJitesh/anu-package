@@ -174,10 +174,10 @@ export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: D
   let finalStyle = {
     ...style,
     ...propStyle,
-    '@disable': { ...style['@disable'], ...propStyle?.['@disable'] },
-    '@hover': { ...style['@hover'], ...propStyle?.['@hover'] },
-    '@focus': { ...style['@focus'], ...propStyle?.['@focus'] },
-    '@press': { ...style['@press'], ...propStyle?.['@press'] },
+    '@disable': { ...style?.['@disable'], ...propStyle?.['@disable'] },
+    '@hover': { ...style?.['@hover'], ...propStyle?.['@hover'] },
+    '@focus': { ...style?.['@focus'], ...propStyle?.['@focus'] },
+    '@press': { ...style?.['@press'], ...propStyle?.['@press'] },
   };
 
   if (error) {
@@ -268,5 +268,5 @@ export const getErrorIcon = () => {
 };
 
 export const getInnerContainerStyle = () => {
-  return { backgroundColor: 'inherit', height: '100%', borderRadius: 4, color: 'inherit', flex: 1 };
+  return { backgroundColor: 'inherit', height: '100%', borderRadius: 'inherit', color: 'inherit', flex: 1 };
 };

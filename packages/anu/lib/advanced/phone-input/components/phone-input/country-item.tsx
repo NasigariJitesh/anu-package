@@ -19,6 +19,7 @@ const CountryItem = ({ item, setObject }: { item: Options; setObject: (object: C
 
   return (
     <Pressable
+      testID={item.id}
       style={{ flexDirection: 'row', width: '100%' }}
       onPress={() => {
         setObject(object);

@@ -1,11 +1,11 @@
 /* eslint-disable unicorn/no-useless-undefined */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/display-name */
-import { getCombinedStylesForView } from 'anu/common/utils';
+import { getCombinedStylesForText, getCombinedStylesForView } from 'anu/common/utils';
 import { AutoComplete, AutoCompleteReferenceProps, convertToOptionsFormat } from 'anu/lib/composites';
-import { Container, IconButton, Image, Typography } from 'anu/lib/primitives';
+import { Container, Image, Typography } from 'anu/lib/primitives';
 import { AsYouType, ParseError, parsePhoneNumber, parsePhoneNumberWithError, PhoneNumber } from 'libphonenumber-js';
-import { debounce as loadashDebounce } from 'lodash';
+import { debounce as loadashDebounce, DebouncedFunc } from 'lodash';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 
@@ -21,19 +21,35 @@ const keyExtractor = (item: CountryCodeObject) => {
 const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
 
-  const [currentCountry, setCurrentCountry] = useState<CountryCodeObject>();
-  const [selectedCountry, setSelectedCountry] = useState<CountryCodeObject>();
   const [showCountries, toggleShowCountries] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string[]>([]);
-  const asYouType = new AsYouType();
-
-  const { defaultResultsContainerStyle, defaultSelectedEmojiStyle, defaultSelectedFlagStyle, defaultTextFieldStyles } =
-    getDefaultStyles();
+  const [selectedCountry, setSelectedCountry] = useState<CountryCodeObject>();
 
   const countryCodesData = useMemo(() => convertToOptionsFormat(countryCodes, keyExtractor), []);
-
   const autoCompleteReference = useRef<AutoCompleteReferenceProps | null>(null);
+
+  const asYouType = new AsYouType();
+
+  const checkForMatch = (countryAlphabeticalCode?: string) => {
+    return countryCodesData.filter((item) => (item.value as CountryCodeObject).alt === countryAlphabeticalCode);
+  };
+
+  const getDefaultCountry = (countryCode: string) => {
+    asYouType.input(countryCode);
+    const match = checkForMatch(asYouType.country);
+    if (match.length === 1) return match[0].value as CountryCodeObject;
+  };
+
+  const [currentCountry, setCurrentCountry] = useState<CountryCodeObject | undefined>(getDefaultCountry(props.value));
+
+  const {
+    defaultResultsContainerStyle,
+    defaultSelectedEmojiStyle,
+    defaultSelectedFlagStyle,
+    defaultTextFieldStyles,
+    defaultTextInputStyle,
+  } = getDefaultStyles();
 
   const parseForErrors = (text: string) => {
     try {
@@ -45,7 +61,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
       }
     } catch (error_) {
       setError(true);
-
+      console.log(error_);
       switch ((error_ as ParseError).message) {
         case 'TOO_LONG': {
           {
@@ -69,7 +85,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     }
   };
 
-  const debouncedParseForErrors = useMemo(() => {
+  const debouncedParseForErrors: DebouncedFunc<(text: string) => void> = useMemo(() => {
     return loadashDebounce((text: string) => parseForErrors(text), finalProps.debounceDuration ?? 2000);
   }, [parseForErrors]);
 
@@ -77,6 +93,12 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     return () => {
       debouncedParseForErrors.cancel();
     };
+  }, []);
+
+  useEffect(() => {
+    if (props.defaultCountryCode) {
+      onChangeTextHandler(props.defaultCountryCode);
+    }
   }, []);
 
   const focus = useCallback(() => {
@@ -96,15 +118,17 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
 
     text = text.replace(/[^\d\s+]/i, '');
 
-    if (text != '') text = text[0] === '+' ? text : '+' + text;
+    if (text === '') {
+      setError(false);
+    } else {
+      text = text[0] === '+' ? text : '+' + text;
+    }
 
     let phoneNumber: PhoneNumber | undefined;
 
     asYouType.input(text);
 
-    const matchedCountry = countryCodesData.filter(
-      (item) => (item.value as CountryCodeObject).alt === asYouType.country,
-    );
+    const matchedCountry = checkForMatch(asYouType.country);
     if (matchedCountry.length === 1) {
       setCurrentCountry(matchedCountry[0].value as CountryCodeObject);
     } else if (selectedCountry && text.includes(selectedCountry?.countryCode)) {
@@ -119,8 +143,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     }
     if (phoneNumber) onChangeText(phoneNumber.formatInternational(), phoneNumber);
     else onChangeText(text);
-
-    debouncedParseForErrors(text);
+    if (text.length > 5) debouncedParseForErrors(text);
   };
 
   const filterOptions = (text: string) => {
@@ -168,6 +191,14 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     );
   };
 
+  const getCustomErrorMessages = () => {
+    if (otherAutoCompleteProps.errorMessage)
+      return Array.isArray(otherAutoCompleteProps.errorMessage)
+        ? otherAutoCompleteProps.errorMessage
+        : [otherAutoCompleteProps.errorMessage];
+    else return [];
+  };
+
   return (
     <AutoComplete
       {...otherAutoCompleteProps}
@@ -176,6 +207,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
         defaultResultsContainerStyle,
         otherAutoCompleteProps.resultContainerStyle,
       )}
+      textInputStyle={getCombinedStylesForText(defaultTextInputStyle, otherAutoCompleteProps.textInputStyle)}
       ref={autoCompleteReference}
       data={countryCodesData}
       autoComplete='tel'
@@ -186,28 +218,17 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
       filterOnChange={filterOptions}
       showResults={showCountries}
       toggleShowResults={toggleShowCountries}
-      error={error}
-      errorMessage={errorMessage}
+      error={error || otherAutoCompleteProps.error}
+      errorMessage={[...errorMessage, ...getCustomErrorMessages()]}
       flatListProps={{
         ...flatListProps,
         renderItem: (info) => <CountryItem {...info} setObject={setCountryCodeObject} />,
       }}
       leadingIcon={<LeadingIcon>{leadingIcon}</LeadingIcon>}
-      trailingIcon={
-        value ? (
-          <IconButton
-            icon={{ name: 'close' }}
-            onPress={() => {
-              onChangeText('');
-              updateStates(undefined);
-            }}
-            type={'standard'}
-          />
-        ) : null
-      }
-      onFocus={() => {
+      onFocus={(event) => {
         if (currentCountry) toggleShowCountries(false);
         else toggleShowCountries(true);
+        if (otherAutoCompleteProps.onFocus) otherAutoCompleteProps.onFocus(event);
       }}
     />
   );

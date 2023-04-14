@@ -108,6 +108,7 @@ const IndividualOTPField = ({
       noDefaultErrorMessage={true}
       onKeyPress={(event) => onKeyPressHandler(event, value)}
       disabled={inputProps.disabled}
+      showClearButton={false}
     />
   );
 };

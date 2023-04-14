@@ -46,14 +46,25 @@ export const getDefaultStyles = () => {
     maxHeight: 400,
   };
   const defaultSelectedFlagStyle = {
-    height: 18,
-    width: 30,
+    height: 15,
+    width: 25,
   };
   const defaultSelectedEmojiStyle = {
     fontSize: 16,
     lineHeight: 20,
   };
-  return { defaultTextFieldStyles, defaultResultsContainerStyle, defaultSelectedFlagStyle, defaultSelectedEmojiStyle };
+  const defaultTextInputStyle = {
+    paddingLeft: 8,
+    paddingRight: 0,
+    maxWidth: 135,
+  };
+  return {
+    defaultTextFieldStyles,
+    defaultResultsContainerStyle,
+    defaultSelectedFlagStyle,
+    defaultSelectedEmojiStyle,
+    defaultTextInputStyle,
+  };
 };
 
 export const countryCodes: CountryCodeObject[] = [

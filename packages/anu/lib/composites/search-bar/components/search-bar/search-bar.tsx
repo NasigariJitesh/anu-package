@@ -2,7 +2,7 @@
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { AutoComplete, AutoCompleteReferenceProps, IconButton, Options } from 'anu/lib';
-import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
 import { NativeSyntheticEvent, TextInputFocusEventData, useWindowDimensions } from 'react-native';
 
 import { SearchBarProps, SearchBarReferenceProps } from '../../types';
@@ -15,8 +15,7 @@ import { defaultProps } from './default';
 const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
   const [active, setActive] = useState(false);
-  const timeOutReference1 = useRef<null | ReturnType<typeof setTimeout>>();
-  const timeOutReference2 = useRef<null | ReturnType<typeof setTimeout>>();
+
   const [results, setResults] = useState<Options[]>([]);
   const autoCompleteReference = useRef<AutoCompleteReferenceProps | null>(null);
 
@@ -29,13 +28,6 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
   }, [autoCompleteReference]);
 
   useImperativeHandle(reference, () => ({ focus, blur, results }), [focus, blur, results]);
-
-  useEffect(() => {
-    return () => {
-      if (timeOutReference1.current) clearTimeout(timeOutReference1.current);
-      if (timeOutReference2.current) clearTimeout(timeOutReference2.current);
-    };
-  }, []);
 
   const { height, width } = useWindowDimensions();
 
@@ -51,9 +43,8 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
     onFocus,
     onBlur,
     filterOnChange,
-    clearText,
-    leadingComponent,
-    trailingComponent,
+    leadingIcon,
+
     ...autoCompleteProps
   } = finalProps;
 
@@ -64,28 +55,7 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
     return active && type === 'full-screen' ? (
       <IconButton type='standard' icon={{ name: 'arrow-back' }} onPress={() => setActive(false)} />
     ) : (
-      leadingComponent
-    );
-  };
-
-  /**
-   * Component for the leading component of the search bar
-   */
-  const getTrailingComponent = () => {
-    return active && value ? (
-      <IconButton
-        type='standard'
-        icon={{ name: 'clear' }}
-        onPress={() => {
-          clearText();
-          timeOutReference2.current = setTimeout(() => {
-            autoCompleteReference.current?.focus();
-            setActive(true);
-          }, 400);
-        }}
-      />
-    ) : (
-      trailingComponent
+      leadingIcon
     );
   };
 
@@ -122,20 +92,17 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
       ref={autoCompleteReference}
       data={results}
       value={value}
-      clearButtonMode='always'
-      leadingComponent={getLeadingComponent()}
-      trailingComponent={getTrailingComponent()}
+      label=''
+      leadingIcon={getLeadingComponent()}
       autoCompleteContainerStyle={getCombinedStylesForView(activeSearchBarContainerStyle, containerStyle)}
-      autoCompleteStyle={getCombinedStylesForView(defaultSearchBarStyle, searchBarStyle)}
+      style={{ ...defaultSearchBarStyle, ...searchBarStyle }}
       resultContainerStyle={getCombinedStylesForView(defaultResultsContainerStyle, resultContainerStyle)}
       hideDropDownButton={true}
       onFocus={(event) => {
         focusEventHandler(event, true, onFocus);
       }}
       onBlur={(event) => {
-        timeOutReference1.current = setTimeout(() => {
-          focusEventHandler(event, false, onBlur);
-        }, 500);
+        focusEventHandler(event, false, onBlur);
       }}
       filterOnChange={filterOnChangeHandler}
     />

@@ -70,8 +70,8 @@ export const getStandardAutoCompleteStyles = ({ colors }: DripsyFinalTheme, disa
  * @param theme - the theme of the application
  * @returns styles for the autocomplete component
  */
-export const getAutoCorrectStyles = (theme: DripsyFinalTheme) => {
-  const defaultAutoCorrectContainerStyle = {
+export const getAutoCompleteStyles = (theme: DripsyFinalTheme) => {
+  const defaultAutoCompleteContainerStyle = {
     alignItems: 'center',
     width: 250,
   } as const;
@@ -92,7 +92,7 @@ export const getAutoCorrectStyles = (theme: DripsyFinalTheme) => {
     top: 56,
   } as const;
 
-  return { defaultAutoCorrectContainerStyle, defaultResultsContainerStyle };
+  return { defaultAutoCompleteContainerStyle, defaultResultsContainerStyle };
 };
 
 /**
@@ -110,3 +110,35 @@ export function convertToOptionsFormat<T>(data: T[], keyExtractor: { (item: T, i
   }
   return options;
 }
+
+export const getOverridingStyleForStandardVariant = () => {
+  const style = {
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    borderStyle: 'solid',
+    borderRadius: 0,
+
+    '@hover': {
+      borderColor: 'transparent',
+    },
+    '@focus': {
+      borderColor: 'transparent',
+    },
+    '@press': {
+      borderColor: 'transparent',
+    },
+  };
+
+  return style;
+};
+
+export const getDropDownButtonStyle = () => {
+  const style = {
+    height: 30,
+    width: 30,
+    '@hover': { height: 30, width: 30 },
+    '@focus': { height: 30, width: 30 },
+    '@press': { height: 30, width: 30 },
+  };
+  return style;
+};

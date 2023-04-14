@@ -15,18 +15,25 @@ import {
   OTPInput,
   PhoneInput,
   SearchBar,
+  TextField,
   Typography,
 } from 'anu/lib';
-import { Options } from 'anu/lib/composites/auto-complete/types';
-import { useState } from 'react';
+import { AutoCompleteReferenceProps, Options } from 'anu/lib/composites/auto-complete/types';
+import { useRef, useState } from 'react';
+import { Pressable } from 'react-native';
 
 /**
  *
  */
 export default function Example() {
   const [text, setText] = useState('');
+  const reference = useRef<AutoCompleteReferenceProps | null>(null);
   const ListRenderItem = ({ item }: { item: Options }) => {
-    return <Typography.Body>{item.value as string} </Typography.Body>;
+    return (
+      <Pressable onPress={() => console.log('press')}>
+        <Typography.Body>{item.value as string} </Typography.Body>
+      </Pressable>
+    );
   };
 
   const data = [
@@ -137,9 +144,9 @@ export default function Example() {
         </Card>
       </Container> */}
       {/* <AutoComplete
-        variant='standard'
-        placeholder='AutoComplete'
-        direction='rtl'
+        ref={reference}
+        variant='outlined'
+        direction='ltr'
         value={text}
         onChangeText={(value: string) => {
           setText(value);
@@ -153,11 +160,22 @@ export default function Example() {
           { id: 'lmno', value: 'LMNO' },
           { id: 'pqrs', value: 'PQRS' },
         ]}
-        renderItem={ListRenderItem}
+        flatListProps={{ renderItem: ListRenderItem }}
         caseSensitive
         debounce
         autoCompleteContainerStyle={{ width: 300, height: 300 }}
         hideDropDownButton={false}
+      /> */}
+
+      {/* <TextField
+        variant='outlined'
+        value={text}
+        onChangeText={(value: string) => {
+          setText(value);
+          console.log(value);
+        }}
+        onFocus={() => reference.current?.focus()}
+        onBlur={() => reference.current?.blur()}
       /> */}
 
       {/* <SearchBar
@@ -166,14 +184,12 @@ export default function Example() {
         value={text}
         onChangeText={(value: string) => {
           setText(value);
-          console.log(value);
         }}
         filterOnChange={(key: string) => data.filter((item) => item.id.includes(key))}
-        type={'full-screen'}
-        containerStyle={{ width: '100%' }}
+        type={'docked'}
+        containerStyle={{ width: '100%', backgroundColor: 'pink' }}
         debounce
         debounceDuration={1000}
-        clearText={() => setText('')}
       /> */}
       <PhoneInput
         value={text}
@@ -181,8 +197,8 @@ export default function Example() {
           setText(value);
           console.log(value);
         }}
+        defaultCountryCode={'+91'}
         variant={'outlined'}
-        flatListProps={{}}
       />
     </Container>
   );

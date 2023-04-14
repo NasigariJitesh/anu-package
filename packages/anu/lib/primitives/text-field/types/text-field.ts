@@ -19,7 +19,7 @@ export type TextInputProps = React.ComponentPropsWithoutRef<typeof TextInput>;
  */
 export interface TextFieldContainerStyle extends ExtendedHoverStyles, ExtendedDisabledStyles {}
 
-export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style' | 'placeholder'> {
+export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'> {
   /**
    * The type of the text field
    */
@@ -60,6 +60,12 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
    * If true, the component is disabled.
    */
   disabled?: boolean;
+
+  /**
+   * If true, the clear button is displayed.
+   */
+  showClearButton?: boolean;
+
   /**
    * If there is any error related to field
    */
