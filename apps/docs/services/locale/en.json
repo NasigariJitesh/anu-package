@@ -116,6 +116,10 @@
   "bottomSheetDocumentation:property-hideDragHandle-description": "If true, the the bottom sheet drag handle will be hidden.",
   "bottomSheetDocumentation:property-handleStyles-description": "Styles for the handle.",
   "bottomSheetDocumentation:property-containerStyles-description": "Styles for the bottom sheet.",
+  "bottomSheetDocumentation:example2-name": "Modal bottom sheet",
+  "bottomSheetDocumentation:example2-description": "A Modal bottom sheet typically covers the entire screen and requires the user to either dismiss or take an action before returning to the underlying content.",
+  "bottomSheetDocumentation:example3-name": "Modal bottom sheets - with menu",
+  "bottomSheetDocumentation:example3-description": "Bottom sheets with Menu contain a menu or list of options. When triggered, the bottom sheet with the menu slides up from the bottom of the screen and displays a list of options that the user can interact with.\nThe menu can be customized with various styles and options, including list items with icons, separators, and sub-headers.",
 
   "regularButtonDocumentation:mainHeading": "Button",
   "regularButtonDocumentation:mainDescription": "Buttons help users navigate, interact, and engage with websites and apps.",

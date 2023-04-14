@@ -1,7 +1,7 @@
 export { default as Badge } from './badge';
 export * from './badge';
-export { default as BottomSheet } from './bottom-sheet';
-export * from './bottom-sheet';
+// export { default as BottomSheet } from './bottom-sheet';
+// export * from './bottom-sheet';
 export { default as Button, ExtendedFAB, IconButton, SegmentedButton, SegmentedButtonGroup } from './button';
 export * from './button';
 export { default as Checkbox } from './checkbox';

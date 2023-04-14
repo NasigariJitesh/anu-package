@@ -1,20 +1,82 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-native/no-inline-styles */
 import { Container, Image } from 'anu/lib';
-import bottomsheetfull from 'assets/bottom-sheet.png';
-import bottomsheet from 'assets/bottom-sheet-inactive.png';
+import BottomSheetExample31Dark from 'assets/bottom-sheet-example-3.1-dark.jpg';
+import BottomSheetExample31Light from 'assets/bottom-sheet-example-3.1-light.jpg';
+import BottomSheetExample32Dark from 'assets/bottom-sheet-example-3.2-dark.jpg';
+import BottomSheetExample32Light from 'assets/bottom-sheet-example-3.2-light.jpg';
+import BottomSheetExample1Dark from 'assets/bottom-sheet-standard-dark.gif';
+import BottomSheetExample1Light from 'assets/bottom-sheet-standard-light.gif';
+import BottomSheetExample2Dark from 'assets/bottom-sheet-with-modal-dark.gif';
+import BottomSheetExample2Light from 'assets/bottom-sheet-with-modal-light.gif';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+import { View } from 'react-native';
+import { useMenuContext } from 'screens/common/provider';
 
 const flexStyle = {
   flexWrap: 'wrap',
-  // < 576 = 90vw
-  // 576
-  //
-  // 990 px
-  // > 1200px
   width: ['90vw', '90vw', '550px', '600px', '750px'],
 } as const;
-const style = { width: 257, height: 558, margin: 10 };
+
+const Example3 = () => {
+  const { isDarkTheme } = useMenuContext();
+
+  return (
+    <Container disableGutters sx={flexStyle as never}>
+      {isDarkTheme ? (
+        <Image
+          source={{ uri: BottomSheetExample31Light.src }}
+          style={{ height: 300, width: 359 }}
+          alt='bottom-sheet-full'
+        />
+      ) : (
+        <Image source={{ uri: BottomSheetExample31Dark.src }} style={{ height: 300, width: 359 }} alt='bottom-sheet' />
+      )}
+      <View style={{ marginVertical: 30 }} />
+      {isDarkTheme ? (
+        <Image
+          source={{ uri: BottomSheetExample32Light.src }}
+          style={{ height: 150, width: 369 }}
+          alt='bottom-sheet-full'
+        />
+      ) : (
+        <Image source={{ uri: BottomSheetExample32Dark.src }} style={{ height: 150, width: 369 }} alt='bottom-sheet' />
+      )}
+    </Container>
+  );
+};
+
+const Example2 = () => {
+  const { isDarkTheme } = useMenuContext();
+
+  return (
+    <Container disableGutters sx={flexStyle as never}>
+      {isDarkTheme ? (
+        <img src={BottomSheetExample2Light.src} style={{ height: 848, width: 384 }} alt='bottom-sheet-full' />
+      ) : (
+        <img src={BottomSheetExample2Dark.src} style={{ height: 848, width: 384 }} alt='bottom-sheet' />
+      )}
+      <View style={{ marginVertical: 30 }} />
+    </Container>
+  );
+};
+
+const Example1 = () => {
+  const { isDarkTheme } = useMenuContext();
+
+  return (
+    <Container disableGutters sx={flexStyle as never}>
+      {isDarkTheme ? (
+        <img src={BottomSheetExample1Dark.src} style={{ height: 848, width: 384 }} alt='bottom-sheet' />
+      ) : (
+        <img src={BottomSheetExample1Light.src} style={{ height: 848, width: 384 }} alt='bottom-sheet-full' />
+      )}
+      <View style={{ marginVertical: 30 }} />
+    </Container>
+  );
+};
+
 export const bottomSheetDocumentation: ContentValues = {
   mainHeading: 'bottomSheetDocumentation:mainHeading',
   mainDescription: 'bottomSheetDocumentation:mainDescription',
@@ -23,19 +85,22 @@ export const bottomSheetDocumentation: ContentValues = {
       name: 'bottomSheetDocumentation:example1-name',
       description: 'bottomSheetDocumentation:example1-description',
       id: 'default',
-      component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Image source={{ uri: bottomsheet.src }} style={style} alt='bottom-sheet' />
-          <Image source={{ uri: bottomsheetfull.src }} style={style} alt='bottom-sheet-full' />
-        </Container>
-      ),
-      code: `<BottomSheet >
-  <Typography.Body>Industry</Typography.Body>
-  <Checkbox id='Software' label='Software' />
-  <Checkbox id='Marketing' label='Marketing' />
-  <Checkbox id='Designing' label='Designing' />
-  <Checkbox id='Hardware' label='Hardware' />
-</BottomSheet>`,
+      component: <Example1 />,
+      code: '',
+    },
+    {
+      name: 'bottomSheetDocumentation:example2-name',
+      description: 'bottomSheetDocumentation:example2-description',
+      id: 'default',
+      component: <Example2 />,
+      code: '',
+    },
+    {
+      name: 'bottomSheetDocumentation:example3-name',
+      description: 'bottomSheetDocumentation:example3-description',
+      id: 'default',
+      component: <Example3 />,
+      code: '',
     },
   ],
   properties: [
