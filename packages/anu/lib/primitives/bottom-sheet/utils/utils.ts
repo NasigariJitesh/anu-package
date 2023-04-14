@@ -53,7 +53,7 @@ export const getBottomSheetStyles = (
 
   const container: ViewProps['style'] = {
     ...theme.container,
-    top: props.height - props.startCoordinate,
+    top: props.height + props.startCoordinate,
     height: props.height,
     ...(props.containerStyles as Record<string, never>),
   };
