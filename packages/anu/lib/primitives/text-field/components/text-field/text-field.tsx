@@ -159,7 +159,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                 {getErrorIcon()}
               </Container>
             ) : null}
-            {finalProps.trailingIcon && !finalProps.error && finalProps.noDefaultErrorMessage ? (
+
+            {finalProps.trailingIcon && !finalProps.error ? (
               <Container disableGutters style={trailingIconContainerStyle}>
                 {finalProps.trailingIcon}
               </Container>

@@ -123,10 +123,13 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
 export const getLeadingContainerStyle = (props: TextFieldProps) => {
   const style = {
     paddingLeft: 8,
-    paddingVertical: 16,
+    height: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     color: 'inherit',
     backgroundColor: props.disabled ? 'inherit' : 'transparent',
-  };
+  } as const;
 
   return style;
 };
@@ -140,10 +143,14 @@ export const getLeadingContainerStyle = (props: TextFieldProps) => {
 export const getTrailingContainerStyle = (props: TextFieldProps) => {
   const style = {
     paddingRight: 8,
-    paddingVertical: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+
     color: 'inherit',
     backgroundColor: props.disabled ? 'inherit' : 'transparent',
-  };
+  } as const;
 
   return style;
 };
