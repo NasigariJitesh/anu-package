@@ -91,14 +91,14 @@ export const bottomSheetDocumentation: ContentValues = {
     {
       name: 'bottomSheetDocumentation:example2-name',
       description: 'bottomSheetDocumentation:example2-description',
-      id: 'default',
+      id: 'sheet-with-modal',
       component: <Example2 />,
       code: '',
     },
     {
       name: 'bottomSheetDocumentation:example3-name',
       description: 'bottomSheetDocumentation:example3-description',
-      id: 'default',
+      id: 'sheet-with-menu',
       component: <Example3 />,
       code: '',
     },
@@ -159,6 +159,14 @@ export const bottomSheetIndex: HeadingProps = {
     {
       title: 'bottomSheetDocumentation:example1-name',
       link: '#default',
+    },
+    {
+      title: 'bottomSheetDocumentation:example2-name',
+      link: '#sheet-with-modal',
+    },
+    {
+      title: 'bottomSheetDocumentation:example3-name',
+      link: '#sheet-with-menu',
     },
     {
       link: '#props',
