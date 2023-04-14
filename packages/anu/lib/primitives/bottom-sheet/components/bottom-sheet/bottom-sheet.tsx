@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import { useTheme } from 'anu/config';
 import { forwardRef, useCallback, useImperativeHandle } from 'react';
-import { useWindowDimensions, View } from 'react-native';
+import { useWindowDimensions } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   Extrapolate,
@@ -45,8 +45,8 @@ const BottomSheet = forwardRef<BottomSheetReferenceProps, BottomSheetProps>((pro
 
   const { height: SCREEN_HEIGHT } = useWindowDimensions();
 
-  const height = finalProps.height || SCREEN_HEIGHT;
-  const maxTranslateY = -height + startCoordinate;
+  const height = SCREEN_HEIGHT + -startCoordinate;
+  const maxTranslateY = (finalProps.height ? -height + finalProps.height : -height) + -startCoordinate;
 
   const translateY = useSharedValue(0);
   const isBottomSheetActive = useSharedValue(false);
@@ -55,8 +55,6 @@ const BottomSheet = forwardRef<BottomSheetReferenceProps, BottomSheetProps>((pro
   const theme = useTheme();
   const styles = getBottomSheetStyles({ ...finalProps, height }, theme);
 
-  const borderRadiusMax = styles.container.borderRadius as number;
-
   /**
    * this is a hook to create smooth scroll
    */
@@ -64,11 +62,13 @@ const BottomSheet = forwardRef<BottomSheetReferenceProps, BottomSheetProps>((pro
     (destination: number) => {
       'worklet';
 
-      isBottomSheetActive.value = destination !== 0;
+      isBottomSheetActive.value = destination + -startCoordinate < 0;
 
-      translateY.value = withSpring(destination, { damping });
+      const value = Math.max(destination, maxTranslateY);
+
+      translateY.value = withSpring(value, { damping });
     },
-    [isBottomSheetActive, translateY, damping],
+    [isBottomSheetActive, maxTranslateY, translateY, damping, startCoordinate],
   );
 
   /**
@@ -99,20 +99,21 @@ const BottomSheet = forwardRef<BottomSheetReferenceProps, BottomSheetProps>((pro
 
   // This will generate style with smooth animation based on the position
   const rnBottomSheetStyle = useAnimatedStyle(() => {
-    const borderRadius = interpolate(
-      translateY.value,
-      [maxTranslateY + 50, maxTranslateY],
-      [borderRadiusMax, 5],
-      Extrapolate.CLAMP,
-    );
+    return { transform: [{ translateY: translateY.value }] };
+  });
 
-    return { borderRadius, transform: [{ translateY: translateY.value }] };
+  const rnHandleStyle = useAnimatedStyle(() => {
+    const opacity = interpolate(translateY.value, [maxTranslateY + 50, maxTranslateY], [1, 0], Extrapolate.CLAMP);
+
+    // EXPERIMENTAL
+    return { opacity: maxTranslateY > -SCREEN_HEIGHT + startCoordinate ? 1 : opacity };
+    // return {opacity}
   });
 
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.container, rnBottomSheetStyle]}>
-        {hideDragHandle ? null : <View style={styles.dragHandle} />}
+        {hideDragHandle ? null : <Animated.View style={[styles.dragHandle, rnHandleStyle]} />}
         {children}
       </Animated.View>
     </GestureDetector>
