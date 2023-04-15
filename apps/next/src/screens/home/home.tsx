@@ -31,30 +31,28 @@ const HomeScreen = () => {
             onSortStart={(from: number) => console.log(from, 'from')}
           />
         </Container> */}
-        {/* <FileUpload
+        <FileUpload
           category='regular'
           type='outlined'
           title='Upload'
           size='medium'
           variant='image'
           multiple
-          sortable
-          previewStyle='list'
-          style={{ width: 500, height: 300 }}
+          style={{ marginLeft: 30 }}
           onChange={(data: Blob[] | Blob | null, uri?: string[] | string | null) => console.log(data, uri)}
-        /> */}
-
+        />
+        {/* 
         <FileDropZone
           variant='image'
           multiple
           sortable
-          previewStyle='list'
+          previewStyle='carousel'
           style={{ height: 700, flexDirection: 'column-reverse' }}
           dropZoneStyle={{ width: 300, height: 250 }}
           // onChange={(data: Blob[] | Blob | null, uri?: string[] | string | null) => console.log(data, uri)}
         >
           <Typography.Body>Drop Your files here</Typography.Body>
-        </FileDropZone>
+        </FileDropZone> */}
       </ScrollView>
     </Container>
   );
