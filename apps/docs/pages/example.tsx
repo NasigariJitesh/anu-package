@@ -63,7 +63,7 @@ export default function Example() {
       />
       <AutoComplete
         ref={reference}
-        variant='outlined'
+        variant='standard'
         direction='ltr'
         value={text}
         onChangeText={(value: string) => {
@@ -71,7 +71,10 @@ export default function Example() {
           console.log(value);
         }}
         data={data}
-        flatListProps={{ renderItem: ListRenderItem }}
+        flatListProps={{
+          renderItem: ListRenderItem,
+          ListEmptyComponent: <ListRenderItem item={{ id: '', value: 'No more Results' }} />,
+        }}
         caseSensitive
         debounce
         autoCompleteContainerStyle={{ width: 300, height: 300 }}

@@ -3,6 +3,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/display-name */
 import { getCombinedStylesForText, getCombinedStylesForView } from 'anu/common/utils';
+import { useTheme } from 'anu/config';
 import { AutoComplete, AutoCompleteReferenceProps, convertToOptionsFormat, Options } from 'anu/lib/composites';
 import { Container, Icon, Image, Typography } from 'anu/lib/primitives';
 import { AsYouType, ParseError, parsePhoneNumber, parsePhoneNumberWithError, PhoneNumber } from 'libphonenumber-js';
@@ -71,6 +72,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
   );
 
   const autoCompleteReference = useRef<AutoCompleteReferenceProps | null>(null);
+  const theme = useTheme();
 
   const { value, onChangeText, leadingIcon, flatListProps, ...otherAutoCompleteProps } = finalProps;
 
@@ -239,7 +241,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
           )
         ) : (
           // eslint-disable-next-line react-native/no-color-literals, react-native/no-inline-styles
-          <Icon name='language' size={25} style={{ color: 'inherit' }} />
+          <Icon name='language' size={25} style={{ color: theme.colors.$onSurfaceVariant }} />
         )}
       </Container>
     );
