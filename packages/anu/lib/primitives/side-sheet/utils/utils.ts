@@ -71,6 +71,8 @@ export const getSideSheetStyles = (
           borderRightWidth: props.divider ? 1 : 0,
         };
 
+  container = props.variant === 'modal' ? container : { ...container, borderRadius: 0 };
+
   return { container, ...(props.containerStyles as Record<string, never>) };
 };
 

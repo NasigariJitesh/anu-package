@@ -4,6 +4,7 @@ import { ViewProps } from 'react-native';
 export type SideSheetAlign = 'left' | 'right';
 
 export interface SideSheetProps extends Omit<ViewProps, 'style'> {
+  variant?: 'standard' | 'modal';
   children?: ReactChildren;
 
   /**
