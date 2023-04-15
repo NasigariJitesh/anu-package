@@ -16,6 +16,7 @@ import {
   PhoneInput,
   SearchBar,
   TextField,
+  TextFieldReferenceProps,
   Typography,
 } from 'anu/lib';
 import { AutoCompleteReferenceProps, Options } from 'anu/lib/composites/auto-complete/types';
@@ -27,7 +28,7 @@ import { Pressable } from 'react-native';
  */
 export default function Example() {
   const [text, setText] = useState('');
-  const reference = useRef<AutoCompleteReferenceProps | null>(null);
+  const reference = useRef<TextFieldReferenceProps | null>(null);
   const ListRenderItem = ({ item }: { item: Options }) => {
     return (
       <Pressable onPress={() => console.log('press')}>
@@ -174,11 +175,12 @@ export default function Example() {
           setText(value);
           console.log(value);
         }}
-        onFocus={() => reference.current?.focus()}
-        onBlur={() => reference.current?.blur()}
+        ref={reference}
       /> */}
 
-      <SearchBar
+      {/* <Button.Text title='SET' onPress={() => reference.current?.setState('abc')} /> */}
+
+      {/* <SearchBar
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
         value={text}
@@ -189,8 +191,8 @@ export default function Example() {
         type={'docked'}
         debounce
         debounceDuration={1000}
-      />
-      {/* <PhoneInput
+      /> */}
+      <PhoneInput
         value={text}
         onChangeText={(value: string) => {
           setText(value);
@@ -198,7 +200,7 @@ export default function Example() {
         }}
         defaultCountryCode={'+91'}
         variant={'outlined'}
-      /> */}
+      />
     </Container>
   );
 }

@@ -46,7 +46,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
 
     const finalProps = { ...defaultProps, ...props };
     const { variant, sx, value, ...componentProps } = finalProps;
-    const [isTextFieldVisible, toggleTextFieldVisible] = useState(!!value && !props.disabled);
+    const [isTextFieldVisible, toggleTextFieldVisible] = useState(props.autoFocus ?? (!!value && !props.disabled));
 
     const style = getTextFieldStyles(theme, finalProps);
     const containerStyle = getTextFieldContainerStyle(finalProps, theme);
@@ -160,16 +160,19 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
             </Container>
             {finalProps.error || finalProps.showClearButton || finalProps.trailingIcon ? (
               <Container disableGutters style={trailingIconContainerStyle}>
-                {value && finalProps.showClearButton ? (
-                  <IconButton
-                    type='standard'
-                    icon={{ name: 'clear', props: { size: 16 } }}
-                    onPress={(event) => {
-                      if (componentProps.onChangeText) componentProps.onChangeText('');
-                      onTextInputPressedHandler(event);
-                    }}
-                  />
-                ) : null}
+                {/* eslint-disable-next-line react-native/no-inline-styles */}
+                <Container disableGutters style={{ minWidth: 40 }}>
+                  {value && finalProps.showClearButton ? (
+                    <IconButton
+                      type='standard'
+                      icon={{ name: 'clear', props: { size: 16 } }}
+                      onPress={(event) => {
+                        textInputReference.current?.clear();
+                        onTextInputPressedHandler(event);
+                      }}
+                    />
+                  ) : null}
+                </Container>
                 {finalProps.error && !finalProps.noDefaultErrorMessage ? getErrorIcon() : finalProps.trailingIcon}
               </Container>
             ) : null}

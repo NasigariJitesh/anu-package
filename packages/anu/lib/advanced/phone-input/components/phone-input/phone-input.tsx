@@ -99,7 +99,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     if (props.defaultCountryCode) {
       onChangeTextHandler(props.defaultCountryCode);
     }
-  }, []);
+  }, [props.defaultCountryCode]);
 
   const focus = useCallback(() => {
     autoCompleteReference.current?.focus();
