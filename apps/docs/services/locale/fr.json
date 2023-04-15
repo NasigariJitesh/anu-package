@@ -81,6 +81,7 @@
   "autoCompleteDocumentation:property-debounceDuration-description": "Durée de temps pour le décalage.",
   "autoCompleteDocumentation:property-resultContainerStyle-description": "Les styles pour le conteneur des résultats.",
   "autoCompleteDocumentation:property-autoCompleteContainerStyle-description": "Les styles pour le conteneur des résultats.",
+  "autoCompleteDocumentation:externalProperties": "Propriétés des champs de texte",
 
   "avatarDocumentation:mainHeading": "Avatar",
   "avatarDocumentation:mainDescription": "Un avatar est généralement affiché sous forme d’une petite image ou icône associée au profil ou à l'identité d'un utilisateur.",

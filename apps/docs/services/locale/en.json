@@ -84,6 +84,7 @@
   "autoCompleteDocumentation:property-debounceDuration-description": "Time Duration for the debouncing.",
   "autoCompleteDocumentation:property-resultContainerStyle-description": "The styles for the results container.",
   "autoCompleteDocumentation:property-autoCompleteContainerStyle-description": "The styles for the results container.",
+  "autoCompleteDocumentation:externalProperties": "Text Field Properties",
 
   "avatarDocumentation:mainHeading": "Avatar",
   "avatarDocumentation:mainDescription": "An avatar is typically displayed as a small image or icon that is associated with a user’s profile or identity.",

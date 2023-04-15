@@ -267,7 +267,7 @@ const Sidebar = () => {
               {
                 title: 'leftSideBar:auto-complete',
                 components: [],
-                link: 'components/auto-complete',
+                link: '/components/auto-complete',
               },
               {
                 title: 'leftSideBar:avatar',

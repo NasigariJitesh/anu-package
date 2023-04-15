@@ -241,6 +241,10 @@ export const autoCompleteDocumentation: ContentValues = {
 />`,
     },
   ],
+  externalProperties: {
+    link: '/components/text-field',
+    title: 'autoCompleteDocumentation:externalProperties',
+  },
 };
 
 export const autoCompleteIndex: HeadingProps = {
