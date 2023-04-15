@@ -73,7 +73,7 @@ export const getStandardAutoCompleteStyles = ({ colors }: DripsyFinalTheme, disa
 export const getAutoCompleteStyles = (theme: DripsyFinalTheme) => {
   const defaultAutoCompleteContainerStyle = {
     alignItems: 'center',
-    width: 250,
+    width: 264,
   } as const;
 
   const defaultResultsContainerStyle = {

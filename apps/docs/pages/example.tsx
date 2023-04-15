@@ -178,7 +178,7 @@ export default function Example() {
         onBlur={() => reference.current?.blur()}
       /> */}
 
-      {/* <SearchBar
+      <SearchBar
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
         value={text}
@@ -187,11 +187,10 @@ export default function Example() {
         }}
         filterOnChange={(key: string) => data.filter((item) => item.id.includes(key))}
         type={'docked'}
-        containerStyle={{ width: '100%', backgroundColor: 'pink' }}
         debounce
         debounceDuration={1000}
-      /> */}
-      <PhoneInput
+      />
+      {/* <PhoneInput
         value={text}
         onChangeText={(value: string) => {
           setText(value);
@@ -199,7 +198,7 @@ export default function Example() {
         }}
         defaultCountryCode={'+91'}
         variant={'outlined'}
-      />
+      /> */}
     </Container>
   );
 }

@@ -147,7 +147,7 @@ export const getTrailingContainerStyle = (props: TextFieldProps) => {
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
-
+    minWidth: 48,
     color: 'inherit',
     backgroundColor: props.disabled ? 'inherit' : 'transparent',
   } as const;
