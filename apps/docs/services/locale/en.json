@@ -107,7 +107,8 @@
 
   "bottomSheetDocumentation:mainHeading": "Bottom Sheet",
   "bottomSheetDocumentation:mainDescription": "The bottom sheet is a type opf modal dialog or component that slides up from the bottom of the screen to display additional content or actions",
-  "bottomSheetDocumentation:example1-name": "Default",
+  "bottomSheetDocumentation:example1-name": "Standard bottom sheet",
+  "bottomSheetDocumentation:example1-description": "A Standard bottom sheet typically includes a header section with a title, some description along with controls, actions, and information.\n\nAlso, it can be customized with various styles and options, including list items with icons, separators, and others.",
   "bottomSheetDocumentation:property-height-description": "The height of the bottom sheet.",
   "bottomSheetDocumentation:property-startCoordinate-description": "TInitial coordinate for the sheet to stay at",
   "bottomSheetDocumentation:property-damping-description": "Damping for animations.",
@@ -115,6 +116,10 @@
   "bottomSheetDocumentation:property-hideDragHandle-description": "If true, the the bottom sheet drag handle will be hidden.",
   "bottomSheetDocumentation:property-handleStyles-description": "Styles for the handle.",
   "bottomSheetDocumentation:property-containerStyles-description": "Styles for the bottom sheet.",
+  "bottomSheetDocumentation:example2-name": "Modal bottom sheet",
+  "bottomSheetDocumentation:example2-description": "A Modal bottom sheet typically covers the entire screen and requires the user to either dismiss or take an action before returning to the underlying content.",
+  "bottomSheetDocumentation:example3-name": "Modal bottom sheets - with menu",
+  "bottomSheetDocumentation:example3-description": "Bottom sheets with Menu contain a menu or list of options. When triggered, the bottom sheet with the menu slides up from the bottom of the screen and displays a list of options that the user can interact with.\nThe menu can be customized with various styles and options, including list items with icons, separators, and sub-headers.",
 
   "regularButtonDocumentation:mainHeading": "Button",
   "regularButtonDocumentation:mainDescription": "Buttons help users navigate, interact, and engage with websites and apps.",

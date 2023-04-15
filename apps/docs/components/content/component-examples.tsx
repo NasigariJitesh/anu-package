@@ -72,63 +72,65 @@ const RenderExample = (example: Example, index: number) => {
       <Container disableGutters sx={styles.examplesComponentContainer as never}>
         {example.component}
       </Container>
-      <Container disableGutters style={styles.codeContainer}>
-        <Icon
-          name={isCopiedToClipboard ? 'check' : 'content-copy'}
-          size={18}
-          onPress={onPressedHandler}
-          style={sx({
-            position: 'absolute',
-            zIndex: 2,
-            right: '5px',
-            top: '4px',
-            borderRadius: '8px',
-            padding: '8px',
-            color: isCopiedToClipboard ? 'green' : (theme.colors?.$onBackground as string),
-            backgroundColor: theme?.colors?.$background as never,
-          })}
-        />
-        <ScrollView
-          horizontal
-          sx={styles.codeArea as never}
-          id={undefined}
-          aria-label={undefined}
-          aria-busy={undefined}
-          aria-checked={undefined}
-          aria-disabled={undefined}
-          aria-expanded={undefined}
-          aria-selected={undefined}
-          aria-labelledby={undefined}
-          aria-valuemax={undefined}
-          aria-valuemin={undefined}
-          aria-valuenow={undefined}
-          aria-valuetext={undefined}
-          aria-hidden={undefined}
-          aria-live={undefined}
-          aria-modal={undefined}
-          role={undefined}
-          stickyHeaderHiddenOnScroll={undefined}
-          StickyHeaderComponent={undefined}
-          onPointerEnter={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeave={undefined}
-          onPointerLeaveCapture={undefined}
-          onPointerMove={undefined}
-          onPointerMoveCapture={undefined}
-          onPointerCancel={undefined}
-          onPointerCancelCapture={undefined}
-          onPointerDown={undefined}
-          onPointerDownCapture={undefined}
-          onPointerUp={undefined}
-          onPointerUpCapture={undefined}
-          automaticallyAdjustKeyboardInsets={undefined}
-          automaticallyAdjustsScrollIndicatorInsets={undefined}
-        >
-          <SyntaxHighlighter language='text' style={arduinoLight} customStyle={styles.code}>
-            {example.code}
-          </SyntaxHighlighter>
-        </ScrollView>
-      </Container>
+      {example.code ? (
+        <Container disableGutters style={styles.codeContainer}>
+          <Icon
+            name={isCopiedToClipboard ? 'check' : 'content-copy'}
+            size={18}
+            onPress={onPressedHandler}
+            style={sx({
+              position: 'absolute',
+              zIndex: 2,
+              right: '5px',
+              top: '4px',
+              borderRadius: '8px',
+              padding: '8px',
+              color: isCopiedToClipboard ? 'green' : (theme.colors?.$onBackground as string),
+              backgroundColor: theme?.colors?.$background as never,
+            })}
+          />
+          <ScrollView
+            horizontal
+            sx={styles.codeArea as never}
+            id={undefined}
+            aria-label={undefined}
+            aria-busy={undefined}
+            aria-checked={undefined}
+            aria-disabled={undefined}
+            aria-expanded={undefined}
+            aria-selected={undefined}
+            aria-labelledby={undefined}
+            aria-valuemax={undefined}
+            aria-valuemin={undefined}
+            aria-valuenow={undefined}
+            aria-valuetext={undefined}
+            aria-hidden={undefined}
+            aria-live={undefined}
+            aria-modal={undefined}
+            role={undefined}
+            stickyHeaderHiddenOnScroll={undefined}
+            StickyHeaderComponent={undefined}
+            onPointerEnter={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeave={undefined}
+            onPointerLeaveCapture={undefined}
+            onPointerMove={undefined}
+            onPointerMoveCapture={undefined}
+            onPointerCancel={undefined}
+            onPointerCancelCapture={undefined}
+            onPointerDown={undefined}
+            onPointerDownCapture={undefined}
+            onPointerUp={undefined}
+            onPointerUpCapture={undefined}
+            automaticallyAdjustKeyboardInsets={undefined}
+            automaticallyAdjustsScrollIndicatorInsets={undefined}
+          >
+            <SyntaxHighlighter language='text' style={arduinoLight} customStyle={styles.code}>
+              {example.code}
+            </SyntaxHighlighter>
+          </ScrollView>
+        </Container>
+      ) : null}
       {/* <Divider variant='full-width' light style={styles.divider} /> */}
     </Container>
   );

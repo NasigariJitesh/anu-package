@@ -1,8 +1,19 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Image } from 'anu/lib';
+import { Container, Image } from 'anu/lib';
 import sidesheet from 'assets/side-sheet.png';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+
+const flexStyle = {
+  flexWrap: 'wrap',
+  // < 576 = 90vw
+  // 576
+  //
+  // 990 px
+  // > 1200px
+  width: ['90vw', '90vw', '550px', '600px', '750px'],
+  overflow: 'scroll',
+} as const;
 
 export const sideSheetDocumentation: ContentValues = {
   mainHeading: 'sideSheetDocumentation:mainHeading',
@@ -12,8 +23,12 @@ export const sideSheetDocumentation: ContentValues = {
       name: 'sideSheetDocumentation:example1-name',
       description: 'sideSheetDocumentation:example1-description',
       id: 'default',
-      component: <Image source={{ uri: sidesheet.src }} style={{ width: 350, height: 450 }} alt='side-sheet' />,
-      code: "<SideSheet width={300} headline= 'Title' startCoordinate={-100} align='right' divider />",
+      component: (
+        <Container disableGutters sx={flexStyle as never}>
+          <Image source={{ uri: sidesheet.src }} style={{ width: 450, height: 350 }} alt='side-sheet' />
+        </Container>
+      ),
+      code: "<SideSheet width={300} headline= 'Title' startCoordinate={-50} align='right' divider />",
     },
   ],
   properties: [
