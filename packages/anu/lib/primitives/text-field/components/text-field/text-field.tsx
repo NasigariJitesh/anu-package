@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+import { IconButton } from 'anu/lib';
 import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
 import { useTheme } from 'config/dripsy';
 import { Pressable, TextInput, useSx } from 'dripsy';
@@ -6,6 +7,7 @@ import Container from 'lib/primitives/layout';
 import Typography from 'lib/primitives/typography';
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import {
+  GestureResponderEvent,
   NativeSyntheticEvent,
   PressableStateCallbackType,
   TextInput as RNTextInput,
@@ -24,6 +26,7 @@ import {
   getTextFieldContainerStyle,
   getTextFieldStyles,
   getTrailingContainerStyle,
+  getUnanimatedLabelStyles,
 } from '../../utils';
 import { defaultProps } from './default';
 import TextFieldLabel from './label';
@@ -45,7 +48,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const finalProps = { ...defaultProps, ...props };
     const { variant, sx, value, ...componentProps } = finalProps;
 
-    const [isTextFieldVisible, toggleTextFieldVisible] = useState(!!value && !props.disabled);
+    const [isTextFieldVisible, toggleTextFieldVisible] = useState(props.autoFocus ?? (!!value && !props.disabled));
 
     const style = getTextFieldStyles(theme, finalProps);
     const containerStyle = getTextFieldContainerStyle(finalProps, theme);
@@ -55,8 +58,12 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const innerContainerStyle = getInnerContainerStyle();
     const errorStyle = getErrorStyle(theme);
     const supportingTextStyle = getSupportingTextStyle(theme);
+    const { labelContainerStyle, labelTextStyle } = getUnanimatedLabelStyles(theme);
+
     const onFocusStyles =
-      isTextFieldVisible || value ? ({ paddingTop: variant === 'filled' ? 14 : 0 } as const) : ({ height: 0 } as const);
+      isTextFieldVisible || value !== ''
+        ? ({ paddingTop: variant === 'filled' ? 14 : 0 } as const)
+        : ({ height: 0 } as const);
 
     const [height, setHeight] = useState(containerStyle.height as number);
     const [errors, setErrors] = useState(getErrors(props.errorMessage));
@@ -75,6 +82,27 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
 
     useImperativeHandle(reference, () => ({ focus, blur }), [focus, blur]);
 
+    useEffect(() => {
+      pressableReference.current?.measure((_x, _y, _w, h) => {
+        setHeight(h);
+      });
+    }, []);
+
+    useEffect(() => {
+      if (errors?.length <= 0 && !finalProps.noDefaultErrorMessage) {
+        const errorArray = [...errors];
+        errorArray.push('Please provide a valid input');
+
+        setErrors([...errorArray]);
+      } else setErrors(getErrors(props.errorMessage));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.error, props.errorMessage]);
+
+    useEffect(() => {
+      if (isTextFieldVisible !== !!value) toggleTextFieldVisible(!!value);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value]);
+
     const generateStyles = (state: PressableStateCallbackType) => {
       return generateHoverStyles(state, containerStyle, useSx);
     };
@@ -90,7 +118,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
       toggleTextFieldVisible(false);
     };
 
-    const onTextInputPressedHandler = () => {
+    const onTextInputPressedHandler = (event: GestureResponderEvent) => {
+      event?.preventDefault();
       if (!isTextFieldVisible) {
         toggleTextFieldVisible(true);
         setOnFocus(() => ({ focused: true, pressed: true }));
@@ -98,22 +127,6 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
         textInputReference.current?.focus();
       }
     };
-
-    useEffect(() => {
-      pressableReference.current?.measure((_x, _y, _w, h) => {
-        setHeight(h);
-      });
-    }, []);
-
-    useEffect(() => {
-      if (errors?.length <= 0 && !finalProps.noDefaultErrorMessage) {
-        const errorArray = [...errors];
-        errorArray.push('Please provide a valid input');
-
-        setErrors([...errorArray]);
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.error]);
 
     return (
       <Container disableGutters style={finalProps.containerStyle}>
@@ -133,7 +146,15 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               </Container>
             ) : null}
             <Container disableGutters flexDirection='column' justify='center' sx={innerContainerStyle}>
-              {finalProps.label == '' ? null : (
+              {finalProps.disableLabelAnimation ? (
+                value ? null : (
+                  <Container disableGutters style={labelContainerStyle}>
+                    <Typography.Body numberOfLines={1} ellipsizeMode='tail' style={labelTextStyle}>
+                      {finalProps.label}
+                    </Typography.Body>
+                  </Container>
+                )
+              ) : (
                 <TextFieldLabel
                   {...finalProps}
                   height={height}
@@ -150,19 +171,25 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                 value={value}
                 onFocus={onTextInputFocus}
                 onBlur={onTextInputBlur}
-                placeholder={undefined}
                 style={[onFocusStyles, getCombinedStylesForText(style, finalProps.textInputStyle)]}
               />
             </Container>
-            {finalProps.error && !finalProps.noDefaultErrorMessage ? (
+            {finalProps.error || finalProps.showClearButton || finalProps.trailingIcon ? (
               <Container disableGutters style={trailingIconContainerStyle}>
-                {getErrorIcon()}
-              </Container>
-            ) : null}
-
-            {finalProps.trailingIcon && !finalProps.error ? (
-              <Container disableGutters style={trailingIconContainerStyle}>
-                {finalProps.trailingIcon}
+                {/* eslint-disable-next-line react-native/no-inline-styles */}
+                <Container disableGutters style={{ minWidth: 40 }}>
+                  {value && finalProps.showClearButton ? (
+                    <IconButton
+                      type='standard'
+                      icon={{ name: 'clear', props: { size: 16 } }}
+                      onPress={(event) => {
+                        if (componentProps.onChangeText) componentProps.onChangeText('');
+                        onTextInputPressedHandler(event);
+                      }}
+                    />
+                  ) : null}
+                </Container>
+                {finalProps.error && !finalProps.noDefaultErrorMessage ? getErrorIcon() : finalProps.trailingIcon}
               </Container>
             ) : null}
           </Container>
@@ -172,7 +199,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
             {finalProps?.supportingText}
           </Typography.Body>
         ) : null}
-        {props.error &&
+        {finalProps.error &&
           errors?.map((error, index) => (
             <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
               {error}

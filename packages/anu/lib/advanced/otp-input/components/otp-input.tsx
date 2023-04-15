@@ -103,11 +103,13 @@ const IndividualOTPField = ({
       style={{ ...style, ...inputProps.style }}
       textInputStyle={textInputStyle}
       label=''
+      disableLabelAnimation
       onChangeText={(text) => onValueChangeHandler(text, index)}
       error={inputProps.error}
       noDefaultErrorMessage={true}
       onKeyPress={(event) => onKeyPressHandler(event, value)}
       disabled={inputProps.disabled}
+      showClearButton={false}
     />
   );
 };
