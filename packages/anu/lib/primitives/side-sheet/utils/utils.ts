@@ -58,14 +58,14 @@ export const getSideSheetStyles = (
     props.align === 'right'
       ? {
           ...container,
-          ...theme.alignRight,
+          ...(props.variant === 'modal' ? theme.alignRight : {}),
           right: -props.startCoordinate,
           width: props.width,
           borderLeftWidth: props.divider ? 1 : 0,
         }
       : {
           ...container,
-          ...theme.alignLeft,
+          ...(props.variant === 'modal' ? theme.alignLeft : {}),
           left: props.startCoordinate,
           width: props.width,
           borderRightWidth: props.divider ? 1 : 0,

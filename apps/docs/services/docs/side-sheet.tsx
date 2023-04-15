@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Image } from 'anu/lib';
-import sidesheet from 'assets/sidesheet.png';
+import sidesheet from 'assets/side-sheet.png';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 
@@ -12,7 +12,7 @@ export const sideSheetDocumentation: ContentValues = {
       name: 'sideSheetDocumentation:example1-name',
       description: 'sideSheetDocumentation:example1-description',
       id: 'default',
-      component: <Image source={{ uri: sidesheet.src }} style={{ width: 720, height: 400 }} alt='side-sheet' />,
+      component: <Image source={{ uri: sidesheet.src }} style={{ width: 350, height: 450 }} alt='side-sheet' />,
       code: "<SideSheet width={300} headline= 'Title' startCoordinate={-100} align='right' divider />",
     },
   ],
