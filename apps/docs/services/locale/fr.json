@@ -33,6 +33,7 @@
   "leftSideBar:getting-started": "Commencer",
   "leftSideBar:avatar": "Avatar",
   "leftSideBar:theming": "Thématisation",
+  "leftSideBar:auto-complete": "Auto Compléter",
   "leftSideBar:badge": "Badge",
   "leftSideBar:bottom-sheet": "Bottom Sheet",
   "leftSideBar:button": "Bouton",
@@ -60,6 +61,26 @@
   "leftSideBar:switch": "Commutateur",
   "leftSideBar:typography": "Typographie",
   "leftSideBar:credits": "Crédits",
+
+  "autoCompleteDocumentation:mainHeading": "Auto Compléter",
+
+  "autoCompleteDocumentation:example1-name": "Auto Compléter avec contour",
+  "autoCompleteDocumentation:example2-name": "Auto Compléter rempli",
+  "autoCompleteDocumentation:example3-name": "Auto Compléter de base",
+  "autoCompleteDocumentation:example4-name": "Auto Compléter - avec décalage",
+
+  "autoCompleteDocumentation:example5-name": "Auto Compléter - pas de résultats",
+
+  "autoCompleteDocumentation:property-value-description": "La valeur du texte dans l’auto-complétion.",
+  "autoCompleteDocumentation:property-data-description": "Le tableau d’éléments à rechercher.",
+  "autoCompleteDocumentation:property-onChangeText-description": "Fonction de rappel lorsque la valeur est modifiée.",
+  "autoCompleteDocumentation:property-flatListProps-description": "Les propriétés du composant de liste plate utilisé pour afficher les résultats.",
+  "autoCompleteDocumentation:property-filterOnChange-description": "Fonction pour filtrer les options lors de la modification de la valeur du texte.",
+  "autoCompleteDocumentation:property-caseSensitive-description": "Si la comparaison est sensible à la casse.",
+  "autoCompleteDocumentation:property-debounce-description": "Si vrai, utilise une technique de décalage lors du filtrage.",
+  "autoCompleteDocumentation:property-debounceDuration-description": "Durée de temps pour le décalage.",
+  "autoCompleteDocumentation:property-resultContainerStyle-description": "Les styles pour le conteneur des résultats.",
+  "autoCompleteDocumentation:property-autoCompleteContainerStyle-description": "Les styles pour le conteneur des résultats.",
 
   "avatarDocumentation:mainHeading": "Avatar",
   "avatarDocumentation:mainDescription": "Un avatar est généralement affiché sous forme d’une petite image ou icône associée au profil ou à l'identité d'un utilisateur.",

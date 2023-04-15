@@ -262,8 +262,13 @@ const Sidebar = () => {
           <HeadingLink link='/theming' title='leftSideBar:theming' />
           <Index
             heading='leftSideBar:components'
-            headingLink='/components/avatar'
+            headingLink='/components/auto-complete'
             links={[
+              {
+                title: 'leftSideBar:auto-complete',
+                components: [],
+                link: 'components/auto-complete',
+              },
               {
                 title: 'leftSideBar:avatar',
                 components: [],
@@ -372,20 +377,9 @@ const Sidebar = () => {
                 link: '/components/image',
               },
               {
-                title: 'leftSideBar:input-fields',
-                link: '/components/input-fields/text-field',
-                components: [
-                  {
-                    title: 'leftSideBar:text-fields',
-                    link: '/components/input-fields/text-field',
-                    variants: [],
-                  },
-                  {
-                    title: 'leftSideBar:otp-input',
-                    link: '/components/input-fields/otp-input',
-                    variants: [],
-                  },
-                ],
+                title: 'leftSideBar:otp-input',
+                link: '/components//otp-input',
+                components: [],
               },
               {
                 title: 'leftSideBar:radio',
@@ -402,7 +396,11 @@ const Sidebar = () => {
                 link: '/components/switch',
                 components: [],
               },
-
+              {
+                title: 'leftSideBar:text-fields',
+                link: '/components/text-field',
+                components: [],
+              },
               {
                 title: 'leftSideBar:typography',
                 link: '/components/typography',

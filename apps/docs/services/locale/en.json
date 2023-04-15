@@ -31,6 +31,7 @@
   "rightSideBar:onThisPage": "On this page",
   "leftSideBar:components": "Components",
   "leftSideBar:getting-started": "Getting Started",
+  "leftSideBar:auto-complete": "Auto Complete",
   "leftSideBar:avatar": "Avatar",
   "leftSideBar:theming": "Theming",
   "leftSideBar:badge": "Badge",
@@ -61,6 +62,28 @@
   "leftSideBar:typography": "Typography",
 
   "leftSideBar:credits": "Credits",
+
+  "autoCompleteDocumentation:mainHeading": "Auto Complete",
+  "autoCompleteDocumentation:example1-name": "Outlined Auto Complete",
+
+  "autoCompleteDocumentation:example2-name": "Filled Auto Complete",
+
+  "autoCompleteDocumentation:example3-name": "Base Auto Complete",
+
+  "autoCompleteDocumentation:example4-name": "Auto Complete - with debouncing",
+
+  "autoCompleteDocumentation:example5-name": "Auto Complete - no results",
+
+  "autoCompleteDocumentation:property-value-description": "The Value of the text in auto complete.",
+  "autoCompleteDocumentation:property-data-description": "The array of items to be searched from.",
+  "autoCompleteDocumentation:property-onChangeText-description": "Callback Function when the value is changed.",
+  "autoCompleteDocumentation:property-flatListProps-description": "The properties for the flat list component used to display results.",
+  "autoCompleteDocumentation:property-filterOnChange-description": "Function to filter the options on change of text value.",
+  "autoCompleteDocumentation:property-caseSensitive-description": "Whether the comparison is case sensitive.",
+  "autoCompleteDocumentation:property-debounce-description": "If true, uses debouncing technique when filtering.",
+  "autoCompleteDocumentation:property-debounceDuration-description": "Time Duration for the debouncing.",
+  "autoCompleteDocumentation:property-resultContainerStyle-description": "The styles for the results container.",
+  "autoCompleteDocumentation:property-autoCompleteContainerStyle-description": "The styles for the results container.",
 
   "avatarDocumentation:mainHeading": "Avatar",
   "avatarDocumentation:mainDescription": "An avatar is typically displayed as a small image or icon that is associated with a user’s profile or identity.",

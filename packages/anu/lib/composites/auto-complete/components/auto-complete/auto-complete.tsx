@@ -64,7 +64,8 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
     if (callback) return callback(event);
   };
 
-  const { defaultAutoCompleteContainerStyle, defaultResultsContainerStyle } = getAutoCompleteStyles(theme);
+  const { defaultAutoCompleteContainerStyle, defaultResultsContainerStyle, defaultFlatListStyle } =
+    getAutoCompleteStyles(theme);
 
   return (
     <Container
@@ -84,7 +85,12 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
           style={getCombinedStylesForView(defaultResultsContainerStyle, finalProps.resultContainerStyle)}
           onStartShouldSetResponderCapture={() => true}
         >
-          <FlatList keyExtractor={(item: Options) => item.id} {...finalProps.flatListProps} data={results} />
+          <FlatList
+            keyExtractor={(item: Options) => item.id}
+            {...finalProps.flatListProps}
+            data={results}
+            style={getCombinedStylesForView(defaultFlatListStyle, finalProps.flatListProps.style)}
+          />
         </Container>
       ) : null}
     </Container>

@@ -63,7 +63,7 @@ export default function Example() {
       />
       <AutoComplete
         ref={reference}
-        variant='standard'
+        variant='base'
         direction='ltr'
         value={text}
         onChangeText={(value: string) => {

@@ -86,6 +86,7 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
     <AutoComplete
       {...autoCompleteProps}
       ref={autoCompleteReference}
+      variant='base'
       data={results}
       value={value}
       leadingIcon={getLeadingComponent()}

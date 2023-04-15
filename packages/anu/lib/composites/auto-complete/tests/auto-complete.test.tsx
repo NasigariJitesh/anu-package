@@ -53,12 +53,12 @@ describe('Testing for Outlined Auto Complete', () => {
   });
 });
 
-describe('Testing for Standard Auto Complete', () => {
+describe('Testing for Base Auto Complete', () => {
   const tree = renderer.create(
     <DripsyApp theme={makeTheme({})}>
       <AutoComplete
         value='Hey'
-        variant='standard'
+        variant='base'
         disabled
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
@@ -214,14 +214,14 @@ describe('Testing for Outlined Auto Complete with ref', () => {
   });
 });
 
-describe('Testing for standard Auto Complete Events without ref', () => {
+describe('Testing for base Auto Complete Events without ref', () => {
   it('should trigger focus handler', () => {
     render(
       <DripsyApp theme={makeTheme({})}>
         <AutoComplete
           testID='auto-complete-test'
           value='Hey'
-          variant='standard'
+          variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
@@ -241,7 +241,7 @@ describe('Testing for standard Auto Complete Events without ref', () => {
         <AutoComplete
           testID='auto-complete-test'
           value='Hey'
-          variant='standard'
+          variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
@@ -259,7 +259,7 @@ describe('Testing for standard Auto Complete Events without ref', () => {
         <AutoComplete
           testID='auto-complete-test'
           value='Hey'
-          variant='standard'
+          variant='base'
           data={data}
           caseSensitive={false}
           flatListProps={{ renderItem: ListRenderItem }}
@@ -279,7 +279,7 @@ describe('Testing for standard Auto Complete Events without ref', () => {
         <AutoComplete
           testID='auto-complete-test'
           value=''
-          variant='standard'
+          variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
@@ -299,7 +299,7 @@ describe('Testing for standard Auto Complete Events without ref', () => {
         <AutoComplete
           testID='auto-complete-test'
           value=''
-          variant='standard'
+          variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
@@ -314,7 +314,7 @@ describe('Testing for standard Auto Complete Events without ref', () => {
   });
 });
 
-describe('Testing for standard Auto Complete with ref', () => {
+describe('Testing for base Auto Complete with ref', () => {
   const reference = React.createRef<AutoCompleteReferenceProps>();
 
   it('Focus using ref', async () => {
@@ -324,7 +324,7 @@ describe('Testing for standard Auto Complete with ref', () => {
           ref={reference}
           testID='auto-complete-test'
           value='Hey'
-          variant='standard'
+          variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
@@ -344,7 +344,7 @@ describe('Testing for standard Auto Complete with ref', () => {
           ref={reference}
           testID='auto-complete-test'
           value='Hey'
-          variant='standard'
+          variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}
@@ -366,7 +366,7 @@ describe('Testing for standard Auto Complete with ref', () => {
           ref={reference}
           testID='auto-complete-test'
           value='Hey'
-          variant='standard'
+          variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
           onChangeText={(text: string) => {}}

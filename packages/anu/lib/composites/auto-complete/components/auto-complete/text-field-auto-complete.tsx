@@ -4,7 +4,7 @@ import { Container, IconButton, TextField } from 'anu/lib/primitives';
 import React from 'react';
 
 import { AutoCompleteProps } from '../../types';
-import { getDropDownButtonStyle, getOverridingStyleForStandardVariant } from '../../utils';
+import { getDropDownButtonStyle, getOverridingStyleForBaseVariant } from '../../utils';
 import { useAutoCompleteContext } from '../context/context';
 
 const TextFieldAutoComplete = (props: AutoCompleteProps) => {
@@ -12,7 +12,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
 
   const theme = useTheme();
 
-  const overrideStyle = getOverridingStyleForStandardVariant();
+  const overrideStyle = getOverridingStyleForBaseVariant();
 
   const {
     resultContainerStyle,
@@ -68,7 +68,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
   const getStyle = () => {
     let style = { ...textFieldProps.style, position: 'relative' as const };
 
-    if (variant === 'standard') style = { ...overrideStyle, ...style };
+    if (variant === 'base') style = { ...overrideStyle, ...style };
 
     return style;
   };
@@ -78,7 +78,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
       {...textFieldProps}
       // eslint-disable-next-line react-native/no-inline-styles
       style={getStyle()}
-      variant={variant === 'standard' ? 'outlined' : variant}
+      variant={variant === 'base' ? 'outlined' : variant}
       ref={textInputReference}
       placeholderTextColor={placeholderTextColor ?? theme.colors.$onSurfaceVariant}
       leadingIcon={

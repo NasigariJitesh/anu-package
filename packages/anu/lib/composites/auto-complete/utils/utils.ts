@@ -4,67 +4,6 @@ import { DripsyFinalTheme } from 'dripsy';
 import { Options } from '../types';
 
 /**
- * To generate style for the standard variant of the auto complete
- *
- * @param theme
- * @param theme.colors - the colors according to theme
- * @param disabled - whether field is disabled
- * @returns style of the dripsy text field
- */
-export const getStandardAutoCompleteStyles = ({ colors }: DripsyFinalTheme, disabled?: boolean) => {
-  const defaultAutoCompleteStyle = {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-    color: disabled ? getColorInRGBA(colors.$onSurface, 38) : colors.$onSurface,
-    height: 56,
-    width: '100%',
-    paddingVertical: 0,
-    paddingHorizontal: 0,
-    cursor: 'text',
-    position: 'relative',
-  } as const;
-
-  const defaultInputAreaStyle = {
-    fontSize: 16,
-    lineHeight: 24,
-    height: 56,
-    fontWeight: '400' as const,
-    outline: 'none',
-    flex: 1,
-    minWidth: 0,
-    paddingHorizontal: 18,
-    color: disabled ? getColorInRGBA(colors.$onSurface, 38) : colors.$onSurface,
-    letterSpacing: 0.5,
-    caretColor: 'inherit',
-    backgroundColor: 'transparent',
-  } as const;
-
-  const leadingComponentContainerStyle = {
-    paddingLeft: 8,
-    color: 'inherit',
-    backgroundColor: disabled ? 'inherit' : 'transparent',
-    alignItems: 'center',
-    flexDirection: 'row',
-  } as const;
-
-  const trailingComponentContainerStyle = {
-    paddingRight: 8,
-    color: 'inherit',
-    backgroundColor: disabled ? 'inherit' : 'transparent',
-    alignItems: 'center',
-    flexDirection: 'row',
-  } as const;
-
-  return {
-    defaultAutoCompleteStyle,
-    defaultInputAreaStyle,
-    leadingComponentContainerStyle,
-    trailingComponentContainerStyle,
-  };
-};
-
-/**
  * to generate styles for the autocomplete
  *
  * @param theme - the theme of the application
@@ -92,7 +31,12 @@ export const getAutoCompleteStyles = (theme: DripsyFinalTheme) => {
     top: 56,
   } as const;
 
-  return { defaultAutoCompleteContainerStyle, defaultResultsContainerStyle };
+  const defaultFlatListStyle = {
+    width: '100%',
+    maxHeight: 200,
+  };
+
+  return { defaultAutoCompleteContainerStyle, defaultResultsContainerStyle, defaultFlatListStyle };
 };
 
 /**
@@ -111,7 +55,7 @@ export function convertToOptionsFormat<T>(data: T[], keyExtractor: { (item: T, i
   return options;
 }
 
-export const getOverridingStyleForStandardVariant = () => {
+export const getOverridingStyleForBaseVariant = () => {
   const style = {
     backgroundColor: 'transparent',
     borderWidth: 0,

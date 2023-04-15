@@ -4,6 +4,7 @@ import { ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
+import { autoCompleteIndex } from 'services/docs/auto-complete';
 import { avatarIndex } from 'services/docs/avatar';
 import { badgeIndex } from 'services/docs/badge';
 import { bottomSheetIndex } from 'services/docs/bottom-sheet';
@@ -124,6 +125,11 @@ const RenderIndex = () => {
   const { pathname } = useRouter();
 
   switch (pathname) {
+    case '/components/auto-complete': {
+      {
+        return <Index {...autoCompleteIndex} />;
+      }
+    }
     case '/components/avatar': {
       {
         return <Index {...avatarIndex} />;
@@ -220,12 +226,12 @@ const RenderIndex = () => {
         return <Index {...imageIndex} />;
       }
     }
-    case '/components/input-fields/text-field': {
+    case '/components/text-field': {
       {
         return <Index {...textFieldIndex} />;
       }
     }
-    case '/components/input-fields/otp-input': {
+    case '/components/otp-input': {
       {
         return <Index {...otpInputIndex} />;
       }
