@@ -5,7 +5,7 @@ import { useTheme } from 'config/dripsy';
 import { Pressable, TextInput, useSx } from 'dripsy';
 import Container from 'lib/primitives/layout';
 import Typography from 'lib/primitives/typography';
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import {
   GestureResponderEvent,
   NativeSyntheticEvent,
@@ -46,6 +46,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
 
     const finalProps = { ...defaultProps, ...props };
     const { variant, sx, value, ...componentProps } = finalProps;
+
     const [isTextFieldVisible, toggleTextFieldVisible] = useState(props.autoFocus ?? (!!value && !props.disabled));
 
     const style = getTextFieldStyles(theme, finalProps);
@@ -119,6 +120,12 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.error, props.errorMessage]);
 
+    useEffect(() => {
+      if (isTextFieldVisible !== !!value) toggleTextFieldVisible(!!value);
+
+      console.log('trigger');
+    }, [value]);
+
     return (
       <Container disableGutters style={finalProps.containerStyle}>
         <Pressable
@@ -137,7 +144,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               </Container>
             ) : null}
             <Container disableGutters flexDirection='column' justify='center' sx={innerContainerStyle}>
-              {finalProps.label == '' ? null : (
+              {finalProps.label === '' ? null : (
                 <TextFieldLabel
                   {...finalProps}
                   height={height}
