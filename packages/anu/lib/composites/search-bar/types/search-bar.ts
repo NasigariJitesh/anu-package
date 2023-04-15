@@ -4,9 +4,11 @@ import { StyleProp, ViewStyle } from 'react-native';
 
 import { AutoCompleteProps } from '../../auto-complete/types';
 
-export interface SearchBarProps extends Omit<AutoCompleteProps, 'autoCompleteStyle' | 'autoCompleteContainerStyle'> {
+export interface SearchBarProps
+  extends Omit<AutoCompleteProps, 'autoCompleteStyle' | 'autoCompleteContainerStyle' | 'style'> {
   type?: 'docked' | 'full-screen';
   containerStyle?: StyleProp<ViewStyle>;
+  searchBarContainerStyle?: StyleProp<ViewStyle>;
   searchBarStyle?: TextFieldContainerStyle;
   filterOnChange: (key: string) => Options[];
 }

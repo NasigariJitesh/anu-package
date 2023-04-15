@@ -1305,13 +1305,6 @@ export const countryCodes: CountryCodeObject[] = [
     name: 'Saint Helena',
     alt: 'SH',
     flag: 'https://flagcdn.com/sh.svg',
-    countryCode: '+247',
-    emoji: '🇸🇭',
-  },
-  {
-    name: 'Saint Helena',
-    alt: 'SH',
-    flag: 'https://flagcdn.com/sh.svg',
     countryCode: '+290',
     emoji: '🇸🇭',
   },

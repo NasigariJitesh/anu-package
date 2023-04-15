@@ -1,4 +1,5 @@
 import { DripsyFinalTheme } from 'dripsy';
+import { StyleSheet } from 'react-native';
 
 /**
  * To generate the styles for the search bar component
@@ -29,9 +30,10 @@ export const getSearchBarStyle = (
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 1,
+    width: '100%',
   };
 
-  const defaultResultsContainerStyle = {
+  const resultsContainerStyle = {
     shadowOffset: {
       width: 0,
       height: 4,
@@ -42,6 +44,7 @@ export const getSearchBarStyle = (
     shadowRadius: 3.84,
     elevation: 1,
     width: '100%',
+    top: 56,
   };
 
   const activeFullScreenSearchBarStyle = {
@@ -58,6 +61,7 @@ export const getSearchBarStyle = (
     borderBottomWidth: 1,
     borderColor: theme.colors.$outline,
     width: '100%',
+    zIndex: 100,
   };
 
   const activeDockedSearchBarStyle = {
@@ -75,24 +79,41 @@ export const getSearchBarStyle = (
     elevation: 0,
     borderBottomWidth: 1,
     borderColor: theme.colors.$outline,
+    width: '100%',
   };
+  const containerStyle = { width: '100%' };
 
-  const activeSearchBarContainerStyle =
-    active && type === 'full-screen'
-      ? {
-          width,
-          height,
-        }
-      : {};
-
+  let activeSearchBarContainerStyle;
   let defaultSearchBarStyle;
-  if (active)
+  let defaultResultsContainerStyle;
+  let defaultContainerStyle;
+
+  if (active) {
     defaultSearchBarStyle = type === 'full-screen' ? activeFullScreenSearchBarStyle : activeDockedSearchBarStyle;
-  else defaultSearchBarStyle = searchBarStyle;
+    defaultResultsContainerStyle =
+      type === 'full-screen' ? { ...resultsContainerStyle, top: 72, height: '100%' } : resultsContainerStyle;
+    defaultContainerStyle =
+      type === 'full-screen' ? { ...containerStyle, ...StyleSheet.absoluteFillObject, zIndex: 1000 } : containerStyle;
+    activeSearchBarContainerStyle =
+      type === 'full-screen'
+        ? {
+            ...StyleSheet.absoluteFillObject,
+            height,
+            width,
+            zIndex: 1000,
+          }
+        : { zIndex: 1000 };
+  } else {
+    defaultSearchBarStyle = searchBarStyle;
+    defaultResultsContainerStyle = resultsContainerStyle;
+    defaultContainerStyle = containerStyle;
+    activeSearchBarContainerStyle = { zIndex: 1000 };
+  }
 
   return {
     defaultSearchBarStyle,
     defaultResultsContainerStyle,
     activeSearchBarContainerStyle,
+    defaultContainerStyle,
   };
 };

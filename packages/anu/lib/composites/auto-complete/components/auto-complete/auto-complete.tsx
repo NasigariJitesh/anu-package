@@ -77,9 +77,6 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
         onFocus={(event) => {
           focusEventHandler(event, true, finalProps.onFocus);
         }}
-        onBlur={(event) => {
-          focusEventHandler(event, false, finalProps.onBlur);
-        }}
       />
       {finalProps.showResults ?? isOpen ? (
         <Container

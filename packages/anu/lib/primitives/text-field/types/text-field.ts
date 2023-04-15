@@ -19,7 +19,7 @@ export type TextInputProps = React.ComponentPropsWithoutRef<typeof TextInput>;
  */
 export interface TextFieldContainerStyle extends ExtendedHoverStyles, ExtendedDisabledStyles {}
 
-export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'> {
+export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style' | 'placeholder'> {
   /**
    * The type of the text field
    */
@@ -90,6 +90,8 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
    * styles for the supporting text of text field
    */
   supportingText?: string;
+
+  disableLabelAnimation?: boolean;
 }
 
 export interface TextInputLabelProps extends TextFieldProps {

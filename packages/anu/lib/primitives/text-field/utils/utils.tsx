@@ -263,6 +263,23 @@ export const getSupportingTextStyle = (theme: DripsyFinalTheme) => {
   return style;
 };
 
+export const getUnanimatedLabelStyles = (theme: DripsyFinalTheme) => {
+  const labelContainerStyle = {
+    left: 0,
+    position: 'absolute',
+    paddingHorizontal: 16,
+  } as const;
+  const labelTextStyle = {
+    fontSize: 16,
+    lineHeight: 24,
+    letterSpacing: 0.5,
+    paddingHorizontal: 2,
+    color: theme.colors.$onSurfaceVariant,
+  } as const;
+
+  return { labelContainerStyle, labelTextStyle };
+};
+
 export const getErrorIcon = () => {
   return <MaterialCommunityIcons name='alert-circle' color='inherit' size={24} />;
 };

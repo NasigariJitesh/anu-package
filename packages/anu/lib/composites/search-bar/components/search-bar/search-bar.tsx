@@ -37,6 +37,7 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
     type,
     data,
     value,
+    searchBarContainerStyle,
     searchBarStyle,
     containerStyle,
     resultContainerStyle,
@@ -78,13 +79,8 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
     if (callback) return callback(event);
   };
 
-  const { defaultSearchBarStyle, activeSearchBarContainerStyle, defaultResultsContainerStyle } = getSearchBarStyle(
-    theme,
-    height,
-    width,
-    active,
-    type,
-  );
+  const { defaultSearchBarStyle, activeSearchBarContainerStyle, defaultResultsContainerStyle, defaultContainerStyle } =
+    getSearchBarStyle(theme, height, width, active, type);
 
   return (
     <AutoComplete
@@ -92,19 +88,18 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
       ref={autoCompleteReference}
       data={results}
       value={value}
-      label=''
       leadingIcon={getLeadingComponent()}
-      autoCompleteContainerStyle={getCombinedStylesForView(activeSearchBarContainerStyle, containerStyle)}
+      autoCompleteContainerStyle={getCombinedStylesForView(activeSearchBarContainerStyle, searchBarContainerStyle)}
+      containerStyle={getCombinedStylesForView(defaultContainerStyle, containerStyle)}
       style={{ ...defaultSearchBarStyle, ...searchBarStyle }}
       resultContainerStyle={getCombinedStylesForView(defaultResultsContainerStyle, resultContainerStyle)}
       hideDropDownButton={true}
       onFocus={(event) => {
         focusEventHandler(event, true, onFocus);
       }}
-      onBlur={(event) => {
-        focusEventHandler(event, false, onBlur);
-      }}
       filterOnChange={filterOnChangeHandler}
+      disableLabelAnimation={true}
+      error={false}
     />
   );
 });

@@ -5,7 +5,7 @@ import { useTheme } from 'config/dripsy';
 import { Pressable, TextInput, useSx } from 'dripsy';
 import Container from 'lib/primitives/layout';
 import Typography from 'lib/primitives/typography';
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import {
   GestureResponderEvent,
   NativeSyntheticEvent,
@@ -26,6 +26,7 @@ import {
   getTextFieldContainerStyle,
   getTextFieldStyles,
   getTrailingContainerStyle,
+  getUnanimatedLabelStyles,
 } from '../../utils';
 import { defaultProps } from './default';
 import TextFieldLabel from './label';
@@ -57,6 +58,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const innerContainerStyle = getInnerContainerStyle();
     const errorStyle = getErrorStyle(theme);
     const supportingTextStyle = getSupportingTextStyle(theme);
+    const { labelContainerStyle, labelTextStyle } = getUnanimatedLabelStyles(theme);
+
     const onFocusStyles =
       isTextFieldVisible || value !== ''
         ? ({ paddingTop: variant === 'filled' ? 14 : 0 } as const)
@@ -78,6 +81,27 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     }, [textInputReference]);
 
     useImperativeHandle(reference, () => ({ focus, blur }), [focus, blur]);
+
+    useEffect(() => {
+      pressableReference.current?.measure((_x, _y, _w, h) => {
+        setHeight(h);
+      });
+    }, []);
+
+    useEffect(() => {
+      if (errors?.length <= 0 && !finalProps.noDefaultErrorMessage) {
+        const errorArray = [...errors];
+        errorArray.push('Please provide a valid input');
+
+        setErrors([...errorArray]);
+      } else setErrors(getErrors(props.errorMessage));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.error, props.errorMessage]);
+
+    useEffect(() => {
+      if (isTextFieldVisible !== !!value) toggleTextFieldVisible(!!value);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value]);
 
     const generateStyles = (state: PressableStateCallbackType) => {
       return generateHoverStyles(state, containerStyle, useSx);
@@ -104,28 +128,6 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
       }
     };
 
-    useEffect(() => {
-      pressableReference.current?.measure((_x, _y, _w, h) => {
-        setHeight(h);
-      });
-    }, []);
-
-    useEffect(() => {
-      if (errors?.length <= 0 && !finalProps.noDefaultErrorMessage) {
-        const errorArray = [...errors];
-        errorArray.push('Please provide a valid input');
-
-        setErrors([...errorArray]);
-      } else setErrors(getErrors(props.errorMessage));
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.error, props.errorMessage]);
-
-    useEffect(() => {
-      if (isTextFieldVisible !== !!value) toggleTextFieldVisible(!!value);
-
-      console.log('trigger');
-    }, [value]);
-
     return (
       <Container disableGutters style={finalProps.containerStyle}>
         <Pressable
@@ -144,7 +146,15 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               </Container>
             ) : null}
             <Container disableGutters flexDirection='column' justify='center' sx={innerContainerStyle}>
-              {finalProps.label === '' ? null : (
+              {finalProps.disableLabelAnimation ? (
+                value ? null : (
+                  <Container disableGutters style={labelContainerStyle}>
+                    <Typography.Body numberOfLines={1} ellipsizeMode='tail' style={labelTextStyle}>
+                      {finalProps.label}
+                    </Typography.Body>
+                  </Container>
+                )
+              ) : (
                 <TextFieldLabel
                   {...finalProps}
                   height={height}
@@ -161,7 +171,6 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                 value={value}
                 onFocus={onTextInputFocus}
                 onBlur={onTextInputBlur}
-                placeholder={finalProps.label === '' ? componentProps.placeholder : undefined}
                 style={[onFocusStyles, getCombinedStylesForText(style, finalProps.textInputStyle)]}
               />
             </Container>
@@ -174,7 +183,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                       type='standard'
                       icon={{ name: 'clear', props: { size: 16 } }}
                       onPress={(event) => {
-                        textInputReference.current?.clear();
+                        if (componentProps.onChangeText) componentProps.onChangeText('');
                         onTextInputPressedHandler(event);
                       }}
                     />

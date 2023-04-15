@@ -53,7 +53,6 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
   const theme = useTheme();
 
   const styles = getSideSheetStyles({ ...finalProps, width, startCoordinate }, theme);
-  console.log(styles);
 
   /**
    * this is a hook to create smooth scroll

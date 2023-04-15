@@ -8,7 +8,6 @@ import { Icon } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { data, ListRenderItem } from '../../../composites/auto-complete/tests/utils';
 import PhoneInput from '../components';
 import { PhoneInputReferenceProps } from '../types';
 
@@ -29,7 +28,7 @@ describe('Testing for Auto Complete', () => {
 describe('Testing for Outlined Auto Complete', () => {
   const tree = renderer.create(
     <DripsyApp theme={makeTheme({})}>
-      <PhoneInput defaultCountryCode='+35696' value='' variant='outlined' onChangeText={(text: string) => {}} />
+      <PhoneInput defaultCountryCode='+91' value='' variant='outlined' onChangeText={(text: string) => {}} />
     </DripsyApp>,
   );
 
@@ -43,7 +42,7 @@ describe('Testing for Outlined Auto Complete', () => {
 describe('Testing for Filled Auto Complete', () => {
   const tree = renderer.create(
     <DripsyApp theme={makeTheme({})}>
-      <PhoneInput value='+919988' variant='filled' onChangeText={(text: string) => {}} error />
+      <PhoneInput defaultCountryCode='+1829' value='' variant='filled' onChangeText={(text: string) => {}} error />
     </DripsyApp>,
   );
 
@@ -55,6 +54,23 @@ describe('Testing for Filled Auto Complete', () => {
 });
 
 describe('Testing for Outlined Auto Complete Events without ref', () => {
+  it('should trigger focus handler', () => {
+    render(
+      <DripsyApp theme={makeTheme({})}>
+        <PhoneInput
+          testID='phone-input-test'
+          defaultCountryCode='+91'
+          value=''
+          variant='filled'
+          onChangeText={(text: string) => {}}
+          onFocus={() => {}}
+        />
+      </DripsyApp>,
+    );
+
+    fireEvent(screen.getByTestId('phone-input-test'), 'onFocus');
+  });
+
   it('should trigger focus handler', () => {
     render(
       <DripsyApp theme={makeTheme({})}>
@@ -119,6 +135,23 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
     );
 
     fireEvent(screen.getByTestId('phone-input-test'), 'onChangeText', '+1');
+  });
+
+  it('should trigger change text handler', () => {
+    render(
+      <DripsyApp theme={makeTheme({})}>
+        <PhoneInput
+          testID='phone-input-test'
+          value='+919988'
+          variant='filled'
+          onChangeText={(text: string) => {}}
+          error
+          errorMessage={['Error Message 1', 'Error Message 2']}
+        />
+      </DripsyApp>,
+    );
+
+    fireEvent(screen.getByTestId('phone-input-test'), 'onChangeText', '+1 829-893-4233');
   });
 
   it('should trigger change text handler', () => {

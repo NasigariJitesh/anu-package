@@ -28,10 +28,12 @@ import { Pressable } from 'react-native';
  */
 export default function Example() {
   const [text, setText] = useState('');
-  const reference = useRef<TextFieldReferenceProps | null>(null);
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('');
+  const reference = useRef<AutoCompleteReferenceProps | null>(null);
   const ListRenderItem = ({ item }: { item: Options }) => {
     return (
-      <Pressable onPress={() => console.log('press')}>
+      <Pressable onPress={() => console.log('press')} style={{ paddingVertical: 10, paddingHorizontal: 5 }}>
         <Typography.Body>{item.value as string} </Typography.Body>
       </Pressable>
     );
@@ -47,104 +49,19 @@ export default function Example() {
   ];
 
   return (
-    <Container sx={{ width: '100%', height: '100%', marginTop: 100 }}>
-      {/* <Container sx={{ margin: 10, padding: 10 }}>
-        <OTPInput numberOfDigits={6} value='123456788' variant='filled' onSubmit={(a) => console.log(a)} />
-      </Container>
-      <Container flexDirection='row'>
-        <Card variant='filled' width={300} sx={{ margin: 10 }}>
-          <CardTitle type='default' title='Title' subTitle='Hellooo' />
-          <CardContent>
-            <Typography.Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-            </Typography.Body>
-          </CardContent>
-          <CardActions justify='flex-end'>
-            <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
-            <Button.Filled title='Action' />
-          </CardActions>
-        </Card>
-        <Card variant='elevated' width={300} sx={{ margin: 10 }}>
-          <CardMedia
-            source={{
-              uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
-            }}
-            height={150}
-          />
-          <CardTitle type='default' title='Title' subTitle='Hellooo' />
-          <CardContent>
-            <Typography.Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-            </Typography.Body>
-          </CardContent>
-          <CardActions justify='flex-end'>
-            <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
-            <Button.Filled title='Action' />
-          </CardActions>
-        </Card>
-        <Card variant='outlined' width={300} sx={{ margin: 10 }}>
-          <CardHeader
-            heading='Heading'
-            subHeading='subHeading'
-            avatar={<Avatar name='N' variant='circle' size='large' />}
-            action={<IconButton type='standard' icon={{ name: 'more-vert' }} />}
-          />
-          <CardMedia
-            source={{
-              uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
-            }}
-            height={150}
-          />
-          <CardTitle type='default' title='Title' subTitle='Hellooo' />
-          <CardContent>
-            <Typography.Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-            </Typography.Body>
-          </CardContent>
-          <CardActions justify='flex-end'>
-            <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
-            <Button.Filled title='Action' />
-          </CardActions>
-        </Card>
-      </Container>
-      <Container flexDirection='row'>
-        <Card variant='elevated' orientation='horizontal' height={250} sx={{ margin: 10 }}>
-          <CardMedia
-            source={{
-              uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1022px-Placeholder_view_vector.svg.png',
-            }}
-            cardOrientation='horizontal'
-            width={'30%'}
-          />
-          <Container>
-            <CardHeader heading='Heading' subHeading='subHeading' />
-            <CardContent>
-              <Typography.Body>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-              </Typography.Body>
-            </CardContent>
-            <CardActions justify='flex-end'>
-              <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
-              <Button.Filled title='Action' />
-            </CardActions>
-          </Container>
-        </Card>
-        <Card variant='elevated' width={300} sx={{ margin: 10 }}>
-          <CardHeader
-            heading='Heading'
-            subHeading='subHeading'
-            avatar={<Avatar name='N' variant='circle' size='large' />}
-          />
-        </Card>
-        <Card variant='outlined' width={300} sx={{ margin: 10 }}>
-          <CardHeader
-            heading='Heading'
-            subHeading='subHeading'
-            avatar={<Avatar name='N' variant='circle' size='large' />}
-          />
-        </Card>
-      </Container> */}
-      {/* <AutoComplete
+    <Container flexDirection='column' justify='space-between' sx={{ flex: 1 }}>
+      <SearchBar
+        data={data}
+        flatListProps={{ renderItem: ListRenderItem }}
+        value={text1}
+        onChangeText={(value: string) => {
+          setText1(value);
+        }}
+        filterOnChange={(key: string) => data.filter((item) => item.id.includes(key))}
+        type={'full-screen'}
+        label='Search'
+      />
+      <AutoComplete
         ref={reference}
         variant='outlined'
         direction='ltr'
@@ -153,50 +70,18 @@ export default function Example() {
           setText(value);
           console.log(value);
         }}
-        data={[
-          { id: 'hello', value: 'Hello' },
-          { id: 'abcd', value: 'Abcd' },
-          { id: 'efgh', value: 'Efgh' },
-          { id: 'ijkl', value: 'Ijkl' },
-          { id: 'lmno', value: 'LMNO' },
-          { id: 'pqrs', value: 'PQRS' },
-        ]}
+        data={data}
         flatListProps={{ renderItem: ListRenderItem }}
         caseSensitive
         debounce
         autoCompleteContainerStyle={{ width: 300, height: 300 }}
         hideDropDownButton={false}
-      /> */}
+      />
 
-      {/* <TextField
-        variant='outlined'
-        value={text}
-        onChangeText={(value: string) => {
-          setText(value);
-          console.log(value);
-        }}
-        ref={reference}
-      /> */}
-
-      {/* <Button.Text title='SET' onPress={() => reference.current?.setState('abc')} /> */}
-
-      {/* <SearchBar
-        data={data}
-        flatListProps={{ renderItem: ListRenderItem }}
-        value={text}
-        onChangeText={(value: string) => {
-          setText(value);
-        }}
-        filterOnChange={(key: string) => data.filter((item) => item.id.includes(key))}
-        type={'docked'}
-        debounce
-        debounceDuration={1000}
-      /> */}
       <PhoneInput
-        value={text}
+        value={text2}
         onChangeText={(value: string) => {
-          setText(value);
-          console.log(value);
+          setText2(value);
         }}
         defaultCountryCode={'+91'}
         variant={'outlined'}
