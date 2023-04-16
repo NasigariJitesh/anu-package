@@ -106,17 +106,16 @@ export const getDropZoneStyles = (theme: DripsyFinalTheme) => {
   return { dropZoneStyle, divStyle, childrenContainerStyle, buttonContainerStyle };
 };
 
-export const getUploadListStyles = (theme: DripsyFinalTheme, single?: boolean, isHorizontal?: boolean) => {
+export const getUploadListStyles = (theme: DripsyFinalTheme, listWidth?: number, isHorizontal?: boolean) => {
   const styles = {
     listItem: {
-      width: '100%',
+      width: listWidth ?? 250,
       minHeight: 48,
       marginVertical: 5,
     },
     container: {
       marginTop: 15,
-      marginLeft: single ? 0 : -16,
-      width: '100%',
+      flex: 1,
       flexDirection: isHorizontal ? ('row' as const) : ('column' as const),
     },
     fileIcon: {
@@ -127,11 +126,12 @@ export const getUploadListStyles = (theme: DripsyFinalTheme, single?: boolean, i
       color: getColorInRGBA(theme.colors.$surfaceVariant, 75),
     },
     dragIconContainer: {
-      width: 16,
       height: 16,
     },
+    deleteIconButton: {
+      marginLeft: 8,
+    },
     deleteIcon: {
-      margin: 16,
       color: theme.colors.$error,
     },
     carouselDeleteIcon: {
@@ -141,6 +141,7 @@ export const getUploadListStyles = (theme: DripsyFinalTheme, single?: boolean, i
       fontSize: theme.fontSizes[7],
       lineHeight: theme.lineHeights[7],
       flexGrow: 1,
+      flexShrink: 1,
     },
     listItemContainer: {
       flexDirection: 'row' as const,
@@ -212,4 +213,17 @@ export const getFileUploadStyle = () => {
     align: 'center',
   } as const;
   return style;
+};
+
+export const getErrorMessageStyle = (theme: DripsyFinalTheme) => {
+  const errorMessageStyle = {
+    fontSize: theme.fontSizes[9],
+    lineHeight: theme.lineHeights[9],
+    flexGrow: 1,
+    marginTop: 5,
+    marginHorizontal: 16,
+    color: theme.colors.$error,
+  };
+
+  return errorMessageStyle;
 };

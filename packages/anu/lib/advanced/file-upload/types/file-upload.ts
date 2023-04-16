@@ -16,14 +16,16 @@ type BasicFileUploadProps = CommonButtonProps & {
   onChange?: (data: Blob | Blob[] | null, fileUri?: string | string[] | null) => void;
   fileType?: MimeType | MimeType[];
   copyToCacheDirectory?: boolean;
-  listPosition?: 'left' | 'right' | 'bottom';
   style?: StyleProp<ViewStyle>;
+  listStyle?: StyleProp<ViewStyle>;
   errors?: { error: boolean; errorMessage: string }[];
+  listWidth?: number;
+  errorMessageForDuplicateFiles?: string;
 };
 
 type ImageFileUploadProps = BasicFileUploadProps & {
   variant?: 'image';
-  previewStyle?: 'list' | 'carousel';
+  previewType?: 'list' | 'carousel';
   optimization?: boolean;
   optimizationConfig?: Config;
   fileType?: ImageMimeType | ImageMimeType[];

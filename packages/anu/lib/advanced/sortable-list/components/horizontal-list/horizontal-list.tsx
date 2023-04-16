@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { Container, Typography } from 'anu/lib/primitives';
 import { useEffect, useState } from 'react';
 import Animated, {
   scrollTo,
@@ -8,9 +9,74 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 
-import { ListProps, ScrollDirectionHorizontal } from '../../types';
+import { HorizontalMovableItemProps, ListProps, ScrollDirectionHorizontal } from '../../types';
 import { listToObject } from '../../utils';
 import HorizontalMovableItem from '../horizontal-movable-item';
+
+/**
+ *
+ * @param props - props for the horizontal item
+ */
+function HorizontalItem<T>(
+  props: HorizontalMovableItemProps<T> & {
+    positionsState: {
+      [id: string]: number;
+    };
+  },
+) {
+  const {
+    autoScrollDirection,
+    containerHeight,
+    containerWidth,
+    index,
+    item,
+    itemsCount,
+    itemHeight,
+    id,
+    positions,
+    lowerBound,
+    renderItem,
+    itemWidth,
+    onSort,
+    onSortEnd,
+    onSortStart,
+    positionsState,
+  } = props;
+  const [itemAvailable, setItemAvailable] = useState(positionsState[id] !== undefined);
+
+  useEffect(() => {
+    if (positionsState[id] === undefined || positions.value[id] === undefined) {
+      setItemAvailable(false);
+    } else {
+      setItemAvailable(true);
+    }
+  }, [positionsState, positions.value]);
+
+  return itemAvailable ? (
+    <HorizontalMovableItem
+      index={index}
+      key={id}
+      id={id}
+      positions={positions}
+      lowerBound={lowerBound}
+      autoScrollDirection={autoScrollDirection}
+      itemsCount={itemsCount}
+      containerWidth={containerWidth}
+      containerHeight={containerHeight}
+      item={item}
+      itemHeight={itemHeight}
+      itemWidth={itemWidth}
+      renderItem={renderItem}
+      onSort={onSort}
+      onSortStart={onSortStart}
+      onSortEnd={onSortEnd}
+    />
+  ) : (
+    <Container disableGutters align='center' justify='center' sx={{ height: itemHeight, width: itemWidth }}>
+      <Typography.Body>...Loading Image</Typography.Body>
+    </Container>
+  );
+}
 
 /**
  *
@@ -55,7 +121,7 @@ export default function HorizontalList<T>(props: ListProps<T>) {
     scrollX.value = event.contentOffset.x;
   });
 
-  const contentWidth = data.length * itemWidth;
+  const contentWidth = data.length * itemWidth + 100;
 
   const animatedScrollViewStyle = {
     flex: 1,
@@ -64,6 +130,12 @@ export default function HorizontalList<T>(props: ListProps<T>) {
     flexDirection: 'row',
   } as const;
 
+  const contentContainerStyle = {
+    width: contentWidth,
+    padding: 10,
+    paddingBottom: 20,
+  };
+
   return (
     <Animated.ScrollView
       horizontal
@@ -71,13 +143,12 @@ export default function HorizontalList<T>(props: ListProps<T>) {
       onScroll={handleScroll}
       scrollEventThrottle={16}
       style={animatedScrollViewStyle}
-      contentContainerStyle={{
-        width: contentWidth,
-      }}
+      contentContainerStyle={contentContainerStyle}
     >
       {data.map((item, index) => {
-        return positions.value[item.id] === undefined ? null : (
-          <HorizontalMovableItem
+        return (
+          <HorizontalItem
+            positionsState={positionsState}
             index={index}
             key={item.id}
             id={item.id}

@@ -15,6 +15,7 @@ interface ListItemProps {
   deleteData: (index: number) => void;
   previewStyle?: 'list' | 'carousel';
   sortable?: boolean;
+  listWidth?: number;
 }
 
 /**
@@ -40,10 +41,10 @@ const hoverFromState = (
  */
 const RegularListItem = (props: ListItemProps) => {
   const [hovered, setHovered] = useState(false);
-  const { id, dataItem, single, deleteData, variant, error, errorMessage, sortable } = props;
+  const { id, dataItem, single, deleteData, variant, error, errorMessage, sortable, listWidth } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, single);
+  const styles = getUploadListStyles(theme, listWidth, false);
 
   return (
     <Pressable
@@ -97,10 +98,10 @@ const RegularListItem = (props: ListItemProps) => {
  */
 const PreviewListItem = (props: ListItemProps) => {
   const [hovered, setHovered] = useState(false);
-  const { id, dataItem, single, deleteData, error, errorMessage, sortable } = props;
+  const { id, dataItem, single, deleteData, error, errorMessage, listWidth, sortable } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, single);
+  const styles = getUploadListStyles(theme, listWidth, false);
   const url = URL.createObjectURL(dataItem);
 
   return (
@@ -157,10 +158,10 @@ const PreviewListItem = (props: ListItemProps) => {
  */
 const CarouselListItem = (props: ListItemProps) => {
   const [hovered, setHovered] = useState(false);
-  const { id, dataItem, single, deleteData, error, errorMessage, sortable } = props;
+  const { id, dataItem, single, deleteData, error, errorMessage, listWidth, sortable } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, single);
+  const styles = getUploadListStyles(theme, listWidth, true);
   const url = URL.createObjectURL(dataItem);
 
   return (

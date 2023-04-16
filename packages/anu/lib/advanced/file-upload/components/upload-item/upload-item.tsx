@@ -12,8 +12,9 @@ interface ListItemProps {
   single?: boolean;
   variant?: 'image' | 'file';
   deleteData: (index: number) => void;
-  previewStyle?: 'list' | 'carousel';
+  previewType?: 'list' | 'carousel';
   sortable?: boolean;
+  listWidth?: number;
 }
 
 /**
@@ -22,10 +23,10 @@ interface ListItemProps {
  * @param props - props for the list item
  */
 const RegularListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, variant, error, sortable } = props;
+  const { id, dataItem, single, deleteData, variant, error, sortable, listWidth } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, single);
+  const styles = getUploadListStyles(theme, listWidth, false);
 
   return (
     <Pressable key={id} style={styles.listItem}>
@@ -53,6 +54,7 @@ const RegularListItem = (props: ListItemProps) => {
           onPress={() => {
             deleteData(id);
           }}
+          containerStyle={styles.deleteIconButton}
         />
       </Container>
       {error?.error === true ? (
@@ -72,10 +74,10 @@ const RegularListItem = (props: ListItemProps) => {
  * @param props - props for the list item
  */
 const PreviewListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, error, uri, sortable } = props;
+  const { id, dataItem, single, deleteData, error, listWidth, uri, sortable } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, single);
+  const styles = getUploadListStyles(theme, listWidth, false);
 
   return (
     <Pressable key={id} style={styles.listItem}>
@@ -99,6 +101,7 @@ const PreviewListItem = (props: ListItemProps) => {
           onPress={() => {
             deleteData(id);
           }}
+          containerStyle={styles.deleteIconButton}
         />
       </Container>
       {error?.error === true ? (
@@ -118,10 +121,10 @@ const PreviewListItem = (props: ListItemProps) => {
  * @param props - props for the list item
  */
 const CarouselListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, error, uri, sortable } = props;
+  const { id, dataItem, single, deleteData, error, uri, listWidth, sortable } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, single);
+  const styles = getUploadListStyles(theme, listWidth, true);
 
   return (
     <Container disableGutters style={styles.carouselItem} key={id}>
@@ -156,7 +159,7 @@ const CarouselListItem = (props: ListItemProps) => {
 };
 
 const UploadItem = (props: ListItemProps) => {
-  switch (props.previewStyle) {
+  switch (props.previewType) {
     case 'list': {
       return <PreviewListItem {...props} />;
     }

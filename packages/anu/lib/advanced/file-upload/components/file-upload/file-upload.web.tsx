@@ -1,13 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/display-name */
 import { getCombinedStylesForView } from 'anu/common/utils';
-import { CommonButtonProps, Container, ExtendedFAB, FAB, IconButton } from 'anu/lib/primitives';
+import { useTheme } from 'anu/config';
+import { CommonButtonProps, Container, ExtendedFAB, FAB, IconButton, Typography } from 'anu/lib/primitives';
 import { RegularButton } from 'anu/lib/primitives/button/components/regular';
 import * as FilePicker from 'expo-document-picker';
 import { forwardRef, useCallback, useImperativeHandle, useMemo, useState } from 'react';
 
 import { FileUploadProps, FileUploadReferenceProps } from '../../types';
-import { compressFile, getFileUploadStyle } from '../../utils';
+import { compressFile, getErrorMessageStyle, getFileUploadStyle } from '../../utils';
 import UploadList from '../upload-list';
 import { defaultProps } from './default';
 
@@ -46,6 +47,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   const finalProps: FileUploadProps = { ...defaultProps, ...props };
   const [isUploadingState, setIsUploadingState] = useState(false);
   const [files, setFiles] = useState<Blob[]>([]);
+  const [duplicateFileNameError, setDuplicateFileNameError] = useState(false);
 
   const isUploading = useCallback(() => isUploadingState, [isUploadingState]);
 
@@ -53,11 +55,29 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
 
   const handleUpload = useMemo(() => handleFileUpload, []);
 
+  const theme = useTheme();
   const defaultContainerStyle = getFileUploadStyle();
+  const errorMessageStyle = getErrorMessageStyle(theme);
 
   const updateFiles = (resultFiles: Blob[]) => {
+    setDuplicateFileNameError(false);
     if (finalProps.multiple) {
-      const allFiles = [...files, ...resultFiles];
+      const uniqueResultFiles = [];
+      if (finalProps.sortable) {
+        for (const file of resultFiles) {
+          const similarNameFiles = files.filter((item) => item.name === file.name);
+          const similarNameFilesInSameUpload = uniqueResultFiles.filter((item) => item.name === file.name);
+
+          if (similarNameFiles.length > 0 || similarNameFilesInSameUpload.length > 0) {
+            setDuplicateFileNameError(true);
+          } else {
+            uniqueResultFiles.push(file);
+          }
+        }
+      } else {
+        uniqueResultFiles.push(...resultFiles);
+      }
+      const allFiles = [...files, ...uniqueResultFiles];
       setFiles(allFiles);
       if (finalProps.onChange) finalProps.onChange(allFiles);
     } else {
@@ -94,7 +114,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
         sortable,
         optimization,
 
-        previewStyle,
+        previewType,
         ...otherButtonProps
       } = buttonProps;
 
@@ -177,18 +197,23 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
 
   return (
     <Container disableGutters style={getCombinedStylesForView(defaultContainerStyle, finalProps.style)}>
-      {renderButton(finalProps)}
       <Container disableGutters>
-        <UploadList
-          errors={finalProps.errors}
-          sortable={finalProps.sortable}
-          data={[...files]}
-          onSort={onSortHandler}
-          deleteData={deleteFile}
-          variant={finalProps.variant}
-          previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
-        />
+        {renderButton(finalProps)}
+        {duplicateFileNameError ? (
+          <Typography.Body style={errorMessageStyle}>{finalProps.errorMessageForDuplicateFiles}</Typography.Body>
+        ) : null}
       </Container>
+      <UploadList
+        errors={finalProps.errors}
+        sortable={finalProps.sortable}
+        data={[...files]}
+        onSort={onSortHandler}
+        deleteData={deleteFile}
+        variant={finalProps.variant}
+        previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
+        listStyle={finalProps.listStyle}
+        listWidth={finalProps.listWidth}
+      />
     </Container>
   );
 });

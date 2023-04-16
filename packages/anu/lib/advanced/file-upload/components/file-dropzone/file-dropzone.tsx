@@ -1,13 +1,13 @@
 /* eslint-disable react/display-name */
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { Button, Container } from 'anu/lib/primitives';
+import { Button, Container, Typography } from 'anu/lib/primitives';
 import * as FilePicker from 'expo-document-picker';
 import React, { forwardRef, useImperativeHandle, useMemo, useState } from 'react';
 import { Pressable } from 'react-native';
 
 import { FileDropZoneProps, FileDropZoneReferenceProps } from '../../types';
-import { compressFile, getDropZoneStyles, getFileTypes } from '../../utils';
+import { compressFile, getDropZoneStyles, getErrorMessageStyle, getFileTypes } from '../../utils';
 import UploadList from '../upload-list';
 import { defaultProps } from './default';
 
@@ -40,20 +40,29 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
 
   const [files, setFiles] = useState<Blob[]>([]);
   const [fileUris, setFileUris] = useState<string[]>([]);
+  const [duplicateFileNameError, setDuplicateFileNameError] = useState(false);
 
   useImperativeHandle(reference, () => ({ files }), [files]);
 
-  const onCancel = () => {
-    setFiles([]);
-  };
+  const handleUpload = useMemo(() => handleFileUpload, []);
 
   const theme = useTheme();
   const { dropZoneStyle, childrenContainerStyle, buttonContainerStyle } = getDropZoneStyles(theme);
-
-  const handleUpload = useMemo(() => handleFileUpload, []);
+  const errorMessageStyle = getErrorMessageStyle(theme);
 
   const updateFiles = (resultFiles: Blob[], resultUris: string[]) => {
     if (finalProps.multiple) {
+      if (finalProps.sortable) {
+        for (const file of resultFiles) {
+          const similarNameFiles = files.filter((item) => item.name === file.name);
+
+          if (similarNameFiles.length > 0) {
+            setDuplicateFileNameError(true);
+            return;
+          }
+        }
+      }
+
       const allFiles = [...files, ...resultFiles];
       const allUris = [...fileUris, ...resultUris];
       setFiles(allFiles);
@@ -95,37 +104,48 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
       finalProps.onChange(array.length > 0 ? array : null, uriArray.length > 0 ? uriArray : null);
   };
 
+  const onCancel = () => {
+    setFiles([]);
+  };
+
   return (
     <Container disableGutters style={finalProps.style}>
       <Container disableGutters>
-        <Pressable
-          onPress={async () => {
-            await handleUpload(finalProps, updateFiles);
-          }}
-        >
-          <Container disableGutters style={getCombinedStylesForView(dropZoneStyle, props.dropZoneStyle)}>
-            <Container disableGutters style={childrenContainerStyle}>
-              {props.children}
+        <Container disableGutters>
+          <Pressable
+            onPress={async () => {
+              setDuplicateFileNameError(false);
+              await handleUpload(finalProps, updateFiles);
+            }}
+          >
+            <Container disableGutters style={getCombinedStylesForView(dropZoneStyle, props.dropZoneStyle)}>
+              <Container disableGutters style={childrenContainerStyle}>
+                {props.children}
+              </Container>
             </Container>
+          </Pressable>
+          <Container disableGutters style={buttonContainerStyle}>
+            <Button.Text title='Submit' onPress={finalProps.onSubmit} />
+            <Button.Text title='Cancel' onPress={onCancel} />
           </Container>
-        </Pressable>
-        <Container disableGutters style={buttonContainerStyle}>
-          <Button.Text title='Submit' onPress={finalProps.onSubmit} />
-          <Button.Text title='Cancel' onPress={onCancel} />
         </Container>
+        {duplicateFileNameError ? (
+          <Typography.Body style={errorMessageStyle}>{finalProps.errorMessageForDuplicateFiles}</Typography.Body>
+        ) : null}
       </Container>
-      <Container disableGutters sx={{ flex: 1 }}>
-        <UploadList
-          errors={finalProps.errors}
-          sortable={finalProps.sortable}
-          data={[...files]}
-          uriData={[...fileUris]}
-          onSort={onSortHandler}
-          deleteData={deleteFile}
-          variant={finalProps.variant}
-          previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
-        />
-      </Container>
+
+      <UploadList
+        errors={finalProps.errors}
+        sortable={finalProps.sortable}
+        data={[...files]}
+        uriData={[...fileUris]}
+        onSort={onSortHandler}
+        deleteData={deleteFile}
+        variant={finalProps.variant}
+        previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
+        listStyle={finalProps.listStyle}
+        listWidth={finalProps.listWidth}
+      />
     </Container>
   );
 });

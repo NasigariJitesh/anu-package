@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { Container, Typography } from 'anu/lib/primitives';
 import { useEffect, useState } from 'react';
 import Animated, {
   scrollTo,
@@ -8,9 +9,74 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 
-import { ListProps, ScrollDirection } from '../../types';
+import { ListProps, MovableItemProps, ScrollDirection } from '../../types';
 import { listToObject } from '../../utils';
 import MovableItem from '../movable-item';
+
+/**
+ *
+ * @param props - props for the horizontal item
+ */
+function Item<T>(
+  props: MovableItemProps<T> & {
+    positionsState: {
+      [id: string]: number;
+    };
+  },
+) {
+  const {
+    autoScrollDirection,
+    containerHeight,
+    containerWidth,
+    index,
+    item,
+    itemsCount,
+    itemHeight,
+    id,
+    positions,
+    lowerBound,
+    renderItem,
+    itemWidth,
+    onSort,
+    onSortEnd,
+    onSortStart,
+    positionsState,
+  } = props;
+  const [itemAvailable, setItemAvailable] = useState(positionsState[id] !== undefined);
+
+  useEffect(() => {
+    if (positionsState[id] === undefined || positions.value[id] === undefined) {
+      setItemAvailable(false);
+    } else {
+      setItemAvailable(true);
+    }
+  }, [positionsState, positions.value]);
+
+  return itemAvailable ? (
+    <MovableItem
+      index={index}
+      key={id}
+      id={id}
+      positions={positions}
+      lowerBound={lowerBound}
+      autoScrollDirection={autoScrollDirection}
+      itemsCount={itemsCount}
+      containerWidth={containerWidth}
+      containerHeight={containerHeight}
+      item={item}
+      itemHeight={itemHeight}
+      itemWidth={itemWidth}
+      renderItem={renderItem}
+      onSort={onSort}
+      onSortStart={onSortStart}
+      onSortEnd={onSortEnd}
+    />
+  ) : (
+    <Container disableGutters align='center' sx={{ height: itemHeight ?? 40, width: itemWidth ?? '100%' }}>
+      <Typography.Body>...Loading Image</Typography.Body>
+    </Container>
+  );
+}
 
 /**
  *
@@ -62,6 +128,12 @@ export default function List<T>(props: ListProps<T>) {
     backgroundColor: 'transparent',
   } as const;
 
+  const contentContainerStyle = {
+    height: contentHeight,
+    padding: 10,
+    paddingRight: 20,
+  };
+
   return (
     <>
       <Animated.ScrollView
@@ -69,13 +141,12 @@ export default function List<T>(props: ListProps<T>) {
         onScroll={handleScroll}
         scrollEventThrottle={16}
         style={animatedScrollViewStyle}
-        contentContainerStyle={{
-          height: contentHeight,
-        }}
+        contentContainerStyle={contentContainerStyle}
       >
         {data.map((item, index) => {
-          return positions.value[item.id] === undefined ? null : (
-            <MovableItem
+          return (
+            <Item
+              positionsState={positionsState}
               index={index}
               key={item.id}
               id={item.id}

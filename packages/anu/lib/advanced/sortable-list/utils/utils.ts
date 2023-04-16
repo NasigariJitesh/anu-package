@@ -195,7 +195,7 @@ export const getMovableItemComponentStyle = (height: number, width: number) => {
     alignItems: 'center',
     height,
     width,
-    padding: 5,
+    padding: 2,
   } as const;
 
   const animatedViewStyle = { height, width };

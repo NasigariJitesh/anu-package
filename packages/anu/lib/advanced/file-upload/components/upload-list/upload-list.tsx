@@ -1,6 +1,7 @@
 import { useTheme } from 'anu/config';
+import { Container } from 'anu/lib';
 import SortableList from 'anu/lib/advanced/sortable-list';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleProp, ViewStyle } from 'react-native';
 
 import { getUploadListStyles } from '../../utils';
 import UploadItem from '../upload-item';
@@ -11,10 +12,14 @@ interface UploadListProps {
   errors?: { error: boolean; errorMessage: string }[];
   variant?: 'image' | 'file';
   sortable?: boolean;
-  previewStyle?: 'list' | 'carousel';
+  previewType?: 'list' | 'carousel';
   deleteData: (index: number) => void;
   onSort: (from: number, to: number) => void;
+  listStyle: StyleProp<ViewStyle>;
+  listWidth?: number;
 }
+
+const keyExtractor = (item: Blob, index: number) => item.name + index;
 
 /**
  * Uploaded Files List Component
@@ -23,7 +28,7 @@ interface UploadListProps {
  */
 const UploadList = (props: UploadListProps) => {
   const theme = useTheme();
-  const styles = getUploadListStyles(theme, props.data.length <= 1, props.previewStyle === 'carousel');
+  const styles = getUploadListStyles(theme, props.listWidth, props.previewType === 'carousel');
 
   const renderItem = (item: Blob, index: number) => {
     const propList = {
@@ -34,28 +39,32 @@ const UploadList = (props: UploadListProps) => {
       variant: props.variant,
       single: props.data.length <= 1,
       error: props.errors ? props.errors[index ?? 0] : { error: false, errorMessage: '' },
-      previewStyle: props.previewStyle,
+      previewType: props.previewType,
       sortable: props.sortable,
     };
 
     return <UploadItem key={index} {...propList} />;
   };
 
-  return props.sortable ? (
-    <SortableList
-      horizontal={props.previewStyle === 'carousel'}
-      itemHeight={props.previewStyle === 'carousel' ? 162 : 68}
-      itemWidth={props.previewStyle === 'carousel' ? 162 : 280}
-      containerWidth={300}
-      data={props.data}
-      keyExtractor={(item: Blob, index: number) => item.name + index}
-      renderItem={renderItem}
-      onSort={props.onSort}
-    />
-  ) : (
-    <ScrollView horizontal={props.previewStyle === 'carousel'} style={styles.container}>
-      {props.data.map((dataItem, index) => renderItem(dataItem, index))}
-    </ScrollView>
+  return (
+    <Container disableGutters style={props.listStyle}>
+      {props.sortable ? (
+        <SortableList
+          horizontal={props.previewType === 'carousel'}
+          itemHeight={props.previewType === 'carousel' ? 152 : 68}
+          itemWidth={props.previewType === 'carousel' ? 152 : 300}
+          containerWidth={300}
+          data={props.data}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+          onSort={props.onSort}
+        />
+      ) : (
+        <ScrollView horizontal={props.previewType === 'carousel'} style={styles.container}>
+          {props.data.map((dataItem, index) => renderItem(dataItem, index))}
+        </ScrollView>
+      )}
+    </Container>
   );
 };
 

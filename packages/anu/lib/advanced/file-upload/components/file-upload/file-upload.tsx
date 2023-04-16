@@ -1,13 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/display-name */
 import { getCombinedStylesForView } from 'anu/common/utils';
-import { CommonButtonProps, Container, ExtendedFAB, FAB, IconButton } from 'anu/lib/primitives';
+import { useTheme } from 'anu/config';
+import { CommonButtonProps, Container, ExtendedFAB, FAB, IconButton, Typography } from 'anu/lib/primitives';
 import { RegularButton } from 'anu/lib/primitives/button/components/regular';
 import * as FilePicker from 'expo-document-picker';
 import { forwardRef, useCallback, useImperativeHandle, useMemo, useState } from 'react';
 
 import { FileUploadProps, FileUploadReferenceProps } from '../../types';
-import { compressFile, getFileUploadStyle } from '../../utils';
+import { compressFile, getErrorMessageStyle, getFileUploadStyle } from '../../utils';
 import UploadList from '../upload-list';
 import { defaultProps } from './default';
 
@@ -45,16 +46,32 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   const [isUploadingState, setIsUploadingState] = useState(false);
   const [files, setFiles] = useState<Blob[]>([]);
   const [fileUris, setFileUris] = useState<string[]>([]);
+  const [duplicateFileNameError, setDuplicateFileNameError] = useState(false);
 
   const isUploading = useCallback(() => isUploadingState, [isUploadingState]);
 
   useImperativeHandle(reference, () => ({ isUploading, files }), [isUploading, files]);
 
   const handleUpload = useMemo(() => handleFileUpload, []);
+  const theme = useTheme();
   const defaultContainerStyle = getFileUploadStyle();
+  const errorMessageStyle = getErrorMessageStyle(theme);
 
   const updateFiles = (resultFiles: Blob[], resultUris: string[]) => {
+    setDuplicateFileNameError(false);
+
     if (finalProps.multiple) {
+      if (finalProps.sortable) {
+        for (const file of resultFiles) {
+          const similarNameFiles = files.filter((item) => item.name === file.name);
+
+          if (similarNameFiles.length > 0) {
+            setDuplicateFileNameError(true);
+            return;
+          }
+        }
+      }
+
       const allFiles = [...files, ...resultFiles];
       const allUris = [...fileUris, ...resultUris];
       setFiles(allFiles);
@@ -107,7 +124,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
         sortable,
         optimization,
 
-        previewStyle,
+        previewType,
         style,
         ...otherButtonProps
       } = buttonProps;
@@ -190,19 +207,24 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
 
   return (
     <Container disableGutters style={getCombinedStylesForView(defaultContainerStyle, finalProps.style)}>
-      {renderButton(finalProps)}
       <Container disableGutters>
-        <UploadList
-          errors={finalProps.errors}
-          sortable={finalProps.sortable}
-          data={[...files]}
-          uriData={[...fileUris]}
-          onSort={onSortHandler}
-          deleteData={deleteFile}
-          variant={finalProps.variant}
-          previewStyle={finalProps.variant === 'image' ? finalProps.previewStyle : undefined}
-        />
+        {renderButton(finalProps)}
+        {duplicateFileNameError ? (
+          <Typography.Body style={errorMessageStyle}>{finalProps.errorMessageForDuplicateFiles}</Typography.Body>
+        ) : null}
       </Container>
+      <UploadList
+        errors={finalProps.errors}
+        sortable={finalProps.sortable}
+        data={[...files]}
+        uriData={[...fileUris]}
+        onSort={onSortHandler}
+        deleteData={deleteFile}
+        variant={finalProps.variant}
+        previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
+        listStyle={finalProps.listStyle}
+        listWidth={finalProps.listWidth}
+      />
     </Container>
   );
 });

@@ -122,7 +122,6 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
     common: {
       height: 40,
       width: 40,
-      padding: '8px',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,
@@ -320,21 +319,21 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
       size: 24,
     },
     filled: {
-      color: themeColors.$onPrimary,
+      color: themeColors.$onPrimary as string,
 
       '@disable': {
-        color: getColorInRGBA(themeColors.$onSurface, 38),
+        color: getColorInRGBA(themeColors.$onSurface, 38) as string,
       },
     },
     filledUnselected: {
-      color: themeColors.$primary,
+      color: themeColors.$primary as string,
 
       '@disable': {
-        color: getColorInRGBA(themeColors.$onSurface, 38),
+        color: getColorInRGBA(themeColors.$onSurface, 38) as string,
       },
     },
     filledSelected: {
-      color: themeColors.$onPrimary,
+      color: themeColors.$onPrimary as string,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
@@ -342,42 +341,42 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
     },
 
     tonal: {
-      color: themeColors.$onSecondaryContainer,
+      color: themeColors.$onSecondaryContainer as string,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
     tonalUnselected: {
-      color: themeColors.$onSurfaceVariant,
+      color: themeColors.$onSurfaceVariant as string,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
     tonalSelected: {
-      color: themeColors.$onSecondaryContainer,
+      color: themeColors.$onSecondaryContainer as string,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
     outlined: {
-      color: themeColors.$onSurfaceVariant,
+      color: themeColors.$onSurfaceVariant as string,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
     outlinedUnselected: {
-      color: themeColors.$onSurfaceVariant,
+      color: themeColors.$onSurfaceVariant as string,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
     outlinedSelected: {
-      color: themeColors.$inverseOnSurface,
+      color: themeColors.$inverseOnSurface as string,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
@@ -385,21 +384,21 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
     },
 
     standard: {
-      color: themeColors.$onSurfaceVariant,
+      color: themeColors.$onSurfaceVariant as string,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
     standardUnselected: {
-      color: themeColors.$onSurfaceVariant,
+      color: themeColors.$onSurfaceVariant as string,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
     standardSelected: {
-      color: themeColors.$primary,
+      color: themeColors.$primary as string,
 
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),

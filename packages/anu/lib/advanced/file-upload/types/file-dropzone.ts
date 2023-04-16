@@ -17,12 +17,15 @@ interface BasicFileDropZoneProps extends Omit<ContainerProps, 'variant'> {
   fileType?: Accept;
   style?: StyleProp<ViewStyle>;
   dropZoneStyle?: StyleProp<ViewStyle>;
+  listStyle?: StyleProp<ViewStyle>;
+  listWidth?: number;
   errors?: { error: boolean; errorMessage: string }[];
+  errorMessageForDuplicateFiles?: string;
 }
 
 interface ImageFileDropZoneProps extends BasicFileDropZoneProps {
   variant?: 'image';
-  previewStyle?: 'list' | 'carousel';
+  previewType?: 'list' | 'carousel';
   optimization?: boolean;
   optimizationConfig?: Config;
 }

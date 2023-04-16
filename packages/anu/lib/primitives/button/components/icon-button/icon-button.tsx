@@ -1,7 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
 import { generateHoverStyles } from 'common/utils';
 import { Pressable, useSx } from 'dripsy';
-import { Container, Icon } from 'lib/primitives';
+import { Container, Icon, Typography } from 'lib/primitives';
 import { ReactElement, useEffect, useState } from 'react';
 import { GestureResponderEvent, PressableStateCallbackType } from 'react-native';
 
@@ -50,7 +51,9 @@ const IconButton = (props: IconButtonProps) => {
         disabled={restOfTheProps.disabled}
         onPress={onPressHandler}
       >
-        {getIcon(restOfTheProps.icon)}
+        <Container disableGutters style={{ padding: 8 }}>
+          {getIcon(restOfTheProps.icon)}
+        </Container>
       </Pressable>
     </Container>
   );
