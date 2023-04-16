@@ -1,4 +1,3 @@
-import { getColorInRGBA } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
 import { Options } from '../types';

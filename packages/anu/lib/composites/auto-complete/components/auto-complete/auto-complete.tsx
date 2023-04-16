@@ -3,7 +3,7 @@
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib/primitives';
-import { debounce as loadashDebounce } from 'lodash';
+import { debounce as lodashDebounce } from 'lodash';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo } from 'react';
 import { FlatList, NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
 
@@ -35,7 +35,7 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
   }, []);
 
   const debouncedFilter = useMemo(() => {
-    return loadashDebounce((key: string) => filter(key), finalProps.debounceDuration ?? 2000);
+    return lodashDebounce((key: string) => filter(key), finalProps.debounceDuration ?? 2000);
   }, [filter]);
 
   useEffect(() => {
