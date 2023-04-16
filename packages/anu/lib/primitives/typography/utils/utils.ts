@@ -59,7 +59,6 @@ const getDisplayFontStyles = (size: TypographyProps['size'], theme: DripsyFinalT
         lineHeight: theme.lineHeights[0],
         fontSize: theme.fontSizes[0],
         fontWeight: '400' as const,
-        color: theme.colors,
       };
     }
     case 'medium': {

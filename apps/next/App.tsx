@@ -7,7 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { Home } from './src/screens';
 
-const theme = makeTheme({});
+const theme = makeTheme({}, 'dark');
 
 /**
  *

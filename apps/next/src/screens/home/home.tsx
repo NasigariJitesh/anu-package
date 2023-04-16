@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-color-literals */
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
 import { Container, Divider, FileUpload, Icon, IconButton, Typography } from 'anu/lib';

@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-secrets/no-secrets */
 import {
+  AutoComplete,
   Avatar,
   Button,
   Card,
@@ -12,6 +13,7 @@ import {
   Container,
   IconButton,
   OTPInput,
+  SearchBar,
   Typography,
 } from 'anu/lib';
 import { FileUpload, FileUploadReferenceProps } from 'anu/lib/advanced';

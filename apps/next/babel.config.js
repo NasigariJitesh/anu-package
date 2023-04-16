@@ -13,7 +13,7 @@ module.exports = function (api) {
       '@expo/html-elements/babel',
 
       // ...(useClassTransform ? ['@babel/plugin-proposal-class-properties'] : []),
-      // 'react-native-reanimated/plugin',
+      'react-native-reanimated/plugin',
       [
         'module-resolver',
         {
