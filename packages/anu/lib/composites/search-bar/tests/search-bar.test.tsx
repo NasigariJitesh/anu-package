@@ -4,7 +4,7 @@ import 'setimmediate';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import DripsyApp from 'anu/common/context/anu-provider';
 import { makeTheme } from 'anu/config';
-import { Icon, Options, Typography } from 'anu/lib';
+import { Options, Typography } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -23,7 +23,7 @@ describe('Testing for Search Bar', () => {
         value='Hey'
         data={data}
         flatListProps={{ data: data, renderItem: ListRenderItem }}
-        onChangeText={(text: string) => {}}
+        onChangeText={() => {}}
         caseSensitive={true}
         clearText={() => {}}
         filterOnChange={() => []}
@@ -45,7 +45,7 @@ describe('Testing for Standard Search Bar', () => {
         value='Hey'
         data={data}
         flatListProps={{ data: data, renderItem: ListRenderItem }}
-        onChangeText={(text: string) => {}}
+        onChangeText={() => {}}
         caseSensitive={false}
         type='docked'
         clearText={() => {}}
@@ -68,7 +68,7 @@ describe('Testing for Filled Search Bar', () => {
         value='Hey'
         data={data}
         flatListProps={{ data: data, renderItem: ListRenderItem }}
-        onChangeText={(text: string) => {}}
+        onChangeText={() => {}}
         caseSensitive={false}
         type='full-screen'
         clearText={() => {}}
@@ -93,7 +93,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           value='Hey'
           data={data}
           flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='full-screen'
           clearText={() => {}}
@@ -117,7 +117,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           value='Hey'
           data={data}
           flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
           clearText={() => {}}
@@ -141,7 +141,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           value='Hey'
           data={data}
           flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
           clearText={() => {}}
@@ -161,7 +161,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           value='Hey'
           data={data}
           flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
           clearText={() => {}}
@@ -181,7 +181,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           value='Hey'
           data={data}
           flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
           clearText={() => {}}
@@ -201,7 +201,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           value='Hey'
           data={data}
           flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
           clearText={() => {}}
@@ -227,7 +227,7 @@ describe('Testing for Outlined Search Bar with ref', () => {
           value='Hey'
           data={data}
           flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           caseSensitive={false}
           clearText={() => {}}
           filterOnChange={() => []}
@@ -246,7 +246,7 @@ describe('Testing for Outlined Search Bar with ref', () => {
           value='Hey'
           data={data}
           flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
           clearText={() => {}}
