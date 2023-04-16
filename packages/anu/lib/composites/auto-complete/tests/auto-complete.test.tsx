@@ -19,7 +19,7 @@ describe('Testing for Auto Complete', () => {
         value='Hey'
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
-        onChangeText={(text: string) => {}}
+        onChangeText={() => {}}
         caseSensitive={false}
         filterOnChange={() => []}
       />
@@ -41,7 +41,7 @@ describe('Testing for Outlined Auto Complete', () => {
         variant='outlined'
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
-        onChangeText={(text: string) => {}}
+        onChangeText={() => {}}
       />
     </DripsyApp>,
   );
@@ -62,7 +62,7 @@ describe('Testing for Base Auto Complete', () => {
         disabled
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
-        onChangeText={(text: string) => {}}
+        onChangeText={() => {}}
       />
     </DripsyApp>,
   );
@@ -82,7 +82,7 @@ describe('Testing for Filled Auto Complete', () => {
         variant='filled'
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
-        onChangeText={(text: string) => {}}
+        onChangeText={() => {}}
         hideDropDownButton
       />
     </DripsyApp>,
@@ -105,7 +105,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
           variant='outlined'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           onFocus={() => {}}
         />
       </DripsyApp>,
@@ -124,7 +124,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
           data={data}
           caseSensitive
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           onBlur={() => {}}
         />
       </DripsyApp>,
@@ -143,7 +143,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
           data={data}
           filterOnChange={() => []}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
         />
       </DripsyApp>,
     );
@@ -160,7 +160,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
           variant='outlined'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
         />
       </DripsyApp>,
     );
@@ -182,7 +182,7 @@ describe('Testing for Outlined Auto Complete with ref', () => {
           variant='outlined'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           leadingIcon={<Icon name='close' />}
           trailingIcon={<Icon name='close' />}
         />
@@ -202,7 +202,7 @@ describe('Testing for Outlined Auto Complete with ref', () => {
           variant='outlined'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           leadingIcon={<Icon name='close' />}
           trailingIcon={<Icon name='close' />}
         />
@@ -224,7 +224,7 @@ describe('Testing for base Auto Complete Events without ref', () => {
           variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           debounce
           direction='rtl'
           hideDropDownButton
@@ -244,7 +244,7 @@ describe('Testing for base Auto Complete Events without ref', () => {
           variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           hideDropDownButton
         />
       </DripsyApp>,
@@ -263,7 +263,7 @@ describe('Testing for base Auto Complete Events without ref', () => {
           data={data}
           caseSensitive={false}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           direction='ltr'
           hideDropDownButton
         />
@@ -282,7 +282,7 @@ describe('Testing for base Auto Complete Events without ref', () => {
           variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
         />
       </DripsyApp>,
     );
@@ -302,7 +302,7 @@ describe('Testing for base Auto Complete Events without ref', () => {
           variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
         />
       </DripsyApp>,
     );
@@ -327,7 +327,7 @@ describe('Testing for base Auto Complete with ref', () => {
           variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           direction='rtl'
           hideDropDownButton={false}
         />
@@ -347,10 +347,10 @@ describe('Testing for base Auto Complete with ref', () => {
           variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           direction='ltr'
           hideDropDownButton={false}
-          toggleShowResults={(value) => {}}
+          toggleShowResults={() => {}}
           debounce={false}
         />
       </DripsyApp>,
@@ -369,7 +369,7 @@ describe('Testing for base Auto Complete with ref', () => {
           variant='base'
           data={data}
           flatListProps={{ renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          onChangeText={() => {}}
           direction='ltr'
           debounce={false}
         />

@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Container, Image } from 'anu/lib';
-import sidesheet from 'assets/sidesheet.png';
+import sidesheet from 'assets/side-sheet.png';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 
@@ -24,11 +24,11 @@ export const sideSheetDocumentation: ContentValues = {
       description: 'sideSheetDocumentation:example1-description',
       id: 'default',
       component: (
-        <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Image source={{ uri: sidesheet.src }} style={{ width: 720, height: 400 }} alt='side-sheet' />
+        <Container disableGutters sx={flexStyle as never}>
+          <Image source={{ uri: sidesheet.src }} style={{ width: 450, height: 350 }} alt='side-sheet' />
         </Container>
       ),
-      code: "<SideSheet width={300} headline= 'Title' startCoordinate={-100} align='right' divider />",
+      code: "<SideSheet width={300} headline= 'Title' startCoordinate={-50} align='right' divider />",
     },
   ],
   properties: [
