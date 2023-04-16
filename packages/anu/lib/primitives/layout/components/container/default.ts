@@ -9,7 +9,6 @@ export const defaultProps = (theme: DripsyFinalTheme) => {
     disableGutters: false,
     style: {
       backgroundColor: theme.colors.$background,
-      width: '100%',
     },
   };
 };

@@ -438,7 +438,7 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
     '@focus': propsFocusStyles,
     '@press': propsPressStyles,
     ...propsOtherStyles
-  } = props?.containerStyle ?? {};
+  } = props.containerStyle ?? {};
 
   styles = {
     ...commonTheme,

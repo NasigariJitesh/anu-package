@@ -16,20 +16,23 @@ export const containerDocumentation: ContentValues = {
   properties: [
     {
       name: 'flexDirection',
-      type: "'row' | 'row-reverse' | 'column' | 'column-reverse' (optional)",
+      optional: true,
+      type: "'row' | 'row-reverse' | 'column' | 'column-reverse'",
       description: 'containerDocumentation:property-flexDirection-description',
       defaultValue: "'column'",
     },
     {
       name: 'align',
-      type: "'center' | 'flex-start' | 'flex-end' (optional)",
+      optional: true,
+      type: "'center' | 'flex-start' | 'flex-end'",
       description: 'containerDocumentation:property-align-description',
       defaultValue: "'flex-start'",
     },
     {
       name: 'justify',
       description: 'containerDocumentation:property-justify-description',
-      type: "'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' (optional)",
+      optional: true,
+      type: "'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around'",
       defaultValue: "'flex-start'",
     },
     {
@@ -61,7 +64,8 @@ export const containerDocumentation: ContentValues = {
     {
       name: 'maxWidth',
       description: 'containerDocumentation:property-maxWidth-description',
-      type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | number | string (optional)",
+      optional: true,
+      type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | number | string",
     },
     {
       name: 'sx',

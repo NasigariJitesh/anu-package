@@ -123,10 +123,13 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
 export const getLeadingContainerStyle = (props: TextFieldProps) => {
   const style = {
     paddingLeft: 8,
-    paddingVertical: 16,
+    height: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     color: 'inherit',
     backgroundColor: props.disabled ? 'inherit' : 'transparent',
-  };
+  } as const;
 
   return style;
 };
@@ -140,10 +143,14 @@ export const getLeadingContainerStyle = (props: TextFieldProps) => {
 export const getTrailingContainerStyle = (props: TextFieldProps) => {
   const style = {
     paddingRight: 8,
-    paddingVertical: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    minWidth: 48,
     color: 'inherit',
     backgroundColor: props.disabled ? 'inherit' : 'transparent',
-  };
+  } as const;
 
   return style;
 };
@@ -167,10 +174,10 @@ export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: D
   let finalStyle = {
     ...style,
     ...propStyle,
-    '@disable': { ...style['@disable'], ...propStyle?.['@disable'] },
-    '@hover': { ...style['@hover'], ...propStyle?.['@hover'] },
-    '@focus': { ...style['@focus'], ...propStyle?.['@focus'] },
-    '@press': { ...style['@press'], ...propStyle?.['@press'] },
+    '@disable': { ...style?.['@disable'], ...propStyle?.['@disable'] },
+    '@hover': { ...style?.['@hover'], ...propStyle?.['@hover'] },
+    '@focus': { ...style?.['@focus'], ...propStyle?.['@focus'] },
+    '@press': { ...style?.['@press'], ...propStyle?.['@press'] },
   };
 
   if (error) {
@@ -215,7 +222,7 @@ export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: D
  * @returns error message array
  */
 export const getErrors = (message?: string | string[]) => {
-  return typeof message === 'string' ? [message] : message ?? [];
+  return Array.isArray(message) ? message : [message];
 };
 
 /**
@@ -256,10 +263,27 @@ export const getSupportingTextStyle = (theme: DripsyFinalTheme) => {
   return style;
 };
 
+export const getUnanimatedLabelStyles = (theme: DripsyFinalTheme) => {
+  const labelContainerStyle = {
+    left: 0,
+    position: 'absolute',
+    paddingHorizontal: 16,
+  } as const;
+  const labelTextStyle = {
+    fontSize: 16,
+    lineHeight: 24,
+    letterSpacing: 0.5,
+    paddingHorizontal: 2,
+    color: theme.colors.$onSurfaceVariant,
+  } as const;
+
+  return { labelContainerStyle, labelTextStyle };
+};
+
 export const getErrorIcon = () => {
   return <MaterialCommunityIcons name='alert-circle' color='inherit' size={24} />;
 };
 
 export const getInnerContainerStyle = () => {
-  return { backgroundColor: 'inherit', height: '100%', borderRadius: 4, color: 'inherit', flex: 1 };
+  return { backgroundColor: 'inherit', height: '100%', borderRadius: 'inherit', color: 'inherit', flex: 1 };
 };

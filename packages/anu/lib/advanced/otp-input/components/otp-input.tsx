@@ -29,6 +29,11 @@ interface IndividualOTPFieldProps {
  */
 const getInitialArray = (value: string, numberOfDigits: number, type?: 'alphabetic' | 'alphanumeric' | 'numeric') => {
   const array: string[] = Array.from({ length: numberOfDigits });
+
+  for (const [index, char] of [...array].entries()) {
+    array.splice(index, 1, char ?? '');
+  }
+
   for (const [index, char] of [...value].entries()) {
     if (index < numberOfDigits && validateValue(char, type)) array.splice(index, 1, char);
   }
@@ -43,7 +48,7 @@ const getInitialArray = (value: string, numberOfDigits: number, type?: 'alphabet
  * @returns {boolean} - whether the value is valid according to type of otp
  */
 const validateValue = (value: string, type?: 'alphabetic' | 'alphanumeric' | 'numeric') => {
-  if (!value) return true;
+  if (value === '') return true;
 
   switch (type) {
     case 'alphanumeric': {
@@ -87,7 +92,6 @@ const IndividualOTPField = ({
       else references.current[index - 1]?.focus();
     } else if (event.nativeEvent.key == 'Enter') onSubmitHandler();
   };
-
   return (
     <TextField
       testID={inputProps.testID ? inputProps.testID + '-field-' + (index + 1) : undefined}
@@ -99,10 +103,13 @@ const IndividualOTPField = ({
       style={{ ...style, ...inputProps.style }}
       textInputStyle={textInputStyle}
       label=''
+      disableLabelAnimation
       onChangeText={(text) => onValueChangeHandler(text, index)}
       error={inputProps.error}
       noDefaultErrorMessage={true}
       onKeyPress={(event) => onKeyPressHandler(event, value)}
+      disabled={inputProps.disabled}
+      showClearButton={false}
     />
   );
 };
@@ -147,11 +154,10 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
       }
 
       array.splice(index, 1, recentValue);
-
-      setOTPValue([...array]);
-
-      if (finalProps.onValueChange) finalProps.onValueChange(array.join(''));
     }
+    setOTPValue([...array]);
+
+    if (finalProps.onValueChange) finalProps.onValueChange(array.join(''));
   };
 
   const onSubmitHandler = () => {

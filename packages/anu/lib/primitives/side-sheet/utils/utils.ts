@@ -14,7 +14,7 @@ const getSideSheetTheme = (theme: DripsyFinalTheme) => {
 
   const sheetTheme = {
     container: {
-      marginTop: 72,
+      paddingTop: 24,
       backgroundColor: themeColors.$surface,
       elevation: 1,
       position: 'absolute',
@@ -24,8 +24,8 @@ const getSideSheetTheme = (theme: DripsyFinalTheme) => {
     } satisfies ViewProps['style'],
 
     alignLeft: {
-      borderBottomLeftRadius: 28,
-      borderTopLeftRadius: 28,
+      borderBottomRightRadius: 28,
+      borderTopRightRadius: 28,
     } satisfies ViewProps['style'],
 
     alignRight: {
@@ -58,18 +58,38 @@ export const getSideSheetStyles = (
     props.align === 'right'
       ? {
           ...container,
-          ...theme.alignRight,
+          ...(props.variant === 'modal' ? theme.alignRight : {}),
           right: -props.startCoordinate,
           width: props.width,
           borderLeftWidth: props.divider ? 1 : 0,
         }
       : {
           ...container,
-          ...theme.alignLeft,
+          ...(props.variant === 'modal' ? theme.alignLeft : {}),
           left: props.startCoordinate,
           width: props.width,
           borderRightWidth: props.divider ? 1 : 0,
         };
 
+  container = props.variant === 'modal' ? container : { ...container, borderRadius: 0 };
+
   return { container, ...(props.containerStyles as Record<string, never>) };
+};
+
+export const getHeaderStyles = () => {
+  const headingStyle = {
+    marginHorizontal: 12,
+  };
+  const containerStyle = {
+    paddingHorizontal: 12,
+    height: 48,
+  };
+  const backIconStyle = {
+    marginLeft: 4,
+  };
+  const closeIconStyle = {
+    marginRight: 12,
+  };
+
+  return { backIconStyle, closeIconStyle, containerStyle, headingStyle };
 };

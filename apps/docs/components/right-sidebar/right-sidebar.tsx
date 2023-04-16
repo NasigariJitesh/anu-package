@@ -4,8 +4,16 @@ import { ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
+import { autoCompleteIndex } from 'services/docs/auto-complete';
 import { avatarIndex } from 'services/docs/avatar';
 import { badgeIndex } from 'services/docs/badge';
+import { bottomSheetIndex } from 'services/docs/bottom-sheet';
+import { cardIndex } from 'services/docs/card';
+import { cardActionsIndex } from 'services/docs/card-actions';
+import { cardContentIndex } from 'services/docs/card-content';
+import { cardHeaderIndex } from 'services/docs/card-header';
+import { cardMediaIndex } from 'services/docs/card-media';
+import { cardTitleIndex } from 'services/docs/card-title';
 import { checkboxIndex } from 'services/docs/checkbox';
 import { chipIndex } from 'services/docs/chip';
 import { containerIndex } from 'services/docs/container';
@@ -16,9 +24,11 @@ import { FABIndex } from 'services/docs/fab';
 import { iconButtonIndex } from 'services/docs/icon-button';
 import { imageIndex } from 'services/docs/image';
 import { installationIndex } from 'services/docs/installation';
+import { otpInputIndex } from 'services/docs/otp-input';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
+import { sideSheetIndex } from 'services/docs/side-sheet';
 import { switchIndex } from 'services/docs/switch';
 import { textFieldIndex } from 'services/docs/text-field';
 import { themingIndex } from 'services/docs/theming';
@@ -115,6 +125,11 @@ const RenderIndex = () => {
   const { pathname } = useRouter();
 
   switch (pathname) {
+    case '/components/auto-complete': {
+      {
+        return <Index {...autoCompleteIndex} />;
+      }
+    }
     case '/components/avatar': {
       {
         return <Index {...avatarIndex} />;
@@ -123,6 +138,11 @@ const RenderIndex = () => {
     case '/components/badge': {
       {
         return <Index {...badgeIndex} />;
+      }
+    }
+    case '/components/bottom-sheet': {
+      {
+        return <Index {...bottomSheetIndex} />;
       }
     }
 
@@ -151,6 +171,36 @@ const RenderIndex = () => {
         return <Index {...segmentedButtonIndex} />;
       }
     }
+    case '/components/card': {
+      {
+        return <Index {...cardIndex} />;
+      }
+    }
+    case '/components/card/header': {
+      {
+        return <Index {...cardHeaderIndex} />;
+      }
+    }
+    case '/components/card/media': {
+      {
+        return <Index {...cardMediaIndex} />;
+      }
+    }
+    case '/components/card/title': {
+      {
+        return <Index {...cardTitleIndex} />;
+      }
+    }
+    case '/components/card/content': {
+      {
+        return <Index {...cardContentIndex} />;
+      }
+    }
+    case '/components/card/actions': {
+      {
+        return <Index {...cardActionsIndex} />;
+      }
+    }
     case '/components/checkbox': {
       {
         return <Index {...checkboxIndex} />;
@@ -176,9 +226,24 @@ const RenderIndex = () => {
         return <Index {...imageIndex} />;
       }
     }
+    case '/components/text-field': {
+      {
+        return <Index {...textFieldIndex} />;
+      }
+    }
+    case '/components/otp-input': {
+      {
+        return <Index {...otpInputIndex} />;
+      }
+    }
     case '/components/radio-button': {
       {
         return <Index {...radioButtonIndex} />;
+      }
+    }
+    case '/components/side-sheet': {
+      {
+        return <Index {...sideSheetIndex} />;
       }
     }
     case '/components/switch': {
@@ -186,11 +251,7 @@ const RenderIndex = () => {
         return <Index {...switchIndex} />;
       }
     }
-    case '/components/text-field': {
-      {
-        return <Index {...textFieldIndex} />;
-      }
-    }
+
     case '/components/typography': {
       {
         return <Index {...typographyIndex} />;

@@ -19,7 +19,7 @@ export const footerLinks: FooterProps = {
         },
         {
           title: 'footer:list1-item4-title',
-          link: '/',
+          link: 'https://www.npmjs.com/package/@anu-dev/core',
         },
       ],
     },

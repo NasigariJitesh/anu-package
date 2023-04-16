@@ -124,19 +124,22 @@ export const typographyDocumentation: ContentValues = {
     },
     {
       name: 'size',
-      type: "'large' | 'medium' | 'small' (optional)",
+      type: "'large' | 'medium' | 'small'",
+      optional: true,
       description: 'typographyDocumentation:property-size-description',
       defaultValue: "'medium'",
     },
     {
       name: 'component',
       description: 'typographyDocumentation:property-component-description',
-      type: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' (optional)",
+      type: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label'",
+      optional: true,
     },
     {
       name: 'align',
       description: 'typographyDocumentation:property-align-description',
-      type: "'center' | 'auto' | 'justify' | 'left' | 'right' (optional)",
+      type: "'center' | 'auto' | 'justify' | 'left' | 'right'",
+      optional: true,
     },
     {
       name: 'style',

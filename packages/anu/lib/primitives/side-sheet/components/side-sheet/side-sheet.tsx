@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import { useTheme } from 'config/dripsy';
-import { forwardRef, useCallback, useImperativeHandle } from 'react';
+import React, { forwardRef, useCallback, useImperativeHandle } from 'react';
 import { SafeAreaView } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
@@ -122,6 +122,7 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
       <Animated.View style={[styles.container, rnSideSheetStyle]}>
         <SafeAreaView>
           <Header {...finalProps} scrollTo={scrollTo} />
+
           {children}
         </SafeAreaView>
       </Animated.View>

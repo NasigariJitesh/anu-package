@@ -9,6 +9,5 @@ export const defaultProps: SideSheetProps & {
   startCoordinate: 0,
   divider: false,
   align: 'right',
-  headerProps: undefined,
   damping: 50,
 };
