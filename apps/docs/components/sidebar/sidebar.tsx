@@ -387,6 +387,11 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:search',
+                components: [],
+                link: '/components/search',
+              },
+              {
                 title: 'leftSideBar:side-sheet',
                 components: [],
                 link: '/components/side-sheet',

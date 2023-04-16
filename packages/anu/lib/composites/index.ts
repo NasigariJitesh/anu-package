@@ -6,5 +6,5 @@ export { default as Avatar, AvatarGroup } from './avatar';
 export * from './avatar';
 export { default as Card } from './card';
 export * from './card';
-export { default as SearchBar } from './search-bar';
+export { default as Search } from './search-bar';
 export * from './search-bar';

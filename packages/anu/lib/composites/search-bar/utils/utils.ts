@@ -45,6 +45,7 @@ export const getSearchBarStyle = (
     elevation: 1,
     width: '100%',
     top: 56,
+    zIndex: 1000,
   };
 
   const activeFullScreenSearchBarStyle = {
@@ -61,7 +62,15 @@ export const getSearchBarStyle = (
     borderBottomWidth: 1,
     borderColor: theme.colors.$outline,
     width: '100%',
-    zIndex: 100,
+    '@hover': {
+      borderColor: theme.colors.$outline,
+    },
+    '@focus': {
+      borderColor: theme.colors.$outline,
+    },
+    '@press': {
+      borderColor: theme.colors.$outline,
+    },
   };
 
   const activeDockedSearchBarStyle = {
@@ -76,10 +85,19 @@ export const getSearchBarStyle = (
     },
     shadowOpacity: 0,
     shadowRadius: 0,
-    elevation: 0,
+    elevation: 1,
     borderBottomWidth: 1,
     borderColor: theme.colors.$outline,
     width: '100%',
+    '@hover': {
+      borderColor: theme.colors.$outline,
+    },
+    '@focus': {
+      borderColor: theme.colors.$outline,
+    },
+    '@press': {
+      borderColor: theme.colors.$outline,
+    },
   };
   const containerStyle = { width: '100%' };
 
@@ -87,11 +105,14 @@ export const getSearchBarStyle = (
   let defaultSearchBarStyle;
   let defaultResultsContainerStyle;
   let defaultContainerStyle;
+  let defaultFlatListStyle;
 
   if (active) {
     defaultSearchBarStyle = type === 'full-screen' ? activeFullScreenSearchBarStyle : activeDockedSearchBarStyle;
     defaultResultsContainerStyle =
-      type === 'full-screen' ? { ...resultsContainerStyle, top: 72, height: '100%' } : resultsContainerStyle;
+      type === 'full-screen'
+        ? { ...resultsContainerStyle, top: 72, height: '100%' }
+        : { ...resultsContainerStyle, borderBottomLeftRadius: 28, borderBottomRightRadius: 28 };
     defaultContainerStyle =
       type === 'full-screen' ? { ...containerStyle, ...StyleSheet.absoluteFillObject, zIndex: 1000 } : containerStyle;
     activeSearchBarContainerStyle =
@@ -103,11 +124,14 @@ export const getSearchBarStyle = (
             zIndex: 1000,
           }
         : { zIndex: 1000 };
+    defaultFlatListStyle =
+      type === 'full-screen' ? { height: '100%' } : { borderBottomLeftRadius: 28, borderBottomRightRadius: 28 };
   } else {
     defaultSearchBarStyle = searchBarStyle;
     defaultResultsContainerStyle = resultsContainerStyle;
     defaultContainerStyle = containerStyle;
     activeSearchBarContainerStyle = { zIndex: 1000 };
+    defaultFlatListStyle = {};
   }
 
   return {
@@ -115,5 +139,6 @@ export const getSearchBarStyle = (
     defaultResultsContainerStyle,
     activeSearchBarContainerStyle,
     defaultContainerStyle,
+    defaultFlatListStyle,
   };
 };
