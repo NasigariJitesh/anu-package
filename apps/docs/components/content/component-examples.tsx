@@ -158,6 +158,7 @@ const getStyles = ({ colors }: DripsyFinalTheme) => {
     },
     examplesContainer: {
       marginVertical: 20,
+      zIndex: 1000,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
     },
     codeContainer: {
