@@ -51,7 +51,7 @@ export default function App(props: AppProps) {
             <props.Component {...props.pageProps} />
             <RightSidebar />
           </Container>
-          {props.router.pathname === '/' ? null : <Footer {...footerLinks} />}
+          {props.router.pathname === '/' || props.router.pathname === '/example' ? null : <Footer {...footerLinks} />}
         </Container>
       </RootLayout>
     </>

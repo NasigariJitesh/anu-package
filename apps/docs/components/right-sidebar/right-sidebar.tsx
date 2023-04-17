@@ -27,6 +27,7 @@ import { installationIndex } from 'services/docs/installation';
 import { otpInputIndex } from 'services/docs/otp-input';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
+import { searchIndex } from 'services/docs/search';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
 import { sideSheetIndex } from 'services/docs/side-sheet';
 import { switchIndex } from 'services/docs/switch';
@@ -239,6 +240,11 @@ const RenderIndex = () => {
     case '/components/radio-button': {
       {
         return <Index {...radioButtonIndex} />;
+      }
+    }
+    case '/components/search': {
+      {
+        return <Index {...searchIndex} />;
       }
     }
     case '/components/side-sheet': {

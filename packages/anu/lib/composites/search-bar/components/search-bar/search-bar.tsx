@@ -107,9 +107,11 @@ const Search = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, refer
       disableLabelAnimation={true}
       error={false}
       flatListProps={{
+        showsVerticalScrollIndicator: false,
         ...autoCompleteProps.flatListProps,
         style: getCombinedStylesForView(defaultFlatListStyle, autoCompleteProps.flatListProps.style),
       }}
+      showResults={value ? value.length > 0 : false}
     />
   );
 });

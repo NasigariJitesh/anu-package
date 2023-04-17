@@ -125,7 +125,9 @@ export const getSearchBarStyle = (
           }
         : { zIndex: 1000 };
     defaultFlatListStyle =
-      type === 'full-screen' ? { height: '100%' } : { borderBottomLeftRadius: 28, borderBottomRightRadius: 28 };
+      type === 'full-screen'
+        ? { maxHeight: '100%', width: '100%' }
+        : { borderBottomLeftRadius: 28, borderBottomRightRadius: 28 };
   } else {
     defaultSearchBarStyle = searchBarStyle;
     defaultResultsContainerStyle = resultsContainerStyle;
