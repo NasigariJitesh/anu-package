@@ -55,6 +55,7 @@
   "leftSideBar:image": "Image",
   "leftSideBar:input-fields": "Champs de saisie",
   "leftSideBar:text-fields": "Champs de texte",
+  "leftSideBar:phone-input": "Entrée de téléphone",
   "leftSideBar:otp-input": "Entrée de l'OTP",
   "leftSideBar:radio": "Bouton radio",
   "leftSideBar:search": "Recherche",
@@ -411,6 +412,16 @@
   "otpInputDocumentation:example2-name": "Champ de saisie OTP contouré",
 
   "otpInputDocumentation:example3-name": "Saisie OTP - avec erreur",
+
+  "phoneInputDocumentation:mainHeading": "Entrée de téléphone",
+  "phoneInputDocumentation:mainDescription": "Une entrée de téléphone permet aux utilisateurs de saisir un numéro de téléphone. Elle est utilisée dans les applications pour l’enregistrement des utilisateurs, les informations de contact et d’autres fins où un numéro de téléphone est requis.\n\nUne entrée de téléphone comprend généralement des fonctionnalités de formatage et de validation pour garantir que l’utilisateur entre un numéro de téléphone valide.",
+  "phoneInputDocumentation:example1-name": "Entrée de téléphone remplie",
+  "phoneInputDocumentation:example2-name": "Entrée de téléphone soulignée",
+  "phoneInputDocumentation:example3-name": "Erreur d’entrée de téléphone",
+  "phoneInputDocumentation:property-value-description": "La valeur du numéro de téléphone.",
+  "phoneInputDocumentation:property-onChangeText-description": "Fonction de rappel lorsque la valeur est modifiée ou que de nouvelles données relatives au numéro de téléphone sont disponibles.",
+  "phoneInputDocumentation:property-defaultCountryCode-description": "La valeur du code pays par défaut de l’entrée téléphonique.",
+  "phoneInputDocumentation:externalProperties": "Propriétés d’auto-complétion",
 
   "radioDocumentation:mainHeading": "Radio",
   "radioDocumentation:mainDescription": "Les boutons radio permettent aux utilisateurs de sélectionner une option dans un ensemble.",

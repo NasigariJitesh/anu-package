@@ -25,6 +25,7 @@ import { iconButtonIndex } from 'services/docs/icon-button';
 import { imageIndex } from 'services/docs/image';
 import { installationIndex } from 'services/docs/installation';
 import { otpInputIndex } from 'services/docs/otp-input';
+import { phoneInputIndex } from 'services/docs/phone-input';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
 import { searchIndex } from 'services/docs/search';
@@ -235,6 +236,11 @@ const RenderIndex = () => {
     case '/components/otp-input': {
       {
         return <Index {...otpInputIndex} />;
+      }
+    }
+    case '/components/phone-input': {
+      {
+        return <Index {...phoneInputIndex} />;
       }
     }
     case '/components/radio-button': {

@@ -378,7 +378,12 @@ const Sidebar = () => {
               },
               {
                 title: 'leftSideBar:otp-input',
-                link: '/components//otp-input',
+                link: '/components/otp-input',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:phone-input',
+                link: '/components/phone-input',
                 components: [],
               },
               {
