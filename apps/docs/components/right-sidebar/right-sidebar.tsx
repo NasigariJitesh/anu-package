@@ -21,6 +21,8 @@ import { creditsIndex } from 'services/docs/credits';
 import { dividerIndex } from 'services/docs/divider';
 import { extendedFABIndex } from 'services/docs/extended-fab';
 import { FABIndex } from 'services/docs/fab';
+import { fileDropZoneIndex } from 'services/docs/file-drop-zone';
+import { fileUploadIndex } from 'services/docs/file-upload';
 import { iconButtonIndex } from 'services/docs/icon-button';
 import { imageIndex } from 'services/docs/image';
 import { installationIndex } from 'services/docs/installation';
@@ -219,6 +221,16 @@ const RenderIndex = () => {
     case '/components/divider': {
       {
         return <Index {...dividerIndex} />;
+      }
+    }
+    case '/components/file-upload': {
+      {
+        return <Index {...fileUploadIndex} />;
+      }
+    }
+    case '/components/file-upload/file-drop-zone': {
+      {
+        return <Index {...fileDropZoneIndex} />;
       }
     }
     case '/components/image': {
