@@ -135,7 +135,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
     }
 
     switch (propsForButton.category) {
-      case 'regular': {
+      case 'common': {
         return (
           <RegularButton
             {...propsForButton}

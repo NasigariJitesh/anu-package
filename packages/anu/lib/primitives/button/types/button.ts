@@ -24,7 +24,7 @@ export type ButtonType = 'elevated' | 'filled' | 'tonal' | 'outlined' | 'text';
 // export type IconButtonType = Omit<ButtonType, 'elevated' | 'text'> | 'standard';
 export type IconButtonType = 'filled' | 'tonal' | 'outlined' | 'standard';
 
-export type ButtonCategory = 'regular' | 'icon' | 'segmented' | 'floating-action' | 'extended-floating-action';
+export type ButtonCategory = 'common' | 'icon' | 'segmented' | 'floating-action' | 'extended-floating-action';
 
 /**
  * The tokens for the selected type scale in the typography component
@@ -39,7 +39,7 @@ export interface ButtonContainerStyle extends ExtendedDisabledStyles, ExtendedHo
  * Common props for the button component
  */
 export interface ButtonProps extends RNButtonProps {
-  category: 'regular' | 'icon-button' | 'floating-action' | 'extended-floating-action';
+  category: 'common' | 'icon-button' | 'floating-action' | 'extended-floating-action';
   // size: ButtonSize;
 
   /**
@@ -60,7 +60,7 @@ export interface ButtonProps extends RNButtonProps {
  * Props for the regular Button component
  */
 interface CommonRegularButtonProps extends ButtonProps {
-  category: 'regular';
+  category: 'common';
   size: 'medium';
   /**
    * The icon component or the icon props for material icons.

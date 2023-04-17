@@ -1,7 +1,7 @@
 import { FileUploadProps } from '../../types';
 
 export const defaultProps: FileUploadProps = {
-  category: 'regular',
+  category: 'common',
   size: 'medium',
   title: 'Upload File',
   type: 'elevated',

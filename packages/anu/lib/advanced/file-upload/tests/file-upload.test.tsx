@@ -9,7 +9,7 @@ import FileUpload from '../components/file-upload';
 describe('Testing for FileUpload', () => {
   const tree = renderer.create(
     <DripsyApp theme={makeTheme({})}>
-      <FileUpload category='regular' size='medium' type='outlined' title='Upload' />
+      <FileUpload category='common' size='medium' type='outlined' title='Upload' />
     </DripsyApp>,
   );
 

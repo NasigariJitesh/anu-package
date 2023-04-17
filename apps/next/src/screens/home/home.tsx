@@ -39,7 +39,7 @@ const HomeScreen = () => {
         </Container> */}
 
         <FileUpload
-          category='regular'
+          category='common'
           type='filled'
           title='Choose File'
           size='medium'

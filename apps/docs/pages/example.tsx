@@ -34,7 +34,7 @@ export default function Example() {
         ref={fuReference}
         title='Upload'
         size='medium'
-        category='regular'
+        category='common'
         icon={{ name: 'delete' }}
         type='filled'
         multiple
