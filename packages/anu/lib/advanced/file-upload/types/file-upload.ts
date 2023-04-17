@@ -8,26 +8,69 @@ export interface Config {
   convertSize?: number;
   convertTypes?: string[];
 }
-
 type BasicFileUploadProps = CommonButtonProps & {
+  /*
+   * The variant of file upload (wether image or files).
+   */
   variant?: 'image' | 'file';
+  /*
+   * Whether to allow multiple  files upload
+   */
   multiple?: boolean;
+  /*
+   * Whether to allow sorting after uploading files
+   */
   sortable?: boolean;
+  /*
+   * Callback function that will be called when there is any change in uploaded file list
+   * @param data - files
+   * @param fileUri - uris of files
+   */
   onChange?: (data: Blob | Blob[] | null, fileUri?: string | string[] | null) => void;
+  /*
+   * The mimetype of the files to be allowed for upload
+   */
   fileType?: MimeType | MimeType[];
+  /*
+   * Whether to copy file to cache directory after uploading
+   */
   copyToCacheDirectory?: boolean;
+  /*
+   * The styles for the file upload component
+   */
   style?: StyleProp<ViewStyle>;
+  /*
+   * The Styles for the upload list
+   */
   listStyle?: StyleProp<ViewStyle>;
+  /*
+   * The error state and message for each file
+   */
   errors?: { error: boolean; errorMessage: string }[];
+  /*
+   * The width of files upload list
+   */
   listWidth?: number;
+  /*
+   * The message to display when duplicate file name is found in upload list
+   */
   errorMessageForDuplicateFiles?: string;
 };
 
 type ImageFileUploadProps = BasicFileUploadProps & {
   variant?: 'image';
+  /*
+   * The type of preview of image in the upload list
+   */
   previewType?: 'list' | 'carousel';
+  /*
+   * Whether to optimize image during upload
+   */
   optimization?: boolean;
   optimizationConfig?: Config;
+  /*
+   * The mimetype of the files to be allowed for upload
+   */
   fileType?: ImageMimeType | ImageMimeType[];
 };
 
