@@ -1,4 +1,5 @@
 import { useTheme } from 'anu/config';
+import { getThemeMode } from 'anu/config/dripsy/theme';
 import { Container } from 'anu/lib/primitives';
 import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
@@ -51,6 +52,7 @@ export default function MovableItem<T>(props: MovableItemProps<T>) {
   const { style, animatedViewStyle } = getMovableItemComponentStyle(itemHeight, itemWidth);
 
   const theme = useTheme();
+  const mode = getThemeMode(theme);
 
   const onSortStartHandler = (from: number) => {
     setInitialPosition(from);
@@ -178,7 +180,7 @@ export default function MovableItem<T>(props: MovableItemProps<T>) {
   return (
     <Container width={containerWidth} sx={{ paddingRight: 10 }}>
       <Animated.View style={animatedStyle}>
-        <BlurView intensity={moving ? 100 : 0} tint='light'>
+        <BlurView intensity={moving ? 100 : 0} tint={mode}>
           <PanGestureHandler onGestureEvent={gestureHandler}>
             <Animated.View style={animatedViewStyle}>
               <Container disableGutters style={style}>

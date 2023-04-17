@@ -14,6 +14,8 @@ import {
   IconButton,
   OTPInput,
   SearchBar,
+  TextField,
+  TextFieldReferenceProps,
   Typography,
 } from 'anu/lib';
 import { FileUpload, FileUploadReferenceProps } from 'anu/lib/advanced';
@@ -49,7 +51,9 @@ export default function Example() {
         onChange={(data: Blob | Blob[] | null) => {
           console.log(data);
         }}
-      />
+      >
+        Upload here
+      </FileDropZone>
     </Container>
   );
 }

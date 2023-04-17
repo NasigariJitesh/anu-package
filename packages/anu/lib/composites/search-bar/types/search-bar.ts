@@ -1,14 +1,15 @@
 import { Options } from 'anu/lib/composites/auto-complete/types';
+import { TextFieldContainerStyle } from 'anu/lib/primitives';
 import { StyleProp, ViewStyle } from 'react-native';
 
-import { StandardAutoCompleteProps } from '../../auto-complete/types';
+import { AutoCompleteProps } from '../../auto-complete/types';
 
 export interface SearchBarProps
-  extends Omit<StandardAutoCompleteProps, 'autoCompleteStyle' | 'autoCompleteContainerStyle'> {
+  extends Omit<AutoCompleteProps, 'autoCompleteStyle' | 'autoCompleteContainerStyle' | 'style'> {
   type?: 'docked' | 'full-screen';
   containerStyle?: StyleProp<ViewStyle>;
-  searchBarStyle?: StyleProp<ViewStyle>;
-  clearText: () => void;
+  searchBarContainerStyle?: StyleProp<ViewStyle>;
+  searchBarStyle?: TextFieldContainerStyle;
   filterOnChange: (key: string) => Options[];
 }
 

@@ -6,6 +6,7 @@ import { TextFieldProps } from '../../types';
 export const defaultProps: TextFieldProps = {
   variant: 'outlined',
   value: '',
+  showClearButton: true,
   noDefaultErrorMessage: false,
   inputMode: undefined,
   onPressIn: undefined,

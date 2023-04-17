@@ -4,7 +4,7 @@ import 'setimmediate';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import DripsyApp from 'anu/common/context/anu-provider';
 import { makeTheme } from 'anu/config';
-import { Icon, Options, Typography } from 'anu/lib';
+import { Options, Typography } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -22,10 +22,9 @@ describe('Testing for Search Bar', () => {
       <SearchBar
         value='Hey'
         data={data}
-        flatListProps={{ data: data, renderItem: ListRenderItem }}
-        onChangeText={(text: string) => {}}
+        flatListProps={{ renderItem: ListRenderItem }}
+        onChangeText={() => {}}
         caseSensitive={true}
-        clearText={() => {}}
         filterOnChange={() => []}
       />
     </DripsyApp>,
@@ -44,11 +43,10 @@ describe('Testing for Standard Search Bar', () => {
       <SearchBar
         value='Hey'
         data={data}
-        flatListProps={{ data: data, renderItem: ListRenderItem }}
-        onChangeText={(text: string) => {}}
+        flatListProps={{ renderItem: ListRenderItem }}
+        onChangeText={() => {}}
         caseSensitive={false}
         type='docked'
-        clearText={() => {}}
         filterOnChange={() => []}
       />
     </DripsyApp>,
@@ -67,11 +65,10 @@ describe('Testing for Filled Search Bar', () => {
       <SearchBar
         value='Hey'
         data={data}
-        flatListProps={{ data: data, renderItem: ListRenderItem }}
-        onChangeText={(text: string) => {}}
+        flatListProps={{ renderItem: ListRenderItem }}
+        onChangeText={() => {}}
         caseSensitive={false}
         type='full-screen'
-        clearText={() => {}}
         filterOnChange={() => []}
       />
     </DripsyApp>,
@@ -92,11 +89,10 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           testID='auto-complete-test'
           value='Hey'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          flatListProps={{ renderItem: ListRenderItem }}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='full-screen'
-          clearText={() => {}}
           filterOnChange={() => []}
         />
       </DripsyApp>,
@@ -116,11 +112,10 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           testID='auto-complete-test'
           value='Hey'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          flatListProps={{ renderItem: ListRenderItem }}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
-          clearText={() => {}}
           filterOnChange={() => []}
           onFocus={() => {}}
         />
@@ -140,11 +135,10 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           testID='auto-complete-test'
           value='Hey'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          flatListProps={{ renderItem: ListRenderItem }}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
-          clearText={() => {}}
           filterOnChange={() => []}
         />
       </DripsyApp>,
@@ -160,11 +154,10 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           testID='auto-complete-test'
           value='Hey'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          flatListProps={{ renderItem: ListRenderItem }}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
-          clearText={() => {}}
           filterOnChange={() => []}
         />
       </DripsyApp>,
@@ -180,11 +173,10 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           testID='auto-complete-test'
           value='Hey'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          flatListProps={{ renderItem: ListRenderItem }}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
-          clearText={() => {}}
           filterOnChange={() => []}
         />
       </DripsyApp>,
@@ -200,11 +192,10 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
           testID='auto-complete-test'
           value='Hey'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          flatListProps={{ renderItem: ListRenderItem }}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
-          clearText={() => {}}
           filterOnChange={() => []}
         />
       </DripsyApp>,
@@ -226,10 +217,9 @@ describe('Testing for Outlined Search Bar with ref', () => {
           type='full-screen'
           value='Hey'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          flatListProps={{ renderItem: ListRenderItem }}
+          onChangeText={() => {}}
           caseSensitive={false}
-          clearText={() => {}}
           filterOnChange={() => []}
         />
       </DripsyApp>,
@@ -245,11 +235,10 @@ describe('Testing for Outlined Search Bar with ref', () => {
           ref={reference}
           value='Hey'
           data={data}
-          flatListProps={{ data: data, renderItem: ListRenderItem }}
-          onChangeText={(text: string) => {}}
+          flatListProps={{ renderItem: ListRenderItem }}
+          onChangeText={() => {}}
           caseSensitive={false}
           type='docked'
-          clearText={() => {}}
           filterOnChange={() => []}
         />
       </DripsyApp>,

@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
+import { useTheme } from 'anu/config';
 import { Container, Divider, FileUpload, Icon, IconButton, Typography } from 'anu/lib';
 import { FileDropZone } from 'anu/lib/advanced/file-upload/components';
 import SortableList from 'anu/lib/advanced/sortable-list/components/sortable-list';
@@ -9,10 +10,12 @@ import { ScrollView } from 'react-native';
 
 const HomeScreen = () => {
   const [files, setFiles] = useState<File | Blob[]>([]);
+  const theme = useTheme();
   return (
     <Container
       disableGutters
-      sx={{ marginTop: 50, height: '100%', width: '100%', overflow: 'scroll', alignItems: 'center' }}
+      style={{ backgroundColor: theme.colors?.$surface as string }}
+      sx={{ paddingTop: 50, height: '100%', width: '100%', overflow: 'scroll', alignItems: 'center' }}
     >
       <ScrollView>
         {/* <Container sx={{ backgroundColor: 'yellow', height: 400 }}>
@@ -37,13 +40,13 @@ const HomeScreen = () => {
 
         <FileUpload
           category='regular'
-          type='outlined'
-          title='Upload'
+          type='filled'
+          title='Choose File'
           size='medium'
-          variant='image'
-          previewType='list'
           multiple
+          previewType='list'
           sortable
+          variant='image'
           onChange={(data: Blob[] | Blob | null, uri?: string[] | string | null) => {
             if (Array.isArray(data)) setFiles(data);
           }}
@@ -51,10 +54,9 @@ const HomeScreen = () => {
 
         {/* <FileDropZone
           variant='image'
-          multiple
           previewType='list'
           style={{ height: 700, marginLeft: 30 }}
-          dropZoneStyle={{ width: 300, height: 250 }}
+          dropZoneStyle={{ width: 300, height: 130 }}
           onChange={(data: Blob[] | Blob | null, uri?: string[] | string | null) => {
             if (Array.isArray(data)) setFiles(data);
           }}

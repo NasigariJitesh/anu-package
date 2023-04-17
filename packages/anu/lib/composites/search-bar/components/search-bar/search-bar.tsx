@@ -15,6 +15,7 @@ import { defaultProps } from './default';
 const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
   const [active, setActive] = useState(false);
+
   const [results, setResults] = useState<Options[]>([]);
   const autoCompleteReference = useRef<AutoCompleteReferenceProps | null>(null);
 
@@ -36,14 +37,15 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
     type,
     data,
     value,
+    searchBarContainerStyle,
     searchBarStyle,
     containerStyle,
     resultContainerStyle,
     onFocus,
+    onBlur,
     filterOnChange,
-    clearText,
-    leadingComponent,
-    trailingComponent,
+    leadingIcon,
+
     ...autoCompleteProps
   } = finalProps;
 
@@ -54,25 +56,7 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
     return active && type === 'full-screen' ? (
       <IconButton type='standard' icon={{ name: 'arrow-back' }} onPress={() => setActive(false)} />
     ) : (
-      leadingComponent
-    );
-  };
-
-  /**
-   * Component for the leading component of the search bar
-   */
-  const getTrailingComponent = () => {
-    return active ? (
-      <IconButton
-        type='standard'
-        icon={{ name: 'clear' }}
-        onPress={() => {
-          autoCompleteReference.current?.focus();
-          clearText();
-        }}
-      />
-    ) : (
-      trailingComponent
+      leadingIcon
     );
   };
 
@@ -95,30 +79,28 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
     if (callback) return callback(event);
   };
 
-  const { defaultSearchBarStyle, activeSearchBarContainerStyle, defaultResultsContainerStyle } = getSearchBarStyle(
-    theme,
-    height,
-    width,
-    active,
-    type,
-  );
+  const { defaultSearchBarStyle, activeSearchBarContainerStyle, defaultResultsContainerStyle, defaultContainerStyle } =
+    getSearchBarStyle(theme, height, width, active, type);
 
   return (
     <AutoComplete
       {...autoCompleteProps}
       ref={autoCompleteReference}
+      variant='base'
       data={results}
       value={value}
-      leadingComponent={getLeadingComponent()}
-      trailingComponent={getTrailingComponent()}
-      autoCompleteContainerStyle={getCombinedStylesForView(activeSearchBarContainerStyle, containerStyle)}
-      autoCompleteStyle={getCombinedStylesForView(defaultSearchBarStyle, searchBarStyle)}
+      leadingIcon={getLeadingComponent()}
+      autoCompleteContainerStyle={getCombinedStylesForView(activeSearchBarContainerStyle, searchBarContainerStyle)}
+      containerStyle={getCombinedStylesForView(defaultContainerStyle, containerStyle)}
+      style={{ ...defaultSearchBarStyle, ...searchBarStyle }}
       resultContainerStyle={getCombinedStylesForView(defaultResultsContainerStyle, resultContainerStyle)}
       hideDropDownButton={true}
       onFocus={(event) => {
         focusEventHandler(event, true, onFocus);
       }}
       filterOnChange={filterOnChangeHandler}
+      disableLabelAnimation={true}
+      error={false}
     />
   );
 });

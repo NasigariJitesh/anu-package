@@ -60,6 +60,12 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
    * If true, the component is disabled.
    */
   disabled?: boolean;
+
+  /**
+   * If true, the clear button is displayed.
+   */
+  showClearButton?: boolean;
+
   /**
    * If there is any error related to field
    */
@@ -84,6 +90,8 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
    * styles for the supporting text of text field
    */
   supportingText?: string;
+
+  disableLabelAnimation?: boolean;
 }
 
 export interface TextInputLabelProps extends TextFieldProps {
