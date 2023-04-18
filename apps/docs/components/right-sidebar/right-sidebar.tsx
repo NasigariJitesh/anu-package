@@ -27,8 +27,10 @@ import { iconButtonIndex } from 'services/docs/icon-button';
 import { imageIndex } from 'services/docs/image';
 import { installationIndex } from 'services/docs/installation';
 import { otpInputIndex } from 'services/docs/otp-input';
+import { phoneInputIndex } from 'services/docs/phone-input';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
+import { searchIndex } from 'services/docs/search';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
 import { sideSheetIndex } from 'services/docs/side-sheet';
 import { switchIndex } from 'services/docs/switch';
@@ -248,9 +250,19 @@ const RenderIndex = () => {
         return <Index {...otpInputIndex} />;
       }
     }
+    case '/components/phone-input': {
+      {
+        return <Index {...phoneInputIndex} />;
+      }
+    }
     case '/components/radio-button': {
       {
         return <Index {...radioButtonIndex} />;
+      }
+    }
+    case '/components/search': {
+      {
+        return <Index {...searchIndex} />;
       }
     }
     case '/components/side-sheet': {

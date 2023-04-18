@@ -25,7 +25,6 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
     disabled,
     direction,
     hideDropDownButton,
-    placeholderTextColor,
     trailingIcon,
     leadingIcon,
     showResults,
@@ -46,8 +45,9 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
       <IconButton
         icon={{
           name: showResults ?? isOpen ? 'arrow-drop-up' : 'arrow-drop-down',
-          props: { style: { color: theme.colors.$onSurfaceVariant } },
+          props: { style: { color: props.error || disabled ? 'inherit' : theme.colors.$onSurfaceVariant } },
         }}
+        disabled={disabled}
         type='standard'
         containerStyle={dropDownButtonStyle}
         pressableProps={{
@@ -76,11 +76,11 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
   return (
     <TextField
       {...textFieldProps}
+      disabled={disabled}
       // eslint-disable-next-line react-native/no-inline-styles
       style={getStyle()}
       variant={variant === 'base' ? 'outlined' : variant}
       ref={textInputReference}
-      placeholderTextColor={placeholderTextColor ?? theme.colors.$onSurfaceVariant}
       leadingIcon={
         leadingIcon || (direction === 'rtl' && hideDropDownButton !== true) ? (
           <Container disableGutters flexDirection='row' align='center' justify='center'>

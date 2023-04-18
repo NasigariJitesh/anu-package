@@ -241,7 +241,11 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
           )
         ) : (
           // eslint-disable-next-line react-native/no-color-literals, react-native/no-inline-styles
-          <Icon name='language' size={25} style={{ color: theme.colors.$onSurfaceVariant }} />
+          <Icon
+            name='language'
+            size={25}
+            style={{ color: finalProps.disabled ? 'inherit' : theme.colors.$onSurfaceVariant }}
+          />
         )}
       </Container>
     );

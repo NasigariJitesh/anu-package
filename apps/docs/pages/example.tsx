@@ -14,7 +14,7 @@ import {
   IconButton,
   OTPInput,
   PhoneInput,
-  SearchBar,
+  Search,
   TextField,
   TextFieldReferenceProps,
   Typography,
@@ -33,35 +33,48 @@ export default function Example() {
   const reference = useRef<AutoCompleteReferenceProps | null>(null);
   const ListRenderItem = ({ item }: { item: Options }) => {
     return (
-      <Pressable onPress={() => console.log('press')} style={{ paddingVertical: 10, paddingHorizontal: 5 }}>
-        <Typography.Body>{item.value as string} </Typography.Body>
+      <Pressable
+        onPress={() => console.log('press')}
+        style={{ flexDirection: 'row', paddingVertical: 10, paddingHorizontal: 15, alignItems: 'center' }}
+      >
+        <Avatar>A</Avatar>
+        <Container>
+          <Typography.Title>{item.value as string} </Typography.Title>
+          <Typography.Body>Supporting Text</Typography.Body>
+        </Container>
       </Pressable>
     );
   };
 
   const data = [
-    { id: 'hello', value: 'Hello' },
-    { id: 'abcd', value: 'Abcd' },
-    { id: 'efgh', value: 'Efgh' },
-    { id: 'ijkl', value: 'Ijkl' },
-    { id: 'lmno', value: 'LMNO' },
-    { id: 'pqrs', value: 'PQRS' },
+    { id: 'list item 1', value: 'List Item 1' },
+    { id: 'list item 2', value: 'List Item 2' },
+    { id: 'list item 3', value: 'List Item 3' },
+    { id: 'list item 4', value: 'List Item 4' },
+    { id: 'list item 5', value: 'List Item 5' },
+    { id: 'list item 6', value: 'List Item 6' },
   ];
 
   return (
-    <Container flexDirection='column' justify='space-between' sx={{ flex: 1 }}>
-      <SearchBar
+    <Container
+      flexDirection='column'
+      justify='space-between'
+      sx={{ flex: 1, backgroundColor: '#46464F', height: '100vh', paddingTop: 1 }}
+    >
+      <Search
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
         value={text1}
         onChangeText={(value: string) => {
           setText1(value);
         }}
-        filterOnChange={(key: string) => data.filter((item) => item.id.includes(key))}
+        filterOnChange={(key: string) => data.filter((item) => item.id.toLowerCase().includes(key.toLowerCase()))}
         type={'full-screen'}
-        label='Search'
+        searchBarContainerStyle={{ width: ' 100%' }}
+        label='Hinted search text'
+        resultContainerStyle={{ zIndex: 1000 }}
       />
-      <AutoComplete
+      {/* <AutoComplete
         ref={reference}
         variant='base'
         direction='ltr'
@@ -88,7 +101,7 @@ export default function Example() {
         }}
         defaultCountryCode={'+91'}
         variant={'outlined'}
-      />
+      /> */}
     </Container>
   );
 }

@@ -58,7 +58,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const innerContainerStyle = getInnerContainerStyle();
     const errorStyle = getErrorStyle(theme);
     const supportingTextStyle = getSupportingTextStyle(theme);
-    const { labelContainerStyle, labelTextStyle } = getUnanimatedLabelStyles(theme);
+    const { labelContainerStyle, labelTextStyle } = getUnanimatedLabelStyles();
 
     const onFocusStyles =
       isTextFieldVisible || value !== ''
@@ -182,6 +182,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                     <IconButton
                       type='standard'
                       icon={{ name: 'clear', props: { size: 16 } }}
+                      disabled={finalProps.disabled}
                       onPress={(event) => {
                         if (componentProps.onChangeText) componentProps.onChangeText('');
                         onTextInputPressedHandler(event);

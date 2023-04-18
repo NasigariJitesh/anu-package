@@ -263,7 +263,7 @@ export const getSupportingTextStyle = (theme: DripsyFinalTheme) => {
   return style;
 };
 
-export const getUnanimatedLabelStyles = (theme: DripsyFinalTheme) => {
+export const getUnanimatedLabelStyles = () => {
   const labelContainerStyle = {
     left: 0,
     position: 'absolute',
@@ -274,7 +274,7 @@ export const getUnanimatedLabelStyles = (theme: DripsyFinalTheme) => {
     lineHeight: 24,
     letterSpacing: 0.5,
     paddingHorizontal: 2,
-    color: theme.colors.$onSurfaceVariant,
+    color: 'inherit',
   } as const;
 
   return { labelContainerStyle, labelTextStyle };

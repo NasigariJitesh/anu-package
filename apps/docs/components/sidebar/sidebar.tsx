@@ -394,13 +394,23 @@ const Sidebar = () => {
               },
               {
                 title: 'leftSideBar:otp-input',
-                link: '/components//otp-input',
+                link: '/components/otp-input',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:phone-input',
+                link: '/components/phone-input',
                 components: [],
               },
               {
                 title: 'leftSideBar:radio',
                 link: '/components/radio-button',
                 components: [],
+              },
+              {
+                title: 'leftSideBar:search',
+                components: [],
+                link: '/components/search',
               },
               {
                 title: 'leftSideBar:side-sheet',

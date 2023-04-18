@@ -58,7 +58,9 @@
   "leftSideBar:input-fields": "Input Fields",
   "leftSideBar:text-fields": "Text Fields",
   "leftSideBar:otp-input": "OTP Input",
+  "leftSideBar:phone-input": "Phone Input",
   "leftSideBar:radio": "Radio Button",
+  "leftSideBar:search": "Search",
   "leftSideBar:side-sheet": "Side Sheet",
   "leftSideBar:switch": "Switch",
   "leftSideBar:typography": "Typography",
@@ -485,6 +487,22 @@
 
   "otpInputDocumentation:example3-name": "OTP Input - with Error",
 
+  "phoneInputDocumentation:mainHeading": "Phone Input",
+  "phoneInputDocumentation:mainDescription": "A phone input allows users to enter a phone number. It is used in applications for user registration, contact information, and other purposes where a phone number is required.\n\nA phone input typically includes formatting and validation features to ensure that the user enters a valid phone number.",
+  "phoneInputDocumentation:example1-name": "Filled Phone Input",
+
+  "phoneInputDocumentation:example2-name": "Outlined Phone Input",
+
+  "phoneInputDocumentation:example3-name": "Error Phone Input",
+
+  "phoneInputDocumentation:property-value-description": "The Value of the phone number.",
+
+  "phoneInputDocumentation:property-onChangeText-description": "Callback Function when the value is changed or new data related to phone number is available.",
+
+  "phoneInputDocumentation:property-defaultCountryCode-description": "The default country code value of phone input.",
+
+  "phoneInputDocumentation:externalProperties": "Auto Complete Properties",
+
   "radioDocumentation:mainHeading": "Radio",
   "radioDocumentation:mainDescription": "Radio buttons allow users to select one option from a set.",
   "radioDocumentation:property-id-description": "Id of the radio button item.",
@@ -500,6 +518,23 @@
   "radioDocumentation:example1-name": "Default",
   "radioDocumentation:example2-name": "Radio Button - with Label",
   "radioDocumentation:example3-name": "Radio Button - Group",
+
+  "searchDocumentation:mainHeading": "Search",
+  "searchDocumentation:mainDescription": "A Search input allows users to search for specific content within an application.\n\nSearch often include features such as auto-suggestion and filtering to help users find the content they are looking for quickly and easily.",
+  "searchDocumentation:example1-name": "Search bar",
+  "searchDocumentation:example1-description": "A Search bar is accompanied by icons and an avatar that triggers the search functionality.",
+  "searchDocumentation:example2-name": "Search - Full Screen",
+  "searchDocumentation:example2-description": "A Full-screen search view refers to a search functionality that is presented on a full-screen. This is mostly used or implemented on mobile screens.\n\nIt shows a list of related suggestions, according to the hint provided when the user searches for something in an application.",
+  "searchDocumentation:example3-name": "Search - Docked",
+  "searchDocumentation:example3-description": "A Docked search view refers to a search functionality that is presented as a part of a full screen, opposite to Full-screen search view. This is mostly used or implemented on large screens.\n\nIt shows a list of related suggestions, according to the hint provided when the user types for something in an application.",
+  "searchDocumentation:example4-name": "Search view- no results found",
+  "searchDocumentation:example4-description": "Here, the “No results found” message is typically displayed in a search results view when the search query does not return any results\n\nThis message helps to communicate to the user that their search did not produce any relevant results and encourages them to modify their search terms or try a different search strategy.",
+  "searchDocumentation:property-filterOnChange-description": "The function to filter the results based on search key.",
+  "searchDocumentation:property-type-description": "The type of view for search results",
+  "searchDocumentation:property-searchBarStyle-description": "The Styles for the search bar input field.",
+  "searchDocumentation:property-searchBarContainerStyle-description": "The Styles for the search bar container.",
+  "searchDocumentation:property-containerStyle-description": "The Styles for the search bar component and results container.",
+  "searchDocumentation:externalProperties": "Auto Complete Properties",
 
   "sideSheetDocumentation:mainHeading": "Side Sheet",
   "sideSheetDocumentation:mainDescription": "A Side sheet is a type of modal dialog that slides in from the side of the screen to display additional information or functionality related to the current view or task.\n\nSide Sheets can be used to display information that doesn’t fit within the main view, or to provide additional controls or actions related to the current task.",
