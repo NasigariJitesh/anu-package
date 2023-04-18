@@ -372,6 +372,22 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:file-upload',
+                components: [
+                  {
+                    title: 'leftSideBar:file-upload',
+                    link: '/components/file-upload',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:file-drop-zone',
+                    link: '/components/file-upload/file-drop-zone',
+                    variants: [],
+                  },
+                ],
+                link: '/components/card',
+              },
+              {
                 title: 'leftSideBar:image',
                 components: [],
                 link: '/components/image',
