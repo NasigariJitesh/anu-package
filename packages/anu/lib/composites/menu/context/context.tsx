@@ -46,7 +46,6 @@ export function useMenuContext() {
  * @param root0.children
  * @param root0.isMenuOpen
  * @param root0.onMenuToggle
- * @param root0.disabled
  */
 function MenuProvider({
   children,
