@@ -13,7 +13,6 @@ import {
   Container,
   IconButton,
   Menu,
-  MenuComponent,
   MenuItem,
   MenuList,
   OTPInput,
@@ -32,7 +31,7 @@ import { Pressable } from 'react-native';
  */
 export default function Example() {
   const [text, setText] = useState(false);
-  const [text1, setText1] = useState('');
+  const [text1, setText1] = useState(false);
   const [text2, setText2] = useState('');
   const reference = useRef<AutoCompleteReferenceProps | null>(null);
   const ListRenderItem = ({ item }: { item: Options }) => {
@@ -60,11 +59,7 @@ export default function Example() {
   ];
 
   return (
-    <Container
-      flexDirection='column'
-      justify='space-between'
-      sx={{ flex: 1, backgroundColor: '#46464F', height: '100vh', paddingTop: 1 }}
-    >
+    <Container flexDirection='column' sx={{ flex: 1, backgroundColor: '#46464F', paddingTop: 1 }}>
       {/* <Search
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
@@ -78,29 +73,52 @@ export default function Example() {
         label='Hinted search text'
         resultContainerStyle={{ zIndex: 1000 }}
       /> */}
+      <Container sx={{}}></Container>
       <Menu
         isOpen={text}
         onMenuToggle={(value) => {
           setText(value);
         }}
-      >
-        <MenuComponent>
+        component={
           <Button.Outlined
             title='Menu'
             onPress={() => {
               setText(true);
             }}
           />
-        </MenuComponent>
-        <MenuList position='top-left' style={{ width: 400 }}>
-          <MenuItem> Item 1</MenuItem>
-          <MenuItem> Item 1</MenuItem>
-          <MenuItem> Item 1</MenuItem>
-          <MenuItem> Item 1</MenuItem>
-          <MenuItem> Item 1</MenuItem>
-          <MenuItem> Item 1</MenuItem>
+        }
+      >
+        <MenuList width={400}>
+          <MenuItem leadingIcon={{ name: 'close' }} disabled>
+            Item 1
+          </MenuItem>
+          <MenuItem>Item 1</MenuItem>
+          <MenuItem inset>Item 1</MenuItem>
+          <Menu
+            component={
+              <MenuItem style={{ width: '100%' }} onPress={() => setText1(true)}>
+                Item Child
+              </MenuItem>
+            }
+            isOpen={text1}
+            onMenuToggle={(value) => {
+              setText1(value);
+            }}
+          >
+            <MenuList inner={true}>
+              <MenuItem leadingIcon={{ name: 'close' }} disabled>
+                Item 2
+              </MenuItem>
+              <MenuItem>Item 2</MenuItem>
+              <MenuItem inset>Item 2</MenuItem>
+            </MenuList>
+          </Menu>
+
+          <MenuItem>Item 1</MenuItem>
+          <MenuItem>Item 1</MenuItem>
         </MenuList>
       </Menu>
+
       {/* <AutoComplete
         ref={reference}
         variant='base'

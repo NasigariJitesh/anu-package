@@ -1,20 +1,37 @@
-/* eslint-disable react-native/no-inline-styles */
-import { PortalHost } from '@gorhom/portal';
-import { PortalProvider } from 'anu/config';
 import { Container } from 'anu/lib/primitives';
 import React from 'react';
+import { LayoutChangeEvent } from 'react-native';
 
-import { MenuProvider } from '../../context';
+import { useMenuContext } from '../../context';
 import { MenuProps } from '../../types';
-import { defaultProps } from './default';
+import { getContainerStyle } from '../../utils';
 
-const Menu = (props: MenuProps) => {
-  const finalProps = { ...defaultProps, ...props };
+const MenuContainer = (props: MenuProps) => {
+  const { updatePosition, isOpen, updateRootPosition } = useMenuContext();
+
+  const style = getContainerStyle();
+
   return (
-    <MenuProvider isMenuOpen={finalProps.isOpen} disabled={finalProps.disabled} onMenuToggle={finalProps.onMenuToggle}>
-      <Container disableGutters>{finalProps.children}</Container>
-    </MenuProvider>
+    <Container
+      disableGutters
+      onLayout={(event: LayoutChangeEvent) => {
+        updateRootPosition({ top: 0, left: 0, ...event.nativeEvent.layout });
+      }}
+      style={style}
+    >
+      <Container
+        disableGutters
+        {...props}
+        onLayout={(event: LayoutChangeEvent) => {
+          updatePosition({ top: 0, left: 0, ...event.nativeEvent.layout });
+        }}
+        style={style}
+      >
+        {props.component}
+      </Container>
+      {isOpen ? <>{props.children}</> : <Container disableGutters sx={{ height: 1 }} />}
+    </Container>
   );
 };
 
-export default Menu;
+export default MenuContainer;

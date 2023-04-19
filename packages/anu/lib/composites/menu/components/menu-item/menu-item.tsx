@@ -1,8 +1,9 @@
-import { getCombinedStylesForView } from 'anu/common/utils';
+import { generateHoverStyles, getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Icon, Typography } from 'anu/lib/primitives';
+import { useSx } from 'dripsy';
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, PressableStateCallbackType } from 'react-native';
 
 import { MenuItemProps } from '../../types';
 import { getMenuItemStyle } from '../../utils';
@@ -14,18 +15,28 @@ const MenuItem = (props: MenuItemProps) => {
 
   const theme = useTheme();
 
-  const { pressableStyle, childContainerStyle, iconStyle, textStyle } = getMenuItemStyle(theme);
+  const { pressableStyle, childContainerStyle, iconStyle, textStyle } = getMenuItemStyle(
+    theme,
+    finalProps.disabled ?? false,
+    finalProps.inset,
+  );
+
+  const leadingIconStyle = { ...iconStyle, marginRight: 12 };
+
+  const generateStyles = (state: PressableStateCallbackType) => {
+    return generateHoverStyles(state, pressableStyle, useSx);
+  };
 
   return (
-    <Pressable {...otherPressableProps} style={pressableStyle}>
-      <Container disableGutters width={24}>
+    <Pressable {...otherPressableProps} style={generateStyles}>
+      <Container disableGutters>
         {leadingIcon && 'name' in leadingIcon ? (
           <Icon
             size={24}
             name={leadingIcon.name as never}
             {...leadingIcon.props}
             //@ts-expect-error reason: the style type will always be text style only
-            style={getCombinedStylesForText(iconStyle, icon.props?.style)}
+            style={getCombinedStylesForText(leadingIconStyle, leadingIcon.props?.style)}
           />
         ) : (
           leadingIcon
@@ -42,7 +53,7 @@ const MenuItem = (props: MenuItemProps) => {
             name={trailingIcon.name as never}
             {...trailingIcon.props}
             //@ts-expect-error reason: the style type will always be text style only
-            style={getCombinedStylesForText(iconStyle, icon.props?.style)}
+            style={getCombinedStylesForText(iconStyle, trailingIcon.props?.style)}
           />
         ) : (
           trailingIcon

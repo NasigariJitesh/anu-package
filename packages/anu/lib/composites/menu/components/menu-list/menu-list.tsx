@@ -1,68 +1,38 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Portal } from '@gorhom/portal';
+import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib/primitives';
-import React, { useEffect, useRef, useState } from 'react';
-import { Animated, StyleSheet, TouchableWithoutFeedback, ViewStyle } from 'react-native';
+import React from 'react';
+import { StyleSheet, TouchableWithoutFeedback, useWindowDimensions } from 'react-native';
 
 import { useMenuContext } from '../../context';
 import { MenuListProps } from '../../types';
 import { getMenuListStyle } from '../../utils';
 import { defaultProps } from './default';
 
-const DURATION = 200; // in milliseconds
-const DELAY = 100; // in milliseconds
-
 const MenuList = (props: MenuListProps) => {
   const finalProps = { ...defaultProps, ...props };
 
-  const { position: positionType, positionCoordinates, style, height: propHeight, ...otherViewProps } = finalProps;
+  const { positionCoordinates, style, ...otherViewProps } = finalProps;
 
-  const { hideMenu, position, isOpen } = useMenuContext();
+  const { position, listDimension, hideMenu, updateListDimension } = useMenuContext();
+
+  const { height, width } = useWindowDimensions();
+
   const theme = useTheme();
 
-  const { containerStyle, defaultStyle } = getMenuListStyle(theme, position, finalProps);
+  const { containerStyle, defaultStyle } = getMenuListStyle(
+    theme,
+    position,
+    listDimension,
+    { height, width },
+    positionCoordinates,
+    finalProps.inner,
+  );
 
-  const height = useRef(new Animated.Value(0)).current;
-  const [, setValue] = useState(0);
-
-  const styleForAnimateView = { ...defaultStyle, ...style };
-
-  const animatedStyle: Animated.WithAnimatedObject<ViewStyle> = {
-    ...styleForAnimateView,
-    height: height,
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      transitionIn();
-    } else {
-      transitionOut();
-    }
-  }, [isOpen]);
-
-  const transitionIn = () => {
-    Animated.timing(height, {
-      toValue: propHeight ?? 300,
-      duration: DURATION,
-      useNativeDriver: true,
-      delay: DELAY,
-    }).start();
-  };
-
-  const transitionOut = () => {
-    Animated.timing(height, {
-      toValue: 0,
-      duration: DURATION,
-      useNativeDriver: true,
-      delay: DELAY,
-    }).start();
-  };
-
-  console.log(isOpen, 'portal');
-
-  return isOpen ? (
-    <Portal name='CustomPortalHost'>
+  return (
+    <Portal>
       <TouchableWithoutFeedback
         onPress={() => {
           hideMenu();
@@ -70,19 +40,26 @@ const MenuList = (props: MenuListProps) => {
         style={{ ...StyleSheet.absoluteFillObject }}
       >
         <Container
+          disableGutters
           style={{
             ...StyleSheet.absoluteFillObject,
           }}
         >
-          <Container disableGutters style={containerStyle} sx={{ height: 100, width: 100, backgroundColor: 'pink' }}>
-            {/* <Animated.View {...otherViewProps} style={animatedStyle}>
+          <Container
+            disableGutters
+            style={containerStyle}
+            onLayout={(event) => {
+              updateListDimension({ height: event.nativeEvent.layout.height, width: event.nativeEvent.layout.width });
+            }}
+          >
+            <Container disableGutters {...otherViewProps} style={getCombinedStylesForView(defaultStyle, style)}>
               {finalProps.children}
-            </Animated.View> */}
+            </Container>
           </Container>
         </Container>
       </TouchableWithoutFeedback>
     </Portal>
-  ) : null;
+  );
 };
 
 export default MenuList;
