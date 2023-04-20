@@ -18,6 +18,7 @@ import {
   TextField,
   TextFieldReferenceProps,
   Typography,
+  useSnackbar,
 } from 'anu/lib';
 import { AutoCompleteReferenceProps, Options } from 'anu/lib/composites/auto-complete/types';
 import { useRef, useState } from 'react';
@@ -55,13 +56,11 @@ export default function Example() {
     { id: 'list item 6', value: 'List Item 6' },
   ];
 
+  const { add, close } = useSnackbar();
+
   return (
-    <Container
-      flexDirection='column'
-      justify='space-between'
-      sx={{ flex: 1, backgroundColor: '#46464F', height: '100vh', paddingTop: 1 }}
-    >
-      <Search
+    <Container flexDirection='column' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      {/* <Search
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
         value={text1}
@@ -73,35 +72,28 @@ export default function Example() {
         searchBarContainerStyle={{ width: ' 100%' }}
         label='Hinted search text'
         resultContainerStyle={{ zIndex: 1000 }}
-      />
-      {/* <AutoComplete
-        ref={reference}
-        variant='base'
-        direction='ltr'
-        value={text}
-        onChangeText={(value: string) => {
-          setText(value);
-          console.log(value);
-        }}
-        data={data}
-        flatListProps={{
-          renderItem: ListRenderItem,
-          ListEmptyComponent: <ListRenderItem item={{ id: '', value: 'No more Results' }} />,
-        }}
-        caseSensitive
-        debounce
-        autoCompleteContainerStyle={{ width: 300, height: 300 }}
-        hideDropDownButton={false}
-      />
-
-      <PhoneInput
-        value={text2}
-        onChangeText={(value: string) => {
-          setText2(value);
-        }}
-        defaultCountryCode={'+91'}
-        variant={'outlined'}
       /> */}
+      <Button.Text
+        title='add snack'
+        onPress={() => {
+          add({
+            content: 'First Snack',
+          });
+        }}
+      />
+      <Button.Text
+        title='add snack 2'
+        onPress={() => {
+          add({
+            content:
+              'This is very long snack, This is very long snack , This is very long snack, This is very long snack ,   This is very long snack, This is very long snack , This is very long snack, This is very long snack , This is very long snack, This is very long snack  ',
+            action: { title: 'Close', onPress: close },
+            icon: { icon: { name: 'close' }, type: 'standard', onPress: close },
+            duration: 10_000,
+            style: { height: 200 },
+          });
+        }}
+      />
     </Container>
   );
 }
