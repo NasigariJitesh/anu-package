@@ -2,7 +2,7 @@
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config/dripsy/theme';
-import { Button, Icon, Image } from 'anu/lib';
+import { Button, Icon, Image, TouchableRipple } from 'anu/lib';
 import BottomSheet from 'anu/lib/primitives/bottom-sheet/components';
 import { BottomSheetReferenceProps } from 'anu/lib/primitives/bottom-sheet/types';
 import Checkbox from 'anu/lib/primitives/checkbox/components/checkbox';
@@ -133,17 +133,13 @@ const HomeScreen = () => {
   };
 
   return (
-    <View style={{ backgroundColor: '#E5E1E6' }}>
-      <TouchableOpacity
-        onPress={onPress}
-        style={{ flex: 1, height: 500, width: 500, position: 'absolute', zIndex: 1 }}
-      />
-      <Container disableGutters sx={{ height: '100%', width: '100%' }}>
-        <BottomSheet containerStyles={{ zIndex: 3 }} startCoordinate={-250} ref={bottomSheetReference}>
-          <Example3 />
-        </BottomSheet>
-      </Container>
-    </View>
+    <Container flexDirection='column' justify='center' align='center' sx={{ flex: 1, paddingTop: 20 }}>
+      <TouchableRipple onPress={() => console.log('Pressed')}>
+        <Container align='center' justify='center' sx={{ height: 200, width: 200 }}>
+          <Typography.Body>Press anywhere</Typography.Body>
+        </Container>
+      </TouchableRipple>
+    </Container>
   );
 };
 

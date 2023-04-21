@@ -17,6 +17,7 @@ import {
   Search,
   TextField,
   TextFieldReferenceProps,
+  TouchableRipple,
   Typography,
 } from 'anu/lib';
 import { AutoCompleteReferenceProps, Options } from 'anu/lib/composites/auto-complete/types';
@@ -56,12 +57,13 @@ export default function Example() {
   ];
 
   return (
-    <Container
-      flexDirection='column'
-      justify='space-between'
-      sx={{ flex: 1, backgroundColor: '#46464F', height: '100vh', paddingTop: 1 }}
-    >
-      <Search
+    <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      <TouchableRipple onPress={() => console.log('Pressed')}>
+        <Container align='center' justify='center' sx={{ height: 200, width: 200 }}>
+          <Typography.Body>Press anywhere</Typography.Body>
+        </Container>
+      </TouchableRipple>
+      {/* <Search
         data={data}
         flatListProps={{ renderItem: ListRenderItem }}
         value={text1}
@@ -73,7 +75,8 @@ export default function Example() {
         searchBarContainerStyle={{ width: ' 100%' }}
         label='Hinted search text'
         resultContainerStyle={{ zIndex: 1000 }}
-      />
+      /> */}
+
       {/* <AutoComplete
         ref={reference}
         variant='base'
@@ -93,6 +96,8 @@ export default function Example() {
         autoCompleteContainerStyle={{ width: 300, height: 300 }}
         hideDropDownButton={false}
       />
+
+
 
       <PhoneInput
         value={text2}

@@ -26,5 +26,7 @@ export { default as Switch } from './switch';
 export * from './switch';
 export { default as TextField } from './text-field';
 export * from './text-field';
+export { default as TouchableRipple } from './touchable-ripple';
+export * from './touchable-ripple';
 export { default as Typography } from './typography';
 export * from './typography';
