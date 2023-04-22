@@ -1,0 +1,106 @@
+/* eslint-disable react/display-name */
+import { Container, TextFieldReferenceProps, TextFieldWithMask } from 'anu/lib';
+import React from 'react';
+import { forwardRef } from 'react';
+
+import { useDateInput } from '../../hooks';
+import { DatePickerInputWithoutModalProps } from '../../types';
+import { getDatePickerInputWithoutModalStyles, getLabel } from '../../utils';
+
+/**
+ *
+ * @param props
+ * @param reference
+ */
+const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePickerInputWithoutModalProps>(
+  (props, reference) => {
+    const {
+      label,
+      value,
+      onChange,
+      textInputStyle,
+      locale,
+      validRange,
+      inputMode,
+      withDateFormatInLabel = true,
+      hasError,
+      hideValidationErrors,
+      onValidationError,
+      modal,
+      inputButtons,
+      saveLabel,
+      saveLabelDisabled,
+      uppercase,
+      startYear,
+      endYear,
+      onChangeText,
+      inputEnabled,
+      ...rest
+    } = props;
+
+    const styles = getDatePickerInputWithoutModalStyles();
+    const {
+      formattedValue,
+      inputFormat,
+      onChangeText: onDateInputChangeText,
+      error,
+    } = useDateInput({
+      locale,
+      value,
+      validRange,
+      inputMode,
+      onChange,
+      onValidationError,
+    });
+
+    let disabled;
+
+    if (inputEnabled !== undefined) {
+      disabled = !inputEnabled;
+    }
+
+    if (rest.disabled) {
+      disabled = rest.disabled;
+    }
+
+    return (
+      <>
+        <Container disableGutters style={styles.root}>
+          <Container disableGutters style={styles.inputContainer}>
+            <TextFieldWithMask
+              {...rest}
+              ref={reference}
+              label={getLabel(withDateFormatInLabel, inputFormat, label)}
+              value={formattedValue}
+              keyboardType={rest.keyboardType ?? 'number-pad'}
+              mask={inputFormat}
+              disabled={disabled}
+              onChangeText={onDateInputChangeText}
+              onChange={(event) => {
+                if (onChangeText) onChangeText(event.nativeEvent.text);
+              }}
+              error={(!!error && !hideValidationErrors) || !!hasError}
+              errorMessage={error ?? ''}
+              textInputStyle={[styles.input, textInputStyle]}
+              trailingIcon={inputButtons}
+            />
+          </Container>
+        </Container>
+        {modal?.({
+          value,
+          locale,
+          inputMode,
+          validRange,
+          saveLabel,
+          saveLabelDisabled,
+          uppercase,
+          startYear,
+          endYear,
+          inputEnabled,
+        })}
+      </>
+    );
+  },
+);
+
+export default DatePickerInputWithoutModal;

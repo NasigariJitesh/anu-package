@@ -11,6 +11,7 @@ import {
   CardMedia,
   CardTitle,
   Container,
+  // DatePickerInput,
   IconButton,
   OTPInput,
   PhoneInput,
@@ -31,6 +32,8 @@ export default function Example() {
   const [text, setText] = useState('');
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
+  const [inputDate, setInputDate] = useState<Date | undefined>();
+
   const reference = useRef<AutoCompleteReferenceProps | null>(null);
   const ListRenderItem = ({ item }: { item: Options }) => {
     return (
@@ -58,6 +61,17 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      {/* <DatePickerInput
+        locale='en'
+        label='Birthdate'
+        value={inputDate}
+        onChange={(d) => setInputDate(d)}
+        inputMode='start'
+        autoComplete='birthdate-full'
+        // mode="outlined" (see react-native-paper docs)
+        // other react native TextInput props
+      /> */}
+
       <TouchableRipple onPress={() => console.log('Pressed')}>
         <Container align='center' justify='center' sx={{ height: 200, width: 200 }}>
           <Typography.Body>Press anywhere</Typography.Body>

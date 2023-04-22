@@ -1,3 +1,5 @@
+// export { default as DatePickerInput } from './date-picker';
+// export * from './date-picker';
 export { default as OTPInput } from './otp-input';
 export * from './otp-input';
 export { default as PhoneInput } from './phone-input';

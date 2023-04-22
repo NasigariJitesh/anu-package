@@ -8,3 +8,5 @@ export { default as Card } from './card';
 export * from './card';
 export { default as Search } from './search-bar';
 export * from './search-bar';
+export { default as TextFieldWithMask } from './text-field-with-mask';
+export * from './text-field-with-mask';
