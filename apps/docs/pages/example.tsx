@@ -21,6 +21,7 @@ import {
   TextField,
   TextFieldReferenceProps,
   Typography,
+  useSnackbar,
 } from 'anu/lib';
 import { AutoCompleteReferenceProps, Options } from 'anu/lib/composites/auto-complete/types';
 import { useRef, useState } from 'react';
@@ -57,6 +58,8 @@ export default function Example() {
     { id: 'list item 5', value: 'List Item 5' },
     { id: 'list item 6', value: 'List Item 6' },
   ];
+
+  const { add, close } = useSnackbar();
 
   return (
     <Container flexDirection='column' sx={{ flex: 1, backgroundColor: '#46464F', paddingTop: 1 }}>
@@ -147,6 +150,27 @@ export default function Example() {
         defaultCountryCode={'+91'}
         variant={'outlined'}
       /> */}
+      <Button.Text
+        title='add snack'
+        onPress={() => {
+          add({
+            content: 'First Snack',
+          });
+        }}
+      />
+      <Button.Text
+        title='add snack 2'
+        onPress={() => {
+          add({
+            content:
+              'This is very long snack, This is very long snack , This is very long snack, This is very long snack ,   This is very long snack, This is very long snack , This is very long snack, This is very long snack , This is very long snack, This is very long snack  ',
+            action: { title: 'Close', onPress: close },
+            icon: { icon: { name: 'close' }, type: 'standard', onPress: close },
+            duration: 10_000,
+            style: { height: 200 },
+          });
+        }}
+      />
     </Container>
   );
 }
