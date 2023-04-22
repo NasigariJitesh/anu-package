@@ -17,7 +17,7 @@ export const hasTouchHandler = (touchableEventObject: TouchableEventObject) => {
 };
 
 export const getTouchableRippleColors = (theme: DripsyFinalTheme, rippleColor?: string, underlayColor?: string) => {
-  const calculatedRippleColor = rippleColor ?? getColorInRGBA(theme.colors.$inversePrimary, 12);
+  const calculatedRippleColor = rippleColor ?? getColorInRGBA(theme.colors.$primary, 12);
   return {
     calculatedRippleColor,
     calculatedUnderlayColor: underlayColor ?? calculatedRippleColor,
