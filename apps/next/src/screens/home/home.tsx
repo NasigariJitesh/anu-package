@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
-import { Button, useSnackbar } from 'anu/lib';
+import { Button, TouchableRipple, Typography, useSnackbar } from 'anu/lib';
 import Container from 'anu/lib/primitives/layout/components/container';
 
 const HomeScreen = () => {
@@ -9,6 +9,11 @@ const HomeScreen = () => {
 
   return (
     <Container flexDirection='column' sx={{ flex: 1, paddingTop: 30 }}>
+      <TouchableRipple onPress={() => console.log('Pressed')}>
+        <Container align='center' justify='center' sx={{ height: 200, width: 200 }}>
+          <Typography.Body>Press anywhere</Typography.Body>
+        </Container>
+      </TouchableRipple>
       <Button.Text
         title='add snack'
         onPress={() => {

@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["Dripsy", "gorhom", "libphonenumber", "solito", "tsparticles"],
+  "cSpell.words": ["borderless", "Dripsy", "gorhom", "libphonenumber", "solito", "tsparticles"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll": true
@@ -8,5 +8,6 @@
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
   "eslint.run": "onType",
-  "files.autoSave": "onWindowChange"
+  "files.autoSave": "onWindowChange",
+  "vue.features.codeActions.enable": false
 }
