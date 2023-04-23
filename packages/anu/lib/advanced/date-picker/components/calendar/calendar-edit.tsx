@@ -1,3 +1,4 @@
+import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib';
 import * as React from 'react';
 import { memo, useCallback, useEffect, useRef } from 'react';
@@ -6,28 +7,21 @@ import { Keyboard, TextInput as TextInputNative } from 'react-native';
 import { CalendarEditProps } from '../../types';
 import { getCalendarEditStyles } from '../../utils';
 import DatePickerInputWithoutModal from '../date-picker-input';
+import { defaultCalendarEditProps } from './default';
 
 /**
  * @param props
  */
 const CalendarEdit = (props: CalendarEditProps) => {
-  const {
-    mode,
-    state,
-    label = '',
-    startLabel = 'Start',
-    endLabel = 'End',
-    collapsed,
-    onChange,
-    validRange,
-    locale,
-    inputEnabled,
-  } = props;
+  const finalProps = { ...defaultCalendarEditProps, ...props };
+  const { mode, state, label, startLabel, endLabel, collapsed, onChange, validRange, locale, inputEnabled } =
+    finalProps;
 
   const dateInput = useRef<TextInputNative | null>(null);
   const startInput = useRef<TextInputNative | null>(null);
   const endInput = useRef<TextInputNative | null>(null);
 
+  const theme = useTheme();
   const styles = getCalendarEditStyles();
 
   // when switching views focus, or un-focus text input
@@ -81,8 +75,11 @@ const CalendarEdit = (props: CalendarEditProps) => {
           withModal={false}
           autoComplete={'off'}
           inputEnabled={inputEnabled}
+          style={styles.input}
+          labelBackgroundColor={theme.colors.$surfaceContainerHigh}
         />
       ) : null}
+
       {mode === 'range' ? (
         <Container disableGutters style={styles.inner}>
           <DatePickerInputWithoutModal
@@ -98,8 +95,12 @@ const CalendarEdit = (props: CalendarEditProps) => {
             withModal={false}
             autoComplete={'off'}
             inputEnabled={inputEnabled}
+            style={styles.rangeInput}
+            labelBackgroundColor={theme.colors.$surfaceContainerHigh}
           />
+
           <Container disableGutters style={styles.separator} />
+
           <DatePickerInputWithoutModal
             inputMode='end'
             ref={endInput}
@@ -112,6 +113,8 @@ const CalendarEdit = (props: CalendarEditProps) => {
             withModal={false}
             autoComplete='off'
             inputEnabled={inputEnabled}
+            style={styles.rangeInput}
+            labelBackgroundColor={theme.colors.$surfaceContainerHigh}
           />
         </Container>
       ) : null}

@@ -1,24 +1,44 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib/primitives';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Animated } from 'react-native';
 
-import { AbsoluteCrossViewProps } from '../../types';
-import { getAbsoluteCrossViewStyles } from '../../utils';
+import { AnimatedCrossViewProps } from '../../types';
+import { getAnimatedCrossViewStyles } from '../../utils';
 
-const AnimatedCrossView = (props: AbsoluteCrossViewProps) => {
+/**
+ *
+ * @param props
+ */
+const AnimatedCrossView = (props: AnimatedCrossViewProps) => {
   const { collapsed, calendar, calendarEdit } = props;
+
+  const [, setValue] = useState(0);
+
   const theme = useTheme();
-  const styles = getAbsoluteCrossViewStyles();
+  const styles = getAnimatedCrossViewStyles(theme, collapsed);
 
-  const calendarOpacity = useRef<Animated.Value>(new Animated.Value(collapsed ? 1 : 0));
+  const calendarOpacity = useRef(new Animated.Value(collapsed ? 1 : 0)).current;
 
-  useEffect(() => {
-    Animated.timing(calendarOpacity.current, {
+  const transition = () => {
+    Animated.timing(calendarOpacity, {
       toValue: collapsed ? 1 : 0,
       duration: 250,
       useNativeDriver: true,
     }).start();
+  };
+
+  useEffect(() => {
+    calendarOpacity.addListener((arguments_) => setValue(arguments_.value));
+
+    return () => {
+      calendarOpacity.removeAllListeners();
+    };
+  }, []);
+
+  useEffect(() => {
+    transition();
   }, [collapsed]);
 
   return (
@@ -28,16 +48,16 @@ const AnimatedCrossView = (props: AbsoluteCrossViewProps) => {
         style={[
           styles.calendar,
           {
-            opacity: calendarOpacity.current,
+            opacity: calendarOpacity,
             transform: [
               {
-                scaleY: calendarOpacity.current.interpolate({
+                scaleY: calendarOpacity.interpolate({
                   inputRange: [0, 1],
                   outputRange: [0.85, 1],
                 }),
               },
               {
-                scaleX: calendarOpacity.current.interpolate({
+                scaleX: calendarOpacity.interpolate({
                   inputRange: [0, 1],
                   outputRange: [0.95, 1],
                 }),
@@ -53,14 +73,13 @@ const AnimatedCrossView = (props: AbsoluteCrossViewProps) => {
         style={[
           styles.calendarEdit,
           {
-            backgroundColor: theme.colors.$surface,
-            opacity: calendarOpacity.current.interpolate({
+            opacity: calendarOpacity.interpolate({
               inputRange: [0, 1],
               outputRange: [1, 0],
             }),
             transform: [
               {
-                scale: calendarOpacity.current.interpolate({
+                scale: calendarOpacity.interpolate({
                   inputRange: [0, 1],
                   outputRange: [1, 0.95],
                 }),

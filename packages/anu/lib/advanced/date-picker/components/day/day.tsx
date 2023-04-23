@@ -42,7 +42,13 @@ const Day = (props: DayProps) => {
 
   const borderColor = selected || inRange ? textColorOnPrimary : theme.colors.$primary;
 
-  const textColor = selected ? theme.colors.$onPrimary : inRange ? theme.colors.$onPrimaryContainer : undefined;
+  const textColor = selected
+    ? theme.colors.$onPrimary
+    : inRange
+    ? theme.colors.$onPrimaryContainer
+    : isToday
+    ? theme.colors.$primary
+    : undefined;
 
   const onPress = useCallback(() => {
     onPressDate(new Date(year, month, day));

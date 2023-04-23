@@ -122,7 +122,7 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
     common: {
       height: 40,
       width: 40,
-      padding: '8px',
+      padding: 8,
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,

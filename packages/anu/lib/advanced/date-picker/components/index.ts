@@ -1,4 +1,12 @@
 export { default as Calendar } from './calendar';
+export * from './calendar';
 export { default } from './date-picker-input';
+export * from './date-picker-input';
 export * from './date-picker-modal';
 export { default as DatePickerModal } from './date-picker-modal';
+export * from './day';
+export { default as Day } from './day';
+export * from './month';
+export { default as Month } from './month';
+export * from './swiper';
+export { default as Swiper } from './swiper';

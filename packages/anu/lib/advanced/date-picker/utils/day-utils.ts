@@ -1,3 +1,5 @@
+import { DripsyFinalTheme } from 'dripsy';
+
 import { daySize } from './date-utils';
 
 export const dayNamesHeight = 44;
@@ -56,27 +58,38 @@ export const getDayRangeStyles = () => {
   };
   const flex1 = {
     flex: 1,
+    width: '100%',
   };
   const rangeRoot = {
     flexDirection: 'row',
   } as const;
+  const rangeItem = {
+    minHeight: daySize,
+    width: '100%',
+  };
 
-  return { leftRadius, rightRadius, rangeRoot, flex1, rangeRootBoth };
+  return { leftRadius, rightRadius, rangeRoot, flex1, rangeRootBoth, rangeItem };
 };
 
-export const getDayNamesStyles = () => {
+export const getDayNamesStyles = (theme: DripsyFinalTheme) => {
   const dayNames = {
     alignItems: 'center',
     flexDirection: 'row',
     height: dayNamesHeight,
+    width: '100%',
+    backgroundColor: theme.colors.$surfaceContainerHigh,
   } as const;
 
   return { dayNames };
 };
 
-export const getDayNameStyles = () => {
+export const getDayNameStyles = (theme: DripsyFinalTheme) => {
   const dayName = { alignItems: 'center', flex: 1 } as const;
-  const dayNameLabel = { fontSize: 14, opacity: 0.7 };
+  const dayNameLabel = {
+    fontSize: theme.fontSizes[9],
+    lineHeight: theme.lineHeights[9],
+    color: theme.colors.$onSurface,
+  };
 
   return { dayName, dayNameLabel };
 };

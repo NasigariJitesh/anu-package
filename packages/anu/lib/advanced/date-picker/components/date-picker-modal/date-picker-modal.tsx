@@ -1,8 +1,10 @@
+import { getColorInRGBA } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib';
 import * as React from 'react';
-import { memo } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { Modal, Platform, StatusBar, StyleSheet, TouchableWithoutFeedback, useWindowDimensions } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { DatePickerModalProps, SupportedOrientationsType } from '../../types';
 import { getDatePickerModalStyles } from '../../utils';
@@ -21,6 +23,8 @@ const supportedOrientations: SupportedOrientationsType[] = [
  * @param props
  */
 export const DatePickerModal = (props: DatePickerModalProps) => {
+  const [collapsed, setCollapsed] = useState<boolean>(true);
+
   const theme = useTheme();
   const dimensions = useWindowDimensions();
   const { visible, animationType, disableStatusBar, disableStatusBarPadding, inputEnabled, ...rest } = props;
@@ -31,52 +35,58 @@ export const DatePickerModal = (props: DatePickerModalProps) => {
       default: 'slide',
     });
 
-  const styles = getDatePickerModalStyles();
+  const styles = getDatePickerModalStyles(theme, props.mode, collapsed);
+
+  const onToggleCollapse = useCallback(() => {
+    setCollapsed((previous) => !previous);
+  }, [setCollapsed]);
 
   return (
-    <Container disableGutters style={StyleSheet.absoluteFill} pointerEvents='box-none'>
-      <Modal
-        animationType={animationTypeCalculated}
-        transparent={true}
-        visible={visible}
-        onRequestClose={rest.onDismiss}
-        presentationStyle='overFullScreen'
-        supportedOrientations={supportedOrientations}
-        //@ts-ignore
-        statusBarTranslucent={true}
-      >
-        <>
-          <TouchableWithoutFeedback onPress={rest.onDismiss}>
-            <Container
-              disableGutters
-              style={[StyleSheet.absoluteFill, styles.modalBackground, { backgroundColor: theme.colors.$background }]}
-            />
-          </TouchableWithoutFeedback>
-          <Container disableGutters style={[StyleSheet.absoluteFill, styles.modalRoot]} pointerEvents='box-none'>
-            <Container
-              disableGutters
-              style={[
-                styles.modalContent,
-                { backgroundColor: theme.colors.$surface },
-                dimensions.width > 650 ? styles.modalContentBig : null,
-              ]}
-            >
-              {disableStatusBar ? null : <StatusBar translucent={true} />}
-              {disableStatusBarPadding ? null : (
-                <Container
-                  disableGutters
-                  style={{
-                    height: StatusBar.currentHeight,
-                    backgroundColor: theme.colors.$surface,
-                  }}
+    <SafeAreaProvider>
+      <Container disableGutters style={StyleSheet.absoluteFill} pointerEvents='box-none'>
+        <Modal
+          animationType={animationTypeCalculated}
+          transparent={true}
+          visible={visible}
+          onRequestClose={rest.onDismiss}
+          presentationStyle='overFullScreen'
+          supportedOrientations={supportedOrientations}
+          //@ts-ignore
+          statusBarTranslucent={true}
+        >
+          <>
+            <TouchableWithoutFeedback onPress={rest.onDismiss}>
+              <Container disableGutters style={[StyleSheet.absoluteFill, styles.modalBackground]} />
+            </TouchableWithoutFeedback>
+
+            <Container disableGutters style={[StyleSheet.absoluteFill, styles.modalRoot]} pointerEvents='box-none'>
+              <Container
+                disableGutters
+                style={[styles.modalContent, dimensions.width > 650 ? styles.modalContentBig : null]}
+              >
+                {disableStatusBar ? null : <StatusBar translucent={true} />}
+                {disableStatusBarPadding ? null : (
+                  <Container
+                    disableGutters
+                    style={{
+                      height: StatusBar.currentHeight,
+                      backgroundColor: getColorInRGBA(theme.colors.$primary, 24),
+                    }}
+                  />
+                )}
+                <DatePickerModalContent
+                  {...rest}
+                  inputEnabled={inputEnabled}
+                  disableSafeTop={disableStatusBar}
+                  collapsed={collapsed}
+                  onToggle={onToggleCollapse}
                 />
-              )}
-              <DatePickerModalContent {...rest} inputEnabled={inputEnabled} disableSafeTop={disableStatusBar} />
+              </Container>
             </Container>
-          </Container>
-        </>
-      </Modal>
-    </Container>
+          </>
+        </Modal>
+      </Container>
+    </SafeAreaProvider>
   );
 };
 

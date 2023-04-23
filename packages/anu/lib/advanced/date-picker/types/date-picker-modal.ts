@@ -23,12 +23,14 @@ export interface HeaderPickProps {
   label?: string;
   emptyLabel?: string;
   saveLabel?: string;
+  okLabel?: string;
   uppercase?: boolean;
   headerSeparator?: string;
   startLabel?: string;
   endLabel?: string;
   editIcon?: string;
   calendarIcon?: string;
+  cancelLabel?: string;
   closeIcon?: string;
   allowEditing?: boolean;
 }
@@ -36,8 +38,8 @@ export interface HeaderPickProps {
 export interface HeaderContentProps extends HeaderPickProps {
   state: LocalState;
   mode: ModeType;
-  collapsed: boolean;
-  onToggle: () => void;
+  collapsed?: boolean;
+  onToggle?: () => void;
   locale: string | undefined;
 }
 
@@ -47,8 +49,12 @@ interface DatePickerModalContentBaseProps {
   onDismiss: () => void;
   disableSafeTop?: boolean;
   saveLabelDisabled?: boolean;
+  okLabelDisabled?: boolean;
+  cancelLabelDisabled?: boolean;
   uppercase?: boolean;
   inputEnabled?: boolean;
+  collapsed?: boolean;
+  onToggle?: () => void;
 }
 
 export interface DatePickerModalContentRangeProps
@@ -88,6 +94,18 @@ export type DatePickerModalContentProps =
   | DatePickerModalContentSingleProps
   | DatePickerModalContentMultiProps;
 
+export interface DatePickerModalButtonProps {
+  disableSafeTop?: boolean;
+  okLabel?: string;
+  okLabelDisabled?: boolean;
+  uppercase?: boolean;
+  onDismiss: () => void;
+  onSave: () => void;
+  locale: string | undefined;
+  cancelLabel?: string;
+  cancelLabelDisabled?: boolean;
+}
+
 export interface DatePickerModalHeaderProps {
   disableSafeTop?: boolean;
   saveLabel?: string;
@@ -122,7 +140,7 @@ export type SupportedOrientationsType =
   | 'landscape-left'
   | 'landscape-right';
 
-export interface AbsoluteCrossViewProps {
+export interface AnimatedCrossViewProps {
   calendar: ReactChildren;
   calendarEdit: ReactChildren;
   collapsed: boolean;

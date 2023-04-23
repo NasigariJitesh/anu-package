@@ -14,7 +14,7 @@ import { getDatePickerModalHeaderStyles } from '../../utils';
 const DatePickerModalHeader = (props: DatePickerModalHeaderProps) => {
   const theme = useTheme();
   const { disableSafeTop, closeIcon = 'close', onDismiss, saveLabelDisabled, onSave, uppercase } = props;
-  const saveLabel = props.saveLabel ?? 'save';
+  const saveLabel = props.saveLabel ?? 'Save';
   const styles = getDatePickerModalHeaderStyles();
   const insets = useSafeAreaInsets();
 
@@ -38,6 +38,7 @@ const DatePickerModalHeader = (props: DatePickerModalHeaderProps) => {
           type='standard'
           testID='anu-dates-close'
         />
+
         <Button.Text
           labelStyle={{ color: theme.colors.$primary }}
           onPress={onSave}

@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+import { getCombinedStylesForText } from 'anu/common/utils';
 import { Container, TextFieldReferenceProps, TextFieldWithMask } from 'anu/lib';
 import React from 'react';
 import { forwardRef } from 'react';
@@ -38,7 +39,6 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
       ...rest
     } = props;
 
-    const styles = getDatePickerInputWithoutModalStyles();
     const {
       formattedValue,
       inputFormat,
@@ -52,6 +52,8 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
       onChange,
       onValidationError,
     });
+
+    const styles = getDatePickerInputWithoutModalStyles();
 
     let disabled;
 
@@ -75,13 +77,13 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
               keyboardType={rest.keyboardType ?? 'number-pad'}
               mask={inputFormat}
               disabled={disabled}
-              onChangeText={onDateInputChangeText}
-              onChange={(event) => {
-                if (onChangeText) onChangeText(event.nativeEvent.text);
+              onChangeText={(text) => {
+                onDateInputChangeText(text);
+                if (onChangeText) onChangeText(text);
               }}
               error={(!!error && !hideValidationErrors) || !!hasError}
               errorMessage={error ?? ''}
-              textInputStyle={[styles.input, textInputStyle]}
+              textInputStyle={getCombinedStylesForText(styles.input, textInputStyle)}
               trailingIcon={inputButtons}
             />
           </Container>

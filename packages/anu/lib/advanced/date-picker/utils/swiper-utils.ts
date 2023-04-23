@@ -39,42 +39,10 @@ export function useYearChange(
   }, [currentIndexRef, onChangeReference, selectedYear]);
 }
 
-/**
- *
- * @param callback
- */
-export function useDebouncedCallback(callback: any): any {
-  const mounted = useRef<boolean>(true);
-  const latest = useLatest(callback);
-  const timerId = useRef<any>(null);
-
-  useEffect(() => {
-    return () => {
-      mounted.current = false;
-      if (timerId.current) {
-        window.cancelAnimationFrame(timerId.current);
-      }
-    };
-  }, [mounted, timerId]);
-
-  return useCallback(
-    (arguments_: any) => {
-      if (timerId.current) {
-        window.cancelAnimationFrame(timerId.current);
-      }
-      timerId.current = window.requestAnimationFrame(function () {
-        if (mounted.current) {
-          latest.current(arguments_);
-        }
-      });
-    },
-    [mounted, timerId, latest],
-  );
-}
-
 export const getSwiperStyles = () => {
   const flex1 = {
     flex: 1,
+    width: '100%',
   };
   return { flex1 };
 };
@@ -82,6 +50,7 @@ export const getSwiperStyles = () => {
 export const getAutoSizerStyles = () => {
   const autoSizer = {
     flex: 1,
+    width: '100%',
     overflow: 'hidden',
   } as const;
   return { autoSizer };

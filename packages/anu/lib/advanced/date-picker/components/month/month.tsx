@@ -248,6 +248,7 @@ const Month = (props: MonthProps) => {
             >
               {monthName} {year}
             </Typography.Body>
+
             <Container disableGutters style={isHorizontal ? styles.opacity1 : styles.opacity0}>
               <IconButton
                 type='standard'
@@ -258,6 +259,7 @@ const Month = (props: MonthProps) => {
           </Container>
         </TouchableRipple>
       </Container>
+
       {grid.map(({ weekIndex, generatedDays }) => (
         <Container disableGutters style={styles.week} key={weekIndex}>
           {generatedDays
@@ -277,7 +279,7 @@ const Month = (props: MonthProps) => {
                   rightCrop={gd.rightCrop}
                   onPressDate={onPressDate}
                   isToday={gd.isToday}
-                  selectColor={selectColor}
+                  selectColor={theme.colors.$primaryContainer}
                   primaryColor={primaryColor}
                   disabled={gd.disabled}
                   textColorOnPrimary={textColorOnPrimary}

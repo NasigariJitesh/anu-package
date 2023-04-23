@@ -132,6 +132,7 @@ export const estimatedMonthHeight = 360;
 export const startAtIndex = 1200;
 export const totalMonths = startAtIndex * 2;
 export const beginOffset = estimatedMonthHeight * startAtIndex;
+
 export const gridCounts: number[] = Array.from({ length: totalMonths });
 
 /**

@@ -21,9 +21,7 @@ export const getDatePickerInputWithoutModalStyles = () => {
     alignItems: 'center',
     justifyContent: 'flex-start',
   } as const;
-  const input = {
-    flexGrow: 1,
-  };
+  const input = {};
 
   return { root, inputContainer, input };
 };

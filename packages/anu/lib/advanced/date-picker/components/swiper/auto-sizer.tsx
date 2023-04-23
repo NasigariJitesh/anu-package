@@ -28,7 +28,7 @@ const AutoSizer = ({ children }: { children: ({ width, height }: WidthAndHeight)
   const styles = getAutoSizerStyles();
 
   return (
-    <Container style={[styles.autoSizer, layout && layout]} onLayout={onLayout}>
+    <Container disableGutters style={[styles.autoSizer, layout && layout]} onLayout={onLayout}>
       {layout ? children(layout) : null}
     </Container>
   );

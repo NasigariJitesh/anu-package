@@ -118,7 +118,7 @@ export function getMonthHeight(scrollMode: 'horizontal' | 'vertical', index: num
 }
 
 export const getMonthStyles = () => {
-  const month = {};
+  const month = { width: '100%' };
   const monthHeader = {
     height: montHeaderHeight,
     justifyContent: 'center',
@@ -131,8 +131,9 @@ export const getMonthStyles = () => {
     flexDirection: 'row',
     height: daySize,
     marginBottom: weekMargin,
+    width: '100%',
   } as const;
-  const yearButton = { alignSelf: 'flex-start', marginLeft: 6 } as const;
+  const yearButton = { alignSelf: 'flex-start', flex: 1, marginLeft: 6 } as const;
   const yearButtonInner = {
     alignItems: 'center',
     flexDirection: 'row',

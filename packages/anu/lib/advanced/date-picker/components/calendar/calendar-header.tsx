@@ -1,3 +1,4 @@
+import { useTheme } from 'anu/config';
 import { Container, IconButton } from 'anu/lib';
 import React, { memo } from 'react';
 
@@ -14,6 +15,7 @@ const CalendarHeader = (props: CalendarHeaderProps) => {
 
   const isHorizontal = scrollMode === 'horizontal';
 
+  const theme = useTheme();
   const styles = getCalendarHeaderStyles();
 
   return (
@@ -21,14 +23,25 @@ const CalendarHeader = (props: CalendarHeaderProps) => {
       {isHorizontal ? (
         <Container disableGutters style={styles.buttonContainer} pointerEvents={'box-none'}>
           <Container disableGutters style={styles.spacer} pointerEvents={'box-none'} />
+
           <Container disableGutters>
-            <IconButton type='standard' icon={{ name: 'chevron-left' }} onPress={onPrev} />
+            <IconButton
+              type='standard'
+              icon={{ name: 'chevron-left', props: { color: theme.colors.$scrim } }}
+              onPress={onPrev}
+            />
           </Container>
+
           <Container disableGutters>
-            <IconButton type='standard' icon={{ name: 'chevron-right' }} onPress={onNext} />
+            <IconButton
+              type='standard'
+              icon={{ name: 'chevron-right', props: { color: theme.colors.$scrim } }}
+              onPress={onNext}
+            />
           </Container>
         </Container>
       ) : null}
+
       <DayNames disableWeekDays={disableWeekDays} locale={locale} />
     </Container>
   );

@@ -11,6 +11,7 @@ import {
 } from '../../types';
 import Calendar, { CalendarEdit } from '../calendar';
 import AnimatedCrossView from './animated-cross-view';
+import DatePickerModalButtons from './date-picker-modal-buttons';
 import DatePickerModalContentHeader from './date-picker-modal-content-header';
 import DatePickerModalHeader from './date-picker-modal-header';
 import DatePickerModalHeaderBackground from './date-picker-modal-header-background';
@@ -25,6 +26,8 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
     onChange,
     onConfirm,
     onDismiss,
+    onToggle,
+    collapsed,
     disableSafeTop,
     disableWeekDays,
     locale,
@@ -32,9 +35,13 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
     dateMode,
     startYear,
     endYear,
+    okLabel,
+    okLabelDisabled,
+    cancelLabel,
+    cancelLabelDisabled,
+    uppercase,
     saveLabel,
     saveLabelDisabled,
-    uppercase,
     closeIcon,
     headerSeparator,
     emptyLabel,
@@ -47,27 +54,26 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
     allowEditing,
     inputEnabled,
   } = props;
-  const anyProps = props;
+
+  const finalProps = props;
 
   // use local state to add only onConfirm state changes
   const [state, setState] = useState<LocalState>({
-    date: anyProps.date,
-    startDate: anyProps.startDate,
-    endDate: anyProps.endDate,
-    dates: anyProps.dates,
+    date: finalProps.date,
+    startDate: finalProps.startDate,
+    endDate: finalProps.endDate,
+    dates: finalProps.dates,
   });
 
   // update local state if changed from outside or if modal is opened
   useEffect(() => {
     setState({
-      date: anyProps.date,
-      startDate: anyProps.startDate,
-      endDate: anyProps.endDate,
-      dates: anyProps.dates,
+      date: finalProps.date,
+      startDate: finalProps.startDate,
+      endDate: finalProps.endDate,
+      dates: finalProps.dates,
     });
-  }, [anyProps.date, anyProps.startDate, anyProps.endDate, anyProps.dates]);
-
-  const [collapsed, setCollapsed] = useState<boolean>(true);
+  }, [finalProps.date, finalProps.startDate, finalProps.endDate, finalProps.dates]);
 
   const onInnerChange = useCallback(
     (
@@ -111,43 +117,43 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
     }
   }, [state, mode, onConfirm]);
 
-  const onToggleCollapse = useCallback(() => {
-    setCollapsed((previous) => !previous);
-  }, [setCollapsed]);
-
   return (
     <>
       <DatePickerModalHeaderBackground>
-        <DatePickerModalHeader
-          locale={locale}
-          onSave={onInnerConfirm}
-          onDismiss={onDismiss}
-          saveLabel={saveLabel}
-          saveLabelDisabled={saveLabelDisabled ?? false}
-          uppercase={uppercase ?? true}
-          disableSafeTop={disableSafeTop}
-          closeIcon={closeIcon}
-        />
+        {mode === 'single' ? null : (
+          <DatePickerModalHeader
+            locale={locale}
+            onSave={onInnerConfirm}
+            onDismiss={onDismiss}
+            saveLabel={saveLabel}
+            saveLabelDisabled={saveLabelDisabled ?? false}
+            uppercase={uppercase ?? false}
+            disableSafeTop={disableSafeTop}
+            closeIcon={closeIcon}
+          />
+        )}
+
         <DatePickerModalContentHeader
           state={state}
           mode={mode}
           collapsed={collapsed}
-          onToggle={onToggleCollapse}
+          onToggle={onToggle}
           headerSeparator={headerSeparator}
           emptyLabel={emptyLabel}
           label={label}
           moreLabel={moreLabel}
           startLabel={startLabel}
           endLabel={endLabel}
-          uppercase={uppercase ?? true}
+          uppercase={uppercase ?? false}
           locale={locale}
           editIcon={editIcon}
           calendarIcon={calendarIcon}
           allowEditing={allowEditing ?? true}
         />
       </DatePickerModalHeaderBackground>
+
       <AnimatedCrossView
-        collapsed={collapsed}
+        collapsed={collapsed ?? true}
         calendar={
           <Calendar
             locale={locale}
@@ -172,7 +178,7 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
             label={label}
             startLabel={startLabel}
             endLabel={endLabel}
-            collapsed={collapsed}
+            collapsed={collapsed ?? true}
             //@ts-expect-error the onChange param type will be as expected for each of date picker types
             onChange={onInnerChange}
             validRange={validRange}
@@ -180,6 +186,18 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
             inputEnabled={inputEnabled}
           />
         }
+      />
+
+      <DatePickerModalButtons
+        locale={locale}
+        onSave={onInnerConfirm}
+        onDismiss={onDismiss}
+        cancelLabel={cancelLabel}
+        cancelLabelDisabled={cancelLabelDisabled ?? false}
+        okLabel={okLabel}
+        okLabelDisabled={okLabelDisabled ?? false}
+        uppercase={uppercase ?? false}
+        disableSafeTop={disableSafeTop}
       />
     </>
   );

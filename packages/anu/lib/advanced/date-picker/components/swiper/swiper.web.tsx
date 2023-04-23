@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Container } from 'anu/lib/primitives';
 import * as React from 'react';
-import { useState } from 'react';
+import { memo, UIEvent, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { useLatest } from '../../hooks';
 import { SwiperProps, VerticalScrollProps } from '../../types';
@@ -13,7 +14,6 @@ import {
   getVerticalMonthsOffset,
   montHeaderHeight,
   totalMonths,
-  useDebouncedCallback,
   useYearChange,
 } from '../../utils';
 import AutoSizer from './auto-sizer';
@@ -45,11 +45,11 @@ function Swiper({ scrollMode, renderItem, renderHeader, renderFooter, selectedYe
     },
   );
 
-  const onPrevious = React.useCallback(() => {
+  const onPrevious = useCallback(() => {
     setIndex((previous) => previous - 1);
   }, [setIndex]);
 
-  const onNext = React.useCallback(() => {
+  const onNext = useCallback(() => {
     setIndex((previous) => previous + 1);
   }, [setIndex]);
 
@@ -96,9 +96,9 @@ const visibleArray = (index: number) => [index - 2, index - 1, index, index + 1,
  */
 const VerticalScroll = (props: VerticalScrollProps) => {
   const { width, height, initialIndex, estimatedHeight, renderItem } = props;
-  const indexReference = React.useRef<number>(initialIndex);
-  const [visibleIndexes, setVisibleIndexes] = React.useState<number[]>(visibleArray(initialIndex));
-  const parentReference = React.useRef<HTMLDivElement | null>(null);
+  const indexReference = useRef<number>(initialIndex);
+  const [visibleIndexes, setVisibleIndexes] = useState<number[]>(visibleArray(initialIndex));
+  const parentReference = useRef<HTMLDivElement | null>(null);
 
   useIsomorphicLayoutEffect(() => {
     const element = parentReference.current;
@@ -112,10 +112,10 @@ const VerticalScroll = (props: VerticalScrollProps) => {
     });
   }, [parentReference, indexReference]);
 
-  const setVisibleIndexesThrottled = useDebouncedCallback(setVisibleIndexes);
+  const setVisibleIndexesThrottled = setVisibleIndexes;
 
-  const onScroll = React.useCallback(
-    (event: React.UIEvent) => {
+  const onScroll = useCallback(
+    (event: UIEvent) => {
       const top = event.currentTarget.scrollTop;
       if (top === 0) {
         return;
@@ -123,7 +123,6 @@ const VerticalScroll = (props: VerticalScrollProps) => {
 
       const offset = top - beginOffset;
       const index = getIndexFromVerticalOffset(offset);
-
       if (indexReference.current !== index) {
         indexReference.current = index;
         setVisibleIndexesThrottled(visibleArray(index));
@@ -177,6 +176,6 @@ const VerticalScroll = (props: VerticalScrollProps) => {
 
 const empty = () => null;
 
-const useIsomorphicLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-export default React.memo(Swiper);
+export default memo(Swiper);

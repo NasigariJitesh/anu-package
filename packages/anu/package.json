@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@gorhom/portal": "^1.0.14",
+    "@material/material-color-utilities": "^0.2.5",
     "dripsy": "^3.10.0",
     "libphonenumber-js": "^1.10.26"
   },

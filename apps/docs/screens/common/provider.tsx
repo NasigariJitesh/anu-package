@@ -6,7 +6,6 @@ import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useColorScheme, View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const MenuContent = createContext({
   isOpen: false,
@@ -77,15 +76,13 @@ export default function RootLayout(props: {
 
   return (
     <Provider ssr theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
-      <SafeAreaProvider>
-        <AnuLocalizationProvider default={locale?.includes('fr') ? 'fr' : 'en'}>
-          <View style={{ backgroundColor: backgroundColor }}>
-            <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme }}>
-              {children}
-            </MenuContent.Provider>
-          </View>
-        </AnuLocalizationProvider>
-      </SafeAreaProvider>
+      <AnuLocalizationProvider default={locale?.includes('fr') ? 'fr' : 'en'}>
+        <View style={{ backgroundColor: backgroundColor }}>
+          <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme }}>
+            {children}
+          </MenuContent.Provider>
+        </View>
+      </AnuLocalizationProvider>
     </Provider>
   );
 }

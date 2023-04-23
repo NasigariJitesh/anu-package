@@ -11,11 +11,11 @@ import { getDayNameStyles } from '../../utils';
  */
 const DayName = ({ label }: { label: string }) => {
   const theme = useTheme();
-  const styles = getDayNameStyles();
+  const styles = getDayNameStyles(theme);
 
   return (
     <Container disableGutters style={styles.dayName}>
-      <Typography.Body style={[styles.dayNameLabel, { color: theme.colors.$onSurface }]} selectable={false}>
+      <Typography.Body style={styles.dayNameLabel} selectable={false}>
         {label}
       </Typography.Body>
     </Container>

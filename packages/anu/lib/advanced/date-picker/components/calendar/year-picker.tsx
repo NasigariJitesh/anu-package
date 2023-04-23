@@ -13,18 +13,20 @@ import { getYearPickerStyles, range, YEAR_ITEM_HEIGHT } from '../../utils';
 const YearPicker = (props: YearPickerProps) => {
   const { selectedYear, selectingYear, onPressYear, startYear, endYear } = props;
 
-  const theme = useTheme();
   const flatList = useRef<FlatList<number> | null>(null);
-  const years = range(Number.isNaN(startYear) ? 1800 : startYear, Number.isNaN(endYear) ? 2200 : endYear);
+  const years = range(Number.isNaN(startYear) ? 1900 : startYear, Number.isNaN(endYear) ? 2200 : endYear);
 
-  const styles = getYearPickerStyles();
+  const theme = useTheme();
+  const styles = getYearPickerStyles(theme);
 
   // scroll to selected year
   useEffect(() => {
     if (flatList.current && selectedYear) {
       const indexToGo = selectedYear - startYear;
+      const offset = (indexToGo / 3) * YEAR_ITEM_HEIGHT - YEAR_ITEM_HEIGHT;
+
       flatList.current.scrollToOffset({
-        offset: (indexToGo / 3) * YEAR_ITEM_HEIGHT - YEAR_ITEM_HEIGHT,
+        offset,
         animated: false,
       });
     }
@@ -33,12 +35,7 @@ const YearPicker = (props: YearPickerProps) => {
   return (
     <Container
       disableGutters
-      style={[
-        StyleSheet.absoluteFill,
-        styles.root,
-        { backgroundColor: theme.colors.$surface },
-        selectingYear ? styles.opacity1 : styles.opacity0,
-      ]}
+      style={[StyleSheet.absoluteFill, styles.root, selectingYear ? styles.opacity1 : styles.opacity0]}
       pointerEvents={selectingYear ? 'auto' : 'none'}
     >
       <FlatList<number>
@@ -62,8 +59,9 @@ const YearPicker = (props: YearPickerProps) => {
  */
 const YearPure = (props: YearProps) => {
   const { year, selected, onPressYear } = props;
+
   const theme = useTheme();
-  const styles = getYearPickerStyles();
+  const styles = getYearPickerStyles(theme);
 
   return (
     <Container disableGutters style={styles.year}>
@@ -96,6 +94,7 @@ const YearPure = (props: YearProps) => {
     </Container>
   );
 };
+
 const Year = memo(YearPure);
 
 export default YearPicker;

@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { DayRangeProps } from '../../types';
-import { daySize, getDayRangeStyles } from '../../utils/';
+import { getDayRangeStyles } from '../../utils/';
 
 /**
  *
@@ -46,18 +46,19 @@ const DayRange = (props: DayRangeProps) => {
                   : null,
               ]}
             />
+
             <Container
               disableGutters
               style={[
+                styles.rangeItem,
                 {
                   backgroundColor: selectColor,
-                  minWidth: daySize,
-                  minHeight: daySize,
                 },
                 leftCrop ? styles.leftRadius : null,
                 rightCrop ? styles.rightRadius : null,
               ]}
             />
+
             <Container
               disableGutters
               style={[

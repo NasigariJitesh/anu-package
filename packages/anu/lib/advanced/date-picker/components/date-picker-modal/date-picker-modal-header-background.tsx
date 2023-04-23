@@ -15,14 +15,13 @@ import { getDatePickerModalHeaderBackgroundStyles } from '../../utils';
 const DatePickerModalHeaderBackground = ({ children }: { children: ReactChildren }) => {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
-  const styles = getDatePickerModalHeaderBackgroundStyles();
+  const styles = getDatePickerModalHeaderBackgroundStyles(theme);
 
   return (
     <Animated.View
       style={[
         styles.animated,
         {
-          backgroundColor: theme.colors.$surface,
           paddingLeft: insets.left,
           paddingRight: insets.right,
         },

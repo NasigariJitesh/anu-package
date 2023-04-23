@@ -8,13 +8,13 @@ import { getDayNamesStyles, showWeekDay } from '../../utils';
 import DayName from './day-name';
 
 const weekdays = [
-  new Date(2023, 5, 1),
-  new Date(2023, 5, 2),
-  new Date(2023, 5, 3),
-  new Date(2023, 5, 4),
-  new Date(2023, 5, 5),
-  new Date(2023, 5, 6),
-  new Date(2023, 5, 7),
+  new Date(2023, 3, 2),
+  new Date(2023, 3, 3),
+  new Date(2023, 3, 4),
+  new Date(2023, 3, 5),
+  new Date(2023, 3, 6),
+  new Date(2023, 3, 7),
+  new Date(2023, 3, 8),
 ];
 
 /**
@@ -25,7 +25,7 @@ const DayNames = (props: DayNamesProps) => {
   const { disableWeekDays, locale } = props;
 
   const theme = useTheme();
-  const styles = getDayNamesStyles();
+  const styles = getDayNamesStyles(theme);
 
   const shortDayNames = useMemo<string[]>(() => {
     const formatter = new Intl.DateTimeFormat(locale, {
@@ -35,11 +35,7 @@ const DayNames = (props: DayNamesProps) => {
   }, [locale]);
 
   return (
-    <Container
-      disableGutters
-      style={[styles.dayNames, { backgroundColor: theme.colors.$surface }]}
-      pointerEvents={'none'}
-    >
+    <Container disableGutters style={styles.dayNames} pointerEvents={'none'}>
       {shortDayNames
         .filter((_, dayIndex) => showWeekDay(dayIndex, disableWeekDays))
         .map((dayName, index) => (

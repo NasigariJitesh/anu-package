@@ -4,6 +4,11 @@ import React from 'react';
 
 import { HeaderContentProps } from '../../types';
 import { getDatePickerModalContentHeaderStyles, getModalLabel } from '../../utils';
+import {
+  defaultHeaderContentMultiProps,
+  defaultHeaderContentRangeProps,
+  defaultHeaderContentSingleProps,
+} from './default';
 
 /**
  *
@@ -13,7 +18,7 @@ const DatePickerModalContentHeader = (props: HeaderContentProps) => {
   const { onToggle, collapsed, mode, moreLabel, uppercase, editIcon, calendarIcon, allowEditing } = props;
 
   const theme = useTheme();
-  const styles = getDatePickerModalContentHeaderStyles();
+  const styles = getDatePickerModalContentHeaderStyles(theme);
 
   const label = getModalLabel(mode, props.label);
 
@@ -22,9 +27,7 @@ const DatePickerModalContentHeader = (props: HeaderContentProps) => {
   return (
     <Container disableGutters style={styles.header}>
       <Container disableGutters>
-        <Typography.Title style={[styles.label, { color: theme.colors.$onSurfaceVariant }]}>
-          {uppercase ? label.toUpperCase() : label}
-        </Typography.Title>
+        <Typography.Body style={styles.label}>{uppercase ? label.toUpperCase() : label}</Typography.Body>
 
         <Container disableGutters style={styles.headerContentContainer}>
           {mode === 'range' ? <HeaderContentRange {...props} /> : null}
@@ -40,9 +43,10 @@ const DatePickerModalContentHeader = (props: HeaderContentProps) => {
           type='standard'
           icon={{
             name: collapsed ? editIcon ?? 'edit' : calendarIcon ?? 'calendar-today',
-            props: { color: theme.colors.$onSurface },
+            props: { size: 32, color: theme.colors.$scrim },
           }}
           onPress={onToggle}
+          containerStyle={styles.icon}
         />
       ) : null}
     </Container>
@@ -54,20 +58,23 @@ const DatePickerModalContentHeader = (props: HeaderContentProps) => {
  * @param props
  */
 export const HeaderContentSingle = (props: HeaderContentProps) => {
-  const { state, emptyLabel = ' ', locale } = props;
+  const finalProps = { ...defaultHeaderContentSingleProps, ...props };
+  const { state, emptyLabel = ' ', locale, collapsed } = finalProps;
+
   const theme = useTheme();
-  const styles = getDatePickerModalContentHeaderStyles();
+  const styles = getDatePickerModalContentHeaderStyles(theme);
 
   const formatter = React.useMemo(() => {
     return new Intl.DateTimeFormat(locale, {
       month: 'short',
       day: 'numeric',
+      weekday: 'short',
     });
   }, [locale]);
 
   return (
-    <Typography.Title style={[styles.singleHeaderText, { color: theme.colors.$onSurface }]}>
-      {state.date ? formatter.format(state.date) : emptyLabel}
+    <Typography.Title style={styles.headerText}>
+      {collapsed ? (state.date ? formatter.format(state.date) : emptyLabel) : 'Enter date'}
     </Typography.Title>
   );
 };
@@ -77,9 +84,12 @@ export const HeaderContentSingle = (props: HeaderContentProps) => {
  * @param props
  */
 export const HeaderContentMulti = (props: HeaderContentProps & { moreLabel: string | undefined }) => {
-  const { state, emptyLabel = ' ', moreLabel = 'more', locale } = props;
+  const finalProps = { ...defaultHeaderContentMultiProps, ...props };
+
+  const { state, emptyLabel, moreLabel, locale, collapsed } = finalProps;
+
   const theme = useTheme();
-  const styles = getDatePickerModalContentHeaderStyles();
+  const styles = getDatePickerModalContentHeaderStyles(theme);
 
   const dateCount = state.dates?.length || 0;
 
@@ -98,9 +108,7 @@ export const HeaderContentMulti = (props: HeaderContentProps & { moreLabel: stri
         : formatter.format(state.dates?.[0]) + ` (+ ${dateCount - 1} ${moreLabel})`) ?? '';
   }
 
-  return (
-    <Typography.Title style={[styles.singleHeaderText, { color: theme.colors.$onSurface }]}>{label}</Typography.Title>
-  );
+  return <Typography.Title style={styles.headerText}>{collapsed ? label : 'Enter date'}</Typography.Title>;
 };
 
 /**
@@ -108,9 +116,10 @@ export const HeaderContentMulti = (props: HeaderContentProps & { moreLabel: stri
  * @param props
  */
 export const HeaderContentRange = (props: HeaderContentProps) => {
-  const { locale, state, headerSeparator = '-', startLabel = 'Start', endLabel = 'End' } = props;
+  const finalProps = { ...defaultHeaderContentRangeProps, ...props };
+  const { locale, state, headerSeparator, startLabel, endLabel, collapsed } = finalProps;
   const theme = useTheme();
-  const styles = getDatePickerModalContentHeaderStyles();
+  const styles = getDatePickerModalContentHeaderStyles(theme);
   const formatter = React.useMemo(() => {
     return new Intl.DateTimeFormat(locale, {
       month: 'short',
@@ -120,15 +129,15 @@ export const HeaderContentRange = (props: HeaderContentProps) => {
 
   return (
     <>
-      <Typography.Title style={[styles.rangeHeaderText, { color: theme.colors.$onSurface }]}>
-        {state.startDate ? formatter.format(state.startDate) : startLabel}
+      <Typography.Title style={styles.headerText}>
+        {collapsed ? (state.startDate ? formatter.format(state.startDate) : startLabel) : 'Enter date'}
       </Typography.Title>
-      <Typography.Title style={[styles.headerSeparator, { color: theme.colors.$onSurface }]}>
-        {headerSeparator}
-      </Typography.Title>
-      <Typography.Title style={[styles.rangeHeaderText, { color: theme.colors.$onSurface }]}>
-        {state.endDate ? formatter.format(state.endDate) : endLabel}
-      </Typography.Title>
+      {collapsed ? <Typography.Title style={styles.headerSeparator}>{headerSeparator}</Typography.Title> : null}
+      {collapsed ? (
+        <Typography.Title style={styles.headerText}>
+          {state.endDate ? formatter.format(state.endDate) : endLabel}
+        </Typography.Title>
+      ) : null}
     </>
   );
 };

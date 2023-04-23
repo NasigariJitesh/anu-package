@@ -1,3 +1,5 @@
+import { DripsyFinalTheme } from 'dripsy';
+
 import { ModeType } from '../types';
 
 export const getDatePickerModalHeaderStyles = () => {
@@ -11,16 +13,39 @@ export const getDatePickerModalHeaderStyles = () => {
     flexDirection: 'row',
     elevation: 0,
     flex: 1,
+    paddingTop: 10,
+    paddingLeft: 16,
+    paddingRight: 12,
     justifyContent: 'space-between',
   } as const;
 
   return { animated, header };
 };
 
-export const getDatePickerModalHeaderBackgroundStyles = () => {
+export const getDatePickerModalButtonsStyles = (theme: DripsyFinalTheme) => {
+  const animated = {
+    elevation: 4,
+    flexDirection: 'row',
+    width: '100%',
+  } as const;
+
+  const container = {
+    backgroundColor: theme.colors.$surfaceContainerHigh,
+    flexDirection: 'row',
+    elevation: 0,
+    flex: 1,
+    paddingVertical: 15,
+    justifyContent: 'flex-end',
+  } as const;
+
+  return { animated, container };
+};
+
+export const getDatePickerModalHeaderBackgroundStyles = (theme: DripsyFinalTheme) => {
   const animated = {
     elevation: 4,
     width: '100%',
+    backgroundColor: theme.colors.$surfaceContainerHigh,
   };
 
   return { animated };
@@ -52,67 +77,113 @@ export const getModalLabel = (mode: ModeType, configuredLabel?: string) => {
   }
 };
 
-export const getDatePickerModalContentHeaderStyles = () => {
+export const getDatePickerModalContentHeaderStyles = (theme: DripsyFinalTheme) => {
   const fill = {
     flex: 1,
   };
   const header = {
-    alignItems: 'center',
+    alignItems: 'flex-end',
     flexDirection: 'row',
-    height: 75,
     paddingLeft: 24,
     paddingRight: 12,
+    paddingTop: 12,
+    paddingBottom: 4,
     width: '100%',
+    borderBottomWidth: 1,
+    borderColor: theme.colors.$outline,
   } as const;
-  const headerContentContainer = { flexDirection: 'row', marginTop: 5 } as const;
+
+  const headerContentContainer = {
+    flexDirection: 'row',
+    marginTop: 36,
+  } as const;
+
   const headerSeparator = {
-    fontSize: 25,
+    fontSize: theme.fontSizes[3],
+    lineHeight: theme.lineHeights[3],
+    color: theme.colors.$onSurfaceVariant,
     paddingLeft: 6,
     paddingRight: 6,
   };
-  const label = { fontSize: 13, letterSpacing: 1 };
-  const rangeHeaderText = { fontSize: 25 };
 
-  const singleHeaderText = { fontSize: 25 };
+  const label = {
+    fontSize: theme.fontSizes[9],
+    lineHeight: theme.lineHeights[9],
+    color: theme.colors.$onSurfaceVariant,
+  };
 
-  return { fill, header, headerContentContainer, rangeHeaderText, singleHeaderText, headerSeparator, label };
+  const headerText = {
+    fontSize: theme.fontSizes[3],
+    lineHeight: theme.lineHeights[3],
+    color: theme.colors.$onSurfaceVariant,
+  };
+
+  const icon = { height: 48, width: 48 };
+
+  return { fill, header, headerContentContainer, headerText, headerSeparator, label, icon };
 };
 
-export const getAbsoluteCrossViewStyles = () => {
+export const getAnimatedCrossViewStyles = (theme: DripsyFinalTheme, collapsed: boolean) => {
   const calendar = {
     flex: 1,
+    width: '100%',
   };
   const calendarEdit = {
     left: 0,
-
     position: 'absolute',
     right: 0,
   } as const;
-  const root = { flex: 1 };
+  const root = {
+    width: '100%',
+    backgroundColor: theme.colors.$surfaceContainerHigh,
+    minHeight: 100,
+    flex: collapsed ? 1 : 0,
+  };
 
   return { root, calendar, calendarEdit };
 };
 
-export const getDatePickerModalStyles = () => {
-  const modalBackground = {
-    flex: 1,
-  };
+export const getDatePickerModalStyles = (
+  theme: DripsyFinalTheme,
+  mode: 'range' | 'single' | 'multiple',
+  collapsed: boolean,
+) => {
+  const modalBackground = collapsed
+    ? {
+        flex: 1,
+      }
+    : {};
   const modalContent = {
-    flex: 1,
+    ...(collapsed ? { flex: 1 } : {}),
     width: '100%',
+    borderRadius: 16,
+    shadowColor: theme.colors?.$shadow as string,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 1,
   } as const;
+
+  const modalContentFullScreen = {
+    width: '100%',
+    height: '100%',
+  } as const;
+
   const modalContentBig = {
-    borderRadius: 10,
-    maxHeight: 800,
-    maxWidth: 600,
+    maxHeight: mode === 'single' ? 600 : 650,
+    maxWidth: 400,
     overflow: 'hidden',
     width: '100%',
   } as const;
+
   const modalRoot = {
     alignItems: 'center',
-    flex: 1,
+    ...(collapsed ? { flex: 1 } : {}),
     justifyContent: 'center',
   } as const;
 
-  return { modalBackground, modalContent, modalContentBig, modalRoot };
+  return { modalBackground, modalContent, modalContentBig, modalRoot, modalContentFullScreen };
 };

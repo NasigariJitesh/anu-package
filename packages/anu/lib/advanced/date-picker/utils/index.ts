@@ -5,4 +5,3 @@ export * from './date-utils';
 export * from './day-utils';
 export * from './month-utils';
 export * from './swiper-utils';
-export * from './utils';
