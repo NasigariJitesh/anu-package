@@ -1,65 +1,89 @@
+/* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
-import { Button, Container, Menu, MenuItem, MenuList, TouchableRipple, Typography, useSnackbar } from 'anu/lib';
+import { useTheme } from 'anu/config';
+import {
+  Button,
+  Container,
+  Divider,
+  Menu,
+  MenuItem,
+  MenuList,
+  TouchableRipple,
+  Typography,
+  useSnackbar,
+} from 'anu/lib';
 import { useState } from 'react';
 
 /**
  *
  */
 export default function Example() {
-  const [text, setText] = useState(false);
-  const [text1, setText1] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [openChild, setOpenChild] = useState(false);
+  const theme = useTheme();
 
   const { add, close } = useSnackbar();
 
   return (
-    <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
-      <TouchableRipple onPress={() => console.log('Pressed')}>
-        <Container align='center' justify='center' sx={{ height: 200, width: 200 }}>
-          <Typography.Body>Press anywhere</Typography.Body>
-        </Container>
-      </TouchableRipple>
+    <Container flexDirection='column' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
       <Menu
-        isOpen={text}
+        isOpen={open}
         onMenuToggle={(value) => {
-          setText(value);
+          setOpen(value);
         }}
         component={
-          <Button.Outlined
-            title='Menu'
+          <Button.Filled
+            title='Show Menu'
             onPress={() => {
-              setText(true);
+              setOpen(true);
             }}
           />
         }
       >
-        <MenuList width={400}>
-          <MenuItem leadingIcon={{ name: 'close' }} disabled>
-            Item 1
+        <MenuList width={300}>
+          <MenuItem leadingIcon={{ name: 'dashboard' }}>
+            <Typography.Body>Dashboard</Typography.Body>
           </MenuItem>
-          <MenuItem>Item 1</MenuItem>
-          <MenuItem inset>Item 1</MenuItem>
+          <MenuItem leadingIcon={{ name: 'inbox' }}>
+            <Typography.Body>Inbox</Typography.Body>
+          </MenuItem>
+          <MenuItem leadingIcon={{ name: 'favorite' }}>
+            <Typography.Body>Favorite</Typography.Body>
+          </MenuItem>
+          <MenuItem leadingIcon={{ name: 'calendar-today' }}>
+            <Typography.Body>Calendar</Typography.Body>
+          </MenuItem>
+          <Divider variant='full-width' color={theme.colors?.$onSurfaceVariant as string} />
+          <MenuItem leadingIcon={{ name: 'notifications' }}>
+            <Typography.Body>Notifications</Typography.Body>
+          </MenuItem>
           <Menu
+            isOpen={openChild}
+            onMenuToggle={(value) => {
+              setOpenChild(value);
+            }}
             component={
-              <MenuItem style={{ width: '100%' }} onPress={() => setText1(true)}>
-                Item Child
+              <MenuItem
+                leadingIcon={{ name: 'settings' }}
+                trailingIcon={{ name: 'arrow-right' }}
+                onPress={() => setOpenChild(true)}
+              >
+                <Typography.Body>Account Setting</Typography.Body>
               </MenuItem>
             }
-            isOpen={text1}
-            onMenuToggle={(value) => {
-              setText1(value);
-            }}
           >
-            <MenuList inner={true}>
-              <MenuItem leadingIcon={{ name: 'close' }} disabled>
-                Item 2
+            <MenuList width={300} inner>
+              <MenuItem>
+                <Typography.Body>Profile</Typography.Body>
               </MenuItem>
-              <MenuItem>Item 2</MenuItem>
-              <MenuItem inset>Item 2</MenuItem>
+              <MenuItem>
+                <Typography.Body>Change password</Typography.Body>
+              </MenuItem>
+              <MenuItem>
+                <Typography.Body>Logout</Typography.Body>
+              </MenuItem>
             </MenuList>
           </Menu>
-
-          <MenuItem>Item 1</MenuItem>
-          <MenuItem>Item 1</MenuItem>
         </MenuList>
       </Menu>
 
@@ -84,6 +108,10 @@ export default function Example() {
           });
         }}
       />
+
+      <TouchableRipple>
+        <Container sx={{ height: 100, width: 100 }}>Press</Container>
+      </TouchableRipple>
     </Container>
   );
 }
