@@ -431,6 +431,8 @@
   "menuDocumentation:example1-name": "Défaut",
   "menuDocumentation:example1-description": "Un menu par défaut contient des éléments de liste, des icônes, un séparateur et d'autres icônes de support.",
   "menuDocumentation:example2-name": "Menu imbriqué",
+  "menuDocumentation:example3-name": "Menu - avec bouton icône",
+  "menuDocumentation:example3-description": "Un menu avec un bouton icône affiche une liste d'options lorsque l'on clique sur le bouton icône.",
   "menuDocumentation:property-isOpen-description": "Si le menu est ouvert.",
   "menuDocumentation:property-onMenuToggle-description": "Rappel à appeler lorsque le menu doit être basculé entre ouvert et fermé.",
   "menuDocumentation:property-component-description": "Le composant qui contrôle le menu.",

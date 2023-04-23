@@ -26,6 +26,35 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      <Button.Text
+        title='add snack'
+        onPress={() => {
+          add({
+            content: 'First Snack',
+            align: 'right',
+          });
+        }}
+      />
+      <Button.Text
+        title='add snack 2'
+        onPress={() => {
+          add({
+            content:
+              'This is very long snack, This is very long snack , This is very long snack, This is very long snack ,   This is very long snack, This is very long snack , This is very long snack, This is very long snack , This is very long snack, This is very long snack  ',
+            action: { title: 'Close', onPress: close },
+            icon: { icon: { name: 'close' }, type: 'standard', onPress: close },
+            duration: 10_000,
+            style: { height: 200 },
+          });
+        }}
+      />
+
+      <TouchableRipple onPress={() => {}}>
+        <Container sx={{ height: 200, width: 200 }} align='center' justify='center'>
+          <Typography.Body selectable={false}>Press</Typography.Body>
+        </Container>
+      </TouchableRipple>
+
       <Menu
         isOpen={open}
         onMenuToggle={(value) => {
@@ -86,32 +115,6 @@ export default function Example() {
           </Menu>
         </MenuList>
       </Menu>
-
-      <Button.Text
-        title='add snack'
-        onPress={() => {
-          add({
-            content: 'First Snack',
-          });
-        }}
-      />
-      <Button.Text
-        title='add snack 2'
-        onPress={() => {
-          add({
-            content:
-              'This is very long snack, This is very long snack , This is very long snack, This is very long snack ,   This is very long snack, This is very long snack , This is very long snack, This is very long snack , This is very long snack, This is very long snack  ',
-            action: { title: 'Close', onPress: close },
-            icon: { icon: { name: 'close' }, type: 'standard', onPress: close },
-            duration: 10_000,
-            style: { height: 200 },
-          });
-        }}
-      />
-
-      <TouchableRipple>
-        <Container sx={{ height: 100, width: 100 }}>Press</Container>
-      </TouchableRipple>
     </Container>
   );
 }

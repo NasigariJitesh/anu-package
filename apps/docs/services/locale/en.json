@@ -449,14 +449,15 @@
   "menuDocumentation:example1-name": "Default",
   "menuDocumentation:example1-description": "A default menu contains list items, icons, a divider, and other supporting icons.",
   "menuDocumentation:example2-name": "Nested Menu",
-
+  "menuDocumentation:example3-name": "Menu - with an icon button",
+  "menuDocumentation:example3-description": "A menu with an icon button displays a list of options when an icon button is clicked.",
   "menuDocumentation:property-isOpen-description": "Whether the menu is open.",
   "menuDocumentation:property-onMenuToggle-description": "Callback to be called when the menu is to toggled between open and close.",
   "menuDocumentation:property-component-description": "The component that controls menu.",
 
   "menuDocumentation:property-children-description": "Menu list Component comprising of Menu Items.",
 
-  "menuDocumentation:additionalInformation-title": " See also",
+  "menuDocumentation:additionalInformation-title": "See also",
   "menuDocumentation:additionalInformation-info1": "<a  class=\"documentation-link\" target=\"blank\" href=\"/components/menu/list\" title=\"Card Actions\">Menu List</a>.",
   "menuDocumentation:additionalInformation-info2": "<a  class=\"documentation-link\" target=\"blank\" href=\"/components/menu/item\" title=\"Card Actions\">Menu Item</a>.",
 
