@@ -95,6 +95,11 @@ export const getDatePickerModalContentHeaderStyles = (theme: DripsyFinalTheme) =
 
   const headerContentContainer = {
     flexDirection: 'row',
+    marginTop: 8,
+  } as const;
+
+  const headerContentContainerSingle = {
+    flexDirection: 'row',
     marginTop: 36,
   } as const;
 
@@ -102,8 +107,6 @@ export const getDatePickerModalContentHeaderStyles = (theme: DripsyFinalTheme) =
     fontSize: theme.fontSizes[3],
     lineHeight: theme.lineHeights[3],
     color: theme.colors.$onSurfaceVariant,
-    paddingLeft: 6,
-    paddingRight: 6,
   };
 
   const label = {
@@ -120,7 +123,16 @@ export const getDatePickerModalContentHeaderStyles = (theme: DripsyFinalTheme) =
 
   const icon = { height: 48, width: 48 };
 
-  return { fill, header, headerContentContainer, headerText, headerSeparator, label, icon };
+  return {
+    fill,
+    header,
+    headerContentContainer,
+    headerText,
+    headerSeparator,
+    label,
+    icon,
+    headerContentContainerSingle,
+  };
 };
 
 export const getAnimatedCrossViewStyles = (theme: DripsyFinalTheme, collapsed: boolean) => {
@@ -174,7 +186,7 @@ export const getDatePickerModalStyles = (
 
   const modalContentBig = {
     maxHeight: mode === 'single' ? 600 : 650,
-    maxWidth: 400,
+    maxWidth: 360,
     overflow: 'hidden',
     width: '100%',
   } as const;

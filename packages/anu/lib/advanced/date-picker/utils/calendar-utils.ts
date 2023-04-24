@@ -23,7 +23,7 @@ export const getCalendarEditStyles = () => {
   const root = { padding: 12 };
   const separator = { width: 12 };
   const input = { backgroundColor: 'transparent' };
-  const rangeInput = { backgroundColor: 'transparent', minWidth: 120, maxWidth: 180 };
+  const rangeInput = { backgroundColor: 'transparent', width: 150 };
   return { inner, root, separator, input, rangeInput };
 };
 

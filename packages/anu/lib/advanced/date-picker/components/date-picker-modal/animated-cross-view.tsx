@@ -66,7 +66,7 @@ const AnimatedCrossView = (props: AnimatedCrossViewProps) => {
           },
         ]}
       >
-        {calendar}
+        {collapsed ? calendar : null}
       </Animated.View>
       <Animated.View
         pointerEvents={collapsed ? 'none' : 'auto'}

@@ -3,7 +3,6 @@ import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib/primitives';
 import React, { memo, useState } from 'react';
 import { useCallback } from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { useLatest } from '../../hooks';
 import { CalendarDate, CalendarDates, CalendarProps, MultiChange, RangeChange, SingleChange } from '../../types';
@@ -105,54 +104,52 @@ const Calendar = (props: CalendarProps) => {
   const firstDate = startDate || date || dates?.[0];
 
   return (
-    <SafeAreaProvider>
-      <Container disableGutters style={{ flex: 1 }}>
-        <Swiper
-          initialIndex={getInitialIndex(firstDate)}
-          selectedYear={selectedYear}
-          scrollMode={scrollMode}
-          renderItem={({ index }) => (
-            <Month
-              locale={locale}
-              mode={mode}
-              key={index}
-              validRange={validRange}
-              index={index}
-              startDate={startDate}
-              endDate={endDate}
-              date={date}
-              dates={dates}
-              onPressYear={onPressYear}
-              selectingYear={selectingYear}
-              onPressDate={onPressDate}
-              scrollMode={scrollMode}
-              primaryColor={theme.colors.$primary}
-              selectColor={theme.colors.$primary}
-              roundness={16}
-              disableWeekDays={disableWeekDays}
-            />
-          )}
-          renderHeader={({ onPrev, onNext }) => (
-            <CalendarHeader
-              locale={locale}
-              onPrev={onPrev}
-              onNext={onNext}
-              scrollMode={scrollMode}
-              disableWeekDays={disableWeekDays}
-            />
-          )}
-        />
-        {scrollMode === 'horizontal' ? (
-          <YearPicker
-            selectedYear={selectedYear}
-            selectingYear={selectingYear}
+    <Container disableGutters style={{ flex: 1 }}>
+      <Swiper
+        initialIndex={getInitialIndex(firstDate)}
+        selectedYear={selectedYear}
+        scrollMode={scrollMode}
+        renderItem={({ index }) => (
+          <Month
+            locale={locale}
+            mode={mode}
+            key={index}
+            validRange={validRange}
+            index={index}
+            startDate={startDate}
+            endDate={endDate}
+            date={date}
+            dates={dates}
             onPressYear={onPressYear}
-            startYear={startYear || 1900}
-            endYear={endYear || 2200}
+            selectingYear={selectingYear}
+            onPressDate={onPressDate}
+            scrollMode={scrollMode}
+            primaryColor={theme.colors.$primary}
+            selectColor={theme.colors.$primary}
+            roundness={16}
+            disableWeekDays={disableWeekDays}
           />
-        ) : null}
-      </Container>
-    </SafeAreaProvider>
+        )}
+        renderHeader={({ onPrev, onNext }) => (
+          <CalendarHeader
+            locale={locale}
+            onPrev={onPrev}
+            onNext={onNext}
+            scrollMode={scrollMode}
+            disableWeekDays={disableWeekDays}
+          />
+        )}
+      />
+      {scrollMode === 'horizontal' ? (
+        <YearPicker
+          selectedYear={selectedYear}
+          selectingYear={selectingYear}
+          onPressYear={onPressYear}
+          startYear={startYear || 1900}
+          endYear={endYear || 2200}
+        />
+      ) : null}
+    </Container>
   );
 };
 

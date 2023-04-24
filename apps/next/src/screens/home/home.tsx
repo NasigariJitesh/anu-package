@@ -2,7 +2,16 @@
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config/dripsy/theme';
-import { Button, CalendarDate, DatePickerInput, DatePickerModal, Icon, Image, TouchableRipple } from 'anu/lib';
+import {
+  Button,
+  CalendarDate,
+  DatePickerInput,
+  DatePickerModal,
+  Icon,
+  Image,
+  TextField,
+  TouchableRipple,
+} from 'anu/lib';
 import { BottomSheetReferenceProps } from 'anu/lib/primitives/bottom-sheet/types';
 import Checkbox from 'anu/lib/primitives/checkbox/components/checkbox';
 import Container from 'anu/lib/primitives/layout/components/container';
@@ -11,7 +20,8 @@ import { Text, View } from 'dripsy';
 import { useCallback, useRef, useState } from 'react';
 
 const HomeScreen = () => {
-  const [text, setText] = useState(false);
+  const [text, setText] = useState('');
+  const [text1, setText1] = useState(false);
   const [inputDate3, setInputDate3] = useState<Date[]>([]);
   const [inputDate, setInputDate] = useState<Date | undefined>();
   const [inputDate1, setInputDate1] = useState<Date | undefined>();
@@ -28,25 +38,27 @@ const HomeScreen = () => {
         withModal={true}
       /> */}
 
+      <TextField value={text} onChangeText={setText} containerStyle={{ width: 250 }} />
+
       <DatePickerModal
         dates={inputDate3}
         startDate={inputDate}
-        allowEditing
+        allowEditing={true}
         endDate={inputDate1}
-        visible={text}
+        visible={text1}
         onDismiss={() => {
-          setText(false);
+          setText1(false);
         }}
-        mode='range'
+        mode='single'
         locale='en'
-        onConfirm={(params: { startDate: CalendarDate; endDate: CalendarDate }) => {
-          console.log(params);
+        onConfirm={() => {
+          console.log();
         }}
       />
 
       <TouchableRipple
         onPress={() => {
-          setText(true);
+          setText1(true);
         }}
       >
         <Container align='center' justify='center' sx={{ height: 200, width: 200 }}>

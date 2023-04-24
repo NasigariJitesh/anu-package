@@ -197,7 +197,6 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
         okLabel={okLabel}
         okLabelDisabled={okLabelDisabled ?? false}
         uppercase={uppercase ?? false}
-        disableSafeTop={disableSafeTop}
       />
     </>
   );

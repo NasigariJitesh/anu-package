@@ -12,7 +12,7 @@ import { getDatePickerModalButtonsStyles } from '../../utils';
  * @param props
  */
 const DatePickerModalButtons = (props: DatePickerModalButtonProps) => {
-  const { disableSafeTop, onDismiss, okLabelDisabled, cancelLabelDisabled, onSave, uppercase } = props;
+  const { onDismiss, okLabelDisabled, cancelLabelDisabled, onSave, uppercase } = props;
   const okLabel = props.okLabel ?? 'Ok';
   const cancelLabel = props.cancelLabel ?? 'Cancel';
 
@@ -26,7 +26,6 @@ const DatePickerModalButtons = (props: DatePickerModalButtonProps) => {
         styles.animated,
         // eslint-disable-next-line react-native/no-inline-styles
         {
-          paddingVertical: disableSafeTop ? 0 : insets.top,
           paddingLeft: insets.left,
           paddingRight: insets.right,
         },

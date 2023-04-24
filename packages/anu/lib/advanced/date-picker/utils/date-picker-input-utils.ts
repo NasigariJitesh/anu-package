@@ -12,11 +12,8 @@ export const getLabel = (withDateFormatInLabel: boolean, inputFormat: string, la
 };
 
 export const getDatePickerInputWithoutModalStyles = () => {
-  const root = {
-    flexGrow: 1,
-  };
+  const root = {};
   const inputContainer = {
-    flexGrow: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',

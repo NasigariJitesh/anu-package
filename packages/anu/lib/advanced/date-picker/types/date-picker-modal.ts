@@ -95,7 +95,6 @@ export type DatePickerModalContentProps =
   | DatePickerModalContentMultiProps;
 
 export interface DatePickerModalButtonProps {
-  disableSafeTop?: boolean;
   okLabel?: string;
   okLabelDisabled?: boolean;
   uppercase?: boolean;

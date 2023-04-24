@@ -34,13 +34,12 @@ const Day = (props: DayProps) => {
     selectColor,
     isToday,
     disabled,
-    textColorOnPrimary,
   } = props;
 
   const theme = useTheme();
   const styles = getDayStyles();
 
-  const borderColor = selected || inRange ? textColorOnPrimary : theme.colors.$primary;
+  const borderColor = inRange ? theme.colors.$onPrimaryContainer : theme.colors.$primary;
 
   const textColor = selected
     ? theme.colors.$onPrimary

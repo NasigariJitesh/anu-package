@@ -66,7 +66,7 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
     }
 
     return (
-      <>
+      <Container disableGutters>
         <Container disableGutters style={styles.root}>
           <Container disableGutters style={styles.inputContainer}>
             <TextFieldWithMask
@@ -99,8 +99,8 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
           startYear,
           endYear,
           inputEnabled,
-        })}
-      </>
+        }) ?? null}
+      </Container>
     );
   },
 );
