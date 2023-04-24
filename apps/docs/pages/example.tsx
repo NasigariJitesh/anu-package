@@ -40,6 +40,18 @@ export default function Example() {
       </SafeAreaProvider>
 
       <SafeAreaProvider>
+        <DatePickerInput
+          locale='en'
+          label='Birthdate'
+          value={inputDate}
+          onChange={(d) => setInputDate(d)}
+          inputMode='start'
+          autoComplete='birthdate-full'
+          withModal={false}
+        />
+      </SafeAreaProvider>
+
+      <SafeAreaProvider>
         <DatePickerModal
           startDate={inputDateRangeStart}
           allowEditing

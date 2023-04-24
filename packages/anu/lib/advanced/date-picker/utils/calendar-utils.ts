@@ -1,4 +1,3 @@
-import { getColorInRGBA } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
 import { dayNamesHeight } from './day-utils';
@@ -52,7 +51,7 @@ export const getYearPickerStyles = (theme: DripsyFinalTheme) => {
   const list = {
     flex: 1,
     width: '100%',
-    backgroundColor: getColorInRGBA(theme.colors.$primary, 14),
+    backgroundColor: theme.colors.$surfaceContainerHigh,
   };
 
   const opacity0 = {
