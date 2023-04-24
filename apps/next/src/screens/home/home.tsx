@@ -2,22 +2,13 @@
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config/dripsy/theme';
-import {
-  Button,
-  CalendarDate,
-  DatePickerInput,
-  DatePickerModal,
-  Icon,
-  Image,
-  TextField,
-  TouchableRipple,
-} from 'anu/lib';
-import { BottomSheetReferenceProps } from 'anu/lib/primitives/bottom-sheet/types';
+import { Button, DatePickerInput, DatePickerModal, Icon, Image, TextField, TouchableRipple } from 'anu/lib';
 import Checkbox from 'anu/lib/primitives/checkbox/components/checkbox';
 import Container from 'anu/lib/primitives/layout/components/container';
 import Typography from 'anu/lib/primitives/typography/components';
 import { Text, View } from 'dripsy';
 import { useCallback, useRef, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 
 const HomeScreen = () => {
   const [text, setText] = useState('');
