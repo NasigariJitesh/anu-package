@@ -180,18 +180,18 @@ const App = () => {
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           <SnackbarExample
             numberOfLines={2}
-            content='This is a Double-line snackbar, without any action. This is a Double-line snackbar, without any action'
+            content='This is a Double-line snackbar, without any action. This is a Double-line snackbar, without any action. This is a Double-line snackbar, without any action. This is a Double-line snackbar, without any action.'
             title='Double-line snackbar'
           />
           <SnackbarExample
             numberOfLines={2}
-            content='This is a Double-line snackbar, with action. This is a Double-line snackbar, with action'
+            content='This is a Double-line snackbar, with action. This is a Double-line snackbar, with action. This is a Double-line snackbar, with action. This is a Double-line snackbar, with action.'
             title='Double-line snackbar with action'
             action={{ title: 'Action' }}
           />
           <SnackbarExample
             numberOfLines={2}
-            content='This is a Double-line snackbar, with longer action. This is a Double-line snackbar, with longer action'
+            content='This is a Double-line snackbar, with longer action. This is a Double-line snackbar, with longer action. This is a Double-line snackbar, with longer action. This is a Double-line snackbar, with longer action.'
             title='Double-line snackbar with longer action'
             action={{ title: 'Longer action' }}
             longerAction
@@ -202,7 +202,7 @@ const App = () => {
       
 <Button.Elevated title='Double-line snackbar' onPress={()=>{
     add({
-      content: 'This is a Double-line snackbar, without any action. This is a Double-line snackbar, without any action',
+      content: 'This is a Double-line snackbar, without any action. This is a Double-line snackbar, without any action. This is a Double-line snackbar, without any action. This is a Double-line snackbar, without any action.',
       numberOfLines: 2,
     })
   }}
@@ -210,7 +210,7 @@ const App = () => {
 
 <Button.Elevated title='Double-line snackbar with action' onPress={()=>{
     add({
-      content: 'This is a Double-line snackbar, with action. This is a Double-line snackbar, with action',
+      content: 'This is a Double-line snackbar, with action. This is a Double-line snackbar, with action. This is a Double-line snackbar, with action. This is a Double-line snackbar, with action.',
       numberOfLines: 2,
       action:{ title: 'Action' }
     })
@@ -219,7 +219,7 @@ const App = () => {
 
 <Button.Elevated title='Double-line snackbar with longer action' onPress={()=>{
     add({
-      content: 'Single-line snackbar with action and icon',
+      content: 'This is a Double-line snackbar, with longer action. This is a Double-line snackbar, with longer action. This is a Double-line snackbar, with longer action. This is a Double-line snackbar, with longer action.',
       numberOfLines: 2,
       action: { title: 'Longer action' },
       longerAction: true
