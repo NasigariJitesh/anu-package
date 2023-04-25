@@ -1,10 +1,10 @@
-import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
+import { Pressable } from 'dripsy';
 import * as React from 'react';
-import { GestureResponderEvent, Platform, Pressable } from 'react-native';
+import { GestureResponderEvent, Platform } from 'react-native';
 
 import { TouchableRippleProps } from '../../types';
-import { getTouchableRippleColors, getTouchableRippleStyles, hasTouchHandler } from '../../utils';
+import { getStateStyle, getTouchableRippleColors, getTouchableRippleStyles, hasTouchHandler } from '../../utils';
 import { defaultProps } from './default';
 
 const ANDROID_VERSION_LOLLIPOP = 21;
@@ -62,7 +62,7 @@ const TouchableRipple = (props: TouchableRippleProps) => {
       <Pressable
         {...rest}
         disabled={disabled}
-        style={getCombinedStylesForView(borderless ? borderlessStyle : {}, style)}
+        style={(state) => getStateStyle(state, borderless ? borderlessStyle : {}, style)}
         android_ripple={
           background == null
             ? {
@@ -82,13 +82,16 @@ const TouchableRipple = (props: TouchableRippleProps) => {
     <Pressable
       {...rest}
       disabled={disabled}
-      style={getCombinedStylesForView(
-        {
-          ...(borderless ? borderlessStyle : {}),
-          ...(showUnderlay ? { backgroundColor: calculatedUnderlayColor } : {}),
-        },
-        style,
-      )}
+      style={(state) =>
+        getStateStyle(
+          state,
+          {
+            ...(borderless ? borderlessStyle : {}),
+            ...(showUnderlay ? { backgroundColor: calculatedUnderlayColor } : {}),
+          },
+          style,
+        )
+      }
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
     >

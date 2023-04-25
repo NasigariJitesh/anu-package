@@ -1,10 +1,12 @@
-import { getColorInRGBA } from 'anu/common/utils';
+import { getColorInRGBA, getCombinedStylesForView } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
-import { GestureResponderEvent, Platform } from 'react-native';
+import { GestureResponderEvent, Platform, PressableStateCallbackType, StyleProp, ViewStyle } from 'react-native';
 
 const touchableEvents = ['onPress', 'onLongPress', 'onPressIn', 'onPressOut'] as const;
 
-type TouchableEventObject = Partial<Record<(typeof touchableEvents)[number], (event: GestureResponderEvent) => void>>;
+type TouchableEventObject = Partial<
+  Record<(typeof touchableEvents)[number], ((event: GestureResponderEvent) => void) | null>
+>;
 
 /**
  *
@@ -35,4 +37,16 @@ export const getTouchableRippleStyles = () => {
   } as const;
 
   return { borderlessStyle, touchableStyle };
+};
+
+export const getStateStyle = (
+  state: PressableStateCallbackType,
+  defaultStyle: StyleProp<ViewStyle>,
+  style: StyleProp<ViewStyle> | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>),
+) => {
+  if (typeof style === 'function') {
+    console.log('fun');
+    console.log(style(state));
+    return getCombinedStylesForView(defaultStyle, style(state));
+  } else return getCombinedStylesForView(defaultStyle, style);
 };

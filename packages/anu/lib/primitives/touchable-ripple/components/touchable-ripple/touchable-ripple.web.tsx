@@ -1,10 +1,9 @@
-import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
+import { Pressable } from 'dripsy';
 import * as React from 'react';
-import { Pressable } from 'react-native';
 
 import { TouchableRippleWebProps } from '../../types';
-import { getTouchableRippleColors, getTouchableRippleStyles, hasTouchHandler } from '../../utils';
+import { getStateStyle, getTouchableRippleColors, getTouchableRippleStyles, hasTouchHandler } from '../../utils';
 import { defaultPropsWeb } from './default';
 
 /**
@@ -171,7 +170,7 @@ const TouchableRipple = (props: TouchableRippleWebProps) => {
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       disabled={disabled}
-      style={getCombinedStylesForView({ ...touchableStyle, ...(borderless ? borderlessStyle : {}) }, style)}
+      style={(state) => getStateStyle(state, { ...touchableStyle, ...(borderless ? borderlessStyle : {}) }, style)}
     >
       {React.Children.only(children)}
     </Pressable>

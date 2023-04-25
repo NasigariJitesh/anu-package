@@ -13,23 +13,23 @@ interface CommonTouchableRippleProps {
   /**
    * Whether to prevent interaction with the touchable.
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * Function to execute on press. If not set, will cause the touchable to be disabled.
    */
-  onPress?: (event: GestureResponderEvent) => void;
+  onPress?: ((event: GestureResponderEvent) => void) | null;
   /**
    * Function to execute on long press.
    */
-  onLongPress?: (event: GestureResponderEvent) => void;
+  onLongPress?: ((event: GestureResponderEvent) => void) | null;
   /**
    * Function to execute immediately when a touch is engaged, before `onPressOut` and `onPress`.
    */
-  onPressIn?: (event: GestureResponderEvent) => void;
+  onPressIn?: ((event: GestureResponderEvent) => void) | null;
   /**
    * Function to execute when a touch is released.
    */
-  onPressOut?: (event: GestureResponderEvent) => void;
+  onPressOut?: ((event: GestureResponderEvent) => void) | null;
   /**
    * Color of the ripple effect (Android >= 5.0 and Web).
    */
@@ -42,14 +42,13 @@ interface CommonTouchableRippleProps {
    * Content of the `TouchableRipple`.
    */
   children: React.ReactNode;
-  style?: StyleProp<ViewStyle>;
 }
 
 export interface TouchableRippleProps
   extends CommonTouchableRippleProps,
     Omit<
       React.ComponentProps<typeof Pressable>,
-      'style' | 'children' | 'disabled' | 'onLongPress' | 'onPress' | 'onPressIn' | 'onPressOut'
+      'children' | 'disabled' | 'onLongPress' | 'onPress' | 'onPressIn' | 'onPressOut'
     > {
   /**
    * Type of background drawable to display the feedback (Android).
@@ -62,7 +61,7 @@ export interface TouchableRippleWebProps
   extends CommonTouchableRippleProps,
     Omit<
       React.ComponentPropsWithRef<typeof Pressable>,
-      'style' | 'children' | 'disabled' | 'onLongPress' | 'onPress' | 'onPressIn' | 'onPressOut'
+      'children' | 'disabled' | 'onLongPress' | 'onPress' | 'onPressIn' | 'onPressOut'
     > {
   // eslint-disable-next-line @typescript-eslint/ban-types
   background?: Object;
