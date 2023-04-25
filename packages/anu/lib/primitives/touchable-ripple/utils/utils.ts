@@ -43,10 +43,25 @@ export const getStateStyle = (
   state: PressableStateCallbackType,
   defaultStyle: StyleProp<ViewStyle>,
   style: StyleProp<ViewStyle> | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>),
+  setBackgroundColor: (color: string) => void,
+  rippleColor?: string,
 ) => {
+  let combinedStyle: StyleProp<ViewStyle>;
   if (typeof style === 'function') {
-    console.log('fun');
-    console.log(style(state));
-    return getCombinedStylesForView(defaultStyle, style(state));
-  } else return getCombinedStylesForView(defaultStyle, style);
+    const stateStyle = style(state);
+    //@ts-expect-error
+    if (rippleColor === undefined && stateStyle?.backgroundColor && stateStyle.backgroundColor !== 'transparent') {
+      //@ts-expect-error
+      setBackgroundColor(stateStyle?.backgroundColor);
+    }
+    combinedStyle = getCombinedStylesForView(defaultStyle, stateStyle);
+  } else {
+    //@ts-expect-error
+    if (rippleColor === undefined && style?.backgroundColor && style.backgroundColor !== 'transparent')
+      //@ts-expect-error
+      setBackgroundColor(style?.backgroundColor);
+
+    combinedStyle = getCombinedStylesForView(defaultStyle, style);
+  }
+  return combinedStyle;
 };

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { generateHoverStyles } from 'common/utils';
 import { useTheme } from 'config/dripsy';
-import { Pressable, useSx } from 'dripsy';
-import { Container, Typography } from 'lib/primitives';
+import { useSx } from 'dripsy';
+import { Container, TouchableRipple, Typography } from 'lib/primitives';
 import { useEffect, useState } from 'react';
 import { PressableStateCallbackType } from 'react-native';
 
@@ -45,13 +45,13 @@ export const Radio = (props: RadioButtonProps) => {
 
   return (
     <Container disableGutters {...getLabelAlignment(finalProps.labelPlacement)} style={finalProps.containerStyle}>
-      <Pressable disabled={finalProps.disabled} onPress={onPressHandler} style={generateStyles}>
+      <TouchableRipple disabled={finalProps.disabled} onPress={onPressHandler} style={generateStyles}>
         {/* 
         // @ts-expect-error REASON: we get ts error but react native ignores hover related styles */}
         <Container disableGutters style={radioStyles}>
           <RenderSelected />
         </Container>
-      </Pressable>
+      </TouchableRipple>
 
       {finalProps.label ? (
         <Typography.Label htmlFor={finalProps.id} style={finalProps.labelStyle}>

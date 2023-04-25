@@ -1,10 +1,10 @@
 import { useTheme } from 'anu/config';
 import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
-import { Pressable, useSx } from 'dripsy';
-import { Icon } from 'lib/index';
+import { useSx } from 'dripsy';
+import { Icon, TouchableRipple } from 'lib/index';
 import Container from 'lib/primitives/layout';
 import Typography from 'lib/primitives/typography';
-import { PressableStateCallbackType } from 'react-native';
+import { GestureResponderEvent, PressableStateCallbackType } from 'react-native';
 
 import { RegularButtonProps as ButtonProps } from '../../types';
 import { getButtonStyles, getLabelStyles } from '../../utils';
@@ -45,18 +45,22 @@ export const RenderComponent = (props: ButtonProps) => {
   return (
     // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
     <Container disableGutters style={styles}>
-      <Pressable
+      <TouchableRipple
         accessibilityRole='button'
-        onPress={props.onPress}
         {...props.pressableProps}
+        onPress={(event: GestureResponderEvent) => {
+          if (props.onPress) props.onPress(event);
+        }}
         style={generateStyles}
         disabled={props.disabled}
       >
-        {getIcon()}
-        <Typography.Label size='large' style={getCombinedStylesForText(labelStyles, props.labelStyle)}>
-          {props.title}
-        </Typography.Label>
-      </Pressable>
+        <>
+          {getIcon()}
+          <Typography.Label size='large' style={getCombinedStylesForText(labelStyles, props.labelStyle)}>
+            {props.title}
+          </Typography.Label>
+        </>
+      </TouchableRipple>
     </Container>
   );
 };

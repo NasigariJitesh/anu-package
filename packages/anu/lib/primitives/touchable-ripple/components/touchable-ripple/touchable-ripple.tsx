@@ -1,7 +1,8 @@
 import { useTheme } from 'anu/config';
 import { Pressable } from 'dripsy';
 import * as React from 'react';
-import { GestureResponderEvent, Platform } from 'react-native';
+import { useState } from 'react';
+import { GestureResponderEvent, Platform, PressableStateCallbackType } from 'react-native';
 
 import { TouchableRippleProps } from '../../types';
 import { getStateStyle, getTouchableRippleColors, getTouchableRippleStyles, hasTouchHandler } from '../../utils';
@@ -44,6 +45,8 @@ const TouchableRipple = (props: TouchableRippleProps) => {
     underlayColor,
   );
 
+  const [rippleBackgroundColor, setRippleBackgroundColor] = useState(calculatedRippleColor);
+
   // A workaround for ripple on Android P is to use useForeground + overflow: 'hidden'
   const useForeground = Platform.OS === 'android' && Platform.Version >= ANDROID_VERSION_PIE && borderless;
 
@@ -57,16 +60,23 @@ const TouchableRipple = (props: TouchableRippleProps) => {
     onPressOut?.(event);
   };
 
+  const handlePress = (event: GestureResponderEvent) => {
+    if (onPress) onPress(event);
+  };
+
   if (TouchableRipple.supported) {
     return (
       <Pressable
         {...rest}
+        onPress={handlePress}
         disabled={disabled}
-        style={(state) => getStateStyle(state, borderless ? borderlessStyle : {}, style)}
+        style={(state) =>
+          getStateStyle(state, borderless ? borderlessStyle : {}, style, setRippleBackgroundColor, rippleColor)
+        }
         android_ripple={
           background == null
             ? {
-                color: calculatedRippleColor,
+                color: rippleBackgroundColor,
                 borderless,
                 foreground: useForeground,
               }
@@ -82,7 +92,7 @@ const TouchableRipple = (props: TouchableRippleProps) => {
     <Pressable
       {...rest}
       disabled={disabled}
-      style={(state) =>
+      style={(state: PressableStateCallbackType) =>
         getStateStyle(
           state,
           {
@@ -90,10 +100,13 @@ const TouchableRipple = (props: TouchableRippleProps) => {
             ...(showUnderlay ? { backgroundColor: calculatedUnderlayColor } : {}),
           },
           style,
+          setRippleBackgroundColor,
+          rippleColor,
         )
       }
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      onPress={handlePress}
     >
       {React.Children.only(children)}
     </Pressable>

@@ -14,8 +14,15 @@ export default function Example() {
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
       <TouchableRipple onPress={() => console.log('Pressed')}>
-        <Button.Outlined title='Press' />
+        <Container>Press here</Container>
       </TouchableRipple>
+
+      <TouchableRipple onPress={() => {}}>
+        <Container style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}>
+          <Typography.Body>Helllooo</Typography.Body>
+        </Container>
+      </TouchableRipple>
+
       <Menu
         isOpen={text}
         onMenuToggle={(value) => {
