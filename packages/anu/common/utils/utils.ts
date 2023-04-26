@@ -43,7 +43,7 @@ export const generateHoverStyles = (
   styles: ExtendedHoverStyles,
   useSx: typeof SxType,
 ) => {
-  const { hovered, pressed, focused } = states;
+  const { hovered, pressed } = states;
 
   const sx = useSx();
 
@@ -52,7 +52,8 @@ export const generateHoverStyles = (
   // Generate styles based on the state of the element
   if (hovered) style = { ...style, ...styles['@hover'] };
   if (pressed) style = { ...style, ...styles['@press'] };
-  if (focused) style = { ...style, ...styles['@focus'] };
+  // if (focused) style = { ...style, ...styles['@focus'] };
+
   return sx(style);
 };
 

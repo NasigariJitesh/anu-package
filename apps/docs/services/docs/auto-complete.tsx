@@ -1,5 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
-import { AutoComplete as AutoCompleteComponent, AutoCompleteProps, Container, Options, Typography } from 'anu/lib';
+import {
+  AutoComplete as AutoCompleteComponent,
+  AutoCompleteProps,
+  Container,
+  FlatListProps,
+  Options,
+  Typography,
+} from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { useState } from 'react';
@@ -48,16 +55,23 @@ const data = [
   },
 ];
 
-const ListRenderItem = ({ item }: { item: Options }) => {
-  return (
-    <Pressable style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}>
-      <Typography.Body>{item.value as string}</Typography.Body>
-    </Pressable>
-  );
-};
-
-const AutoComplete = (props: Omit<AutoCompleteProps, 'value' | 'onChangeText'>) => {
+const AutoComplete = (
+  props: Omit<AutoCompleteProps, 'value' | 'onChangeText' | 'flatListProps'> & {
+    flatListProps?: Partial<FlatListProps<Options>>;
+  },
+) => {
   const [text, setText] = useState('');
+
+  const ListRenderItem = ({ item }: { item: Options }) => {
+    return (
+      <Pressable
+        style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}
+        onPress={() => setText(item.value as string)}
+      >
+        <Typography.Body>{item.value as string}</Typography.Body>
+      </Pressable>
+    );
+  };
 
   return (
     <AutoCompleteComponent
@@ -67,6 +81,7 @@ const AutoComplete = (props: Omit<AutoCompleteProps, 'value' | 'onChangeText'>) 
         setText(value);
       }}
       label='Auto Complete'
+      flatListProps={{ ...props.flatListProps, renderItem: ListRenderItem }}
     />
   );
 };
@@ -150,12 +165,7 @@ export const autoCompleteDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <AutoComplete
-              variant='outlined'
-              data={data}
-              flatListProps={{ renderItem: ListRenderItem }}
-              autoCompleteContainerStyle={style}
-            />
+            <AutoComplete variant='outlined' data={data} autoCompleteContainerStyle={style} />
           </Container>
         </Container>
       ),
@@ -166,12 +176,7 @@ export const autoCompleteDocumentation: ContentValues = {
       id: 'filled-auto-complete',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <AutoComplete
-            variant='filled'
-            data={data}
-            flatListProps={{ renderItem: ListRenderItem }}
-            autoCompleteContainerStyle={style}
-          />
+          <AutoComplete variant='filled' data={data} autoCompleteContainerStyle={style} />
         </Container>
       ),
       code: "<AutoComplete variant='filled' data={data} flatListProps={{ renderItem: ListRenderItem }} />",
@@ -181,12 +186,7 @@ export const autoCompleteDocumentation: ContentValues = {
       id: 'base-auto-complete',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <AutoComplete
-            variant='base'
-            data={data}
-            flatListProps={{ renderItem: ListRenderItem }}
-            autoCompleteContainerStyle={style}
-          />
+          <AutoComplete variant='base' data={data} autoCompleteContainerStyle={style} />
         </Container>
       ),
       code: "<AutoComplete variant='base' data={data} flatListProps={{ renderItem: ListRenderItem }} />",
@@ -196,13 +196,7 @@ export const autoCompleteDocumentation: ContentValues = {
       id: 'auto-complete-debouncing',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <AutoComplete
-            variant='outlined'
-            data={data}
-            flatListProps={{ renderItem: ListRenderItem }}
-            autoCompleteContainerStyle={style}
-            debounce
-          />
+          <AutoComplete variant='outlined' data={data} autoCompleteContainerStyle={style} debounce />
         </Container>
       ),
       code: "<AutoComplete variant='outlined' data={data} flatListProps={{ renderItem: ListRenderItem }} debounce />",
@@ -216,7 +210,6 @@ export const autoCompleteDocumentation: ContentValues = {
             variant='outlined'
             data={[]}
             flatListProps={{
-              renderItem: ListRenderItem,
               ListEmptyComponent: (
                 <Pressable style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}>
                   <Typography.Body>No more Results</Typography.Body>
@@ -243,7 +236,7 @@ export const autoCompleteDocumentation: ContentValues = {
   ],
   externalProperties: {
     link: '/components/text-field',
-    title: 'autoCompleteDocumentation:externalProperties',
+    title: 'autoCompleteDocumentation:external-properties-title',
   },
 };
 

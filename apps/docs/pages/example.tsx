@@ -54,8 +54,12 @@ export default function Example() {
         use24HourClock
       />
       <TouchableRipple onPress={() => console.log('Pressed')}>
-        <Container align='center' justify='center' sx={{ height: 200, width: 200 }}>
-          <Typography.Body>Press anywhere</Typography.Body>
+        <Container>Press here</Container>
+      </TouchableRipple>
+
+      <TouchableRipple onPress={() => {}}>
+        <Container style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}>
+          <Typography.Body>Helllooo</Typography.Body>
         </Container>
       </TouchableRipple>
 

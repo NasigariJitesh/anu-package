@@ -126,7 +126,6 @@ const getFABTheme = (props: FABProps, theme: DripsyFinalTheme) => {
       height: 56,
       width: 56,
       borderRadius: 16,
-      padding: 16,
       backgroundColor: 'transparent',
 
       '@hover': {
