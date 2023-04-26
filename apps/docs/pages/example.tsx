@@ -1,6 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Button, Container, Menu, MenuItem, MenuList, TouchableRipple, Typography, useSnackbar } from 'anu/lib';
-import { useState } from 'react';
+import {
+  Button,
+  Container,
+  Menu,
+  MenuItem,
+  MenuList,
+  TimePickerModal,
+  TouchableRipple,
+  Typography,
+  useSnackbar,
+} from 'anu/lib';
+import { useCallback, useState } from 'react';
 
 /**
  *
@@ -8,6 +18,19 @@ import { useState } from 'react';
 export default function Example() {
   const [text, setText] = useState(false);
   const [text1, setText1] = useState(false);
+
+  const [visible, setVisible] = useState(false);
+  const onDismiss = useCallback(() => {
+    setVisible(false);
+  }, [setVisible]);
+
+  const onConfirm = useCallback(
+    ({ hours, minutes }: { hours: number; minutes: number }) => {
+      setVisible(false);
+      console.log({ hours, minutes });
+    },
+    [setVisible],
+  );
 
   const { add, close } = useSnackbar();
 
@@ -18,6 +41,15 @@ export default function Example() {
           <Typography.Body>Press anywhere</Typography.Body>
         </Container>
       </TouchableRipple>
+      <Button.Text onPress={() => setVisible(true)} title='pick time' />
+      <TimePickerModal
+        visible={visible}
+        onDismiss={onDismiss}
+        onConfirm={onConfirm}
+        hours={12}
+        minutes={14}
+        use24HourClock={false}
+      />
       <Menu
         isOpen={text}
         onMenuToggle={(value) => {
