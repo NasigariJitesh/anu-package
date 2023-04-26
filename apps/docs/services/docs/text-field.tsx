@@ -181,7 +181,6 @@ export const textFieldDocumentation: ContentValues = {
               supportingText='Supporting text'
               value='Input Text'
               containerStyle={style}
-              trailingIcon={<Icon color='inherit' name='close' />}
             />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -201,17 +200,16 @@ export const textFieldDocumentation: ContentValues = {
               supportingText='Supporting text'
               value='Input Text'
               disabled
-              trailingIcon={<Icon color='inherit' name='close' />}
               containerStyle={style}
             />
           </Container>
         </Container>
       ),
       code: `<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value=''/>
-<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit' name='close' />} />
+<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' name='close' />} />
 
 <TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='' disabled/>
-<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit' name='close' />} disabled/>`,
+<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' disabled/>`,
     },
     {
       name: 'textFieldDocumentation:example3-name',
@@ -281,7 +279,6 @@ export const textFieldDocumentation: ContentValues = {
               supportingText='Supporting text'
               value='Input Text'
               containerStyle={style}
-              trailingIcon={<Icon color='inherit' name='close' />}
             />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -301,17 +298,16 @@ export const textFieldDocumentation: ContentValues = {
               supportingText='Supporting text'
               value='Input Text'
               disabled
-              trailingIcon={<Icon color='inherit' name='close' />}
               containerStyle={style}
             />
           </Container>
         </Container>
       ),
       code: `<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='' />
-<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit'name='close' />} />
+<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text'} />
 
 <TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='' disabled/>
-<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text' trailingIcon={<Icon color='inherit' name='close' />} disabled/>`,
+<TextField leadingIcon={<Icon color='inherit' name='search' />} variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text' disabled/>`,
     },
     {
       name: 'textFieldDocumentation:example5-name',

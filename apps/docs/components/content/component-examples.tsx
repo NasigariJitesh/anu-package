@@ -140,8 +140,6 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
   const theme = useTheme();
 
   const styles = getStyles(theme);
-  const sx = useSx();
-
   return (
     <Container disableGutters sx={styles.container as never}>
       {/* <Typography.Headline style={styles.heading}>{translations('en', 'examples')}</Typography.Headline> */}
