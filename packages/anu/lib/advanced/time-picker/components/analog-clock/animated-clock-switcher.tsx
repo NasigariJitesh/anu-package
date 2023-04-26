@@ -30,8 +30,8 @@ const AnimatedClockSwitcher = (props: AnimatedClockSwitcherProps) => {
   useEffect(() => {
     Animated.timing(animatedCollapsed, {
       toValue: collapsed ? 1 : 0,
-      duration: 500,
-      delay: 0,
+      duration: 300,
+      delay: 200,
       useNativeDriver: true,
     }).start();
   }, [collapsed]);
@@ -44,14 +44,6 @@ const AnimatedClockSwitcher = (props: AnimatedClockSwitcherProps) => {
           StyleSheet.absoluteFill,
           {
             opacity: animatedCollapsed,
-            transform: [
-              {
-                scale: animatedCollapsed.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0.5, 1],
-                }),
-              },
-            ],
           },
         ]}
       >
@@ -66,14 +58,6 @@ const AnimatedClockSwitcher = (props: AnimatedClockSwitcherProps) => {
               inputRange: [0, 1],
               outputRange: [1, 0],
             }),
-            transform: [
-              {
-                scale: animatedCollapsed.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [1, 0.55],
-                }),
-              },
-            ],
           },
         ]}
       >
