@@ -1,21 +1,10 @@
+import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Icon, IconButton, Image, Typography } from 'anu/lib/primitives';
 import { Pressable } from 'react-native';
 
+import { ListItemProps } from '../../types';
 import { getUploadListStyles } from '../../utils';
-
-interface ListItemProps {
-  id: number;
-  dataItem: Blob | File;
-  uri?: string;
-  error?: { error: boolean; errorMessage: string };
-  single?: boolean;
-  variant?: 'image' | 'file';
-  deleteData: (index: number) => void;
-  previewType?: 'list' | 'carousel';
-  sortable?: boolean;
-  listWidth?: number;
-}
 
 /**
  * To Render a regular list item
@@ -23,13 +12,13 @@ interface ListItemProps {
  * @param props - props for the list item
  */
 const RegularListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, variant, error, sortable, listWidth } = props;
+  const { id, dataItem, single, deleteData, variant, error, sortable, listWidth, listItemStyle } = props;
   const theme = useTheme();
 
   const styles = getUploadListStyles(theme, listWidth, false);
 
   return (
-    <Pressable key={id} style={styles.listItem}>
+    <Pressable key={id} style={getCombinedStylesForView(styles.listItem, listItemStyle)}>
       <Container disableGutters style={styles.listItemContainer}>
         {!single && sortable && (
           <Container disableGutters style={styles.dragIconContainer}>
@@ -74,13 +63,13 @@ const RegularListItem = (props: ListItemProps) => {
  * @param props - props for the list item
  */
 const PreviewListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, error, listWidth, uri, sortable } = props;
+  const { id, dataItem, single, deleteData, error, listWidth, uri, sortable, listItemStyle } = props;
   const theme = useTheme();
 
   const styles = getUploadListStyles(theme, listWidth, false);
 
   return (
-    <Pressable key={id} style={styles.listItem}>
+    <Pressable key={id} style={getCombinedStylesForView(styles.listItem, listItemStyle)}>
       <Container disableGutters style={styles.listItemContainer}>
         {!single && sortable && (
           <Container disableGutters style={styles.dragIconContainer}>
@@ -121,13 +110,13 @@ const PreviewListItem = (props: ListItemProps) => {
  * @param props - props for the list item
  */
 const CarouselListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, error, uri, listWidth, sortable } = props;
+  const { id, dataItem, single, deleteData, error, uri, listWidth, sortable, listItemStyle } = props;
   const theme = useTheme();
 
   const styles = getUploadListStyles(theme, listWidth, true);
 
   return (
-    <Container disableGutters style={styles.carouselItem} key={id}>
+    <Container disableGutters style={getCombinedStylesForView(styles.carouselItem, listItemStyle)} key={id}>
       <Pressable style={styles.carouselListItem}>
         <Image style={styles.carouselImage} source={{ uri: uri }} alt={dataItem.name} />
 

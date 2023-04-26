@@ -64,7 +64,7 @@ export const generateHoverStyles = (
  * @returns RGBA string
  */
 export const getColorInRGBA = (color: string, opacity: number) => {
-  const opacityValue = Math.floor((opacity * 256) / 100);
+  const opacityValue = Math.floor((opacity * 255) / 100);
   return opacityValue >= 16 ? color + opacityValue.toString(16) : color + '0' + opacityValue.toString(16);
 };
 

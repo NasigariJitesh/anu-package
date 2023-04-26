@@ -12,7 +12,7 @@ import { defaultProps } from './default';
 /**
  * Search Bar Component
  */
-const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, reference) => {
+const Search = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
   const [active, setActive] = useState(false);
 
@@ -79,8 +79,13 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
     if (callback) return callback(event);
   };
 
-  const { defaultSearchBarStyle, activeSearchBarContainerStyle, defaultResultsContainerStyle, defaultContainerStyle } =
-    getSearchBarStyle(theme, height, width, active, type);
+  const {
+    defaultSearchBarStyle,
+    activeSearchBarContainerStyle,
+    defaultResultsContainerStyle,
+    defaultContainerStyle,
+    defaultFlatListStyle,
+  } = getSearchBarStyle(theme, height, width, active, type);
 
   return (
     <AutoComplete
@@ -101,8 +106,14 @@ const SearchBar = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, re
       filterOnChange={filterOnChangeHandler}
       disableLabelAnimation={true}
       error={false}
+      flatListProps={{
+        showsVerticalScrollIndicator: false,
+        ...autoCompleteProps.flatListProps,
+        style: getCombinedStylesForView(defaultFlatListStyle, autoCompleteProps.flatListProps.style),
+      }}
+      showResults={value ? value.length > 0 : false}
     />
   );
 });
 
-export default SearchBar;
+export default Search;

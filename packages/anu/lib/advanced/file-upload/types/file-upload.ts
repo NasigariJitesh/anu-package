@@ -44,6 +44,10 @@ type BasicFileUploadProps = CommonButtonProps & {
    */
   listStyle?: StyleProp<ViewStyle>;
   /*
+   * The Styles for the upload list Item
+   */
+  listItemStyle?: StyleProp<ViewStyle>;
+  /*
    * The error state and message for each file
    */
   errors?: { error: boolean; errorMessage: string }[];

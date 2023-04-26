@@ -46,6 +46,7 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
 
   const onChangeHandler = (text: string) => {
     if (finalProps.disabled) return;
+
     finalProps.onChangeText(text);
 
     if (finalProps.debounce) debouncedFilter(text);
@@ -76,10 +77,11 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
         {...finalProps}
         onChangeText={onChangeHandler}
         onFocus={(event) => {
+          if (finalProps.disabled) return;
           focusEventHandler(event, true, finalProps.onFocus);
         }}
       />
-      {finalProps.showResults ?? isOpen ? (
+      {!finalProps.disabled && (finalProps.showResults ?? isOpen) ? (
         <Container
           disableGutters
           style={getCombinedStylesForView(defaultResultsContainerStyle, finalProps.resultContainerStyle)}

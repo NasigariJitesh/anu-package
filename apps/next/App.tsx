@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 
 import { Provider } from 'anu/common/context';
 import { makeTheme } from 'anu/config';
+import { AnuSnackbarProvider } from 'anu/lib';
 import { SafeAreaView } from 'dripsy';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -17,7 +18,9 @@ const App = () => {
     <Provider theme={theme}>
       <SafeAreaProvider>
         <SafeAreaView>
-          <Home />
+          <AnuSnackbarProvider>
+            <Home />
+          </AnuSnackbarProvider>
         </SafeAreaView>
       </SafeAreaProvider>
     </Provider>

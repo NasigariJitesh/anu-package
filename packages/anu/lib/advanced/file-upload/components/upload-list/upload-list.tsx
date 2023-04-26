@@ -1,23 +1,11 @@
 import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib';
 import SortableList from 'anu/lib/advanced/sortable-list';
-import { ScrollView, StyleProp, ViewStyle } from 'react-native';
+import { ScrollView } from 'react-native';
 
+import { UploadListProps } from '../../types';
 import { getUploadListStyles } from '../../utils';
 import UploadItem from '../upload-item';
-
-interface UploadListProps {
-  data: Blob[] | File[];
-  uriData?: string[];
-  errors?: { error: boolean; errorMessage: string }[];
-  variant?: 'image' | 'file';
-  sortable?: boolean;
-  previewType?: 'list' | 'carousel';
-  deleteData: (index: number) => void;
-  onSort: (from: number, to: number) => void;
-  listStyle: StyleProp<ViewStyle>;
-  listWidth?: number;
-}
 
 const keyExtractor = (item: Blob, index: number) => item.name + index;
 
@@ -41,6 +29,7 @@ const UploadList = (props: UploadListProps) => {
       error: props.errors ? props.errors[index ?? 0] : { error: false, errorMessage: '' },
       previewType: props.previewType,
       sortable: props.sortable,
+      listItemStyle: props.listItemStyle,
     };
 
     return <UploadItem key={index} {...propList} />;

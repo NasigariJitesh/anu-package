@@ -1,38 +1,10 @@
+import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Icon, IconButton, Image, Typography } from 'anu/lib/primitives';
-import { useState } from 'react';
-import { Pressable, PressableStateCallbackType } from 'react-native';
+import { Pressable } from 'react-native';
 
+import { ListItemProps } from '../../types';
 import { getUploadListStyles } from '../../utils';
-interface ListItemProps {
-  id: number;
-  dataItem: Blob | File;
-  error?: boolean;
-  uri?: string;
-  errorMessage?: string;
-  single?: boolean;
-  variant?: 'image' | 'file';
-  deleteData: (index: number) => void;
-  previewStyle?: 'list' | 'carousel';
-  sortable?: boolean;
-  listWidth?: number;
-}
-
-/**
- * To check whether an item is hovered pressed or focused
- *
- * @param state - state of pressable
- * @param setHovered
- */
-const hoverFromState = (
-  state: PressableStateCallbackType,
-  setHovered: React.Dispatch<React.SetStateAction<boolean>>,
-) => {
-  if (state.hovered) setHovered(true);
-  else if (state.pressed) setHovered(true);
-  else if (state.focused) setHovered(true);
-  else setHovered(false);
-};
 
 /**
  * To Render a regular list item
@@ -40,33 +12,27 @@ const hoverFromState = (
  * @param props - props for the list item
  */
 const RegularListItem = (props: ListItemProps) => {
-  const [hovered, setHovered] = useState(false);
-  const { id, dataItem, single, deleteData, variant, error, errorMessage, sortable, listWidth } = props;
+  const { id, dataItem, single, deleteData, variant, error, sortable, listWidth, listItemStyle } = props;
   const theme = useTheme();
 
   const styles = getUploadListStyles(theme, listWidth, false);
 
   return (
-    <Pressable
-      style={(state) => {
-        hoverFromState(state, setHovered);
-        return styles.listItem;
-      }}
-    >
+    <Pressable style={getCombinedStylesForView(styles.listItem, listItemStyle)}>
       <Container disableGutters style={styles.listItemContainer}>
         {!single && sortable && (
           <Container disableGutters style={styles.dragIconContainer}>
-            {hovered ? <Icon name='drag-indicator' size={16} style={styles.dragIcon} /> : null}
+            <Icon name='drag-indicator' size={16} style={styles.dragIcon} />
           </Container>
         )}
 
         <Icon
           name={variant === 'image' ? 'image' : 'insert-drive-file'}
           size={16}
-          style={error === true ? { ...styles.fileIcon, color: theme.colors.$error } : styles.fileIcon}
+          style={error?.error === true ? { ...styles.fileIcon, color: theme.colors.$error } : styles.fileIcon}
         />
         <Typography.Body
-          style={error === true ? { ...styles.fileName, color: theme.colors.$error } : styles.fileName}
+          style={error?.error === true ? { ...styles.fileName, color: theme.colors.$error } : styles.fileName}
           numberOfLines={1}
           ellipsizeMode='tail'
         >
@@ -80,10 +46,10 @@ const RegularListItem = (props: ListItemProps) => {
           }}
         />
       </Container>
-      {error === true ? (
+      {error?.error === true ? (
         <Container disableGutters>
           <Typography.Body style={styles.errorMessage} numberOfLines={1} ellipsizeMode='tail'>
-            {errorMessage}
+            {error?.errorMessage}
           </Typography.Body>
         </Container>
       ) : null}
@@ -97,25 +63,18 @@ const RegularListItem = (props: ListItemProps) => {
  * @param props - props for the list item
  */
 const PreviewListItem = (props: ListItemProps) => {
-  const [hovered, setHovered] = useState(false);
-  const { id, dataItem, single, deleteData, error, errorMessage, listWidth, sortable } = props;
+  const { id, dataItem, single, deleteData, error, listWidth, sortable, listItemStyle } = props;
   const theme = useTheme();
 
   const styles = getUploadListStyles(theme, listWidth, false);
   const url = URL.createObjectURL(dataItem);
 
   return (
-    <Pressable
-      key={id}
-      style={(state) => {
-        hoverFromState(state, setHovered);
-        return styles.listItem;
-      }}
-    >
+    <Pressable key={id} style={getCombinedStylesForView(styles.listItem, listItemStyle)}>
       <Container disableGutters style={styles.listItemContainer}>
         {!single && sortable && (
           <Container disableGutters style={styles.dragIconContainer}>
-            {hovered ? <Icon name='drag-indicator' size={16} style={styles.dragIcon} /> : null}
+            <Icon name='drag-indicator' size={16} style={styles.dragIcon} />
           </Container>
         )}
 
@@ -126,7 +85,7 @@ const PreviewListItem = (props: ListItemProps) => {
           style={styles.listPreviewImage}
         />
         <Typography.Body
-          style={error === true ? { ...styles.fileName, color: theme.colors.$error } : styles.fileName}
+          style={error?.error === true ? { ...styles.fileName, color: theme.colors.$error } : styles.fileName}
           numberOfLines={1}
           ellipsizeMode='tail'
         >
@@ -140,10 +99,10 @@ const PreviewListItem = (props: ListItemProps) => {
           }}
         />
       </Container>
-      {error === true ? (
+      {error?.error === true ? (
         <Container disableGutters>
           <Typography.Body style={styles.errorMessage} numberOfLines={1} ellipsizeMode='tail'>
-            {errorMessage}
+            {error?.errorMessage}
           </Typography.Body>
         </Container>
       ) : null}
@@ -157,21 +116,15 @@ const PreviewListItem = (props: ListItemProps) => {
  * @param props - props for the list item
  */
 const CarouselListItem = (props: ListItemProps) => {
-  const [hovered, setHovered] = useState(false);
-  const { id, dataItem, single, deleteData, error, errorMessage, listWidth, sortable } = props;
+  const { id, dataItem, single, deleteData, error, listWidth, sortable, listItemStyle } = props;
   const theme = useTheme();
 
   const styles = getUploadListStyles(theme, listWidth, true);
   const url = URL.createObjectURL(dataItem);
 
   return (
-    <Container disableGutters style={styles.carouselItem} key={id}>
-      <Pressable
-        style={(state) => {
-          hoverFromState(state, setHovered);
-          return styles.carouselListItem;
-        }}
-      >
+    <Container disableGutters style={getCombinedStylesForView(styles.carouselItem, listItemStyle)} key={id}>
+      <Pressable style={styles.carouselListItem}>
         <Image
           style={styles.carouselImage}
           source={{ uri: url }}
@@ -181,7 +134,7 @@ const CarouselListItem = (props: ListItemProps) => {
 
         {!single && sortable && (
           <Container disableGutters style={styles.carouselDragIconContainer}>
-            {hovered ? <Icon name='drag-indicator' size={16} style={styles.dragIcon} /> : null}
+            <Icon name='drag-indicator' size={16} style={styles.dragIcon} />
           </Container>
         )}
         <IconButton
@@ -193,10 +146,10 @@ const CarouselListItem = (props: ListItemProps) => {
           }}
         />
 
-        {error === true ? (
+        {error?.error === true ? (
           <Container disableGutters>
             <Typography.Body style={styles.errorMessage} numberOfLines={1} ellipsizeMode='tail'>
-              {errorMessage}
+              {error?.errorMessage}
             </Typography.Body>
           </Container>
         ) : null}
@@ -206,7 +159,7 @@ const CarouselListItem = (props: ListItemProps) => {
 };
 
 const UploadItem = (props: ListItemProps) => {
-  switch (props.previewStyle) {
+  switch (props.previewType) {
     case 'list': {
       return <PreviewListItem {...props} />;
     }

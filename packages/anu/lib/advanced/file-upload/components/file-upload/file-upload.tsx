@@ -147,7 +147,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
     }
 
     switch (propsForButton.category) {
-      case 'regular': {
+      case 'common': {
         return (
           <RegularButton
             {...propsForButton}
@@ -224,6 +224,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
         previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
         listWidth={finalProps.listWidth}
+        listItemStyle={finalProps.listItemStyle}
       />
     </Container>
   );

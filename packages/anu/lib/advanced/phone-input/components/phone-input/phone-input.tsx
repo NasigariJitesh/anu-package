@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-color-literals */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable unicorn/no-useless-undefined */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -240,8 +242,11 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
             <Typography.Body style={defaultSelectedEmojiStyle}>{currentCountry.emoji}</Typography.Body>
           )
         ) : (
-          // eslint-disable-next-line react-native/no-color-literals, react-native/no-inline-styles
-          <Icon name='language' size={25} style={{ color: theme.colors.$onSurfaceVariant }} />
+          <Icon
+            name='language'
+            size={25}
+            style={{ color: finalProps.disabled ? 'inherit' : theme.colors.$onSurfaceVariant }}
+          />
         )}
       </Container>
     );

@@ -112,6 +112,7 @@ export const getUploadListStyles = (theme: DripsyFinalTheme, listWidth?: number,
       width: listWidth ?? 250,
       minHeight: 48,
       marginVertical: 5,
+      backgroundColor: theme.colors.$onPrimary,
     },
     container: {
       marginTop: 15,

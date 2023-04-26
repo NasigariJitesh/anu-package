@@ -372,19 +372,45 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:file-upload',
+                components: [
+                  {
+                    title: 'leftSideBar:file-upload',
+                    link: '/components/file-upload',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:file-drop-zone',
+                    link: '/components/file-upload/file-drop-zone',
+                    variants: [],
+                  },
+                ],
+                link: '/components/card',
+              },
+              {
                 title: 'leftSideBar:image',
                 components: [],
                 link: '/components/image',
               },
               {
                 title: 'leftSideBar:otp-input',
-                link: '/components//otp-input',
+                link: '/components/otp-input',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:phone-input',
+                link: '/components/phone-input',
                 components: [],
               },
               {
                 title: 'leftSideBar:radio',
                 link: '/components/radio-button',
                 components: [],
+              },
+              {
+                title: 'leftSideBar:search',
+                components: [],
+                link: '/components/search',
               },
               {
                 title: 'leftSideBar:side-sheet',

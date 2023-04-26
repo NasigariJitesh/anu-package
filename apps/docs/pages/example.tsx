@@ -1,59 +1,89 @@
 /* eslint-disable react-native/no-inline-styles */
-/* eslint-disable no-secrets/no-secrets */
-import {
-  AutoComplete,
-  Avatar,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  CardTitle,
-  Container,
-  IconButton,
-  OTPInput,
-  SearchBar,
-  TextField,
-  TextFieldReferenceProps,
-  Typography,
-} from 'anu/lib';
-import { FileUpload, FileUploadReferenceProps } from 'anu/lib/advanced';
-import { FileDropZone } from 'anu/lib/advanced/file-upload/components';
-import { useEffect, useRef, useState } from 'react';
+import { Button, Container, Menu, MenuItem, MenuList, TouchableRipple, Typography, useSnackbar } from 'anu/lib';
+import { useState } from 'react';
 
 /**
  *
  */
 export default function Example() {
-  const fuReference = useRef<FileUploadReferenceProps | null>(null);
+  const [text, setText] = useState(false);
+  const [text1, setText1] = useState(false);
+
+  const { add, close } = useSnackbar();
 
   return (
-    <Container>
-      <FileUpload
-        ref={fuReference}
-        title='Upload'
-        size='medium'
-        category='common'
-        icon={{ name: 'delete' }}
-        type='filled'
-        multiple
-        variant='file'
-        onChange={(data: Blob | Blob[] | null) => {
-          console.log(data);
+    <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      <TouchableRipple onPress={() => console.log('Pressed')}>
+        <Container align='center' justify='center' sx={{ height: 200, width: 200 }}>
+          <Typography.Body>Press anywhere</Typography.Body>
+        </Container>
+      </TouchableRipple>
+      <Menu
+        isOpen={text}
+        onMenuToggle={(value) => {
+          setText(value);
+        }}
+        component={
+          <Button.Outlined
+            title='Menu'
+            onPress={() => {
+              setText(true);
+            }}
+          />
+        }
+      >
+        <MenuList width={400}>
+          <MenuItem leadingIcon={{ name: 'close' }} disabled>
+            Item 1
+          </MenuItem>
+          <MenuItem>Item 1</MenuItem>
+          <MenuItem inset>Item 1</MenuItem>
+          <Menu
+            component={
+              <MenuItem style={{ width: '100%' }} onPress={() => setText1(true)}>
+                Item Child
+              </MenuItem>
+            }
+            isOpen={text1}
+            onMenuToggle={(value) => {
+              setText1(value);
+            }}
+          >
+            <MenuList inner={true}>
+              <MenuItem leadingIcon={{ name: 'close' }} disabled>
+                Item 2
+              </MenuItem>
+              <MenuItem>Item 2</MenuItem>
+              <MenuItem inset>Item 2</MenuItem>
+            </MenuList>
+          </Menu>
+
+          <MenuItem>Item 1</MenuItem>
+          <MenuItem>Item 1</MenuItem>
+        </MenuList>
+      </Menu>
+
+      <Button.Text
+        title='add snack'
+        onPress={() => {
+          add({
+            content: 'First Snack',
+          });
         }}
       />
-
-      <FileDropZone
-        multiple
-        variant='image'
-        fileType={{ image: ['image/png', 'image/jpeg'] }}
-        onChange={(data: Blob | Blob[] | null) => {
-          console.log(data);
+      <Button.Text
+        title='add snack 2'
+        onPress={() => {
+          add({
+            content:
+              'This is very long snack, This is very long snack , This is very long snack, This is very long snack ,   This is very long snack, This is very long snack , This is very long snack, This is very long snack , This is very long snack, This is very long snack  ',
+            action: { title: 'Close', onPress: close },
+            icon: { icon: { name: 'close' }, type: 'standard', onPress: close },
+            duration: 10_000,
+            style: { height: 200 },
+          });
         }}
-      >
-        Upload here
-      </FileDropZone>
+      />
     </Container>
   );
 }

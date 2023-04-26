@@ -64,6 +64,10 @@ interface BasicFileDropZoneProps extends Omit<ContainerProps, 'variant'> {
    * The Styles for the upload list
    */
   listStyle?: StyleProp<ViewStyle>;
+  /*
+   * The Styles for the upload list Item
+   */
+  listItemStyle?: StyleProp<ViewStyle>;
   /**
    * The error state and message for each file
    */
