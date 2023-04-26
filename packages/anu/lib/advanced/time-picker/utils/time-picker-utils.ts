@@ -1,5 +1,8 @@
 import { DripsyFinalTheme } from 'dripsy';
 
+import { inputTypes, PossibleInputTypes } from '../types';
+import { circleSize } from './utils';
+
 /**
  *
  * @param minutes
@@ -120,4 +123,9 @@ export const getTimePickerModalStyles = (theme: DripsyFinalTheme) => {
     modalRoot,
     timePickerContainer,
   };
+};
+
+export const getContainerWidth = (inputType: PossibleInputTypes, is24Hour: boolean) => {
+  const width = 24 * 3 + 96 * 2 + (inputType === inputTypes.keyboard ? (is24Hour ? 0 : 64) : circleSize + 52);
+  return width;
 };

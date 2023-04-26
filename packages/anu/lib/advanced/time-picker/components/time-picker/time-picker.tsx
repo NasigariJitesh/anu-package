@@ -4,7 +4,7 @@ import { useWindowDimensions } from 'react-native';
 
 import { useDisplayModeContext } from '../../context';
 import { inputTypes, OnChangeFunction, TimePickerProps } from '../../types';
-import { circleSize, getTimePickerStyles, toHourInputFormat, toHourOutputFormat } from '../../utils';
+import { getContainerWidth, getTimePickerStyles, toHourInputFormat, toHourOutputFormat } from '../../utils';
 import AnalogClock from '../analog-clock';
 import TimeInputs from '../time-input';
 
@@ -66,7 +66,7 @@ const TimePicker = (props: TimePickerProps) => {
           ? [
               styles.rootLandscape,
               {
-                width: 24 * 3 + 96 * 2 + (inputType === inputTypes.keyboard ? (is24Hour ? 0 : 64) : circleSize + 52),
+                width: getContainerWidth(inputType, is24Hour),
               },
             ]
           : styles.rootPortrait
