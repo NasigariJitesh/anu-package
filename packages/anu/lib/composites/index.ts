@@ -10,3 +10,5 @@ export { default as Menu } from './menu';
 export * from './menu';
 export { default as Search } from './search-bar';
 export * from './search-bar';
+export * from './tabs';
+export { default as Tabs } from './tabs';

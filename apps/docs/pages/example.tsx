@@ -1,5 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Button, Container, Menu, MenuItem, MenuList, TouchableRipple, Typography, useSnackbar } from 'anu/lib';
+import {
+  Button,
+  Container,
+  Menu,
+  MenuItem,
+  MenuList,
+  Tabs,
+  TabScreen,
+  TouchableRipple,
+  Typography,
+  useSnackbar,
+} from 'anu/lib';
 import { useState } from 'react';
 
 /**
@@ -13,6 +24,27 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      <Tabs>
+        <TabScreen id='one' label='One'>
+          <Container>
+            <Typography.Body>
+              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
+              is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
+              very long snack, This is very long snack
+            </Typography.Body>
+          </Container>
+        </TabScreen>
+        <TabScreen id='two' label='Two'>
+          <Container sx={{ backgroundColor: 'yellow' }}>
+            <Typography.Body>
+              This is Two very long snack, This is very long snack , This is very long snack, This is very long snack ,
+              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
+              is very long snack, This is very long snack
+            </Typography.Body>
+          </Container>
+        </TabScreen>
+      </Tabs>
+
       <TouchableRipple onPress={() => console.log('Pressed')}>
         <Container>Press here</Container>
       </TouchableRipple>

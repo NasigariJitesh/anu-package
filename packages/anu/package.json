@@ -10,7 +10,8 @@
   "dependencies": {
     "@gorhom/portal": "^1.0.14",
     "dripsy": "^3.10.0",
-    "libphonenumber-js": "^1.10.26"
+    "libphonenumber-js": "^1.10.26",
+    "react-native-pager-view": "^6.2.0"
   },
   "devDependencies": {
     "@testing-library/jest-native": "^5.4.2",
