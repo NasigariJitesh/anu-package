@@ -1,5 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Button, Container, Menu, MenuItem, MenuList, TouchableRipple, Typography, useSnackbar } from 'anu/lib';
+import {
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Menu,
+  MenuItem,
+  MenuList,
+  TouchableRipple,
+  Typography,
+  useSnackbar,
+} from 'anu/lib';
 import { useState } from 'react';
 
 /**
@@ -13,17 +26,30 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
-      <TouchableRipple onPress={() => console.log('Pressed')}>
-        <Container>Press here</Container>
+      <TouchableRipple onPress={() => setText(true)}>
+        <Container sx={{ height: 100, width: 100 }}>Press here</Container>
       </TouchableRipple>
 
-      <TouchableRipple onPress={() => {}}>
+      {/* <TouchableRipple onPress={() => {}}>
         <Container style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}>
           <Typography.Body>Helllooo</Typography.Body>
         </Container>
-      </TouchableRipple>
+      </TouchableRipple> */}
 
-      <Menu
+      <Dialog visible={text} onDismiss={() => setText(false)} type='full-screen'>
+        <DialogTitle type='full-screen' title='Dialog Title' onDismiss={() => setText(false)} />
+        <DialogContent>
+          <Typography.Body>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+          </Typography.Body>
+        </DialogContent>
+        <DialogActions justify='flex-end'>
+          <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+          <Button.Filled title='Action' />
+        </DialogActions>
+      </Dialog>
+
+      {/* <Menu
         isOpen={text}
         onMenuToggle={(value) => {
           setText(value);
@@ -66,7 +92,7 @@ export default function Example() {
           <MenuItem>Item 1</MenuItem>
           <MenuItem>Item 1</MenuItem>
         </MenuList>
-      </Menu>
+      </Menu> */}
 
       <Button.Text
         title='add snack'

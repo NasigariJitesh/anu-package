@@ -35,6 +35,7 @@ declare module 'dripsy' {
       $onSurface: 'string';
       $outline: 'string';
       $surfaceVariant: 'string';
+      $surfaceContainerHigh: 'string';
       $onSurfaceVariant: 'string';
       $outlineVariant: 'string';
       $shadow: 'string';
