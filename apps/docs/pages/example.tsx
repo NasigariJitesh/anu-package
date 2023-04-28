@@ -1,94 +1,79 @@
+/* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
-import { Button, Container, Menu, MenuItem, MenuList, TouchableRipple, Typography, useSnackbar } from 'anu/lib';
+import { Button, CalendarDate, Container, DatePickerInput, DatePickerModal } from 'anu/lib';
 import { useState } from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 /**
  *
  */
 export default function Example() {
-  const [text, setText] = useState(false);
-  const [text1, setText1] = useState(false);
-
-  const { add, close } = useSnackbar();
+  const [range, setRange] = useState(false);
+  const [multiple, setMultiple] = useState(false);
+  const [inputDate, setInputDate] = useState<Date | undefined>();
+  const [inputDateRangeStart, setInputDateRangeStart] = useState<Date | undefined>();
+  const [inputDateRangeEnd, setInputDateRangeEnd] = useState<Date | undefined>();
+  const [inputDates, setInputDates] = useState<Date[]>([]);
 
   return (
-    <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
-      <TouchableRipple onPress={() => console.log('Pressed')}>
-        <Container>Press here</Container>
-      </TouchableRipple>
+    <Container flexDirection='column' sx={{ flex: 1, height: '100vh', paddingTop: 10 }}>
+      <Button.Filled title='Pick Date Range' onPress={() => setRange(true)} containerStyle={{ margin: 10 }} />
+      <Button.Filled title='Pick Multiple Dates' onPress={() => setMultiple(true)} containerStyle={{ margin: 10 }} />
+      <SafeAreaProvider>
+        <DatePickerInput
+          locale='en'
+          label='Birthdate'
+          value={inputDate}
+          onChange={(d) => setInputDate(d)}
+          inputMode='start'
+          autoComplete='birthdate-full'
+          withModal={true}
+        />
+      </SafeAreaProvider>
 
-      <TouchableRipple onPress={() => {}}>
-        <Container style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}>
-          <Typography.Body>Helllooo</Typography.Body>
-        </Container>
-      </TouchableRipple>
+      <SafeAreaProvider>
+        <DatePickerInput
+          locale='en'
+          label='Birthdate'
+          value={inputDate}
+          onChange={(d) => setInputDate(d)}
+          inputMode='start'
+          autoComplete='birthdate-full'
+          withModal={false}
+        />
+      </SafeAreaProvider>
 
-      <Menu
-        isOpen={text}
-        onMenuToggle={(value) => {
-          setText(value);
-        }}
-        component={
-          <Button.Outlined
-            title='Menu'
-            onPress={() => {
-              setText(true);
-            }}
-          />
-        }
-      >
-        <MenuList width={400}>
-          <MenuItem leadingIcon={{ name: 'close' }} disabled>
-            Item 1
-          </MenuItem>
-          <MenuItem>Item 1</MenuItem>
-          <MenuItem inset>Item 1</MenuItem>
-          <Menu
-            component={
-              <MenuItem style={{ width: '100%' }} onPress={() => setText1(true)}>
-                Item Child
-              </MenuItem>
-            }
-            isOpen={text1}
-            onMenuToggle={(value) => {
-              setText1(value);
-            }}
-          >
-            <MenuList inner={true}>
-              <MenuItem leadingIcon={{ name: 'close' }} disabled>
-                Item 2
-              </MenuItem>
-              <MenuItem>Item 2</MenuItem>
-              <MenuItem inset>Item 2</MenuItem>
-            </MenuList>
-          </Menu>
+      <SafeAreaProvider>
+        <DatePickerModal
+          startDate={inputDateRangeStart}
+          allowEditing
+          endDate={inputDateRangeEnd}
+          visible={range}
+          onDismiss={() => {
+            setRange(false);
+          }}
+          mode='range'
+          locale='en'
+          onConfirm={(params: { startDate: CalendarDate; endDate: CalendarDate }) => {
+            setInputDateRangeStart(params.startDate);
+            setInputDateRangeEnd(params.endDate);
+          }}
+        />
 
-          <MenuItem>Item 1</MenuItem>
-          <MenuItem>Item 1</MenuItem>
-        </MenuList>
-      </Menu>
-
-      <Button.Text
-        title='add snack'
-        onPress={() => {
-          add({
-            content: 'First Snack',
-          });
-        }}
-      />
-      <Button.Text
-        title='add snack 2'
-        onPress={() => {
-          add({
-            content:
-              'This is very long snack, This is very long snack , This is very long snack, This is very long snack ,   This is very long snack, This is very long snack , This is very long snack, This is very long snack , This is very long snack, This is very long snack  ',
-            action: { title: 'Close', onPress: close },
-            icon: { icon: { name: 'close' }, type: 'standard', onPress: close },
-            duration: 10_000,
-            style: { height: 200 },
-          });
-        }}
-      />
+        <DatePickerModal
+          dates={inputDates}
+          allowEditing
+          visible={multiple}
+          onDismiss={() => {
+            setMultiple(false);
+          }}
+          mode='multiple'
+          locale='en'
+          onConfirm={(params: { dates: Date[] }) => {
+            setInputDates(params.dates);
+          }}
+        />
+      </SafeAreaProvider>
     </Container>
   );
 }
