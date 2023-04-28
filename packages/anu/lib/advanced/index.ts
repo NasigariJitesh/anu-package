@@ -1,3 +1,5 @@
+export { default as DatePickerInput } from './date-picker';
+export * from './date-picker';
 export { default as FileUpload } from './file-upload';
 export * from './file-upload';
 export { default as OTPInput } from './otp-input';

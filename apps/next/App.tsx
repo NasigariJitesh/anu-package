@@ -1,3 +1,5 @@
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 import 'react-native-gesture-handler';
 
 import { Provider } from 'anu/common/context';

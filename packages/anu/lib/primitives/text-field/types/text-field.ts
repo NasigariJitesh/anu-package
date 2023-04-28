@@ -92,6 +92,7 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
   supportingText?: string;
 
   disableLabelAnimation?: boolean;
+  labelBackgroundColor?: string;
 }
 
 export interface TextInputLabelProps extends TextFieldProps {
@@ -100,6 +101,7 @@ export interface TextInputLabelProps extends TextFieldProps {
   textInputRef: MutableRefObject<RNTextInput | null>;
   isFocused: boolean;
   toggleIsFocused: (value: boolean) => void;
+  backgroundColor?: string;
 }
 
 export interface TextFieldReferenceProps {

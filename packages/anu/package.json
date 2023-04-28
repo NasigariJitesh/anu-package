@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@gorhom/portal": "^1.0.14",
+    "@material/material-color-utilities": "^0.2.5",
     "compressorjs": "^1.2.1",
     "dripsy": "^3.10.0",
     "expo-blur": "^12.2.2",

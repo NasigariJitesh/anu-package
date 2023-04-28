@@ -23,6 +23,7 @@ const nextConfig = withExpo({
     '@expo/html-elements',
     '@dripsy/core',
     'dripsy',
+    'react-native-safe-area-context',
     // Add more React Native / Expo packages here...
   ],
   experimental: {
