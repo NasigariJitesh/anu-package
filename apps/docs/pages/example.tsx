@@ -1,87 +1,47 @@
+/* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
-/* eslint-disable no-secrets/no-secrets */
-import {
-  Button,
-  CalendarDate,
-  Container,
-  DatePickerInput,
-  DatePickerModal,
-  TouchableRipple,
-  Typography,
-} from 'anu/lib';
-import { useState } from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Button, Container, TimePickerModal, TouchableRipple } from 'anu/lib';
+import { useCallback, useState } from 'react';
 
 /**
  *
  */
 export default function Example() {
-  const [range, setRange] = useState(false);
-  const [multiple, setMultiple] = useState(false);
-  const [inputDate, setInputDate] = useState<Date | undefined>();
-  const [inputDateRangeStart, setInputDateRangeStart] = useState<Date | undefined>();
-  const [inputDateRangeEnd, setInputDateRangeEnd] = useState<Date | undefined>();
-  const [inputDates, setInputDates] = useState<Date[]>([]);
+  const [visible, setVisible] = useState(false);
+  const [visible1, setVisible1] = useState(false);
+
+  const onDismiss = useCallback(() => {
+    setVisible(false);
+    setVisible1(false);
+  }, [setVisible]);
+
+  const onConfirm = useCallback(
+    ({ hours, minutes }: { hours: number; minutes: number }) => {
+      setVisible(false);
+      setVisible1(false);
+      console.log({ hours, minutes });
+    },
+    [setVisible],
+  );
 
   return (
-    <Container flexDirection='column' sx={{ flex: 1, height: '100vh', paddingTop: 10 }}>
-      <Button.Filled title='Pick Date Range' onPress={() => setRange(true)} containerStyle={{ margin: 10 }} />
-      <Button.Filled title='Pick Multiple Dates' onPress={() => setMultiple(true)} containerStyle={{ margin: 10 }} />
-      <SafeAreaProvider>
-        <DatePickerInput
-          locale='en'
-          label='Birthdate'
-          value={inputDate}
-          onChange={(d) => setInputDate(d)}
-          inputMode='start'
-          autoComplete='birthdate-full'
-          withModal={true}
-        />
-      </SafeAreaProvider>
-
-      <SafeAreaProvider>
-        <DatePickerInput
-          locale='en'
-          label='Birthdate'
-          value={inputDate}
-          onChange={(d) => setInputDate(d)}
-          inputMode='start'
-          autoComplete='birthdate-full'
-          withModal={false}
-        />
-      </SafeAreaProvider>
-
-      <SafeAreaProvider>
-        <DatePickerModal
-          startDate={inputDateRangeStart}
-          allowEditing
-          endDate={inputDateRangeEnd}
-          visible={range}
-          onDismiss={() => {
-            setRange(false);
-          }}
-          mode='range'
-          locale='en'
-          onConfirm={(params: { startDate: CalendarDate; endDate: CalendarDate }) => {
-            setInputDateRangeStart(params.startDate);
-            setInputDateRangeEnd(params.endDate);
-          }}
-        />
-
-        <DatePickerModal
-          dates={inputDates}
-          allowEditing
-          visible={multiple}
-          onDismiss={() => {
-            setMultiple(false);
-          }}
-          mode='multiple'
-          locale='en'
-          onConfirm={(params: { dates: Date[] }) => {
-            setInputDates(params.dates);
-          }}
-        />
-      </SafeAreaProvider>
+    <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      <Container flexDirection='row'>
+        <Button.Text onPress={() => setVisible(true)} title='pick time' />
+        <Button.Text onPress={() => setVisible1(true)} title='pick time 24hrs' />
+      </Container>
+      <TimePickerModal visible={visible} onDismiss={onDismiss} onConfirm={onConfirm} hours={12} minutes={14} />
+      <TimePickerModal
+        visible={visible1}
+        onDismiss={onDismiss}
+        onConfirm={onConfirm}
+        hours={12}
+        minutes={14}
+        use24HourClock
+      />
+      <TouchableRipple onPress={() => console.log('Pressed')}>
+        <Container>Press here</Container>
+      </TouchableRipple>
     </Container>
   );
 }

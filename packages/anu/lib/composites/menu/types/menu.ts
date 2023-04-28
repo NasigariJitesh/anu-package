@@ -20,23 +20,57 @@ export type PositionCoordinates =
   | 'auto';
 
 export interface MenuProps {
+  /**
+   * Callback to be called when the menu is to toggled between open and close
+   *
+   * @param value - the value of the state of menu (open or closed)
+   */
   onMenuToggle: (value: boolean) => void;
+  /**
+   * Whether the menu is open
+   */
   isOpen: boolean;
-  disabled?: boolean;
+  /**
+   * The component that controls menu
+   */
   component: ReactChildren;
+  /**
+   * The menu list co
+   */
   children: ReactElement<MenuListProps>;
 }
 
 export interface MenuListProps extends ContainerProps {
+  /**
+   *The co-ordinates of the custom position of the menu
+   */
   positionCoordinates?: PositionCoordinates;
+  /**
+   *Whether the menu is nested inside another menu
+   */
   inner?: boolean;
 }
 
 export interface MenuItemProps extends Omit<PressableProps, 'children'> {
+  /**
+   * The icon displayed on the left side of the menu item
+   */
   leadingIcon?: IconType | ReactElement;
+  /**
+   * The icon displayed on the right side of the menu item
+   */
   trailingIcon?: IconType | ReactElement;
+  /**
+   * The text displayed on the right side of the menu item
+   */
   trailingText?: string;
+  /**
+   * The content of the menu item
+   */
   children: ReactChildren;
+  /**
+   * If true, additional padding (inset) is added on the left
+   */
   inset?: boolean;
 }
 

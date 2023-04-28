@@ -24,7 +24,7 @@ export type ButtonType = 'elevated' | 'filled' | 'tonal' | 'outlined' | 'text';
 // export type IconButtonType = Omit<ButtonType, 'elevated' | 'text'> | 'standard';
 export type IconButtonType = 'filled' | 'tonal' | 'outlined' | 'standard';
 
-export type ButtonCategory = 'regular' | 'icon' | 'segmented' | 'floating-action' | 'extended-floating-action';
+export type ButtonCategory = 'common' | 'icon' | 'segmented' | 'floating-action' | 'extended-floating-action';
 
 /**
  * The tokens for the selected type scale in the typography component
@@ -39,12 +39,9 @@ export interface ButtonContainerStyle extends ExtendedDisabledStyles, ExtendedHo
  * Common props for the button component
  */
 export interface ButtonProps extends RNButtonProps {
-  // category: ButtonCategory;
+  category: 'common' | 'icon-button' | 'floating-action' | 'extended-floating-action';
   // size: ButtonSize;
-  /**
-   * The type/variant of the button
-   */
-  type: ButtonType;
+
   /**
    * The styles for the button component.
    */
@@ -62,13 +59,20 @@ export interface ButtonProps extends RNButtonProps {
 /**
  * Props for the regular Button component
  */
-export interface RegularButtonProps extends ButtonProps {
+interface CommonRegularButtonProps extends ButtonProps {
+  category: 'common';
   size: 'medium';
   /**
    * The icon component or the icon props for material icons.
    */
   icon?: IconType | ReactElement;
+  /**
+   * The type/variant of the button
+   */
+  type: ButtonType;
 }
+
+export type RegularButtonProps = Omit<CommonRegularButtonProps, 'category'>;
 
 /**
  * The type of icon component for the icon button
@@ -78,7 +82,8 @@ export type IconType = { name: IconSource; props?: Omit<IconProps, 'name'> };
 /**
  * Props for the icon Button component
  */
-export interface IconButtonProps extends Omit<ButtonProps, 'title' | 'type' | 'labelStyle'> {
+interface CommonIconButtonProps extends Omit<ButtonProps, 'title' | 'labelStyle'> {
+  category: 'icon-button';
   /**
    * The icon component or the icon props for material icons
    */
@@ -98,10 +103,13 @@ export interface IconButtonProps extends Omit<ButtonProps, 'title' | 'type' | 'l
   selected?: boolean;
 }
 
+export type IconButtonProps = Omit<CommonIconButtonProps, 'category'>;
+
 /**
  * Props for FAB Component
  */
-export interface FABProps extends Omit<ButtonProps, 'title' | 'type' | 'disabled' | 'labelStyle'> {
+interface CommonFABProps extends Omit<ButtonProps, 'title' | 'type' | 'disabled' | 'labelStyle'> {
+  category: 'floating-action';
   /**
    * The icon component or the icon props for material icons
    */
@@ -120,10 +128,13 @@ export interface FABProps extends Omit<ButtonProps, 'title' | 'type' | 'disabled
   lowered?: boolean;
 }
 
+export type FABProps = Omit<CommonFABProps, 'category'>;
+
 /**
  * Props for Extended FAB Component
  */
-export interface ExtendedFABProps extends Omit<ButtonProps, 'type' | 'disabled' | 'labelStyle'> {
+interface CommonExtendedFABProps extends Omit<ButtonProps, 'type' | 'disabled' | 'labelStyle'> {
+  category: 'extended-floating-action';
   /**
    * The icon component or the icon props for material icons
    */
@@ -141,3 +152,11 @@ export interface ExtendedFABProps extends Omit<ButtonProps, 'type' | 'disabled' 
    */
   titleStyle?: StyleProp<TextStyle>;
 }
+
+export type ExtendedFABProps = Omit<CommonExtendedFABProps, 'category'>;
+
+export type CommonButtonProps =
+  | CommonExtendedFABProps
+  | CommonRegularButtonProps
+  | CommonIconButtonProps
+  | CommonFABProps;
