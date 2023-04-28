@@ -57,7 +57,6 @@ export const getBase64 = (file: File | Blob) => {
   const base64 = new Promise((resolve: (value: string) => void, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    console.log(file, 'file');
     reader.addEventListener('load', function () {
       if (typeof reader.result === 'string') resolve(reader.result);
       else reject(new Error('error converting file to base64'));

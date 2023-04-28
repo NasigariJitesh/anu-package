@@ -194,8 +194,8 @@ const getBorderStyle = (pattern?: DividerPattern) => {
 const getColor = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
   const { colors } = theme;
 
-  const { light, style } = props;
-  const color = style?.color ? String(style?.color) : (colors?.$primary as string);
+  const { light, color: propsColor } = props;
+  const color = propsColor ?? (colors?.$primary as string);
   return light ? getColorInRGBA(color, 75) : color;
 };
 

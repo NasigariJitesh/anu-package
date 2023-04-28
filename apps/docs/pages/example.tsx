@@ -1,13 +1,26 @@
+/* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
-import { Button, Container, Menu, MenuItem, MenuList, TouchableRipple, Typography, useSnackbar } from 'anu/lib';
+import { useTheme } from 'anu/config';
+import {
+  Button,
+  Container,
+  Divider,
+  Menu,
+  MenuItem,
+  MenuList,
+  TouchableRipple,
+  Typography,
+  useSnackbar,
+} from 'anu/lib';
 import { useState } from 'react';
 
 /**
  *
  */
 export default function Example() {
-  const [text, setText] = useState(false);
-  const [text1, setText1] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [openChild, setOpenChild] = useState(false);
+  const theme = useTheme();
 
   const { add, close } = useSnackbar();
 
@@ -24,15 +37,15 @@ export default function Example() {
       </TouchableRipple>
 
       <Menu
-        isOpen={text}
+        isOpen={open}
         onMenuToggle={(value) => {
-          setText(value);
+          setOpen(value);
         }}
         component={
           <Button.Outlined
             title='Menu'
             onPress={() => {
-              setText(true);
+              setOpen(true);
             }}
           />
         }
@@ -45,13 +58,13 @@ export default function Example() {
           <MenuItem inset>Item 1</MenuItem>
           <Menu
             component={
-              <MenuItem style={{ width: '100%' }} onPress={() => setText1(true)}>
+              <MenuItem style={{ width: '100%' }} onPress={() => setOpenChild(true)}>
                 Item Child
               </MenuItem>
             }
-            isOpen={text1}
+            isOpen={openChild}
             onMenuToggle={(value) => {
-              setText1(value);
+              setOpenChild(value);
             }}
           >
             <MenuList inner={true}>
@@ -73,6 +86,7 @@ export default function Example() {
         onPress={() => {
           add({
             content: 'First Snack',
+            align: 'right',
           });
         }}
       />
@@ -89,6 +103,73 @@ export default function Example() {
           });
         }}
       />
+
+      <TouchableRipple onPress={() => {}}>
+        <Container sx={{ height: 200, width: 200 }} align='center' justify='center'>
+          <Typography.Body selectable={false}>Press</Typography.Body>
+        </Container>
+      </TouchableRipple>
+
+      <Menu
+        isOpen={open}
+        onMenuToggle={(value) => {
+          setOpen(value);
+        }}
+        component={
+          <Button.Filled
+            title='Show Menu'
+            onPress={() => {
+              setOpen(true);
+            }}
+          />
+        }
+      >
+        <MenuList width={300}>
+          <MenuItem leadingIcon={{ name: 'dashboard' }}>
+            <Typography.Body>Dashboard</Typography.Body>
+          </MenuItem>
+          <MenuItem leadingIcon={{ name: 'inbox' }}>
+            <Typography.Body>Inbox</Typography.Body>
+          </MenuItem>
+          <MenuItem leadingIcon={{ name: 'favorite' }}>
+            <Typography.Body>Favorite</Typography.Body>
+          </MenuItem>
+          <MenuItem leadingIcon={{ name: 'calendar-today' }}>
+            <Typography.Body>Calendar</Typography.Body>
+          </MenuItem>
+          <Divider variant='full-width' color={theme.colors?.$onSurfaceVariant as string} />
+          <MenuItem leadingIcon={{ name: 'notifications' }}>
+            <Typography.Body>Notifications</Typography.Body>
+          </MenuItem>
+          <Menu
+            isOpen={openChild}
+            onMenuToggle={(value) => {
+              setOpenChild(value);
+            }}
+            component={
+              <MenuItem
+                leadingIcon={{ name: 'settings' }}
+                trailingIcon={{ name: 'arrow-right' }}
+                onPress={() => setOpenChild(true)}
+              >
+                <Typography.Body>Account Setting</Typography.Body>
+              </MenuItem>
+            }
+          >
+            <MenuList width={300} inner>
+              <MenuItem>
+                <Typography.Body>Profile</Typography.Body>
+              </MenuItem>
+              <MenuItem>
+                <Typography.Body>Change password</Typography.Body>
+              </MenuItem>
+              <MenuItem>
+                <Typography.Body>Logout</Typography.Body>
+              </MenuItem>
+            </MenuList>
+          </Menu>
+        </MenuList>
+      </Menu>
     </Container>
   );
 }
