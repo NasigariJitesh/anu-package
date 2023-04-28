@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["borderless", "Dripsy", "gorhom", "libphonenumber", "solito", "tsparticles"],
+  "cSpell.words": ["borderless", "Dripsy", "gorhom", "libphonenumber", "solito", "Swiper", "tsparticles"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll": true

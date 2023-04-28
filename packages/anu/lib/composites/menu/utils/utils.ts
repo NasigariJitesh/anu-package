@@ -53,7 +53,9 @@ const getPosition = (
           : {
               ...positionObject,
               bottom:
-                screenDimension.height - position.top > 0 ? screenDimension.height - position.top : position.height,
+                screenDimension.height - position.top > 0
+                  ? screenDimension.height - position.top - position.height - 8
+                  : position.height,
             };
 
       positionObject =

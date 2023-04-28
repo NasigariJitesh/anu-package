@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
 import { generateHoverStyles } from 'common/utils';
 import { useSx } from 'dripsy';
@@ -50,7 +51,9 @@ const IconButton = (props: IconButtonProps) => {
         disabled={restOfTheProps.disabled}
         onPress={onPressHandler}
       >
-        {getIcon(restOfTheProps.icon)}
+        <Container disableGutters style={{ padding: 8 }}>
+          {getIcon(restOfTheProps.icon)}
+        </Container>
       </TouchableRipple>
     </Container>
   );

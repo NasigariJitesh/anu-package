@@ -5,6 +5,7 @@ import { View } from 'react-native';
 import { useMenuContext } from 'screens/common/provider';
 
 import AdditionalInformation, { AdditionalInformationProps } from './additional-info';
+import ComponentConfiguration, { ConfigurationStepProps } from './component-configuration';
 import ComponentDetails from './component-details';
 import ComponentExamples, { Example } from './component-examples';
 import ComponentProperties, { Property } from './components-properties';
@@ -21,6 +22,7 @@ export interface ContentValues {
     link: string;
   };
   additionalInformation?: AdditionalInformationProps;
+  configurationSteps?: ConfigurationStepProps[];
 }
 
 interface ContentProps {
@@ -40,6 +42,7 @@ const Content = ({ values }: ContentProps) => {
     mainDescription,
     externalProperties,
     additionalInformation,
+    configurationSteps,
   } = values;
 
   const styles = getStyles();
@@ -59,6 +62,7 @@ const Content = ({ values }: ContentProps) => {
         subTitle={subTitle}
         mainDescription={mainDescription}
       />
+      {configurationSteps ? <ComponentConfiguration steps={configurationSteps} /> : null}
       <ComponentExamples examples={examples} />
       <ComponentProperties properties={properties} externalProperties={externalProperties} />
       {additionalInformation ? <AdditionalInformation {...additionalInformation} /> : null}

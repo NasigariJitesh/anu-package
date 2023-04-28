@@ -17,7 +17,11 @@ const nextConfig = withExpo({
     'react-native-vector-icons',
     'anu',
     // 'moti',
-    // 'react-native-reanimated',
+    'react-native-reanimated',
+    'expo-document-picker',
+    'react-native-draggable-flatlist',
+    'expo-modules-core',
+
     // '@motify',
     // 'nativewind',
   ],
