@@ -26,6 +26,9 @@ import { fileUploadIndex } from 'services/docs/file-upload';
 import { iconButtonIndex } from 'services/docs/icon-button';
 import { imageIndex } from 'services/docs/image';
 import { installationIndex } from 'services/docs/installation';
+import { menuIndex } from 'services/docs/menu';
+import { menuItemIndex } from 'services/docs/menu-item';
+import { menuListIndex } from 'services/docs/menu-list';
 import { otpInputIndex } from 'services/docs/otp-input';
 import { phoneInputIndex } from 'services/docs/phone-input';
 import { radioButtonIndex } from 'services/docs/radio-button';
@@ -37,6 +40,7 @@ import { snackbarIndex } from 'services/docs/snackbar';
 import { switchIndex } from 'services/docs/switch';
 import { textFieldIndex } from 'services/docs/text-field';
 import { themingIndex } from 'services/docs/theming';
+import { touchableRippleIndex } from 'services/docs/touchable-ripple';
 import { typographyIndex } from 'services/docs/typography';
 import { TextLink } from 'solito/link';
 
@@ -246,6 +250,21 @@ const RenderIndex = () => {
         return <Index {...textFieldIndex} />;
       }
     }
+    case '/components/menu': {
+      {
+        return <Index {...menuIndex} />;
+      }
+    }
+    case '/components/menu/list': {
+      {
+        return <Index {...menuListIndex} />;
+      }
+    }
+    case '/components/menu/item': {
+      {
+        return <Index {...menuItemIndex} />;
+      }
+    }
     case '/components/otp-input': {
       {
         return <Index {...otpInputIndex} />;
@@ -282,12 +301,16 @@ const RenderIndex = () => {
       }
     }
 
+    case '/components/touchable-ripple': {
+      {
+        return <Index {...touchableRippleIndex} />;
+      }
+    }
     case '/components/typography': {
       {
         return <Index {...typographyIndex} />;
       }
     }
-
     case '/getting-started': {
       {
         return <Index {...installationIndex} />;

@@ -1,10 +1,10 @@
 import { useTheme } from 'anu/config';
 import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
-import { Pressable, useSx } from 'dripsy';
-import { Container, Typography } from 'lib/primitives';
+import { useSx } from 'dripsy';
+import { Container, TouchableRipple, Typography } from 'lib/primitives';
 import Icon from 'lib/primitives/icon';
 import { ReactElement } from 'react';
-import { PressableStateCallbackType } from 'react-native';
+import { GestureResponderEvent, PressableStateCallbackType } from 'react-native';
 
 import { ExtendedFABProps, IconType } from '../../types';
 import { getExtendedFABStyles } from '../../utils';
@@ -37,17 +37,21 @@ const ExtendedFAB = (props: ExtendedFABProps) => {
   return (
     // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
     <Container disableGutters style={containerStyles}>
-      <Pressable
+      <TouchableRipple
         accessibilityRole='button'
-        onPress={restOfTheProps.onPress}
         {...restOfTheProps.pressableProps}
+        onPress={(event: GestureResponderEvent) => {
+          if (restOfTheProps.onPress) restOfTheProps.onPress(event);
+        }}
         style={generateStyles}
       >
-        {restOfTheProps.icon ? getIcon(restOfTheProps.icon) : null}
-        <Typography.Label style={getCombinedStylesForText(labelStyles, restOfTheProps.titleStyle)}>
-          {restOfTheProps.title}
-        </Typography.Label>
-      </Pressable>
+        <>
+          {restOfTheProps.icon ? getIcon(restOfTheProps.icon) : null}
+          <Typography.Label style={getCombinedStylesForText(labelStyles, restOfTheProps.titleStyle)}>
+            {restOfTheProps.title}
+          </Typography.Label>
+        </>
+      </TouchableRipple>
     </Container>
   );
 };

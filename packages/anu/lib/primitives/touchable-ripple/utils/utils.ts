@@ -1,10 +1,12 @@
-import { getColorInRGBA } from 'anu/common/utils';
+import { getColorInRGBA, getCombinedStylesForView } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
-import { GestureResponderEvent, Platform } from 'react-native';
+import { GestureResponderEvent, Platform, PressableStateCallbackType, StyleProp, ViewStyle } from 'react-native';
 
 const touchableEvents = ['onPress', 'onLongPress', 'onPressIn', 'onPressOut'] as const;
 
-type TouchableEventObject = Partial<Record<(typeof touchableEvents)[number], (event: GestureResponderEvent) => void>>;
+type TouchableEventObject = Partial<
+  Record<(typeof touchableEvents)[number], ((event: GestureResponderEvent) => void) | null>
+>;
 
 /**
  *
@@ -35,4 +37,31 @@ export const getTouchableRippleStyles = () => {
   } as const;
 
   return { borderlessStyle, touchableStyle };
+};
+
+export const getStateStyle = (
+  state: PressableStateCallbackType,
+  defaultStyle: StyleProp<ViewStyle>,
+  style: StyleProp<ViewStyle> | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>),
+  setBackgroundColor: (color: string) => void,
+  rippleColor?: string,
+) => {
+  let combinedStyle: StyleProp<ViewStyle>;
+  if (typeof style === 'function') {
+    const stateStyle = style(state);
+    //@ts-expect-error
+    if (rippleColor === undefined && stateStyle?.backgroundColor && stateStyle.backgroundColor !== 'transparent') {
+      //@ts-expect-error
+      setBackgroundColor(stateStyle?.backgroundColor);
+    }
+    combinedStyle = getCombinedStylesForView(defaultStyle, stateStyle);
+  } else {
+    //@ts-expect-error
+    if (rippleColor === undefined && style?.backgroundColor && style.backgroundColor !== 'transparent')
+      //@ts-expect-error
+      setBackgroundColor(style?.backgroundColor);
+
+    combinedStyle = getCombinedStylesForView(defaultStyle, style);
+  }
+  return combinedStyle;
 };

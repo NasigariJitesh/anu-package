@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useTheme } from 'anu/config';
 import { generateHoverStyles } from 'common/utils';
-import { Pressable, useSx } from 'dripsy';
-import { Container, Icon, Typography } from 'lib/primitives';
+import { useSx } from 'dripsy';
+import { Container, Icon, TouchableRipple, Typography } from 'lib/primitives';
 import { useState } from 'react';
 import { PressableStateCallbackType } from 'react-native';
 
@@ -51,13 +51,13 @@ export const Checkbox = (props: CheckboxProps) => {
 
   return (
     <Container disableGutters {...getLabelAlignment(finalProps.labelPlacement)} style={finalProps.containerStyle}>
-      <Pressable disabled={finalProps.disabled} onPress={onPressHandler} style={generateStyles}>
+      <TouchableRipple disabled={finalProps.disabled} onPress={onPressHandler} style={generateStyles}>
         {/* 
         // @ts-expect-error REASON: we get ts error but react native ignores hover related styles */}
         <Container disableGutters style={checkboxStyles}>
           <RenderSelected />
         </Container>
-      </Pressable>
+      </TouchableRipple>
 
       {finalProps.label ? (
         <Typography.Label htmlFor={finalProps.id} style={finalProps.labelStyle}>

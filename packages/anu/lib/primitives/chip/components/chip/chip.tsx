@@ -1,9 +1,9 @@
+import { Container, TouchableRipple } from 'anu/lib';
 import { generateHoverStyles } from 'common/utils';
 import { useTheme } from 'config/dripsy';
-import { Pressable, useSx } from 'dripsy';
-import { Container } from 'lib/index';
+import { useSx } from 'dripsy';
 import Typography from 'lib/primitives/typography';
-import { PressableStateCallbackType } from 'react-native';
+import { GestureResponderEvent, PressableStateCallbackType } from 'react-native';
 
 import { ChipProps } from '../../types';
 import { getStyles } from '../../utils';
@@ -36,14 +36,23 @@ const Chip = (props: Partial<ChipProps> & { value: string }) => {
   return (
     //@ts-expect-error
     <Container disableGutters style={styles}>
-      <Pressable {...restOfTheProps} style={generateStyles} disabled={props.disabled}>
-        <LeadingIcon {...restOfTheProps} />
-        <Typography.Label style={textStyle} size='large'>
-          {props.value}
-        </Typography.Label>
+      <TouchableRipple
+        {...restOfTheProps}
+        onPress={(event: GestureResponderEvent) => {
+          if (restOfTheProps.onPress) restOfTheProps.onPress(event);
+        }}
+        style={generateStyles}
+        disabled={props.disabled}
+      >
+        <>
+          <LeadingIcon {...restOfTheProps} />
+          <Typography.Label style={textStyle} size='large'>
+            {props.value}
+          </Typography.Label>
 
-        <TrailingIcon {...restOfTheProps} />
-      </Pressable>
+          <TrailingIcon {...restOfTheProps} />
+        </>
+      </TouchableRipple>
     </Container>
   );
 };

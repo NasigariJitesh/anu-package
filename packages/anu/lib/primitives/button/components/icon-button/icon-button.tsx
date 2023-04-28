@@ -1,7 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
 import { generateHoverStyles } from 'common/utils';
-import { Pressable, useSx } from 'dripsy';
-import { Container, Icon } from 'lib/primitives';
+import { useSx } from 'dripsy';
+import { Container, Icon, TouchableRipple } from 'lib/primitives';
 import { ReactElement, useEffect, useState } from 'react';
 import { GestureResponderEvent, PressableStateCallbackType } from 'react-native';
 
@@ -43,15 +44,17 @@ const IconButton = (props: IconButtonProps) => {
   return (
     // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
     <Container disableGutters style={containerStyles}>
-      <Pressable
+      <TouchableRipple
         accessibilityRole='button'
         {...restOfTheProps.pressableProps}
         style={generateStyles}
         disabled={restOfTheProps.disabled}
         onPress={onPressHandler}
       >
-        {getIcon(restOfTheProps.icon)}
-      </Pressable>
+        <Container disableGutters style={{ padding: 8 }}>
+          {getIcon(restOfTheProps.icon)}
+        </Container>
+      </TouchableRipple>
     </Container>
   );
 };
