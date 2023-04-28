@@ -134,3 +134,7 @@ export const extendTheme = (theme: Partial<DripsyCustomTheme> = {}, mode: 'light
 
   return makeTheme(result) as DripsyCustomTheme;
 };
+
+export const getThemeMode = (theme: DripsyCustomTheme) => {
+  return theme.colors.$surface === (darkThemeColors.$surface as string) ? 'dark' : 'light';
+};

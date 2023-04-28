@@ -1,14 +1,6 @@
+/* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
-/* eslint-disable no-secrets/no-secrets */
-import {
-  Button,
-  CalendarDate,
-  Container,
-  DatePickerInput,
-  DatePickerModal,
-  TouchableRipple,
-  Typography,
-} from 'anu/lib';
+import { Button, CalendarDate, Container, DatePickerInput, DatePickerModal } from 'anu/lib';
 import { useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 

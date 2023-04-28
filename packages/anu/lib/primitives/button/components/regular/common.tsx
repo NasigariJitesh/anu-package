@@ -18,7 +18,7 @@ export const RenderComponent = (props: ButtonProps) => {
   const theme = useTheme();
 
   const { styles, stateLayerStyles } = getButtonStyles(props, theme);
-  const labelStyles = getLabelStyles(props);
+  const labelStyles = { ...getLabelStyles(props), color: styles.color as string };
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, stateLayerStyles, useSx);
@@ -34,7 +34,7 @@ export const RenderComponent = (props: ButtonProps) => {
           name={icon.name as never}
           {...icon.props}
           //@ts-expect-error reason: the style type will always be text style only
-          style={getCombinedStylesForText({ color: 'inherit' }, icon.props?.style)}
+          style={getCombinedStylesForText({ color: styles.color }, icon.props?.style)}
         />
       ) : (
         icon
