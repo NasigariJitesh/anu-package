@@ -163,6 +163,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                   value={value}
                   isFocused={isTextFieldVisible}
                   toggleIsFocused={toggleTextFieldVisible}
+                  backgroundColor={finalProps.labelBackgroundColor}
                 />
               )}
               <TextInput

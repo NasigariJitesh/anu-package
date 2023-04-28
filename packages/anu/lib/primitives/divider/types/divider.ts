@@ -64,6 +64,10 @@ export interface DividerProps {
    */
   text?: string;
   /**
+   * The color of the divider.
+   */
+  color?: string;
+  /**
    * The alignment of text/children on the divider.
    */
   align?: DividerAlign;

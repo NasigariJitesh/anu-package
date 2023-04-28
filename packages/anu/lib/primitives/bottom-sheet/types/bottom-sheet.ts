@@ -10,7 +10,7 @@ export interface BottomSheetProps extends Omit<ViewProps, 'style'> {
   containerStyles?: ViewProps['style'];
 
   /**
-   * Styles for the handle
+   * Styles for the handle4xr
    */
   handleStyles?: ViewProps['style'];
 

@@ -6,7 +6,20 @@ module.exports = function (api) {
     plugins: [
       '@expo/html-elements/babel',
       require.resolve('expo-router/babel'),
-      '@babel/plugin-proposal-export-namespace-from',
+      // '@babel/plugin-proposal-export-namespace-from',
+      // 'react-native-reanimated/plugin',
+      [
+        'expo-document-picker',
+        {
+          iCloudContainerEnvironment: 'Production',
+        },
+      ],
+      [
+        'expo-image-picker',
+        {
+          photosPermission: 'The app accesses your photos to let you share them with your friends.',
+        },
+      ],
       [
         'module-resolver',
         {

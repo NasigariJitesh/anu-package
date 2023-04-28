@@ -20,9 +20,11 @@ export const getSnackbarStyle = (theme: DripsyFinalTheme, props?: SnackbarProps)
   const containerStyle = {
     width: '100%',
     position: 'absolute',
-    bottom: 10,
+
     paddingHorizontal: 10,
     alignItems: getPosition(props?.align),
+
+    ...(props?.position ?? { bottom: 10 }),
   } as const;
 
   const snackbarStyle = {
@@ -35,12 +37,13 @@ export const getSnackbarStyle = (theme: DripsyFinalTheme, props?: SnackbarProps)
     minHeight: 48,
     width: '100%',
   } as const;
-
+  const textContainerStyle = { flex: 1 };
   const textStyle = {
-    flex: 1,
     fontSize: theme.fontSizes[8],
     lineHeight: theme.lineHeights[8],
     color: theme.colors.$inverseOnSurface,
+    marginVertical: 16,
+    ...(props?.numberOfLines === 2 ? { maxWidth: '60%' } : {}),
   };
 
   const actionStyle = {
@@ -48,12 +51,12 @@ export const getSnackbarStyle = (theme: DripsyFinalTheme, props?: SnackbarProps)
   } as const;
 
   const actionLabelStyle = {
-    color: theme.colors.$inverseOnSurface,
+    color: theme.colors.$inversePrimary,
   };
 
   const iconStyle = {
     color: theme.colors.$inverseOnSurface,
   };
 
-  return { containerStyle, snackbarStyle, textStyle, actionStyle, actionLabelStyle, iconStyle };
+  return { containerStyle, snackbarStyle, textStyle, actionStyle, actionLabelStyle, iconStyle, textContainerStyle };
 };
