@@ -16,7 +16,7 @@ const TextFieldWithMask = forwardRef<TextFieldReferenceProps, TextFieldWithMaskP
   const [controlledValue, setControlledValue] = useState<string>(value || '');
 
   const onInnerChange = (text: string) => {
-    if (text.length === mask.length && onChangeText) onChangeText(text);
+    if ((text.length === 0 || text.length === mask.length) && onChangeText) onChangeText(text);
     setControlledValue(text);
   };
 
@@ -36,9 +36,6 @@ const TextFieldWithMask = forwardRef<TextFieldReferenceProps, TextFieldWithMaskP
       disabled={disabled}
       value={controlledValue}
       onChangeText={onInnerChange}
-      onChange={(event) => {
-        if (onChange) onChange(event);
-      }}
       onBlur={onInnerBlur}
     />
   );

@@ -40,7 +40,7 @@ const DatePickerModalHeader = (props: DatePickerModalHeaderProps) => {
         />
 
         <Button.Text
-          labelStyle={{ color: theme.colors.$primary }}
+          labelStyle={saveLabelDisabled ? {} : { color: theme.colors.$primary }}
           onPress={onSave}
           disabled={saveLabelDisabled ?? false}
           testID='anu-dates-save'

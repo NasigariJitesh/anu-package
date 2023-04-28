@@ -4,34 +4,36 @@ import { TextFieldWithMaskProps } from 'anu/lib/composites';
 import { ValidRangeType } from './calendar';
 
 export type DatePickerInputProps = {
-  inputMode: 'start' | 'end';
-  locale: string;
-  onChange: (date: Date | undefined) => void;
-  value: Date | undefined;
-  validRange?: ValidRangeType | undefined;
+  inputMode?: 'start' | 'end';
+  locale?: string;
+  onChange: (date?: Date) => void;
+  value?: Date;
+  validRange?: ValidRangeType;
   withModal?: boolean;
   withDateFormatInLabel?: boolean;
   hideValidationErrors?: boolean;
   hasError?: boolean;
-  onValidationError?: ((error: string | null) => void) | undefined;
+  onValidationError?: (error: string | null) => void;
   calendarIcon?: string;
-  saveLabel?: string;
-  saveLabelDisabled?: boolean;
+  okLabel?: string;
+  okLabelDisabled?: boolean;
+  cancelLabel?: string;
+  cancelLabelDisabled?: boolean;
   uppercase?: boolean;
   startYear?: number;
   endYear?: number;
-  onChangeText?: (text: string | undefined) => void;
+  onChangeText?: (text?: string) => void;
   inputEnabled?: boolean;
   mask?: string;
 } & Omit<TextFieldWithMaskProps, 'value' | 'onChange' | 'onChangeText' | 'inputMode' | 'mask'>;
 
 export interface UseDateInputProps {
-  onChange: (date: Date) => void;
-  locale: undefined | string;
-  value: Date | undefined;
-  validRange: ValidRangeType | undefined;
+  onChange: (date?: Date) => void;
+  locale?: string;
+  value?: Date;
+  validRange?: ValidRangeType;
   inputMode: 'start' | 'end';
-  onValidationError?: ((error: string | null) => void) | undefined;
+  onValidationError?: (error: string | null) => void;
 }
 
 export interface DatePickerInputWithoutModalProps extends DatePickerInputProps {
@@ -40,8 +42,10 @@ export interface DatePickerInputWithoutModalProps extends DatePickerInputProps {
     locale: DatePickerInputProps['locale'];
     inputMode: DatePickerInputProps['inputMode'];
     validRange: DatePickerInputProps['validRange'];
-    saveLabel: DatePickerInputProps['saveLabel'];
-    saveLabelDisabled: DatePickerInputProps['saveLabelDisabled'];
+    okLabel: DatePickerInputProps['okLabel'];
+    okLabelDisabled: DatePickerInputProps['okLabelDisabled'];
+    cancelLabel: DatePickerInputProps['cancelLabel'];
+    cancelLabelDisabled: DatePickerInputProps['cancelLabelDisabled'];
     uppercase: DatePickerInputProps['uppercase'];
     startYear: DatePickerInputProps['startYear'];
     endYear: DatePickerInputProps['endYear'];

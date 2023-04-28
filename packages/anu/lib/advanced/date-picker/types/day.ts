@@ -24,6 +24,6 @@ export interface DayRangeProps {
 }
 
 export interface DayNamesProps {
-  locale: undefined | string;
+  locale?: string;
   disableWeekDays?: DisableWeekDaysType;
 }

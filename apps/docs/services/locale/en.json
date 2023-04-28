@@ -51,6 +51,10 @@
   "leftSideBar:checkbox": "Checkbox",
   "leftSideBar:chips": "Chips",
   "leftSideBar:container": "Container",
+  "leftSideBar:date-picker": "Date picker",
+  "leftSideBar:date-picker-input": "Date picker input",
+  "leftSideBar:date-picker-modal": "Date picker modal",
+
   "leftSideBar:file-upload": "File upload",
   "leftSideBar:file-drop-zone": "File dropzone",
   "leftSideBar:divider": "Divider",

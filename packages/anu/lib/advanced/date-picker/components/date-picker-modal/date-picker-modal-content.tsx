@@ -30,7 +30,7 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
     collapsed,
     disableSafeTop,
     disableWeekDays,
-    locale,
+    locale = 'en',
     validRange,
     dateMode,
     startYear,

@@ -1,7 +1,7 @@
 import { CalendarDate, CalendarDates, DisableWeekDaysType, ModeType, ValidRangeType } from './calendar';
 
 interface BaseMonthProps {
-  locale: undefined | string;
+  locale?: string;
   scrollMode: 'horizontal' | 'vertical';
   disableWeekDays?: DisableWeekDaysType;
   mode: ModeType;

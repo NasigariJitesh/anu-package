@@ -33,14 +33,14 @@ const DatePickerModalButtons = (props: DatePickerModalButtonProps) => {
     >
       <Container disableGutters style={styles.container}>
         <Button.Text
-          labelStyle={{ color: theme.colors.$primary }}
+          labelStyle={cancelLabel ? {} : { color: theme.colors.$primary }}
           onPress={onDismiss}
           disabled={cancelLabelDisabled ?? false}
           testID='anu-dates-cancel'
           title={uppercase ? cancelLabel.toLocaleUpperCase() : cancelLabel}
         />
         <Button.Text
-          labelStyle={{ color: theme.colors.$primary }}
+          labelStyle={okLabelDisabled ? {} : { color: theme.colors.$primary }}
           onPress={onSave}
           disabled={okLabelDisabled ?? false}
           testID='anu-dates-ok'

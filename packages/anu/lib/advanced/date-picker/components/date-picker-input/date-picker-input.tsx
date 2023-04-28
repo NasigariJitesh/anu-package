@@ -50,8 +50,10 @@ const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps
         locale,
         inputMode,
         validRange,
-        saveLabel,
-        saveLabelDisabled,
+        okLabel,
+        okLabelDisabled,
+        cancelLabel,
+        cancelLabelDisabled,
         uppercase,
         startYear,
         endYear,
@@ -68,8 +70,10 @@ const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps
             locale={locale}
             dateMode={inputMode}
             validRange={validRange}
-            saveLabel={saveLabel}
-            saveLabelDisabled={saveLabelDisabled ?? false}
+            okLabel={okLabel}
+            okLabelDisabled={okLabelDisabled ?? false}
+            cancelLabel={cancelLabel}
+            cancelLabelDisabled={cancelLabelDisabled ?? false}
             uppercase={uppercase ?? false}
             startYear={startYear ?? 1900}
             endYear={endYear ?? 2200}

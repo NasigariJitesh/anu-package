@@ -40,12 +40,12 @@ export interface HeaderContentProps extends HeaderPickProps {
   mode: ModeType;
   collapsed?: boolean;
   onToggle?: () => void;
-  locale: string | undefined;
+  locale?: string;
 }
 
 interface DatePickerModalContentBaseProps {
   inputFormat?: string;
-  locale: string;
+  locale?: string;
   onDismiss: () => void;
   disableSafeTop?: boolean;
   saveLabelDisabled?: boolean;
@@ -100,7 +100,7 @@ export interface DatePickerModalButtonProps {
   uppercase?: boolean;
   onDismiss: () => void;
   onSave: () => void;
-  locale: string | undefined;
+  locale?: string;
   cancelLabel?: string;
   cancelLabelDisabled?: boolean;
 }
@@ -112,7 +112,7 @@ export interface DatePickerModalHeaderProps {
   uppercase?: boolean;
   onDismiss: () => void;
   onSave: () => void;
-  locale: string | undefined;
+  locale?: string;
   closeIcon?: string;
 }
 
