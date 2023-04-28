@@ -27,10 +27,8 @@ const Snackbar = () => {
   const theme = useTheme();
   const opacity = useRef(new Animated.Value(0)).current;
 
-  const { containerStyle, snackbarStyle, textStyle, actionStyle, actionLabelStyle, iconStyle } = getSnackbarStyle(
-    theme,
-    finalProps,
-  );
+  const { containerStyle, snackbarStyle, textStyle, actionStyle, actionLabelStyle, iconStyle, textContainerStyle } =
+    getSnackbarStyle(theme, finalProps);
 
   useEffect(() => {
     opacity.addListener((arguments_) => setValue(arguments_.value));
@@ -91,9 +89,11 @@ const Snackbar = () => {
     <Container disableGutters style={containerStyle}>
       <Container disableGutters sx={{ minWidth: [300, '80%', '80%'], maxWidth: '100%' }}>
         <Animated.View style={[{ opacity: opacity }, ...getCombinedStylesForView(snackbarStyle, finalProps.style)]}>
-          <Typography.Body style={textStyle} numberOfLines={finalProps.numberOfLines}>
-            {finalProps.content}
-          </Typography.Body>
+          <Container disableGutters style={textContainerStyle}>
+            <Typography.Body style={textStyle} numberOfLines={finalProps.numberOfLines}>
+              {finalProps.content}
+            </Typography.Body>
+          </Container>
           {finalProps.action ? (
             <Button.Text
               {...finalProps.action}
@@ -102,7 +102,11 @@ const Snackbar = () => {
             />
           ) : null}
           {finalProps.numberOfLines !== 2 && finalProps.icon ? (
-            <IconButton {...finalProps.icon} containerStyle={{ ...iconStyle, ...finalProps.icon.containerStyle }} />
+            <IconButton
+              {...finalProps.icon}
+              containerStyle={{ ...iconStyle, ...finalProps.icon.containerStyle }}
+              type='standard'
+            />
           ) : null}
         </Animated.View>
       </Container>
