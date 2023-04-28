@@ -39,6 +39,7 @@ import { sideSheetIndex } from 'services/docs/side-sheet';
 import { switchIndex } from 'services/docs/switch';
 import { textFieldIndex } from 'services/docs/text-field';
 import { themingIndex } from 'services/docs/theming';
+import { touchableRippleIndex } from 'services/docs/touchable-ripple';
 import { typographyIndex } from 'services/docs/typography';
 import { TextLink } from 'solito/link';
 
@@ -294,12 +295,16 @@ const RenderIndex = () => {
       }
     }
 
+    case '/components/touchable-ripple': {
+      {
+        return <Index {...touchableRippleIndex} />;
+      }
+    }
     case '/components/typography': {
       {
         return <Index {...typographyIndex} />;
       }
     }
-
     case '/getting-started': {
       {
         return <Index {...installationIndex} />;

@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
-import { Avatar, Container, Icon, Options, Search as SearchComponent, Typography } from 'anu/lib';
+import { Avatar, Container, FlatListProps, Icon, Options, Search as SearchComponent, Typography } from 'anu/lib';
 import { SearchBarProps } from 'anu/lib/composites/search-bar/types';
 import SearchDark from 'assets/full-screen-search-dark.gif';
 import SearchLight from 'assets/full-screen-search-light.gif';
@@ -12,10 +12,6 @@ import { useState } from 'react';
 import { Pressable } from 'react-native';
 import { useMenuContext } from 'screens/common/provider';
 
-const style = {
-  margin: 15,
-  width: 360,
-};
 const margin = {
   margin: 15,
 };
@@ -56,16 +52,24 @@ const data = [
     value: 'Item 6',
   },
 ];
-const ListRenderItem = ({ item }: { item: Options }) => {
-  return (
-    <Pressable style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}>
-      <Typography.Body>{item.value as string}</Typography.Body>
-    </Pressable>
-  );
-};
 
-const Search = (props: Omit<SearchBarProps, 'value' | 'onChangeText' | 'filterOnChange'>) => {
+const Search = (
+  props: Omit<SearchBarProps, 'value' | 'onChangeText' | 'filterOnChange' | 'flatListProps'> & {
+    flatListProps?: Partial<FlatListProps<Options>>;
+  },
+) => {
   const [text, setText] = useState('');
+
+  const ListRenderItem = ({ item }: { item: Options }) => {
+    return (
+      <Pressable
+        style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}
+        onPress={() => setText(item.value as string)}
+      >
+        <Typography.Body>{item.value as string}</Typography.Body>
+      </Pressable>
+    );
+  };
 
   return (
     <SearchComponent
@@ -76,6 +80,7 @@ const Search = (props: Omit<SearchBarProps, 'value' | 'onChangeText' | 'filterOn
       }}
       label='Hinted search Text'
       filterOnChange={(value: string) => data.filter((item) => item.value.toLowerCase().includes(value.toLowerCase()))}
+      flatListProps={{ renderItem: ListRenderItem }}
     />
   );
 };
@@ -87,19 +92,19 @@ const Example1 = () => {
   const containerStyle = {
     ...flexStyle,
     borderRadius: 18,
-    backgroundColor: (isDarkTheme ? '#46464F' : theme.colors?.$surfaceVariant) as string,
+    backgroundColor: (isDarkTheme ? '#46464F' : '#E5E1E6') as string,
     borderColor: theme.colors?.$outline as string,
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   } as const;
 
   return (
     <Container disableGutters flexDirection='column-reverse' sx={containerStyle as never}>
-      <Container disableGutters style={style}>
+      <Container disableGutters style={margin}>
         <Search
           data={data}
-          flatListProps={{ renderItem: ListRenderItem }}
           leadingIcon={<Icon name='menu' color={theme.colors?.$onSurface as string} />}
           trailingIcon={
             <Container disableGutters flexDirection='row' align='center'>
@@ -112,10 +117,9 @@ const Example1 = () => {
         />
       </Container>
 
-      <Container disableGutters style={style}>
+      <Container disableGutters style={margin}>
         <Search
           data={data}
-          flatListProps={{ renderItem: ListRenderItem }}
           leadingIcon={<Icon name='menu' color={theme.colors?.$onSurface as string} />}
           trailingIcon={
             <Container disableGutters flexDirection='row' align='center'>
@@ -127,20 +131,18 @@ const Example1 = () => {
           resultContainerStyle={{ width: 360 }}
         />
       </Container>
-      <Container disableGutters style={style}>
+      <Container disableGutters style={margin}>
         <Search
           data={data}
-          flatListProps={{ renderItem: ListRenderItem }}
           leadingIcon={<Icon name='menu' color={theme.colors?.$onSurface as string} />}
           trailingIcon={<Avatar source={{ uri: 'https://i.pravatar.cc/300' }} variant='circle' />}
           containerStyle={{ width: 360 }}
           resultContainerStyle={{ width: 360 }}
         />
       </Container>
-      <Container disableGutters style={style}>
+      <Container disableGutters style={margin}>
         <Search
           data={data}
-          flatListProps={{ renderItem: ListRenderItem }}
           leadingIcon={<Icon name='menu' />}
           trailingIcon={<Icon name='search' color={theme.colors?.$onSurface as string} />}
           containerStyle={{ width: 360 }}
@@ -154,14 +156,26 @@ const Example1 = () => {
 const Example2 = () => {
   const { isDarkTheme } = useMenuContext();
 
+  const theme = useTheme();
+  const containerStyle = {
+    borderRadius: 18,
+    backgroundColor: (isDarkTheme ? theme.colors?.$outlineVariant : '#E5E1E6') as string,
+    borderColor: theme.colors?.$outline as string,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  } as const;
+
   return (
-    <Container disableGutters sx={flexStyle as never}>
-      {isDarkTheme ? (
-        <img src={SearchDark.src} style={{ height: 442, width: 225 }} alt='search-full-screen' />
-      ) : (
-        <img src={SearchLight.src} style={{ height: 442, width: 225 }} alt='search-full-screen' />
-      )}
-      <Container disableGutters style={{ marginVertical: 30 }} />
+    <Container disableGutters sx={containerStyle as never}>
+      <Container disableGutters sx={margin as never}>
+        {isDarkTheme ? (
+          <img src={SearchDark.src} style={{ height: 442, width: 225 }} alt='search-full-screen' />
+        ) : (
+          <img src={SearchLight.src} style={{ height: 442, width: 225 }} alt='search-full-screen' />
+        )}
+      </Container>
     </Container>
   );
 };
@@ -172,10 +186,12 @@ const Example3 = () => {
   const theme = useTheme();
   const containerStyle = {
     borderRadius: 18,
-    backgroundColor: (isDarkTheme ? '#46464F' : theme.colors?.$surfaceVariant) as string,
+    backgroundColor: (isDarkTheme ? '#46464F' : '#E5E1E6') as string,
     borderColor: theme.colors?.$outline as string,
     borderWidth: 1,
+    alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   } as const;
 
   return (
@@ -183,7 +199,6 @@ const Example3 = () => {
       <Container disableGutters style={[margin, { height: 160 }]}>
         <Search
           data={data}
-          flatListProps={{ renderItem: ListRenderItem }}
           leadingIcon={<Icon name='search' style={{ color: 'inherit' }} />}
           resultContainerStyle={{ maxHeight: 100 }}
           type='docked'
@@ -199,10 +214,12 @@ const Example4 = () => {
   const theme = useTheme();
   const containerStyle = {
     borderRadius: 18,
-    backgroundColor: (isDarkTheme ? '#46464F' : theme.colors?.$surfaceVariant) as string,
+    backgroundColor: (isDarkTheme ? '#46464F' : '#E5E1E6') as string,
     borderColor: theme.colors?.$outline as string,
     borderWidth: 1,
+    alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   } as const;
 
   return (
@@ -211,7 +228,6 @@ const Example4 = () => {
         <Search
           data={[]}
           flatListProps={{
-            renderItem: ListRenderItem,
             ListEmptyComponent: (
               <Pressable style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}>
                 <Typography.Body>No results found</Typography.Body>
@@ -370,7 +386,7 @@ export const searchDocumentation: ContentValues = {
   ],
   externalProperties: {
     link: '/components/auto-complete',
-    title: 'searchDocumentation:externalProperties',
+    title: 'searchDocumentation:external-properties-title',
   },
 };
 

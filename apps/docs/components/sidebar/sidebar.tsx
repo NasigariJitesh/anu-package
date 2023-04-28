@@ -449,6 +449,11 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:touchable-ripple',
+                link: '/components/touchable-ripple',
+                components: [],
+              },
+              {
                 title: 'leftSideBar:typography',
                 link: '/components/typography',
                 components: [],

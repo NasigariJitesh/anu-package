@@ -196,7 +196,6 @@ const getColor = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
 
   const { light, color: propsColor } = props;
   const color = propsColor ?? (colors?.$primary as string);
-  console.log(color);
   return light ? getColorInRGBA(color, 75) : color;
 };
 

@@ -66,6 +66,7 @@
   "leftSideBar:search": "Recherche",
   "leftSideBar:side-sheet": "Side Sheet",
   "leftSideBar:switch": "Commutateur",
+  "leftSideBar:touchable-ripple": "Propagation tactile",
   "leftSideBar:typography": "Typographie",
   "leftSideBar:credits": "Crédits",
 
@@ -88,7 +89,7 @@
   "autoCompleteDocumentation:property-debounceDuration-description": "Durée de temps pour le décalage.",
   "autoCompleteDocumentation:property-resultContainerStyle-description": "Les styles pour le conteneur des résultats.",
   "autoCompleteDocumentation:property-autoCompleteContainerStyle-description": "Les styles pour le conteneur des résultats.",
-  "autoCompleteDocumentation:externalProperties": "Propriétés des champs de texte",
+  "autoCompleteDocumentation:external-properties-title": "Propriétés des champs de texte",
 
   "avatarDocumentation:mainHeading": "Avatar",
   "avatarDocumentation:mainDescription": "Un avatar est généralement affiché sous forme d’une petite image ou icône associée au profil ou à l'identité d'un utilisateur.",
@@ -512,7 +513,7 @@
   "phoneInputDocumentation:property-value-description": "La valeur du numéro de téléphone.",
   "phoneInputDocumentation:property-onChangeText-description": "Fonction de rappel lorsque la valeur est modifiée ou que de nouvelles données relatives au numéro de téléphone sont disponibles.",
   "phoneInputDocumentation:property-defaultCountryCode-description": "La valeur du code pays par défaut de l’entrée téléphonique.",
-  "phoneInputDocumentation:externalProperties": "Propriétés d’auto-complétion",
+  "phoneInputDocumentation:external-properties-title": "Propriétés d’auto-complétion",
 
   "radioDocumentation:mainHeading": "Radio",
   "radioDocumentation:mainDescription": "Les boutons radio permettent aux utilisateurs de sélectionner une option dans un ensemble.",
@@ -544,7 +545,7 @@
   "searchDocumentation:property-searchBarStyle-description": "Les styles pour le champ de saisie de la barre de recherche.",
   "searchDocumentation:property-searchBarContainerStyle-description": "Les styles pour le conteneur de la barre de recherche.",
   "searchDocumentation:property-containerStyle-description": "Les styles pour le composant de la barre de recherche et le conteneur des résultats.",
-  "searchDocumentation:externalProperties": "Propriétés Auto Complete",
+  "searchDocumentation:external-properties-title": "Propriétés Auto Complete",
 
   "sideSheetDocumentation:mainHeading": "Side Sheet",
   "sideSheetDocumentation:mainDescription": "Une feuille latérale est un type de boîte de dialogue modale qui glisse sur le côté de l'écran pour afficher des informations ou des fonctionnalités supplémentaires liées à la vue ou à la tâche en cours.\n\nLes feuilles latérales peuvent être utilisées pour afficher des informations qui ne rentrent pas dans la vue principale ou pour fournir des contrôles ou des actions supplémentaires liés à la tâche en cours.",
@@ -573,6 +574,18 @@
   "switchDocumentation:property-trackStyle-description": "Styles pour la piste du commutateur.",
   "switchDocumentation:example1-name": "Défaut",
   "switchDocumentation:example2-name": "Commutateur - avec icône",
+
+  "touchableRippleDocumentation:mainHeading": "Propagation tactile",
+  "touchableRippleDocumentation:mainDescription": "Une propagation tactile est un effet visuel qui est déclenché lorsqu'un utilisateur interagit avec un élément tactile, tel qu'un bouton ou une icône, sur un appareil à écran tactile.\n\nLorsque l'utilisateur appuie sur l'élément et qu'un effet de propagation apparaît autour du point de contact, cela donne à l'utilisateur une rétroaction visuelle que son entrée a été enregistrée.",
+  "touchableRippleDocumentation:example1-name": "Défaut",
+  "touchableRippleDocumentation:example1-description": "L'effet de propagation est généralement obtenu grâce à l'animation et à la couleur et peut être personnalisé pour correspondre au schéma de couleurs et à l'esthétique de conception de l'application.",
+  "touchableRippleDocumentation:property-children-description": "Contenu qui doit être affiché",
+  "touchableRippleDocumentation:property-centered-description": "Si vrai, la propagation commence au centre (uniquement pour le web)",
+  "touchableRippleDocumentation:property-borderless-description": "Si vrai, la propagation est rendue en dehors des limites de la vue.",
+  "touchableRippleDocumentation:property-rippleColor-description": "Couleur de l'effet de propagation (Android et web)",
+  "touchableRippleDocumentation:property-underlayColor-description": "Couleur du sous-couche pour l'effet de surbrillance (pour ios)",
+  "touchableRippleDocumentation:property-background-description": "Type de drawable d'arrière-plan pour afficher les commentaires.",
+  "touchableRippleDocumentation:external-properties-title": "Propriétés pressables",
 
   "typographyDocumentation:mainHeading": "Typographie",
   "typographyDocumentation:mainDescription": "La typographie est utilisée pour organiser les polices de caractères afin de créer une conception de communication visuellement attrayante et efficace.",

@@ -66,6 +66,7 @@
   "leftSideBar:search": "Search",
   "leftSideBar:side-sheet": "Side Sheet",
   "leftSideBar:switch": "Switch",
+  "leftSideBar:touchable-ripple": "Touchable Ripple",
   "leftSideBar:typography": "Typography",
 
   "leftSideBar:credits": "Credits",
@@ -91,7 +92,7 @@
   "autoCompleteDocumentation:property-debounceDuration-description": "Time Duration for the debouncing.",
   "autoCompleteDocumentation:property-resultContainerStyle-description": "The styles for the results container.",
   "autoCompleteDocumentation:property-autoCompleteContainerStyle-description": "The styles for the results container.",
-  "autoCompleteDocumentation:externalProperties": "Text Field Properties",
+  "autoCompleteDocumentation:external-properties-title": "Text Field Properties",
 
   "avatarDocumentation:mainHeading": "Avatar",
   "avatarDocumentation:mainDescription": "An avatar is typically displayed as a small image or icon that is associated with a user’s profile or identity.",
@@ -545,7 +546,7 @@
 
   "phoneInputDocumentation:property-defaultCountryCode-description": "The default country code value of phone input.",
 
-  "phoneInputDocumentation:externalProperties": "Auto Complete Properties",
+  "phoneInputDocumentation:external-properties-title": "Auto Complete Properties",
 
   "radioDocumentation:mainHeading": "Radio",
   "radioDocumentation:mainDescription": "Radio buttons allow users to select one option from a set.",
@@ -578,7 +579,7 @@
   "searchDocumentation:property-searchBarStyle-description": "The Styles for the search bar input field.",
   "searchDocumentation:property-searchBarContainerStyle-description": "The Styles for the search bar container.",
   "searchDocumentation:property-containerStyle-description": "The Styles for the search bar component and results container.",
-  "searchDocumentation:externalProperties": "Auto Complete Properties",
+  "searchDocumentation:external-properties-title": "Auto Complete Properties",
 
   "sideSheetDocumentation:mainHeading": "Side Sheet",
   "sideSheetDocumentation:mainDescription": "A Side sheet is a type of modal dialog that slides in from the side of the screen to display additional information or functionality related to the current view or task.\n\nSide Sheets can be used to display information that doesn’t fit within the main view, or to provide additional controls or actions related to the current task.",
@@ -608,6 +609,19 @@
 
   "switchDocumentation:example1-name": "Default",
   "switchDocumentation:example2-name": "Switch - with icon",
+
+  "touchableRippleDocumentation:mainHeading": "Touchable Ripple",
+  "touchableRippleDocumentation:mainDescription": "A Touchable ripple is a visual effect that is triggered when a user interacts with a touchable element, such as a button or icon, on a touch-screen device.\n\nWhen the user taps or clicks on the element, and a ripple effect appears around the point of contact, giving the user visual feedback that their input has been registered.",
+  "touchableRippleDocumentation:example1-name": "Default",
+  "touchableRippleDocumentation:example1-description": "The ripple effect is typically achieved through the use of animation and color and can be customized to match the color scheme and design aesthetic of the application.",
+
+  "touchableRippleDocumentation:property-children-description": "Content that needs to be displayed",
+  "touchableRippleDocumentation:property-centered-description": "If true, the ripple starts at the center (only for web)",
+  "touchableRippleDocumentation:property-borderless-description": "If true, the ripple is rendered outside the view bounds.",
+  "touchableRippleDocumentation:property-rippleColor-description": "Color of the ripple effect (Android and web)",
+  "touchableRippleDocumentation:property-underlayColor-description": "Color of the underlay for the highlight effect (for ios)",
+  "touchableRippleDocumentation:property-background-description": "Type of background drawable to display the feedback.",
+  "touchableRippleDocumentation:external-properties-title": "Pressable Properties",
 
   "typographyDocumentation:mainHeading": "Typography",
   "typographyDocumentation:mainDescription": "Typography is used to arrange the typefaces to create a visually appealing and effective communication design.",

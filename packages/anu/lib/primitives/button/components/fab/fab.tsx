@@ -1,10 +1,10 @@
 import { useTheme } from 'anu/config';
 import { generateHoverStyles } from 'common/utils';
-import { Pressable, useSx } from 'dripsy';
-import { Container } from 'lib/primitives';
+import { useSx } from 'dripsy';
+import { Container, TouchableRipple } from 'lib/primitives';
 import Icon from 'lib/primitives/icon';
 import { ReactElement } from 'react';
-import { PressableStateCallbackType } from 'react-native';
+import { GestureResponderEvent, PressableStateCallbackType } from 'react-native';
 
 import { FABProps, IconType } from '../../types';
 import { getFABStyles } from '../../utils';
@@ -39,14 +39,16 @@ const FAB = (props: FABProps) => {
   return (
     // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
     <Container disableGutters style={containerStyles}>
-      <Pressable
+      <TouchableRipple
         accessibilityRole='button'
-        onPress={restOfTheProps.onPress}
         {...restOfTheProps.pressableProps}
+        onPress={(event: GestureResponderEvent) => {
+          if (restOfTheProps.onPress) restOfTheProps.onPress(event);
+        }}
         style={generateStyles}
       >
         {getIcon(restOfTheProps.icon)}
-      </Pressable>
+      </TouchableRipple>
     </Container>
   );
 };
