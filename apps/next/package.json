@@ -12,10 +12,11 @@
     "build:web": "next build"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "~1.17.3",
     "@expo/html-elements": "0.3.1",
+    "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-navigation/native": "^6.1.2",
     "@react-navigation/native-stack": "^6.9.8",
+    "anu": "*",
     "dripsy": "^3.10.0",
     "expo": "~47.0.12",
     "expo-constants": "~14.0.2",
@@ -33,8 +34,7 @@
     "react-native-web": "~0.18.9",
     "setimmediate": "^1.0.5",
     "solito": "^2.1.3",
-    "typescript": "^4.7.4",
-    "anu": "*"
+    "typescript": "^4.7.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

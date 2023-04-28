@@ -14,19 +14,18 @@
     "dev:docs": "cd apps/docs && yarn run dev",
     "lint": "turbo run lint -- --cache --cache-strategy content --fix",
     "format": "prettier --write . ",
-    "clean": "npx rimraf -f **/node_modules **/.eslintcache",
+    "clean": "npx rimraf packages/**/node_modules apps/**node_modules node_modules **/.eslintcache",
     "clean-install": "yarn clean && yarn",
     "prepare": "husky install"
   },
   "devDependencies": {
     "eslint-config-custom": "*",
+    "husky": "latest",
     "prettier": "latest",
-    "turbo": "latest",
-    "husky": "latest"
+    "turbo": "latest"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@3.4.1"
 }
