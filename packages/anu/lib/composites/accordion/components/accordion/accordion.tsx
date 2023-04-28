@@ -1,4 +1,5 @@
-import { Pressable } from 'dripsy';
+/* eslint-disable react-native/no-inline-styles */
+import { TouchableRipple } from 'anu/lib';
 import { Container } from 'lib/primitives/layout/components/container/container';
 import { createContext, useContext, useState } from 'react';
 import { Animated, View } from 'react-native';
@@ -38,9 +39,9 @@ const Accordion = (props: AccordionProps) => {
   return (
     <AccordionContext.Provider value={{ collapse }}>
       <Container disableGutters {...finalProps.containerProps} style={finalProps.style}>
-        <Pressable sx={{ transition: 'all 2s linear' }} onPress={onCollapse}>
+        <TouchableRipple sx={{ transition: 'all 2s linear' }} onPress={onCollapse}>
           <View>{finalProps.title}</View>
-        </Pressable>
+        </TouchableRipple>
         {collapse ? null : <Animated.View>{props.children}</Animated.View>}
       </Container>
     </AccordionContext.Provider>

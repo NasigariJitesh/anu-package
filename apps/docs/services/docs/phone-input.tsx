@@ -138,7 +138,7 @@ export const phoneInputDocumentation: ContentValues = {
   ],
   externalProperties: {
     link: '/components/auto-complete',
-    title: 'phoneInputDocumentation:externalProperties',
+    title: 'phoneInputDocumentation:external-properties-title',
   },
 };
 

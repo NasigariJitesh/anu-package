@@ -1,10 +1,11 @@
-import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
+import { Pressable } from 'dripsy';
 import * as React from 'react';
-import { Pressable } from 'react-native';
+import { useState } from 'react';
+import { GestureResponderEvent } from 'react-native';
 
 import { TouchableRippleWebProps } from '../../types';
-import { getTouchableRippleColors, getTouchableRippleStyles, hasTouchHandler } from '../../utils';
+import { getStateStyle, getTouchableRippleColors, getTouchableRippleStyles, hasTouchHandler } from '../../utils';
 import { defaultPropsWeb } from './default';
 
 /**
@@ -29,6 +30,10 @@ const TouchableRipple = (props: TouchableRippleWebProps) => {
   const theme = useTheme();
   const { borderlessStyle, touchableStyle } = getTouchableRippleStyles();
 
+  const { calculatedRippleColor } = getTouchableRippleColors(theme, rippleColor);
+
+  const [rippleBackgroundColor, setRippleBackgroundColor] = useState(calculatedRippleColor);
+
   const { onPress, onLongPress, onPressIn, onPressOut } = rest;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -36,8 +41,6 @@ const TouchableRipple = (props: TouchableRippleWebProps) => {
     const { centered } = rest;
 
     onPressIn?.(event);
-
-    const { calculatedRippleColor } = getTouchableRippleColors(theme, rippleColor);
 
     const button = event.currentTarget;
     const buttonStyle = window.getComputedStyle(button);
@@ -90,7 +93,7 @@ const TouchableRipple = (props: TouchableRippleWebProps) => {
     Object.assign(ripple.style, {
       position: 'absolute',
       pointerEvents: 'none',
-      backgroundColor: calculatedRippleColor,
+      backgroundColor: rippleBackgroundColor,
       borderRadius: '50%',
 
       /* Transition configuration */
@@ -156,6 +159,9 @@ const TouchableRipple = (props: TouchableRippleWebProps) => {
     });
   };
 
+  const handlePress = (event: GestureResponderEvent) => {
+    if (onPress) onPress(event);
+  };
   const hasPassedTouchHandler = hasTouchHandler({
     onPress,
     onLongPress,
@@ -170,8 +176,17 @@ const TouchableRipple = (props: TouchableRippleWebProps) => {
       {...rest}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      onPress={handlePress}
       disabled={disabled}
-      style={getCombinedStylesForView({ ...touchableStyle, ...(borderless ? borderlessStyle : {}) }, style)}
+      style={(state) => [
+        ...getStateStyle(
+          state,
+          { ...touchableStyle, ...(borderless ? borderlessStyle : {}) },
+          style,
+          setRippleBackgroundColor,
+          rippleColor,
+        ),
+      ]}
     >
       {React.Children.only(children)}
     </Pressable>

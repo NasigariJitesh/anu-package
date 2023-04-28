@@ -1,7 +1,7 @@
 import { useTheme } from 'anu/config';
 import { generateHoverStyles } from 'common/utils';
-import { Pressable, useSx } from 'dripsy';
-import { Container, Icon, Typography } from 'lib/primitives';
+import { useSx } from 'dripsy';
+import { Container, Icon, TouchableRipple, Typography } from 'lib/primitives';
 import { useEffect, useState } from 'react';
 import { GestureResponderEvent, PressableStateCallbackType } from 'react-native';
 
@@ -67,7 +67,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
 
   return (
     <Container disableGutters style={buttonStyles}>
-      <Pressable disabled={finalProps.disabled} onPress={onPressHandler} style={generateStyles}>
+      <TouchableRipple disabled={finalProps.disabled} onPress={onPressHandler} style={generateStyles}>
         <Container flexDirection='row' align='center' justify='center' disableGutters maxWidth={88}>
           <RenderSelected />
 
@@ -75,7 +75,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
             {finalProps.title}
           </Typography.Body>
         </Container>
-      </Pressable>
+      </TouchableRipple>
     </Container>
   );
 };
