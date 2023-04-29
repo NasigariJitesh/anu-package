@@ -1,28 +1,17 @@
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
-import { useTheme } from 'anu/config/dripsy/theme';
-import { Button,  DatePickerModal, TextField, TouchableRipple } from 'anu/lib';
-
+import { DatePickerModal, TouchableRipple } from 'anu/lib';
 import Container from 'anu/lib/primitives/layout/components/container';
 import Typography from 'anu/lib/primitives/typography/components';
-import { Text, View } from 'dripsy';
-import { useCallback, useRef, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { useState } from 'react';
 
 const HomeScreen = () => {
-  const [text, setText] = useState('');
   const [text1, setText1] = useState(false);
-  const [inputDate3, setInputDate3] = useState<Date[]>([]);
   const [inputDate, setInputDate] = useState<Date | undefined>();
   const [inputDate1, setInputDate1] = useState<Date | undefined>();
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, paddingTop: 10 }}>
-      <TextField value={text} onChangeText={setText} containerStyle={{ width: 250 }} />
-
       <DatePickerModal
-        dates={inputDate3}
         startDate={inputDate}
         allowEditing={true}
         endDate={inputDate1}
@@ -30,9 +19,11 @@ const HomeScreen = () => {
         onDismiss={() => {
           setText1(false);
         }}
-        mode='single'
+        mode='range'
         locale='en'
-        onConfirm={() => {
+        onConfirm={(params: { startDate?: Date; endDate?: Date }) => {
+          setInputDate(params.startDate);
+          setInputDate1(params.endDate);
         }}
       />
 
