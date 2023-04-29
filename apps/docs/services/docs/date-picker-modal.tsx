@@ -1,3 +1,4 @@
+/* eslint-disable no-secrets/no-secrets */
 import { Button, Container, DatePickerModal } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
@@ -96,6 +97,9 @@ const Example3 = () => {
             setEndDate(params.endDate);
             setVisible(false);
           }}
+          onToggle={() => {
+            console.log('Toggle toggle');
+          }}
         />
       </SafeAreaProvider>
     </Container>
@@ -107,7 +111,7 @@ export const datePickerModalDocumentation: ContentValues = {
   examples: [
     {
       name: 'datePickerModalDocumentation:example1-name',
-      id: 'default',
+      id: 'single',
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Example1 />
@@ -132,7 +136,7 @@ export const datePickerModalDocumentation: ContentValues = {
     },
     {
       name: 'datePickerModalDocumentation:example2-name',
-      id: 'default',
+      id: 'multiple',
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Example2 />
@@ -158,7 +162,7 @@ export const datePickerModalDocumentation: ContentValues = {
     },
     {
       name: 'datePickerModalDocumentation:example3-name',
-      id: 'default',
+      id: 'range',
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Example3 />
@@ -187,62 +191,258 @@ export const datePickerModalDocumentation: ContentValues = {
   ],
   properties: [
     {
-      name: 'flexDirection',
-      optional: true,
-      type: "'row' | 'row-reverse' | 'column' | 'column-reverse'",
-      description: 'datePickerModalDocumentation:property-flexDirection-description',
-      defaultValue: "'column'",
+      name: 'visible',
+      type: 'boolean',
+      description: 'datePickerModalDocumentation:property-visible-description',
     },
     {
-      name: 'align',
-      optional: true,
-      type: "'center' | 'flex-start' | 'flex-end'",
-      description: 'datePickerModalDocumentation:property-align-description',
-      defaultValue: "'flex-start'",
+      name: 'mode',
+      type: "'single' | 'range' | 'multiple'",
+      description: 'datePickerModalDocumentation:property-mode-description',
     },
+
     {
-      name: 'justify',
-      description: 'datePickerModalDocumentation:property-justify-description',
-      optional: true,
-      type: "'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around'",
-      defaultValue: "'flex-start'",
-    },
-    {
-      name: 'style',
-      description: 'datePickerModalDocumentation:property-style-description',
-      type: 'StyleProp<ViewStyle>',
+      name: 'date',
+      type: 'Date',
+      description: 'datePickerModalDocumentation:property-startDate-description',
       optional: true,
     },
     {
-      name: 'disableGutters',
-      description: 'datePickerModalDocumentation:property-disableGutters-description',
+      name: 'dates',
+      type: 'Date[]',
+      description: 'datePickerModalDocumentation:property-startDate-description',
+      optional: true,
+    },
+    {
+      name: 'startDate',
+      type: 'Date',
+      description: 'datePickerModalDocumentation:property-startDate-description',
+      optional: true,
+    },
+    {
+      name: 'endDate',
+      type: 'Date',
+      description: 'datePickerModalDocumentation:property-endDate-description',
+      optional: true,
+    },
+    {
+      name: 'onConfirm',
+      type: ' (params: { date: CalendarDate }) => void | (params: { dates: Date[] }) => void | (params: { startDate: CalendarDate; endDate: CalendarDate }) => void',
+      description: 'datePickerModalDocumentation:property-onConfirm-description',
+    },
+
+    {
+      name: 'onDismiss',
+      type: '() => void',
+      description: 'datePickerModalDocumentation:property-onDismiss-description',
+    },
+    {
+      name: 'onChange',
+      type: "(params: { date: CalendarDate }) => void | (params: { dates: CalendarDates; datePressed: Date; change: 'added' | 'removed' }) => void | (params: { startDate: CalendarDate; endDate: CalendarDate }) => void",
+      description: 'datePickerModalDocumentation:property-onChange-description',
+      optional: true,
+    },
+    {
+      name: 'dateMode',
+      optional: true,
+      type: "'start' | 'end'",
+      description: 'datePickerModalDocumentation:property-dateMode-description',
+    },
+    {
+      name: 'inputFormat',
+      optional: true,
+      type: 'string',
+      description: 'datePickerModalDocumentation:property-inputFormat-description',
+    },
+    {
+      name: 'allowEditing',
+      optional: true,
+      type: 'boolean',
+      description: 'datePickerModalDocumentation:property-allowEditing-description',
+    },
+    {
+      name: 'collapsed',
+      optional: true,
+      type: 'boolean',
+      description: 'datePickerModalDocumentation:property-allowEditing-description',
+    },
+    {
+      name: 'onToggle',
+      type: '() => void',
+      description: 'datePickerModalDocumentation:property-onToggle-description',
+    },
+
+    {
+      name: 'locale',
+      description: 'datePickerModalDocumentation:property-locale-description',
+      type: 'string',
+      optional: true,
+      defaultValue: "'en'",
+    },
+    {
+      name: 'validRange',
+      description: 'datePickerModalDocumentation:property-validRange-description',
+      type: '{ startDate?: Date; endDate?: Date; disabledDates?: Date[] }',
+      optional: true,
+    },
+    {
+      name: 'withDateFormatInLabel',
+      description: 'datePickerModalDocumentation:property-withDateFormatInLabel-description',
+      type: 'boolean',
+      optional: true,
+      defaultValue: 'true',
+    },
+    {
+      name: 'animationType',
+      optional: true,
+      type: "'slide' | 'fade' | 'none'",
+      description: 'datePickerModalDocumentation:property-animationType-description',
+      defaultValue: "'slide' (native), 'fade'(web)",
+    },
+    {
+      name: 'calendarIcon',
+      description: 'datePickerModalDocumentation:property-calendarIcon-description',
+      optional: true,
+      type: 'string',
+      defaultValue: "'calendar-today'",
+    },
+    {
+      name: 'closeIcon',
+      description: 'datePickerModalDocumentation:property-closeIcon-description',
+      optional: true,
+      type: 'string',
+      defaultValue: "'close'",
+    },
+    {
+      name: 'editIcon',
+      description: 'datePickerModalDocumentation:property-closeIcon-description',
+      optional: true,
+      type: 'string',
+      defaultValue: "'edit'",
+    },
+    {
+      name: 'headerSeparator',
+      description: 'datePickerModalDocumentation:property-headerSeparator-description',
+      optional: true,
+      type: 'string',
+      defaultValue: "'-'",
+    },
+    {
+      name: 'label',
+      description: 'datePickerModalDocumentation:property-label-description',
+      type: 'string',
+      optional: true,
+    },
+    {
+      name: 'saveLabel',
+      description: 'datePickerModalDocumentation:property-saveLabel-description',
+      type: 'string',
+      optional: true,
+    },
+    {
+      name: 'startLabel',
+      description: 'datePickerModalDocumentation:property-startLabel-description',
+      type: 'string',
+      optional: true,
+    },
+    {
+      name: 'endLabel',
+      description: 'datePickerModalDocumentation:property-endLabel-description',
+      type: 'string',
+      optional: true,
+    },
+    {
+      name: 'moreLabel',
+      description: 'datePickerModalDocumentation:property-moreLabel-description',
+      type: 'string',
+      optional: true,
+    },
+
+    {
+      name: 'emptyLabel',
+      description: 'datePickerModalDocumentation:property-emptyLabel-description',
+      type: 'string',
+      optional: true,
+    },
+    {
+      name: 'okLabel',
+      description: 'datePickerModalDocumentation:property-okLabel-description',
+      type: 'string',
+      optional: true,
+      defaultValue: 'Ok',
+    },
+    {
+      name: 'cancelLabel',
+      description: 'datePickerModalDocumentation:property-cancelLabel-description',
+      type: 'string',
+      optional: true,
+      defaultValue: 'Cancel',
+    },
+    {
+      name: 'okLabelDisabled',
+      description: 'datePickerModalDocumentation:property-okLabelDisabled-description',
       type: 'boolean',
       optional: true,
       defaultValue: 'false',
     },
     {
-      name: 'fixed',
-      description: 'datePickerModalDocumentation:property-fixed-description',
+      name: 'saveLabelDisabled',
+      description: 'datePickerModalDocumentation:property-saveLabelDisabled-description',
+      type: 'boolean',
+      optional: true,
+      defaultValue: 'false',
+    },
+
+    {
+      name: 'cancelLabelDisabled',
+      description: 'datePickerModalDocumentation:property-cancelLabelDisabled-description',
       type: 'boolean',
       optional: true,
       defaultValue: 'false',
     },
     {
-      name: 'width',
-      description: 'datePickerModalDocumentation:property-width-description',
-      type: 'number | string',
+      name: 'startYear',
+      description: 'datePickerModalDocumentation:property-startYear-description',
+      type: 'number',
+      optional: true,
+      defaultValue: '1900',
+    },
+    {
+      name: 'endYear',
+      description: 'datePickerModalDocumentation:property-endYear-description',
+      type: 'number',
+      optional: true,
+      defaultValue: '2200',
+    },
+    {
+      name: 'inputEnabled',
+      description: 'datePickerModalDocumentation:property-inputEnabled-description',
+      type: 'boolean',
+      optional: true,
+      defaultValue: 'true',
+    },
+    {
+      name: 'disableStatusBar',
+      description: 'datePickerModalDocumentation:property-disableStatusBar-description',
+      type: 'boolean',
       optional: true,
     },
     {
-      name: 'maxWidth',
-      description: 'datePickerModalDocumentation:property-maxWidth-description',
+      name: 'disableStatusBarPadding',
+      description: 'datePickerModalDocumentation:property-disableStatusBarPadding-description',
+      type: 'boolean',
       optional: true,
-      type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | number | string",
     },
     {
-      name: 'sx',
-      description: 'datePickerModalDocumentation:property-sx-description',
-      type: 'Sx',
+      name: 'disableSafeTop',
+      optional: true,
+      type: 'boolean',
+      description: 'datePickerModalDocumentation:property-disableSafeTop-description',
+    },
+    {
+      name: 'mask',
+      description: 'datePickerModalDocumentation:property-mask-description',
+      type: 'string',
       optional: true,
     },
   ],
@@ -253,7 +453,15 @@ export const datePickerModalIndex: HeadingProps = {
   links: [
     {
       title: 'datePickerModalDocumentation:example1-name',
-      link: '#default',
+      link: '#single',
+    },
+    {
+      title: 'datePickerModalDocumentation:example2-name',
+      link: '#multiple',
+    },
+    {
+      title: 'datePickerModalDocumentation:example3-name',
+      link: '#range',
     },
     {
       link: '#props',

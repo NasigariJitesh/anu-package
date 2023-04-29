@@ -1,5 +1,4 @@
 /* eslint-disable react-native/no-inline-styles */
-import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib/primitives';
 import React, { memo, useState } from 'react';
 import { useCallback } from 'react';
@@ -31,8 +30,6 @@ const Calendar = (props: CalendarProps) => {
     validRange,
     dateMode,
   } = props;
-
-  const theme = useTheme();
 
   const scrollMode = mode === 'range' || mode === 'multiple' ? 'vertical' : 'horizontal';
 
@@ -124,9 +121,6 @@ const Calendar = (props: CalendarProps) => {
             selectingYear={selectingYear}
             onPressDate={onPressDate}
             scrollMode={scrollMode}
-            primaryColor={theme.colors.$primary}
-            selectColor={theme.colors.$primary}
-            roundness={16}
             disableWeekDays={disableWeekDays}
           />
         )}

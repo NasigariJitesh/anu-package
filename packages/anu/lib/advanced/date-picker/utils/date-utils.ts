@@ -1,28 +1,31 @@
 import { DisableWeekDaysType } from '../types';
 
 /**
+ * Function to check whether the day should be displayed
  *
  * @param dayIndex
  * @param disableWeekDays
  */
-export function showWeekDay(dayIndex: number, disableWeekDays?: DisableWeekDaysType): boolean {
+export const showWeekDay = (dayIndex: number, disableWeekDays?: DisableWeekDaysType): boolean => {
   return !(disableWeekDays && disableWeekDays.includes(dayIndex));
-}
+};
 
 /**
+ * function to convert Date to Unix date format
  *
- * @param d
+ * @param d - date to convert
+ * @returns the stored date value in seconds since midnight, January 1, 1970 UTC.
  */
-export function dateToUnix(d: Date): number {
+export const dateToUnix = (d: Date): number => {
   return Math.round(d.getTime() / 1000);
-}
+};
 
 /**
  *
  * @param date
  * @param count
  */
-export function addMonths(date: Date, count: number) {
+export const addMonths = (date: Date, count: number) => {
   const n = date.getDate();
   const n2 = new Date(date.getTime());
   n2.setDate(1);
@@ -30,19 +33,17 @@ export function addMonths(date: Date, count: number) {
   n2.setDate(Math.min(n, getDaysInMonth({ year: n2.getFullYear(), month: n2.getMonth() })));
 
   return n2;
-}
+};
 
-// https://stackoverflow.com/a/1185068/2508481
-// pass in any date as parameter anyDateInMonth based on dayjs
 /**
  *
  * @param root0
  * @param root0.year
  * @param root0.month
  */
-export function getDaysInMonth({ year, month }: { year: number; month: number }): number {
+export const getDaysInMonth = ({ year, month }: { year: number; month: number }): number => {
   return [31, isLeapYear({ year }) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
-}
+};
 
 /**
  *
@@ -50,22 +51,22 @@ export function getDaysInMonth({ year, month }: { year: number; month: number })
  * @param root0.year
  * @param root0.month
  */
-export function getFirstDayOfMonth({ year, month }: { year: number; month: number }): number {
+export const getFirstDayOfMonth = ({ year, month }: { year: number; month: number }): number => {
   return new Date(year, month, 1).getDay();
-}
+};
 
 /**
  *
  * @param a
  * @param b
  */
-export function areDatesOnSameDay(a: Date, b?: Date | null | undefined) {
+export const areDatesOnSameDay = (a: Date, b?: Date | null | undefined) => {
   if (!b) {
     return false;
   }
 
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
-}
+};
 
 /**
  *
@@ -74,7 +75,7 @@ export function areDatesOnSameDay(a: Date, b?: Date | null | undefined) {
  * @param root0.startDate
  * @param root0.endDate
  */
-export function isDateBetween(
+export const isDateBetween = (
   date: Date,
   {
     startDate,
@@ -83,12 +84,12 @@ export function isDateBetween(
     startDate?: Date | null | undefined;
     endDate?: Date | null | undefined;
   },
-): boolean {
+): boolean => {
   if (!startDate || !endDate) {
     return false;
   }
   return date <= endDate && date >= startDate;
-}
+};
 
 /**
  * Check if a date is within an optional range.
@@ -100,10 +101,10 @@ export function isDateBetween(
  * @param root0.startUnix
  * @param root0.endUnix
  */
-export function isDateWithinOptionalRange(
+export const isDateWithinOptionalRange = (
   date: Date,
   { startUnix, endUnix }: { startUnix: number | undefined; endUnix: number | undefined },
-) {
+) => {
   const dateUnix = dateToUnix(date);
   // if startUnix is provided and date is before start
   if (startUnix && dateUnix < startUnix) {
@@ -116,16 +117,16 @@ export function isDateWithinOptionalRange(
   }
 
   return true;
-}
+};
 
 /**
  *
  * @param root0
  * @param root0.year
  */
-export function isLeapYear({ year }: { year: number }) {
+export const isLeapYear = ({ year }: { year: number }) => {
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-}
+};
 
 export const daySize = 46;
 export const estimatedMonthHeight = 360;
@@ -154,27 +155,27 @@ export const getGridCount = (index: number) => {
  *
  * @param date
  */
-export function getGridCountForDate(date: Date) {
+export const getGridCountForDate = (date: Date) => {
   const year = date.getFullYear();
   const month = date.getMonth();
   const daysInMonth = getDaysInMonth({ year, month });
   const dayOfWeek = getFirstDayOfMonth({ year, month });
   return Math.ceil((daysInMonth + dayOfWeek) / 7);
-}
+};
 
 /**
  *
  * @param index
  */
-export function getRealIndex(index: number) {
+export const getRealIndex = (index: number) => {
   return index - startAtIndex;
-}
+};
 
 /**
  *
  * @param date
  */
-export function getInitialIndex(date: Date | undefined) {
+export const getInitialIndex = (date: Date | undefined) => {
   if (!date) {
     return startAtIndex;
   }
@@ -183,31 +184,31 @@ export function getInitialIndex(date: Date | undefined) {
   const months = differenceInMonths(today, date);
 
   return startAtIndex + months;
-}
+};
 
 /**
  *
  * @param d
  */
-export function getStartOfDay(d: Date): Date {
+export const getStartOfDay = (d: Date): Date => {
   return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0);
-}
+};
 /**
  *
  * @param d
  */
-export function getEndOfDay(d: Date): Date {
+export const getEndOfDay = (d: Date): Date => {
   return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 59);
-}
+};
 
 /**
  *
  * @param firstDate
  * @param secondDate
  */
-export function differenceInMonths(firstDate: Date, secondDate: Date) {
+export const differenceInMonths = (firstDate: Date, secondDate: Date) => {
   let diffMonths = (secondDate.getFullYear() - firstDate.getFullYear()) * 12;
   diffMonths -= firstDate.getMonth();
   diffMonths += secondDate.getMonth();
   return diffMonths;
-}
+};

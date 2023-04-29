@@ -25,7 +25,7 @@ const Example1 = () => {
   return (
     <Container disableGutters style={style}>
       <SafeAreaProvider>
-        <DatePickerInput label='Birthdate' value={inputDate} onChange={(date) => setInputDate(date)} />
+        <DatePickerInput label='Birth date' value={inputDate} onChange={(date) => setInputDate(date)} />
       </SafeAreaProvider>
     </Container>
   );
@@ -37,7 +37,7 @@ const Example2 = () => {
   return (
     <Container disableGutters style={style}>
       <DatePickerInput
-        label='Birthdate'
+        label='Birth date'
         value={inputDate}
         onChange={(date) => {
           setInputDate(date);
@@ -60,20 +60,24 @@ export const datePickerInputDocumentation: ContentValues = {
         </Container>
       ),
       code: `<SafeAreaProvider>
-  <DatePickerInput label='Birthdate' value={inputDate} onChange={(date) => setInputDate(date)} />
+  <DatePickerInput label='Birth date' value={inputDate} onChange={(date) => setInputDate(date)} />
 </SafeAreaProvider>`,
     },
     {
       name: 'datePickerInputDocumentation:example2-name',
-      id: 'default',
+      id: 'without-modal',
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Example2 />
         </Container>
       ),
-      code: "<DatePickerInput label='Birthdate' value={inputDate} onChange={(date) => {setInputDate(date)}} withModal={false} />",
+      code: "<DatePickerInput label='Birth date' value={inputDate} onChange={(date) => {setInputDate(date)}} withModal={false} />",
     },
   ],
+  externalProperties: {
+    link: '/components/text-field',
+    title: 'datePickerInputDocumentation:external-properties-title',
+  },
   properties: [
     {
       name: 'onChange',
@@ -134,8 +138,57 @@ export const datePickerInputDocumentation: ContentValues = {
       defaultValue: "'calendar-today'",
     },
     {
-      name: 'saveLabel',
-      description: 'datePickerInputDocumentation:property-saveLabel-description',
+      name: 'okLabel',
+      description: 'datePickerInputDocumentation:property-okLabel-description',
+      type: 'string',
+      optional: true,
+      defaultValue: 'Ok',
+    },
+    {
+      name: 'okLabelDisabled',
+      description: 'datePickerInputDocumentation:property-okLabelDisabled-description',
+      type: 'boolean',
+      optional: true,
+      defaultValue: 'false',
+    },
+    {
+      name: 'cancelLabel',
+      description: 'datePickerInputDocumentation:property-cancelLabel-description',
+      type: 'string',
+      optional: true,
+      defaultValue: 'Cancel',
+    },
+    {
+      name: 'cancelLabelDisabled',
+      description: 'datePickerInputDocumentation:property-cancelLabelDisabled-description',
+      type: 'boolean',
+      optional: true,
+      defaultValue: 'false',
+    },
+    {
+      name: 'startYear',
+      description: 'datePickerInputDocumentation:property-startYear-description',
+      type: 'number',
+      optional: true,
+      defaultValue: '1900',
+    },
+    {
+      name: 'endYear',
+      description: 'datePickerInputDocumentation:property-endYear-description',
+      type: 'number',
+      optional: true,
+      defaultValue: '2200',
+    },
+    {
+      name: 'inputEnabled',
+      description: 'datePickerInputDocumentation:property-inputEnabled-description',
+      type: 'boolean',
+      optional: true,
+      defaultValue: 'true',
+    },
+    {
+      name: 'mask',
+      description: 'datePickerInputDocumentation:property-mask-description',
       type: 'string',
       optional: true,
     },
@@ -148,6 +201,10 @@ export const datePickerInputIndex: HeadingProps = {
     {
       title: 'datePickerInputDocumentation:example1-name',
       link: '#default',
+    },
+    {
+      title: 'datePickerInputDocumentation:example2-name',
+      link: '#without-modal',
     },
     {
       link: '#props',

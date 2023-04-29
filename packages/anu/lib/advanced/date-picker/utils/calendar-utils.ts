@@ -104,6 +104,7 @@ export const getYearPickerStyles = (theme: DripsyFinalTheme) => {
 };
 
 /**
+ * Function to generate values for range selection
  *
  * @param start
  * @param end

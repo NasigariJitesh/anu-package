@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MutableRefObject, useCallback, useEffect, useRef } from 'react';
+import { MutableRefObject, useEffect } from 'react';
 
 import { useLatest } from '../hooks';
 import { addMonths, differenceInMonths, getRealIndex, startAtIndex } from './date-utils';
 
 /**
+ * Function to change index of the date in calendar on year change
  *
  * @param onChange
  * @param root0
  * @param root0.currentIndexRef
  * @param root0.selectedYear
  */
-export function useYearChange(
+export const useYearChange = (
   onChange: (index: number | undefined) => void,
   {
     selectedYear,
@@ -20,7 +21,7 @@ export function useYearChange(
     currentIndexRef: MutableRefObject<number>;
     selectedYear: number | undefined;
   },
-) {
+) => {
   const onChangeReference = useLatest(onChange);
   useEffect(() => {
     if (selectedYear) {
@@ -37,9 +38,9 @@ export function useYearChange(
       }
     }
   }, [currentIndexRef, onChangeReference, selectedYear]);
-}
+};
 
-export const getSwiperStyles = () => {
+export const getSwiperStylesWeb = () => {
   const flex1 = {
     flex: 1,
     width: '100%',
@@ -54,4 +55,15 @@ export const getAutoSizerStyles = () => {
     overflow: 'hidden',
   } as const;
   return { autoSizer };
+};
+
+export const getSwiperStyles = () => {
+  const inner = {
+    position: 'relative',
+  } as const;
+  const viewPager = {
+    flex: 1,
+  };
+
+  return { inner, viewPager };
 };

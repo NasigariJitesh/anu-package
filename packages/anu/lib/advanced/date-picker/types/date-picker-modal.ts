@@ -24,7 +24,6 @@ export interface HeaderPickProps {
   emptyLabel?: string;
   saveLabel?: string;
   okLabel?: string;
-  uppercase?: boolean;
   headerSeparator?: string;
   startLabel?: string;
   endLabel?: string;
@@ -51,7 +50,6 @@ interface DatePickerModalContentBaseProps {
   saveLabelDisabled?: boolean;
   okLabelDisabled?: boolean;
   cancelLabelDisabled?: boolean;
-  uppercase?: boolean;
   inputEnabled?: boolean;
   collapsed?: boolean;
   onToggle?: () => void;
@@ -97,7 +95,6 @@ export type DatePickerModalContentProps =
 export interface DatePickerModalButtonProps {
   okLabel?: string;
   okLabelDisabled?: boolean;
-  uppercase?: boolean;
   onDismiss: () => void;
   onSave: () => void;
   locale?: string;
@@ -109,7 +106,6 @@ export interface DatePickerModalHeaderProps {
   disableSafeTop?: boolean;
   saveLabel?: string;
   saveLabelDisabled?: boolean;
-  uppercase?: boolean;
   onDismiss: () => void;
   onSave: () => void;
   locale?: string;

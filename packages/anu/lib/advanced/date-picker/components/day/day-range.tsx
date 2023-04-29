@@ -1,3 +1,4 @@
+import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib/primitives';
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
@@ -10,11 +11,12 @@ import { getDayRangeStyles } from '../../utils/';
  * @param props
  */
 const DayRange = (props: DayRangeProps) => {
-  const { leftCrop, rightCrop, inRange, selectColor } = props;
+  const { leftCrop, rightCrop, inRange } = props;
 
   const bothWays = inRange && leftCrop && rightCrop;
   const isCrop = inRange && (leftCrop || rightCrop) && !(leftCrop && rightCrop);
 
+  const theme = useTheme();
   const styles = getDayRangeStyles();
 
   if (inRange || isCrop) {
@@ -28,7 +30,7 @@ const DayRange = (props: DayRangeProps) => {
           bothWays && styles.rangeRootBoth,
           inRange && !isCrop
             ? {
-                backgroundColor: selectColor,
+                backgroundColor: theme.colors.$primaryContainer,
               }
             : null,
         ]}
@@ -41,7 +43,7 @@ const DayRange = (props: DayRangeProps) => {
                 styles.flex1,
                 rightCrop
                   ? {
-                      backgroundColor: selectColor,
+                      backgroundColor: theme.colors.$primaryContainer,
                     }
                   : null,
               ]}
@@ -52,7 +54,7 @@ const DayRange = (props: DayRangeProps) => {
               style={[
                 styles.rangeItem,
                 {
-                  backgroundColor: selectColor,
+                  backgroundColor: theme.colors.$primaryContainer,
                 },
                 leftCrop ? styles.leftRadius : null,
                 rightCrop ? styles.rightRadius : null,
@@ -65,7 +67,7 @@ const DayRange = (props: DayRangeProps) => {
                 styles.flex1,
                 leftCrop
                   ? {
-                      backgroundColor: selectColor,
+                      backgroundColor: theme.colors.$primaryContainer,
                     }
                   : null,
               ]}

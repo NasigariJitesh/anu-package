@@ -13,7 +13,7 @@ import { getDatePickerModalHeaderStyles } from '../../utils';
  */
 const DatePickerModalHeader = (props: DatePickerModalHeaderProps) => {
   const theme = useTheme();
-  const { disableSafeTop, closeIcon = 'close', onDismiss, saveLabelDisabled, onSave, uppercase } = props;
+  const { disableSafeTop, closeIcon = 'close', onDismiss, saveLabelDisabled, onSave } = props;
   const saveLabel = props.saveLabel ?? 'Save';
   const styles = getDatePickerModalHeaderStyles();
   const insets = useSafeAreaInsets();
@@ -44,7 +44,7 @@ const DatePickerModalHeader = (props: DatePickerModalHeaderProps) => {
           onPress={onSave}
           disabled={saveLabelDisabled ?? false}
           testID='anu-dates-save'
-          title={uppercase ? saveLabel.toLocaleUpperCase() : saveLabel}
+          title={saveLabel}
         />
       </Container>
     </Animated.View>

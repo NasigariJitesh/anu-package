@@ -2,8 +2,8 @@
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config/dripsy/theme';
-import { Button, DatePickerInput, DatePickerModal, Icon, Image, TextField, TouchableRipple } from 'anu/lib';
-import Checkbox from 'anu/lib/primitives/checkbox/components/checkbox';
+import { Button,  DatePickerModal, TextField, TouchableRipple } from 'anu/lib';
+
 import Container from 'anu/lib/primitives/layout/components/container';
 import Typography from 'anu/lib/primitives/typography/components';
 import { Text, View } from 'dripsy';
@@ -19,16 +19,6 @@ const HomeScreen = () => {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, paddingTop: 10 }}>
-      {/* <DatePickerInput
-        locale='en'
-        label='Birthdate'
-        value={inputDate}
-        onChange={(d) => setInputDate(d)}
-        inputMode='start'
-        autoComplete='birthdate-full'
-        withModal={true}
-      /> */}
-
       <TextField value={text} onChangeText={setText} containerStyle={{ width: 250 }} />
 
       <DatePickerModal
@@ -43,7 +33,6 @@ const HomeScreen = () => {
         mode='single'
         locale='en'
         onConfirm={() => {
-          console.log();
         }}
       />
 
