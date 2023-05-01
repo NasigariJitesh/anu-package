@@ -23,7 +23,6 @@ export const lightThemeColors = {
   $background: '#fffbff',
   $onBackground: '#1b1b1f',
   $surface: '#fffbff',
-  $surfaceContainerHigh: '#ebe7eb',
   $onSurface: '#1b1b1f',
   $outline: '#777680',
   $surfaceVariant: '#e4e1ec',
@@ -58,7 +57,6 @@ export const darkThemeColors = {
   $background: '#1B1B1F',
   $onBackground: '#E5E1E6',
   $surface: '#1B1B1F',
-  $surfaceContainerHigh: '#2b292d',
   $onSurface: '#E5E1E6',
   $outline: '#918F9A',
   $surfaceVariant: '#46464F',
@@ -138,3 +136,45 @@ export const extendTheme = (theme: Partial<DripsyCustomTheme> = {}, mode: 'light
 export const getThemeMode = (theme: DripsyCustomTheme) => {
   return theme.colors.$surface === (darkThemeColors.$surface as string) ? 'dark' : 'light';
 };
+
+type MyTheme = typeof defaultTheme;
+
+declare module 'dripsy' {
+  interface DripsyCustomTheme extends MyTheme {
+    colors: {
+      // new codes
+      $primary: 'string';
+      $onPrimary: 'string';
+      $primaryContainer: 'string';
+      $onPrimaryContainer: 'string';
+      $secondary: 'string';
+      $onSecondary: 'string';
+      $secondaryContainer: 'string';
+      $onSecondaryContainer: 'string';
+      $tertiary: 'string';
+      $onTertiary: 'string';
+      $tertiaryContainer: 'string';
+      $onTertiaryContainer: 'string';
+      $error: 'string';
+      $onError: 'string';
+      $errorContainer: 'string';
+      $onErrorContainer: 'string';
+      $background: 'string';
+      $onBackground: 'string';
+      $surface: 'string';
+      $onSurface: 'string';
+      $outline: 'string';
+      $surfaceVariant: 'string';
+      $onSurfaceVariant: 'string';
+      $outlineVariant: 'string';
+      $shadow: 'string';
+      $surfaceTint: '';
+      $inverseSurface: 'string';
+      $inverseOnSurface: 'string';
+      $inversePrimary: 'string';
+      $scrim: 'string';
+      $surfaceContainerHigh: 'string';
+      $surfaceContainerHighest: 'string';
+    };
+  }
+}

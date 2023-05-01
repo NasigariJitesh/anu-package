@@ -1,6 +1,6 @@
 import { ReactChildren } from 'anu/common/types';
+import { ContainerAlign, ContainerJustify, ContainerProps, ImageProps } from 'anu/lib';
 import { Sx } from 'dripsy';
-import { ContainerAlign, ContainerJustify, ContainerProps, ImageProps } from 'lib';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 /**

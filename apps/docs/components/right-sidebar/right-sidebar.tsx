@@ -382,6 +382,11 @@ const RightSidebar = () => {
         StickyHeaderComponent={undefined}
         automaticallyAdjustKeyboardInsets={undefined}
         automaticallyAdjustsScrollIndicatorInsets={undefined}
+        href={undefined}
+        hrefAttrs={undefined}
+        onClick={undefined}
+        accessibilityLabelledBy={undefined}
+        accessibilityLanguage={undefined}
       >
         <RenderIndex />
       </ScrollView>

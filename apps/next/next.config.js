@@ -1,60 +1,25 @@
 const { withExpo } = require('@expo/next-adapter');
 
-/**
- * @type {import('next').NextConfig}
- */
-const nextConfig = withExpo({
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // reanimated (and thus, Moti) doesn't work with strict mode currently...
+  // https://github.com/nandorojo/moti/issues/224
+  // https://github.com/necolas/react-native-web/pull/2330
+  // https://github.com/nandorojo/moti/issues/224
+  // once that gets fixed, set this back to true
   reactStrictMode: false,
-  swcMinify: true,
   transpilePackages: [
     'react-native',
     'react-native-web',
-    'expo',
-    '@expo/html-elements',
     'solito',
     'dripsy',
     '@dripsy/core',
-    'react-native-vector-icons',
-    'anu',
-    // 'moti',
+    'moti',
+    'app',
     'react-native-reanimated',
-    'expo-document-picker',
-    'react-native-draggable-flatlist',
-    'expo-modules-core',
-
-    // '@motify',
-    // 'nativewind',
+    '@expo/html-elements',
+    'react-native-gesture-handler',
   ],
-  experimental: {
-    forceSwcTransforms: true,
-  },
-  webpack: (config, options) => {
-    // config.module.rules.push({
-    //   test: /\.ttf$/,
-    //   loader: 'url-loader', // or directly file-loader
-    //   include: path.resolve(__dirname, 'node_modules/react-native-vector-icons/Fonts'),
-    // });
+};
 
-    // config.module.rules.push({
-    //   test: /\.(woff(2)?|eot|ttf|otf|svg)(\?v=\d+\.\d+\.\d+)?$/,
-    //   // Next.js already handles url() in css/sass/scss files
-    //   issuer: /\.\w+(?<!(s?c|sa)ss)$/i,
-    //   use: [
-    //     {
-    //       loader: require.resolve('url-loader'),
-    //       options: {
-    //         limit: 8192,
-    //         fallback: require.resolve('file-loader'),
-    //         publicPath: `${''}/_next/static/chunks/fonts/`,
-    //         outputPath: `${options.isServer ? '../' : ''}static/chunks/fonts/`,
-    //         name: '[name]-[hash].[ext]',
-    //       },
-    //     },
-    //   ],
-    // });
-
-    return config;
-  },
-});
-
-module.exports = nextConfig;
+module.exports = withExpo(nextConfig);

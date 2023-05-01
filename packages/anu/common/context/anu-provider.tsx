@@ -1,6 +1,6 @@
 import { DripsyAppProps } from 'anu/config/dripsy/provider';
-import { DripsyProvider } from 'config/dripsy';
-import { PortalProvider } from 'config/portals';
+
+import { DripsyProvider, PortalProvider } from '../../config';
 
 type AnuProviderProps = DripsyAppProps;
 

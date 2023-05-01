@@ -1,6 +1,6 @@
 import { getCombinedStylesForView } from 'anu/common/utils';
-import { useTheme } from 'config/dripsy';
-import { Container, Typography } from 'lib';
+import { useTheme } from 'anu/config';
+import { Container, Typography } from 'anu/lib';
 import React from 'react';
 
 import { LetterAvatarProps } from '../../types';
@@ -27,7 +27,9 @@ const LetterAvatar = (props: LetterAvatarProps) => {
       style={getCombinedStylesForView(containerStyle, otherProps.style)}
       sx={{ ...containerSx, ...otherProps.sx }}
     >
-      <Typography.Body style={typographyStyle}>{name[0] + (lastName ? lastName[0] : '')}</Typography.Body>
+      <Typography.Body style={typographyStyle}>
+        {name[0] + (lastName && lastName[0] ? lastName[0] : '')}
+      </Typography.Body>
     </Container>
   );
 };

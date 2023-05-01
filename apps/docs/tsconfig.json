@@ -1,23 +1,11 @@
 {
   "extends": "tsconfig/base.json",
   "compilerOptions": {
-    "jsx": "preserve",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": ".",
-    "paths": {
-      "anu/*": ["../../packages/anu/*"],
-      "lib/*": ["../../packages/anu/lib/*"],
-      "lib": ["../../packages/anu/lib"],
-      "common/*": ["../../packages/anu/common/*"],
-      "config/*": ["../../packages/anu/config/*"],
-      "src/*": ["src/*"],
-      "screens": ["src/screens"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "jsx": "preserve"
   },
-  "include": ["globals.d.ts", "next-env.d.ts", "rn-overrides.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "app-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

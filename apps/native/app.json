@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "Anu - UI Library",
+    "slug": "anu-lib",
+    "version": "1.0.0",
+    "scheme": "anu",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "com.anu.lib",
+      "supportsTablet": true,
+      "jsEngine": "hermes"
+    },
+    "android": {
+      "jsEngine": "hermes"
+    }
+  }
+}

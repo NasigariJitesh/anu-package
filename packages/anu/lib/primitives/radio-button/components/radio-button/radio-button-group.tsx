@@ -1,4 +1,4 @@
-import { Container } from 'lib/primitives';
+import { Container } from 'anu/lib/primitives';
 import { isArray } from 'lodash';
 import { ReactElement, useState } from 'react';
 

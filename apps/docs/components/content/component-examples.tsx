@@ -124,6 +124,11 @@ const RenderExample = (example: Example, index: number) => {
             onPointerUpCapture={undefined}
             automaticallyAdjustKeyboardInsets={undefined}
             automaticallyAdjustsScrollIndicatorInsets={undefined}
+            href={undefined}
+            hrefAttrs={undefined}
+            onClick={undefined}
+            accessibilityLabelledBy={undefined}
+            accessibilityLanguage={undefined}
           >
             <SyntaxHighlighter language='text' style={arduinoLight} customStyle={styles.code}>
               {example.code}

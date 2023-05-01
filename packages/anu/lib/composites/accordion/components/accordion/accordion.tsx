@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import { TouchableRipple } from 'anu/lib';
-import { Container } from 'lib/primitives/layout/components/container/container';
+import { Container } from 'anu/lib/primitives/layout/components/container/container';
 import { createContext, useContext, useState } from 'react';
 import { Animated, View } from 'react-native';
 

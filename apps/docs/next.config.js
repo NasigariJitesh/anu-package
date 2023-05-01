@@ -1,55 +1,28 @@
 const { withExpo } = require('@expo/next-adapter');
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withExpo({
-  i18n: {
-    locales: ['en-US', 'fr', 'en'],
-    defaultLocale: 'en',
-    localeDetection: true,
-  },
-
-  reactStrictMode: true,
-  swcMinify: true,
+const nextConfig = {
+  // reanimated (and thus, Moti) doesn't work with strict mode currently...
+  // https://github.com/nandorojo/moti/issues/224
+  // https://github.com/necolas/react-native-web/pull/2330
+  // https://github.com/nandorojo/moti/issues/224
+  // once that gets fixed, set this back to true
+  reactStrictMode: false,
   transpilePackages: [
     'react-native',
     'react-native-web',
-    'expo',
-    'expo-document-picker',
-    'expo-modules-core',
     'solito',
-    'anu',
-    'react-native-vector-icons',
-    // 'react-native-draggable-flatlist',
-    '@expo/html-elements',
-    '@dripsy/core',
     'dripsy',
+    '@dripsy/core',
+    'moti',
+    'app',
+    'anu',
+    'react-native-reanimated',
+    '@expo/html-elements',
+    'react-native-gesture-handler',
+    'react-native-vector-icons',
     'react-native-safe-area-context',
-    // Add more React Native / Expo packages here...
   ],
-  experimental: {
-    forceSwcTransforms: true,
-    appDir: false,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  async redirects() {
-    return [
-      {
-        source: '/components',
-        destination: '/components/avatar',
-        permanent: false,
-      },
-      {
-        source: '/components/button',
-        destination: '/components/button/common',
-        permanent: true,
-      },
-    ];
-  },
-});
+};
 
-module.exports = nextConfig;
+module.exports = withExpo(nextConfig);

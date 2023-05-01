@@ -1,0 +1,13 @@
+{
+  "extends": "tsconfig/base.json",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "paths": {
+      "app/*": ["./packages/app/*"],
+      "anu/*": ["./packages/anu/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx"]
+}

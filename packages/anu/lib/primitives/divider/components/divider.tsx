@@ -1,7 +1,7 @@
-import { getCombinedStylesForText } from 'common/utils';
-import { useTheme } from 'config/dripsy/theme';
-import Container from 'lib/primitives/layout';
-import Typography from 'lib/primitives/typography';
+import { getCombinedStylesForText } from 'anu/common/utils';
+import { useTheme } from 'anu/config/dripsy/theme';
+import { Container } from 'anu/lib/primitives/layout';
+import Typography from 'anu/lib/primitives/typography';
 import React from 'react';
 
 import { DividerProps } from '../types';

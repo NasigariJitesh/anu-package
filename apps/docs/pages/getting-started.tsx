@@ -111,6 +111,11 @@ const CodeArea = (props: { code: string }) => {
         onPointerUpCapture={undefined}
         automaticallyAdjustKeyboardInsets={undefined}
         automaticallyAdjustsScrollIndicatorInsets={undefined}
+        accessibilityLabelledBy={undefined}
+        accessibilityLanguage={undefined}
+        href={undefined}
+        hrefAttrs={undefined}
+        onClick={undefined}
       >
         <SyntaxHighlighter language='text' style={arduinoLight} customStyle={styles.code}>
           {props.code}

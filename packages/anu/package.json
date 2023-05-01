@@ -1,54 +1,61 @@
 {
   "name": "anu",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0",
   "description": "UI Library inspired by Material Design V3",
-  "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "test": "jest"
-  },
-  "dependencies": {
-    "@gorhom/portal": "^1.0.14",
-    "@material/material-color-utilities": "^0.2.5",
-    "compressorjs": "^1.2.1",
-    "dripsy": "^3.10.0",
-    "expo-blur": "^12.2.2",
-    "expo-document-picker": "^11.2.2",
-    "expo-haptics": "~12.0.1",
-    "libphonenumber-js": "^1.10.26",
-    "react-dropzone": "^14.2.3"
+    "test": "jest",
+    "prepack": "bob build"
   },
   "devDependencies": {
     "@testing-library/jest-native": "^5.4.2",
     "@testing-library/react-native": "^11.5.4",
     "@types/jest": "^29.4.0",
-    "@types/lodash": "^4.14.191",
-    "@types/react": "~18.0.24",
-    "@types/react-native": "~0.71.1",
+    "@types/lodash": "^4.14.194",
     "@types/react-native-vector-icons": "^6.4.13",
     "@types/react-test-renderer": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.49.0",
-    "@typescript-eslint/parser": "^5.49.0",
-    "husky": "^8.0.0",
     "jest": "^29.5.0",
     "jest-expo": "^48.0.2",
-    "lodash": "^4.17.21",
-    "react": "18.1.0",
-    "react-native-gesture-handler": "^2.9.0",
-    "react-native-reanimated": "^2.14.4",
-    "react-native-vector-icons": "^9.2.0",
-    "react-test-renderer": "^18.2.0",
-    "typescript": "^4.6.3"
+    "react": "^18.2.0",
+    "react-native-builder-bob": "^0.20.4",
+    "tsconfig": "*",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@gorhom/portal": "^1.0.14",
+    "dripsy": "^3.6.0",
+    "expo-blur": "^12.2.2",
+    "expo-document-picker": "^11.2.2",
+    "expo-haptics": "~12.0.1",
+    "libphonenumber-js": "^1.10.28",
+    "lodash": "^4.17.21"
   },
   "peerDependencies": {
-    "expo": "~47.0.12",
-    "next": "^13.1.4",
-    "react": "18.1.0",
-    "react-native-vector-icons": "^9.2.0"
+    "expo": ">=47",
+    "next": "*",
+    "react": ">=18",
+    "react-native-gesture-handler": "*",
+    "react-native-reanimated": "*",
+    "react-native-safe-area-context": "*",
+    "react-native-vector-icons": "*"
   },
-  "author": "Aditya Manikanth Rao",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "sideEffects": false,
+  "main": "lib/commonjs/index.js",
+  "react-native": "index.ts",
+  "module": "lib/module/index.js",
+  "types": "lib\\typescript\\packages\\anu\\index.d.ts",
+  "files": [
+    "!**/*.test.ts",
+    "!**/*.test.tsx",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "jest.config.js"
+  ],
+  "react-native-builder-bob": {
+    "source": ".",
+    "output": "dist",
+    "targets": [
+      "commonjs",
+      "module"
+    ]
   }
 }

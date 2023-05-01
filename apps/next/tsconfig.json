@@ -1,19 +1,20 @@
 {
-  "extends": "tsconfig/base.json",
   "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "anu/*": ["../../packages/anu/*"],
-      "lib/*": ["../../packages/anu/lib/*"],
-      "lib": ["../../packages/anu/lib"],
-      "common/*": ["../../packages/anu/common/*"],
-      "config/*": ["../../packages/anu/config/*"],
-      "navigation": ["src/navigation"],
-      "src/*": ["src/*"],
-      "screens": ["src/screens"]
-    }
+    "incremental": true
   },
-  "include": ["globals.d.ts", "next-env.d.ts", "rn-overrides.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "app-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

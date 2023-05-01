@@ -1,5 +1,5 @@
+import { ContainerProps, Icon, Image, ImageProps } from 'anu/lib';
 import { Sx } from 'dripsy';
-import { ContainerProps, Icon, Image, ImageProps } from 'lib';
 import { ReactElement } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 

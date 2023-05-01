@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useMenuContext } from 'screens/common/provider';
 
 const source = Source_Sans_Pro({
@@ -85,12 +85,12 @@ const MetaData = () => {
       </li>
       <li style={style.listItem}>
         <Link href='https://github.com/mocktheta/anu/' style={style.disableLinkStyle}>
-          <MaterialCommunityIcon color={colors?.$onBackground as string} name='github' size={24} />
+          <MaterialCommunityIcons color={colors?.$onBackground as string} name='github' size={24} />
         </Link>
       </li>
       <li style={style.listItem}>
         <Link href='https://discord.gg/S5pxcHyHXR' style={style.disableLinkStyle}>
-          <MaterialCommunityIcon color={colors?.$onBackground as string} name='discord' size={24} />
+          <MaterialCommunityIcons color={colors?.$onBackground as string} name='discord' size={24} />
         </Link>
       </li>
       <li style={style.listItem}>

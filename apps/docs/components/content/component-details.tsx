@@ -1,4 +1,4 @@
-import { Container, LocalizedTypography } from 'lib';
+import { Container, LocalizedTypography } from 'anu/lib';
 import { Source_Sans_Pro } from 'next/font/google';
 
 const source = Source_Sans_Pro({

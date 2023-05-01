@@ -1,5 +1,5 @@
+import { ContainerJustify } from 'anu/lib/primitives/layout/types';
 import { DripsyFinalTheme, SxProp } from 'dripsy';
-import { ContainerJustify } from 'lib/primitives/layout/types';
 import { StyleProp, ViewStyle } from 'react-native';
 
 import { DividerProps } from '../types';
@@ -87,7 +87,7 @@ const getDividerCommonStyles = (props: Partial<DividerProps>, theme: DripsyFinal
 
   const { orientation, align, pattern, thickness } = props;
   let borderWidth = thickness;
-  if (pattern === 'double-line' && thickness && thickness < 3) borderWidth = 3;
+  if (pattern === 'double-line' && thickness && +thickness < 3) borderWidth = 3;
   const style: StyleProp<ViewStyle> = { overflow: 'visible' };
   const sx: SxProp = { color: props.style?.color ?? (colors?.$onBackground as string) };
 

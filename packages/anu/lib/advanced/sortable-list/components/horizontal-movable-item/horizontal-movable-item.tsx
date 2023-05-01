@@ -1,5 +1,5 @@
 import { useTheme } from 'anu/config';
-import { getThemeMode } from 'anu/config/dripsy/theme';
+import { getThemeMode } from 'anu/config';
 import { Container } from 'anu/lib/primitives';
 import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';

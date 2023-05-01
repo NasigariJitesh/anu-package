@@ -1,4 +1,4 @@
-import { Provider } from 'anu/common/context';
+import { AnuProvider } from 'anu/common/context';
 import { ReactChildren } from 'anu/common/types';
 import { makeTheme, PortalProvider } from 'anu/config';
 import { AnuSnackbarProvider } from 'anu/lib';
@@ -76,7 +76,7 @@ export default function RootLayout(props: {
   };
 
   return (
-    <Provider ssr theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
+    <AnuProvider ssr theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
       <AnuLocalizationProvider default={locale?.includes('fr') ? 'fr' : 'en'}>
         <PortalProvider>
           <AnuSnackbarProvider>
@@ -88,6 +88,6 @@ export default function RootLayout(props: {
           </AnuSnackbarProvider>
         </PortalProvider>
       </AnuLocalizationProvider>
-    </Provider>
+    </AnuProvider>
   );
 }

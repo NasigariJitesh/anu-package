@@ -1,4 +1,4 @@
-import { getColorInRGBA } from 'common/utils';
+import { getColorInRGBA } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 import { ViewProps } from 'react-native';
 
@@ -86,12 +86,11 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
 export const getSwitchStyles = (props: SwitchProps, state: boolean, defaultTheme: DripsyFinalTheme) => {
   const theme = getSwitchTheme(defaultTheme);
 
-  const thumb: ViewProps['style'] = {
+  const thumb = {
     ...(props.disabled ? theme.thumbDisabled : (theme.thumb as Record<string, unknown>)),
     backgroundColor: getThumbColor(props, state, defaultTheme),
-
     ...(props.thumbStyle as Record<string, never>),
-  };
+  } as const;
 
   const trackTheme = props.disabled ? theme.trackDisabled : theme.track;
 

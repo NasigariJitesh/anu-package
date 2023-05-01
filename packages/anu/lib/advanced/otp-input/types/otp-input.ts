@@ -1,4 +1,4 @@
-import { TextFieldContainerStyle } from 'lib';
+import { TextFieldContainerStyle } from 'anu/lib';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export interface OTPInputProps {
