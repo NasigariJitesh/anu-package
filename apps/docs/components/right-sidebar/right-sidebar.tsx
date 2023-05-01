@@ -40,6 +40,7 @@ import { snackbarIndex } from 'services/docs/snackbar';
 import { switchIndex } from 'services/docs/switch';
 import { textFieldIndex } from 'services/docs/text-field';
 import { themingIndex } from 'services/docs/theming';
+import { timePickerIndex } from 'services/docs/time-picker';
 import { touchableRippleIndex } from 'services/docs/touchable-ripple';
 import { typographyIndex } from 'services/docs/typography';
 import { TextLink } from 'solito/link';
@@ -304,6 +305,11 @@ const RenderIndex = () => {
     case '/components/touchable-ripple': {
       {
         return <Index {...touchableRippleIndex} />;
+      }
+    }
+    case '/components/time-picker': {
+      {
+        return <Index {...timePickerIndex} />;
       }
     }
     case '/components/typography': {
