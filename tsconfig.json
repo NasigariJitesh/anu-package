@@ -4,8 +4,7 @@
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
     "paths": {
-      "app/*": ["./packages/app/*"],
-      "anu/*": ["./packages/anu/*"]
+      "app/*": ["./packages/app/*"]
     }
   },
   "exclude": ["node_modules"],
