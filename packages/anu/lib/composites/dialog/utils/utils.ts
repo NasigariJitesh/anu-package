@@ -18,7 +18,11 @@ export const getDialogStyles = (theme: DripsyFinalTheme, props: DialogProps, dim
     shadowRadius: 6.27,
     backgroundColor: theme.colors.$surfaceContainerHigh,
     ...(props.type === 'full-screen'
-      ? { width: dimensions.width, height: dimensions.height }
+      ? {
+          ...(dimensions.width > 768
+            ? { maxWidth: 560, margin: 56 }
+            : { width: dimensions.width, height: dimensions.height }),
+        }
       : { marginHorizontal: 16, borderRadius: 28 }),
   };
 

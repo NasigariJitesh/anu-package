@@ -1,21 +1,17 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
-import { useTheme } from 'anu/config/dripsy/theme';
-import { Button, DatePickerInput, DatePickerModal, Icon, Image, TextField, TouchableRipple } from 'anu/lib';
-import Checkbox from 'anu/lib/primitives/checkbox/components/checkbox';
+import { DatePickerModal, TextField, TouchableRipple } from 'anu/lib';
 import Container from 'anu/lib/primitives/layout/components/container';
 import Typography from 'anu/lib/primitives/typography/components';
-import { Text, View } from 'dripsy';
-import { useCallback, useRef, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { useState } from 'react';
 
 const HomeScreen = () => {
   const [text, setText] = useState('');
   const [text1, setText1] = useState(false);
-  const [inputDate3, setInputDate3] = useState<Date[]>([]);
-  const [inputDate, setInputDate] = useState<Date | undefined>();
-  const [inputDate1, setInputDate1] = useState<Date | undefined>();
+  const [inputDate3] = useState<Date[]>([]);
+  const [inputDate] = useState<Date | undefined>();
+  const [inputDate1] = useState<Date | undefined>();
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, paddingTop: 10 }}>
