@@ -16,14 +16,19 @@ export const getDialogStyles = (theme: DripsyFinalTheme, props: DialogProps, dim
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
+    borderRadius: 28,
     backgroundColor: theme.colors.$surfaceContainerHigh,
     ...(props.type === 'full-screen'
       ? {
           ...(dimensions.width > 768
-            ? { maxWidth: 560, margin: 56 }
-            : { width: dimensions.width, height: dimensions.height }),
+            ? { maxWidth: 560, margin: 56, height: dimensions.height - 112 }
+            : { width: dimensions.width, height: dimensions.height, borderRadius: 0 }),
         }
-      : { marginHorizontal: 16, borderRadius: 28 }),
+      : {
+          marginHorizontal: 16,
+
+          ...(dimensions.width > 768 ? { maxWidth: dimensions.width / 3 } : {}),
+        }),
   };
 
   const modalBackground = {
