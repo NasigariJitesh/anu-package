@@ -1,5 +1,5 @@
 import { ReactChildren } from 'anu/common/types';
-import { ContainerAlign, ContainerJustify, ContainerProps, IconType } from 'anu/lib/primitives';
+import { ContainerAlign, ContainerJustify, ContainerProps, IconType } from 'anu/lib';
 import { ReactElement } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 

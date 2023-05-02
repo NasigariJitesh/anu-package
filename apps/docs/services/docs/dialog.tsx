@@ -38,7 +38,7 @@ const RenderItem = ({ item }: { item: { label: string } }) => {
   return (
     <TouchableRipple>
       <Container flexDirection='row' align='center'>
-        <Avatar name='A' />
+        <Avatar name='A' variant='circle' />
         <Typography.Body style={{ flex: 1, marginLeft: 16 }}>{item.label}</Typography.Body>
         <Checkbox id={item.label} selected={true} />
       </Container>
@@ -183,10 +183,10 @@ const Example4 = () => {
             data={data}
             keyExtractor={(item) => item.label}
             renderItem={RenderItem}
-            style={{ width: '100%', maxHeight: 200 }}
+            style={{ width: '100%', maxHeight: 220 }}
             showsVerticalScrollIndicator={false}
           />
-          <Divider light color={theme.colors?.$onSurfaceVariant as string} />
+          <Divider light color={theme.colors?.$onSurfaceVariant as string} style={{ marginVertical: 0 }} />
         </DialogContent>
         <DialogActions justify='flex-end'>
           <Button.Text title='Action 1' />

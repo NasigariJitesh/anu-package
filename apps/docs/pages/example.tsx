@@ -54,8 +54,8 @@ export default function Example() {
         <Container sx={{ height: 100, width: 100 }}>Press here</Container>
       </TouchableRipple>
 
-      <Dialog visible={text} onDismiss={() => setText(false)} type='full-screen'>
-        <DialogTitle type='full-screen' title='Dialog Title' onDismiss={() => setText(false)} />
+      <Dialog visible={text} onDismiss={() => setText(false)} style={{ position: 'absolute', top: 100, left: 100 }}>
+        <DialogTitle title='Dialog Title' />
         <DialogContent>
           <Typography.Body>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
