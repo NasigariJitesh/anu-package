@@ -31,7 +31,7 @@ export const enhanceTextWithMask = (text: string, mask: string, previousValue: s
       continue;
     }
 
-    for (let maskDigitIndex = 0; maskDigitIndex < maskPart.length; maskDigitIndex++) {
+    for (let maskDigitIndex = 0; maskDigitIndex < maskPart!.length; maskDigitIndex++) {
       const currentCharacter = textPart[maskDigitIndex];
 
       if (isBackSpace && currentCharacter === undefined) {

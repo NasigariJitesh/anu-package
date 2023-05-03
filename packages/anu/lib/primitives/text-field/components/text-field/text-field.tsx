@@ -1,10 +1,10 @@
 /* eslint-disable react/display-name */
+import { generateHoverStyles, getCombinedStylesForText } from 'anu/common/utils';
+import { useTheme } from 'anu/config';
 import { IconButton } from 'anu/lib';
-import { generateHoverStyles, getCombinedStylesForText } from 'common/utils';
-import { useTheme } from 'config/dripsy';
+import { Container } from 'anu/lib/primitives/layout';
+import Typography from 'anu/lib/primitives/typography';
 import { Pressable, TextInput, useSx } from 'dripsy';
-import Container from 'lib/primitives/layout';
-import Typography from 'lib/primitives/typography';
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import {
   GestureResponderEvent,

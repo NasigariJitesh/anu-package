@@ -1,5 +1,5 @@
-import { useTheme } from 'config/dripsy/theme';
-import { Container, Typography } from 'lib/primitives';
+import { useTheme } from 'anu/config/dripsy/theme';
+import { Container, Typography } from 'anu/lib/primitives';
 
 import { CardTitleProps } from '../../types/card';
 import { getCardTitleStyle } from '../../utils';

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { generateHoverStyles } from 'common/utils';
-import { useTheme } from 'config/dripsy';
+import { generateHoverStyles } from 'anu/common/utils';
+import { useTheme } from 'anu/config';
+import { Container, TouchableRipple, Typography } from 'anu/lib/primitives';
 import { useSx } from 'dripsy';
-import { Container, TouchableRipple, Typography } from 'lib/primitives';
 import { useEffect, useState } from 'react';
 import { PressableStateCallbackType } from 'react-native';
 

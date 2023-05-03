@@ -1,33 +1,29 @@
 import 'raf/polyfill';
 import 'setimmediate';
-import '../public/fonts/font.css';
 
-import { Provider } from 'anu/common/context';
-import { makeTheme } from 'dripsy';
-import type { AppProps } from 'next/app';
-import { NextSeo } from 'next-seo';
-
-interface PageProperties extends AppProps {
-  pageProps: {
-    seo?: Record<string, never>;
-  };
-}
-
-const theme = makeTheme({});
+import { Provider } from 'app/provider';
+import Head from 'next/head';
+import type { SolitoAppProps } from 'solito';
 
 /**
  *
- * @param props
+ * @param root0
+ * @param root0.Component
+ * @param root0.pageProps
  */
-export default function App(props: PageProperties) {
-  const { Component, pageProps } = props;
-
+function MyApp({ Component, pageProps }: SolitoAppProps) {
   return (
     <>
-      {pageProps?.seo ? <NextSeo {...pageProps.seo} /> : null}
-      <Provider theme={theme}>
+      <Head>
+        <title>Solito Example App</title>
+        <meta name='description' content='Expo + Next.js with Solito. By Fernando Rojo.' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <Provider>
         <Component {...pageProps} />
       </Provider>
     </>
   );
 }
+
+export default MyApp;

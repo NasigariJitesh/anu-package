@@ -1,6 +1,6 @@
-import { getCombinedStylesForImage } from 'common/utils';
-import { useTheme } from 'config/dripsy';
-import { Image } from 'lib';
+import { getCombinedStylesForImage } from 'anu/common/utils';
+import { useTheme } from 'anu/config';
+import { Image } from 'anu/lib';
 import { useState } from 'react';
 import { ImageErrorEventData, ImageLoadEventData, NativeSyntheticEvent } from 'react-native';
 

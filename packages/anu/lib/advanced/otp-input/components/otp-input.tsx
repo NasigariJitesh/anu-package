@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import { getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { Container, TextField, TextFieldReferenceProps, Typography } from 'lib';
+import { Container, TextField, TextFieldReferenceProps, Typography } from 'anu/lib';
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
 import { NativeSyntheticEvent, StyleProp, TextInputKeyPressEventData, TextStyle } from 'react-native';
 
@@ -30,7 +30,9 @@ interface IndividualOTPFieldProps {
 const getInitialArray = (value: string, numberOfDigits: number, type?: 'alphabetic' | 'alphanumeric' | 'numeric') => {
   const array: string[] = Array.from({ length: numberOfDigits });
 
-  for (const [index, char] of [...array].entries()) {
+  const newArray = [...array];
+
+  for (const [index, char] of newArray.entries()) {
     array.splice(index, 1, char ?? '');
   }
 

@@ -1,5 +1,3 @@
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable react-native/no-inline-styles */
 import {
   Button,
   Container,
@@ -7,6 +5,8 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Tab,
+  Tabs,
   TimePickerModal,
   TouchableRipple,
   Typography,
@@ -17,6 +17,7 @@ import { useCallback, useState } from 'react';
  *
  */
 export default function Example() {
+  const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState(false);
   const [visible1, setVisible1] = useState(false);
@@ -37,6 +38,31 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      <Tabs active={active} onChange={setActive} type='primary' maxWidth={500}>
+        <Tab name='One' icon={{ name: 'favorite' }}>
+          <Typography.Body>
+            This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
+            is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
+            very long snack, This is very long snack
+          </Typography.Body>
+        </Tab>
+        <Tab name='Two'>
+          <Container sx={{ backgroundColor: 'yellow' }}>
+            <Typography.Body>
+              This is Two very long snack, This is very long snack , This is very long snack, This is very long snack ,
+              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
+              is very long snack, This is very long snack
+            </Typography.Body>
+          </Container>
+        </Tab>
+        <Tab name='One' icon={{ name: 'favorite' }}>
+          <Typography.Body>
+            This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
+            is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
+            very long snack, This is very long snack
+          </Typography.Body>
+        </Tab>
+      </Tabs>
       <Container flexDirection='row'>
         <Button.Text onPress={() => setVisible(true)} title='pick time' />
         <Button.Text onPress={() => setVisible1(true)} title='pick time 24hrs' />
@@ -62,7 +88,7 @@ export default function Example() {
           </Typography.Body>
         </DialogContent>
         <DialogActions justify='flex-end'>
-          <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+          <Button.Outlined title='Action' />
           <Button.Filled title='Action' />
         </DialogActions>
       </Dialog>

@@ -1,5 +1,6 @@
 import { PortalProvider } from '@gorhom/portal';
-import { ReactChildren } from 'common/types';
+
+import { ReactChildren } from '../../common/types';
 
 interface PortalAppProps {
   children: ReactChildren;

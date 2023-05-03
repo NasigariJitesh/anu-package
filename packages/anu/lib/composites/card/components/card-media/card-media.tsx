@@ -1,5 +1,5 @@
-import { getCombinedStylesForImage } from 'common/utils';
-import { Image } from 'lib/primitives';
+import { getCombinedStylesForImage } from 'anu/common/utils';
+import { Image } from 'anu/lib/primitives';
 
 import { CardMediaProps } from '../../types/card';
 import { getCardMediaStyle } from '../../utils';

@@ -21,9 +21,9 @@ export const convertHexCodeToRgb = (hex: string) => {
 
   if (result)
     return {
-      red: Number.parseInt(result[1], 16),
-      green: Number.parseInt(result[2], 16),
-      blue: Number.parseInt(result[3], 16),
+      red: Number.parseInt(result[1]!, 16),
+      green: Number.parseInt(result[2]!, 16),
+      blue: Number.parseInt(result[3]!, 16),
     } satisfies RGB;
 
   return null;

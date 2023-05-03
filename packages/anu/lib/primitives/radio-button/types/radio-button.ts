@@ -1,6 +1,6 @@
-import { ExtendedDisabledStyles, ExtendedHoverStyles, Flex } from 'common/types';
-import { ContainerAlign } from 'lib/primitives/layout/types';
-import { ContainerJustify } from 'lib/primitives/layout/types/container';
+import { ExtendedDisabledStyles, ExtendedHoverStyles, Flex } from 'anu/common/types';
+import { ContainerAlign } from 'anu/lib/primitives/layout/types';
+import { ContainerJustify } from 'anu/lib/primitives/layout/types/container';
 import { StyleProp, ViewStyle } from 'react-native';
 import { TextStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 

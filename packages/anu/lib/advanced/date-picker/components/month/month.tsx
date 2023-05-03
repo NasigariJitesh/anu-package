@@ -39,7 +39,6 @@ const Month = (props: MonthProps) => {
     onPressDate,
     scrollMode,
     primaryColor,
-    selectColor,
     roundness,
     disableWeekDays,
     locale,

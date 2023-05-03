@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
-import { getCombinedStylesForView } from 'common/utils';
-import { useTheme } from 'config/dripsy';
+import { getCombinedStylesForView } from 'anu/common/utils';
+import { useTheme } from 'anu/config';
 import { View } from 'dripsy';
 import React, { forwardRef } from 'react';
 import { View as NativeView } from 'react-native';

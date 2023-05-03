@@ -1,6 +1,6 @@
-import { IconButton } from 'lib/primitives/button/components/icon-button';
-import Container from 'lib/primitives/layout/components/container';
-import Typography from 'lib/primitives/typography/components';
+import { IconButton } from 'anu/lib/primitives/button/components/icon-button';
+import { Container } from 'anu/lib/primitives/layout';
+import Typography from 'anu/lib/primitives/typography';
 
 import { SideSheetProps } from '../../types';
 import { getHeaderStyles } from '../../utils';

@@ -1,7 +1,7 @@
+import { generateHoverStyles } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { generateHoverStyles } from 'common/utils';
+import { Container, Icon, TouchableRipple, Typography } from 'anu/lib/primitives';
 import { useSx } from 'dripsy';
-import { Container, Icon, TouchableRipple, Typography } from 'lib/primitives';
 import { useEffect, useState } from 'react';
 import { GestureResponderEvent, PressableStateCallbackType } from 'react-native';
 

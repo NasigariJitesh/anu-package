@@ -43,4 +43,9 @@ export const defaultProps: TextFieldProps = {
   cursorColor: undefined,
   verticalAlign: undefined,
   label: 'Text Field',
+  href: undefined,
+  hrefAttrs: undefined,
+  onClick: undefined,
+  accessibilityLabelledBy: undefined,
+  accessibilityLanguage: undefined,
 };

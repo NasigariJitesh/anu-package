@@ -1,4 +1,4 @@
-import { Container } from 'lib/primitives';
+import { Container } from 'anu/lib/primitives';
 import { useState } from 'react';
 
 import { SegmentedButtonGroupProps } from '../../types/segmented-button';
