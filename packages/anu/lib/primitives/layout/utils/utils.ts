@@ -1,4 +1,4 @@
-import { getMaxWidthInPixels } from 'common/utils';
+import { getMaxWidthInPixels } from 'anu/common/utils';
 import { SxProp } from 'dripsy';
 import { StyleProp, ViewStyle } from 'react-native';
 

@@ -1,7 +1,7 @@
-import { ReactChildren } from 'common/types';
 import { DripsyCustomTheme, DripsyProvider as Provider } from 'dripsy';
 
-import { ColorMode } from './index';
+import { ReactChildren } from '../../common/types';
+import { ColorMode } from '..';
 
 export interface DripsyAppProps {
   children: ReactChildren;

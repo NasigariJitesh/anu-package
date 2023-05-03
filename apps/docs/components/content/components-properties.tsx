@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import { getColorInRGBA } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { Container, Divider, LocalizedTypography, Typography } from 'anu/lib';
+import { Container, Divider, Typography } from 'anu/lib';
+import LocalizedTypography from 'anu/lib/advanced/smart-localization';
 import { DripsyFinalTheme } from 'dripsy';
 import { Source_Sans_Pro } from 'next/font/google';
 import { View } from 'react-native';

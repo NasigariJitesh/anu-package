@@ -1,4 +1,4 @@
-import { ReactChildren } from 'common/types';
+import { ReactChildren } from 'anu/common/types';
 import { Sx } from 'dripsy';
 import { StyleProp, TextStyle } from 'react-native';
 

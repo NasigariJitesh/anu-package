@@ -48,11 +48,11 @@ const checkForMatch = (countryCodesData: Options[], countryAlphabeticalCode?: st
 const getDefaultCountry = (countryCode: string, asYouType: AsYouType, countryCodesData: Options[]) => {
   asYouType.input(countryCode);
   const match = checkForMatch(countryCodesData, asYouType.country);
-  if (match.length === 1) return match[0].value as CountryCodeObject;
+  if (match.length === 1) return match[0]!.value as CountryCodeObject;
   else if (match.length > 1) {
     const exactMatch = match.filter((country) => (country.value as CountryCodeObject).countryCode === countryCode);
 
-    if (exactMatch.length === 1) return exactMatch[0].value as CountryCodeObject;
+    if (exactMatch.length === 1) return exactMatch[0]!.value as CountryCodeObject;
   }
 };
 
@@ -164,7 +164,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
 
     //Check for the exact match of the country code
     if (matchedCountry.length === 1) {
-      setCurrentCountry(matchedCountry[0].value as CountryCodeObject);
+      setCurrentCountry(matchedCountry[0]!.value as CountryCodeObject);
     } else if (matchedCountry.length > 1) {
       const exactMatch = matchedCountry.filter((country) => {
         return text
@@ -173,7 +173,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
           .includes((country.value as CountryCodeObject).countryCode);
       });
 
-      if (exactMatch.length === 1) setCurrentCountry(exactMatch[0].value as CountryCodeObject);
+      if (exactMatch.length === 1) setCurrentCountry(exactMatch[0]!.value as CountryCodeObject);
     } else if (selectedCountry && text.split(' ').join('').includes(selectedCountry?.countryCode)) {
       // do nothing
     } else {

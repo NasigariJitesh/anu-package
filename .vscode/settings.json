@@ -8,6 +8,5 @@
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
   "eslint.run": "onType",
-  "files.autoSave": "onWindowChange",
-  "vue.features.codeActions.enable": false
+  "files.autoSave": "onWindowChange"
 }

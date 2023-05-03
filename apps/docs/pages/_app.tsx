@@ -1,5 +1,6 @@
-/* eslint-disable react/no-unknown-property */
 /* eslint-disable react-native/no-inline-styles */
+import 'raf/polyfill';
+import 'setimmediate';
 import '../public/fonts/font.css';
 
 import { Container } from 'anu/lib';

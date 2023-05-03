@@ -1,7 +1,7 @@
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import { AvatarGroupProps } from '../../types';
 import { getAvatarContainerStyle, getAvatarGroupStyle } from '../../utils';
@@ -38,7 +38,7 @@ const AvatarGroup = (props: AvatarGroupProps) => {
     marginRight,
   } = getAvatarGroupStyle(props, theme);
 
-  let style = getAvatarContainerStyle(avatars[0], baseZIndex + totalChildren, marginRight, theme, size);
+  let style = getAvatarContainerStyle(avatars[0]!, baseZIndex + totalChildren, marginRight, theme, size);
 
   let remaining = 0;
 

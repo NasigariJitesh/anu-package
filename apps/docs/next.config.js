@@ -1,41 +1,29 @@
 const { withExpo } = require('@expo/next-adapter');
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withExpo({
+const nextConfig = {
+  reactStrictMode: false,
+  swcMinify: true,
   i18n: {
     locales: ['en-US', 'fr', 'en'],
     defaultLocale: 'en',
     localeDetection: true,
   },
-
-  reactStrictMode: true,
-  swcMinify: true,
   transpilePackages: [
     'react-native',
     'react-native-web',
-    'expo',
-    'expo-document-picker',
-    'expo-modules-core',
     'solito',
-    'anu',
-    'react-native-vector-icons',
-    // 'react-native-draggable-flatlist',
-    '@expo/html-elements',
-    '@dripsy/core',
     'dripsy',
+    '@dripsy/core',
+    'moti',
+    'app',
+    'anu',
+    'react-native-reanimated',
+    '@expo/html-elements',
+    'react-native-gesture-handler',
+    'react-native-vector-icons',
     'react-native-safe-area-context',
-    // Add more React Native / Expo packages here...
   ],
-  experimental: {
-    forceSwcTransforms: true,
-    appDir: false,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   async redirects() {
     return [
       {
@@ -50,6 +38,6 @@ const nextConfig = withExpo({
       },
     ];
   },
-});
+};
 
-module.exports = nextConfig;
+module.exports = withExpo(nextConfig);
