@@ -164,17 +164,17 @@ const SwiperInner = (props: SwiperProps & { width: number; height: number }) => 
                     key={vi}
                     // eslint-disable-next-line react-native/no-inline-styles
                     style={{
-                      top: isHorizontal ? 0 : getVerticalMonthsOffset(visibleIndexes[vi]),
-                      left: isHorizontal ? getHorizontalMonthOffset(visibleIndexes[vi], width) : 0,
+                      top: isHorizontal ? 0 : getVerticalMonthsOffset(visibleIndexes[vi]!),
+                      left: isHorizontal ? getHorizontalMonthOffset(visibleIndexes[vi]!, width) : 0,
                       right: isHorizontal ? undefined : 0,
                       bottom: isHorizontal ? 0 : undefined,
                       position: 'absolute',
                       width: isHorizontal ? width : undefined,
-                      height: isHorizontal ? undefined : getMonthHeight(scrollMode, visibleIndexes[vi]),
+                      height: isHorizontal ? undefined : getMonthHeight(scrollMode, visibleIndexes[vi]!),
                     }}
                   >
                     {renderItem({
-                      index: visibleIndexes[vi],
+                      index: visibleIndexes[vi]!,
                       onPrev: onPrevious,
                       onNext: onNext,
                     })}

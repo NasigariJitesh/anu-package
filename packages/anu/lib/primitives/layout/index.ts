@@ -1,2 +1,2 @@
-export { default } from './components';
+export { Container } from './components/container/container';
 export * from './types';

@@ -8,9 +8,9 @@
  *
  *  @todo - Add default values for the props
  */
-import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'common/types';
+import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'anu/common/types';
+import { IconProps, IconSource } from 'anu/lib/primitives/icon';
 import { Pressable } from 'dripsy';
-import { IconProps, IconSource } from 'lib/primitives/icon';
 import { ReactElement } from 'react';
 import { ButtonProps as RNButtonProps, StyleProp, TextStyle } from 'react-native';
 

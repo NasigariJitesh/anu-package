@@ -1,6 +1,5 @@
-import { getCombinedStylesForText } from 'common/utils';
-import { useTheme } from 'config/dripsy';
-
+import { getCombinedStylesForText } from '../../../../../common/utils';
+import { useTheme } from '../../../../../config';
 import { TitleProps } from '../../types';
 import { getFontStyles } from '../../utils';
 import { RenderComponent } from '../common';

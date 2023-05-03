@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
-import { Container, FlatList, LocalizedTypography, useAnuLocalization } from 'anu/lib';
+import { Container, FlatList } from 'anu/lib';
+import LocalizedTypography, { useAnuLocalization } from 'anu/lib/advanced/smart-localization';
 import ComponentDetails from 'components/content/component-details';
 import SEO from 'components/seo';
 import { DripsyFinalTheme, useSx } from 'dripsy';

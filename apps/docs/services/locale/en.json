@@ -59,9 +59,6 @@
   "leftSideBar:file-drop-zone": "File dropzone",
   "leftSideBar:divider": "Divider",
   "leftSideBar:image": "Image",
-  "leftSideBar:menu": "Menu",
-  "leftSideBar:menu-list": "Menu list",
-  "leftSideBar:menu-item": "Menu item",
   "leftSideBar:input-fields": "Input Fields",
   "leftSideBar:text-fields": "Text Fields",
   "leftSideBar:otp-input": "OTP Input",
@@ -69,7 +66,6 @@
   "leftSideBar:radio": "Radio Button",
   "leftSideBar:search": "Search",
   "leftSideBar:side-sheet": "Side Sheet",
-  "leftSideBar:snackbar": "Snackbar",
   "leftSideBar:switch": "Switch",
   "leftSideBar:touchable-ripple": "Touchable Ripple",
   "leftSideBar:typography": "Typography",
@@ -519,47 +515,6 @@
   "imageDocumentation:property-alt-description": "A string that defines an alternative text description of the image, which will be read by the screen reader when the user interacts with it.",
   "imageDocumentation:external-properties-title": "React Native Image Properties",
 
-  "menuDocumentation:mainHeading": "Menu",
-  "menuDocumentation:mainDescription": "Menus provide a standardized way of displaying a list of options for the user to choose from, to provide a hierarchical structure of content and functionality.\n\nMenus can be implemented in various ways, with a button, and with an icon button.",
-  "menuDocumentation:example1-name": "Default",
-  "menuDocumentation:example1-description": "A default menu contains list items, icons, a divider, and other supporting icons.",
-  "menuDocumentation:example2-name": "Nested Menu",
-  "menuDocumentation:example3-name": "Menu - with an icon button",
-  "menuDocumentation:example3-description": "A menu with an icon button displays a list of options when an icon button is clicked.",
-  "menuDocumentation:property-isOpen-description": "Whether the menu is open.",
-  "menuDocumentation:property-onMenuToggle-description": "Callback to be called when the menu is to toggled between open and close.",
-  "menuDocumentation:property-component-description": "The component that controls menu.",
-
-  "menuDocumentation:property-children-description": "Menu list Component comprising of Menu Items.",
-
-  "menuDocumentation:additionalInformation-title": "See also",
-  "menuDocumentation:additionalInformation-info1": "<a  class=\"documentation-link\" target=\"blank\" href=\"/components/menu/list\" title=\"Card Actions\">Menu List</a>.",
-  "menuDocumentation:additionalInformation-info2": "<a  class=\"documentation-link\" target=\"blank\" href=\"/components/menu/item\" title=\"Card Actions\">Menu Item</a>.",
-
-  "menuListDocumentation:mainHeading": "Menu List",
-
-  "menuListDocumentation:example1-name": "Default",
-  "menuListDocumentation:example1-description": "A default menu list contains items, icons, a divider, and other supporting icons.",
-
-  "menuListDocumentation:property-inner-description": "Whether the menu is nested inside another menu.",
-  "menuListDocumentation:property-pos-description": "The co-ordinates of the position of the menu.",
-
-  "menuListDocumentation:external-properties-title": " Container Properties",
-
-  "menuItemDocumentation:mainHeading": "Menu Item",
-
-  "menuItemDocumentation:example1-name": "Default",
-  "menuItemDocumentation:example1-description": "A menu item contains trailing icon, leading icon, trailing text.",
-
-  "menuItemDocumentation:property-children-description": "The content of the menu item.",
-  "menuItemDocumentation:property-inset-description": "If true, additional padding (inset) is added on the left.",
-  "menuItemDocumentation:property-leadingIcon-description": "The icon displayed on the left side of the menu item.",
-  "menuItemDocumentation:property-pos-description": "The icon displayed on the right side of the menu item.",
-  "menuItemDocumentation:property-trailingIcon-description": "The co-ordinates of the position of the menu.",
-  "menuItemDocumentation:property-trailingText-description": "The icon displayed on the right side of the menu item.",
-
-  "menuItemDocumentation:external-properties-title": " Pressable Properties",
-
   "textFieldDocumentation:mainHeading": "Text Field",
   "textFieldDocumentation:mainDescription": "Text fields allow users to enter text into a UI. They typically appear in forms and dialogs. There are two types of text fields: filled and outlined.",
   "textFieldDocumentation:property-variant-description": "The type of the text field",
@@ -670,31 +625,6 @@
   "sideSheetDocumentation:property-onCloseButtonPress-description": "Callback function when the close button is pressed.",
   "sideSheetDocumentation:property-handleStyles-description": "Styles for the handle.",
   "sideSheetDocumentation:property-containerStyles-description": "Styles for the bottom sheet.",
-
-  "snackbarDocumentation:mainHeading": "Snackbar",
-  "snackbarDocumentation:mainDescription": "A Snackbar is a small pop-up message that appears at the bottom of the screen to provide brief feedback or alerts to the user. It will automatically disappear after a set period or when the user interacts with it.\n\nIt will automatically disappear after a set period or when the user interacts with it.",
-
-  "snackbarDocumentation:configuration-step1-name": "Provider",
-  "snackbarDocumentation:configuration-step1-description": "For usage of snackbar, firstly snackbar provider is to be imported and wrapped around the application in <b>App.tsx</b>.</br></br>The Default Configuration is optional, but when provided, is applied to all the snackbar in the application",
-
-  "snackbarDocumentation:property-content-description": "The content to be displayed in snackbar.",
-  "snackbarDocumentation:property-duration-description": "The duration for which snackbar is to be displayed.",
-  "snackbarDocumentation:property-numberOfLines-description": "Maximum number of lines allowed for the content typography component.",
-  "snackbarDocumentation:property-action-description": "The action that is to be displayed in snackbar.",
-  "snackbarDocumentation:property-icon-description": "The icon to be displayed in snackbar.",
-  "snackbarDocumentation:property-longerAction-description": "Whether the action is of longerAction variant.",
-  "snackbarDocumentation:property-position-description": "Position of the Snackbar.",
-  "snackbarDocumentation:property-align-description": "Horizontal alignment of the snackbar.",
-  "snackbarDocumentation:property-style-description": "Styles for the snackbar.",
-  "snackbarDocumentation:property-contentStyle-description": "Styles for the snackbar content.",
-
-  "snackbarDocumentation:example1-name": "Single-line Snack bars",
-  "snackbarDocumentation:example1-description": "The Single-line snack bars display a short message with a single line of text.\n\nThese are used to provide brief feedback or alerts to the user without interrupting their workflow. They can also include an icon or an action for the user to take, such as “Undo” or “Dismiss”.",
-  "snackbarDocumentation:example2-name": "Double-line Snack bars",
-  "snackbarDocumentation:example2-description": "The Double-line snack bars display a longer, descriptive message or text. They can also include an icon or an action button to provide additional information or options to the user.",
-  "snackbarDocumentation:example3-name": "Snackbar - with duration",
-  "snackbarDocumentation:example4-name": "Snackbar - with align",
-  "snackbarDocumentation:example5-name": "Snackbar - with position",
 
   "switchDocumentation:mainHeading": "Switch",
   "switchDocumentation:mainDescription": "A switch allows users to toggle between two states, typically on and off, by clicking or tapping on it. It is commonly used to turn settings or features on or off in various types of user interfaces.",

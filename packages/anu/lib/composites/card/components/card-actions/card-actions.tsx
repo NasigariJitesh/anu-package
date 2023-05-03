@@ -1,5 +1,5 @@
-import { getCombinedStylesForView } from 'common/utils';
-import { Container } from 'lib/primitives';
+import { getCombinedStylesForView } from 'anu/common/utils';
+import { Container } from 'anu/lib/primitives';
 
 import { CardActionsProps } from '../../types/card';
 import { getCardActionsStyle } from '../../utils';

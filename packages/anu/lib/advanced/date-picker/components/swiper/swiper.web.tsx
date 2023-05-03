@@ -149,15 +149,15 @@ const VerticalScroll = (props: VerticalScrollProps) => {
             // eslint-disable-next-line react-native/no-inline-styles
             style={{
               willChange: 'transform',
-              transform: `translateY(${getVerticalMonthsOffset(visibleIndexes[vi])}px)`,
+              transform: `translateY(${getVerticalMonthsOffset(visibleIndexes[vi]!)}px)`,
               left: 0,
               right: 0,
               position: 'absolute',
-              height: getMonthHeight('vertical', visibleIndexes[vi]),
+              height: getMonthHeight('vertical', visibleIndexes[vi]!),
             }}
           >
             {renderItem({
-              index: visibleIndexes[vi],
+              index: visibleIndexes[vi]!,
               onPrev: empty,
               onNext: empty,
             })}

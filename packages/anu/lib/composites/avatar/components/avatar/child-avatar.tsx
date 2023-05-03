@@ -1,6 +1,6 @@
-import { getCombinedStylesForView } from 'common/utils';
-import { useTheme } from 'config/dripsy';
-import { Container, Typography } from 'lib';
+import { getCombinedStylesForView } from 'anu/common/utils';
+import { useTheme } from 'anu/config';
+import { Container, Typography } from 'anu/lib';
 import React from 'react';
 
 import { ChildrenAvatarProps } from '../../types';

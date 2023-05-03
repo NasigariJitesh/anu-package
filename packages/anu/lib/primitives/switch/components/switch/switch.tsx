@@ -1,4 +1,4 @@
-import { useTheme } from 'config/dripsy';
+import { useTheme } from 'anu/config';
 import { Pressable } from 'dripsy';
 import { useEffect, useRef, useState } from 'react';
 import { Animated, PressableStateCallbackType, Switch as RNSwitch } from 'react-native';
@@ -133,7 +133,8 @@ const Switch = (props: Partial<SwitchProps>) => {
   };
 
   return (
-    <Pressable accessibilityRole='switch' {...finalProps} sx={{ position: 'relative' }}>
+    // @ts-expect-error React native does not recognize accessibilityRole as a valid prop anymore
+    <Pressable accessibilityRole={'switch'} {...finalProps} sx={{ position: 'relative' }}>
       {/* Track Component */}
       <Pressable
         style={(states) => getFocus(states, toggleIsTrackFocused, isTrackFocused, toggleIsTrackHovered)}
@@ -161,7 +162,7 @@ const Switch = (props: Partial<SwitchProps>) => {
                     isOn
                     ? theme.colors.$primaryContainer
                     : theme.colors.$onSurfaceVariant
-                  : styles.thumb.backgroundColor,
+                  : styles?.thumb?.backgroundColor,
             },
           ]}
         >

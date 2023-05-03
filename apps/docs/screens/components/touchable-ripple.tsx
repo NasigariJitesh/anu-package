@@ -1,8 +1,8 @@
 import Content from 'components/content';
 import { touchableRippleDocumentation } from 'services/docs/touchable-ripple';
 
-const TouchableRipple = () => {
+const TouchableRippleDocument = () => {
   return <Content values={touchableRippleDocumentation} />;
 };
 
-export default TouchableRipple;
+export default TouchableRippleDocument;

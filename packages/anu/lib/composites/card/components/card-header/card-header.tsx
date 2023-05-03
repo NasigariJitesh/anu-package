@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/no-nested-ternary */
 import { useTheme } from 'anu/config';
-import { Container, Typography } from 'lib/primitives';
+import { Container, Typography } from 'anu/lib/primitives';
 
 import { CardHeaderProps } from '../../types/card';
 import { getCardHeaderStyle } from '../../utils';

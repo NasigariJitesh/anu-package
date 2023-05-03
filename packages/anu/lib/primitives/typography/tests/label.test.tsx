@@ -1,10 +1,9 @@
 import DripsyApp from 'anu/common/context/anu-provider';
 import { makeTheme } from 'anu/config';
-import React from 'react';
+import Typography from 'anu/lib/primitives/typography';
 import renderer from 'react-test-renderer';
 
 import { RenderComponent } from '../components/common';
-import Typography from '../index';
 
 describe('Testing for Typography.Label', () => {
   const innerText = 'Label';

@@ -1,6 +1,6 @@
-import { MaterialIconProps } from 'lib/primitives/icon/types/icon';
-import { ContainerProps } from 'lib/primitives/layout/types';
-import { TitleProps } from 'lib/primitives/typography/types';
+import { MaterialIconProps } from 'anu/lib/primitives/icon/types/icon';
+import { ContainerProps } from 'anu/lib/primitives/layout/types';
+import { TitleProps } from 'anu/lib/primitives/typography/types';
 import React from 'react';
 
 export interface AccordionProps {

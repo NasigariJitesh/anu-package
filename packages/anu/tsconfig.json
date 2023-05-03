@@ -1,14 +1,5 @@
 {
   "extends": "tsconfig/base.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "anu/*": ["./*"],
-      "common/*": ["./common/*"],
-      "config/*": ["./config/*"],
-      "lib/*": ["./lib/*"]
-    }
-  },
   "exclude": ["node_modules"],
-  "include": ["globals.d.ts", "index.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

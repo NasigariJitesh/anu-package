@@ -1,7 +1,7 @@
 import PlaceHolderImage from 'anu/assets/avatar-placeholder.png';
 import { getCombinedStylesForImage } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { Image } from 'lib';
+import { Image } from 'anu/lib';
 
 import { ImageAvatarProps } from '../../../types';
 import { getImageAvatarStyle } from '../../../utils';

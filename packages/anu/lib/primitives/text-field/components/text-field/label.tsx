@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useTheme } from 'config/dripsy';
+import { useTheme } from 'anu/config';
 import { useEffect, useRef, useState } from 'react';
 import { Animated, TextStyle, ViewStyle } from 'react-native';
 

@@ -1,5 +1,5 @@
-import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'common/types';
-import { IconStyle } from 'lib/primitives/icon';
+import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'anu/common/types';
+import { IconStyle } from 'anu/lib/primitives/icon';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export interface CheckBoxStyle extends ExtendedDisabledStyles, ExtendedHoverStyles {}

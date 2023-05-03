@@ -42,7 +42,7 @@ export const addMonths = (date: Date, count: number) => {
  * @param root0.month
  */
 export const getDaysInMonth = ({ year, month }: { year: number; month: number }): number => {
-  return [31, isLeapYear({ year }) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+  return [31, isLeapYear({ year }) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month]!;
 };
 
 /**

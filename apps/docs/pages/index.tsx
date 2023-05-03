@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @next/next/no-img-element */
 import { useTheme } from 'anu/config';
-import { Button, Chip, Container, FlatList, Icon, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import { Button, Chip, Container, FlatList, Icon, Typography } from 'anu/lib';
+import LocalizedTypography, { useAnuLocalization } from 'anu/lib/advanced/smart-localization';
 import Footer from 'components/footer';
 import { DripsyFinalTheme, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
