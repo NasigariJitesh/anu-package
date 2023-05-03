@@ -100,7 +100,7 @@ const BottomSheet = forwardRef<BottomSheetReferenceProps, BottomSheetProps>((pro
   // This will generate style with smooth animation based on the position
   const rnBottomSheetStyle = useAnimatedStyle(() => {
     return { transform: [{ translateY: translateY.value }] };
-  });
+  }, [translateY]);
 
   const rnHandleStyle = useAnimatedStyle(() => {
     const opacity = interpolate(translateY.value, [maxTranslateY + 50, maxTranslateY], [1, 0], Extrapolate.CLAMP);
@@ -108,7 +108,7 @@ const BottomSheet = forwardRef<BottomSheetReferenceProps, BottomSheetProps>((pro
     // EXPERIMENTAL
     return { opacity: maxTranslateY > -SCREEN_HEIGHT + startCoordinate ? 1 : opacity };
     // return {opacity}
-  });
+  }, [maxTranslateY]);
 
   return (
     <GestureDetector gesture={gesture}>

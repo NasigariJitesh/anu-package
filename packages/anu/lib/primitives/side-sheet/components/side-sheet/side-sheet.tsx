@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { useTheme } from 'config/dripsy';
+import { useTheme } from 'anu/config';
 import React, { forwardRef, useCallback, useImperativeHandle } from 'react';
 import { SafeAreaView } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
@@ -115,7 +115,7 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
   // This will generate style with smooth animation based on the position
   const rnSideSheetStyle = useAnimatedStyle(() => {
     return { transform: [{ translateX: translateX.value }] };
-  });
+  }, [translateX]);
 
   return (
     <GestureDetector gesture={gesture}>

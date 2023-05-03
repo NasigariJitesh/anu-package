@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
-import { Container, FlatList, Icon, LocalizedTypography, useAnuLocalization } from 'anu/lib';
+import { Container, FlatList, Icon } from 'anu/lib';
+import LocalizedTypography, { useAnuLocalization } from 'anu/lib/advanced/smart-localization';
 import ComponentDetails from 'components/content/component-details';
 import SEO from 'components/seo';
 import { DripsyFinalTheme, ScrollView, useSx } from 'dripsy';
@@ -111,6 +112,11 @@ const CodeArea = (props: { code: string }) => {
         onPointerUpCapture={undefined}
         automaticallyAdjustKeyboardInsets={undefined}
         automaticallyAdjustsScrollIndicatorInsets={undefined}
+        accessibilityLabelledBy={undefined}
+        accessibilityLanguage={undefined}
+        href={undefined}
+        hrefAttrs={undefined}
+        onClick={undefined}
       >
         <SyntaxHighlighter language='text' style={arduinoLight} customStyle={styles.code}>
           {props.code}

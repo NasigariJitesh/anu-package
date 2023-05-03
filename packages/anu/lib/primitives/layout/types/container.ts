@@ -1,4 +1,4 @@
-import { BreakPoints, Flex } from 'common/types';
+import { BreakPoints, Flex } from 'anu/common/types';
 import { SxProp, View } from 'dripsy';
 import { StyleProp, ViewStyle } from 'react-native';
 

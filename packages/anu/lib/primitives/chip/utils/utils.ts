@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/no-nested-ternary */
-import { getColorInRGBA } from 'common/utils';
+import { getColorInRGBA } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
 import { ChipContainerStyle, ChipProps } from '../types';

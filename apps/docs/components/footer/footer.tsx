@@ -2,7 +2,8 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @next/next/no-img-element */
 import { useTheme } from 'anu/config';
-import { Container, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import { Container, Typography } from 'anu/lib';
+import LocalizedTypography, { useAnuLocalization } from 'anu/lib/advanced/smart-localization';
 import { DripsyFinalTheme, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';

@@ -14,6 +14,10 @@
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "module": "esnext",
-    "isolatedModules": true
-  }
+    "downlevelIteration": true,
+    "isolatedModules": false,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "include": ["globals.d.ts", "index.d.ts", "rnw-overrides.d.ts", "**/*.ts", "**/*.tsx"]
 }

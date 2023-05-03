@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { ExtendedHoverStyles } from 'common/types';
 import { useSx as SxType } from 'dripsy';
 import { ImageStyle, PressableStateCallbackType, StyleProp, TextStyle, ViewStyle } from 'react-native';
+
+import { ExtendedHoverStyles } from '../../common/types';
 
 /**
  * To convert the maxWidth into pixels

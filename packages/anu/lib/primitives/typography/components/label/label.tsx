@@ -1,5 +1,5 @@
-import { getCombinedStylesForText } from 'common/utils';
-import { useTheme } from 'config/dripsy';
+import { getCombinedStylesForText } from 'anu/common/utils';
+import { useTheme } from 'anu/config';
 
 import { LabelProps } from '../../types';
 import { getFontStyles } from '../../utils';

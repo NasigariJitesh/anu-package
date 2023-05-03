@@ -1,7 +1,7 @@
-import { useTheme } from 'config/dripsy/theme';
-import Icon from 'lib/primitives/icon/components/icon';
-import { Container } from 'lib/primitives/layout/components/container/container';
-import Typography from 'lib/primitives/typography/components';
+import { useTheme } from 'anu/config';
+import Icon from 'anu/lib/primitives/icon';
+import { Container } from 'anu/lib/primitives/layout';
+import Typography from 'anu/lib/primitives/typography';
 
 import { AccordionHeaderProps } from '../../types';
 import { getAccordionHeaderStyles } from '../../utils';
