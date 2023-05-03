@@ -1,4 +1,4 @@
-import { getColorInRGBA } from 'common/utils';
+import { getColorInRGBA } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
 import { ExtendedFABProps } from '../types';

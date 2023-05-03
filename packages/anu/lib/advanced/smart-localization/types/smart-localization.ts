@@ -101,9 +101,24 @@ export interface AnuLocalizationContext {
    * @returns translated string from the correct file
    */
   getTranslation: (key: string, locale?: string) => string;
+
+  /**
+   * Directory where the translation filed are located
+   */
+  directory: string;
 }
 
 export interface AnuLocalizationProviderProps {
   children: ReactChildren;
+
+  /**
+   * Default locale to be used when the application is loaded.
+   * If you are using a framework which provides a locale, you can use that as the default locale.
+   */
   default: string;
+
+  /**
+   * Directory where the translation filed are located
+   */
+  directory: string;
 }

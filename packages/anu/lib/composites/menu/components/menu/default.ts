@@ -1,5 +1,3 @@
 import { MenuProps } from '../../types';
 
-export const defaultProps: MenuProps = {
-  disabled: false,
-};
+export const defaultProps: Partial<MenuProps> = {};

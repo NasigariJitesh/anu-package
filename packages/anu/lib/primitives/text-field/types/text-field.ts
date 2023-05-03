@@ -1,4 +1,4 @@
-import { ExtendedDisabledStyles, ExtendedHoverStyles, ReactChildren } from 'common/types';
+import { ExtendedDisabledStyles, ExtendedHoverStyles, ReactChildren } from 'anu/common/types';
 import { Pressable, SxProp, TextInput } from 'dripsy';
 import { MutableRefObject } from 'react';
 import { PressableStateCallbackType, StyleProp, TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native';

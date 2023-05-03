@@ -1,4 +1,4 @@
-import { Container } from 'lib/primitives/layout/components/container/container';
+import { Container } from 'anu/lib/primitives/layout';
 
 import { AccordionChildrenProps } from '../../types';
 import { getChildrenStyles } from '../../utils';

@@ -1,7 +1,8 @@
-import { getCombinedStylesForText, getCombinedStylesForView } from 'common/utils';
-import { useTheme } from 'config/dripsy';
-import { Container, Typography } from 'lib/primitives';
+import { getCombinedStylesForText, getCombinedStylesForView } from 'anu/common/utils';
+import { useTheme } from 'anu/config';
 
+import { Container } from '../../layout';
+import Typography from '../../typography';
 import { BadgeProps, NumberBadgeProps, StringBadgeProps } from '../types';
 import { getBadgeStyle, getBadgeValue, getContainerStyle, getContentStyle, isNumberBadge, showBadge } from '../utils';
 import { defaultProps } from './default';

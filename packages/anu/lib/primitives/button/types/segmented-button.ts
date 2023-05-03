@@ -1,4 +1,4 @@
-import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'common/types';
+import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'anu/common/types';
 import { ReactElement } from 'react';
 import { ButtonProps as RNButtonProps, StyleProp, TextStyle, ViewStyle } from 'react-native';
 

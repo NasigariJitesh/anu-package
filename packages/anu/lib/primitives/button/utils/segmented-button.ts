@@ -1,6 +1,6 @@
-import { getColorInRGBA } from 'common/utils';
+import { getColorInRGBA } from 'anu/common/utils';
+import { GetButtonStylesReturnType } from 'anu/lib/primitives/button/utils';
 import { DripsyFinalTheme } from 'dripsy';
-import { GetButtonStylesReturnType } from 'lib/primitives/button/utils';
 
 import { SegmentedButtonProps } from '../types/segmented-button';
 

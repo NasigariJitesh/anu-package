@@ -1,5 +1,5 @@
-import { useTheme } from 'config/dripsy';
-import Icon from 'lib/primitives/icon';
+import { useTheme } from 'anu/config';
+import Icon from 'anu/lib/primitives/icon';
 import { View } from 'react-native';
 
 import { ChipProps } from '../../types';
