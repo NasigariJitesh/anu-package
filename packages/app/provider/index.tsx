@@ -1,18 +1,10 @@
-import { AnuProvider } from 'anu/common/context';
-import { ReactChildren } from 'anu/common/types';
-import { makeTheme } from 'anu/config';
-
-import { NavigationProvider } from './navigation';
+import { Provider as AnuProvider } from './anu';
 
 /**
  *
  * @param root0
  * @param root0.children
  */
-export function Provider({ children }: { children: ReactChildren }) {
-  return (
-    <NavigationProvider>
-      <AnuProvider theme={makeTheme({})}>{children}</AnuProvider>
-    </NavigationProvider>
-  );
+export function Provider({ children }: { children: React.ReactNode }) {
+  return <AnuProvider>{children}</AnuProvider>;
 }
