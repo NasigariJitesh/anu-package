@@ -20,7 +20,7 @@ const Divider = (props: DividerProps) => {
   const { sx, style } = getDividerStyle(finalProps, theme);
 
   return (
-    <Container disableGutters style={style} sx={sx}>
+    <Container disableGutters style={style} sx={{ ...sx, ...finalProps.style }}>
       {finalProps.text ? (
         <Typography.Body style={getCombinedStylesForText(defaultTextStyle(theme), props.textStyle)}>
           {finalProps.text}

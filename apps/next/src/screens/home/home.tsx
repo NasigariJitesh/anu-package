@@ -1,40 +1,61 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
-import { Button, TouchableRipple, Typography, useSnackbar } from 'anu/lib';
+import { useTheme } from 'anu/config/dripsy/theme';
+import { Button, DatePickerInput, DatePickerModal, Icon, Image, TextField, TouchableRipple } from 'anu/lib';
+import Checkbox from 'anu/lib/primitives/checkbox/components/checkbox';
 import Container from 'anu/lib/primitives/layout/components/container';
+import Typography from 'anu/lib/primitives/typography/components';
+import { Text, View } from 'dripsy';
+import { useCallback, useRef, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 
 const HomeScreen = () => {
-  const { add, close } = useSnackbar();
+  const [text, setText] = useState('');
+  const [text1, setText1] = useState(false);
+  const [inputDate3, setInputDate3] = useState<Date[]>([]);
+  const [inputDate, setInputDate] = useState<Date | undefined>();
+  const [inputDate1, setInputDate1] = useState<Date | undefined>();
 
   return (
-    <Container flexDirection='column' sx={{ flex: 1, paddingTop: 30 }}>
-      <TouchableRipple onPress={() => console.log('Pressed')}>
+    <Container flexDirection='column' justify='space-between' sx={{ flex: 1, paddingTop: 10 }}>
+      {/* <DatePickerInput
+        locale='en'
+        label='Birthdate'
+        value={inputDate}
+        onChange={(d) => setInputDate(d)}
+        inputMode='start'
+        autoComplete='birthdate-full'
+        withModal={true}
+      /> */}
+
+      <TextField value={text} onChangeText={setText} containerStyle={{ width: 250 }} />
+
+      <DatePickerModal
+        dates={inputDate3}
+        startDate={inputDate}
+        allowEditing={true}
+        endDate={inputDate1}
+        visible={text1}
+        onDismiss={() => {
+          setText1(false);
+        }}
+        mode='single'
+        locale='en'
+        onConfirm={() => {
+          console.log();
+        }}
+      />
+
+      <TouchableRipple
+        onPress={() => {
+          setText1(true);
+        }}
+      >
         <Container align='center' justify='center' sx={{ height: 200, width: 200 }}>
           <Typography.Body>Press anywhere</Typography.Body>
         </Container>
       </TouchableRipple>
-      <Button.Text
-        title='add snack'
-        onPress={() => {
-          add({
-            content: 'First Snack',
-            style: { height: 70 },
-          });
-        }}
-      />
-      <Button.Text
-        title='add snack 2'
-        onPress={() => {
-          add({
-            content:
-              'This is very long snack, This is very long snack , This is very long snack, This is very long snack ,   This is very long snack, This is very long snack , This is very long snack, This is very long snack , This is very long snack, This is very long snack  ',
-            action: { title: 'Close', onPress: close },
-            icon: { icon: { name: 'close' }, type: 'standard', onPress: close },
-            duration: 10_000,
-          });
-        }}
-      />
     </Container>
   );
 };

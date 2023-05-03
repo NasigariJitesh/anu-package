@@ -1,22 +1,53 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 
-export const TabsContext = createContext<{
-  goTo: (index: number) => void;
-  index: number;
+const TabsContext = createContext<{
+  active: number;
+  setActive: (value: number) => void;
 }>({
-  goTo: () => null,
-  index: 0,
+  setActive: () => null,
+  active: 0,
 });
 
 /**
  *
  */
-export function useTabNavigation() {
-  return useContext(TabsContext).goTo;
+export function useTabsContext() {
+  return useContext(TabsContext);
 }
+
 /**
  *
+ * @param root0
+ * @param root0.children
+ * @param root0.defaultActiveTab
+ * @param root0.onChange
  */
-export function useTabIndex() {
-  return useContext(TabsContext).index;
+function TabsProvider({
+  children,
+  defaultActiveTab,
+  onChange,
+}: {
+  children: React.ReactNode;
+  defaultActiveTab?: number;
+  onChange?: (value: number) => void;
+}) {
+  const [active, updateActive] = useState(defaultActiveTab ?? 0);
+
+  const setActive = (activeTab: number) => {
+    updateActive(activeTab);
+    if (onChange) onChange(activeTab);
+  };
+
+  return (
+    <TabsContext.Provider
+      value={{
+        active,
+        setActive,
+      }}
+    >
+      {children}
+    </TabsContext.Provider>
+  );
 }
+
+export { TabsContext, TabsProvider };

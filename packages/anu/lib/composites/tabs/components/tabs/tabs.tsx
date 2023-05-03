@@ -1,52 +1,59 @@
-import * as React from 'react';
-import { Platform } from 'react-native';
+import { getCombinedStylesForView } from 'anu/common/utils';
+import { useTheme } from 'anu/config';
+import { Container, Divider } from 'anu/lib';
+import React, { useState } from 'react';
 
 import { TabsProps } from '../../types';
-import { createCache, getDefaultIndex } from '../../utils';
-import Swiper from '../swiper';
+import { getTabsStyles } from '../../utils';
+import { defaultProps } from './default';
+import Tab from './tab';
+import TabHeader from './tab-header';
 
-// used to persist position on web
-
-/**
- *
- * @param props
- */
 const Tabs = (props: TabsProps) => {
+  const finalProps = { ...defaultProps, ...props };
+
   const {
-    onChangeIndex,
+    active: propsActive,
+    onChange,
     children,
-    persistKey,
-    style,
-    defaultIndex,
-    mode = 'fixed',
-    disableSwipe = false,
-    type = 'primary',
-  } = props;
+    contentStyle,
+    tabHeaderStyle,
+    activeTabHeaderStyle,
+    type,
+    ...containerProps
+  } = finalProps;
 
-  const cache = createCache();
+  const [active, setActive] = useState(propsActive ?? 0);
 
-  const onInnerChangeIndex = React.useCallback(
-    (newIndex: number) => {
-      if (persistKey && Platform.OS === 'web') {
-        cache.set(persistKey, newIndex);
-      }
-      onChangeIndex?.(newIndex);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [persistKey, onChangeIndex],
-  );
+  const theme = useTheme();
+
+  const styles = getTabsStyles();
+
+  const updateActive = (activeTab: number) => {
+    setActive(activeTab);
+    if (onChange) onChange(activeTab);
+  };
 
   return (
-    <Swiper
-      style={style}
-      defaultIndex={getDefaultIndex(defaultIndex, persistKey)}
-      onChangeIndex={onInnerChangeIndex}
-      mode={mode}
-      disableSwipe={disableSwipe}
-      type={type}
+    <Container
+      disableGutters
+      {...containerProps}
+      style={getCombinedStylesForView(styles.container, containerProps.style)}
     >
-      {children}
-    </Swiper>
+      <TabHeader
+        tabs={children}
+        updateActive={updateActive}
+        activeTabHeaderStyle={activeTabHeaderStyle}
+        tabHeaderStyle={tabHeaderStyle}
+        active={active}
+        type={type}
+      />
+      <Divider thickness={1} color={theme.colors.$surfaceVariant} variant='full-width' style={styles.divider} />
+      <Tab
+        {...props.children[active].props}
+        style={getCombinedStylesForView(contentStyle, props.children[active].props.style)}
+      />
+    </Container>
   );
 };
 

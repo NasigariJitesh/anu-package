@@ -43,6 +43,8 @@ declare module 'dripsy' {
       $inverseOnSurface: 'string';
       $inversePrimary: 'string';
       $scrim: 'string';
+      $surfaceContainerHigh: 'string';
+      $surfaceContainerHighest: 'string';
     };
   }
 }

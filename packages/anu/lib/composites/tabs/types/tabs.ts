@@ -1,77 +1,38 @@
 import { ReactChildren } from 'anu/common/types';
-import { IconType } from 'anu/lib/primitives';
-import { MutableRefObject, ReactElement, RefObject } from 'react';
-import {
-  Animated,
-  GestureResponderEvent,
-  LayoutChangeEvent,
-  LayoutRectangle,
-  StyleProp,
-  TextStyle,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { ContainerProps, IconType } from 'anu/lib/primitives';
+import { ReactElement } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
 
-export type AnimatedViewStyle = Animated.AnimatedProps<StyleProp<ViewStyle>>;
-export type AnimatedTextStyle = Animated.AnimatedProps<StyleProp<TextStyle>>;
-export type Mode = 'fixed' | 'scrollable';
-
-export interface AnimatedColorArguments {
-  tabIndex: number;
-  active: boolean;
-  position?: Animated.Value;
-  offset?: Animated.Value;
-  textColor: string;
-  activeColor: string;
-  childrenCount: number;
+export interface TabsProps extends ContainerProps {
+  active?: number;
+  onChange?: (active: number) => void;
+  children: ReactElement<TabProps>[];
+  contentStyle?: StyleProp<ViewStyle>;
+  tabHeaderStyle?: StyleProp<ViewStyle>;
+  activeTabHeaderStyle?: StyleProp<ViewStyle>;
+  type?: 'primary' | 'secondary';
 }
 
-export interface IndicatorArguments {
-  layouts: MutableRefObject<Record<string, LayoutRectangle> | null>;
-  index: number;
-  childrenCount: number;
-  position?: Animated.Value;
-  offset?: Animated.Value;
-  tabsLayout: LayoutRectangle | null;
+export interface TabHeaderProps {
+  tabs: ReactElement<TabProps>[];
+  tabHeaderStyle?: StyleProp<ViewStyle>;
+  activeTabHeaderStyle?: StyleProp<ViewStyle>;
+  updateActive: (value: number) => void;
+  active: number;
+  type?: 'primary' | 'secondary';
 }
-export type IndicatorReturns = [RefObject<View> | undefined, () => void, AnimatedViewStyle | null];
-export interface OffsetScrollArguments {
-  index: number;
-  offset: Animated.Value | undefined;
-  updateScroll: (direction?: undefined | 'next' | 'prev') => void;
-  mode: Mode;
-}
-export interface TabScreenProps {
-  label: string;
-  icon?: IconType;
+
+export interface TabProps extends ContainerProps {
   children: ReactChildren;
-  onPress?: (event: GestureResponderEvent) => void;
-  onPressIn?: (event: GestureResponderEvent) => void;
-  disabled?: boolean;
-}
-export interface TabHeaderItemProps {
-  tab: ReactElement<TabScreenProps>;
-  tabIndex: number;
-  active: boolean;
-  goTo: (index: number) => void;
-  onTabLayout: (index: number, event: LayoutChangeEvent) => void;
-  activeColor: string;
-  textColor: string;
-  position?: Animated.Value;
-  offset?: Animated.Value;
-  childrenCount: number;
-  mode: Mode;
-  type?: 'primary' | 'secondary';
+  name: string;
+  icon?: IconType | ReactElement;
 }
 
-export interface TabsProps {
-  children: ReactElement<TabScreenProps>[];
-  persistKey?: string;
-  style?: ViewStyle;
-  defaultIndex?: number;
-  uppercase?: boolean;
-  mode?: Mode;
+export interface HeaderItemProps extends TabProps {
+  onPress: (value: number) => void;
+  isActive: boolean;
+  index: number;
   type?: 'primary' | 'secondary';
-  onChangeIndex?: (index: number) => void;
-  disableSwipe?: boolean;
+  tabHeaderStyle?: StyleProp<ViewStyle>;
+  activeTabHeaderStyle?: StyleProp<ViewStyle>;
 }

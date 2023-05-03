@@ -120,7 +120,7 @@ const CodeArea = (props: { code: string }) => {
   );
 };
 
-const Step = (props: StepProps) => {
+export const Step = (props: StepProps) => {
   const theme = useTheme();
   const sx = useSx();
   const { getTranslation } = useAnuLocalization();

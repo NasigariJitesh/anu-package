@@ -14,12 +14,16 @@ const nextConfig = withExpo({
     'react-native',
     'react-native-web',
     'expo',
+    'expo-document-picker',
+    'expo-modules-core',
     'solito',
     'anu',
     'react-native-vector-icons',
+    // 'react-native-draggable-flatlist',
     '@expo/html-elements',
     '@dripsy/core',
     'dripsy',
+    'react-native-safe-area-context',
     // Add more React Native / Expo packages here...
   ],
   experimental: {
