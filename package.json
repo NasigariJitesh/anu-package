@@ -1,32 +1,33 @@
 {
-  "name": "my-turborepo",
-  "version": "0.0.0",
+  "name": "@anu/monorepo",
+  "description": "Anu Monorepo with the actual code for the library and docs, examples, etc",
   "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "test": "turbo run test",
-    "test:anu": "cd packages/anu && yarn run test",
-    "dev": "turbo run dev",
-    "dev:docs": "cd apps/docs && yarn run dev",
-    "lint": "turbo run lint -- --cache --cache-strategy content --fix",
-    "format": "prettier --write . ",
-    "clean": "npx rimraf -f **/node_modules **/.eslintcache",
-    "clean-install": "yarn clean && yarn",
-    "prepare": "husky install"
+    "native": "cd apps/native && yarn start",
+    "web": "cd apps/next && yarn next",
+    "docs": "cd apps/docs && yarn next",
+    "lint": "eslint .",
+    "format": "prettier --write . "
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
-    "prettier": "latest",
-    "turbo": "latest",
-    "husky": "latest"
+    "@types/react": "^18.0.17",
+    "@types/react-native": "^0.69.5",
+    "eslint": "^8.21.0",
+    "tsconfig": "*",
+    "turbo": "^1.4.2",
+    "typescript": "^4.7.4"
   },
-  "engines": {
-    "node": ">=14.0.0"
+  "resolutions": {
+    "metro": "^0.73.1",
+    "metro-resolver": "^0.73.1"
   },
-  "dependencies": {},
-  "packageManager": "yarn@1.22.19"
+  "nohoist": [
+    "**/expo-router",
+    "**/expo-router/**"
+  ],
+  "packageManager": "yarn@3.4.1"
 }

@@ -9,9 +9,9 @@
  *  @todo - Add default values for the props
  */
 
-import { ExtendedDisabledStyles, ExtendedElevatedStyles, ExtendedHoverStyles } from 'common/types';
+import { ExtendedDisabledStyles, ExtendedElevatedStyles, ExtendedHoverStyles } from 'anu/common/types';
+import { IconProps, IconSource } from 'anu/lib/primitives/icon';
 import { Pressable } from 'dripsy';
-import { IconProps, IconSource } from 'lib/primitives/icon';
 import { ViewProps } from 'react-native';
 
 /**

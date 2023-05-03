@@ -1,5 +1,5 @@
-import { useTheme } from 'config/dripsy/theme';
-import { Container, Icon, TouchableRipple, Typography } from 'lib/primitives';
+import { useTheme } from 'anu/config/dripsy/theme';
+import { Container, Icon, TouchableRipple, Typography } from 'anu/lib/primitives';
 
 import { DialogTitleProps } from '../../types';
 import { getDialogTitleStyles } from '../../utils';

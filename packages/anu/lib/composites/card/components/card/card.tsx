@@ -1,6 +1,6 @@
-import { getCombinedStylesForView } from 'common/utils';
-import { useTheme } from 'config/dripsy/theme';
-import { Container } from 'lib/primitives';
+import { getCombinedStylesForView } from 'anu/common/utils';
+import { useTheme } from 'anu/config/dripsy/theme';
+import { Container } from 'anu/lib/primitives';
 
 import { CardProps } from '../../types/card';
 import { getCardStyles } from '../../utils';

@@ -1,5 +1,6 @@
 import { useTheme } from 'anu/config';
-import { Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import { Container, FlatList, Typography } from 'anu/lib';
+import LocalizedTypography, { useAnuLocalization } from 'anu/lib/advanced/smart-localization';
 import { ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
@@ -406,6 +407,11 @@ const RightSidebar = () => {
         StickyHeaderComponent={undefined}
         automaticallyAdjustKeyboardInsets={undefined}
         automaticallyAdjustsScrollIndicatorInsets={undefined}
+        href={undefined}
+        hrefAttrs={undefined}
+        onClick={undefined}
+        accessibilityLabelledBy={undefined}
+        accessibilityLanguage={undefined}
       >
         <RenderIndex />
       </ScrollView>

@@ -1,6 +1,6 @@
-import { getCombinedStylesForView } from 'common/utils';
-import { useTheme } from 'config/dripsy/theme';
-import { Container } from 'lib/primitives';
+import { getCombinedStylesForView } from 'anu/common/utils';
+import { useTheme } from 'anu/config/dripsy/theme';
+import { Container } from 'anu/lib/primitives';
 import { Modal, StyleSheet, TouchableWithoutFeedback, useWindowDimensions } from 'react-native';
 
 import { DialogProps } from '../../types';

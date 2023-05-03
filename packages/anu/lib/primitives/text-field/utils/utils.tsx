@@ -1,4 +1,4 @@
-import { getColorInRGBA } from 'common/utils';
+import { getColorInRGBA } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 import { StyleProp, TextStyle } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';

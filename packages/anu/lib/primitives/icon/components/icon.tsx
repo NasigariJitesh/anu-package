@@ -1,4 +1,4 @@
-import { useTheme } from 'config/dripsy';
+import { useTheme } from 'anu/config';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { MaterialIconProps } from '../types';

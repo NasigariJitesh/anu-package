@@ -1,5 +1,6 @@
 import { useTheme } from 'anu/config';
-import { Container, Divider, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import { Container, Divider, Typography } from 'anu/lib';
+import LocalizedTypography, { useAnuLocalization } from 'anu/lib/advanced/smart-localization/components';
 import { DripsyFinalTheme, useSx } from 'dripsy';
 import { Source_Sans_Pro } from 'next/font/google';
 import { View } from 'react-native';

@@ -1,7 +1,6 @@
 import Typography from 'anu/lib/primitives/typography';
 
 import { LocalizedTitleProps } from '../types';
-import { getLocalizedTranslation } from '../utils/utils';
 import { useAnuLocalization } from './provider';
 
 /**
@@ -10,9 +9,9 @@ import { useAnuLocalization } from './provider';
  * @param {Partial<LocalizedTitleProps> & { localeKey: string }} props - all the props related to the component
  */
 const LocalizedTitle: React.FC<Partial<LocalizedTitleProps> & { localeKey: string }> = (props) => {
-  const { currentLocale } = useAnuLocalization();
+  const { getTranslation } = useAnuLocalization();
 
-  return <Typography.Title {...props}>{getLocalizedTranslation(props.localeKey, currentLocale)}</Typography.Title>;
+  return <Typography.Title {...props}>{getTranslation(props.localeKey)}</Typography.Title>;
 };
 
 export default LocalizedTitle;

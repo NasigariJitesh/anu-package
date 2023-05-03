@@ -101,8 +101,8 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
     fireEvent(screen.getByTestId('auto-complete-test'), 'onFocus');
     const buttons = screen.getAllByRole('button');
     fireEvent(screen.getByTestId('auto-complete-test'), 'onChangeText', 'abc');
-    fireEvent(buttons[1], 'onPress');
-    fireEvent(buttons[0], 'onPress');
+    fireEvent(buttons[1]!, 'onPress');
+    fireEvent(buttons[0]!, 'onPress');
   });
 
   it('should trigger focus handler', () => {
@@ -125,7 +125,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
     fireEvent(screen.getByTestId('auto-complete-test'), 'onFocus');
     const buttons = screen.getAllByRole('button');
     fireEvent(screen.getByTestId('auto-complete-test'), 'onChangeText', 'abc');
-    fireEvent(buttons[0], 'onPress');
+    fireEvent(buttons[0]!, 'onPress');
   });
 
   it('should trigger blur handler', () => {

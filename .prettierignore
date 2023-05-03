@@ -1,6 +1,0 @@
-.next/
-.husky
-.*ignore
-assets
-coverage/
-yarn.lock

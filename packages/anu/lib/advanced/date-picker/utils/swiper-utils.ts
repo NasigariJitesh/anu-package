@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MutableRefObject, useCallback, useEffect, useRef } from 'react';
+import { MutableRefObject, useEffect } from 'react';
 
 import { useLatest } from '../hooks';
 import { addMonths, differenceInMonths, getRealIndex, startAtIndex } from './date-utils';
