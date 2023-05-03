@@ -26,8 +26,6 @@ const AnuLocalizationProvider: FC<AnuLocalizationProviderProps> = (props) => {
   };
 
   const getTranslation = (key: string, value = currentLocale) => {
-    console.log(props.directory);
-
     return getLocalizedTranslation(key, value, props.directory);
   };
 

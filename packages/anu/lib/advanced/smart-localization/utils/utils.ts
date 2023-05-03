@@ -12,6 +12,7 @@
 export const getLocalizedTranslation = (key: string, locale: string, directory: string) => {
   try {
     const file = require(`../../../../../../${directory}/${locale}.json` as const);
+    // const file = require(`../../../../../../apps/docs/services/locale/${locale}.json` as const);
 
     if (!file[key]) {
       console.error(`No Translation in place for ${key} in ${locale}.json`);

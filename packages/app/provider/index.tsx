@@ -1,4 +1,7 @@
-import { Dripsy } from './dripsy';
+import { AnuProvider } from 'anu/common/context';
+import { ReactChildren } from 'anu/common/types';
+import { makeTheme } from 'anu/config';
+
 import { NavigationProvider } from './navigation';
 
 /**
@@ -6,10 +9,10 @@ import { NavigationProvider } from './navigation';
  * @param root0
  * @param root0.children
  */
-export function Provider({ children }: { children: React.ReactNode }) {
+export function Provider({ children }: { children: ReactChildren }) {
   return (
     <NavigationProvider>
-      <Dripsy>{children}</Dripsy>
+      <AnuProvider theme={makeTheme({})}>{children}</AnuProvider>
     </NavigationProvider>
   );
 }

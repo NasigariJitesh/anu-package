@@ -9,7 +9,6 @@
   "private": true,
   "name": "@anu/native",
   "dependencies": {
-    "anu": "*",
     "app": "*",
     "expo": "~48.0.6",
     "expo-linking": "~4.0.1",
@@ -26,8 +25,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@types/react": "~18.0.27",
-    "@types/react-native": "~0.69.1",
     "typescript": "^4.9.4"
   }
 }

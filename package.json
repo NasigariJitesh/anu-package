@@ -1,5 +1,6 @@
 {
   "name": "@anu/monorepo",
+  "description": "Anu Monorepo with the actual code for the library and docs, examples, etc",
   "private": true,
   "workspaces": [
     "apps/*",

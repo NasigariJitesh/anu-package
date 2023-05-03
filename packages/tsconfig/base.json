@@ -15,9 +15,9 @@
     "incremental": true,
     "module": "esnext",
     "downlevelIteration": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["globals.d.ts", "index.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["globals.d.ts", "index.d.ts", "rnw-overrides.d.ts", "**/*.ts", "**/*.tsx"]
 }

@@ -44,6 +44,11 @@ body {
 }
 `;
 
+/**
+ *
+ * @param root0
+ * @param root0.renderPage
+ */
 export async function getInitialProps({ renderPage }) {
   AppRegistry.registerComponent('Main', () => Main);
   const { getStyleElement } = AppRegistry.getApplication('Main');
