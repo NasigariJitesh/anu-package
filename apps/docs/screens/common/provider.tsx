@@ -2,7 +2,7 @@ import { AnuProvider } from 'anu/common/context';
 import { ReactChildren } from 'anu/common/types';
 import { makeTheme, PortalProvider } from 'anu/config';
 import { AnuSnackbarProvider } from 'anu/lib';
-import { AnuLocalizationProvider } from 'anu/lib/advanced';
+import { AnuLocalizationProvider } from 'anu/lib/advanced/smart-localization';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
@@ -77,7 +77,7 @@ export default function RootLayout(props: {
 
   return (
     <AnuProvider ssr theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
-      <AnuLocalizationProvider default={locale?.includes('fr') ? 'fr' : 'en'}>
+      <AnuLocalizationProvider directory='apps/docs/services/locale' default={locale?.includes('fr') ? 'fr' : 'en'}>
         <PortalProvider>
           <AnuSnackbarProvider>
             <View style={{ backgroundColor: backgroundColor }}>

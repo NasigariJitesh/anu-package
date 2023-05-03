@@ -6,12 +6,12 @@
  *
  * @param key - localization key to search for translations
  * @param locale - current locale
+ * @param directory - directory where the translation files are located
  * @returns localized string
  */
-export const getLocalizedTranslation = (key: string, locale: string) => {
+export const getLocalizedTranslation = (key: string, locale: string, directory: string) => {
   try {
-    // TODO: Change this directory when placing in node_modules
-    const file = require(`../../../../../../apps/docs/services/locale/${locale}.json` as const);
+    const file = require(`../../../../../../${directory}/${locale}.json` as const);
 
     if (!file[key]) {
       console.error(`No Translation in place for ${key} in ${locale}.json`);
@@ -21,7 +21,7 @@ export const getLocalizedTranslation = (key: string, locale: string) => {
 
     return file[key] as string;
   } catch {
-    console.error(`The file ${locale}.json is not found in the services/locale directory.`);
+    console.error(`The file ${locale}.json is not found in the ${directory} directory.`);
 
     if (process.env.NODE_ENV === 'development') return 'LOCALE_FILE_NOT_FOUND';
 

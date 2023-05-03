@@ -1,5 +1,6 @@
 import { useTheme } from 'anu/config';
-import { Container, Icon, Typography, useAnuLocalization } from 'anu/lib';
+import { Container, Icon, Typography } from 'anu/lib';
+import { useAnuLocalization } from 'anu/lib/advanced/smart-localization';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import Image from 'next/image';

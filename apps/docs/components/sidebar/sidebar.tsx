@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
-import { Accordion, Container, FlatList, Typography, useAnuLocalization } from 'anu/lib';
+import { Accordion, Container, FlatList, Typography } from 'anu/lib';
+import { useAnuLocalization } from 'anu/lib/advanced/smart-localization';
 import { ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
