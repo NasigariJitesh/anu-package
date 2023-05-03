@@ -1,6 +1,7 @@
 import { ReactChildren } from 'anu/common/types';
 import { useTheme } from 'anu/config';
-import { Container, Icon, LocalizedTypography } from 'anu/lib';
+import { Container, Icon } from 'anu/lib';
+import LocalizedTypography from 'anu/lib/advanced/smart-localization/components';
 import { DripsyFinalTheme, ScrollView, useSx } from 'dripsy';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import { useEffect, useState } from 'react';
