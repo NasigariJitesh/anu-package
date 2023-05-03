@@ -1,7 +1,9 @@
+/* eslint-disable react/display-name */
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { View } from 'dripsy';
-import React from 'react';
+import React, { forwardRef } from 'react';
+import { View as NativeView } from 'react-native';
 
 import { ContainerProps } from '../../types';
 import { getContainerStyles } from '../../utils';
@@ -12,7 +14,7 @@ import { defaultProps } from './default';
  *
  * @param {ContainerProps} props - all the properties related to the container component
  */
-export const Container = (props: ContainerProps) => {
+export const Container = forwardRef<NativeView, ContainerProps>((props, reference) => {
   const d = defaultProps(useTheme());
 
   const finalProps = { ...d, ...props };
@@ -20,8 +22,8 @@ export const Container = (props: ContainerProps) => {
   const { style, sx } = getContainerStyles(finalProps);
 
   return (
-    <View {...finalProps} style={getCombinedStylesForView(style, props.style)} sx={sx}>
+    <View ref={reference} {...finalProps} style={getCombinedStylesForView(style, props.style)} sx={sx}>
       {props.children}
     </View>
   );
-};
+});

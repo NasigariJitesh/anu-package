@@ -10,3 +10,5 @@ export * from './phone-input';
 // export * from './smart-localization';
 // export { default as SortableList } from './sortable-list';
 // export * from './sortable-list';
+export { default as TimePickerModal } from './time-picker';
+export * from './time-picker';
