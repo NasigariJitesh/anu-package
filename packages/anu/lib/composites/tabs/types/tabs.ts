@@ -6,7 +6,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 export interface TabsProps extends ContainerProps {
   active?: number;
   onChange?: (active: number) => void;
-  children: ReactElement<TabProps>[];
+  children: Array<ReactElement<TabProps>>;
   contentStyle?: StyleProp<ViewStyle>;
   tabHeaderStyle?: StyleProp<ViewStyle>;
   activeTabHeaderStyle?: StyleProp<ViewStyle>;
@@ -14,7 +14,7 @@ export interface TabsProps extends ContainerProps {
 }
 
 export interface TabHeaderProps {
-  tabs: ReactElement<TabProps>[];
+  tabs: Array<ReactElement<TabProps>>;
   tabHeaderStyle?: StyleProp<ViewStyle>;
   activeTabHeaderStyle?: StyleProp<ViewStyle>;
   updateActive: (value: number) => void;

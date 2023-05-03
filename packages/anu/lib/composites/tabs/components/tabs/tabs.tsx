@@ -49,10 +49,13 @@ const Tabs = (props: TabsProps) => {
         type={type}
       />
       <Divider thickness={1} color={theme.colors.$surfaceVariant} variant='full-width' style={styles.divider} />
+
       <Tab
-        {...props.children[active].props}
-        style={getCombinedStylesForView(contentStyle, props.children[active].props.style)}
-      />
+        {...children[active]!.props}
+        style={getCombinedStylesForView(contentStyle, props.children[active]!.props.style)}
+      >
+        {children[active]?.props.children}
+      </Tab>
     </Container>
   );
 };
