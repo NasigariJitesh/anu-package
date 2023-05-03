@@ -39,7 +39,7 @@ const TabHeaderItem = (props: HeaderItemProps) => {
             'name' in props.icon ? (
               <Icon
                 name={props.icon.name}
-                size={18}
+                size={24}
                 style={[styles.iconStyle, props.isActive ? styles.activeStyle : {}]}
                 {...props.icon.props}
               />

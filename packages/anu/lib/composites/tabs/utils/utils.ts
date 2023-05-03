@@ -20,10 +20,11 @@ export const getHeaderItemStyles = (theme: DripsyFinalTheme, props: HeaderItemPr
   };
 
   const containerStyle = {
-    height: props.type !== 'secondary' && props.icon ? 64 : 48,
+    minHeight: props.type !== 'secondary' && props.icon ? 64 : 48,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
+    flex: 1,
   } as const;
 
   const innerContainerStyle = {

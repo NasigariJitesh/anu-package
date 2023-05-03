@@ -27,15 +27,13 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
-      <Tabs active={active} onChange={setActive} type='secondary' maxWidth={500}>
-        <Tab name='One'>
-          <Container>
-            <Typography.Body>
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
-              very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
+      <Tabs active={active} onChange={setActive} type='primary' maxWidth={500}>
+        <Tab name='One' icon={{ name: 'favorite' }}>
+          <Typography.Body>
+            This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
+            is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
+            very long snack, This is very long snack
+          </Typography.Body>
         </Tab>
         <Tab name='Two'>
           <Container sx={{ backgroundColor: 'yellow' }}>
@@ -46,113 +44,12 @@ export default function Example() {
             </Typography.Body>
           </Container>
         </Tab>
-        <Tab name='One'>
-          <Container>
-            <Typography.Body>
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
-              very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='Two'>
-          <Container sx={{ backgroundColor: 'yellow' }}>
-            <Typography.Body>
-              This is Two very long snack, This is very long snack , This is very long snack, This is very long snack ,
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='One'>
-          <Container>
-            <Typography.Body>
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
-              very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='Two'>
-          <Container sx={{ backgroundColor: 'yellow' }}>
-            <Typography.Body>
-              This is Two very long snack, This is very long snack , This is very long snack, This is very long snack ,
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='One'>
-          <Container>
-            <Typography.Body>
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
-              very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='Two'>
-          <Container sx={{ backgroundColor: 'yellow' }}>
-            <Typography.Body>
-              This is Two very long snack, This is very long snack , This is very long snack, This is very long snack ,
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='One'>
-          <Container>
-            <Typography.Body>
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
-              very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='Two'>
-          <Container sx={{ backgroundColor: 'yellow' }}>
-            <Typography.Body>
-              This is Two very long snack, This is very long snack , This is very long snack, This is very long snack ,
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='One'>
-          <Container>
-            <Typography.Body>
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
-              very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='Two'>
-          <Container sx={{ backgroundColor: 'yellow' }}>
-            <Typography.Body>
-              This is Two very long snack, This is very long snack , This is very long snack, This is very long snack ,
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='One'>
-          <Container>
-            <Typography.Body>
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
-              very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
-        </Tab>
-        <Tab name='Two'>
-          <Container sx={{ backgroundColor: 'yellow' }}>
-            <Typography.Body>
-              This is Two very long snack, This is very long snack , This is very long snack, This is very long snack ,
-              This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
-              is very long snack, This is very long snack
-            </Typography.Body>
-          </Container>
+        <Tab name='One' icon={{ name: 'favorite' }}>
+          <Typography.Body>
+            This is very long snack, This is very long snack , This is very long snack, This is very long snack , This
+            is very long snack, This is very long snack , This is very long snack, This is very long snack , This is
+            very long snack, This is very long snack
+          </Typography.Body>
         </Tab>
       </Tabs>
       <Container flexDirection='row'>
