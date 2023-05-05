@@ -1,14 +1,14 @@
 import { TimePickerModalProps } from '../../types';
 
-export const defaultProps: TimePickerModalProps = {
+export const defaultProps: Omit<TimePickerModalProps, 'visible'> = {
   label: 'Select time',
   cancelLabel: 'Cancel',
-  confirmLabel: 'OK',
+  confirmLabel: 'Ok',
   animationType: 'fade',
   locale: 'en',
   keyboardIcon: 'keyboard',
   clockIcon: 'access-time',
-  visible: undefined,
   onDismiss: () => {},
   onConfirm: () => {},
+  defaultInputType: 'picker',
 };

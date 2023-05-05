@@ -39,17 +39,17 @@ export const TimePickerModal = (props: TimePickerModalProps) => {
     cancelLabel,
     confirmLabel,
     animationType,
-    locale,
     keyboardIcon,
     clockIcon,
     use24HourClock,
     inputStyle,
     horizontal,
+    defaultInputType,
   } = finalProps;
 
   let labelText = label;
 
-  const [inputType, setInputType] = useState<PossibleInputTypes>(inputTypes.picker);
+  const [inputType, setInputType] = useState<PossibleInputTypes>(defaultInputType ?? inputTypes.picker);
   const [focused, setFocused] = useState<PossibleClockTypes>(clockTypes.hours);
   const [localHours, setLocalHours] = useState<number>(getHoursNumber(hours));
   const [localMinutes, setLocalMinutes] = useState<number>(getMinutesNumber(minutes));
@@ -104,7 +104,6 @@ export const TimePickerModal = (props: TimePickerModalProps) => {
               </Container>
               <Container disableGutters style={styles.timePickerContainer}>
                 <TimePicker
-                  locale={locale}
                   inputType={inputType}
                   use24HourClock={use24HourClock}
                   inputStyle={inputStyle}

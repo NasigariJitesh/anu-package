@@ -451,6 +451,11 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:time-picker',
+                link: '/components/time-picker',
+                components: [],
+              },
+              {
                 title: 'leftSideBar:touchable-ripple',
                 link: '/components/touchable-ripple',
                 components: [],

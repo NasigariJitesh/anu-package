@@ -13,8 +13,7 @@ import TimeInputs from '../time-input';
  * @param props
  */
 const TimePicker = (props: TimePickerProps) => {
-  const { hours, minutes, onFocusInput, focused, inputType, onChange, locale, use24HourClock, inputStyle, horizontal } =
-    props;
+  const { hours, minutes, onFocusInput, focused, inputType, onChange, use24HourClock, inputStyle, horizontal } = props;
 
   const { setMode } = useDisplayModeContext();
 
@@ -29,16 +28,8 @@ const TimePicker = (props: TimePickerProps) => {
       return use24HourClock;
     }
 
-    const formatter = new Intl.DateTimeFormat(locale, {
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'UTC',
-    });
-
-    const formatted = formatter.format(new Date(Date.UTC(2020, 1, 1, 23)));
-
-    return formatted.includes('23');
-  }, [locale, use24HourClock]);
+    return false;
+  }, [use24HourClock]);
 
   // Initialize display Mode according the hours value
   useEffect(() => {

@@ -63,7 +63,6 @@ export type OnChangeFunction = ({
 }) => void;
 
 export interface TimePickerProps {
-  locale?: undefined | string;
   inputType: PossibleInputTypes;
   focused: PossibleClockTypes;
   hours: number;
@@ -76,19 +75,66 @@ export interface TimePickerProps {
 }
 
 export interface TimePickerModalProps {
-  locale?: undefined | string;
+  /**
+   * Label for the time picker
+   */
   label?: string;
+  /**
+   * Label for the cancel button of the time picker
+   */
   cancelLabel?: string;
+  /**
+   * Label for the confirm button of the time picker.
+   */
   confirmLabel?: string;
-  hours?: number | undefined;
-  minutes?: number | undefined;
-  visible: boolean | undefined;
+  /**
+   * The value of hours in the selected time.
+   */
+  hours?: number;
+  /**
+   * The value of minutes in the selected time.
+   */
+  minutes?: number;
+  /**
+   * Whether the time picker modal, is visible or hidden.
+   */
+  visible: boolean;
+  /**
+   * The callback function to be called, after dismissal of date selection.
+   */
   onDismiss: () => void;
+  /**
+   * The callback function to be called, after confirmation of date selection.
+   *
+   * @param hoursAndMinutes
+   */
   onConfirm: (hoursAndMinutes: { hours: number; minutes: number }) => void;
+  /**
+   * The animation for the time picker modal, when it appears or disappears.
+   */
   animationType?: 'slide' | 'fade' | 'none';
+  /**
+   * Icon name from material icons provided by react native vector icons, for the keyboard
+   */
   keyboardIcon?: string;
+  /**
+   * Icon name from material icons provided by react native vector icons, for the clock
+   */
   clockIcon?: string;
+  /**
+   * If true, time picker displays 24 hrs format
+   */
   use24HourClock?: boolean;
+  /**
+   * Style for the input fields of the time picker
+   */
   inputStyle?: StyleProp<TextStyle>;
+  /**
+   * Whether to display the picker in horizontal orientation
+   */
   horizontal?: boolean;
+  /**
+   * Default input option to display
+   */
+  defaultInputType?: PossibleInputTypes;
 }
