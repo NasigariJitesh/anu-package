@@ -1,5 +1,5 @@
 import { DialogProps } from '../../types';
 
-export const defaultProps: DialogProps = {
+export const defaultProps: Pick<DialogProps, 'type'> = {
   type: 'basic',
 };

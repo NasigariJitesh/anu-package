@@ -390,6 +390,32 @@ const Sidebar = () => {
               },
 
               {
+                title: 'leftSideBar:dialog',
+                link: '/components/dialog',
+                components: [
+                  {
+                    title: 'leftSideBar:dialog',
+                    link: '/components/dialog',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:dialog-title',
+                    link: '/components/dialog/title',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:dialog-content',
+                    link: '/components/dialog/content',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:dialog-actions',
+                    link: '/components/dialog/actions',
+                    variants: [],
+                  },
+                ],
+              },
+              {
                 title: 'leftSideBar:divider',
                 link: '/components/divider',
                 components: [],

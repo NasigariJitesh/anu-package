@@ -21,6 +21,10 @@ import { containerIndex } from 'services/docs/container';
 import { creditsIndex } from 'services/docs/credits';
 import { datePickerInputIndex } from 'services/docs/date-picker-input';
 import { datePickerModalIndex } from 'services/docs/date-picker-modal';
+import { dialogIndex } from 'services/docs/dialog';
+import { dialogActionsIndex } from 'services/docs/dialog-actions';
+import { dialogContentIndex } from 'services/docs/dialog-content';
+import { dialogTitleIndex } from 'services/docs/dialog-title';
 import { dividerIndex } from 'services/docs/divider';
 import { extendedFABIndex } from 'services/docs/extended-fab';
 import { FABIndex } from 'services/docs/fab';
@@ -242,6 +246,26 @@ const RenderIndex = () => {
     case '/components/divider': {
       {
         return <Index {...dividerIndex} />;
+      }
+    }
+    case '/components/dialog': {
+      {
+        return <Index {...dialogIndex} />;
+      }
+    }
+    case '/components/dialog/title': {
+      {
+        return <Index {...dialogTitleIndex} />;
+      }
+    }
+    case '/components/dialog/content': {
+      {
+        return <Index {...dialogContentIndex} />;
+      }
+    }
+    case '/components/dialog/actions': {
+      {
+        return <Index {...dialogActionsIndex} />;
       }
     }
     case '/components/file-upload': {

@@ -1,7 +1,7 @@
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config/dripsy/theme';
 import { Container } from 'anu/lib/primitives';
-import { Animated, Modal, StyleSheet, TouchableWithoutFeedback, useWindowDimensions } from 'react-native';
+import { Modal, StyleSheet, TouchableWithoutFeedback, useWindowDimensions } from 'react-native';
 
 import { DialogProps } from '../../types';
 import { getDialogStyles } from '../../utils';
@@ -36,15 +36,13 @@ const Dialog = (props: DialogProps) => {
           <Container disableGutters style={[StyleSheet.absoluteFill, styles.modalBackground]} />
         </TouchableWithoutFeedback>
         <Container disableGutters style={[StyleSheet.absoluteFill, styles.modalRoot]} pointerEvents='box-none'>
-          <Animated.View>
-            <Container
-              disableGutters
-              {...componentProps}
-              style={getCombinedStylesForView(styles.dialog, finalProps.style)}
-            >
-              {finalProps.children}
-            </Container>
-          </Animated.View>
+          <Container
+            disableGutters
+            {...componentProps}
+            style={getCombinedStylesForView(styles.dialog, finalProps.style)}
+          >
+            {finalProps.children}
+          </Container>
         </Container>
       </>
     </Modal>
