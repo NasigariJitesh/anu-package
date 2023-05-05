@@ -1,4 +1,4 @@
-import { ReactChildren } from 'common/types';
+import { ReactChildren } from 'anu/common/types';
 import { Sx } from 'dripsy';
 import { StyleProp, TextStyle } from 'react-native';
 
@@ -50,7 +50,7 @@ export interface DividerProps {
   /**
    * The thickness or weight of the divider line.
    */
-  thickness?: number | string;
+  thickness?: number;
   /**
    * If true, the divider is displayed in a lighter shade of the color given in style.
    */

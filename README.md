@@ -1,73 +1,92 @@
-# Turborepo starter
+# Blank Solito Example Monorepo 🕴
 
-This is an official Yarn v1 starter turborepo.
-
-## What's inside?
-
-This turborepo uses [Yarn](https://classic.yarnpkg.com/) as a package manager. It includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-yarn run build
+```sh
+npx create-solito-app@latest my-solito-app
 ```
 
-### Develop
+👾 [View the website](https://example.solito.dev)
 
-To develop all apps and packages, run the following command:
+## ⚡️ Instantly clone & deploy
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnandorojo%2Fsolito%2Ftree%2Fmaster%2Fexample-monorepos%2Fblank&env=ENABLE_ROOT_PATH_BUILD_CACHE&root-directory=apps/next&envDescription=Set%20this%20environment%20variable%20to%201%20for%20Turborepo%20to%20cache%20your%20node_modules.&envLink=https%3A%2F%2Ftwitter.com%2Fjaredpalmer%2Fstatus%2F1488954563533189124&project-name=solito-app&repo-name=solito-app&demo-title=Solito%20App%20%E2%9A%A1%EF%B8%8F&demo-description=React%20Native%20%2B%20Next.js%20starter%20with%20Solito.%20Made%20by%20Fernando%20Rojo.&demo-url=https%3A%2F%2Fsolito.dev%2Fstarter&demo-image=https%3A%2F%2Fsolito.dev%2Fimg%2Fog.png&build-command=cd+..%2F..%3Bnpx+turbo+run+build+--filter%3Dnext-app)
+
+## 🔦 About
+
+This monorepo is a blank(ish) starter for an Expo + Next.js app.
+
+While it's pretty barebones, it does a lot of the annoying config for you. The folder structure is opinionated, based on my long experience building for this stack.
+
+## 📦 Included packages
+
+- `solito` for cross-platform navigation
+- `moti` for animations
+- `dripsy` for theming/design (you can bring your own, too)
+- Expo SDK 48
+- Next.js 13
+- React Navigation 6
+
+## 🗂 Folder layout
+
+- `apps` entry points for each app
+
+  - `expo`
+  - `next`
+
+- `packages` shared packages across apps
+  - `app` you'll be importing most files from `app/`
+    - `features` (don't use a `screens` folder. organize by feature.)
+    - `provider` (all the providers that wrap the app, and some no-ops for Web.)
+    - `navigation` Next.js has a `pages/` folder. React Native doesn't. This folder contains navigation-related code for RN. You may use it for any navigation code, such as custom links.
+
+You can add other folders inside of `packages/` if you know what you're doing and have a good reason to.
+
+## 🏁 Start the app
+
+- Install dependencies: `yarn`
+
+- Next.js local dev: `yarn web`
+  - Runs `yarn next`
+- Expo local dev:
+  - First, build a dev client onto your device or simulator
+    - `cd apps/expo`
+    - Then, either `expo run:ios`, or `eas build`
+  - After building the dev client, from the root of the monorepo...
+    - `yarn native` (This runs `expo start --dev-client`)
+
+## 🆕 Add new dependencies
+
+### Pure JS dependencies
+
+If you're installing a JavaScript-only dependency that will be used across platforms, install it in `packages/app`:
+
+```sh
+cd packages/app
+yarn add date-fns
+cd ../..
+yarn
 ```
-cd my-turborepo
-yarn run dev
+
+### Native dependencies
+
+If you're installing a library with any native code, you must install it in `apps/expo`:
+
+```sh
+cd apps/expo
+yarn add react-native-reanimated
+
+cd ../..
+yarn
 ```
 
-### Remote Caching
+You can also install the native library inside of `packages/app` if you want to get autoimport for that package inside of the `app` folder. However, you need to be careful and install the _exact_ same version in both packages. If the versions mismatch at all, you'll potentially get terrible bugs. This is a classic monorepo issue. I use `lerna-update-wizard` to help with this (you don't need to use Lerna to use that lib).
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## 🎙 About the creator
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+Follow Fernando Rojo on Twitter: [@FernandoTheRojo](https://twitter.com/fernandotherojo)
 
-```
-cd my-turborepo
-npx turbo login
-```
+## 🧐 Why use Expo + Next.js?
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+See my talk about this topic at Next.js Conf 2021:
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+<a href="https://www.youtube.com/watch?v=0lnbdRweJtA"><img width="1332" alt="image" src="https://user-images.githubusercontent.com/13172299/157299915-b633e083-f271-48c6-a262-7b7eef765be5.png">
+</a>

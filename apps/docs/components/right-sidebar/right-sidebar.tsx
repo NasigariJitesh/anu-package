@@ -1,5 +1,6 @@
 import { useTheme } from 'anu/config';
-import { Container, FlatList, LocalizedTypography, Typography, useAnuLocalization } from 'anu/lib';
+import { Container, FlatList, Typography } from 'anu/lib';
+import LocalizedTypography, { useAnuLocalization } from 'anu/lib/advanced/smart-localization';
 import { ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
@@ -18,6 +19,12 @@ import { checkboxIndex } from 'services/docs/checkbox';
 import { chipIndex } from 'services/docs/chip';
 import { containerIndex } from 'services/docs/container';
 import { creditsIndex } from 'services/docs/credits';
+import { datePickerInputIndex } from 'services/docs/date-picker-input';
+import { datePickerModalIndex } from 'services/docs/date-picker-modal';
+import { dialogIndex } from 'services/docs/dialog';
+import { dialogActionsIndex } from 'services/docs/dialog-actions';
+import { dialogContentIndex } from 'services/docs/dialog-content';
+import { dialogTitleIndex } from 'services/docs/dialog-title';
 import { dividerIndex } from 'services/docs/divider';
 import { extendedFABIndex } from 'services/docs/extended-fab';
 import { FABIndex } from 'services/docs/fab';
@@ -40,6 +47,7 @@ import { snackbarIndex } from 'services/docs/snackbar';
 import { switchIndex } from 'services/docs/switch';
 import { textFieldIndex } from 'services/docs/text-field';
 import { themingIndex } from 'services/docs/theming';
+import { timePickerIndex } from 'services/docs/time-picker';
 import { touchableRippleIndex } from 'services/docs/touchable-ripple';
 import { typographyIndex } from 'services/docs/typography';
 import { TextLink } from 'solito/link';
@@ -225,9 +233,39 @@ const RenderIndex = () => {
         return <Index {...containerIndex} />;
       }
     }
+    case '/components/date-picker/input': {
+      {
+        return <Index {...datePickerInputIndex} />;
+      }
+    }
+    case '/components/date-picker/modal': {
+      {
+        return <Index {...datePickerModalIndex} />;
+      }
+    }
     case '/components/divider': {
       {
         return <Index {...dividerIndex} />;
+      }
+    }
+    case '/components/dialog': {
+      {
+        return <Index {...dialogIndex} />;
+      }
+    }
+    case '/components/dialog/title': {
+      {
+        return <Index {...dialogTitleIndex} />;
+      }
+    }
+    case '/components/dialog/content': {
+      {
+        return <Index {...dialogContentIndex} />;
+      }
+    }
+    case '/components/dialog/actions': {
+      {
+        return <Index {...dialogActionsIndex} />;
       }
     }
     case '/components/file-upload': {
@@ -306,6 +344,11 @@ const RenderIndex = () => {
         return <Index {...touchableRippleIndex} />;
       }
     }
+    case '/components/time-picker': {
+      {
+        return <Index {...timePickerIndex} />;
+      }
+    }
     case '/components/typography': {
       {
         return <Index {...typographyIndex} />;
@@ -382,6 +425,11 @@ const RightSidebar = () => {
         StickyHeaderComponent={undefined}
         automaticallyAdjustKeyboardInsets={undefined}
         automaticallyAdjustsScrollIndicatorInsets={undefined}
+        href={undefined}
+        hrefAttrs={undefined}
+        onClick={undefined}
+        accessibilityLabelledBy={undefined}
+        accessibilityLanguage={undefined}
       >
         <RenderIndex />
       </ScrollView>

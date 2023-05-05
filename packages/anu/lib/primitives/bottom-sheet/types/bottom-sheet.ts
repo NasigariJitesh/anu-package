@@ -1,4 +1,4 @@
-import { ReactChildren } from 'common/types';
+import { ReactChildren } from 'anu/common/types';
 import { ViewProps } from 'react-native';
 
 export interface BottomSheetProps extends Omit<ViewProps, 'style'> {

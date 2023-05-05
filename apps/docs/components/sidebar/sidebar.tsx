@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
-import { Accordion, Container, FlatList, Typography, useAnuLocalization } from 'anu/lib';
+import { Accordion, Container, FlatList, Typography } from 'anu/lib';
+import { useAnuLocalization } from 'anu/lib/advanced/smart-localization';
 import { ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
@@ -256,6 +257,11 @@ const Sidebar = () => {
         StickyHeaderComponent={undefined}
         automaticallyAdjustKeyboardInsets={undefined}
         automaticallyAdjustsScrollIndicatorInsets={undefined}
+        href={undefined}
+        hrefAttrs={undefined}
+        accessibilityLabelledBy={undefined}
+        accessibilityLanguage={undefined}
+        onClick={undefined}
       >
         <Container sx={style.container}>
           <HeadingLink link='/getting-started' title='leftSideBar:getting-started' />
@@ -367,6 +373,49 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:date-picker',
+                link: '/components/date-picker/input',
+                components: [
+                  {
+                    title: 'leftSideBar:date-picker-input',
+                    link: '/components/date-picker/input',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:date-picker-modal',
+                    link: '/components/date-picker/modal',
+                    variants: [],
+                  },
+                ],
+              },
+
+              {
+                title: 'leftSideBar:dialog',
+                link: '/components/dialog',
+                components: [
+                  {
+                    title: 'leftSideBar:dialog',
+                    link: '/components/dialog',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:dialog-title',
+                    link: '/components/dialog/title',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:dialog-content',
+                    link: '/components/dialog/content',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:dialog-actions',
+                    link: '/components/dialog/actions',
+                    variants: [],
+                  },
+                ],
+              },
+              {
                 title: 'leftSideBar:divider',
                 link: '/components/divider',
                 components: [],
@@ -391,27 +440,6 @@ const Sidebar = () => {
                 title: 'leftSideBar:image',
                 components: [],
                 link: '/components/image',
-              },
-              {
-                title: 'leftSideBar:menu',
-                components: [
-                  {
-                    title: 'leftSideBar:menu',
-                    link: '/components/menu',
-                    variants: [],
-                  },
-                  {
-                    title: 'leftSideBar:menu-list',
-                    link: '/components/menu/list',
-                    variants: [],
-                  },
-                  {
-                    title: 'leftSideBar:menu-item',
-                    link: '/components/menu/item',
-                    variants: [],
-                  },
-                ],
-                link: '/components/menu',
               },
               {
                 title: 'leftSideBar:otp-input',
@@ -439,11 +467,6 @@ const Sidebar = () => {
                 link: '/components/side-sheet',
               },
               {
-                title: 'leftSideBar:snackbar',
-                link: '/components/snackbar',
-                components: [],
-              },
-              {
                 title: 'leftSideBar:switch',
                 link: '/components/switch',
                 components: [],
@@ -451,6 +474,11 @@ const Sidebar = () => {
               {
                 title: 'leftSideBar:text-fields',
                 link: '/components/text-field',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:time-picker',
+                link: '/components/time-picker',
                 components: [],
               },
               {

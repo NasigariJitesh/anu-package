@@ -1,4 +1,5 @@
 /**
+ * To get label of the date input field
  *
  * @param withDateFormatInLabel
  * @param inputFormat

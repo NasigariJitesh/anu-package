@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Container } from 'anu/lib/primitives';
-import * as React from 'react';
-import { memo, UIEvent, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { memo, UIEvent, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { useLatest } from '../../hooks';
 import { SwiperProps, VerticalScrollProps } from '../../types';
@@ -10,7 +9,7 @@ import {
   estimatedMonthHeight,
   getIndexFromVerticalOffset,
   getMonthHeight,
-  getSwiperStyles,
+  getSwiperStylesWeb,
   getVerticalMonthsOffset,
   montHeaderHeight,
   totalMonths,
@@ -20,15 +19,10 @@ import AutoSizer from './auto-sizer';
 
 /**
  *
- * @param root0
- * @param root0.scrollMode
- * @param root0.renderItem
- * @param root0.renderHeader
- * @param root0.renderFooter
- * @param root0.selectedYear
- * @param root0.initialIndex
+ * @param props
  */
-function Swiper({ scrollMode, renderItem, renderHeader, renderFooter, selectedYear, initialIndex }: SwiperProps) {
+const Swiper = (props: SwiperProps) => {
+  const { scrollMode, renderItem, renderHeader, renderFooter, selectedYear, initialIndex } = props;
   const [index, setIndex] = useState(initialIndex);
 
   const indexReference = useLatest(index);
@@ -61,7 +55,7 @@ function Swiper({ scrollMode, renderItem, renderHeader, renderFooter, selectedYe
 
   const isHorizontal = scrollMode === 'horizontal';
 
-  const styles = getSwiperStyles();
+  const styles = getSwiperStylesWeb();
 
   return (
     <>
@@ -86,7 +80,7 @@ function Swiper({ scrollMode, renderItem, renderHeader, renderFooter, selectedYe
       {renderFooter && renderFooter(renderProps)}
     </>
   );
-}
+};
 
 const visibleArray = (index: number) => [index - 2, index - 1, index, index + 1, index + 2];
 
@@ -155,15 +149,15 @@ const VerticalScroll = (props: VerticalScrollProps) => {
             // eslint-disable-next-line react-native/no-inline-styles
             style={{
               willChange: 'transform',
-              transform: `translateY(${getVerticalMonthsOffset(visibleIndexes[vi])}px)`,
+              transform: `translateY(${getVerticalMonthsOffset(visibleIndexes[vi]!)}px)`,
               left: 0,
               right: 0,
               position: 'absolute',
-              height: getMonthHeight('vertical', visibleIndexes[vi]),
+              height: getMonthHeight('vertical', visibleIndexes[vi]!),
             }}
           >
             {renderItem({
-              index: visibleIndexes[vi],
+              index: visibleIndexes[vi]!,
               onPrev: empty,
               onNext: empty,
             })}

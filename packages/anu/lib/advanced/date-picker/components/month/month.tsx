@@ -38,23 +38,19 @@ const Month = (props: MonthProps) => {
     selectingYear,
     onPressDate,
     scrollMode,
-    primaryColor,
-    selectColor,
-    roundness,
     disableWeekDays,
     locale,
     validRange,
   } = props;
 
   const theme = useTheme();
-  const textColorOnPrimary = theme.colors.$onPrimary;
 
   const { isDisabled, isWithinValidRange } = useRangeChecker(validRange);
 
   const isHorizontal = scrollMode === 'horizontal';
   const realIndex = getRealIndex(index);
 
-  const styles = getMonthStyles();
+  const styles = getMonthStyles(theme);
   const { monthName, month, year } = useMemo(() => {
     const md = addMonths(new Date(), realIndex);
     const y = md.getFullYear();
@@ -220,32 +216,10 @@ const Month = (props: MonthProps) => {
           onPress={isHorizontal ? () => onPressYear(year) : undefined}
           accessibilityRole='button'
           accessibilityLabel={`${monthName} ${year}`}
-          style={[
-            styles.yearButton,
-            {
-              borderRadius: roundness,
-            },
-          ]}
+          style={styles.yearButton}
         >
-          <Container
-            disableGutters
-            style={[
-              styles.yearButtonInner,
-              {
-                borderRadius: roundness,
-              },
-            ]}
-          >
-            <Typography.Body
-              style={[
-                styles.monthLabel,
-                {
-                  fontSize: theme.fontSizes[7],
-                  color: theme.colors.$onSurface,
-                },
-              ]}
-              selectable={false}
-            >
+          <Container disableGutters style={styles.yearButtonInner}>
+            <Typography.Body style={styles.monthLabel} selectable={false}>
               {monthName} {year}
             </Typography.Body>
 
@@ -279,10 +253,7 @@ const Month = (props: MonthProps) => {
                   rightCrop={gd.rightCrop}
                   onPressDate={onPressDate}
                   isToday={gd.isToday}
-                  selectColor={theme.colors.$primaryContainer}
-                  primaryColor={primaryColor}
                   disabled={gd.disabled}
-                  textColorOnPrimary={textColorOnPrimary}
                 />
               ),
             )}

@@ -39,7 +39,6 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
     okLabelDisabled,
     cancelLabel,
     cancelLabelDisabled,
-    uppercase,
     saveLabel,
     saveLabelDisabled,
     closeIcon,
@@ -127,7 +126,6 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
             onDismiss={onDismiss}
             saveLabel={saveLabel}
             saveLabelDisabled={saveLabelDisabled ?? false}
-            uppercase={uppercase ?? false}
             disableSafeTop={disableSafeTop}
             closeIcon={closeIcon}
           />
@@ -144,7 +142,6 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
           moreLabel={moreLabel}
           startLabel={startLabel}
           endLabel={endLabel}
-          uppercase={uppercase ?? false}
           locale={locale}
           editIcon={editIcon}
           calendarIcon={calendarIcon}
@@ -196,7 +193,6 @@ export const DatePickerModalContent = (props: DatePickerModalContentProps) => {
         cancelLabelDisabled={cancelLabelDisabled ?? false}
         okLabel={okLabel}
         okLabelDisabled={okLabelDisabled ?? false}
-        uppercase={uppercase ?? false}
       />
     </>
   );

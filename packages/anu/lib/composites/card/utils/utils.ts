@@ -1,4 +1,4 @@
-import { getColorInRGBA, getMaxWidthInPixels } from 'common/utils';
+import { getColorInRGBA, getMaxWidthInPixels } from 'anu/common/utils';
 import { DripsyFinalTheme, Sx } from 'dripsy';
 import { ImageStyle, StyleProp, ViewStyle } from 'react-native';
 

@@ -37,6 +37,7 @@ module.exports = {
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
 
     // react
     'react/react-in-jsx-scope': 'off',
@@ -120,5 +121,5 @@ module.exports = {
     'jsdoc/require-param-type': 'off',
     'jsdoc/require-returns-type': 'off',
   },
-  ignorePatterns: ['*.json, *.js', '.eslintrc.js', '*.config.js', '**/coverage/*'],
+  ignorePatterns: ['*.json', '*.js', '.eslintrc.js', '*.config.js', '**/coverage/*', '**/anu/dist/*'],
 };

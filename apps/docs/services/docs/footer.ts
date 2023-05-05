@@ -15,7 +15,7 @@ export const footerLinks: FooterProps = {
         },
         {
           title: 'footer:list1-item3-title',
-          link: '/components/avatar',
+          link: '/components/auto-complete',
         },
         {
           title: 'footer:list1-item4-title',
