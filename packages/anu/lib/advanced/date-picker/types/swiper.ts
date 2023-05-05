@@ -12,7 +12,7 @@ export interface SwiperProps {
   renderItem: (renderProps: RenderProps) => ReactChildren;
   renderHeader?: (renderProps: RenderProps) => ReactChildren;
   renderFooter?: (renderProps: RenderProps) => ReactChildren;
-  selectedYear: number | undefined;
+  selectedYear?: number;
 }
 
 export interface VerticalScrollProps {

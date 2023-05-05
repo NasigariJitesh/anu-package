@@ -30,7 +30,7 @@ export const DatePickerModal = (props: DatePickerModalProps) => {
   const animationTypeCalculated =
     animationType ||
     Platform.select({
-      web: 'none',
+      web: 'fade',
       default: 'slide',
     });
 
@@ -38,7 +38,8 @@ export const DatePickerModal = (props: DatePickerModalProps) => {
 
   const onToggleCollapse = useCallback(() => {
     setCollapsed((previous) => !previous);
-  }, [setCollapsed]);
+    if (rest.onToggle) rest.onToggle();
+  }, [setCollapsed, rest]);
 
   return (
     <Container disableGutters style={StyleSheet.absoluteFill} pointerEvents='box-none'>

@@ -52,6 +52,7 @@ export const getDatePickerModalHeaderBackgroundStyles = (theme: DripsyFinalTheme
 };
 
 /**
+ * To get label of the date picker modal
  *
  * @param mode
  * @param configuredLabel

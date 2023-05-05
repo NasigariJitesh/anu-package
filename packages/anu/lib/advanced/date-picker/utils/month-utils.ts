@@ -1,3 +1,5 @@
+import { DripsyFinalTheme } from 'dripsy';
+
 import { getCalendarHeaderHeight } from './calendar-utils';
 import { beginOffset, daySize, estimatedMonthHeight, getGridCount, gridCounts, startAtIndex } from './date-utils';
 import { dayNamesHeight } from './day-utils';
@@ -22,19 +24,19 @@ export const monthGrid = (index: number) => {
  *
  * @param index
  */
-function getIndexCount(index: number): number {
+const getIndexCount = (index: number): number => {
   if (index > startAtIndex) {
     return index - startAtIndex;
   }
 
   return -(startAtIndex - index);
-}
+};
 
 /**
  *
  * @param index
  */
-function weeksOffset(index: number): number {
+const weeksOffset = (index: number): number => {
   if (index === startAtIndex) {
     return 0;
   }
@@ -51,22 +53,22 @@ function weeksOffset(index: number): number {
     }
   }
   return off;
-}
+};
 
 /**
  *
  * @param offset
  * @param width
  */
-export function getIndexFromHorizontalOffset(offset: number, width: number): number {
+export const getIndexFromHorizontalOffset = (offset: number, width: number): number => {
   return startAtIndex + Math.floor(offset / width);
-}
+};
 
 /**
  *
  * @param offset
  */
-export function getIndexFromVerticalOffset(offset: number): number {
+export const getIndexFromVerticalOffset = (offset: number): number => {
   let estimatedIndex = startAtIndex + Math.ceil(offset / estimatedMonthHeight);
 
   const realOffset = getVerticalMonthsOffset(estimatedIndex);
@@ -75,39 +77,39 @@ export function getIndexFromVerticalOffset(offset: number): number {
     estimatedIndex -= Math.floor(difference);
   }
   return estimatedIndex;
-}
+};
 
 /**
  *
  * @param index
  * @param width
  */
-export function getHorizontalMonthOffset(index: number, width: number) {
+export const getHorizontalMonthOffset = (index: number, width: number) => {
   if (index < 0) {
     return 0;
   }
   return width * index;
-}
+};
 
 /**
  *
  * @param index
  */
-export function getVerticalMonthsOffset(index: number) {
+export const getVerticalMonthsOffset = (index: number) => {
   const count = getIndexCount(index);
   const ob = weeksOffset(index);
   const monthsHeight = weekSize * ob;
   const c = monthsHeight + count * (dayNamesHeight + montHeaderHeight);
 
   return (c || 0) + beginOffset;
-}
+};
 
 /**
  *
  * @param scrollMode
  * @param index
  */
-export function getMonthHeight(scrollMode: 'horizontal' | 'vertical', index: number): number {
+export const getMonthHeight = (scrollMode: 'horizontal' | 'vertical', index: number): number => {
   const calendarHeight = getCalendarHeaderHeight(scrollMode) ?? 0;
   const gc = getGridCount(index);
 
@@ -115,16 +117,20 @@ export function getMonthHeight(scrollMode: 'horizontal' | 'vertical', index: num
   const extraHeight = scrollMode === 'horizontal' ? monthHeaderSingleHeight : montHeaderHeight;
   const c = calendarHeight + currentMonthHeight + extraHeight;
   return c || 0;
-}
+};
 
-export const getMonthStyles = () => {
+export const getMonthStyles = (theme: DripsyFinalTheme) => {
   const month = { width: '100%' };
   const monthHeader = {
     height: montHeaderHeight,
     justifyContent: 'center',
     overflow: 'hidden',
   } as const;
-  const monthLabel = { fontSize: 14, opacity: 0.7 } as const;
+  const monthLabel = {
+    opacity: 0.7,
+    fontSize: theme.fontSizes[7],
+    color: theme.colors.$onSurface,
+  } as const;
   const opacity0 = { opacity: 0 } as const;
   const opacity1 = { opacity: 1 } as const;
   const week = {
@@ -133,11 +139,12 @@ export const getMonthStyles = () => {
     marginBottom: weekMargin,
     width: '100%',
   } as const;
-  const yearButton = { alignSelf: 'flex-start', flex: 1, marginLeft: 6 } as const;
+  const yearButton = { alignSelf: 'flex-start', flex: 1, marginLeft: 6, borderRadius: 16 } as const;
   const yearButtonInner = {
     alignItems: 'center',
     flexDirection: 'row',
     paddingLeft: 16,
+    borderRadius: 16,
   } as const;
 
   return { month, monthHeader, monthLabel, opacity0, opacity1, week, yearButton, yearButtonInner };

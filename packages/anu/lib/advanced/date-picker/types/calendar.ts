@@ -13,7 +13,7 @@ export interface ValidRangeType {
 }
 
 export interface BaseCalendarProps {
-  locale: string;
+  locale?: string;
   disableWeekDays?: DisableWeekDaysType;
   validRange?: ValidRangeType;
   startYear?: number;
@@ -67,13 +67,13 @@ export interface CalendarEditProps {
   state: LocalState;
   collapsed: boolean;
   onChange: (s: LocalState) => void;
-  validRange: ValidRangeType | undefined;
-  locale: string;
+  validRange?: ValidRangeType;
+  locale?: string;
   inputEnabled?: boolean;
 }
 
 export interface CalendarHeaderProps {
-  locale: undefined | string;
+  locale?: string;
   scrollMode: 'horizontal' | 'vertical';
   onPrev: () => void;
   onNext: () => void;
@@ -81,7 +81,7 @@ export interface CalendarHeaderProps {
 }
 
 export interface YearPickerProps {
-  selectedYear: number | undefined;
+  selectedYear?: number;
   selectingYear: boolean;
   onPressYear: (year: number) => void;
   startYear: number;

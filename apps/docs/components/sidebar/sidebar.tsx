@@ -373,6 +373,23 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:date-picker',
+                link: '/components/date-picker/input',
+                components: [
+                  {
+                    title: 'leftSideBar:date-picker-input',
+                    link: '/components/date-picker/input',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:date-picker-modal',
+                    link: '/components/date-picker/modal',
+                    variants: [],
+                  },
+                ],
+              },
+
+              {
                 title: 'leftSideBar:divider',
                 link: '/components/divider',
                 components: [],

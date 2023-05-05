@@ -21,20 +21,7 @@ const EmptyDayPure = () => {
  * @param props
  */
 const Day = (props: DayProps) => {
-  const {
-    day,
-    month,
-    year,
-    selected,
-    inRange,
-    leftCrop,
-    rightCrop,
-    onPressDate,
-    primaryColor,
-    selectColor,
-    isToday,
-    disabled,
-  } = props;
+  const { day, month, year, selected, inRange, leftCrop, rightCrop, onPressDate, isToday, disabled } = props;
 
   const theme = useTheme();
   const styles = getDayStyles();
@@ -55,13 +42,13 @@ const Day = (props: DayProps) => {
 
   return (
     <Container disableGutters style={[styles.root, disabled && styles.disabled]}>
-      <DayRange inRange={inRange} leftCrop={leftCrop} rightCrop={rightCrop} selectColor={selectColor} />
+      <DayRange inRange={inRange} leftCrop={leftCrop} rightCrop={rightCrop} />
       <TouchableRipple
         testID={`anu-dates-day-${year}-${month}-${day}`}
         disabled={disabled}
         borderless={true}
         onPress={disabled ? undefined : onPress}
-        style={[styles.button, { backgroundColor: inRange ? selectColor : undefined }]}
+        style={styles.button}
         accessibilityRole='button'
       >
         <Container
@@ -69,7 +56,7 @@ const Day = (props: DayProps) => {
           style={[
             styles.day,
             isToday ? { borderColor: borderColor } : null,
-            selected ? { backgroundColor: primaryColor } : null,
+            selected ? { backgroundColor: theme.colors.$primary } : null,
           ]}
         >
           <Typography.Body
