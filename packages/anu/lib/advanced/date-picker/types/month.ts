@@ -1,7 +1,7 @@
 import { CalendarDate, CalendarDates, DisableWeekDaysType, ModeType, ValidRangeType } from './calendar';
 
 interface BaseMonthProps {
-  locale: undefined | string;
+  locale?: string;
   scrollMode: 'horizontal' | 'vertical';
   disableWeekDays?: DisableWeekDaysType;
   mode: ModeType;
@@ -9,9 +9,6 @@ interface BaseMonthProps {
   onPressYear: (year: number) => void;
   selectingYear: boolean;
   onPressDate: (date: Date) => void;
-  primaryColor: string;
-  selectColor: string;
-  roundness: number;
   validRange?: ValidRangeType;
 
   // some of these should be required in final implementation

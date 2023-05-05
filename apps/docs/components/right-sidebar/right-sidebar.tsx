@@ -19,6 +19,8 @@ import { checkboxIndex } from 'services/docs/checkbox';
 import { chipIndex } from 'services/docs/chip';
 import { containerIndex } from 'services/docs/container';
 import { creditsIndex } from 'services/docs/credits';
+import { datePickerInputIndex } from 'services/docs/date-picker-input';
+import { datePickerModalIndex } from 'services/docs/date-picker-modal';
 import { dialogIndex } from 'services/docs/dialog';
 import { dialogActionsIndex } from 'services/docs/dialog-actions';
 import { dialogContentIndex } from 'services/docs/dialog-content';
@@ -228,6 +230,16 @@ const RenderIndex = () => {
     case '/components/container': {
       {
         return <Index {...containerIndex} />;
+      }
+    }
+    case '/components/date-picker/input': {
+      {
+        return <Index {...datePickerInputIndex} />;
+      }
+    }
+    case '/components/date-picker/modal': {
+      {
+        return <Index {...datePickerModalIndex} />;
       }
     }
     case '/components/divider': {

@@ -10,7 +10,11 @@ type WidthAndHeight = {
   height: number;
 };
 
-const AutoSizer = ({ children }: { children: ({ width, height }: WidthAndHeight) => ReactChildren }) => {
+interface AutoSizerProps {
+  children: ({ width, height }: WidthAndHeight) => ReactChildren;
+}
+
+const AutoSizer = (props: AutoSizerProps) => {
   const [layout, setLayout] = React.useState<WidthAndHeight | null>(null);
 
   const onLayout = React.useCallback(
@@ -29,7 +33,7 @@ const AutoSizer = ({ children }: { children: ({ width, height }: WidthAndHeight)
 
   return (
     <Container disableGutters style={[styles.autoSizer, layout && layout]} onLayout={onLayout}>
-      {layout ? children(layout) : null}
+      {layout ? props.children(layout) : null}
     </Container>
   );
 };

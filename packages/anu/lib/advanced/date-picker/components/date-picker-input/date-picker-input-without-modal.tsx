@@ -7,6 +7,7 @@ import { forwardRef } from 'react';
 import { useDateInput } from '../../hooks';
 import { DatePickerInputWithoutModalProps } from '../../types';
 import { getDatePickerInputWithoutModalStyles, getLabel } from '../../utils';
+import { defaultDatePickerInputWithoutModalProps } from './default';
 
 /**
  *
@@ -15,6 +16,8 @@ import { getDatePickerInputWithoutModalStyles, getLabel } from '../../utils';
  */
 const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePickerInputWithoutModalProps>(
   (props, reference) => {
+    const finalProps = { ...defaultDatePickerInputWithoutModalProps, ...props };
+
     const {
       label,
       value,
@@ -29,15 +32,16 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
       onValidationError,
       modal,
       inputButtons,
-      saveLabel,
-      saveLabelDisabled,
-      uppercase,
+      okLabel,
+      okLabelDisabled,
+      cancelLabel,
+      cancelLabelDisabled,
       startYear,
       endYear,
       onChangeText,
       inputEnabled,
       ...rest
-    } = props;
+    } = finalProps;
 
     const {
       formattedValue,
@@ -93,9 +97,10 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
           locale,
           inputMode,
           validRange,
-          saveLabel,
-          saveLabelDisabled,
-          uppercase,
+          okLabel,
+          okLabelDisabled,
+          cancelLabel,
+          cancelLabelDisabled,
           startYear,
           endYear,
           inputEnabled,
