@@ -92,49 +92,56 @@ export function useDateInput(props: UseDateInputProps) {
   const inputFormat = useInputFormat({ formatter, locale });
   const formattedValue = value ? formatter.format(value) : '';
   const onChangeText = (date: string) => {
-    const dayIndex = inputFormat.indexOf('DD');
-    const monthIndex = inputFormat.indexOf('MM');
-    const yearIndex = locale === 'pt' ? inputFormat.indexOf('AAAA') : inputFormat.indexOf('YYYY');
+    if (date.length > 0) {
+      const dayIndex = inputFormat.indexOf('DD');
+      const monthIndex = inputFormat.indexOf('MM');
+      const yearIndex = locale === 'pt' ? inputFormat.indexOf('AAAA') : inputFormat.indexOf('YYYY');
 
-    const day = Number(date.slice(dayIndex, dayIndex + 2));
-    const year = Number(date.slice(yearIndex, yearIndex + 4));
-    const month = Number(date.slice(monthIndex, monthIndex + 2));
+      const day = Number(date.slice(dayIndex, dayIndex + 2));
+      const year = Number(date.slice(yearIndex, yearIndex + 4));
+      const month = Number(date.slice(monthIndex, monthIndex + 2));
 
-    if (Number.isNaN(day) || Number.isNaN(year) || Number.isNaN(month)) {
-      const inputError = 'notAccordingToDateFormat';
-      setError(inputError);
-      if (onValidationError) onValidationError(inputError);
-      return;
-    }
+      if (Number.isNaN(day) || Number.isNaN(year) || Number.isNaN(month)) {
+        const inputError = 'Entered date is not according to the format';
+        setError(inputError);
+        if (onValidationError) onValidationError(inputError);
+        return;
+      }
 
-    const finalDate = inputMode === 'end' ? new Date(year, month - 1, day, 23, 59, 59) : new Date(year, month - 1, day);
+      const finalDate =
+        inputMode === 'end' ? new Date(year, month - 1, day, 23, 59, 59) : new Date(year, month - 1, day);
 
-    if (isDisabled(finalDate)) {
-      const inputError = 'dateIsDisabled';
-      setError(inputError);
-      if (onValidationError) onValidationError(inputError);
-      return;
-    }
-    if (!isWithinValidRange(finalDate)) {
-      const errors =
-        validStart && validEnd
-          ? [`mustBeBetween ${(formatter.format(validStart), formatter.format(validEnd))}`]
-          : [
-              validStart ? `mustBeHigherThan ${(formatter.format(validStart), formatter.format(validEnd))}` : '',
-              validEnd ? `mustBeLowerThan ${(formatter.format(validStart), formatter.format(validEnd))}` : '',
-            ];
-      const inputError = errors.filter(Boolean).join(' ');
-      setError(errors.filter(Boolean).join(' '));
-      if (onValidationError) onValidationError(inputError);
-      return;
-    }
+      if (isDisabled(finalDate)) {
+        const inputError = 'Date is disabled';
+        setError(inputError);
+        if (onValidationError) onValidationError(inputError);
+        return;
+      }
+      if (!isWithinValidRange(finalDate)) {
+        const errors =
+          validStart && validEnd
+            ? [`must be between ${(formatter.format(validStart), formatter.format(validEnd))}`]
+            : [
+                validStart ? `must be higher than ${(formatter.format(validStart), formatter.format(validEnd))}` : '',
+                validEnd ? `must be lower than ${(formatter.format(validStart), formatter.format(validEnd))}` : '',
+              ];
+        const inputError = errors.filter(Boolean).join(' ');
+        setError(errors.filter(Boolean).join(' '));
+        if (onValidationError) onValidationError(inputError);
+        return;
+      }
 
-    setError(null);
-    if (onValidationError) onValidationError(null);
-    if (inputMode === 'end') {
-      onChange(finalDate);
+      setError(null);
+      if (onValidationError) onValidationError(null);
+      if (inputMode === 'end') {
+        onChange(finalDate);
+      } else {
+        onChange(finalDate);
+      }
     } else {
-      onChange(finalDate);
+      setError(null);
+      if (onValidationError) onValidationError(null);
+      onChange();
     }
   };
   return {

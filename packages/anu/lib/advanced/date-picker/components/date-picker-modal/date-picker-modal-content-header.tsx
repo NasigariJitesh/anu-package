@@ -10,7 +10,7 @@ import { getDatePickerModalContentHeaderStyles, getModalLabel } from '../../util
  * @param props
  */
 const DatePickerModalContentHeader = (props: HeaderContentProps) => {
-  const { onToggle, collapsed, mode, moreLabel, uppercase, editIcon, calendarIcon, allowEditing } = props;
+  const { onToggle, collapsed, mode, moreLabel, editIcon, calendarIcon, allowEditing } = props;
 
   const theme = useTheme();
   const styles = getDatePickerModalContentHeaderStyles(theme);
@@ -22,7 +22,7 @@ const DatePickerModalContentHeader = (props: HeaderContentProps) => {
   return (
     <Container disableGutters style={styles.header}>
       <Container disableGutters>
-        <Typography.Body style={styles.label}>{uppercase ? label.toUpperCase() : label}</Typography.Body>
+        <Typography.Body style={styles.label}>{label}</Typography.Body>
 
         <Container
           disableGutters

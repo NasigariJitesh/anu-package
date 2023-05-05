@@ -6,13 +6,16 @@ import { useLatest } from '../../hooks';
 import { DatePickerInputProps } from '../../types';
 import DatePickerModal from '../date-picker-modal';
 import DatePickerInputWithoutModal from './date-picker-input-without-modal';
+import { defaultDatePickerInputProps } from './default';
 
 /**
  * @param reference
  * @param props
  */
 const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps>((props, reference) => {
-  const { withModal = true, calendarIcon = 'calendar-today', ...rest } = props;
+  const finalProps = { ...defaultDatePickerInputProps, ...props };
+
+  const { withModal, calendarIcon, ...rest } = finalProps;
 
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -38,21 +41,21 @@ const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps
         withModal ? (
           <IconButton
             type='standard'
-            icon={{ name: calendarIcon, props: { size: 24 } }}
+            icon={{ name: calendarIcon ?? 'calendar-today', props: { size: 24 } }}
             disabled={rest.disabled}
             onPress={() => setVisible(true)}
           />
         ) : null
       }
-      // eslint-disable-next-line react/no-unstable-nested-components
       modal={({
         value,
         locale,
         inputMode,
         validRange,
-        saveLabel,
-        saveLabelDisabled,
-        uppercase,
+        okLabel,
+        okLabelDisabled,
+        cancelLabel,
+        cancelLabelDisabled,
         startYear,
         endYear,
         inputEnabled,
@@ -63,14 +66,15 @@ const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps
             mode='single'
             visible={visible}
             onDismiss={onDismiss}
-            //@ts-expect-error
+            //@ts-expect-error - because of multiple type interfacing
             onConfirm={onInnerConfirm}
             locale={locale}
             dateMode={inputMode}
             validRange={validRange}
-            saveLabel={saveLabel}
-            saveLabelDisabled={saveLabelDisabled ?? false}
-            uppercase={uppercase ?? false}
+            okLabel={okLabel}
+            okLabelDisabled={okLabelDisabled ?? false}
+            cancelLabel={cancelLabel}
+            cancelLabelDisabled={cancelLabelDisabled ?? false}
             startYear={startYear ?? 1900}
             endYear={endYear ?? 2200}
             inputEnabled={inputEnabled}

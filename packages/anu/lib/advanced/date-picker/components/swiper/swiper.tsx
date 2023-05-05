@@ -1,9 +1,9 @@
 import { Container } from 'anu/lib/primitives';
 import React, { memo, useCallback, useRef, useState } from 'react';
-import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, StyleSheet } from 'react-native';
+import { NativeScrollEvent, NativeSyntheticEvent, ScrollView } from 'react-native';
 
 import { SwiperProps } from '../../types';
-import { beginOffset, estimatedMonthHeight, totalMonths, useYearChange } from '../../utils';
+import { beginOffset, estimatedMonthHeight, getSwiperStyles, totalMonths, useYearChange } from '../../utils';
 import {
   getHorizontalMonthOffset,
   getIndexFromVerticalOffset,
@@ -13,23 +13,13 @@ import {
 } from '../../utils';
 import AutoSizer from './auto-sizer';
 
-const styles = StyleSheet.create({
-  inner: {
-    position: 'relative',
-  },
-  viewPager: {
-    flex: 1,
-  },
-});
-
 /**
  *
  * @param index
- * @param root0
- * @param root0.isHorizontal
- * @param root0.height
+ * @param isHorizontal
+ * @param height
  */
-const getVisibleArray = (index: number, { isHorizontal, height }: { isHorizontal: boolean; height: number }) => {
+const getVisibleArray = (index: number, isHorizontal: boolean, height: number) => {
   if (isHorizontal || height < 700) {
     return [index - 1, index, index + 1];
   }
@@ -54,16 +44,16 @@ const SwiperInner = (props: SwiperProps & { width: number; height: number }) => 
   const isHorizontal = scrollMode === 'horizontal';
 
   const indexReference = useRef<number>(initialIndex);
-  const [visibleIndexes, setVisibleIndexes] = useState<number[]>(
-    getVisibleArray(initialIndex, { isHorizontal, height }),
-  );
+  const [visibleIndexes, setVisibleIndexes] = useState<number[]>(getVisibleArray(initialIndex, isHorizontal, height));
 
   const parentReference = useRef<ScrollView | null>(null);
+
+  const styles = getSwiperStyles();
 
   const scrollTo = useCallback(
     (index: number, animated: boolean) => {
       indexReference.current = index;
-      setVisibleIndexes(getVisibleArray(index, { isHorizontal, height }));
+      setVisibleIndexes(getVisibleArray(index, isHorizontal, height));
 
       if (!parentReference.current) {
         return;
@@ -115,7 +105,7 @@ const SwiperInner = (props: SwiperProps & { width: number; height: number }) => 
 
       if (indexReference.current !== newIndex) {
         indexReference.current = newIndex;
-        setVisibleIndexes(getVisibleArray(newIndex, { isHorizontal, height }));
+        setVisibleIndexes(getVisibleArray(newIndex, isHorizontal, height));
       }
     },
     [indexReference, height, isHorizontal],
