@@ -5,7 +5,6 @@ export const defaultProps: Omit<TimePickerModalProps, 'visible'> = {
   cancelLabel: 'Cancel',
   confirmLabel: 'Ok',
   animationType: 'fade',
-  locale: 'en',
   keyboardIcon: 'keyboard',
   clockIcon: 'access-time',
   onDismiss: () => {},
