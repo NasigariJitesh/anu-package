@@ -24,6 +24,7 @@ export const lightThemeColors = {
   $onBackground: '#1b1b1f',
   $surface: '#fffbff',
   $surfaceContainerHigh: '#ebe7eb',
+  $surfaceContainerLow: '#f7f2f6',
   $surfaceContainerHighest: '#e5e1e5',
   $onSurface: '#1b1b1f',
   $outline: '#777680',
@@ -60,6 +61,7 @@ export const darkThemeColors = {
   $onBackground: '#E5E1E6',
   $surface: '#1B1B1F',
   $surfaceContainerHigh: '#2b292d',
+  $surfaceContainerLow: '#1c1b1e',
   $surfaceContainerHighest: '#363438',
   $onSurface: '#E5E1E6',
   $outline: '#918F9A',
@@ -178,6 +180,7 @@ declare module 'dripsy' {
       $inversePrimary: 'string';
       $scrim: 'string';
       $surfaceContainerHigh: 'string';
+      $surfaceContainerLow: 'string';
       $surfaceContainerHighest: 'string';
     };
   }

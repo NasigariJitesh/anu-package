@@ -4,12 +4,10 @@ import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 
 const flexStyle = {
   flexWrap: 'wrap',
-  // < 576 = 90vw
-  // 576
-  //
-  // 990 px
-  // > 1200px
-  width: ['90vw', '90vw', '550px', '600px', '750px'],
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  width: '100%',
   paddingHorizontal: 10,
 } as const;
 
@@ -114,9 +112,11 @@ export const badgeDocumentation: ContentValues = {
       description: 'badgeDocumentation:example2-description',
       component: (
         <Container disableGutters flexDirection='row' align='center' sx={flexStyle as never}>
-          <Badge value='new'>
-            <Icon name='notifications' />
-          </Badge>
+          <Container disableGutters style={style}>
+            <Badge value='new'>
+              <Icon name='notifications' />
+            </Badge>
+          </Container>
         </Container>
       ),
       code: `<Badge value='new'>

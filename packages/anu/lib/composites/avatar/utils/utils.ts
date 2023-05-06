@@ -5,7 +5,7 @@ import { ImageStyle } from 'react-native';
 
 import { AvatarGroupProps, ChildrenAvatarProps, ImageAvatarProps, LetterAvatarProps } from './../types/avatar';
 
-const getImageAvatarTheme = (theme: DripsyFinalTheme, variant?: 'circle' | 'rounded') => {
+const getImageAvatarTheme = (variant?: 'circle' | 'rounded') => {
   const imageTheme = {
     common: {
       height: 32,
@@ -83,10 +83,10 @@ const getLetterAvatarTheme = (theme: DripsyFinalTheme, variant?: 'circle' | 'rou
   return { containerTheme, extendedContainerTheme, typographyTheme };
 };
 
-export const getImageAvatarStyle = (props: ImageAvatarProps, theme: DripsyFinalTheme) => {
+export const getImageAvatarStyle = (props: ImageAvatarProps) => {
   const { variant, size } = props;
 
-  const { imageTheme } = getImageAvatarTheme(theme, variant);
+  const { imageTheme } = getImageAvatarTheme(variant);
 
   const imageStyle: ImageStyle = { ...imageTheme.common, ...imageTheme[size ?? 'medium'] };
 
@@ -126,13 +126,7 @@ export const getAvatarGroupStyle = (props: AvatarGroupProps, theme: DripsyFinalT
   return { excessAvatarStyle, excessAvatarSx, groupStyle, baseZIndex, marginRight };
 };
 
-export const getAvatarContainerStyle = (
-  avatar: ReactElement,
-  zIndex: number,
-  marginRight: number,
-  theme: DripsyFinalTheme,
-  size: string,
-) => {
+export const getAvatarContainerStyle = (avatar: ReactElement, zIndex: number, marginRight: number, size: string) => {
   const { style } = avatar.props;
 
   let height = 36;
@@ -168,7 +162,6 @@ export const getAvatarContainerStyle = (
     width: dimension,
     borderRadius: dimension / 2,
     padding: 2,
-    backgroundColor: theme.colors.$surface,
     alignItems: 'center' as const,
     justifyContent: 'center' as const,
     marginRight,

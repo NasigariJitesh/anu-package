@@ -103,13 +103,13 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
     caretColor: props?.error ? colors.$error : colors.$primary,
 
     backgroundColor: 'transparent',
-  };
+  } as const;
 
   if (props?.disabled)
     common = {
       ...common,
       color: 'inherit' as never,
-    };
+    } as const;
 
   return common;
 };
