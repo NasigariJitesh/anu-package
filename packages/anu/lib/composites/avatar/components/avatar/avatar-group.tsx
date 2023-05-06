@@ -38,7 +38,7 @@ const AvatarGroup = (props: AvatarGroupProps) => {
     marginRight,
   } = getAvatarGroupStyle(props, theme);
 
-  let style = getAvatarContainerStyle(avatars[0]!, baseZIndex + totalChildren, marginRight, theme, size);
+  let style = getAvatarContainerStyle(avatars[0]!, baseZIndex + totalChildren, marginRight, size);
 
   let remaining = 0;
 

@@ -53,7 +53,7 @@ const MenuItem = (props: MenuItemProps) => {
           {finalProps.children}
         </Container>
 
-        <Container disableGutters flexDirection='row'>
+        <Container disableGutters flexDirection='row' align='center'>
           {trailingIcon && 'name' in trailingIcon ? (
             <Icon
               size={24}

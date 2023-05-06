@@ -23,7 +23,7 @@ export const LeadingIcon = (props: ChipProps) => {
           {...props.leadingIcon.iconProps}
           size={iconStyle.size}
           //@ts-expect-error Reason sometimes color is undefined according to ts but its value is set according to the type of chip
-          color={iconStyle.color}
+          style={iconStyle}
         />
       </View>
     );
@@ -50,7 +50,7 @@ export const TrailingIcon = (props: ChipProps) => {
           {...props.trailingIcon.iconProps}
           size={iconStyle.size}
           //@ts-expect-error Reason sometimes color is undefined according to ts but its value is set according to the type of chip
-          color={iconStyle.color}
+          style={iconStyle}
         />
       </View>
     );

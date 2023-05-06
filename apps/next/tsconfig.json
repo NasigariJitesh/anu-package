@@ -1,6 +1,0 @@
-{
-  "extends": "tsconfig/base.json",
-  "compilerOptions": {},
-  "include": ["next-env.d.ts", "app-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
-}

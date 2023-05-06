@@ -11,38 +11,54 @@ import BottomSheetExample2Dark from 'assets/bottom-sheet-with-modal-dark.gif';
 import BottomSheetExample2Light from 'assets/bottom-sheet-with-modal-light.gif';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { View } from 'react-native';
 import { useMenuContext } from 'screens/common/provider';
 
 const flexStyle = {
   flexWrap: 'wrap',
-  width: ['90vw', '90vw', '550px', '600px', '750px'],
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
 } as const;
+
+const style = {
+  margin: 15,
+};
 
 const Example3 = () => {
   const { isDarkTheme } = useMenuContext();
 
   return (
     <Container disableGutters sx={flexStyle as never}>
-      {isDarkTheme ? (
-        <Image
-          source={{ uri: BottomSheetExample31Light.src }}
-          style={{ height: 300, width: 359 }}
-          alt='bottom-sheet-full'
-        />
-      ) : (
-        <Image source={{ uri: BottomSheetExample31Dark.src }} style={{ height: 300, width: 359 }} alt='bottom-sheet' />
-      )}
-      <View style={{ marginVertical: 30 }} />
-      {isDarkTheme ? (
-        <Image
-          source={{ uri: BottomSheetExample32Light.src }}
-          style={{ height: 150, width: 369 }}
-          alt='bottom-sheet-full'
-        />
-      ) : (
-        <Image source={{ uri: BottomSheetExample32Dark.src }} style={{ height: 150, width: 369 }} alt='bottom-sheet' />
-      )}
+      <Container disableGutters style={style}>
+        {isDarkTheme ? (
+          <Image
+            source={{ uri: BottomSheetExample31Light.src }}
+            style={{ height: 300, width: 359 }}
+            alt='bottom-sheet-full'
+          />
+        ) : (
+          <Image
+            source={{ uri: BottomSheetExample31Dark.src }}
+            style={{ height: 300, width: 359 }}
+            alt='bottom-sheet'
+          />
+        )}
+      </Container>
+      <Container disableGutters style={style}>
+        {isDarkTheme ? (
+          <Image
+            source={{ uri: BottomSheetExample32Light.src }}
+            style={{ height: 150, width: 369 }}
+            alt='bottom-sheet-full'
+          />
+        ) : (
+          <Image
+            source={{ uri: BottomSheetExample32Dark.src }}
+            style={{ height: 150, width: 369 }}
+            alt='bottom-sheet'
+          />
+        )}
+      </Container>
     </Container>
   );
 };
@@ -52,12 +68,13 @@ const Example2 = () => {
 
   return (
     <Container disableGutters sx={flexStyle as never}>
-      {isDarkTheme ? (
-        <img src={BottomSheetExample2Light.src} style={{ height: 848, width: 384 }} alt='bottom-sheet-full' />
-      ) : (
-        <img src={BottomSheetExample2Dark.src} style={{ height: 848, width: 384 }} alt='bottom-sheet' />
-      )}
-      <View style={{ marginVertical: 30 }} />
+      <Container disableGutters style={style}>
+        {isDarkTheme ? (
+          <img src={BottomSheetExample2Light.src} style={{ height: 848, width: 384 }} alt='bottom-sheet-full' />
+        ) : (
+          <img src={BottomSheetExample2Dark.src} style={{ height: 848, width: 384 }} alt='bottom-sheet' />
+        )}
+      </Container>
     </Container>
   );
 };
@@ -67,12 +84,13 @@ const Example1 = () => {
 
   return (
     <Container disableGutters sx={flexStyle as never}>
-      {isDarkTheme ? (
-        <img src={BottomSheetExample1Dark.src} style={{ height: 848, width: 384 }} alt='bottom-sheet' />
-      ) : (
-        <img src={BottomSheetExample1Light.src} style={{ height: 848, width: 384 }} alt='bottom-sheet-full' />
-      )}
-      <View style={{ marginVertical: 30 }} />
+      <Container disableGutters style={style}>
+        {isDarkTheme ? (
+          <img src={BottomSheetExample1Dark.src} style={{ height: 848, width: 384 }} alt='bottom-sheet' />
+        ) : (
+          <img src={BottomSheetExample1Light.src} style={{ height: 848, width: 384 }} alt='bottom-sheet-full' />
+        )}
+      </Container>
     </Container>
   );
 };
