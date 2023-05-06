@@ -45,6 +45,7 @@ import { segmentedButtonIndex } from 'services/docs/segmented-button';
 import { sideSheetIndex } from 'services/docs/side-sheet';
 import { snackbarIndex } from 'services/docs/snackbar';
 import { switchIndex } from 'services/docs/switch';
+import { tabsIndex } from 'services/docs/tabs';
 import { textFieldIndex } from 'services/docs/text-field';
 import { themingIndex } from 'services/docs/theming';
 import { timePickerIndex } from 'services/docs/time-picker';
@@ -338,7 +339,11 @@ const RenderIndex = () => {
         return <Index {...switchIndex} />;
       }
     }
-
+    case '/components/tabs': {
+      {
+        return <Index {...tabsIndex} />;
+      }
+    }
     case '/components/touchable-ripple': {
       {
         return <Index {...touchableRippleIndex} />;

@@ -20,7 +20,7 @@ export const getHeaderItemStyles = (theme: DripsyFinalTheme, props: HeaderItemPr
   };
 
   const containerStyle = {
-    minHeight: props.type !== 'secondary' && props.icon ? 64 : 48,
+    minHeight: props.type !== 'secondary' && props.icon && props.name ? 64 : 48,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
