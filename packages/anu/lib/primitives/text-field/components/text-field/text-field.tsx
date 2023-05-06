@@ -123,7 +123,6 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
       if (!isTextFieldVisible) {
         toggleTextFieldVisible(true);
         setOnFocus(() => ({ focused: true, pressed: true }));
-
         textInputReference.current?.focus();
       }
     };
