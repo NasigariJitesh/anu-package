@@ -98,11 +98,6 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.error, props.errorMessage]);
 
-    useEffect(() => {
-      if (isTextFieldVisible !== !!value) toggleTextFieldVisible(!!value);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value]);
-
     const generateStyles = (state: PressableStateCallbackType) => {
       return generateHoverStyles(state, containerStyle, useSx);
     };
@@ -110,6 +105,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const onTextInputFocus = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
       setOnFocus(() => ({ focused: true, pressed: true }));
       if (props.onFocus) props.onFocus(event);
+      toggleTextFieldVisible(true);
     };
 
     const onTextInputBlur = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {

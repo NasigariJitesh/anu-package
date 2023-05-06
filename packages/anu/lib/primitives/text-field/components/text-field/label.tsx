@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { getColorInRGBA } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { DripsyFinalTheme } from 'dripsy';
 import { useEffect } from 'react';
@@ -11,13 +12,10 @@ const DURATION = 200; // in milliseconds
 const DELAY = 100; // in milliseconds
 
 const selectLabelColorBasedOnState = (props: TextInputLabelProps, theme: DripsyFinalTheme) => {
-  if (props.disabled) return theme.colors.$onSurfaceVariant;
+  if (props.disabled) return getColorInRGBA(theme.colors.$onSurface, 38);
 
   // if it is focused
-  if (props.isFocused) return theme.colors.$primary;
-
-  // if the value is not empty
-  if (props.value && props.value?.length > 0) return theme.colors.$primary;
+  if (props.states?.focused || props.states?.pressed) return theme.colors.$primary;
 
   return theme.colors.$onSurfaceVariant;
 };
@@ -67,11 +65,8 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   }, [transitionFontSize, transitionLineHeight, transitionLetterSpacing]);
 
   useEffect(() => {
-    if (props.isFocused) {
-      transitionIn();
-    } else {
-      transitionOut();
-    }
+    if (props.isFocused) transitionIn();
+    else transitionOut();
   }, [props]);
 
   /**

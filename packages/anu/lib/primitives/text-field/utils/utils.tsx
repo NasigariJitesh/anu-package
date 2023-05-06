@@ -95,13 +95,12 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
     fontSize: 16,
     lineHeight: 24,
     fontWeight: '400' as const,
-    // paddingTop: props?.variant === 'filled' ? 8 : 0,
     paddingHorizontal: 18,
     color: colors.$onSurface,
     letterSpacing: 0.5,
     caretColor: props?.error ? colors.$error : colors.$primary,
     backgroundColor: 'transparent',
-    position: 'relative',
+    position: 'relative' as const,
   };
 
   if (Platform.OS === 'web') {

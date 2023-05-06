@@ -14,7 +14,7 @@ export default function Example() {
       justify='space-between'
       sx={{ flex: 1, height: '100vh', paddingTop: 1, marginTop: 100 }}
     >
-      <TextField value={value} onChangeText={setValue} />
+      <TextField value={value} onChangeText={setValue} autoFocus />
     </Container>
   );
 }
