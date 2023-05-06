@@ -47,9 +47,11 @@ const TabHeaderItem = (props: HeaderItemProps) => {
               props.icon
             )
           ) : null}
-          <Typography.Body style={[styles.labelStyle, props.isActive ? styles.activeStyle : {}]}>
-            {props.name}
-          </Typography.Body>
+          {props.name ? (
+            <Typography.Body style={[styles.labelStyle, props.isActive ? styles.activeStyle : {}]}>
+              {props.name}
+            </Typography.Body>
+          ) : null}
         </Container>
 
         {props.isActive ? <ActiveIndicator {...props} /> : null}

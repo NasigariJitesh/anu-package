@@ -18,7 +18,6 @@ import { useState } from 'react';
  *
  */
 export default function Example() {
-  const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState(false);
   const [visible1, setVisible1] = useState(false);
@@ -39,7 +38,7 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
-      <Tabs active={active} onChange={setActive} type='primary' maxWidth={500}>
+      <Tabs type='primary' maxWidth={500}>
         <Tab name='One' icon={{ name: 'favorite' }}>
           <Typography.Body>
             This is very long snack, This is very long snack , This is very long snack, This is very long snack , This

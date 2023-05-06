@@ -493,6 +493,11 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:tabs',
+                link: '/components/tabs',
+                components: [],
+              },
+              {
                 title: 'leftSideBar:text-fields',
                 link: '/components/text-field',
                 components: [],

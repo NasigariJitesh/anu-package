@@ -4,12 +4,36 @@ import { ReactElement } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 
 export interface TabsProps extends ContainerProps {
+  /**
+   * The index of active tab
+   */
   active?: number;
+  /**
+   * Callback function to be called when tab is changed
+   *
+   * @param active - index of new active tab
+   * @returns
+   */
   onChange?: (active: number) => void;
+  /**
+   * The Individual Tab Components
+   */
   children: Array<ReactElement<TabProps>>;
+  /**
+   * The styles for the tab content container
+   */
   contentStyle?: StyleProp<ViewStyle>;
+  /**
+   * The styles for the tab header
+   */
   tabHeaderStyle?: StyleProp<ViewStyle>;
+  /**
+   * The styles for the tab header of active tab
+   */
   activeTabHeaderStyle?: StyleProp<ViewStyle>;
+  /**
+   * The type of tabs
+   */
   type?: 'primary' | 'secondary';
 }
 
@@ -23,8 +47,17 @@ export interface TabHeaderProps {
 }
 
 export interface TabProps extends ContainerProps {
+  /**
+   * The components to be displayed in the tab
+   */
   children: ReactChildren;
-  name: string;
+  /**
+   * The name of the tab
+   */
+  name?: string;
+  /**
+   * The icon of the tab
+   */
   icon?: IconType | ReactElement;
 }
 
