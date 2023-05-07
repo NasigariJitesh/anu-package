@@ -68,7 +68,6 @@ __metadata:
   resolution: "@anu/native@workspace:apps/native"
   dependencies:
     "@babel/core": ^7.20.0
-    "@babel/plugin-proposal-export-namespace-from": ^7.18.9
     app: "*"
     expo: ^48.0.0
     expo-linking: ~4.0.1
@@ -79,6 +78,7 @@ __metadata:
     react-dom: 18.2.0
     react-native: 0.71.4
     react-native-gesture-handler: ~2.9.0
+    react-native-reanimated: 2.14.4
     react-native-safe-area-context: 4.5.0
     react-native-screens: ~3.20.0
     react-native-vector-icons: ^9.2.0
@@ -4039,6 +4039,7 @@ __metadata:
   resolution: "app@workspace:packages/app"
   dependencies:
     moti: latest
+    react-native-reanimated: 3.0.2
     solito: 3.0.0
   languageName: unknown
   linkType: soft
@@ -11034,6 +11035,7 @@ __metadata:
     eslint-config-next: 13.2.0
     next: 13.2.0
     raf: ^3.4.1
+    react-native-reanimated: 3.0.2
     setimmediate: ^1.0.5
   languageName: unknown
   linkType: soft
@@ -12389,6 +12391,25 @@ __metadata:
   version: 0.71.17
   resolution: "react-native-gradle-plugin@npm:0.71.17"
   checksum: 5ff996bafc3959a36551dc34d481cefb070ede4025b5eb2ce659f51adf74ba0e6845cc019ea1d547e0b4007f1c3c68146fa719688f09bde308f25320c6c6f834
+  languageName: node
+  linkType: hard
+
+"react-native-reanimated@npm:2.14.4":
+  version: 2.14.4
+  resolution: "react-native-reanimated@npm:2.14.4"
+  dependencies:
+    "@babel/plugin-transform-object-assign": ^7.16.7
+    "@babel/preset-typescript": ^7.16.7
+    convert-source-map: ^1.7.0
+    invariant: ^2.2.4
+    lodash.isequal: ^4.5.0
+    setimmediate: ^1.0.5
+    string-hash-64: ^1.0.3
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+    react: "*"
+    react-native: "*"
+  checksum: ec24225a145a8636065b464660256bed99ba5f50c7f6c74899838f5563e59a342ea217c285a06be8bdd5549e2faaf1ebdac6986011a767ba814a4cf469ed9bdb
   languageName: node
   linkType: hard
 

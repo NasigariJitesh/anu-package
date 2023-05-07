@@ -31,6 +31,14 @@ import {
 import { defaultProps } from './default';
 import TextFieldLabel from './label';
 
+const toggleTextFieldVisibility = (props: Partial<TextFieldProps>) => {
+  if (props.autoFocus) return true;
+  if (props.disabled && props.value) return true;
+  if (props.value) return true;
+
+  return false;
+};
+
 /**
  * the text field component
  *
@@ -48,7 +56,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const finalProps = { ...defaultProps, ...props };
     const { variant, sx, value, ...componentProps } = finalProps;
 
-    const [isTextFieldVisible, toggleTextFieldVisible] = useState(props.autoFocus ?? (!!value && !props.disabled));
+    const [isTextFieldVisible, toggleTextFieldVisible] = useState(toggleTextFieldVisibility(props));
 
     const style = getTextFieldStyles(theme, finalProps);
     const containerStyle = getTextFieldContainerStyle(finalProps, theme);

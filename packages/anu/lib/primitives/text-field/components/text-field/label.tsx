@@ -14,6 +14,8 @@ const DELAY = 100; // in milliseconds
 const selectLabelColorBasedOnState = (props: TextInputLabelProps, theme: DripsyFinalTheme) => {
   if (props.disabled) return getColorInRGBA(theme.colors.$onSurface, 38);
 
+  if (props.error) return theme.colors.$error;
+
   // if it is focused
   if (props.states?.focused || props.states?.pressed) return theme.colors.$primary;
 

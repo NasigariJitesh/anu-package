@@ -101,6 +101,7 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
     caretColor: props?.error ? colors.$error : colors.$primary,
     backgroundColor: 'transparent',
     position: 'relative' as const,
+    width: '100%',
   };
 
   if (Platform.OS === 'web') {
