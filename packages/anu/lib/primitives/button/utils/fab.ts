@@ -236,7 +236,7 @@ export const getFABStyles = (props: FABProps, defaultTheme: DripsyFinalTheme) =>
     ...commonPressableLayerTheme,
     ...pressableLayerTheme,
     ...propsOtherStylesForStateLayer,
-     ...getResetMarginStyles(),
+    ...getResetMarginStyles(),
     '@hover': { ...pressableLayerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...pressableLayerTheme['@focus'], ...propsFocusStyles },
     '@press': { ...pressableLayerTheme['@press'], ...propsPressStyles },
@@ -248,7 +248,7 @@ export const getFABStyles = (props: FABProps, defaultTheme: DripsyFinalTheme) =>
   };
 
   return {
-    styles: styles,
+    containerStyles: styles,
     pressableStyles: pressableLayerStyles,
     iconStyles,
   };

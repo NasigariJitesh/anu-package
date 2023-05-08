@@ -98,13 +98,13 @@ const Snackbar = () => {
             <Button.Text
               {...finalProps.action}
               labelStyle={getCombinedStylesForText(actionLabelStyle, finalProps.action.labelStyle)}
-              containerStyle={{ ...actionStyle, ...finalProps.action.containerStyle }}
+              style={{ ...actionStyle, ...finalProps.action.style }}
             />
           ) : null}
           {finalProps.numberOfLines !== 2 && finalProps.icon ? (
             <IconButton
               {...finalProps.icon}
-              containerStyle={{ ...iconStyle, ...finalProps.icon.containerStyle }}
+              style={{ ...iconStyle, ...finalProps.icon.style }}
               type='standard'
             />
           ) : null}

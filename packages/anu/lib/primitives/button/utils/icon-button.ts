@@ -520,7 +520,7 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
     : {};
 
   return {
-    styles: { ...styles, ...disabledStyles },
+    containerStyles: { ...styles, ...disabledStyles },
     pressableStyles: pressableLayerStyles,
     iconStyles: { ...iconStyles, ...disabledIconStyles },
   };
