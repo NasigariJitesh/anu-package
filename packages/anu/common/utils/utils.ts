@@ -111,9 +111,29 @@ export const getCombinedStylesForImage = (defaultStyle: StyleProp<ImageStyle>, c
 };
 
 export const getResetPaddingStyles = () => {
-  return { padding: 0, paddingVertical: 0, paddingHorizontal: 0 };
+  return {
+    padding: 0,
+    paddingVertical: 0,
+    paddingHorizontal: 0,
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingStart: 0,
+    paddingEnd: 0,
+  };
 };
 
 export const getResetMarginStyles = () => {
-  return { margin: 0, marginVertical: 0, marginHorizontal: 0 };
+  return {
+    margin: 0,
+    marginVertical: 0,
+    marginHorizontal: 0,
+    marginTop: 0,
+    marginBottom: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginStart: 0,
+    marginEnd: 0,
+  };
 };
