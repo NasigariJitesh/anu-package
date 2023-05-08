@@ -18,12 +18,10 @@ const margin = {
 
 const flexStyle = {
   flexWrap: 'wrap',
-  // < 576 = 90vw
-  // 576
-  //
-  // 990 px
-  // > 1200px
-  width: ['90vw', '90vw', '550px', '600px', '750px'],
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  width: '100%',
 } as const;
 
 const data = [
@@ -86,22 +84,10 @@ const Search = (
 };
 
 const Example1 = () => {
-  const { isDarkTheme } = useMenuContext();
-
   const theme = useTheme();
-  const containerStyle = {
-    ...flexStyle,
-    borderRadius: 18,
-    backgroundColor: (isDarkTheme ? '#46464F' : '#E5E1E6') as string,
-    borderColor: theme.colors?.$outline as string,
-    borderWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  } as const;
 
   return (
-    <Container disableGutters flexDirection='column-reverse' sx={containerStyle as never}>
+    <Container disableGutters flexDirection='column-reverse' sx={flexStyle as never}>
       <Container disableGutters style={margin}>
         <Search
           data={data}
@@ -156,19 +142,8 @@ const Example1 = () => {
 const Example2 = () => {
   const { isDarkTheme } = useMenuContext();
 
-  const theme = useTheme();
-  const containerStyle = {
-    borderRadius: 18,
-    backgroundColor: (isDarkTheme ? theme.colors?.$outlineVariant : '#E5E1E6') as string,
-    borderColor: theme.colors?.$outline as string,
-    borderWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  } as const;
-
   return (
-    <Container disableGutters sx={containerStyle as never}>
+    <Container disableGutters sx={flexStyle as never}>
       <Container disableGutters sx={margin as never}>
         {isDarkTheme ? (
           <img src={SearchDark.src} style={{ height: 442, width: 225 }} alt='search-full-screen' />
@@ -181,21 +156,8 @@ const Example2 = () => {
 };
 
 const Example3 = () => {
-  const { isDarkTheme } = useMenuContext();
-
-  const theme = useTheme();
-  const containerStyle = {
-    borderRadius: 18,
-    backgroundColor: (isDarkTheme ? '#46464F' : '#E5E1E6') as string,
-    borderColor: theme.colors?.$outline as string,
-    borderWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  } as const;
-
   return (
-    <Container disableGutters sx={containerStyle as never}>
+    <Container disableGutters sx={flexStyle as never}>
       <Container disableGutters style={[margin, { height: 160 }]}>
         <Search
           data={data}
@@ -209,21 +171,8 @@ const Example3 = () => {
 };
 
 const Example4 = () => {
-  const { isDarkTheme } = useMenuContext();
-
-  const theme = useTheme();
-  const containerStyle = {
-    borderRadius: 18,
-    backgroundColor: (isDarkTheme ? '#46464F' : '#E5E1E6') as string,
-    borderColor: theme.colors?.$outline as string,
-    borderWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  } as const;
-
   return (
-    <Container disableGutters sx={containerStyle as never}>
+    <Container disableGutters sx={flexStyle as never}>
       <Container disableGutters style={[margin, { height: 160 }]}>
         <Search
           data={[]}

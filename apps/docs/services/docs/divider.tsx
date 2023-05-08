@@ -1,6 +1,8 @@
+import { useTheme } from 'anu/config';
 import { Chip, Container, Divider, Typography } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+import { ReactNode } from 'react';
 
 const style = {
   marginVertical: 15,
@@ -12,13 +14,28 @@ const otherStyle = {
 
 const flexStyle = {
   flexWrap: 'wrap',
-  // < 576 = 90vw
-  // 576
-  //
-  // 990 px
-  // > 1200px
-  width: ['90vw', '90vw', '550px', '600px', '750px'],
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  width: '100%',
+  flexDirection: 'row',
 } as const;
+
+const DividerExampleWrapper = ({ children }: { children: ReactNode }) => {
+  const theme = useTheme();
+  const wrapperStyle = {
+    backgroundColor: theme.colors.$surface,
+    margin: 15,
+    padding: 15,
+    borderRadius: 18,
+    flex: 1,
+  };
+  return (
+    <Container disableGutters style={wrapperStyle}>
+      {children}
+    </Container>
+  );
+};
 
 export const dividerDocumentation: ContentValues = {
   mainHeading: 'dividerDocumentation:mainHeading',
@@ -30,15 +47,17 @@ export const dividerDocumentation: ContentValues = {
       description: 'dividerDocumentation:example1-description',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Typography.Body>Item 1</Typography.Body>
-          <Divider orientation='horizontal' variant='full-width' />
-          <Typography.Body>Item 2</Typography.Body>
+          <DividerExampleWrapper>
+            <Typography.Body>Item 1</Typography.Body>
+            <Divider orientation='horizontal' variant='full-width' />
+            <Typography.Body>Item 2</Typography.Body>
 
-          <Container disableGutters flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
-            <Typography.Body style={style}>Item 1</Typography.Body>
-            <Divider orientation='vertical' variant='full-height' />
-            <Typography.Body style={style}>Item 2</Typography.Body>
-          </Container>
+            <Container disableGutters flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
+              <Typography.Body style={style}>Item 1</Typography.Body>
+              <Divider orientation='vertical' variant='full-height' />
+              <Typography.Body style={style}>Item 2</Typography.Body>
+            </Container>
+          </DividerExampleWrapper>
         </Container>
       ),
       code: `<Divider orientation='horizontal' variant='full-width' />
@@ -51,26 +70,28 @@ export const dividerDocumentation: ContentValues = {
       description: 'dividerDocumentation:example2-description',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Typography.Body>Item 1</Typography.Body>
-          <Divider variant='full-width' orientation='horizontal' />
-          <Typography.Body>Item 2</Typography.Body>
-          <Divider variant='middle' orientation='horizontal' />
-          <Typography.Body>Item 3</Typography.Body>
-          <Divider variant='left-inset' orientation='horizontal' />
-          <Typography.Body>Item 4</Typography.Body>
-          <Divider variant='right-inset' orientation='horizontal' />
+          <DividerExampleWrapper>
+            <Typography.Body>Item 1</Typography.Body>
+            <Divider variant='full-width' orientation='horizontal' />
+            <Typography.Body>Item 2</Typography.Body>
+            <Divider variant='middle' orientation='horizontal' />
+            <Typography.Body>Item 3</Typography.Body>
+            <Divider variant='left-inset' orientation='horizontal' />
+            <Typography.Body>Item 4</Typography.Body>
+            <Divider variant='right-inset' orientation='horizontal' />
 
-          <Container disableGutters align='center' flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
-            <Typography.Body style={style}>Item 1</Typography.Body>
-            <Divider variant='full-height' orientation='vertical' />
-            <Typography.Body style={style}>Item 2</Typography.Body>
-            <Divider variant='middle' orientation='vertical' />
-            <Typography.Body style={style}>Item 3</Typography.Body>
-            <Divider variant='top-inset' orientation='vertical' />
-            <Typography.Body style={style}>Item 4</Typography.Body>
-            <Divider variant='bottom-inset' orientation='vertical' />
-            <Typography.Body style={style}>Item 5</Typography.Body>
-          </Container>
+            <Container disableGutters align='center' flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
+              <Typography.Body style={style}>Item 1</Typography.Body>
+              <Divider variant='full-height' orientation='vertical' />
+              <Typography.Body style={style}>Item 2</Typography.Body>
+              <Divider variant='middle' orientation='vertical' />
+              <Typography.Body style={style}>Item 3</Typography.Body>
+              <Divider variant='top-inset' orientation='vertical' />
+              <Typography.Body style={style}>Item 4</Typography.Body>
+              <Divider variant='bottom-inset' orientation='vertical' />
+              <Typography.Body style={style}>Item 5</Typography.Body>
+            </Container>
+          </DividerExampleWrapper>
         </Container>
       ),
       code: `<Divider variant='full-width' orientation='horizontal' />
@@ -96,14 +117,16 @@ export const dividerDocumentation: ContentValues = {
       description: 'dividerDocumentation:example3-description',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Typography.Body>Item 1</Typography.Body>
-          <Divider pattern='line' />
-          <Typography.Body>Item 2</Typography.Body>
-          <Divider pattern='double-line' />
-          <Typography.Body>Item 3</Typography.Body>
-          <Divider pattern='dashed' />
-          <Typography.Body>Item 4</Typography.Body>
-          <Divider pattern='dotted' />
+          <DividerExampleWrapper>
+            <Typography.Body>Item 1</Typography.Body>
+            <Divider pattern='line' />
+            <Typography.Body>Item 2</Typography.Body>
+            <Divider pattern='double-line' />
+            <Typography.Body>Item 3</Typography.Body>
+            <Divider pattern='dashed' />
+            <Typography.Body>Item 4</Typography.Body>
+            <Divider pattern='dotted' />
+          </DividerExampleWrapper>
         </Container>
       ),
       code: `<Divider pattern='line' />
@@ -121,25 +144,27 @@ export const dividerDocumentation: ContentValues = {
       description: 'dividerDocumentation:example4-description',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Typography.Body>Item 1</Typography.Body>
-          <Divider text='Center' />
-          <Typography.Body>Item 2</Typography.Body>
-          <Divider text='Start' align='start' />
-          <Typography.Body>Item 3</Typography.Body>
-          <Divider text='End' align='end' />
-          <Typography.Body>Item 4</Typography.Body>
-          <Divider>
-            <Chip value='Chip' />
-          </Divider>
-          <Container disableGutters align='center' flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
-            <Typography.Body style={[style, otherStyle]}>Item 1</Typography.Body>
-            <Divider text='Center' orientation='vertical' />
-            <Typography.Body style={[style, otherStyle]}>Item 2</Typography.Body>
-            <Divider text='Start' orientation='vertical' align='start' />
-            <Typography.Body style={[style, otherStyle]}>Item 3</Typography.Body>
-            <Divider text='End' orientation='vertical' align='end' />
-            <Typography.Body style={[style, otherStyle]}>Item 4</Typography.Body>
-          </Container>
+          <DividerExampleWrapper>
+            <Typography.Body>Item 1</Typography.Body>
+            <Divider text='Center' />
+            <Typography.Body>Item 2</Typography.Body>
+            <Divider text='Start' align='start' />
+            <Typography.Body>Item 3</Typography.Body>
+            <Divider text='End' align='end' />
+            <Typography.Body>Item 4</Typography.Body>
+            <Divider>
+              <Chip value='Chip' />
+            </Divider>
+            <Container disableGutters align='center' flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
+              <Typography.Body style={[style, otherStyle]}>Item 1</Typography.Body>
+              <Divider text='Center' orientation='vertical' />
+              <Typography.Body style={[style, otherStyle]}>Item 2</Typography.Body>
+              <Divider text='Start' orientation='vertical' align='start' />
+              <Typography.Body style={[style, otherStyle]}>Item 3</Typography.Body>
+              <Divider text='End' orientation='vertical' align='end' />
+              <Typography.Body style={[style, otherStyle]}>Item 4</Typography.Body>
+            </Container>
+          </DividerExampleWrapper>
         </Container>
       ),
       code: `<Divider text='Center' orientation='vertical' />

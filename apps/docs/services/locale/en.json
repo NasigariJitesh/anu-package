@@ -67,12 +67,16 @@
   "leftSideBar:image": "Image",
   "leftSideBar:input-fields": "Input Fields",
   "leftSideBar:text-fields": "Text Fields",
+  "leftSideBar:menu": "Menu",
+  "leftSideBar:menu-list": "Menu list",
+  "leftSideBar:menu-item": "Menu item",
   "leftSideBar:otp-input": "OTP Input",
   "leftSideBar:phone-input": "Phone Input",
   "leftSideBar:radio": "Radio Button",
   "leftSideBar:search": "Search",
   "leftSideBar:side-sheet": "Side Sheet",
   "leftSideBar:switch": "Switch",
+  "leftSideBar:tabs": "Tabs",
   "leftSideBar:time-picker": "Time Picker",
   "leftSideBar:touchable-ripple": "Touchable Ripple",
   "leftSideBar:typography": "Typography",
@@ -591,6 +595,47 @@
   "textFieldDocumentation:example4-name": "Outlined Text Field - with Icons",
   "textFieldDocumentation:example5-name": "Error text field",
 
+  "menuDocumentation:mainHeading": "Menu",
+  "menuDocumentation:mainDescription": "Menus provide a standardized way of displaying a list of options for the user to choose from, to provide a hierarchical structure of content and functionality.\n\nMenus can be implemented in various ways, with a button, and with an icon button.",
+  "menuDocumentation:example1-name": "Default",
+  "menuDocumentation:example1-description": "A default menu contains list items, icons, a divider, and other supporting icons.",
+  "menuDocumentation:example2-name": "Nested Menu",
+  "menuDocumentation:example3-name": "Menu - with an icon button",
+  "menuDocumentation:example3-description": "A menu with an icon button displays a list of options when an icon button is clicked.",
+  "menuDocumentation:property-isOpen-description": "Whether the menu is open.",
+  "menuDocumentation:property-onMenuToggle-description": "Callback to be called when the menu is to toggled between open and close.",
+  "menuDocumentation:property-component-description": "The component that controls menu.",
+
+  "menuDocumentation:property-children-description": "Menu list Component comprising of Menu Items.",
+
+  "menuDocumentation:additionalInformation-title": "See also",
+  "menuDocumentation:additionalInformation-info1": "<a  class=\"documentation-link\" target=\"blank\" href=\"/components/menu/list\" title=\"Card Actions\">Menu List</a>.",
+  "menuDocumentation:additionalInformation-info2": "<a  class=\"documentation-link\" target=\"blank\" href=\"/components/menu/item\" title=\"Card Actions\">Menu Item</a>.",
+
+  "menuListDocumentation:mainHeading": "Menu List",
+
+  "menuListDocumentation:example1-name": "Default",
+  "menuListDocumentation:example1-description": "A default menu list contains items, icons, a divider, and other supporting icons.",
+
+  "menuListDocumentation:property-inner-description": "Whether the menu is nested inside another menu.",
+  "menuListDocumentation:property-pos-description": "The co-ordinates of the position of the menu.",
+
+  "menuListDocumentation:external-properties-title": " Container Properties",
+
+  "menuItemDocumentation:mainHeading": "Menu Item",
+
+  "menuItemDocumentation:example1-name": "Default",
+  "menuItemDocumentation:example1-description": "A menu item contains trailing icon, leading icon, trailing text.",
+
+  "menuItemDocumentation:property-children-description": "The content of the menu item.",
+  "menuItemDocumentation:property-inset-description": "If true, additional padding (inset) is added on the left.",
+  "menuItemDocumentation:property-leadingIcon-description": "The icon displayed on the left side of the menu item.",
+  "menuItemDocumentation:property-pos-description": "The icon displayed on the right side of the menu item.",
+  "menuItemDocumentation:property-trailingIcon-description": "The co-ordinates of the position of the menu.",
+  "menuItemDocumentation:property-trailingText-description": "The icon displayed on the right side of the menu item.",
+
+  "menuItemDocumentation:external-properties-title": " Pressable Properties",
+
   "otpInputDocumentation:mainHeading": "OTP Input Field",
 
   "otpInputDocumentation:property-variant-description": "The variant of text field for the otp input.",
@@ -691,6 +736,30 @@
 
   "switchDocumentation:example1-name": "Default",
   "switchDocumentation:example2-name": "Switch - with icon",
+
+  "tabsDocumentation:mainHeading": "Tabs",
+  "tabsDocumentation:mainDescription": "Tabs are used to organize related content into separate sections or views, allowing users to switch between them quickly and easily. When a user selects a tab, the content of that section is displayed while the other sections remain hidden.\n\nTabs typically appear as a row of clickable labels or icons at the top or bottom of a screen, with each tab corresponding to a different view or function.",
+  "tabsDocumentation:property-children-description": "The Individual Tab Components.",
+  "tabsDocumentation:property-active-description": "The index of active tab.",
+  "tabsDocumentation:property-onChange-description": "Callback function to be called when tab is changed.",
+  "tabsDocumentation:property-type-description": "The type of tabs.",
+  "tabsDocumentation:property-tab-children-description": "The components to be displayed in the tab.",
+  "tabsDocumentation:property-name-description": "The name of the tab.",
+  "tabsDocumentation:property-icon-description": "The icon of the tab.",
+  "tabsDocumentation:property-contentStyle-description": "The styles for the tab content container.",
+  "tabsDocumentation:property-tabHeaderStyle-description": "The styles for the tab header.",
+  "tabsDocumentation:property-activeTabHeaderStyle-description": "The styles for the tab header of active tab.",
+
+  "tabsDocumentation:external-properties-title": "Container Properties",
+
+  "tabsDocumentation:example1-name": "Primary tabs",
+  "tabsDocumentation:example1-description": "Primary tabs should be used if there is only one set of tabs on a screen, and there is no need for additional sets of tabs to be displayed.\n\nThese are typically used for top-level navigation within an app or website and allow the user to switch between different sections or views of the content.",
+  "tabsDocumentation:example2-name": "Secondary tabs",
+  "tabsDocumentation:example2-description": "Secondary tabs are a set of tabs that appear below primary tabs, and they are used to further organize content within a primary tab.\n\nThey are typically used to group related information or to display multiple views of the same data. Unlike primary tabs, secondary tabs can be used in combination with primary tabs.",
+  "tabsDocumentation:example3-name": "Scrollable tabs",
+  "tabsDocumentation:example3-description": "Scrollable tabs are displayed in a horizontal row, but if there are too many tabs to fit within the width of the screen, the user can swipe left or right to view additional tabs. This allows for a larger number of tabs to be displayed without taking up too much screen real estate.",
+  "tabsDocumentation:example4-name": "Tabs - Medium/Large Screens",
+  "tabsDocumentation:example4-description": "It can be used on medium and large screens with wide layouts such as tabular devices or even web applications. Where the tab container on these screens scales horizontally to occupy the available screen width.",
 
   "timePickerDocumentation:mainHeading": "Time picker",
   "timePickerDocumentation:mainDescription": "A Time picker is used to allow users to select a specific time of day, typically displayed in a dialog. It usually consists of an analog or digital clock interface, along with buttons for setting the hour and minute values.\n\nTime pickers can be used in a variety of contexts, such as scheduling appointments or setting reminders.",

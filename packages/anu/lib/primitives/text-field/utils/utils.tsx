@@ -101,7 +101,7 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
     caretColor: props?.error ? colors.$error : colors.$primary,
     backgroundColor: 'transparent',
     position: 'relative' as const,
-    width: '100%',
+    width: '100%' as const,
   };
 
   if (Platform.OS === 'web') {
@@ -116,7 +116,7 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
     common = {
       ...common,
       color: 'inherit' as never,
-    };
+    } as const;
 
   return common;
 };

@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import { useMenuContext } from 'screens/common/provider';
 
 const source = Source_Sans_Pro({
   weight: ['400', '600'],
@@ -36,7 +37,9 @@ interface ComponentExampleProps {
 const RenderExample = (example: Example, index: number) => {
   const theme = useTheme();
 
-  const styles = getStyles(theme);
+  const { isDarkTheme } = useMenuContext();
+  const styles = getStyles(theme, isDarkTheme);
+
   const sx = useSx();
 
   const [isCopiedToClipboard, toggleCopyToClipboard] = useState(false);
@@ -144,7 +147,6 @@ const RenderExample = (example: Example, index: number) => {
 
 const ComponentExamples = ({ examples }: ComponentExampleProps) => {
   const theme = useTheme();
-
   const styles = getStyles(theme);
   return (
     <Container disableGutters sx={styles.container as never}>
@@ -154,7 +156,7 @@ const ComponentExamples = ({ examples }: ComponentExampleProps) => {
   );
 };
 
-const getStyles = ({ colors }: DripsyFinalTheme) => {
+const getStyles = ({ colors }: DripsyFinalTheme, isDarkTheme?: boolean) => {
   const styles = {
     container: {
       // marginBottom: 30,
@@ -171,7 +173,15 @@ const getStyles = ({ colors }: DripsyFinalTheme) => {
 
     examplesComponentContainer: {
       marginVertical: 20,
-      width: '100%',
+      paddingVertical: 20,
+      width: ['90vw', '90vw', '550px', '600px', '750px'],
+      borderRadius: 18,
+      backgroundColor: (isDarkTheme ? '#46464F' : '#E5E1E6') as string,
+      borderColor: colors?.$outline as string,
+      borderWidth: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflow: 'scroll',
     },
     heading: {
       color: colors?.$onSurface as never,

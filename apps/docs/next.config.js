@@ -23,6 +23,11 @@ const nextConfig = {
     'react-native-gesture-handler',
     'react-native-vector-icons',
     'react-native-safe-area-context',
+    'react-dropzone',
+    'expo-document-picker',
+    'expo-blur',
+    'expo-haptics',
+    'expo-modules-core',
   ],
   async redirects() {
     return [

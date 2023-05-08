@@ -9,8 +9,8 @@ export const containerDocumentation: ContentValues = {
     {
       name: 'containerDocumentation:example1-name',
       id: 'default',
-      component: <Container width={800} maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />,
-      code: "<Container width={800} maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
+      component: <Container width={600} maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200, margin: 15 }} />,
+      code: "<Container width={600} maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
     },
   ],
   properties: [

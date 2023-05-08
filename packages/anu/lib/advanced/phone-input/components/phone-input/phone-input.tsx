@@ -1,20 +1,16 @@
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable unicorn/no-useless-undefined */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/display-name */
 import { getCombinedStylesForText, getCombinedStylesForView } from 'anu/common/utils';
-import { useTheme } from 'anu/config';
-import { AutoComplete, AutoCompleteReferenceProps, convertToOptionsFormat, Options } from 'anu/lib/composites';
-import { Container, Icon, Image, Typography } from 'anu/lib/primitives';
+import { AutoComplete, AutoCompleteReferenceProps, Container, convertToOptionsFormat, Options } from 'anu/lib';
 import { AsYouType, ParseError, parsePhoneNumber, parsePhoneNumberWithError, PhoneNumber } from 'libphonenumber-js';
 import { debounce as lodashDebounce, DebouncedFunc } from 'lodash';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { Platform } from 'react-native';
 
 import { CountryCodeObject, PhoneInputProps, PhoneInputReferenceProps } from '../../types';
 import { countryCodes, getDefaultStyles } from '../../utils';
+import CountryFlag from './country-flag';
 import CountryItem from './country-item';
 import { defaultProps } from './default';
 
@@ -74,17 +70,10 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
   );
 
   const autoCompleteReference = useRef<AutoCompleteReferenceProps | null>(null);
-  const theme = useTheme();
 
   const { value, onChangeText, leadingIcon, flatListProps, ...otherAutoCompleteProps } = finalProps;
 
-  const {
-    defaultResultsContainerStyle,
-    defaultSelectedEmojiStyle,
-    defaultSelectedFlagStyle,
-    defaultTextFieldStyles,
-    defaultTextInputStyle,
-  } = getDefaultStyles();
+  const { defaultResultsContainerStyle, defaultTextFieldStyles, defaultTextInputStyle } = getDefaultStyles();
 
   const focus = useCallback(() => {
     autoCompleteReference.current?.focus();
@@ -111,8 +100,10 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
   const parseForErrors = (text: string) => {
     try {
       const phoneNumber = parsePhoneNumberWithError(text);
-      if (phoneNumber.isValid()) setError(false);
-      else {
+      if (phoneNumber.isValid()) {
+        updateCurrentCountry(phoneNumber.number, phoneNumber.country);
+        setError(false);
+      } else {
         setError(true);
         setErrorMessage(['Invalid Phone Number']);
       }
@@ -145,22 +136,8 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     return lodashDebounce((text: string) => parseForErrors(text), finalProps.debounceDuration ?? 2000);
   }, [parseForErrors]);
 
-  const onChangeTextHandler = (string: string) => {
-    let text = string.trim();
-
-    text = text.replace(/[^\d\s+]/i, '');
-
-    if (text === '') {
-      setError(false);
-    } else {
-      text = text[0] === '+' ? text : '+' + text;
-    }
-
-    let phoneNumber: PhoneNumber | undefined;
-
-    asYouType.input(text);
-
-    const matchedCountry = checkForMatch(countryCodesData, asYouType.country);
+  const updateCurrentCountry = (text: string, parsedCountry?: string) => {
+    const matchedCountry = checkForMatch(countryCodesData, parsedCountry);
 
     //Check for the exact match of the country code
     if (matchedCountry.length === 1) {
@@ -179,6 +156,24 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     } else {
       setCurrentCountry(undefined);
     }
+  };
+
+  const onChangeTextHandler = (string: string) => {
+    let text = string.trim();
+
+    text = text.replace(/[^\d\s+]/i, '');
+
+    if (text === '') {
+      setError(false);
+    } else {
+      text = text[0] === '+' ? text : '+' + text;
+    }
+
+    let phoneNumber: PhoneNumber | undefined;
+
+    asYouType.input(text);
+
+    updateCurrentCountry(text, asYouType.country);
 
     //parse the phoneNumber to get other data related to phoneNumber
     try {
@@ -224,30 +219,10 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
   };
 
   const LeadingIcon = ({ children }: { children: React.ReactNode }) => {
-    const [flagLoadingError, setFlagLoadingError] = useState(false);
     return (
       <Container disableGutters flexDirection='row' align='center'>
         {children}
-        {currentCountry ? (
-          Platform.OS === 'web' || Platform.OS === 'windows' || !flagLoadingError ? (
-            <Image
-              alt={currentCountry.alt}
-              source={{ uri: currentCountry.flag }}
-              onError={() => setFlagLoadingError(true)}
-              onPartialLoad={() => setFlagLoadingError(true)}
-              onLoad={() => setFlagLoadingError(false)}
-              style={defaultSelectedFlagStyle}
-            />
-          ) : (
-            <Typography.Body style={defaultSelectedEmojiStyle}>{currentCountry.emoji}</Typography.Body>
-          )
-        ) : (
-          <Icon
-            name='language'
-            size={25}
-            style={{ color: finalProps.disabled ? 'inherit' : theme.colors.$onSurfaceVariant }}
-          />
-        )}
+        <CountryFlag currentCountry={currentCountry} disabled={finalProps.disabled} />
       </Container>
     );
   };

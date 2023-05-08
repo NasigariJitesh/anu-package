@@ -1,4 +1,4 @@
-import { getColorInRGBA, getMaxWidthInPixels } from 'anu/common/utils';
+import { getMaxWidthInPixels } from 'anu/common/utils';
 import { DripsyFinalTheme, Sx } from 'dripsy';
 import { ImageStyle, StyleProp, ViewStyle } from 'react-native';
 
@@ -41,7 +41,7 @@ export const getCardStyles = (
         return {
           style: {
             ...style,
-            backgroundColor: getColorInRGBA(colors?.$primary, 14),
+            backgroundColor: colors.$surfaceContainerHighest,
           },
           sx: {
             ...sx,
@@ -55,7 +55,7 @@ export const getCardStyles = (
       return {
         style: {
           ...style,
-          backgroundColor: getColorInRGBA(colors?.$primary, 5),
+          backgroundColor: colors?.$surfaceContainerLow,
           shadowColor: colors?.$shadow as string,
           shadowOffset: {
             width: 0,

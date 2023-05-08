@@ -39,12 +39,10 @@ const IconWithToggle = ({ type }: { type: 'filled' | 'tonal' | 'outlined' | 'sta
 
 const flexStyle = {
   flexWrap: 'wrap',
-  // < 576 = 90vw
-  // 576
-  //
-  // 990 px
-  // > 1200px
-  width: ['90vw', '90vw', '550px', '600px', '750px'],
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  width: '100%',
 } as const;
 export const iconButtonDocumentation: ContentValues = {
   mainHeading: 'iconButtonDocumentation:mainHeading',

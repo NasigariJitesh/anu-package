@@ -1,2 +1,2 @@
-export { default } from './components';
+export { default, FileDropZone } from './components';
 export * from './types';

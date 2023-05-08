@@ -97,6 +97,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
           </Container>
         ) : null
       }
+      labelBackgroundColor={variant == 'base' ? 'transparent' : undefined}
     />
   );
 };

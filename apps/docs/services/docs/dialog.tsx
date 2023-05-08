@@ -26,12 +26,10 @@ const style = {
 
 const flexStyle = {
   flexWrap: 'wrap',
-  // < 576 = 90vw
-  // 576
-  //
-  // 990 px
-  // > 1200px
-  width: ['90vw', '90vw', '550px', '600px', '750px'],
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  width: '100%',
 } as const;
 
 const RenderItem = ({ item }: { item: { label: string } }) => {

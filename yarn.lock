@@ -3404,9 +3404,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 18.16.3
-  resolution: "@types/node@npm:18.16.3"
-  checksum: 816b39d45b05ebdc6f362b630970df3f6d82f71d418a2555353522f4eeeb078fa201de5299f02c09a09faa975e43b2745fe19c263d44069f87ddf37d6c37b717
+  version: 20.0.0
+  resolution: "@types/node@npm:20.0.0"
+  checksum: 7dadc41081eee634fd0b19e46dfb0a74f8296ee562533118f7c2f2b54dcaba7124961d506db425fff74d8e8288610b93939cd06fa723f053c72b1a7e87aa4ddc
   languageName: node
   linkType: hard
 
@@ -3499,13 +3499,13 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*, @types/react@npm:^18.0.17":
-  version: 18.2.0
-  resolution: "@types/react@npm:18.2.0"
+  version: 18.2.5
+  resolution: "@types/react@npm:18.2.5"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: db3d92b423150222a666329f7aa3023e3e942044700557b8a7d161530847e621aec9f56c9e7f71761b06dd164c8a7b17ad52355863efe80963dffa5537e8e5fd
+  checksum: 97c4534e849edf991be0820b0911d036e794b8e2599a1544f500c769acbcb4f443ccde1a3f22298f22ce368ee7757f746e4a529e889567fc142a627698e2de39
   languageName: node
   linkType: hard
 
@@ -3994,6 +3994,7 @@ __metadata:
     "@types/lodash": ^4.14.194
     "@types/react-native-vector-icons": ^6.4.13
     "@types/react-test-renderer": ^18.0.0
+    compressorjs: ^1.2.1
     dripsy: ^3.6.0
     expo-blur: ^12.2.2
     expo-document-picker: ^11.2.2
@@ -4003,6 +4004,7 @@ __metadata:
     libphonenumber-js: ^1.10.28
     lodash: ^4.17.21
     react: ^18.2.0
+    react-dropzone: ^14.2.3
     react-native-builder-bob: ^0.20.4
     tsconfig: "*"
     typescript: ^4.9.4
@@ -4273,6 +4275,13 @@ __metadata:
   bin:
     atob: bin/atob.js
   checksum: dfeeeb70090c5ebea7be4b9f787f866686c645d9f39a0d184c817252d0cf08455ed25267d79c03254d3be1f03ac399992a792edcd5ffb9c91e097ab5ef42833a
+  languageName: node
+  linkType: hard
+
+"attr-accept@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "attr-accept@npm:2.2.2"
+  checksum: 496f7249354ab53e522510c1dc8f67a1887382187adde4dc205507d2f014836a247073b05e9d9ea51e2e9c7f71b0d2aa21730af80efa9af2d68303e5f0565c4d
   languageName: node
   linkType: hard
 
@@ -4552,6 +4561,13 @@ __metadata:
     inherits: ^2.0.4
     readable-stream: ^3.4.0
   checksum: 9e8521fa7e83aa9427c6f8ccdcba6e8167ef30cc9a22df26effcc5ab682ef91d2cbc23a239f945d099289e4bbcfae7a192e9c28c84c6202e710a0dfec3722662
+  languageName: node
+  linkType: hard
+
+"blueimp-canvas-to-blob@npm:^3.29.0":
+  version: 3.29.0
+  resolution: "blueimp-canvas-to-blob@npm:3.29.0"
+  checksum: 6a55b90fbe958b75f7c78ff9e7617c01254d29cc8567ea6c853cd26a52518b3dfce28635f6964130ac738ee8ff9fb9c0ca094db2ceeaa021ff0432c1985416eb
   languageName: node
   linkType: hard
 
@@ -5323,6 +5339,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"compressorjs@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "compressorjs@npm:1.2.1"
+  dependencies:
+    blueimp-canvas-to-blob: ^3.29.0
+    is-blob: ^2.1.0
+  checksum: 8b25fc29b7908216f7029e807623ae9c034fb0e77a72a752686bdd255bd3b1a5cc004b6651cf7ca948c1f86f3151ac3fc00800119d17f8a248d2f0a54570c8b8
+  languageName: node
+  linkType: hard
+
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -5901,9 +5927,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.284":
-  version: 1.4.380
-  resolution: "electron-to-chromium@npm:1.4.380"
-  checksum: 716c8f8247b9a0dbbc2e949a908a8301dfc2fa9a452ebea2e6239e4a7c33b2f7e66ea975af1346689c736bf091ef57fa732c64723f5540fa78aebdb98396d5c5
+  version: 1.4.384
+  resolution: "electron-to-chromium@npm:1.4.384"
+  checksum: d2936e1db384212426581d65e497e4fa868a52ffc8f4e293b108236a9b44dfd40101ffab807472e1c52fe166c5af78736096892f97d375de2d37cf960aa558a4
   languageName: node
   linkType: hard
 
@@ -7182,6 +7208,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-selector@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "file-selector@npm:0.6.0"
+  dependencies:
+    tslib: ^2.4.0
+  checksum: 7d051b6e5d793f3c6e2ab287ba5e7c2c6a0971bccc9d56e044c8047ba483e18f60fc0b5771c951dc707c0d15f4f36ccb4f1f1aaf385d21ec8f7700dadf8325ba
+  languageName: node
+  linkType: hard
+
 "fill-range@npm:^4.0.0":
   version: 4.0.0
   resolution: "fill-range@npm:4.0.0"
@@ -7302,9 +7337,9 @@ __metadata:
   linkType: hard
 
 "flow-parser@npm:0.*":
-  version: 0.205.0
-  resolution: "flow-parser@npm:0.205.0"
-  checksum: 84e79867128c414a332e506b43d436baca15eea86100fcc9fb0791dabefd02e9ba72feb1706262378950a10fd97340d8f30363b4fe798ae6c86d74bb255ee0b6
+  version: 0.205.1
+  resolution: "flow-parser@npm:0.205.1"
+  checksum: 1435ad8eaac772511c11440a988be29e3a26398cd22cf8fd02f46fa022f686550a52f7eb56a0919f49fe81399ddad46c925805cc091dd0efea92eb26234406bb
   languageName: node
   linkType: hard
 
@@ -8375,6 +8410,13 @@ __metadata:
   dependencies:
     has-bigints: ^1.0.1
   checksum: c56edfe09b1154f8668e53ebe8252b6f185ee852a50f9b41e8d921cb2bed425652049fbe438723f6cb48a63ca1aa051e948e7e401e093477c99c84eba244f666
+  languageName: node
+  linkType: hard
+
+"is-blob@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "is-blob@npm:2.1.0"
+  checksum: ce24917bf50a52736e37702a14bc729a0e1eab6bf61ac0b8e6ee86caf33d73eba297131736f8e54615732d08168859493ba7ced4fc840bb5b7c2ae21a5de6861
   languageName: node
   linkType: hard
 
@@ -9922,9 +9964,9 @@ __metadata:
   linkType: hard
 
 "libphonenumber-js@npm:^1.10.28":
-  version: 1.10.28
-  resolution: "libphonenumber-js@npm:1.10.28"
-  checksum: 3a3aac653265751822b495d30c1196a072c52612fb2b7cf0efe38b0ad25a48df2a0bf2220fb7066af1a1734b9cd9ba78ddaf758da5194422bbb57c4c592c381a
+  version: 1.10.30
+  resolution: "libphonenumber-js@npm:1.10.30"
+  checksum: 677bdd25b709cc55f10c599df09e67b501554578e4700ae31d9f2153b4e6847710d2454b4551f19df3e443eb836c0f287a12159ee6acd931150407c0eaf010a0
   languageName: node
   linkType: hard
 
@@ -11024,21 +11066,6 @@ __metadata:
   checksum: 8430d7d80ad69b1add2992ee2992a363db6c1a26a54740963bc99a004c5acb1d2a67049397062eab2caa3a312b4da89a0b85de3bdf82d7d472a6baa166311fe6
   languageName: node
   linkType: hard
-
-"next-app@workspace:apps/next":
-  version: 0.0.0-use.local
-  resolution: "next-app@workspace:apps/next"
-  dependencies:
-    "@expo/next-adapter": 5.0.2
-    "@types/node": 17.0.21
-    app: "*"
-    eslint-config-next: 13.2.0
-    next: 13.2.0
-    raf: ^3.4.1
-    react-native-reanimated: 3.0.2
-    setimmediate: ^1.0.5
-  languageName: unknown
-  linkType: soft
 
 "next@npm:13.2.0":
   version: 13.2.0
@@ -12270,6 +12297,19 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
   checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
+  languageName: node
+  linkType: hard
+
+"react-dropzone@npm:^14.2.3":
+  version: 14.2.3
+  resolution: "react-dropzone@npm:14.2.3"
+  dependencies:
+    attr-accept: ^2.2.2
+    file-selector: ^0.6.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ">= 16.8 || 18.0.0"
+  checksum: 174b744d5ca898cf3d84ec1aeb6cef5211c446697e45dc8ece8287a03d291f8d07253206d5a1247ef156fd385d65e7de666d4d5c2986020b8543b8f2434e8b40
   languageName: node
   linkType: hard
 
@@ -14984,9 +15024,11 @@ __metadata:
   linkType: hard
 
 "type-fest@npm:^3.0.0":
-  version: 3.9.0
-  resolution: "type-fest@npm:3.9.0"
-  checksum: daec3f72db7af2b285ac10a27231675a18418dea073a5fe40d9720472072786b6e38263a41e1c91daf99d7ecda80d5cf914b5bb0dd308593fa33ad9d3ff410dc
+  version: 3.10.0
+  resolution: "type-fest@npm:3.10.0"
+  peerDependencies:
+    typescript: ">=4.7.0"
+  checksum: df3bd25809ea79ac7712da7c11648251118c23f65b226eba263797e42be60ba34085874ec492202b8ecf2e5a2273b27ddcbfe3be2c275dfcef3f0e2ee90ea179
   languageName: node
   linkType: hard
 

@@ -22,12 +22,14 @@
   },
   "dependencies": {
     "@gorhom/portal": "^1.0.14",
+    "compressorjs": "^1.2.1",
     "dripsy": "^3.6.0",
     "expo-blur": "^12.2.2",
     "expo-document-picker": "^11.2.2",
     "expo-haptics": "~12.0.1",
     "libphonenumber-js": "^1.10.28",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "react-dropzone": "^14.2.3"
   },
   "peerDependencies": {
     "expo": ">=47",

@@ -442,6 +442,27 @@ const Sidebar = () => {
                 link: '/components/image',
               },
               {
+                title: 'leftSideBar:menu',
+                components: [
+                  {
+                    title: 'leftSideBar:menu',
+                    link: '/components/menu',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:menu-item',
+                    link: '/components/menu/item',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:menu-list',
+                    link: '/components/menu/list',
+                    variants: [],
+                  },
+                ],
+                link: '/components/menu',
+              },
+              {
                 title: 'leftSideBar:otp-input',
                 link: '/components/otp-input',
                 components: [],
@@ -469,6 +490,11 @@ const Sidebar = () => {
               {
                 title: 'leftSideBar:switch',
                 link: '/components/switch',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:tabs',
+                link: '/components/tabs',
                 components: [],
               },
               {
