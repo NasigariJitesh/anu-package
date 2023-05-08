@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/no-nested-ternary */
-import { getColorInRGBA } from 'anu/common/utils';
+import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
 import { ChipContainerStyle, ChipProps } from '../types';
@@ -571,6 +571,8 @@ export const getStyles = (props: ChipProps, theme: DripsyFinalTheme) => {
   const { '@disable': disableStyles, ...otherStyles } = chipTheme[key];
   const { '@disable': iconDisableStyles, ...otherIconStyles } = iconStyleTheme[key];
 
+  const { backgroundColor, borderColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
+
   let styles;
   let iconStyle;
   let layerStyles;
@@ -579,6 +581,10 @@ export const getStyles = (props: ChipProps, theme: DripsyFinalTheme) => {
     ...commonTheme,
     ...otherStyles,
     ...propsOtherStyles,
+    ...getResetPaddingStyles(),
+    ...(borderColor && (key === 'input' || key === 'filter' || key === 'suggestion' || key === 'assist')
+      ? { borderColor: 'transparent', borderWidth: 0 }
+      : {}),
   };
 
   iconStyle = {
@@ -592,6 +598,11 @@ export const getStyles = (props: ChipProps, theme: DripsyFinalTheme) => {
   layerStyles = {
     ...commonLayerTheme,
     ...otherLayerStyles,
+    ...propsOtherStylesForStateLayer,
+    ...getResetMarginStyles(),
+    ...(borderColor && (key === 'input' || key === 'filter' || key === 'suggestion' || key === 'assist')
+      ? { borderColor }
+      : {}),
     '@hover': { ...otherLayerStyles['@hover'], ...style?.['@hover'] },
     '@focus': { ...otherLayerStyles['@focus'], ...style?.['@focus'] },
     '@press': { ...otherLayerStyles['@press'], ...style?.['@press'] },
