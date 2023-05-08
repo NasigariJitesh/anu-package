@@ -44,7 +44,7 @@ const DatePickerModalContentHeader = (props: HeaderContentProps) => {
             props: { size: 32, color: theme.colors.$scrim },
           }}
           onPress={onToggle}
-          containerStyle={styles.icon}
+          style={styles.icon}
         />
       ) : null}
     </Container>

@@ -1,4 +1,4 @@
-import { getColorInRGBA } from 'anu/common/utils';
+import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
 import { FABProps } from '../types';
@@ -205,7 +205,7 @@ const getFABTheme = (props: FABProps, theme: DripsyFinalTheme) => {
 export const getFABStyles = (props: FABProps, defaultTheme: DripsyFinalTheme) => {
   const { fabTheme, fabPressableLayerTheme, fabIconTheme } = getFABTheme(props, defaultTheme);
 
-  const { size, containerStyle } = props;
+  const { size, style } = props;
 
   const theme = fabTheme[size];
   const commonTheme = fabTheme.common;
@@ -222,17 +222,21 @@ export const getFABStyles = (props: FABProps, defaultTheme: DripsyFinalTheme) =>
     '@focus': propsFocusStyles,
     '@press': propsPressStyles,
     ...propsOtherStyles
-  } = containerStyle ?? {};
+  } = style ?? {};
+  const { backgroundColor, borderColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
 
   const styles = {
     ...commonTheme,
     ...theme,
     ...propsOtherStyles,
+    ...getResetPaddingStyles(),
   };
 
   const pressableLayerStyles = {
     ...commonPressableLayerTheme,
     ...pressableLayerTheme,
+    ...propsOtherStylesForStateLayer,
+     ...getResetMarginStyles(),
     '@hover': { ...pressableLayerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...pressableLayerTheme['@focus'], ...propsFocusStyles },
     '@press': { ...pressableLayerTheme['@press'], ...propsPressStyles },
@@ -244,7 +248,7 @@ export const getFABStyles = (props: FABProps, defaultTheme: DripsyFinalTheme) =>
   };
 
   return {
-    containerStyles: styles,
+    styles: styles,
     pressableStyles: pressableLayerStyles,
     iconStyles,
   };

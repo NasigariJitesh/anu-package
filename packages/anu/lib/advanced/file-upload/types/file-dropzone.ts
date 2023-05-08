@@ -36,7 +36,7 @@ interface BasicFileDropZoneProps extends Omit<ContainerProps, 'variant'> {
    * @param data - files
    * @param fileUri - uris of files
    */
-  onChange?: (data: Blob | Blob[] | null, fileUri?: string | string[] | null) => void;
+  onChange?: (data: File | File[] | null, fileUri?: string | string[] | null) => void;
   /**
    * Callback function that will be called when the uploaded files are submitted
    *
@@ -102,5 +102,5 @@ interface OtherFileDropZoneProps extends BasicFileDropZoneProps {
 export type FileDropZoneProps = ImageFileDropZoneProps | OtherFileDropZoneProps;
 
 export interface FileDropZoneReferenceProps {
-  files: Blob[];
+  files: File[];
 }

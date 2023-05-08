@@ -37,7 +37,7 @@ const Header = (props: SideSheetProps & { scrollTo: (destination: number) => voi
             icon={{
               name: 'arrow-back',
             }}
-            containerStyle={backIconStyle}
+            style={backIconStyle}
             type='standard'
           />
         ) : null}
@@ -51,7 +51,7 @@ const Header = (props: SideSheetProps & { scrollTo: (destination: number) => voi
           name: 'clear',
         }}
         type='standard'
-        containerStyle={closeIconStyle}
+        style={closeIconStyle}
       />
     </Container>
   );

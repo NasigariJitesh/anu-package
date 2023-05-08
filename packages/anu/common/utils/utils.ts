@@ -109,3 +109,11 @@ export const getCombinedStylesForView = (defaultStyle: StyleProp<ViewStyle>, cus
 export const getCombinedStylesForImage = (defaultStyle: StyleProp<ImageStyle>, customStyles: StyleProp<ImageStyle>) => {
   return Array.isArray(customStyles) ? [defaultStyle, ...customStyles] : [defaultStyle, customStyles];
 };
+
+export const getResetPaddingStyles = () => {
+  return { padding: 0, paddingVertical: 0, paddingHorizontal: 0 };
+};
+
+export const getResetMarginStyles = () => {
+  return { margin: 0, marginVertical: 0, marginHorizontal: 0 };
+};

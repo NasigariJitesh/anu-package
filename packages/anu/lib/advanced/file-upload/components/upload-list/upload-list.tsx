@@ -7,7 +7,7 @@ import { UploadListProps } from '../../types';
 import { getUploadListStyles } from '../../utils';
 import UploadItem from '../upload-item';
 
-const keyExtractor = (item: Blob, index: number) => item.name + index;
+const keyExtractor = (item: File, index: number) => item.name + index;
 
 /**
  * Uploaded Files List Component
@@ -18,7 +18,7 @@ const UploadList = (props: UploadListProps) => {
   const theme = useTheme();
   const styles = getUploadListStyles(theme, props.listWidth, props.previewType === 'carousel');
 
-  const renderItem = (item: Blob, index: number) => {
+  const renderItem = (item: File, index: number) => {
     const propList = {
       dataItem: item,
       uri: props.uriData ? props.uriData[index ?? 0] : undefined,

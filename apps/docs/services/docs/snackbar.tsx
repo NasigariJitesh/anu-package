@@ -22,7 +22,7 @@ const SnackbarExample = (props: Partial<SnackbarProps> & { title: string }) => {
   return (
     <Button.Filled
       title={title}
-      containerStyle={style}
+      style={style}
       onPress={() =>
         add({
           ...snackProps,

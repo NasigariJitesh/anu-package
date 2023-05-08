@@ -58,7 +58,7 @@ export const cardActionsDocumentation: ContentValues = {
         <Container disableGutters sx={flexStyle as never}>
           <Card variant='elevated' width={360}>
             <CardActions>
-              <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+              <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
               <Button.Filled title='Action' />
             </CardActions>
           </Card>
@@ -66,7 +66,7 @@ export const cardActionsDocumentation: ContentValues = {
       ),
       code: `<Card variant='elevated' width={360}>
   <CardActions>
-    <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+    <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
     <Button.Filled title='Action' />
   </CardActions>
 </Card>`,

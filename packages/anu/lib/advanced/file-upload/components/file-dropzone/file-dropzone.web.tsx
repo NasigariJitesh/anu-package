@@ -5,14 +5,14 @@ import React, { forwardRef, useCallback, useImperativeHandle, useState } from 'r
 import { useDropzone } from 'react-dropzone';
 
 import { FileDropZoneProps, FileDropZoneReferenceProps } from '../../types';
-import { compressFile, getDropZoneStyles, getErrorMessageStyle } from '../../utils';
+import { compressFile, convertToFile, getDropZoneStyles, getErrorMessageStyle } from '../../utils';
 import UploadList from '../upload-list';
 import { defaultProps } from './default';
 
 const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
 
-  const [files, setFiles] = useState<Blob[]>([]);
+  const [files, setFiles] = useState<File[]>([]);
   const [duplicateFileNameError, setDuplicateFileNameError] = useState(false);
 
   useImperativeHandle(reference, () => ({ files }), [files]);
@@ -21,9 +21,9 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
   const { dropZoneStyle, divStyle, childrenContainerStyle, buttonContainerStyle } = getDropZoneStyles(theme);
   const errorMessageStyle = getErrorMessageStyle(theme);
 
-  const updateFiles = (resultFiles: Blob[]) => {
+  const updateFiles = (resultFiles: File[]) => {
     if (finalProps.multiple) {
-      const uniqueResultFiles: Blob[] = [];
+      const uniqueResultFiles: File[] = [];
       if (finalProps.sortable) {
         for (const file of resultFiles) {
           const similarNameFiles = files.filter((item) => item.name === file.name);
@@ -47,7 +47,7 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
       });
     } else {
       setFiles(resultFiles);
-      if (finalProps.onChange) finalProps.onChange(resultFiles[0]);
+      if (finalProps.onChange && resultFiles[0]) finalProps.onChange(resultFiles[0]);
     }
   };
 
@@ -80,7 +80,8 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
       const compressedImages = [];
       for (const file of acceptedFiles) {
         const compressedImage = await compressFile(file, finalProps.optimizationConfig);
-        compressedImages.push(compressedImage);
+        const image = convertToFile(compressedImage, file.name);
+        compressedImages.push(image);
       }
       updateFiles(compressedImages);
     } else {
@@ -147,6 +148,7 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
         previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
         listWidth={finalProps.listWidth}
+        listItemStyle={finalProps.listItemStyle}
       />
     </Container>
   );

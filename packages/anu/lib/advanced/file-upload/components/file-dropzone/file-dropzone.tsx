@@ -7,7 +7,7 @@ import React, { forwardRef, useImperativeHandle, useMemo, useState } from 'react
 import { Pressable } from 'react-native';
 
 import { FileDropZoneProps, FileDropZoneReferenceProps } from '../../types';
-import { compressFile, getDropZoneStyles, getErrorMessageStyle, getFileTypes } from '../../utils';
+import { compressFile, convertToFile, getDropZoneStyles, getErrorMessageStyle, getFileTypes } from '../../utils';
 import UploadList from '../upload-list';
 import { defaultProps } from './default';
 
@@ -17,18 +17,18 @@ import { defaultProps } from './default';
  * @param props - props of the file upload component
  * @param updateFiles - function to update the uploaded files to existing files list
  */
-const handleFileUpload = async (props: FileDropZoneProps, updateFiles: { (files: Blob[], uris: string[]): void }) => {
+const handleFileUpload = async (props: FileDropZoneProps, updateFiles: { (files: File[], uris: string[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
     type: getFileTypes(props.fileType, props.variant),
   });
-  if (result.type === 'success') {
+  if (result.type === 'success' && result.uri && result.name) {
     const file = new File([result.uri], result.name, { type: result.mimeType });
 
     if (props.variant === 'image' && props.optimization) {
       const compressedImage = await compressFile(file, props.optimizationConfig);
-
-      updateFiles([compressedImage], [result.uri]);
+      const image = convertToFile(compressedImage, file.name);
+      updateFiles([image], [result.uri]);
     } else {
       updateFiles([file], [result.uri]);
     }
@@ -38,7 +38,7 @@ const handleFileUpload = async (props: FileDropZoneProps, updateFiles: { (files:
 const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
 
-  const [files, setFiles] = useState<Blob[]>([]);
+  const [files, setFiles] = useState<File[]>([]);
   const [fileUris, setFileUris] = useState<string[]>([]);
   const [duplicateFileNameError, setDuplicateFileNameError] = useState(false);
 
@@ -50,7 +50,7 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
   const { dropZoneStyle, childrenContainerStyle, buttonContainerStyle } = getDropZoneStyles(theme);
   const errorMessageStyle = getErrorMessageStyle(theme);
 
-  const updateFiles = (resultFiles: Blob[], resultUris: string[]) => {
+  const updateFiles = (resultFiles: File[], resultUris: string[]) => {
     if (finalProps.multiple) {
       if (finalProps.sortable) {
         for (const file of resultFiles) {
@@ -71,7 +71,7 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
     } else {
       setFiles(resultFiles);
       setFileUris(resultUris);
-      if (finalProps.onChange) finalProps.onChange(resultFiles[0], resultUris[0]);
+      if (finalProps.onChange && resultFiles[0]) finalProps.onChange(resultFiles[0], resultUris[0]);
     }
   };
 
@@ -145,6 +145,7 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
         previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
         listWidth={finalProps.listWidth}
+        listItemStyle={finalProps.listItemStyle}
       />
     </Container>
   );

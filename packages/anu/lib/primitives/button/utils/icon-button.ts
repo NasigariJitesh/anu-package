@@ -1,4 +1,4 @@
-import { getColorInRGBA } from 'anu/common/utils';
+import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
 import { IconButtonProps } from '../types';
@@ -437,7 +437,9 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
     '@focus': propsFocusStyles,
     '@press': propsPressStyles,
     ...propsOtherStyles
-  } = props.containerStyle ?? {};
+  } = props.style ?? {};
+
+  const { backgroundColor, borderColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
 
   styles = {
     ...commonTheme,
@@ -491,6 +493,8 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
   pressableLayerStyles = {
     ...pressableLayerStyles,
     ...iconButtonPressableLayerTheme[key],
+    ...propsOtherStylesForStateLayer,
+    ...getResetMarginStyles(),
     '@hover': { ...pressableLayerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...pressableLayerTheme['@focus'], ...propsFocusStyles },
     '@press': { ...pressableLayerTheme['@press'], ...propsPressStyles },
@@ -500,6 +504,7 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
     ...styles,
     ...otherStyles,
     ...propsOtherStyles,
+    ...getResetPaddingStyles(),
   };
 
   iconStyles = {
@@ -515,7 +520,7 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
     : {};
 
   return {
-    containerStyles: { ...styles, ...disabledStyles },
+    styles: { ...styles, ...disabledStyles },
     pressableStyles: pressableLayerStyles,
     iconStyles: { ...iconStyles, ...disabledIconStyles },
   };
