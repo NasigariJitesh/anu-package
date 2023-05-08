@@ -48,6 +48,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
   const animatedStyle = {
     position: 'absolute' as const,
+    zIndex: 10,
   };
 
   const animatedViewStyle = useAnimatedStyle(() => {

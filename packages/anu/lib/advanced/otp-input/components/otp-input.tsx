@@ -65,6 +65,12 @@ const validateValue = (value: string, type?: 'alphabetic' | 'alphanumeric' | 'nu
   }
 };
 
+const getKeyboardType = (type?: 'alphabetic' | 'alphanumeric' | 'numeric') => {
+  if (type === 'alphabetic') return 'default';
+  else if (type === 'alphanumeric') return 'default';
+  else return 'number-pad';
+};
+
 /**
  * Individual OTP Field
  *
@@ -112,6 +118,8 @@ const IndividualOTPField = ({
       onKeyPress={(event) => onKeyPressHandler(event, value)}
       disabled={inputProps.disabled}
       showClearButton={false}
+      textContentType={inputProps.textContentType || 'oneTimeCode'}
+      keyboardType={inputProps.keyboardType || getKeyboardType(inputProps.type)}
     />
   );
 };
