@@ -1,5 +1,4 @@
 import { getCombinedStylesForImage } from 'anu/common/utils';
-import { useTheme } from 'anu/config';
 import { Image } from 'anu/lib';
 import { useState } from 'react';
 import { ImageErrorEventData, ImageLoadEventData, NativeSyntheticEvent } from 'react-native';
@@ -15,12 +14,11 @@ import FallbackImage from './fallback-image';
  */
 const ImageAvatar = (props: ImageAvatarProps) => {
   const [error, setError] = useState(false);
-  const theme = useTheme();
   const finalProps: ImageAvatarProps = { ...props };
 
   const { size, variant, alt, ...otherProps } = finalProps;
 
-  const { imageStyle } = getImageAvatarStyle(finalProps, theme);
+  const { imageStyle } = getImageAvatarStyle(finalProps);
 
   /**
    * Handler for the onError callback of the image
