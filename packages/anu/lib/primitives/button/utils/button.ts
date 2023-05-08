@@ -1,4 +1,4 @@
-import { getColorInRGBA } from 'anu/common/utils';
+import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
 import { ButtonContainerStyle, RegularButtonProps } from '../types';
@@ -219,22 +219,10 @@ export type GetButtonStylesReturnType = ButtonContainerStyle;
 export const getButtonStyles = (props: RegularButtonProps, theme: DripsyFinalTheme) => {
   const { styles: regularStyles, stateLayerStyles } = getRegularButtonStyles(props, theme);
   const styles = regularStyles;
-  const layerStyles = stateLayerStyles;
-
-  const resetStyles = {
-    margin: 0,
-    padding: 0,
-  };
-
-  const customStyle = props.containerStyle;
 
   return {
-    styles: {
-      ...styles,
-      ...resetStyles,
-      ...customStyle,
-    },
-    stateLayerStyles: layerStyles,
+    styles,
+    stateLayerStyles,
   };
 };
 
@@ -252,7 +240,7 @@ export const getDisabledButtonStyles = (
 
   const theme = buttonTheme[props.type];
 
-  if (props.disabled) return { ...theme['@disable'], ...props.containerStyle?.['@disable'] };
+  if (props.disabled) return { ...theme['@disable'], ...props.style?.['@disable'] };
 
   return {};
 };
@@ -273,20 +261,36 @@ const getRegularButtonStyles = (props: RegularButtonProps, defaultTheme: DripsyF
   const layerTheme = stateLayerTheme[props.type];
   const commonLayerTheme = stateLayerTheme.common;
 
+  const {
+    '@disable': propsDisableStyles,
+    '@hover': propsHoverStyles,
+    '@focus': propsFocusStyles,
+    '@press': propsPressStyles,
+    ...propsOtherStyles
+  } = props?.style ?? {};
+
+  const { backgroundColor, borderColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
+
   let styles;
 
   styles = {
     backgroundColor: theme.backgroundColor,
     color: theme.color,
     ...commonTheme,
+    ...propsOtherStyles,
+    ...(props.type === 'outlined' && borderColor ? { borderWidth: 0, borderColor: 'transparent' } : {}),
+    ...getResetPaddingStyles(),
   };
 
   let stateLayerStyles: GetButtonStylesReturnType = {
     ...commonLayerTheme,
     ...layerTheme,
-    '@hover': { ...layerTheme['@hover'], ...props.containerStyle?.['@hover'] },
-    '@focus': { ...layerTheme['@focus'], ...props.containerStyle?.['@focus'] },
-    '@press': { ...layerTheme['@press'], ...props.containerStyle?.['@press'] },
+    ...propsOtherStylesForStateLayer,
+    ...(props.type === 'outlined' && borderColor ? { borderColor } : {}),
+    ...getResetMarginStyles(),
+    '@hover': { ...layerTheme['@hover'], ...propsHoverStyles },
+    '@focus': { ...layerTheme['@focus'], ...propsFocusStyles },
+    '@press': { ...layerTheme['@press'], ...propsPressStyles },
   };
 
   switch (props.type) {

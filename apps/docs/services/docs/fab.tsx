@@ -43,8 +43,8 @@ export const FABDocumentation: ContentValues = {
       defaultValue: 'false',
     },
     {
-      name: 'containerStyle',
-      description: 'FABDocumentation:property-containerStyle-description',
+      name: 'style',
+      description: 'FABDocumentation:property-style-description',
       type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
       optional: true,
     },
@@ -61,10 +61,10 @@ export const FABDocumentation: ContentValues = {
       id: 'default',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
-          <FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
-          <FAB FABColor='tertiary' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
-          <FAB FABColor='surface' size='medium' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} style={style} />
+          <FAB FABColor='secondary' size='medium' icon={{ name: 'phone' }} style={style} />
+          <FAB FABColor='tertiary' size='medium' icon={{ name: 'phone' }} style={style} />
+          <FAB FABColor='surface' size='medium' icon={{ name: 'phone' }} style={style} />
         </Container>
       ),
       code: `<FAB FABColor='primary' size='medium' icon={{ name: 'phone' }} />
@@ -77,10 +77,10 @@ export const FABDocumentation: ContentValues = {
       id: 'small-fab',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <FAB FABColor='primary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
-          <FAB FABColor='secondary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
-          <FAB FABColor='tertiary' size='small' icon={{ name: 'phone' }} containerStyle={style} />
-          <FAB FABColor='surface' size='small' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='primary' size='small' icon={{ name: 'phone' }} style={style} />
+          <FAB FABColor='secondary' size='small' icon={{ name: 'phone' }} style={style} />
+          <FAB FABColor='tertiary' size='small' icon={{ name: 'phone' }} style={style} />
+          <FAB FABColor='surface' size='small' icon={{ name: 'phone' }} style={style} />
         </Container>
       ),
       code: `<FAB FABColor='primary' size='small' icon={{ name: 'phone' }} />
@@ -93,10 +93,10 @@ export const FABDocumentation: ContentValues = {
       id: 'large-fab',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <FAB FABColor='primary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
-          <FAB FABColor='secondary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
-          <FAB FABColor='tertiary' size='large' icon={{ name: 'phone' }} containerStyle={style} />
-          <FAB FABColor='surface' size='large' icon={{ name: 'phone' }} containerStyle={style} />
+          <FAB FABColor='primary' size='large' icon={{ name: 'phone' }} style={style} />
+          <FAB FABColor='secondary' size='large' icon={{ name: 'phone' }} style={style} />
+          <FAB FABColor='tertiary' size='large' icon={{ name: 'phone' }} style={style} />
+          <FAB FABColor='surface' size='large' icon={{ name: 'phone' }} style={style} />
         </Container>
       ),
       code: `<FAB FABColor='primary' size='large' icon={{ name: 'phone' }} />
@@ -109,7 +109,7 @@ export const FABDocumentation: ContentValues = {
       id: 'large-fab-lowered',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <FAB FABColor='primary' size='large' icon={{ name: 'phone' }} containerStyle={style} lowered />
+          <FAB FABColor='primary' size='large' icon={{ name: 'phone' }} style={style} lowered />
         </Container>
       ),
       code: "<FAB FABColor='primary' size='large' icon={{ name: 'phone' }} lowered/>",

@@ -45,7 +45,7 @@ export interface ButtonProps extends RNButtonProps {
   /**
    * The styles for the button component.
    */
-  containerStyle?: ButtonContainerStyle;
+  style?: ButtonContainerStyle;
   /**
    * The styles for the label of the button.
    */

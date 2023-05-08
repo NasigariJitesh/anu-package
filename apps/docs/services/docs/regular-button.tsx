@@ -38,8 +38,8 @@ export const regularButtonDocumentation: ContentValues = {
       optional: true,
     },
     {
-      name: 'containerStyle',
-      description: 'regularButtonDocumentation:property-containerStyle-description',
+      name: 'style',
+      description: 'regularButtonDocumentation:property-style-description',
       type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
       optional: true,
     },
@@ -62,10 +62,10 @@ export const regularButtonDocumentation: ContentValues = {
       id: 'elevated-buttons',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Button.Elevated title='Elevated' containerStyle={style} />
-          <Button.Elevated icon={{ name: 'add' }} title='Elevated Icon' containerStyle={style} />
-          <Button.Elevated title='Disabled' disabled containerStyle={style} />
-          <Button.Elevated icon={{ name: 'add' }} title='Disabled' disabled containerStyle={style} />
+          <Button.Elevated title='Elevated' style={style} />
+          <Button.Elevated icon={{ name: 'add' }} title='Elevated Icon' style={style} />
+          <Button.Elevated title='Disabled' disabled style={style} />
+          <Button.Elevated icon={{ name: 'add' }} title='Disabled' disabled style={style} />
         </Container>
       ),
       code: `<Button.Elevated title='Elevated' />
@@ -78,10 +78,10 @@ export const regularButtonDocumentation: ContentValues = {
       id: 'filled-buttons',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Button.Filled title='Filled' containerStyle={style} />
-          <Button.Filled icon={{ name: 'add' }} title='Filled Icon' containerStyle={style} />
-          <Button.Filled title='Disabled' disabled containerStyle={style} />
-          <Button.Filled icon={{ name: 'add' }} title='Disabled' disabled containerStyle={style} />
+          <Button.Filled title='Filled' style={style} />
+          <Button.Filled icon={{ name: 'add' }} title='Filled Icon' style={style} />
+          <Button.Filled title='Disabled' disabled style={style} />
+          <Button.Filled icon={{ name: 'add' }} title='Disabled' disabled style={style} />
         </Container>
       ),
       code: `<Button.Filled title='Filled' />
@@ -95,10 +95,10 @@ export const regularButtonDocumentation: ContentValues = {
       id: 'filled-tonal-buttons',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Button.Tonal title='Tonal' containerStyle={style} />
-          <Button.Tonal icon={{ name: 'add' }} title='Tonal Icon' containerStyle={style} />
-          <Button.Tonal title='Disabled' disabled containerStyle={style} />
-          <Button.Tonal icon={{ name: 'add' }} title='Disabled' disabled containerStyle={style} />
+          <Button.Tonal title='Tonal' style={style} />
+          <Button.Tonal icon={{ name: 'add' }} title='Tonal Icon' style={style} />
+          <Button.Tonal title='Disabled' disabled style={style} />
+          <Button.Tonal icon={{ name: 'add' }} title='Disabled' disabled style={style} />
         </Container>
       ),
       code: `<Button.Tonal title='Tonal' />
@@ -112,10 +112,10 @@ export const regularButtonDocumentation: ContentValues = {
       id: 'outlined-buttons',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Button.Outlined title='Outlined' containerStyle={style} />
-          <Button.Outlined icon={{ name: 'add' }} title='Outlined Icon' containerStyle={style} />
-          <Button.Outlined title='Disabled' disabled containerStyle={style} />
-          <Button.Outlined icon={{ name: 'add' }} title='Disabled' disabled containerStyle={style} />
+          <Button.Outlined title='Outlined' style={style} />
+          <Button.Outlined icon={{ name: 'add' }} title='Outlined Icon' style={style} />
+          <Button.Outlined title='Disabled' disabled style={style} />
+          <Button.Outlined icon={{ name: 'add' }} title='Disabled' disabled style={style} />
         </Container>
       ),
       code: `<Button.Outlined title='Outlined' />
@@ -129,10 +129,10 @@ export const regularButtonDocumentation: ContentValues = {
       id: 'text-buttons',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Button.Text title='Text' containerStyle={style} />
-          <Button.Text icon={{ name: 'add' }} title='Text Icon' containerStyle={style} />
-          <Button.Text title='Disabled' disabled containerStyle={style} />
-          <Button.Text icon={{ name: 'add' }} title='Disabled' disabled containerStyle={style} />
+          <Button.Text title='Text' style={style} />
+          <Button.Text icon={{ name: 'add' }} title='Text Icon' style={style} />
+          <Button.Text title='Disabled' disabled style={style} />
+          <Button.Text icon={{ name: 'add' }} title='Disabled' disabled style={style} />
         </Container>
       ),
       code: `<Button.Text title='Text' />

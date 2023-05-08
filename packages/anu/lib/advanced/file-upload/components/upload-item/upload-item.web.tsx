@@ -140,7 +140,7 @@ const CarouselListItem = (props: ListItemProps) => {
         <IconButton
           icon={{ name: 'delete-outline', props: { size: 16, style: styles.carouselDeleteIcon } }}
           type='standard'
-          containerStyle={styles.carouselDeleteButton}
+          style={styles.carouselDeleteButton}
           onPress={() => {
             deleteData(id);
           }}
