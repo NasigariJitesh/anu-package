@@ -41,8 +41,8 @@ export default function HorizontalMovableItem<T>(props: HorizontalMovableItemPro
 
   const [moving, setMoving] = useState(false);
   const [initialPosition, setInitialPosition] = useState(positions.value[id]);
-  const positionX = useSharedValue(positions.value[id] * itemWidth);
-  const left = useSharedValue(positions.value[id] * itemWidth);
+  const positionX = useSharedValue(positions.value[id]! * itemWidth);
+  const left = useSharedValue(positions.value[id]! * itemWidth);
   const upperBound = useDerivedValue(() => lowerBound.value + containerWidth);
   const targetLowerBound = useSharedValue(lowerBound.value);
 
@@ -71,7 +71,13 @@ export default function HorizontalMovableItem<T>(props: HorizontalMovableItemPro
   useAnimatedReaction(
     () => positions.value[id],
     (currentPosition, previousPosition) => {
-      if (currentPosition !== null && previousPosition !== null && currentPosition !== previousPosition && !moving) {
+      if (
+        currentPosition &&
+        currentPosition !== null &&
+        previousPosition !== null &&
+        currentPosition !== previousPosition &&
+        !moving
+      ) {
         left.value = withSpring(currentPosition * itemWidth);
       }
     },
@@ -140,8 +146,8 @@ export default function HorizontalMovableItem<T>(props: HorizontalMovableItemPro
 
   const gestureHandler = useAnimatedGestureHandler({
     onStart() {
-      positionX.value = positions.value[id] * itemWidth;
-      runOnJS(onSortStartHandler)(positions.value[id]);
+      positionX.value = positions.value[id]! * itemWidth;
+      runOnJS(onSortStartHandler)(positions.value[id]!);
       runOnJS(setMoving)(true);
       if (Platform.OS === 'ios') {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
@@ -152,10 +158,10 @@ export default function HorizontalMovableItem<T>(props: HorizontalMovableItemPro
       positionX.value = event.absoluteX + lowerBound.value - itemWidth;
     },
     onFinish() {
-      const finishPosition = positions.value[id] * itemWidth;
+      const finishPosition = positions.value[id]! * itemWidth;
       left.value = withTiming(finishPosition);
-      if (onSortEnd) runOnJS(onSortEnd)(positions.value[id]);
-      if (onSort) runOnJS(onSort)(initialPosition, positions.value[id]);
+      if (onSortEnd) runOnJS(onSortEnd)(positions.value[id]!);
+      if (onSort) runOnJS(onSort)(initialPosition!, positions.value[id]!);
       runOnJS(setMoving)(false);
     },
   });

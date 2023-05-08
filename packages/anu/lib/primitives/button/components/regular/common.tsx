@@ -55,7 +55,11 @@ export const RenderComponent = (props: ButtonProps) => {
       >
         <>
           {getIcon()}
-          <Typography.Label size='large' style={getCombinedStylesForText(labelStyles, props.labelStyle)}>
+          <Typography.Label
+            selectable={false}
+            size='large'
+            style={getCombinedStylesForText(labelStyles, props.labelStyle)}
+          >
             {props.title}
           </Typography.Label>
         </>

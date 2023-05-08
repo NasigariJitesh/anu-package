@@ -43,9 +43,9 @@ export default function MovableItem<T>(props: MovableItemProps<T>) {
   const [moving, setMoving] = useState(false);
   const [initialPosition, setInitialPosition] = useState(positions.value[id]);
 
-  const positionY = useSharedValue(positions.value[id] * itemHeight);
+  const positionY = useSharedValue(positions.value[id]! * itemHeight);
 
-  const top = useSharedValue(positions.value[id] * itemHeight);
+  const top = useSharedValue(positions.value[id]! * itemHeight);
   const upperBound = useDerivedValue(() => lowerBound.value + containerHeight);
   const targetLowerBound = useSharedValue(lowerBound.value);
 
@@ -75,7 +75,7 @@ export default function MovableItem<T>(props: MovableItemProps<T>) {
     () => positions.value[id],
     (currentPosition, previousPosition) => {
       if (currentPosition !== null && previousPosition !== null && currentPosition !== previousPosition && !moving) {
-        top.value = withSpring(currentPosition * itemHeight);
+        top.value = withSpring(currentPosition! * itemHeight);
       }
     },
     [moving],
@@ -143,8 +143,8 @@ export default function MovableItem<T>(props: MovableItemProps<T>) {
 
   const gestureHandler = useAnimatedGestureHandler({
     onStart() {
-      positionY.value = positions.value[id] * itemHeight;
-      runOnJS(onSortStartHandler)(positions.value[id]);
+      positionY.value = positions.value[id]! * itemHeight;
+      runOnJS(onSortStartHandler)(positions.value[id]!);
       runOnJS(setMoving)(true);
       if (Platform.OS === 'ios') {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
@@ -155,10 +155,10 @@ export default function MovableItem<T>(props: MovableItemProps<T>) {
       positionY.value = event.absoluteY + lowerBound.value - itemHeight;
     },
     onFinish() {
-      const finishPosition = positions.value[id] * itemHeight;
+      const finishPosition = positions.value[id]! * itemHeight;
       top.value = withTiming(finishPosition);
-      if (onSortEnd) runOnJS(onSortEnd)(positions.value[id]);
-      if (onSort) runOnJS(onSort)(initialPosition, positions.value[id]);
+      if (onSortEnd) runOnJS(onSortEnd)(positions.value[id]!);
+      if (onSort) runOnJS(onSort)(initialPosition!, positions.value[id]!);
       runOnJS(setMoving)(false);
     },
   });

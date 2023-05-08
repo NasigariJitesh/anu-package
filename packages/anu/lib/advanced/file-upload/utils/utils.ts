@@ -7,7 +7,7 @@ import { Config } from '../types';
 
 const KILO_BYTE = 1000; // in bytes
 
-export const compressFile = async (file: File | Blob, config?: Config): Promise<File | Blob> => {
+export const compressFile = async (file: File, config?: Config): Promise<File | Blob> => {
   const { quality, maxHeight, maxWidth, convertSize, convertTypes } = {
     quality: 0.6,
     convertSize: 1 * KILO_BYTE, // in bytes
@@ -33,41 +33,8 @@ export const compressFile = async (file: File | Blob, config?: Config): Promise<
     : file;
 };
 
-// export const getImageAttachment = (uri_attachment: Blob, mimetype_attachment: string) => {
-//   return new Promise((RESOLVE, REJECT) => {
-//     // Fetch attachment
-//     RNFetchBlob.fetch('GET',).then((response) => {
-//       const base64String = response.data;
-//       const imageBase64 = 'data:' + mimetype_attachment + ';base64,' + base64String;
-//       // Return base64 image
-//       RESOLVE(imageBase64);
-//     });
-//   }).catch((error) => {
-//     // error handling
-//     console.log('Error:', error);
-//   });
-// };
-
-/**
- *
- * @param file File object
- * @returns base64 string of the file, that may be used to display the file if it is an image
- */
-export const getBase64 = (file: File | Blob) => {
-  const base64 = new Promise((resolve: (value: string) => void, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.addEventListener('load', function () {
-      if (typeof reader.result === 'string') resolve(reader.result);
-      else reject(new Error('error converting file to base64'));
-    });
-    reader.addEventListener('error', (error) => {
-      console.log(error);
-      reject(error);
-    });
-  });
-
-  return base64;
+export const convertToFile = (file: File | Blob, fileName: string) => {
+  return new File([file], fileName);
 };
 
 export const getDropZoneStyles = (theme: DripsyFinalTheme) => {
@@ -201,7 +168,7 @@ export const getFileTypes = (accept?: Accept, variant?: 'image' | 'file') => {
   let types: string[] = [];
 
   for (const key of Object.keys(accept)) {
-    types = [...types, ...accept[key]];
+    types = [...types, ...accept[key]!];
   }
 
   return types;

@@ -8,7 +8,7 @@ import * as FilePicker from 'expo-document-picker';
 import { forwardRef, useCallback, useImperativeHandle, useMemo, useState } from 'react';
 
 import { FileUploadProps, FileUploadReferenceProps } from '../../types';
-import { compressFile, getErrorMessageStyle, getFileUploadStyle } from '../../utils';
+import { compressFile, convertToFile, getErrorMessageStyle, getFileUploadStyle } from '../../utils';
 import UploadList from '../upload-list';
 import { defaultProps } from './default';
 
@@ -18,7 +18,7 @@ import { defaultProps } from './default';
  * @param props - props of the file upload component
  * @param updateFiles - function to update the uploaded files to existing files list
  */
-const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: Blob[]): void }) => {
+const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: File[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
     type: props.fileType ?? props.variant === 'image' ? 'image/*' : undefined,
@@ -30,7 +30,9 @@ const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: B
       const compressedImages = [];
       for (const file of result.output) {
         const compressedImage = await compressFile(file, props.optimizationConfig);
-        compressedImages.push(compressedImage);
+        const image = convertToFile(compressedImage, file.name);
+
+        compressedImages.push(image);
       }
       updateFiles(compressedImages);
     } else {
@@ -46,7 +48,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   //@ts-expect-error
   const finalProps: FileUploadProps = { ...defaultProps, ...props };
   const [isUploadingState, setIsUploadingState] = useState(false);
-  const [files, setFiles] = useState<Blob[]>([]);
+  const [files, setFiles] = useState<File[]>([]);
   const [duplicateFileNameError, setDuplicateFileNameError] = useState(false);
 
   const isUploading = useCallback(() => isUploadingState, [isUploadingState]);
@@ -59,7 +61,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   const defaultContainerStyle = getFileUploadStyle();
   const errorMessageStyle = getErrorMessageStyle(theme);
 
-  const updateFiles = (resultFiles: Blob[]) => {
+  const updateFiles = (resultFiles: File[]) => {
     setDuplicateFileNameError(false);
     if (finalProps.multiple) {
       const uniqueResultFiles = [];
@@ -82,7 +84,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
       if (finalProps.onChange) finalProps.onChange(allFiles);
     } else {
       setFiles(resultFiles);
-      if (finalProps.onChange) finalProps.onChange(resultFiles[0]);
+      if (finalProps.onChange && resultFiles[0]) finalProps.onChange(resultFiles[0]);
     }
   };
 

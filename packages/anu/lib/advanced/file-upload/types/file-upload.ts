@@ -26,7 +26,7 @@ type BasicFileUploadProps = CommonButtonProps & {
    * @param data - files
    * @param fileUri - uris of files
    */
-  onChange?: (data: Blob | Blob[] | null, fileUri?: string | string[] | null) => void;
+  onChange?: (data: File | File[] | null, fileUri?: string | string[] | null) => void;
   /*
    * The mimetype of the files to be allowed for upload
    */
@@ -86,7 +86,7 @@ export type FileUploadProps = ImageFileUploadProps | OtherFileUploadProps;
 
 export interface FileUploadReferenceProps {
   isUploading: () => boolean;
-  files: Blob[];
+  files: File[];
 }
 
 export type MimeType =

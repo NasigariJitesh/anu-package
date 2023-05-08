@@ -47,7 +47,7 @@ const ExtendedFAB = (props: ExtendedFABProps) => {
       >
         <>
           {restOfTheProps.icon ? getIcon(restOfTheProps.icon) : null}
-          <Typography.Label style={getCombinedStylesForText(labelStyles, restOfTheProps.titleStyle)}>
+          <Typography.Label selectable={false} style={getCombinedStylesForText(labelStyles, restOfTheProps.titleStyle)}>
             {restOfTheProps.title}
           </Typography.Label>
         </>
