@@ -54,7 +54,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
 
   const handleUpload = useMemo(() => handleFileUpload, []);
   const theme = useTheme();
-  const defaultContainerStyle = getFileUploadStyle();
+  const defaultStyle = getFileUploadStyle();
   const errorMessageStyle = getErrorMessageStyle(theme);
 
   const updateFiles = (resultFiles: Blob[], resultUris: string[]) => {
@@ -131,18 +131,8 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
 
       propsForButton = otherButtonProps;
     } else {
-      const {
-        onChange,
-        variant,
-        multiple,
-        sortable,
-        fileType,
-        copyToCacheDirectory,
-        style,
-        containerStyle,
-
-        ...otherButtonProps
-      } = buttonProps;
+      const { onChange, variant, multiple, sortable, fileType, copyToCacheDirectory, style, ...otherButtonProps } =
+        buttonProps;
       propsForButton = otherButtonProps;
     }
 
@@ -206,7 +196,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   };
 
   return (
-    <Container disableGutters style={getCombinedStylesForView(defaultContainerStyle, finalProps.style)}>
+    <Container disableGutters style={getCombinedStylesForView(defaultStyle, finalProps.style)}>
       <Container disableGutters>
         {renderButton(finalProps)}
         {duplicateFileNameError ? (

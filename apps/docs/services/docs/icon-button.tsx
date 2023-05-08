@@ -20,7 +20,7 @@ const IconWithToggle = ({ type }: { type: 'filled' | 'tonal' | 'outlined' | 'sta
         onPress={() => {
           setToggleState(!toggleState);
         }}
-        containerStyle={style}
+        style={style}
       />
       <IconButton
         type={type as IconButtonType}
@@ -31,7 +31,7 @@ const IconWithToggle = ({ type }: { type: 'filled' | 'tonal' | 'outlined' | 'sta
           setToggleState(!toggleState);
         }}
         disabled
-        containerStyle={style}
+        style={style}
       />
     </Container>
   );
@@ -75,8 +75,8 @@ export const iconButtonDocumentation: ContentValues = {
       defaultValue: 'false',
     },
     {
-      name: 'containerStyle',
-      description: 'iconButtonDocumentation:property-containerStyle-description',
+      name: 'style',
+      description: 'iconButtonDocumentation:property-style-description',
       type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
       optional: true,
     },
@@ -93,8 +93,8 @@ export const iconButtonDocumentation: ContentValues = {
       id: 'filled-icon-button',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='filled' icon={{ name: 'favorite' }} containerStyle={style} />
-          <IconButton type='filled' icon={{ name: 'favorite' }} disabled containerStyle={style} />
+          <IconButton type='filled' icon={{ name: 'favorite' }} style={style} />
+          <IconButton type='filled' icon={{ name: 'favorite' }} disabled style={style} />
         </Container>
       ),
       code: `<IconButton type='filled' icon={{ name: 'favorite' }} /> 
@@ -130,8 +130,8 @@ export const iconButtonDocumentation: ContentValues = {
       id: 'filled-tonal-icon-button',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='tonal' icon={{ name: 'favorite' }} containerStyle={style} />
-          <IconButton type='tonal' icon={{ name: 'favorite' }} disabled containerStyle={style} />
+          <IconButton type='tonal' icon={{ name: 'favorite' }} style={style} />
+          <IconButton type='tonal' icon={{ name: 'favorite' }} disabled style={style} />
         </Container>
       ),
       code: `<IconButton type='tonal' icon={{ name: 'favorite' }} /> 
@@ -166,8 +166,8 @@ export const iconButtonDocumentation: ContentValues = {
       id: 'outlined-icon-button',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='outlined' icon={{ name: 'favorite' }} containerStyle={style} />
-          <IconButton type='outlined' icon={{ name: 'favorite' }} disabled containerStyle={style} />
+          <IconButton type='outlined' icon={{ name: 'favorite' }} style={style} />
+          <IconButton type='outlined' icon={{ name: 'favorite' }} disabled style={style} />
         </Container>
       ),
       code: `<IconButton type='outlined' icon={{ name: 'favorite' }} /> 
@@ -202,8 +202,8 @@ export const iconButtonDocumentation: ContentValues = {
       id: 'standard-icon-button',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <IconButton type='standard' icon={{ name: 'favorite' }} containerStyle={style} />
-          <IconButton type='standard' icon={{ name: 'favorite' }} disabled containerStyle={style} />
+          <IconButton type='standard' icon={{ name: 'favorite' }} style={style} />
+          <IconButton type='standard' icon={{ name: 'favorite' }} disabled style={style} />
         </Container>
       ),
       code: `<IconButton type='standard' icon={{ name: 'favorite' }} /> 

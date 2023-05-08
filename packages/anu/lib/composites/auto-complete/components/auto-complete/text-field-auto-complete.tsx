@@ -49,7 +49,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
         }}
         disabled={disabled}
         type='standard'
-        containerStyle={dropDownButtonStyle}
+        style={dropDownButtonStyle}
         pressableProps={{
           style: {
             padding: 1,

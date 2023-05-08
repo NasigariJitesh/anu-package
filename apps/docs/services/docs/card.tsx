@@ -73,7 +73,7 @@ export const cardDocumentation: ContentValues = {
               </Typography.Body>
             </CardContent>
             <CardActions>
-              <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+              <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
               <Button.Filled title='Action' />
             </CardActions>
           </Card>
@@ -87,7 +87,7 @@ export const cardDocumentation: ContentValues = {
     </Typography.Body>
   </CardContent>
   <CardActions>
-    <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+    <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
     <Button.Filled title='Action' />
   </CardActions>
 </Card>`,
@@ -106,7 +106,7 @@ export const cardDocumentation: ContentValues = {
               </Typography.Body>
             </CardContent>
             <CardActions justify='flex-end'>
-              <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+              <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
               <Button.Filled title='Action' />
             </CardActions>
           </Card>
@@ -120,7 +120,7 @@ export const cardDocumentation: ContentValues = {
     </Typography.Body>
   </CardContent>
   <CardActions justify='flex-end'>
-    <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+    <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
     <Button.Filled title='Action' />
   </CardActions>
 </Card>`,
@@ -139,7 +139,7 @@ export const cardDocumentation: ContentValues = {
               </Typography.Body>
             </CardContent>
             <CardActions justify='flex-end'>
-              <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+              <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
               <Button.Filled title='Action' />
             </CardActions>
           </Card>
@@ -153,7 +153,7 @@ export const cardDocumentation: ContentValues = {
     </Typography.Body>
   </CardContent>
   <CardActions justify='flex-end'>
-    <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+    <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
     <Button.Filled title='Action' />
   </CardActions>
 </Card>`,
@@ -183,7 +183,7 @@ export const cardDocumentation: ContentValues = {
               </Typography.Body>
             </CardContent>
             <CardActions justify='flex-end'>
-              <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+              <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
               <Button.Filled title='Action' />
             </CardActions>
           </Card>
@@ -209,7 +209,7 @@ export const cardDocumentation: ContentValues = {
     </Typography.Body>
   </CardContent>
   <CardActions justify='flex-end'>
-    <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+    <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
     <Button.Filled title='Action' />
   </CardActions>
 </Card>`,
@@ -229,7 +229,7 @@ export const cardDocumentation: ContentValues = {
                 </Typography.Body>
               </CardContent>
               <CardActions justify='flex-end'>
-                <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+                <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
                 <Button.Filled title='Action' />
               </CardActions>
             </Container>
@@ -252,7 +252,7 @@ export const cardDocumentation: ContentValues = {
       </Typography.Body>
     </CardContent>
     <CardActions justify='flex-end'>
-      <Button.Outlined title='Action' containerStyle={{ marginHorizontal: 10 }} />
+      <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
       <Button.Filled title='Action' />
     </CardActions>
   </Container>

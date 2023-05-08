@@ -42,8 +42,8 @@ export const extendedFABDocumentation: ContentValues = {
       defaultValue: 'false',
     },
     {
-      name: 'containerStyle',
-      description: 'extendedFABDocumentation:property-containerStyle-description',
+      name: 'style',
+      description: 'extendedFABDocumentation:property-style-description',
       type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
       optional: true,
     },
@@ -67,10 +67,10 @@ export const extendedFABDocumentation: ContentValues = {
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           {' '}
-          <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} containerStyle={style} />{' '}
-          <ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} containerStyle={style} />{' '}
-          <ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} containerStyle={style} />{' '}
-          <ExtendedFAB FABColor='surface' title='Surface' icon={{ name: 'phone' }} containerStyle={style} />{' '}
+          <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} style={style} />{' '}
+          <ExtendedFAB FABColor='secondary' title='Secondary' icon={{ name: 'phone' }} style={style} />{' '}
+          <ExtendedFAB FABColor='tertiary' title='Tertiary' icon={{ name: 'phone' }} style={style} />{' '}
+          <ExtendedFAB FABColor='surface' title='Surface' icon={{ name: 'phone' }} style={style} />{' '}
         </Container>
       ),
       code: `<ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} /> 
@@ -84,13 +84,7 @@ export const extendedFABDocumentation: ContentValues = {
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
           {' '}
-          <ExtendedFAB
-            FABColor='primary'
-            title='Primary'
-            icon={{ name: 'phone' }}
-            containerStyle={style}
-            lowered
-          />{' '}
+          <ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} style={style} lowered />{' '}
         </Container>
       ),
       code: "<ExtendedFAB FABColor='primary' title='Primary' icon={{ name: 'phone' }} lowered />",

@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-color-literals */
+/* eslint-disable react-native/no-inline-styles */
 import {
   Button,
   Container,
@@ -38,6 +40,17 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      <Button.Outlined
+        title='Action'
+        style={{
+          width: 300,
+          borderRadius: 10,
+          marginTop: 10,
+          paddingVertical: 50,
+          borderColor: 'pink',
+          borderWidth: 5,
+        }}
+      />
       <Tabs type='primary' maxWidth={500}>
         <Tab name='One' icon={{ name: 'favorite' }}>
           <Typography.Body>
@@ -79,7 +92,6 @@ export default function Example() {
       <TouchableRipple onPress={() => setText(true)}>
         <Container sx={{ height: 100, width: 100 }}>Press here</Container>
       </TouchableRipple>
-
       <Dialog visible={text} onDismiss={() => setText(false)} type='full-screen'>
         <DialogTitle type='full-screen' title='Dialog Title' onDismiss={() => setText(false)} />
         <DialogContent>
