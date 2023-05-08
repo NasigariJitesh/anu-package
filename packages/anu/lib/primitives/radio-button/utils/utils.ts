@@ -1,4 +1,4 @@
-import { getColorInRGBA } from 'anu/common/utils';
+import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
 import { GetButtonStylesReturnType } from 'anu/lib/primitives/button/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
@@ -130,9 +130,13 @@ export const getRadioButtonStyles = (props: RadioButtonProps, selected: boolean,
     backgroundColor: propsOtherStyles.backgroundColor ?? propsOtherStyles.color ?? otherStyles.borderColor,
   };
 
+  const { backgroundColor, borderColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
+
   const pressableLayerStyles: GetButtonStylesReturnType = {
     ...commonPressableLayerTheme,
     ...radioButtonPressableLayerTheme[key],
+    ...propsOtherStylesForStateLayer,
+    ...getResetPaddingStyles(),
     '@hover': { ...pressableLayerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...pressableLayerTheme['@focus'], ...propsFocusStyles },
     '@press': { ...pressableLayerTheme['@press'], ...propsPressStyles },
@@ -142,6 +146,7 @@ export const getRadioButtonStyles = (props: RadioButtonProps, selected: boolean,
     ...commonTheme,
     ...otherStyles,
     ...(propsOtherStyles as Record<string, never>),
+    ...getResetMarginStyles(),
   };
 
   if (props.color && selected) {
