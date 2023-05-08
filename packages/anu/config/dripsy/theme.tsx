@@ -1,5 +1,7 @@
-import { DripsyCustomTheme, makeTheme, useDripsyTheme } from 'dripsy';
+import { DripsyBaseTheme, DripsyCustomTheme, makeTheme, useDripsyTheme } from 'dripsy';
 import lodash from 'lodash';
+
+import { ColorMode } from '..';
 export { makeTheme } from 'dripsy';
 
 export const lightThemeColors = {
@@ -80,21 +82,27 @@ export const darkThemeColors = {
  * @param theme - new theme to extend
  * @param mode - Weather you want a light or a dark mode
  */
-const mergeThemes = (theme: Partial<DripsyCustomTheme>, mode: 'light' | 'dark') => {
+const mergeThemes = (theme: DripsyBaseTheme, mode: ColorMode) => {
   const t = makeTheme({
-    colors: generateColors(mode === 'light' ? lightThemeColors : darkThemeColors),
+    colors: generateColors(mode === 'light' ? lightThemeColors : darkThemeColors, mode, theme),
     reactNativeTypesOnly: true,
-
     fontSizes: [57, 45, 36, 32, 28, 24, 22, 16, 14, 12, 11],
     lineHeights: [64, 52, 44, 40, 36, 32, 28, 24, 20, 16],
+
+    colorScheme: mode,
   });
 
   return lodash.merge(t, theme);
 };
 
-const generateColors = (colors: Record<string, string>) => {
+const generateColors = (colors: Record<string, string>, mode: ColorMode, theme: DripsyBaseTheme) => {
+  const modeColors: Record<string, string> =
+    // @ts-expect-error - this is a hack to get the colors from the theme
+    (mode === 'light' ? theme.colors?.mode?.light : theme.colors?.mode?.dark) || {};
+
   return {
     ...colors,
+    ...modeColors,
     // $background: calculateShade(colors.$primary, 99), //#010102
     // $onBackground: calculateTint(colors.$primary, 99), // #fdfdfe
     // $surface: calculateTint(colors.$primary, 99), // #010102
@@ -110,11 +118,12 @@ const generateColors = (colors: Record<string, string>) => {
  *  This is the default theme for the app.
  */
 export const defaultTheme = makeTheme({
-  colors: generateColors(darkThemeColors),
+  colors: generateColors(darkThemeColors, 'light', {}),
   reactNativeTypesOnly: true,
 
   fontSizes: [57, 45, 36, 32, 28, 24, 22, 16, 14, 12, 11],
   lineHeights: [64, 52, 44, 40, 36, 32, 28, 24, 20, 16],
+  colorScheme: 'light' as ColorMode,
 });
 
 /**
@@ -131,14 +140,14 @@ export const useTheme = () => {
  * @param theme - The theme object for the project
  * @param mode - Weather you want a light or a dark mode. Default is lite
  */
-export const extendTheme = (theme: Partial<DripsyCustomTheme> = {}, mode: 'light' | 'dark' = 'light') => {
+export const extendTheme = (theme: DripsyBaseTheme = {}, mode: ColorMode = 'light') => {
   const result = mergeThemes(theme, mode);
 
   return makeTheme(result) as DripsyCustomTheme;
 };
 
 export const getThemeMode = (theme: DripsyCustomTheme) => {
-  return theme.colors.$surface === (darkThemeColors.$surface as string) ? 'dark' : 'light';
+  return theme.colorScheme;
 };
 
 type MyTheme = typeof defaultTheme;
@@ -147,38 +156,38 @@ declare module 'dripsy' {
   interface DripsyCustomTheme extends MyTheme {
     colors: {
       // new codes
-      $primary: 'string';
-      $onPrimary: 'string';
-      $primaryContainer: 'string';
-      $onPrimaryContainer: 'string';
-      $secondary: 'string';
-      $onSecondary: 'string';
-      $secondaryContainer: 'string';
-      $onSecondaryContainer: 'string';
-      $tertiary: 'string';
-      $onTertiary: 'string';
-      $tertiaryContainer: 'string';
-      $onTertiaryContainer: 'string';
-      $error: 'string';
-      $onError: 'string';
-      $errorContainer: 'string';
-      $onErrorContainer: 'string';
-      $background: 'string';
-      $onBackground: 'string';
-      $surface: 'string';
-      $onSurface: 'string';
-      $outline: 'string';
-      $surfaceVariant: 'string';
-      $onSurfaceVariant: 'string';
-      $outlineVariant: 'string';
-      $shadow: 'string';
-      $surfaceTint: '';
-      $inverseSurface: 'string';
-      $inverseOnSurface: 'string';
-      $inversePrimary: 'string';
-      $scrim: 'string';
-      $surfaceContainerHigh: 'string';
-      $surfaceContainerHighest: 'string';
+      $primary: string;
+      $onPrimary: string;
+      $primaryContainer: string;
+      $onPrimaryContainer: string;
+      $secondary: string;
+      $onSecondary: string;
+      $secondaryContainer: string;
+      $onSecondaryContainer: string;
+      $tertiary: string;
+      $onTertiary: string;
+      $tertiaryContainer: string;
+      $onTertiaryContainer: string;
+      $error: string;
+      $onError: string;
+      $errorContainer: string;
+      $onErrorContainer: string;
+      $background: string;
+      $onBackground: string;
+      $surface: string;
+      $onSurface: string;
+      $outline: string;
+      $surfaceVariant: string;
+      $onSurfaceVariant: string;
+      $outlineVariant: string;
+      $shadow: string;
+      $surfaceTint: string;
+      $inverseSurface: string;
+      $inverseOnSurface: string;
+      $inversePrimary: string;
+      $scrim: string;
+      $surfaceContainerHigh: string;
+      $surfaceContainerHighest: string;
     };
   }
 }

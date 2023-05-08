@@ -11,7 +11,6 @@ export const LocalizationContext = createContext<AnuLocalizationContext>({
   currentLocale: 'en',
   switchLocale: () => {},
   getTranslation: () => '',
-  directory: '',
 });
 
 export const useAnuLocalization = () => {
@@ -26,12 +25,19 @@ const AnuLocalizationProvider: FC<AnuLocalizationProviderProps> = (props) => {
   };
 
   const getTranslation = (key: string, value = currentLocale) => {
-    return getLocalizedTranslation(key, value, props.directory);
+    const directory = 'packages/app/services/locale';
+
+    return getLocalizedTranslation(key, value, directory);
   };
 
   return (
     <LocalizationContext.Provider
-      value={{ defaultLocale: props.default, currentLocale, switchLocale, getTranslation, directory: props.directory }}
+      value={{
+        defaultLocale: props.default,
+        currentLocale,
+        switchLocale,
+        getTranslation,
+      }}
     >
       {props.children}
     </LocalizationContext.Provider>

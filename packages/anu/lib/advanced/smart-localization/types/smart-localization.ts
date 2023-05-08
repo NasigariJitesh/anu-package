@@ -102,10 +102,12 @@ export interface AnuLocalizationContext {
    */
   getTranslation: (key: string, locale?: string) => string;
 
-  /**
-   * Directory where the translation filed are located
-   */
-  directory: string;
+  // /**
+  //  * Directory where the translation filed are located.
+  //  *
+  //  * Web Only!!
+  //  */
+  // directory?: string;
 }
 
 export interface AnuLocalizationProviderProps {
@@ -117,8 +119,14 @@ export interface AnuLocalizationProviderProps {
    */
   default: string;
 
-  /**
-   * Directory where the translation filed are located
-   */
-  directory: string;
+  // /**
+  //  *
+  //  * Directory where the translation filed are located
+  //  *
+  //  * !!! EXPERIMENTAL !!!
+  //  * Note: This is only used for web. For native, the directory is fixed to `packages/app/services/locale`.
+  //  *
+  //  * This can be changed in the future to "type" where it can be monorepo or a normal project. Based on that, we fetch the translations from different folders
+  //  */
+  // directory?: 'root';
 }
