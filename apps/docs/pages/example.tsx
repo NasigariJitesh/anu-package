@@ -11,6 +11,7 @@ import {
   TouchableRipple,
   Typography,
 } from 'anu/lib';
+import FileUpload from 'anu/lib/advanced/file-upload/components/file-upload/file-upload';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
 
@@ -38,6 +39,7 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      <FileUpload category='common' size='medium' title='Upload' type='filled' />
       <Tabs type='primary' maxWidth={500}>
         <Tab name='One' icon={{ name: 'favorite' }}>
           <Typography.Body>

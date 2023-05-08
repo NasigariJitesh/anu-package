@@ -1,7 +1,7 @@
 import { StyleProp, ViewStyle } from 'react-native';
 
 export interface UploadListProps {
-  data: Blob[] | File[];
+  data: File[];
   uriData?: string[];
   errors?: { error: boolean; errorMessage: string }[];
   variant?: 'image' | 'file';
@@ -16,7 +16,7 @@ export interface UploadListProps {
 
 export interface ListItemProps {
   id: number;
-  dataItem: Blob | File;
+  dataItem: File;
   uri?: string;
   error?: { error: boolean; errorMessage: string };
   single?: boolean;

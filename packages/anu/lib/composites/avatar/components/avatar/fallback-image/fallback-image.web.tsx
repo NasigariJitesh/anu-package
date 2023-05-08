@@ -1,6 +1,5 @@
 import PlaceHolderImage from 'anu/assets/avatar-placeholder.png';
 import { getCombinedStylesForImage } from 'anu/common/utils';
-import { useTheme } from 'anu/config';
 import { Image } from 'anu/lib';
 
 import { ImageAvatarProps } from '../../../types';
@@ -13,9 +12,8 @@ import { getImageAvatarStyle } from '../../../utils';
  * @returns - ImageAvatarProps
  */
 const FallbackImage = (props: ImageAvatarProps) => {
-  const theme = useTheme();
 
-  const { imageStyle } = getImageAvatarStyle(props, theme);
+  const { imageStyle } = getImageAvatarStyle(props);
   const { size, variant, alt, source, ...otherProps } = props;
   return (
     <Image

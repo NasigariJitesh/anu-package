@@ -25,8 +25,8 @@ export function shuffle<T>(array: ItemProps<T>[]) {
     const index = Math.floor(Math.random() * counter);
     counter--;
     const temporary = array[counter];
-    array[counter] = array[index];
-    array[index] = temporary;
+    array[counter] = array[index]!;
+    array[index] = temporary!;
   }
 
   return array;
@@ -90,7 +90,7 @@ export function setPosition(
   const newPosition = clamp(Math.floor(positionY / itemHeight), 0, itemsCount - 1);
 
   if (newPosition !== positions.value[id]) {
-    positions.value = objectMove(positions.value, positions.value[id], newPosition);
+    positions.value = objectMove(positions.value, positions.value[id]!, newPosition);
 
     if (Platform.OS === 'ios') {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
@@ -118,7 +118,7 @@ export function setPositionHorizontal(
   const newPosition = clamp(Math.floor(positionX / itemWidth), 0, itemsCount - 1);
 
   if (newPosition !== positions.value[id]) {
-    positions.value = objectMove(positions.value, positions.value[id], newPosition);
+    positions.value = objectMove(positions.value, positions.value[id]!, newPosition);
 
     if (Platform.OS === 'ios') {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
