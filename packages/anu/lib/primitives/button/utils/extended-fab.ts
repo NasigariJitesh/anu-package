@@ -123,7 +123,6 @@ const getExtendedFABTheme = (props: ExtendedFABProps, theme: DripsyFinalTheme) =
       fontSize: 14,
       letterSpacing: 0.1,
       color: 'inherit',
-      cursor: 'pointer',
     },
   };
 

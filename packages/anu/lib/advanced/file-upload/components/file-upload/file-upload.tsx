@@ -8,7 +8,7 @@ import * as FilePicker from 'expo-document-picker';
 import { forwardRef, useCallback, useImperativeHandle, useMemo, useState } from 'react';
 
 import { FileUploadProps, FileUploadReferenceProps } from '../../types';
-import { compressFile, getErrorMessageStyle, getFileUploadStyle } from '../../utils';
+import { compressFile, convertToFile, getErrorMessageStyle, getFileUploadStyle } from '../../utils';
 import UploadList from '../upload-list';
 import { defaultProps } from './default';
 
@@ -18,19 +18,20 @@ import { defaultProps } from './default';
  * @param props - props of the file upload component
  * @param updateFiles - function to update the uploaded files to existing files list
  */
-const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: Blob[], uris: string[]): void }) => {
+const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: File[], uris: string[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
     type: props.fileType ?? props.variant === 'image' ? 'image/*' : undefined,
     copyToCacheDirectory: props.copyToCacheDirectory,
   });
-  if (result.type === 'success') {
+  if (result.type === 'success' && result.uri && result.name) {
     const file = new File([result.uri], result.name, { type: result.mimeType });
 
     if (props.variant === 'image' && props.optimization) {
       const compressedImage = await compressFile(file, props.optimizationConfig);
+      const image = convertToFile(compressedImage, file.name);
 
-      updateFiles([compressedImage], [result.uri]);
+      updateFiles([image], [result.uri]);
     } else {
       updateFiles([file], [result.uri]);
     }
@@ -44,7 +45,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   //@ts-expect-error
   const finalProps: FileUploadProps = { ...defaultProps, ...props };
   const [isUploadingState, setIsUploadingState] = useState(false);
-  const [files, setFiles] = useState<Blob[]>([]);
+  const [files, setFiles] = useState<File[]>([]);
   const [fileUris, setFileUris] = useState<string[]>([]);
   const [duplicateFileNameError, setDuplicateFileNameError] = useState(false);
 
@@ -57,7 +58,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   const defaultStyle = getFileUploadStyle();
   const errorMessageStyle = getErrorMessageStyle(theme);
 
-  const updateFiles = (resultFiles: Blob[], resultUris: string[]) => {
+  const updateFiles = (resultFiles: File[], resultUris: string[]) => {
     setDuplicateFileNameError(false);
 
     if (finalProps.multiple) {
@@ -80,7 +81,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
     } else {
       setFiles(resultFiles);
       setFileUris(resultUris);
-      if (finalProps.onChange) finalProps.onChange(resultFiles[0], resultUris[0]);
+      if (finalProps.onChange && resultFiles[0]) finalProps.onChange(resultFiles[0], resultUris[0]);
     }
   };
 
