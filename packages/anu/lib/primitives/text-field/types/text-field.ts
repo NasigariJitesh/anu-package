@@ -93,6 +93,11 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
 
   disableLabelAnimation?: boolean;
   labelBackgroundColor?: string;
+
+  /**
+   * Number of lines
+   */
+  numberOfLines?: number;
 }
 
 export interface TextInputLabelProps extends TextFieldProps {

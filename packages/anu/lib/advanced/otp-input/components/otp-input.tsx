@@ -2,7 +2,7 @@
 import { getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, TextField, TextFieldReferenceProps, Typography } from 'anu/lib';
-import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { NativeSyntheticEvent, StyleProp, TextInputKeyPressEventData, TextStyle } from 'react-native';
 
 import { OTPInputProps } from '../types';
@@ -140,6 +140,12 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
   const references = useRef<(TextFieldReferenceProps | null)[]>([]);
   const textInputStyle = getOTPTextInputStyle();
   const errorStyle = getErrorStyle(theme);
+
+  useEffect(() => {
+    setOTPValue(getInitialArray(finalProps.value, finalProps.numberOfDigits, finalProps.type));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [finalProps.value]);
 
   const focus = useCallback(() => {
     references.current[0]?.focus();

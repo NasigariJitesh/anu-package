@@ -178,7 +178,9 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                 style={[onFocusStyles, getCombinedStylesForText(style, finalProps.textInputStyle)]}
               />
             </Container>
-            {finalProps.error || finalProps.showClearButton || finalProps.trailingIcon ? (
+            {(!finalProps.noDefaultErrorMessage && finalProps.error) ||
+            finalProps.showClearButton ||
+            finalProps.trailingIcon ? (
               <Container disableGutters style={trailingIconContainerStyle}>
                 {/* eslint-disable-next-line react-native/no-inline-styles */}
                 <Container disableGutters style={{ minWidth: 40 }}>
