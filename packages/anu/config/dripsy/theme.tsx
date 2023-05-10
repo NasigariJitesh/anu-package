@@ -1,5 +1,4 @@
 import { DripsyBaseTheme, DripsyCustomTheme, makeTheme, useDripsyTheme } from 'dripsy';
-import lodash from 'lodash';
 
 import { ColorMode } from '..';
 export { makeTheme } from 'dripsy';
@@ -86,34 +85,29 @@ export const darkThemeColors = {
  */
 const mergeThemes = (theme: DripsyBaseTheme, mode: ColorMode) => {
   const t = makeTheme({
-    colors: generateColors(mode === 'light' ? lightThemeColors : darkThemeColors, mode, theme),
     reactNativeTypesOnly: true,
     fontSizes: [57, 45, 36, 32, 28, 24, 22, 16, 14, 12, 11],
     lineHeights: [64, 52, 44, 40, 36, 32, 28, 24, 20, 16],
-
     colorScheme: mode,
+    ...theme,
+    colors: generateColors(mode === 'light' ? lightThemeColors : darkThemeColors, mode, theme),
   });
 
-  return lodash.merge(t, theme);
+  return t;
 };
 
 const generateColors = (colors: Record<string, string>, mode: ColorMode, theme: DripsyBaseTheme) => {
   const modeColors: Record<string, string> =
     // @ts-expect-error - this is a hack to get the colors from the theme
-    (mode === 'light' ? theme.colors?.mode?.light : theme.colors?.mode?.dark) || {};
+    mode === 'light' ? theme.colors?.modes?.light || {} : theme.colors?.modes?.dark || {};
 
-  return {
+  const result = {
     ...colors,
+    ...theme.colors,
     ...modeColors,
-    // $background: calculateShade(colors.$primary, 99), //#010102
-    // $onBackground: calculateTint(colors.$primary, 99), // #fdfdfe
-    // $surface: calculateTint(colors.$primary, 99), // #010102
-    // $onSurface: calculateTint(colors.$primary, 99), // #fdfdfe
-    // $outline: colors.$outline, //#777680
-    // $surfaceVariant: calculateTint(colors.$outline, 70), //#d6d6d9
-    // $onPrimaryContainer: colors.$primary,
-    // $primary: calculateTint(colors.$primary, 40), //
-  } as const;
+  };
+
+  return result;
 };
 
 /**
@@ -122,7 +116,6 @@ const generateColors = (colors: Record<string, string>, mode: ColorMode, theme: 
 export const defaultTheme = makeTheme({
   colors: generateColors(darkThemeColors, 'light', {}),
   reactNativeTypesOnly: true,
-
   fontSizes: [57, 45, 36, 32, 28, 24, 22, 16, 14, 12, 11],
   lineHeights: [64, 52, 44, 40, 36, 32, 28, 24, 20, 16],
   colorScheme: 'light' as ColorMode,
@@ -148,8 +141,10 @@ export const extendTheme = (theme: DripsyBaseTheme = {}, mode: ColorMode = 'ligh
   return makeTheme(result) as DripsyCustomTheme;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getThemeMode = (theme: DripsyCustomTheme) => {
-  return theme.colorScheme;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return useTheme().colorScheme;
 };
 
 type MyTheme = typeof defaultTheme;

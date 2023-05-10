@@ -69,8 +69,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const { labelContainerStyle, labelTextStyle } = getUnanimatedLabelStyles();
 
     const onFocusStyles =
-      isTextFieldVisible || value !== ''
-        ? ({ paddingTop: variant === 'filled' ? 14 : 0 } as const)
+      isTextFieldVisible || value !== '' || props.label !== ''
+        ? ({ paddingTop: variant === 'filled' && props.label && !props.disableLabelAnimation ? 14 : 0 } as const)
         : ({ height: 0 } as const);
 
     const [height, setHeight] = useState(containerStyle.height as number);
