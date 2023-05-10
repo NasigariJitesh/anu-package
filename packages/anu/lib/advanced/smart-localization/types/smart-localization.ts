@@ -119,14 +119,16 @@ export interface AnuLocalizationProviderProps {
    */
   default: string;
 
+  locales: Record<string, { [key: string]: string }>;
+
   // /**
   //  *
   //  * Directory where the translation filed are located
   //  *
-  //  * !!! EXPERIMENTAL !!!
-  //  * Note: This is only used for web. For native, the directory is fixed to `packages/app/services/locale`.
+  //  * @default <root>/services/locale
   //  *
-  //  * This can be changed in the future to "type" where it can be monorepo or a normal project. Based on that, we fetch the translations from different folders
+  //  * !!! EXPERIMENTAL !!!
+  //  * Note: custom directory only works on web as metro bundler for native does not accept dynamic url imports.
   //  */
-  // directory?: 'root';
+  // directory?: '<root>/services/locale' | '<root>/packages/app/services/locale' | string;
 }

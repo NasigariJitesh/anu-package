@@ -8,6 +8,8 @@ import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useColorScheme, View } from 'react-native';
 
+import Locales from '../../services/locale';
+
 const MenuContent = createContext({
   isOpen: false,
   toggleMenu: () => {},
@@ -76,8 +78,8 @@ export default function RootLayout(props: {
   };
 
   return (
-    <AnuProvider ssr theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
-      <AnuLocalizationProvider directory='apps/docs/services/locale' default={locale?.includes('fr') ? 'fr' : 'en'}>
+    <AnuProvider ssr theme={makeTheme({})} mode={isDarkTheme ? 'dark' : 'light'}>
+      <AnuLocalizationProvider locales={Locales} default={locale?.includes('fr') ? 'fr' : 'en'}>
         <PortalProvider>
           <AnuSnackbarProvider>
             <View style={{ backgroundColor: backgroundColor }}>

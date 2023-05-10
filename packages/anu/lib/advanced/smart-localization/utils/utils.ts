@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable unicorn/prefer-module */
 
+import { AnuLocalizationProviderProps } from '../types';
+
 /**
  * Method that returns the translation in the given language
  *
@@ -11,12 +13,13 @@
  */
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getLocalizedTranslation = (key: string, locale: string, directory: string) => {
+export const getLocalizedTranslation = (
+  key: string,
+  locale: string,
+  locales: AnuLocalizationProviderProps['locales'],
+) => {
   try {
-    // // EXPERIMENTAL: Only works for the web. Does not work with React native bundlers
-    const Locales = require('../../../../../../packages/app/services/locale' as const).default;
-
-    const file = Locales[locale as keyof typeof Locales];
+    const file = locales[locale];
 
     if (!file) {
       console.warn(`The file ${locale}.json is not found in the list of directories`);
