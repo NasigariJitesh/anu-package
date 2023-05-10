@@ -54,5 +54,5 @@ export interface ContainerProps extends ViewProps {
    */
   sx?: SxProp;
 
-  dataSet?: Record<string, never>;
+  dataSet?: Record<string, any>;
 }

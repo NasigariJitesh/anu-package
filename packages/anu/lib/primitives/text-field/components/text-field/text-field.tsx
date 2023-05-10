@@ -132,7 +132,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     };
 
     return (
-      <Container disableGutters style={finalProps.containerStyle}>
+      <Container dataSet={finalProps.dataSets?.container} disableGutters style={finalProps.containerStyle}>
         <Pressable
           ref={pressableReference}
           accessibilityRole='none'
@@ -155,6 +155,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                     <Typography.Body
                       numberOfLines={1}
                       ellipsizeMode='tail'
+                      dataSet={finalProps.dataSets?.label}
                       style={getCombinedStylesForText(labelTextStyle, finalProps.labelStyle)}
                     >
                       {finalProps.label}
@@ -179,6 +180,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                 ref={textInputReference}
                 {...componentProps}
                 value={value}
+                // @ts-ignore
+                dataSet={finalProps.dataSets?.textInput}
                 onFocus={onTextInputFocus}
                 onBlur={onTextInputBlur}
                 style={[onFocusStyles, getCombinedStylesForText(style, finalProps.textInputStyle)]}
@@ -208,13 +211,20 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
           </Container>
         </Pressable>
         {finalProps?.supportingText && !finalProps.error ? (
-          <Typography.Body style={getCombinedStylesForText(supportingTextStyle, props.supportingTextStyle)}>
+          <Typography.Body
+            dataSet={finalProps.dataSets?.supportingText}
+            style={getCombinedStylesForText(supportingTextStyle, props.supportingTextStyle)}
+          >
             {finalProps?.supportingText}
           </Typography.Body>
         ) : null}
         {finalProps.error &&
           errors?.map((error, index) => (
-            <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
+            <Typography.Body
+              dataSet={finalProps.dataSets?.errorMessage}
+              key={index}
+              style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}
+            >
               {error}
             </Typography.Body>
           ))}

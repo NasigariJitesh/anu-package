@@ -109,7 +109,7 @@ const IndividualOTPField = ({
       secureTextEntry={inputProps.hideValue ?? false}
       variant={inputProps.variant}
       style={{ ...style, ...inputProps.style }}
-      textInputStyle={textInputStyle}
+      textInputStyle={getCombinedStylesForText(textInputStyle, inputProps.textInputStyle)}
       label=''
       disableLabelAnimation
       onChangeText={(text) => onValueChangeHandler(text, index)}
@@ -198,7 +198,11 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
       </Container>
       {props.error &&
         props.errorMessage?.map((error, index) => (
-          <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
+          <Typography.Body
+            dataSet={props.dataSets?.errorText}
+            key={index}
+            style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}
+          >
             {error}
           </Typography.Body>
         ))}

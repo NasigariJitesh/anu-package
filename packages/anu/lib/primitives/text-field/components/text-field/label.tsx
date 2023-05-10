@@ -111,6 +111,8 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   return (
     <Animated.View style={[animatedStyle, animatedViewStyle]}>
       <Animated.Text
+        // @ts-ignore
+        dataSet={props.dataSets?.label}
         numberOfLines={1}
         ellipsizeMode='tail'
         style={[getCombinedStylesForText(textStyles, props.style), animatedTextStyle]}

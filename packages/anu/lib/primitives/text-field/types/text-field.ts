@@ -112,6 +112,14 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
    * Number of lines
    */
   numberOfLines?: number;
+
+  dataSets?: {
+    container?: Record<string, any>;
+    label?: Record<string, any>;
+    textInput?: Record<string, any>;
+    supportingText?: Record<string, any>;
+    errorText?: Record<string, any>;
+  };
 }
 
 export interface TextInputLabelProps extends Omit<TextFieldProps, 'style'> {
