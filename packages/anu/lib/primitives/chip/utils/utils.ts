@@ -16,9 +16,6 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
     common: {
       minHeight: 32,
       borderRadius: 8,
-      transitionTimingFunction: 'ease',
-      transitionProperty: 'all',
-      transitionDuration: '.2s',
       backgroundColor: 'transparent',
       flexDirection: 'row',
       alignItems: 'center',
@@ -200,9 +197,6 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
     common: {
       minHeight: 32,
       borderRadius: 8,
-      transitionTimingFunction: 'ease',
-      transitionProperty: 'all',
-      transitionDuration: '.2s',
       backgroundColor: 'transparent',
       flexDirection: 'row',
       alignItems: 'center',

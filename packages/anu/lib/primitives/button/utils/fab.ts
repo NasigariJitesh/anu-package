@@ -60,8 +60,6 @@ const getFABTheme = (props: FABProps, theme: DripsyFinalTheme) => {
     common: {
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
-      transitionProperty: 'all',
-      transitionDuration: '.2s',
       backgroundColor: containerColor,
       shadowColor: themeColors.$shadow,
       shadowOffset: {
@@ -93,8 +91,6 @@ const getFABTheme = (props: FABProps, theme: DripsyFinalTheme) => {
     common: {
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
-      transitionProperty: 'all',
-      transitionDuration: '.2s',
     },
     small: {
       backgroundColor: 'transparent',
