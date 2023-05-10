@@ -1,4 +1,4 @@
-import { getColorInRGBA } from 'anu/common/utils';
+import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
 import { GetButtonStylesReturnType } from 'anu/lib/primitives/button/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
@@ -176,9 +176,13 @@ export const getCheckboxStyles = (props: CheckboxProps, selected: boolean, theme
       ...otherIconStyles.error,
     };
 
+  const { backgroundColor, borderColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
+
   const stateLayerStyles: GetButtonStylesReturnType = {
     ...commonStateLayerTheme,
     ...checkboxStateLayerTheme[key],
+    ...propsOtherStylesForStateLayer,
+    ...getResetPaddingStyles(),
     '@hover': { ...stateLayerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...stateLayerTheme['@focus'], ...propsFocusStyles },
     '@press': { ...stateLayerTheme['@press'], ...propsPressStyles },
@@ -188,6 +192,7 @@ export const getCheckboxStyles = (props: CheckboxProps, selected: boolean, theme
     ...commonTheme,
     ...otherStyles,
     ...(propsOtherStyles as Record<string, never>),
+    ...getResetMarginStyles(),
   };
 
   if (color && !error && (selected || indeterminate))

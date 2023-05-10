@@ -2,6 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
   Button,
+  Chip,
   Container,
   Dialog,
   DialogActions,
@@ -40,8 +41,9 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
-      <Button.Outlined
-        title='Action'
+      <Chip
+        value='Action'
+        type='input' 
         style={{
           width: 300,
           borderRadius: 10,

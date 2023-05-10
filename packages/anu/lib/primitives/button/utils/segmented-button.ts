@@ -1,4 +1,4 @@
-import { getColorInRGBA } from 'anu/common/utils';
+import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
 import { GetButtonStylesReturnType } from 'anu/lib/primitives/button/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
@@ -176,9 +176,13 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
   const { '@disable': disableIconStyles, ...otherIconStyles } = segmentedIconTheme[key];
   const { '@disable': disableLabelStyles, ...otherLabelStyles } = segmentedLabelTheme[key];
 
+  const { backgroundColor, borderColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
+
   const stateLayerStyles: GetButtonStylesReturnType = {
     ...commonStateLayerTheme,
     ...segmentedButtonStateLayerTheme[key],
+    ...propsOtherStylesForStateLayer,
+    ...getResetMarginStyles(),
     '@hover': { ...stateLayerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...stateLayerTheme['@focus'], ...propsFocusStyles },
     '@press': { ...stateLayerTheme['@press'], ...propsPressStyles },
@@ -188,6 +192,7 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
     ...commonTheme,
     ...otherStyles,
     ...(propsOtherStyles as Record<string, never>),
+    ...getResetPaddingStyles(),
   };
 
   const iconStyles = {
