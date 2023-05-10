@@ -99,6 +99,8 @@ export interface TypographyProps extends TextProps {
    * The styles for the typography component
    */
   style?: StyleProp<TextStyle>;
+
+  dataSet: Record<string, never>;
 }
 
 /**

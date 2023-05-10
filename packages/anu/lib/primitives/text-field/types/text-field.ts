@@ -44,10 +44,17 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
    * The styles for the text field component.
    */
   style?: TextFieldContainerStyle;
+
   /**
    * The styles for container of the text field component.
    */
   containerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * The styles for label of the text field component.
+   */
+  labelStyle?: StyleProp<TextStyle>;
+
   /**
    * The styles for text input of the text field component.
    */
@@ -78,20 +85,27 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
    * Whether to show default Error messages
    */
   noDefaultErrorMessage?: boolean;
+
   /**
    * styles for the error message
    */
   errorMessageStyle?: StyleProp<TextStyle>;
+
   /**
    * Support text need to be displayed with the text field
    */
   supportingTextStyle?: StyleProp<TextStyle>;
+
   /**
    * styles for the supporting text of text field
    */
   supportingText?: string;
 
   disableLabelAnimation?: boolean;
+
+  /**
+   * Background color for the label
+   */
   labelBackgroundColor?: string;
 
   /**
@@ -100,13 +114,14 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
   numberOfLines?: number;
 }
 
-export interface TextInputLabelProps extends TextFieldProps {
+export interface TextInputLabelProps extends Omit<TextFieldProps, 'style'> {
   states?: PressableStateCallbackType;
   height: number;
   textInputRef: MutableRefObject<RNTextInput | null>;
   isFocused: boolean;
   toggleIsFocused: (value: boolean) => void;
   backgroundColor?: string;
+  style?: StyleProp<TextStyle>;
 }
 
 export interface TextFieldReferenceProps {

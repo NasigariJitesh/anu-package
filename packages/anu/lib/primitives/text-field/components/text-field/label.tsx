@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { getColorInRGBA } from 'anu/common/utils';
+import { getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { DripsyFinalTheme } from 'dripsy';
 import { useEffect } from 'react';
@@ -109,7 +110,11 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
   return (
     <Animated.View style={[animatedStyle, animatedViewStyle]}>
-      <Animated.Text numberOfLines={1} ellipsizeMode='tail' style={[textStyles, animatedTextStyle]}>
+      <Animated.Text
+        numberOfLines={1}
+        ellipsizeMode='tail'
+        style={[getCombinedStylesForText(textStyles, props.style), animatedTextStyle]}
+      >
         {props.label}
       </Animated.Text>
     </Animated.View>

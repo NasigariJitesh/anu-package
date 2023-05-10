@@ -152,7 +152,11 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               {finalProps.disableLabelAnimation ? (
                 value ? null : (
                   <Container disableGutters style={labelContainerStyle}>
-                    <Typography.Body numberOfLines={1} ellipsizeMode='tail' style={labelTextStyle}>
+                    <Typography.Body
+                      numberOfLines={1}
+                      ellipsizeMode='tail'
+                      style={getCombinedStylesForText(labelTextStyle, finalProps.labelStyle)}
+                    >
                       {finalProps.label}
                     </Typography.Body>
                   </Container>
@@ -160,6 +164,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               ) : (
                 <TextFieldLabel
                   {...finalProps}
+                  style={finalProps.labelStyle}
+                  labelStyle={getCombinedStylesForText(labelTextStyle, finalProps.labelStyle)}
                   height={height}
                   textInputRef={textInputReference}
                   states={focusState}

@@ -54,6 +54,12 @@ export interface ButtonProps extends RNButtonProps {
    * The properties of the pressable component of react native (except sx)
    */
   pressableProps?: Omit<React.ComponentProps<typeof Pressable>, 'sx'>;
+
+  dataSets: {
+    containerDataSet: Record<string, never>;
+    labelDataSet: Record<string, never>;
+    pressableDataSet: Record<string, never>;
+  };
 }
 
 /**
