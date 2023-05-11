@@ -152,7 +152,7 @@ const generateColorSchemeFromTonalPalettes = (
         $onTertiary: getTonalColor(tertiary, 100),
         $onTertiaryContainer: getTonalColor(tertiary, 10),
 
-        $surface: getTonalColor(neutral, 98),
+        $surface: getTonalColor(neutral, 99),
         $surfaceDim: getTonalColor(neutral, 87),
         $surfaceBright: getTonalColor(neutral, 98),
         $surfaceContainerLowest: getTonalColor(neutral, 100),
@@ -168,7 +168,7 @@ const generateColorSchemeFromTonalPalettes = (
         $inverseSurface: getTonalColor(neutral, 20),
         $inverseOnSurface: getTonalColor(neutral, 95),
 
-        $background: getTonalColor(neutral, 98),
+        $background: getTonalColor(neutral, 99),
         $onBackground: getTonalColor(neutral, 10),
 
         $error: getTonalColor(error, 40),
@@ -201,7 +201,7 @@ const generateColorSchemeFromTonalPalettes = (
         $onTertiary: getTonalColor(tertiary, 20),
         $onTertiaryContainer: getTonalColor(tertiary, 90),
 
-        $surface: getTonalColor(neutral, 6),
+        $surface: getTonalColor(neutral, 10),
         $surfaceDim: getTonalColor(neutral, 6),
         $surfaceBright: getTonalColor(neutral, 24),
         $surfaceContainerLowest: getTonalColor(neutral, 4),
@@ -217,7 +217,7 @@ const generateColorSchemeFromTonalPalettes = (
         $inverseSurface: getTonalColor(neutral, 90),
         $inverseOnSurface: getTonalColor(neutral, 20),
 
-        $background: getTonalColor(neutral, 6),
+        $background: getTonalColor(neutral, 10),
         $onBackground: getTonalColor(neutral, 90),
 
         $error: getTonalColor(error, 80),

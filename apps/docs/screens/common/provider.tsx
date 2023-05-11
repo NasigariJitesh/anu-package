@@ -77,7 +77,7 @@ export default function RootLayout(props: {
 
   const MyTheme = generateTheme({
     theme: {},
-    color: { primary: '#fcf' },
+    color: { primary: '#090C7D', secondary: '#7D0946', tertiary: '#7D7A09', neutral: '#929094'   },
     colorMode: isDarkTheme ? 'dark' : 'light',
     extendDefaultTheme: true,
   });
