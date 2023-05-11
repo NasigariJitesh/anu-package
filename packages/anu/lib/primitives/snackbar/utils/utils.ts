@@ -43,7 +43,7 @@ export const getSnackbarStyle = (theme: DripsyFinalTheme, props?: SnackbarProps)
     lineHeight: theme.lineHeights[8],
     color: theme.colors.$inverseOnSurface,
     marginVertical: 16,
-    ...(props?.numberOfLines === 2 ? { maxWidth: '60%' } : {}),
+    ...(props?.numberOfLines === 2 ? { maxWidth: '75%' } : {}),
   };
 
   const actionStyle = {
