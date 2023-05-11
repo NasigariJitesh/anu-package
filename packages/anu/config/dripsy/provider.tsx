@@ -3,9 +3,11 @@ import { DripsyCustomTheme, DripsyProvider as Provider } from 'dripsy';
 import { ReactChildren } from '../../common/types';
 import { ColorMode } from '..';
 
-export interface DripsyAppProps {
+export type AnuTheme<T> = T & DripsyCustomTheme;
+
+export interface DripsyAppProps<T> {
   children: ReactChildren;
-  theme: DripsyCustomTheme;
+  theme: AnuTheme<T>;
   mode?: ColorMode;
   ssr?: boolean;
 }
@@ -15,7 +17,7 @@ export interface DripsyAppProps {
  *
  * @param {ReactChildren} props - The JSX to be rendered inside as children
  */
-function DripsyProvider(props: DripsyAppProps) {
+function DripsyProvider<T>(props: DripsyAppProps<T>) {
   return (
     <Provider theme={props.theme} ssr={props.ssr}>
       {props.children}

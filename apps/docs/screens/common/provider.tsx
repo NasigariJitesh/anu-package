@@ -1,6 +1,6 @@
 import { AnuProvider } from 'anu/common/context';
 import { ReactChildren } from 'anu/common/types';
-import { makeTheme, PortalProvider } from 'anu/config';
+import { generateTheme, PortalProvider } from 'anu/config';
 import { AnuSnackbarProvider } from 'anu/lib';
 import { AnuLocalizationProvider } from 'anu/lib/advanced/smart-localization';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
@@ -75,8 +75,15 @@ export default function RootLayout(props: {
     setBackgroundColor(isDarkTheme ? '#fffbff' : '#1B1B1F');
   };
 
+  const MyTheme = generateTheme({
+    theme: {},
+    color: { primary: '#fcf' },
+    colorMode: isDarkTheme ? 'dark' : 'light',
+    extendDefaultTheme: true,
+  });
+
   return (
-    <AnuProvider ssr theme={makeTheme({}, isDarkTheme ? 'dark' : 'light')}>
+    <AnuProvider ssr theme={MyTheme}>
       <AnuLocalizationProvider directory='apps/docs/services/locale' default={locale?.includes('fr') ? 'fr' : 'en'}>
         <PortalProvider>
           <AnuSnackbarProvider>

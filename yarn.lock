@@ -2553,6 +2553,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@material/material-color-utilities@npm:^0.2.5":
+  version: 0.2.6
+  resolution: "@material/material-color-utilities@npm:0.2.6"
+  checksum: fe6e380ee4ede2d238a95962729cf93a1460b4dc6e4f61017db6e4f1d42ef65399141a04b01522b91f78a498adcbe3222b148514a6835f8a5bc15614bd925da4
+  languageName: node
+  linkType: hard
+
 "@motionone/animation@npm:^10.12.0":
   version: 10.15.1
   resolution: "@motionone/animation@npm:10.15.1"
@@ -3989,6 +3996,7 @@ __metadata:
   resolution: "anu@workspace:packages/anu"
   dependencies:
     "@gorhom/portal": ^1.0.14
+    "@material/material-color-utilities": ^0.2.5
     "@testing-library/jest-native": ^5.4.2
     "@testing-library/react-native": ^11.5.4
     "@types/jest": ^29.4.0

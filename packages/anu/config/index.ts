@@ -1,5 +1,5 @@
 export { default as DripsyProvider } from './dripsy/provider';
-export { defaultTheme, getThemeMode, extendTheme as makeTheme, useTheme } from './dripsy/theme';
+export { defaultTheme, generateTheme, getThemeMode, extendTheme as makeTheme, useTheme } from './dripsy/theme';
 export * from './dripsy/utils';
 export { default as PortalProvider } from './portals/provider';
 
