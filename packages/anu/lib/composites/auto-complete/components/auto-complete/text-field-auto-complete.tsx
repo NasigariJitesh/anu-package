@@ -66,7 +66,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
   };
 
   const getStyle = () => {
-    let style = { ...textFieldProps.style, position: 'relative' as const };
+    let style = { ...textFieldProps.style, width: '100%', position: 'relative' as const };
 
     if (variant === 'base') style = { ...overrideStyle, ...style };
 
