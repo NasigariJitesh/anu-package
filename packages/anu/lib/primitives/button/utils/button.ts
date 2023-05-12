@@ -1,5 +1,6 @@
 import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
+import { Platform } from 'react-native';
 
 import { ButtonContainerStyle, RegularButtonProps } from '../types';
 
@@ -20,9 +21,6 @@ const getButtonTheme = (theme: DripsyFinalTheme) => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
     },
     filled: {
       backgroundColor: themeColors.$primary,
@@ -92,9 +90,6 @@ const getButtonTheme = (theme: DripsyFinalTheme) => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
       paddingHorizontal: 16,
     },
     filled: {
@@ -335,6 +330,10 @@ const getRegularButtonStyles = (props: RegularButtonProps, defaultTheme: DripsyF
 export const getLabelStyles = (props: RegularButtonProps) => {
   let labelStyles;
   labelStyles = { color: 'inherit', paddingHorizontal: 8 };
+
+  if (Platform.OS === 'web') {
+    labelStyles = { ...labelStyles, cursor: 'pointer' };
+  }
 
   if (props.icon && props.type === 'text') {
     labelStyles = { ...labelStyles, paddingLeft: 8, paddingRight: 4 };

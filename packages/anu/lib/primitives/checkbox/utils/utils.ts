@@ -20,10 +20,6 @@ const getCheckboxTheme = (theme: DripsyFinalTheme) => {
       height: 18,
       width: 18,
       borderRadius: 2,
-
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
     },
     on: {
       backgroundColor: themeColors.$primary,
@@ -81,9 +77,6 @@ const getCheckboxTheme = (theme: DripsyFinalTheme) => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
     },
     on: {
       backgroundColor: 'transparent',

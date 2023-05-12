@@ -55,8 +55,6 @@ const getExtendedFABTheme = (props: ExtendedFABProps, theme: DripsyFinalTheme) =
     common: {
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
-      transitionProperty: 'all',
-      transitionDuration: '.2s',
       backgroundColor: containerColor,
       color: stateLayerColor,
       shadowColor: themeColors.$shadow,
@@ -78,9 +76,7 @@ const getExtendedFABTheme = (props: ExtendedFABProps, theme: DripsyFinalTheme) =
       flexDirection: 'row' as const,
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
-      transitionProperty: 'all',
-      transitionDuration: '.2s',
-      backgroundColor: 'transparent',
+
       height: 56,
       minWidth: 80,
       borderRadius: 16,

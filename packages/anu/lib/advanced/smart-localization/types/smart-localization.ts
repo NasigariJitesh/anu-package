@@ -102,10 +102,12 @@ export interface AnuLocalizationContext {
    */
   getTranslation: (key: string, locale?: string) => string;
 
-  /**
-   * Directory where the translation filed are located
-   */
-  directory: string;
+  // /**
+  //  * Directory where the translation filed are located.
+  //  *
+  //  * Web Only!!
+  //  */
+  // directory?: string;
 }
 
 export interface AnuLocalizationProviderProps {
@@ -117,8 +119,16 @@ export interface AnuLocalizationProviderProps {
    */
   default: string;
 
-  /**
-   * Directory where the translation filed are located
-   */
-  directory: string;
+  locales: Record<string, { [key: string]: string }>;
+
+  // /**
+  //  *
+  //  * Directory where the translation filed are located
+  //  *
+  //  * @default <root>/services/locale
+  //  *
+  //  * !!! EXPERIMENTAL !!!
+  //  * Note: custom directory only works on web as metro bundler for native does not accept dynamic url imports.
+  //  */
+  // directory?: '<root>/services/locale' | '<root>/packages/app/services/locale' | string;
 }

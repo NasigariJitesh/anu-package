@@ -1,5 +1,5 @@
 import { TextFieldContainerStyle } from 'anu/lib';
-import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { StyleProp, TextInputProps, TextStyle, ViewStyle } from 'react-native';
 
 export interface OTPInputProps {
   /**
@@ -36,4 +36,6 @@ export interface OTPInputProps {
   testID?: string;
   disabled?: boolean;
   error?: boolean;
+  keyboardType?: TextInputProps['keyboardType'];
+  textContentType?: TextInputProps['textContentType'];
 }

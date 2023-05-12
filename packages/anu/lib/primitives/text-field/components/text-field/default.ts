@@ -48,4 +48,5 @@ export const defaultProps: TextFieldProps = {
   onClick: undefined,
   accessibilityLabelledBy: undefined,
   accessibilityLanguage: undefined,
+  numberOfLines: 1,
 };

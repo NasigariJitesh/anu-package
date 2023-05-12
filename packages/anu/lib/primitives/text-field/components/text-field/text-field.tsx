@@ -31,6 +31,14 @@ import {
 import { defaultProps } from './default';
 import TextFieldLabel from './label';
 
+const toggleTextFieldVisibility = (props: Partial<TextFieldProps>) => {
+  if (props.autoFocus) return true;
+  if (props.disabled && props.value) return true;
+  if (props.value) return true;
+
+  return false;
+};
+
 /**
  * the text field component
  *
@@ -48,7 +56,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const finalProps = { ...defaultProps, ...props };
     const { variant, sx, value, ...componentProps } = finalProps;
 
-    const [isTextFieldVisible, toggleTextFieldVisible] = useState(props.autoFocus ?? (!!value && !props.disabled));
+    const [isTextFieldVisible, toggleTextFieldVisible] = useState(toggleTextFieldVisibility(props));
 
     const style = getTextFieldStyles(theme, finalProps);
     const containerStyle = getTextFieldContainerStyle(finalProps, theme);
@@ -61,8 +69,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const { labelContainerStyle, labelTextStyle } = getUnanimatedLabelStyles();
 
     const onFocusStyles =
-      isTextFieldVisible || value !== ''
-        ? ({ paddingTop: variant === 'filled' ? 14 : 0 } as const)
+      isTextFieldVisible || value !== '' || props.label !== ''
+        ? ({ paddingTop: variant === 'filled' && props.label && !props.disableLabelAnimation ? 14 : 0 } as const)
         : ({ height: 0 } as const);
 
     const [height, setHeight] = useState(containerStyle.height as number);
@@ -98,11 +106,6 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.error, props.errorMessage]);
 
-    useEffect(() => {
-      if (isTextFieldVisible !== !!value) toggleTextFieldVisible(!!value);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value]);
-
     const generateStyles = (state: PressableStateCallbackType) => {
       return generateHoverStyles(state, containerStyle, useSx);
     };
@@ -110,6 +113,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const onTextInputFocus = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
       setOnFocus(() => ({ focused: true, pressed: true }));
       if (props.onFocus) props.onFocus(event);
+      toggleTextFieldVisible(true);
     };
 
     const onTextInputBlur = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
@@ -123,13 +127,12 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
       if (!isTextFieldVisible) {
         toggleTextFieldVisible(true);
         setOnFocus(() => ({ focused: true, pressed: true }));
-
         textInputReference.current?.focus();
       }
     };
 
     return (
-      <Container disableGutters style={finalProps.containerStyle}>
+      <Container dataSet={finalProps.dataSets?.container} disableGutters style={finalProps.containerStyle}>
         <Pressable
           ref={pressableReference}
           accessibilityRole='none'
@@ -149,7 +152,12 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               {finalProps.disableLabelAnimation ? (
                 value ? null : (
                   <Container disableGutters style={labelContainerStyle}>
-                    <Typography.Body numberOfLines={1} ellipsizeMode='tail' style={labelTextStyle}>
+                    <Typography.Body
+                      numberOfLines={1}
+                      ellipsizeMode='tail'
+                      dataSet={finalProps.dataSets?.label}
+                      style={getCombinedStylesForText(labelTextStyle, finalProps.labelStyle)}
+                    >
                       {finalProps.label}
                     </Typography.Body>
                   </Container>
@@ -157,6 +165,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               ) : (
                 <TextFieldLabel
                   {...finalProps}
+                  style={finalProps.labelStyle}
+                  labelStyle={getCombinedStylesForText(labelTextStyle, finalProps.labelStyle)}
                   height={height}
                   textInputRef={textInputReference}
                   states={focusState}
@@ -170,12 +180,16 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                 ref={textInputReference}
                 {...componentProps}
                 value={value}
+                // @ts-ignore
+                dataSet={finalProps.dataSets?.textInput}
                 onFocus={onTextInputFocus}
                 onBlur={onTextInputBlur}
                 style={[onFocusStyles, getCombinedStylesForText(style, finalProps.textInputStyle)]}
               />
             </Container>
-            {finalProps.error || finalProps.showClearButton || finalProps.trailingIcon ? (
+            {(!finalProps.noDefaultErrorMessage && finalProps.error) ||
+            finalProps.showClearButton ||
+            finalProps.trailingIcon ? (
               <Container disableGutters style={trailingIconContainerStyle}>
                 {/* eslint-disable-next-line react-native/no-inline-styles */}
                 <Container disableGutters style={{ minWidth: 40 }}>
@@ -197,13 +211,21 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
           </Container>
         </Pressable>
         {finalProps?.supportingText && !finalProps.error ? (
-          <Typography.Body style={getCombinedStylesForText(supportingTextStyle, props.supportingTextStyle)}>
+          <Typography.Body
+            dataSet={finalProps.dataSets?.supportingText}
+            style={getCombinedStylesForText(supportingTextStyle, props.supportingTextStyle)}
+          >
             {finalProps?.supportingText}
           </Typography.Body>
         ) : null}
         {finalProps.error &&
           errors?.map((error, index) => (
-            <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
+            <Typography.Body
+            //@ts-ignore
+              dataSet={finalProps.dataSets?.errorMessage}
+              key={index}
+              style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}
+            >
               {error}
             </Typography.Body>
           ))}
