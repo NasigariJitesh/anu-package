@@ -12,6 +12,9 @@
     "lint": "eslint .",
     "format": "prettier --write . "
   },
+  "dependencies": {
+    "expo-router": "^1.5.3"
+  },
   "devDependencies": {
     "@types/react": "^18.0.17",
     "@types/react-native": "^0.69.5",
