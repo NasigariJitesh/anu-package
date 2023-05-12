@@ -2,7 +2,7 @@
 import { getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, TextField, TextFieldReferenceProps, Typography } from 'anu/lib';
-import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { NativeSyntheticEvent, StyleProp, TextInputKeyPressEventData, TextStyle } from 'react-native';
 
 import { OTPInputProps } from '../types';
@@ -65,6 +65,12 @@ const validateValue = (value: string, type?: 'alphabetic' | 'alphanumeric' | 'nu
   }
 };
 
+const getKeyboardType = (type?: 'alphabetic' | 'alphanumeric' | 'numeric') => {
+  if (type === 'alphabetic') return 'default';
+  else if (type === 'alphanumeric') return 'default';
+  else return 'number-pad';
+};
+
 /**
  * Individual OTP Field
  *
@@ -103,7 +109,7 @@ const IndividualOTPField = ({
       secureTextEntry={inputProps.hideValue ?? false}
       variant={inputProps.variant}
       style={{ ...style, ...inputProps.style }}
-      textInputStyle={textInputStyle}
+      textInputStyle={getCombinedStylesForText(textInputStyle, inputProps.textInputStyle)}
       label=''
       disableLabelAnimation
       onChangeText={(text) => onValueChangeHandler(text, index)}
@@ -112,6 +118,8 @@ const IndividualOTPField = ({
       onKeyPress={(event) => onKeyPressHandler(event, value)}
       disabled={inputProps.disabled}
       showClearButton={false}
+      textContentType={inputProps.textContentType || 'oneTimeCode'}
+      keyboardType={inputProps.keyboardType || getKeyboardType(inputProps.type)}
     />
   );
 };
@@ -132,6 +140,12 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
   const references = useRef<(TextFieldReferenceProps | null)[]>([]);
   const textInputStyle = getOTPTextInputStyle();
   const errorStyle = getErrorStyle(theme);
+
+  useEffect(() => {
+    setOTPValue(getInitialArray(finalProps.value, finalProps.numberOfDigits, finalProps.type));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [finalProps.value]);
 
   const focus = useCallback(() => {
     references.current[0]?.focus();
@@ -184,7 +198,11 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
       </Container>
       {props.error &&
         props.errorMessage?.map((error, index) => (
-          <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
+          <Typography.Body
+            dataSet={props.dataSets?.errorText}
+            key={index}
+            style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}
+          >
             {error}
           </Typography.Body>
         ))}

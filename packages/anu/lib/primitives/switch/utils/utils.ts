@@ -43,9 +43,6 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
     },
 
     thumb: {
-      transitionTimingFunction: 'ease',
-      transitionProperty: 'all',
-      transitionDuration: '.2s',
       borderRadius: 10_000,
       position: 'absolute',
       alignItems: 'center',
@@ -58,9 +55,6 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
     },
 
     thumbDisabled: {
-      transitionTimingFunction: 'ease',
-      transitionProperty: 'all',
-      transitionDuration: '.2s',
       borderRadius: 10_000,
       alignItems: 'center',
       justifyContent: 'center',

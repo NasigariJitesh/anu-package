@@ -68,7 +68,6 @@ __metadata:
   resolution: "@anu/native@workspace:apps/native"
   dependencies:
     "@babel/core": ^7.20.0
-    "@babel/plugin-proposal-export-namespace-from": ^7.18.9
     app: "*"
     expo: ^48.0.0
     expo-linking: ~4.0.1
@@ -4042,6 +4041,7 @@ __metadata:
   resolution: "app@workspace:packages/app"
   dependencies:
     moti: latest
+    react-native-reanimated: 3.0.2
     solito: 3.0.0
   languageName: unknown
   linkType: soft

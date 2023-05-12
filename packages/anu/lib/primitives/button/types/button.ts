@@ -10,9 +10,10 @@
  */
 import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'anu/common/types';
 import { IconProps, IconSource } from 'anu/lib/primitives/icon';
-import { Pressable } from 'dripsy';
 import { ReactElement } from 'react';
 import { ButtonProps as RNButtonProps, StyleProp, TextStyle } from 'react-native';
+
+import TouchableRipple from '../../touchable-ripple';
 
 /**
  *  The type of the Button Component
@@ -53,7 +54,12 @@ export interface ButtonProps extends RNButtonProps {
   /**
    * The properties of the pressable component of react native (except sx)
    */
-  pressableProps?: Omit<React.ComponentProps<typeof Pressable>, 'sx'>;
+  pressableProps?: Omit<React.ComponentProps<typeof TouchableRipple>, 'sx' | 'children'>;
+
+  dataSets?: {
+    containerDataSet?: Record<string, any>;
+    labelDataSet?: Record<string, any>;
+  };
 }
 
 /**

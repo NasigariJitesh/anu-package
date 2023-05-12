@@ -1,6 +1,6 @@
 import { getColorInRGBA } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
-import { StyleProp, TextStyle } from 'react-native';
+import { Platform, StyleProp, TextStyle } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { TextFieldProps } from '../types';
@@ -95,15 +95,22 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
     fontSize: 16,
     lineHeight: 24,
     fontWeight: '400' as const,
-    outline: 'none',
-    // paddingTop: props?.variant === 'filled' ? 8 : 0,
     paddingHorizontal: 18,
     color: colors.$onSurface,
     letterSpacing: 0.5,
     caretColor: props?.error ? colors.$error : colors.$primary,
-
     backgroundColor: 'transparent',
-  } as const;
+    position: 'relative' as const,
+    width: '100%' as const,
+  };
+
+  if (Platform.OS === 'web') {
+    common = {
+      ...common,
+      // @ts-ignore
+      outline: 'none' as never,
+    };
+  }
 
   if (props?.disabled)
     common = {
