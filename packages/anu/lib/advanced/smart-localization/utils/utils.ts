@@ -1,5 +1,7 @@
-/* eslint-disable unicorn/prefer-module */
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable unicorn/prefer-module */
+
+import { AnuLocalizationProviderProps } from '../types';
 
 /**
  * Method that returns the translation in the given language
@@ -9,23 +11,30 @@
  * @param directory - directory where the translation files are located
  * @returns localized string
  */
-export const getLocalizedTranslation = (key: string, locale: string, directory: string) => {
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const getLocalizedTranslation = (
+  key: string,
+  locale: string,
+  locales: AnuLocalizationProviderProps['locales'],
+) => {
   try {
-    const file = require(`../../../../../../${directory}/${locale}.json` as const);
-    // const file = require(`../../../../../../apps/docs/services/locale/${locale}.json` as const);
+    const file = locales[locale];
+
+    if (!file) {
+      console.warn(`The file ${locale}.json is not found in the list of directories`);
+      if (process.env.NODE_ENV === 'development') return 'LOCALE_FILE_NOT_FOUND';
+      return '';
+    }
 
     if (!file[key]) {
-      console.error(`No Translation in place for ${key} in ${locale}.json`);
+      console.warn(`No Translation in place for ${key} in ${locale}.json`);
 
       if (process.env.NODE_ENV === 'development') return 'NO_TRANSLATION';
     }
 
     return file[key] as string;
   } catch {
-    console.error(`The file ${locale}.json is not found in the ${directory} directory.`);
-
-    if (process.env.NODE_ENV === 'development') return 'LOCALE_FILE_NOT_FOUND';
-
     return '';
   }
 };

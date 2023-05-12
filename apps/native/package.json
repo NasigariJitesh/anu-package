@@ -9,7 +9,6 @@
   "private": true,
   "name": "@anu/native",
   "dependencies": {
-    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "app": "*",
     "expo": "^48.0.0",
     "expo-linking": "~4.0.1",

@@ -20,9 +20,6 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
       borderRadius: 100,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
     },
     filled: {
       backgroundColor: themeColors.$primary,
@@ -125,9 +122,6 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
     },
     filled: {
       backgroundColor: 'transparent',

@@ -23,6 +23,8 @@ interface CommonTouchableRippleProps {
    * Content of the `TouchableRipple`.
    */
   children: React.ReactNode;
+
+  dataSet?: Record<string, any>;
 }
 
 export interface TouchableRippleProps

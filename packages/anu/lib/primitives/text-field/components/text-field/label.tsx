@@ -1,13 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { getColorInRGBA } from 'anu/common/utils';
+import { getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { useEffect, useRef, useState } from 'react';
-import { Animated, TextStyle, ViewStyle } from 'react-native';
+import { DripsyFinalTheme } from 'dripsy';
+import { useEffect } from 'react';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { TextInputLabelProps } from '../../types';
 import { getTextFieldStyles } from '../../utils';
 
 const DURATION = 200; // in milliseconds
 const DELAY = 100; // in milliseconds
+
+const selectLabelColorBasedOnState = (props: TextInputLabelProps, theme: DripsyFinalTheme) => {
+  if (props.disabled) return getColorInRGBA(theme.colors.$onSurface, 38);
+
+  if (props.error) return theme.colors.$error;
+
+  // if it is focused
+  if (props.states?.focused || props.states?.pressed) return theme.colors.$primary;
+
+  return theme.colors.$onSurfaceVariant;
+};
 
 /**
  * the label of text field input
@@ -20,88 +34,62 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
   const { colors, fontSizes, lineHeights } = theme;
 
-  const transitionTopCoordinate = useRef(new Animated.Value(0)).current;
-  const transitionLeftCoordinate = useRef(new Animated.Value(0)).current;
+  const transitionTopCoordinate = useSharedValue(19);
+  const transitionLeftCoordinate = useSharedValue(0);
 
-  const transitionFontSize = useRef(new Animated.Value(style.fontSize)).current;
-  const transitionLineHeight = useRef(new Animated.Value(style.fontSize)).current;
-  const transitionLetterSpacing = useRef(new Animated.Value(style.letterSpacing)).current;
+  const transitionFontSize = useSharedValue(style.fontSize);
+  const transitionLineHeight = useSharedValue(style.fontSize);
+  const transitionLetterSpacing = useSharedValue(style.letterSpacing);
 
-  const [, setValue] = useState(0);
-
-  const animatedViewStyle: Animated.WithAnimatedObject<ViewStyle> = {
-    transform: [{ translateY: transitionTopCoordinate }],
-    left: transitionLeftCoordinate,
-    position: props.isFocused || props.value ? 'absolute' : 'relative',
-    paddingHorizontal: 16,
-  };
-
-  const animatedTextStyle: Animated.WithAnimatedObject<TextStyle> = {
-    fontSize: transitionFontSize,
-    lineHeight: transitionLineHeight,
-    letterSpacing: transitionLetterSpacing,
+  const textStyles = {
     paddingHorizontal: 2,
-    color:
-      props.placeholderTextColor ||
-      (props.isFocused || props.value || props.disabled ? 'inherit' : colors.$onSurfaceVariant),
+    color: props.placeholderTextColor || selectLabelColorBasedOnState(props, theme),
     backgroundColor: props.variant === 'outlined' ? props.backgroundColor ?? colors.$background : undefined,
   };
 
-  useEffect(() => {
-    transitionTopCoordinate.addListener((arguments_) => setValue(arguments_.value));
-    if (props.value?.length && props.value?.length > 0) transitionIn();
+  const animatedStyle = {
+    position: 'absolute' as const,
+    zIndex: 10,
+  };
 
-    return () => {
-      transitionTopCoordinate.removeAllListeners();
+  const animatedViewStyle = useAnimatedStyle(() => {
+    return {
+      top: transitionTopCoordinate.value,
+      left: transitionLeftCoordinate.value,
+      paddingHorizontal: 16,
     };
-  }, []);
+  }, [transitionTopCoordinate, transitionTopCoordinate]);
+
+  const animatedTextStyle = useAnimatedStyle(() => {
+    return {
+      fontSize: transitionFontSize.value,
+      lineHeight: transitionLineHeight.value,
+      letterSpacing: transitionLetterSpacing.value,
+    };
+  }, [transitionFontSize, transitionLineHeight, transitionLetterSpacing]);
 
   useEffect(() => {
-    if (props.isFocused) {
-      transitionIn();
-    } else {
-      transitionOut();
-    }
+    if (props.isFocused) transitionIn();
+    else transitionOut();
   }, [props]);
 
   /**
    * When the component is in focus, this transition is supposed to be triggered
    */
   const transitionIn = () => {
-    Animated.timing(transitionTopCoordinate, {
-      toValue: props.variant === 'outlined' ? -props.height / 2 : -props.height / 4,
-      duration: DURATION,
-      useNativeDriver: true,
-      delay: DELAY,
-    }).start();
+    setTimeout(() => {
+      transitionTopCoordinate.value = withTiming(props.variant === 'outlined' ? -9 : 4, {
+        duration: DURATION,
+      });
+      transitionLeftCoordinate.value = withTiming(
+        props.leadingIcon && props.variant === 'outlined' ? -props.height * 0.5 : 0,
+        { duration: DURATION },
+      );
 
-    Animated.timing(transitionLeftCoordinate, {
-      toValue: props.leadingIcon && props.variant === 'outlined' ? -props.height * 0.5 : 0,
-      duration: DURATION,
-      useNativeDriver: true,
-      delay: DELAY,
-    }).start();
-
-    Animated.timing(transitionLineHeight, {
-      toValue: lineHeights[9],
-      duration: DURATION,
-      useNativeDriver: true,
-      delay: DELAY,
-    }).start();
-
-    Animated.timing(transitionFontSize, {
-      toValue: fontSizes[9],
-      duration: DURATION,
-      useNativeDriver: true,
-      delay: DELAY,
-    }).start();
-
-    Animated.timing(transitionLetterSpacing, {
-      toValue: 0.4,
-      duration: DURATION,
-      useNativeDriver: true,
-      delay: DELAY,
-    }).start();
+      transitionLineHeight.value = withTiming(lineHeights[9], { duration: DURATION });
+      transitionFontSize.value = withTiming(fontSizes[9], { duration: DURATION });
+      transitionLetterSpacing.value = withTiming(0.4, { duration: DURATION });
+    }, DELAY);
   };
 
   /**
@@ -110,45 +98,25 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const transitionOut = () => {
     if (props.value && props.value?.length > 0) return;
 
-    Animated.timing(transitionTopCoordinate, {
-      toValue: 0,
-      duration: DURATION,
-      delay: DELAY,
-      useNativeDriver: true,
-    }).start();
+    setTimeout(() => {
+      transitionTopCoordinate.value = withTiming(19, { duration: DURATION });
+      transitionLeftCoordinate.value = withTiming(0, { duration: DURATION });
 
-    Animated.timing(transitionLeftCoordinate, {
-      toValue: 0,
-      duration: DURATION,
-      useNativeDriver: true,
-      delay: DELAY,
-    }).start();
-
-    Animated.timing(transitionLineHeight, {
-      toValue: 16,
-      duration: DURATION,
-      useNativeDriver: true,
-      delay: DELAY,
-    }).start();
-
-    Animated.timing(transitionFontSize, {
-      toValue: style.fontSize,
-      duration: DURATION,
-      delay: DELAY,
-      useNativeDriver: true,
-    }).start();
-
-    Animated.timing(transitionLetterSpacing, {
-      toValue: style.letterSpacing,
-      duration: DURATION,
-      useNativeDriver: true,
-      delay: DELAY,
-    }).start();
+      transitionLineHeight.value = withTiming(16, { duration: DURATION });
+      transitionFontSize.value = withTiming(style.fontSize, { duration: DURATION });
+      transitionLetterSpacing.value = withTiming(style.letterSpacing, { duration: DURATION });
+    }, DELAY);
   };
 
   return (
-    <Animated.View style={animatedViewStyle}>
-      <Animated.Text numberOfLines={1} ellipsizeMode='tail' style={animatedTextStyle}>
+    <Animated.View style={[animatedStyle, animatedViewStyle]}>
+      <Animated.Text
+        // @ts-ignore
+        dataSet={props.dataSets?.label}
+        numberOfLines={1}
+        ellipsizeMode='tail'
+        style={[getCombinedStylesForText(textStyles, props.style), animatedTextStyle]}
+      >
         {props.label}
       </Animated.Text>
     </Animated.View>

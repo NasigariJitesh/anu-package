@@ -21,9 +21,6 @@ const getRadioButtonTheme = (theme: DripsyFinalTheme) => {
       width: 20,
       borderRadius: 100,
       borderWidth: 2,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
     },
     on: {
       borderColor: themeColors.$primary,
@@ -48,9 +45,6 @@ const getRadioButtonTheme = (theme: DripsyFinalTheme) => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
     },
     on: {
       backgroundColor: 'transparent',

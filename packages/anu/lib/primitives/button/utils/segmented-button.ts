@@ -23,9 +23,6 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
       borderLeftWidth: 1,
       borderTopWidth: 1,
       borderBottomWidth: 1,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
       borderColor: themeColors.$outline,
     },
     on: {
@@ -51,9 +48,6 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
       height: 40,
       width: 120,
       paddingHorizontal: 12,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
     },
     on: {
       backgroundColor: 'transparent',
