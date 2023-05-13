@@ -71,6 +71,7 @@
   "leftSideBar:menu-list": "Menu list",
   "leftSideBar:menu-item": "Menu item",
   "leftSideBar:otp-input": "OTP Input",
+  "leftSideBar:password-input": "Password Input",
   "leftSideBar:phone-input": "Phone Input",
   "leftSideBar:radio": "Radio Button",
   "leftSideBar:search": "Search",
@@ -658,6 +659,16 @@
   "otpInputDocumentation:example2-name": "Outlined OTP Input",
 
   "otpInputDocumentation:example3-name": "OTP Input - with Error",
+
+  "passwordInputDocumentation:mainHeading": "Password Input",
+  "passwordInputDocumentation:mainDescription": "Password input is used for inputting passwords or other sensitive information that should not be visible to others. It typically consists of a text input field that obscures the entered text/password with dots, asterisks, or other symbols.",
+  "passwordInputDocumentation:example1-name": "Filled Password Input",
+  "passwordInputDocumentation:example2-name": "Outlined Password Input",
+  "passwordInputDocumentation:example3-name": "Password Input - with Error",
+  "passwordInputDocumentation:external-properties-title": " Text Field Properties",
+
+  "passwordInputDocumentation:property-variant-description": "The variant of text field for the password input.",
+  "passwordInputDocumentation:property-value-description": "The password Value as a string.",
 
   "phoneInputDocumentation:mainHeading": "Phone Input",
   "phoneInputDocumentation:mainDescription": "A phone input allows users to enter a phone number. It is used in applications for user registration, contact information, and other purposes where a phone number is required.\n\nA phone input typically includes formatting and validation features to ensure that the user enters a valid phone number.",
