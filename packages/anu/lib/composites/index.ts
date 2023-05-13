@@ -10,6 +10,8 @@ export { default as Dialog } from './dialog';
 export * from './dialog';
 export { default as Menu } from './menu';
 export * from './menu';
+export { default as PasswordInput } from './password-input';
+export * from './password-input';
 export { default as Search } from './search-bar';
 export * from './search-bar';
 export * from './tabs';

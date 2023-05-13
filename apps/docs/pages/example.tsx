@@ -1,19 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
-import {
-  Button,
-  Chip,
-  Container,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Tab,
-  Tabs,
-  TimePickerModal,
-  TouchableRipple,
-  Typography,
-} from 'anu/lib';
+import { Button, Chip, Container, Tab, Tabs, TimePickerModal, Typography } from 'anu/lib';
+import { PasswordInput } from 'anu/lib';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
 
@@ -22,7 +10,7 @@ import { useState } from 'react';
  */
 export default function Example() {
   const [visible, setVisible] = useState(false);
-  const [text, setText] = useState(false);
+  const [text, setText] = useState('');
   const [visible1, setVisible1] = useState(false);
 
   const onDismiss = useCallback(() => {
@@ -41,9 +29,11 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+      <PasswordInput error value={text} onChangeText={setText} />
+
       <Chip
         value='Action'
-        type='input' 
+        type='input'
         style={{
           width: 300,
           borderRadius: 10,
@@ -91,21 +81,6 @@ export default function Example() {
         minutes={14}
         use24HourClock
       />
-      <TouchableRipple onPress={() => setText(true)}>
-        <Container sx={{ height: 100, width: 100 }}>Press here</Container>
-      </TouchableRipple>
-      <Dialog visible={text} onDismiss={() => setText(false)} type='full-screen'>
-        <DialogTitle type='full-screen' title='Dialog Title' onDismiss={() => setText(false)} />
-        <DialogContent>
-          <Typography.Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-          </Typography.Body>
-        </DialogContent>
-        <DialogActions justify='flex-end'>
-          <Button.Outlined title='Action' />
-          <Button.Filled title='Action' />
-        </DialogActions>
-      </Dialog>
     </Container>
   );
 }
