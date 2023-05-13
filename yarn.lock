@@ -57,6 +57,7 @@ __metadata:
     "@types/react": ^18.0.17
     "@types/react-native": ^0.69.5
     eslint: ^8.21.0
+    expo-router: ^1.5.3
     tsconfig: "*"
     turbo: ^1.4.2
     typescript: ^4.7.4
@@ -71,7 +72,6 @@ __metadata:
     app: "*"
     expo: ^48.0.0
     expo-linking: ~4.0.1
-    expo-router: ^1.0.1
     expo-splash-screen: ~0.18.1
     expo-status-bar: ~1.4.4
     react: 18.2.0
@@ -6951,7 +6951,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-router@npm:^1.0.1":
+"expo-router@npm:^1.5.3":
   version: 1.7.1
   resolution: "expo-router@npm:1.7.1"
   dependencies:

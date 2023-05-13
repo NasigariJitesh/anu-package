@@ -15,7 +15,7 @@ import { Pressable } from 'react-native';
 const style = {
   margin: 15,
   height: 250,
-  width: 296,
+  width: 250,
 };
 
 const flexStyle = {
@@ -78,6 +78,7 @@ const AutoComplete = (
       onChangeText={(value: string) => {
         setText(value);
       }}
+      style={{ width: 250 }}
       label='Auto Complete'
       flatListProps={{ ...props.flatListProps, renderItem: ListRenderItem }}
     />

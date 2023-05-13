@@ -221,6 +221,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
         {finalProps.error &&
           errors?.map((error, index) => (
             <Typography.Body
+            //@ts-ignore
               dataSet={finalProps.dataSets?.errorMessage}
               key={index}
               style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}

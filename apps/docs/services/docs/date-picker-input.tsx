@@ -9,6 +9,8 @@ const style = {
   margin: 15,
 };
 
+
+const fieldStyle = { width:270 };
 const flexStyle = {
   flexWrap: 'wrap',
   alignItems: 'center',
@@ -23,7 +25,7 @@ const Example1 = () => {
   return (
     <Container disableGutters style={style}>
       <SafeAreaProvider>
-        <DatePickerInput label='Birth date' value={inputDate} onChange={(date) => setInputDate(date)} />
+        <DatePickerInput style={fieldStyle} label='Birth date' value={inputDate} onChange={(date) => setInputDate(date)} />
       </SafeAreaProvider>
     </Container>
   );
@@ -40,6 +42,7 @@ const Example2 = () => {
         onChange={(date) => {
           setInputDate(date);
         }}
+        style={fieldStyle}
         withModal={false}
       />
     </Container>
