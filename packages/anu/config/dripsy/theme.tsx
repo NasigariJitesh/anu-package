@@ -185,7 +185,7 @@ declare module 'dripsy' {
       $scrim: string;
       $surfaceContainerHigh: string;
       $surfaceContainerHighest: string;
-      surfaceContainerLow: string;
+      $surfaceContainerLow: string;
     };
   }
 }
