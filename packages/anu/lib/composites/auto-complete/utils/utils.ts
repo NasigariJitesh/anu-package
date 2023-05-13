@@ -14,28 +14,25 @@ export const getAutoCompleteStyles = (theme: DripsyFinalTheme) => {
     width: 264,
   } as const;
 
-  const defaultResultsContainerStyle = {
+  const defaultFlatListStyle = {
+    width: '100%',
+    maxHeight: 300,
     backgroundColor: theme.colors.$surface,
     shadowColor: theme.colors?.$shadow,
     shadowOffset: {
       width: 0,
       height: 3,
     },
-    flex: 1,
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 1,
-    width: '100%',
-    position: 'absolute',
-    top: 56,
-  } as const;
-
-  const defaultFlatListStyle = {
-    width: '100%',
-    maxHeight: 200,
+    flexGrow: 0,
   };
 
-  return { defaultAutoCompleteContainerStyle, defaultResultsContainerStyle, defaultFlatListStyle };
+  return {
+    defaultAutoCompleteContainerStyle,
+    defaultFlatListStyle,
+  };
 };
 
 /**

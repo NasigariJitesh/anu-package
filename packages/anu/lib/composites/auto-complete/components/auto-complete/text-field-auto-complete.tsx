@@ -4,7 +4,7 @@ import { Container, IconButton, TextField } from 'anu/lib/primitives';
 import React from 'react';
 
 import { AutoCompleteProps } from '../../types';
-import { getDropDownButtonStyle, getOverridingStyleForBaseVariant } from '../../utils';
+import {  getOverridingStyleForBaseVariant } from '../../utils';
 import { useAutoCompleteContext } from '../context/context';
 
 const TextFieldAutoComplete = (props: AutoCompleteProps) => {
@@ -32,7 +32,6 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
     ...textFieldProps
   } = props;
 
-  const dropDownButtonStyle = getDropDownButtonStyle();
 
   /**
    * component for the dropdown button of the auto-complete field
@@ -49,10 +48,9 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
         }}
         disabled={disabled}
         type='standard'
-        style={dropDownButtonStyle}
         pressableProps={{
           style: {
-            padding: 1,
+            padding: 0,
           },
         }}
         onPress={(event) => {
@@ -78,6 +76,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
       {...textFieldProps}
       disabled={disabled}
       // eslint-disable-next-line react-native/no-inline-styles
+      containerStyle={{ width:'100%' }}
       style={getStyle()}
       variant={variant === 'base' ? 'outlined' : variant}
       ref={textInputReference}

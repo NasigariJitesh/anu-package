@@ -292,5 +292,5 @@ export const getErrorIcon = () => {
 };
 
 export const getInnerContainerStyle = () => {
-  return { backgroundColor: 'inherit', height: '100%', borderRadius: 'inherit', color: 'inherit', flex: 1 };
+  return {  height: '100%',  flex: 1 };
 };

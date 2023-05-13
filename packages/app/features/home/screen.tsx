@@ -1,74 +1,165 @@
-/* eslint-disable react-native/no-inline-styles */
-import { Typography } from 'anu/lib';
-import { A, P, Row, Text, useSx, View } from 'dripsy';
-import { TextLink } from 'solito/link';
+import { useTheme } from 'anu/config';
+import { Container, FlatList, Typography } from 'anu/lib';
+import {  DripsyFinalTheme } from 'dripsy';
+import { StyleSheet } from 'react-native';
 import { MotiLink } from 'solito/moti';
+
+interface ComponentLinks {
+  title: string;
+  link: string
+}
+
+
+
 
 /**
  *
  */
 export function HomeScreen() {
-  const sx = useSx();
+
+  const theme = useTheme();
+
+  const styles = getStyles(theme);
+
+
+
+  const components : ComponentLinks[] = [{
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }, {
+    title: 'Autocomplete',
+    link: '/components/auto-complete',
+  }];
+
+
+
+  const RenderItem = ({ item }: { item: ComponentLinks })=>{
+    return (<MotiLink
+      href={item.link}
+      animate={({ hovered, pressed }) => {
+        'worklet';
+  
+        return {
+          scale: pressed ? 0.95 : (hovered ? 1.1 : 1),
+          rotateZ: pressed ? '0deg' : (hovered ? '-3deg' : '0deg'),
+        };
+      }}
+      from={{
+        scale: 0,
+        rotateZ: '0deg',
+      }}
+      transition={{
+        type: 'timing',
+        duration: 150,
+      }}
+    >
+      <Container style={styles.itemContainer}>
+      <Typography.Body selectable={false} style={styles.itemTitle} >
+        {item.title}
+      </Typography.Body>
+      </Container>
+    </MotiLink>);
+  };
 
   return (
-    <View sx={{ flex: 1, justifyContent: 'center', alignItems: 'center', p: 16 }}>
-      <Typography.Headline style={{ fontWeight: '800' }}>Welcome to Solito.</Typography.Headline>
-      <View sx={{ maxWidth: 600 }}>
-        <P sx={{ textAlign: 'center' }}>
-          Here is a basic starter to show you how you can navigate from one screen to another. This screen uses the same
-          code on Next.js and React Native.
-        </P>
-        <P sx={{ textAlign: 'center' }}>
-          Solito is made by{' '}
-          <A
-            href='https://twitter.com/fernandotherojo'
-            // @ts-expect-error react-native-web only types
-            hrefAttrs={{
-              target: '_blank',
-              rel: 'noreferrer',
-            }}
-            sx={{ color: 'blue' }}
-          >
-            Fernando Rojo
-          </A>
-          .
-        </P>
-      </View>
-      <View sx={{ height: 32 }} />
-      <Row>
-        <TextLink
-          href='/user/fernando'
-          textProps={{
-            style: sx({ fontSize: 16, fontWeight: 'bold', color: 'blue' }),
-          }}
-        >
-          Regular Link
-        </TextLink>
-        <View sx={{ width: 32 }} />
-        <MotiLink
-          href='/user/fernando'
-          animate={({ hovered, pressed }) => {
-            'worklet';
-
-            return {
-              scale: pressed ? 0.95 : (hovered ? 1.1 : 1),
-              rotateZ: pressed ? '0deg' : (hovered ? '-3deg' : '0deg'),
-            };
-          }}
-          from={{
-            scale: 0,
-            rotateZ: '0deg',
-          }}
-          transition={{
-            type: 'timing',
-            duration: 150,
-          }}
-        >
-          <Text selectable={false} sx={{ fontSize: 16, color: 'black', fontWeight: 'bold' }}>
-            Moti Link
-          </Text>
-        </MotiLink>
-      </Row>
-    </View>
+    <Container disableGutters style={styles.container}>
+      <FlatList 
+        data={components}
+        renderItem={RenderItem}
+        style={styles.flatList}
+      />
+      
+    </Container>
   );
 }
+
+
+const getStyles = (theme: DripsyFinalTheme) => {
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1, 
+    },
+    flatList:{
+      width: '100%',
+    },
+    itemContainer: { 
+      backgroundColor: theme.colors.$surface, 
+      borderColor:theme.colors.$outline,
+      borderWidth:1,
+      height: 50,
+      justifyContent:'center',
+      width: '100%',
+    },
+    itemTitle:{
+      color: theme.colors.$onSurface,
+      fontSize: theme.fontSizes[7],
+      fontWeight: 'bold',
+    },
+    
+  });
+
+  return styles;
+};

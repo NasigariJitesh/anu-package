@@ -2,10 +2,10 @@
 /* eslint-disable react/display-name */
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { Container } from 'anu/lib/primitives';
+import { Container, FlatList } from 'anu/lib/primitives';
 import { debounce as lodashDebounce } from 'lodash';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo } from 'react';
-import { FlatList, NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
+import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
 
 import { AutoCompleteProps, AutoCompleteReferenceProps, Options } from '../../types';
 import { getAutoCompleteStyles } from '../../utils';
@@ -44,6 +44,14 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
     };
   }, []);
 
+  useEffect(() => {
+    if (finalProps.value) {
+    filter(finalProps.value);
+
+    displayResults();
+}
+  }, [finalProps.value]);
+
   const onChangeHandler = (text: string) => {
     if (finalProps.disabled) return;
 
@@ -65,7 +73,7 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
     if (callback) return callback(event);
   };
 
-  const { defaultAutoCompleteContainerStyle, defaultResultsContainerStyle, defaultFlatListStyle } =
+  const { defaultAutoCompleteContainerStyle,  defaultFlatListStyle } =
     getAutoCompleteStyles(theme);
 
   return (
@@ -82,18 +90,12 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
         }}
       />
       {!finalProps.disabled && (finalProps.showResults ?? isOpen) ? (
-        <Container
-          disableGutters
-          style={getCombinedStylesForView(defaultResultsContainerStyle, finalProps.resultContainerStyle)}
-          onStartShouldSetResponderCapture={() => true}
-        >
           <FlatList
             keyExtractor={(item: Options) => item.id}
             {...finalProps.flatListProps}
             data={results}
             style={getCombinedStylesForView(defaultFlatListStyle, finalProps.flatListProps.style)}
           />
-        </Container>
       ) : null}
     </Container>
   );
