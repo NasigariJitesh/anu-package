@@ -1,6 +1,7 @@
-import { Container, PasswordInput } from 'anu/lib';
+import { Container, PasswordInput as PasswordInputComponent, PasswordInputProps } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+import { useState } from 'react';
 
 const style = {
   width: 280,
@@ -14,6 +15,12 @@ const flexStyle = {
 
   width: '100%',
 } as const;
+
+const PasswordInput = (props: PasswordInputProps) => {
+  const [text, setText] = useState(props.value);
+
+  return <PasswordInputComponent {...props} containerStyle={style} value={text} onChangeText={setText} />;
+};
 
 export const passwordInputDocumentation: ContentValues = {
   mainHeading: 'passwordInputDocumentation:mainHeading',
@@ -43,12 +50,12 @@ export const passwordInputDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='' variant='filled' containerStyle={style} showClearButton={false} />
-            <PasswordInput value='password' variant='filled' containerStyle={style} showClearButton={false} />
+            <PasswordInput value='' variant='filled' showClearButton={false} />
+            <PasswordInput value='password' variant='filled' showClearButton={false} />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='' variant='filled' disabled containerStyle={style} showClearButton={false} />
-            <PasswordInput value='password' variant='filled' disabled containerStyle={style} showClearButton={false} />
+            <PasswordInput value='' variant='filled' disabled showClearButton={false} />
+            <PasswordInput value='password' variant='filled' disabled showClearButton={false} />
           </Container>
         </Container>
       ),
@@ -64,18 +71,12 @@ export const passwordInputDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='' variant='outlined' containerStyle={style} showClearButton={false} />
-            <PasswordInput value='password' variant='outlined' containerStyle={style} showClearButton={false} />
+            <PasswordInput value='' variant='outlined' showClearButton={false} />
+            <PasswordInput value='password' variant='outlined' showClearButton={false} />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='' variant='outlined' disabled containerStyle={style} showClearButton={false} />
-            <PasswordInput
-              value='password'
-              variant='outlined'
-              disabled
-              containerStyle={style}
-              showClearButton={false}
-            />
+            <PasswordInput value='' variant='outlined' disabled showClearButton={false} />
+            <PasswordInput value='password' variant='outlined' disabled showClearButton={false} />
           </Container>
         </Container>
       ),
@@ -91,12 +92,12 @@ export const passwordInputDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='' variant='filled' containerStyle={style} error showClearButton={false} />
-            <PasswordInput value='' variant='outlined' containerStyle={style} error showClearButton={false} />
+            <PasswordInput value='' variant='filled' error showClearButton={false} />
+            <PasswordInput value='' variant='outlined' error showClearButton={false} />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='password' variant='filled' containerStyle={style} error showClearButton={false} />
-            <PasswordInput value='password' variant='outlined' containerStyle={style} error showClearButton={false} />
+            <PasswordInput value='password' variant='filled' error showClearButton={false} />
+            <PasswordInput value='password' variant='outlined' error showClearButton={false} />
           </Container>
         </Container>
       ),
