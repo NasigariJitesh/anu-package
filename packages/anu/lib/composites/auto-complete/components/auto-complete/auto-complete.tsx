@@ -4,7 +4,7 @@ import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, FlatList } from 'anu/lib/primitives';
 import { debounce as lodashDebounce } from 'lodash';
-import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo } from 'react';
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react';
 import { NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
 
 import { AutoCompleteProps, AutoCompleteReferenceProps, Options } from '../../types';
@@ -18,6 +18,7 @@ import TextFieldAutoComplete from './text-field-auto-complete';
  */
 const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((props, reference) => {
   const finalProps = { ...defaultProps, ...props };
+  const [height, setHeight] = useState(0);
   const { isOpen, displayResults, hideResults, results, setResults, focus, blur } = useAutoCompleteContext();
 
   const theme = useTheme();
@@ -46,10 +47,10 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
 
   useEffect(() => {
     if (finalProps.value) {
-    filter(finalProps.value);
+      filter(finalProps.value);
 
-    displayResults();
-}
+      displayResults();
+    }
   }, [finalProps.value]);
 
   const onChangeHandler = (text: string) => {
@@ -73,7 +74,7 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
     if (callback) return callback(event);
   };
 
-  const { defaultAutoCompleteContainerStyle,  defaultFlatListStyle } =
+  const { defaultAutoCompleteContainerStyle, defaultTextFieldContainerStyle, defaultFlatListStyle } =
     getAutoCompleteStyles(theme);
 
   return (
@@ -81,21 +82,29 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
       disableGutters
       style={getCombinedStylesForView(defaultAutoCompleteContainerStyle, finalProps.autoCompleteContainerStyle)}
     >
-      <TextFieldAutoComplete
-        {...finalProps}
-        onChangeText={onChangeHandler}
-        onFocus={(event) => {
-          if (finalProps.disabled) return;
-          focusEventHandler(event, true, finalProps.onFocus);
+      <Container
+        disableGutters
+        onLayout={(event) => {
+          setHeight(event.nativeEvent.layout.height);
         }}
-      />
+        style={defaultTextFieldContainerStyle}
+      >
+        <TextFieldAutoComplete
+          {...finalProps}
+          onChangeText={onChangeHandler}
+          onFocus={(event) => {
+            if (finalProps.disabled) return;
+            focusEventHandler(event, true, finalProps.onFocus);
+          }}
+        />
+      </Container>
       {!finalProps.disabled && (finalProps.showResults ?? isOpen) ? (
-          <FlatList
-            keyExtractor={(item: Options) => item.id}
-            {...finalProps.flatListProps}
-            data={results}
-            style={getCombinedStylesForView(defaultFlatListStyle, finalProps.flatListProps.style)}
-          />
+        <FlatList
+          keyExtractor={(item: Options) => item.id}
+          {...finalProps.flatListProps}
+          data={results}
+          style={getCombinedStylesForView(defaultFlatListStyle, [finalProps.flatListProps.style, { top: height }])}
+        />
       ) : null}
     </Container>
   );

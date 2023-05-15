@@ -18,7 +18,7 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       backgroundColor: colors.$surfaceVariant,
       color: colors.$onSurfaceVariant,
       height: 56,
-      width: '100%',
+      width: 250,
       justifyContent: 'center',
       paddingVertical: 0,
       paddingHorizontal: 0,
@@ -51,7 +51,7 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       backgroundColor: colors.$background,
       color: colors.$onSurfaceVariant,
       height: 56,
-      width: '100%',
+      width: 250,
       paddingVertical: 0,
       paddingHorizontal: 0,
       borderWidth: 1,
@@ -90,15 +90,14 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
  * @param props
  * @returns style of the dripsy text field
  */
-export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFieldProps) => {
+export const getTextFieldStyles = (theme: DripsyFinalTheme, props?: TextFieldProps) => {
   let common = {
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: theme.fontSizes[7],
+    lineHeight: theme.lineHeights[7],
     fontWeight: '400' as const,
     paddingHorizontal: 18,
-    color: colors.$onSurface,
+    color: theme.colors.$onSurface,
     letterSpacing: 0.5,
-    caretColor: props?.error ? colors.$error : colors.$primary,
     backgroundColor: 'transparent',
     position: 'relative' as const,
     width: '100%' as const,
@@ -109,6 +108,7 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
       ...common,
       // @ts-ignore
       outline: 'none' as never,
+      caretColor: props?.error ? theme.colors.$error : theme.colors.$primary,
     };
   }
 
@@ -270,27 +270,27 @@ export const getSupportingTextStyle = (theme: DripsyFinalTheme) => {
   return style;
 };
 
-export const getUnanimatedLabelStyles = () => {
+export const getUnanimatedLabelStyles = (theme: DripsyFinalTheme) => {
   const labelContainerStyle = {
     left: 0,
     position: 'absolute',
     paddingHorizontal: 16,
   } as const;
   const labelTextStyle = {
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: theme.fontSizes[7],
+    lineHeight: theme.lineHeights[7],
     letterSpacing: 0.5,
     paddingHorizontal: 2,
-    color: 'inherit',
+    color: theme.colors.$onSurfaceVariant,
   } as const;
 
   return { labelContainerStyle, labelTextStyle };
 };
 
-export const getErrorIcon = () => {
-  return <MaterialCommunityIcons name='alert-circle' color='inherit' size={24} />;
+export const getErrorIcon = (theme: DripsyFinalTheme) => {
+  return <MaterialCommunityIcons name='alert-circle' color={theme.colors.$error} size={24} />;
 };
 
 export const getInnerContainerStyle = () => {
-  return {  height: '100%',  flex: 1 };
+  return { height: '100%', flex: 1 };
 };

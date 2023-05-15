@@ -144,13 +144,6 @@ export const autoCompleteDocumentation: ContentValues = {
     },
 
     {
-      name: 'resultContainerStyle',
-      description: 'autoCompleteDocumentation:property-resultContainerStyle-description',
-      type: 'StyleProp<ViewStyle>',
-      optional: true,
-    },
-
-    {
       name: 'autoCompleteContainerStyle',
       description: 'autoCompleteDocumentation:property-autoCompleteContainerStyle-description',
       type: 'StyleProp<ViewStyle>',

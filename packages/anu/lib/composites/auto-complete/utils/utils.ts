@@ -12,10 +12,16 @@ export const getAutoCompleteStyles = (theme: DripsyFinalTheme) => {
   const defaultAutoCompleteContainerStyle = {
     alignItems: 'center',
     width: 264,
+    position: 'relative' as const,
+  } as const;
+
+  const defaultTextFieldContainerStyle = {
+    width: '100%',
   } as const;
 
   const defaultFlatListStyle = {
     width: '100%',
+    position: 'absolute' as const,
     maxHeight: 300,
     backgroundColor: theme.colors.$surface,
     shadowColor: theme.colors?.$shadow,
@@ -32,6 +38,7 @@ export const getAutoCompleteStyles = (theme: DripsyFinalTheme) => {
   return {
     defaultAutoCompleteContainerStyle,
     defaultFlatListStyle,
+    defaultTextFieldContainerStyle,
   };
 };
 

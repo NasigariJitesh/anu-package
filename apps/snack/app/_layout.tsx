@@ -7,7 +7,7 @@ import { Stack } from 'expo-router';
 export default function Root() {
   return (
     <Provider>
-     <Stack
+      <Stack
         screenOptions={
           {
             // API Reference: https://reactnavigation.org/docs/native-stack-navigator#options
@@ -15,22 +15,27 @@ export default function Root() {
         }
       >
         <Stack.Screen
-          name="index"
+          name='index'
           options={{
             headerLargeTitle: true,
             title: 'Anu Components',
           }}
         />
         <Stack.Screen
-          name="components/auto-complete"
+          name='components/auto-complete'
           options={{
             headerLargeTitle: true,
             title: 'Autocomplete',
           }}
         />
-        
-
+        <Stack.Screen
+          name='components/auto-complete-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Autocomplete Test',
+          }}
+        />
       </Stack>
-    </Provider> 
+    </Provider>
   );
 }
