@@ -1,9 +1,11 @@
-import { Container, Icon, TextField } from 'anu/lib';
+import { Container, Icon, TextField as TextFieldComponent, TextFieldProps } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+import { useState } from 'react';
 
 const style = {
   margin: 15,
+  width: 280,
 };
 
 const flexStyle = {
@@ -13,6 +15,12 @@ const flexStyle = {
 
   width: '100%',
 } as const;
+
+const TextField = (props: Partial<TextFieldProps>) => {
+  const [text, setText] = useState(props.value ?? '');
+
+  return <TextFieldComponent {...props} containerStyle={style} value={text} onChangeText={setText} />;
+};
 
 export const textFieldDocumentation: ContentValues = {
   mainHeading: 'textFieldDocumentation:mainHeading',

@@ -37,6 +37,7 @@ import { menuIndex } from 'services/docs/menu';
 import { menuItemIndex } from 'services/docs/menu-item';
 import { menuListIndex } from 'services/docs/menu-list';
 import { otpInputIndex } from 'services/docs/otp-input';
+import { passwordInputIndex } from 'services/docs/password-input';
 import { phoneInputIndex } from 'services/docs/phone-input';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
@@ -307,6 +308,11 @@ const RenderIndex = () => {
     case '/components/otp-input': {
       {
         return <Index {...otpInputIndex} />;
+      }
+    }
+    case '/components/password-input': {
+      {
+        return <Index {...passwordInputIndex} />;
       }
     }
     case '/components/phone-input': {

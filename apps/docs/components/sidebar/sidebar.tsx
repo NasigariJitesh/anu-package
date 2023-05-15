@@ -468,6 +468,11 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:password-input',
+                link: '/components/password-input',
+                components: [],
+              },
+              {
                 title: 'leftSideBar:phone-input',
                 link: '/components/phone-input',
                 components: [],

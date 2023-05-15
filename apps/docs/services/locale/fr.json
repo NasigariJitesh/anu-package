@@ -64,6 +64,7 @@
   "leftSideBar:image": "Image",
   "leftSideBar:input-fields": "Champs de saisie",
   "leftSideBar:text-fields": "Champs de texte",
+  "leftSideBar:password-input": "Saisie du mot de passe",
   "leftSideBar:phone-input": "Entrée de téléphone",
   "leftSideBar:menu": "Menu",
   "leftSideBar:menu-list": "Liste de menus",
@@ -627,6 +628,16 @@
   "otpInputDocumentation:example2-name": "Champ de saisie OTP contouré",
 
   "otpInputDocumentation:example3-name": "Saisie OTP - avec erreur",
+
+  "passwordInputDocumentation:mainHeading": "Saisie du mot de passe",
+  "passwordInputDocumentation:mainDescription": "La saisie de mot de passe est utilisée pour entrer des mots de passe ou d'autres informations sensibles qui ne doivent pas être visibles par les autres. Elle se compose généralement d'un champ de saisie de texte qui masque le texte/mot de passe saisi avec des points, des astérisques ou d'autres symboles.",
+  "passwordInputDocumentation:example1-name": "Saisie du mot de passe remplie",
+  "passwordInputDocumentation:example2-name": "Saisie du mot de passe soulignée",
+  "passwordInputDocumentation:example3-name": "Saisie du mot de passe - avec erreur",
+  "passwordInputDocumentation:external-properties-title": "Propriétés du champ de texte",
+
+  "passwordInputDocumentation:property-variant-description": "La variante du champ de texte pour la saisie du mot de passe.",
+  "passwordInputDocumentation:property-value-description": "La valeur du mot de passe en tant que chaîne.",
 
   "phoneInputDocumentation:mainHeading": "Entrée de téléphone",
   "phoneInputDocumentation:mainDescription": "Une entrée de téléphone permet aux utilisateurs de saisir un numéro de téléphone. Elle est utilisée dans les applications pour l’enregistrement des utilisateurs, les informations de contact et d’autres fins où un numéro de téléphone est requis.\n\nUne entrée de téléphone comprend généralement des fonctionnalités de formatage et de validation pour garantir que l’utilisateur entre un numéro de téléphone valide.",
