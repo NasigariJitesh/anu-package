@@ -58,11 +58,10 @@ const AutoCompleteScreen = () => {
           }}
           label='Auto Complete'
           style={{ width: 150 }}
-          autoCompleteContainerStyle={{ width: 150 }}
+          autoCompleteContainerStyle={{ width: 150, zIndex: 100 }}
           flatListProps={{ renderItem: ListRenderItem }}
         />
-      </Container>
-      <Container disableGutters sx={{ margin: 10 }}>
+
         <AutoComplete
           variant='outlined'
           data={data}
@@ -71,13 +70,11 @@ const AutoCompleteScreen = () => {
             setText1(value);
           }}
           label='Auto Complete'
-          autoCompleteContainerStyle={{ height: 150 }}
+          autoCompleteContainerStyle={{ height: 150, zIndex: 99 }}
           style={{ height: 45 }}
           flatListProps={{ renderItem: ListRenderItem }}
         />
-      </Container>
 
-      <Container disableGutters sx={{ margin: 10 }}>
         <AutoComplete
           variant='outlined'
           data={data}
@@ -86,7 +83,7 @@ const AutoCompleteScreen = () => {
             setText2(value);
           }}
           label='Auto Complete'
-          autoCompleteContainerStyle={{ margin: 10 }}
+          autoCompleteContainerStyle={{ margin: 10, zIndex: 10 }}
           flatListProps={{ renderItem: ListRenderItem }}
         />
       </Container>
