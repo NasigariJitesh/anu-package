@@ -71,6 +71,9 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   useEffect(() => {
     if (props.isFocused) transitionIn();
     else transitionOut();
+
+    if (props.value) transitionIn();
+
   }, [props]);
 
   /**

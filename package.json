@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "native": "cd apps/native && yarn start",
+    "snack": "cd apps/snack && yarn start",
     "docs": "cd apps/docs && yarn next",
     "lint": "eslint .",
     "format": "prettier --write . "
