@@ -35,6 +35,20 @@ export default function Root() {
             title: 'Autocomplete Test',
           }}
         />
+        <Stack.Screen
+          name='components/typography'
+          options={{
+            headerLargeTitle: true,
+            title: 'Typography',
+          }}
+        />
+        <Stack.Screen
+          name='components/typography-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Typography Test',
+          }}
+        />
       </Stack>
     </Provider>
   );

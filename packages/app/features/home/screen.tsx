@@ -23,12 +23,20 @@ export function HomeScreen() {
       title: 'Autocomplete',
       link: '/components/auto-complete',
     },
+    {
+      title: 'Typography',
+      link: '/components/typography',
+    },
   ];
 
   const tests: ComponentLinks[] = [
     {
-      title: 'Autocomplete Test',
+      title: 'Autocomplete',
       link: '/components/auto-complete-test',
+    },
+    {
+      title: 'Typography',
+      link: '/components/typography-test',
     },
   ];
 
