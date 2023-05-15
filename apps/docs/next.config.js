@@ -9,9 +9,6 @@ const nextConfig = {
     defaultLocale: 'en',
     localeDetection: true,
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   transpilePackages: [
     'react-native',
     'react-native-web',
