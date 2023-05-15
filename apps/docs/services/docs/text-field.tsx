@@ -16,7 +16,7 @@ const flexStyle = {
   width: '100%',
 } as const;
 
-const TextField = (props: TextFieldProps) => {
+const TextField = (props: Partial<TextFieldProps>) => {
   const [text, setText] = useState(props.value ?? '');
 
   return <TextFieldComponent {...props} containerStyle={style} value={text} onChangeText={setText} />;
