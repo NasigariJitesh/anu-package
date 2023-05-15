@@ -52,10 +52,6 @@ export interface AutoCompleteProps extends Omit<Partial<TextFieldProps>, 'value'
   /**
    * The styles for the results container
    */
-  resultContainerStyle?: StyleProp<ViewStyle>;
-  /**
-   * The styles for the results container
-   */
   autoCompleteContainerStyle?: StyleProp<ViewStyle>;
 
   direction?: 'rtl' | 'ltr';

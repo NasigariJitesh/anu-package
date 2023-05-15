@@ -66,7 +66,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const innerContainerStyle = getInnerContainerStyle();
     const errorStyle = getErrorStyle(theme);
     const supportingTextStyle = getSupportingTextStyle(theme);
-    const { labelContainerStyle, labelTextStyle } = getUnanimatedLabelStyles();
+    const { labelContainerStyle, labelTextStyle } = getUnanimatedLabelStyles(theme);
 
     const onFocusStyles =
       isTextFieldVisible || value !== '' || props.label !== ''
@@ -178,6 +178,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               )}
               <TextInput
                 ref={textInputReference}
+                selectionColor={finalProps?.error ? theme.colors.$error : theme.colors.$primary}
                 {...componentProps}
                 value={value}
                 // @ts-ignore
@@ -205,7 +206,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                     />
                   ) : null}
                 </Container>
-                {finalProps.error && !finalProps.noDefaultErrorMessage ? getErrorIcon() : finalProps.trailingIcon}
+                {finalProps.error && !finalProps.noDefaultErrorMessage ? getErrorIcon(theme) : finalProps.trailingIcon}
               </Container>
             ) : null}
           </Container>
@@ -221,7 +222,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
         {finalProps.error &&
           errors?.map((error, index) => (
             <Typography.Body
-            //@ts-ignore
+              //@ts-ignore
               dataSet={finalProps.dataSets?.errorMessage}
               key={index}
               style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}

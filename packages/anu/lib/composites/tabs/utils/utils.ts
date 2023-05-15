@@ -88,6 +88,7 @@ export const getTabHeaderStyles = () => {
   const container = {
     flexDirection: 'row',
     width: '100%',
+    height: 50,
   } as const;
   const contentContainer = {
     flex: 1,

@@ -3,8 +3,9 @@ import { useTheme } from 'anu/config';
 import { Container, IconButton, TextField } from 'anu/lib/primitives';
 import React from 'react';
 
+import { getCombinedStylesForView } from '../../../../../common/utils';
 import { AutoCompleteProps } from '../../types';
-import { getDropDownButtonStyle, getOverridingStyleForBaseVariant } from '../../utils';
+import { getOverridingStyleForBaseVariant } from '../../utils';
 import { useAutoCompleteContext } from '../context/context';
 
 const TextFieldAutoComplete = (props: AutoCompleteProps) => {
@@ -15,7 +16,6 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
   const overrideStyle = getOverridingStyleForBaseVariant();
 
   const {
-    resultContainerStyle,
     autoCompleteContainerStyle,
     data,
     caseSensitive,
@@ -32,8 +32,6 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
     ...textFieldProps
   } = props;
 
-  const dropDownButtonStyle = getDropDownButtonStyle();
-
   /**
    * component for the dropdown button of the auto-complete field
    *
@@ -49,10 +47,9 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
         }}
         disabled={disabled}
         type='standard'
-        style={dropDownButtonStyle}
         pressableProps={{
           style: {
-            padding: 1,
+            padding: 0,
           },
         }}
         onPress={(event) => {
@@ -78,7 +75,8 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
       {...textFieldProps}
       disabled={disabled}
       // eslint-disable-next-line react-native/no-inline-styles
-      style={getStyle()}
+      containerStyle={getCombinedStylesForView({ width: '100%' }, textFieldProps.containerStyle)}
+      style={{ ...getStyle(), ...textFieldProps.style }}
       variant={variant === 'base' ? 'outlined' : variant}
       ref={textInputReference}
       leadingIcon={

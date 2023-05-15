@@ -1,6 +1,6 @@
 import { getCombinedStylesForView } from 'anu/common/utils';
-import { useTheme } from 'anu/config';
-import { Container, Divider } from 'anu/lib';
+// import { useTheme } from 'anu/config';
+import { Container } from 'anu/lib';
 import React, { useState } from 'react';
 
 import { TabsProps } from '../../types';
@@ -25,7 +25,7 @@ const Tabs = (props: TabsProps) => {
 
   const [active, setActive] = useState(propsActive ?? 0);
 
-  const theme = useTheme();
+  // const theme = useTheme();
 
   const styles = getTabsStyles();
 
@@ -48,7 +48,7 @@ const Tabs = (props: TabsProps) => {
         active={active}
         type={type}
       />
-      <Divider thickness={1} color={theme.colors.$surfaceVariant} variant='full-width' style={styles.divider} />
+      {/* <Divider thickness={1} color={theme.colors.$surfaceVariant} variant='full-width' style={styles.divider} /> */}
 
       <Tab
         {...children[active]!.props}
