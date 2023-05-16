@@ -99,7 +99,6 @@ const Example1 = () => {
             </Container>
           }
           containerStyle={{ width: 360 }}
-          resultContainerStyle={{ width: 360 }}
         />
       </Container>
 
@@ -114,7 +113,6 @@ const Example1 = () => {
             </Container>
           }
           containerStyle={{ width: 360 }}
-          resultContainerStyle={{ width: 360 }}
         />
       </Container>
       <Container disableGutters style={margin}>
@@ -123,7 +121,6 @@ const Example1 = () => {
           leadingIcon={<Icon name='menu' color={theme.colors?.$onSurface as string} />}
           trailingIcon={<Avatar source={{ uri: 'https://i.pravatar.cc/300' }} variant='circle' />}
           containerStyle={{ width: 360 }}
-          resultContainerStyle={{ width: 360 }}
         />
       </Container>
       <Container disableGutters style={margin}>
@@ -132,7 +129,6 @@ const Example1 = () => {
           leadingIcon={<Icon name='menu' />}
           trailingIcon={<Icon name='search' color={theme.colors?.$onSurface as string} />}
           containerStyle={{ width: 360 }}
-          resultContainerStyle={{ width: 360 }}
         />
       </Container>
     </Container>
@@ -159,12 +155,7 @@ const Example3 = () => {
   return (
     <Container disableGutters sx={flexStyle as never}>
       <Container disableGutters style={[margin, { height: 160 }]}>
-        <Search
-          data={data}
-          leadingIcon={<Icon name='search' style={{ color: 'inherit' }} />}
-          resultContainerStyle={{ maxHeight: 100 }}
-          type='docked'
-        />
+        <Search data={data} leadingIcon={<Icon name='search' style={{ color: 'inherit' }} />} type='docked' />
       </Container>
     </Container>
   );
@@ -184,7 +175,6 @@ const Example4 = () => {
             ),
           }}
           leadingIcon={<Icon name='search' style={{ color: 'inherit' }} />}
-          resultContainerStyle={{ maxHeight: 100 }}
           type='docked'
         />
       </Container>

@@ -100,7 +100,7 @@ export interface TypographyProps extends TextProps {
    */
   style?: StyleProp<TextStyle>;
 
-  dataSet: Record<string, any>;
+  dataSet?: Record<string, any>;
 }
 
 /**

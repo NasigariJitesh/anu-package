@@ -198,11 +198,7 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
       </Container>
       {props.error &&
         props.errorMessage?.map((error, index) => (
-          <Typography.Body
-            dataSet={props.dataSets?.errorText}
-            key={index}
-            style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}
-          >
+          <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
             {error}
           </Typography.Body>
         ))}

@@ -28,10 +28,6 @@ const PhoneInput = (props: Omit<PhoneInputProps, 'value' | 'onChangeText'> & { v
         setText(value);
       }}
       label='Phone number'
-      resultContainerStyle={{
-        maxHeight: 100,
-        width: 280,
-      }}
     />
   );
 };
