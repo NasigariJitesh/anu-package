@@ -37,9 +37,9 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const transitionTopCoordinate = useSharedValue(19);
   const transitionLeftCoordinate = useSharedValue(0);
 
-  const transitionFontSize = useSharedValue(style.fontSize);
-  const transitionLineHeight = useSharedValue(style.fontSize);
-  const transitionLetterSpacing = useSharedValue(style.letterSpacing);
+  const transitionFontSize = useSharedValue(style.fontSize as number);
+  const transitionLineHeight = useSharedValue(style.fontSize as number);
+  const transitionLetterSpacing = useSharedValue(style.letterSpacing as number);
 
   const textStyles = {
     paddingHorizontal: 2,
@@ -73,7 +73,6 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
     else transitionOut();
 
     if (props.value) transitionIn();
-
   }, [props]);
 
   /**
