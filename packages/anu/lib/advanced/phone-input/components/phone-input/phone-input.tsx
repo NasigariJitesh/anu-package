@@ -2,7 +2,7 @@
 /* eslint-disable unicorn/no-useless-undefined */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/display-name */
-import { getCombinedStylesForText, getCombinedStylesForView } from 'anu/common/utils';
+import { getCombinedStylesForText } from 'anu/common/utils';
 import { AutoComplete, AutoCompleteReferenceProps, Container, convertToOptionsFormat, Options } from 'anu/lib';
 import { AsYouType, ParseError, parsePhoneNumber, parsePhoneNumberWithError, PhoneNumber } from 'libphonenumber-js';
 import { debounce as lodashDebounce, DebouncedFunc } from 'lodash';
@@ -73,7 +73,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
 
   const { value, onChangeText, leadingIcon, flatListProps, ...otherAutoCompleteProps } = finalProps;
 
-  const { defaultResultsContainerStyle, defaultTextFieldStyles, defaultTextInputStyle } = getDefaultStyles();
+  const { defaultTextFieldStyles, defaultTextInputStyle } = getDefaultStyles();
 
   const focus = useCallback(() => {
     autoCompleteReference.current?.focus();
@@ -231,10 +231,6 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     <AutoComplete
       {...otherAutoCompleteProps}
       style={{ ...defaultTextFieldStyles, ...otherAutoCompleteProps.style }}
-      resultContainerStyle={getCombinedStylesForView(
-        defaultResultsContainerStyle,
-        otherAutoCompleteProps.resultContainerStyle,
-      )}
       textInputStyle={getCombinedStylesForText(defaultTextInputStyle, otherAutoCompleteProps.textInputStyle)}
       ref={autoCompleteReference}
       data={countryCodesData}

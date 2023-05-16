@@ -311,7 +311,7 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
 
   const iconTheme = {
     common: {
-      size: 24,
+      fontSize: 24,
     },
     filled: {
       color: themeColors.$onPrimary as string,

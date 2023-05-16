@@ -1,6 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
 import { AutoComplete, Container, Options, TouchableRipple, Typography } from 'anu/lib';
-import TextField from 'anu/lib/primitives/text-field/components/text-field/text-field';
 import { useState } from 'react';
 
 const data = [
@@ -56,13 +55,6 @@ const AutoCompleteScreen = () => {
         }}
         label='Auto Complete'
         flatListProps={{ renderItem: ListRenderItem }}
-      />
-      <TextField
-        value={text}
-        onChangeText={(value: string) => {
-          setText(value);
-        }}
-        error
       />
     </Container>
   );

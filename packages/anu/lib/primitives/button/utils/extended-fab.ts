@@ -61,7 +61,6 @@ const getExtendedFABTheme = (props: ExtendedFABProps, theme: DripsyFinalTheme) =
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
       backgroundColor: containerColor,
-      color: stateLayerColor,
       shadowColor: themeColors.$shadow,
       shadowOffset: {
         width: 0,
@@ -86,7 +85,6 @@ const getExtendedFABTheme = (props: ExtendedFABProps, theme: DripsyFinalTheme) =
       minWidth: 80,
       borderRadius: 16,
       padding: 16,
-      color: 'inherit',
       '@hover': {
         backgroundColor: getColorInRGBA(stateLayerColor, 8),
         shadowColor: themeColors.$shadow,
@@ -111,7 +109,7 @@ const getExtendedFABTheme = (props: ExtendedFABProps, theme: DripsyFinalTheme) =
 
   const fabIconTheme = {
     common: {
-      color: 'inherit',
+      color: stateLayerColor,
       marginRight: 8,
       size: 24,
     },
@@ -123,7 +121,7 @@ const getExtendedFABTheme = (props: ExtendedFABProps, theme: DripsyFinalTheme) =
       lineHeight: theme.lineHeights[8],
       fontSize: theme.fontSizes[8],
       letterSpacing: 0.1,
-      color: 'inherit',
+      color: stateLayerColor,
     },
   };
 

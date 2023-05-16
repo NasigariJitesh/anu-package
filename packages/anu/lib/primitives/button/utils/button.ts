@@ -90,7 +90,6 @@ const getButtonTheme = (theme: DripsyFinalTheme) => {
     common: {
       minHeight: 40,
       minWidth: 100,
-      color: 'inherit',
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',

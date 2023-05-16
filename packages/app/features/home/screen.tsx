@@ -43,32 +43,40 @@ export function HomeScreen() {
       title: 'Segmented Button',
       link: '/components/segmented-button',
     },
+    {
+      title: 'Typography',
+      link: '/components/typography',
+    },
   ];
 
   const tests: ComponentLinks[] = [
     {
-      title: 'Autocomplete Test',
+      title: 'Autocomplete',
       link: '/components/auto-complete-test',
     },
     {
-      title: 'Common Button Test',
+      title: 'Common Button',
       link: '/components/common-button-test',
     },
     {
-      title: 'Icon Button Test',
+      title: 'Icon Button',
       link: '/components/icon-button-test',
     },
     {
-      title: 'Floating Action Button Test',
+      title: 'Floating Action Button',
       link: '/components/fab-test',
     },
     {
-      title: 'Extended Floating Action Button Test',
+      title: 'Extended Floating Action Button',
       link: '/components/extended-fab-test',
     },
     {
-      title: 'Segmented Button Test',
+      title: 'Segmented Button',
       link: '/components/segmented-button-test',
+    },
+    {
+      title: 'Typography',
+      link: '/components/typography-test',
     },
   ];
 

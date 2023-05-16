@@ -51,7 +51,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
   const RenderSelected = () => {
     const { icon, dataSets } = finalProps;
     let { size } = iconStyles;
-    const { ...otherIconStyles } = iconStyles;
+    const { size: iconSize, ...otherIconStyles } = iconStyles;
 
     if (icon?.props) size = icon?.props.size;
 

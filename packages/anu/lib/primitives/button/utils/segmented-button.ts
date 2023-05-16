@@ -84,7 +84,7 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
   const segmentedIconTheme = {
     common: {
       paddingRight: 4,
-      size: 18,
+      fontSize: 18,
     },
     on: {
       color: themeColors.$onSecondaryContainer,
