@@ -38,7 +38,7 @@ const Header = (props: SideSheetProps & { scrollTo: (destination: number) => voi
               name: 'arrow-back',
             }}
             style={backIconStyle}
-            type='standard'
+            variant='standard'
           />
         ) : null}
         <Typography.Title size='small' style={headingStyle}>
@@ -50,7 +50,7 @@ const Header = (props: SideSheetProps & { scrollTo: (destination: number) => voi
         icon={{
           name: 'clear',
         }}
-        type='standard'
+        variant='standard'
         style={closeIconStyle}
       />
     </Container>

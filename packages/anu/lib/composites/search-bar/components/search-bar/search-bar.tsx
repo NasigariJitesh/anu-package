@@ -40,7 +40,6 @@ const Search = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, refer
     searchBarContainerStyle,
     searchBarStyle,
     containerStyle,
-    resultContainerStyle,
     onFocus,
     onBlur,
     filterOnChange,
@@ -54,7 +53,7 @@ const Search = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, refer
    */
   const getLeadingComponent = () => {
     return active && type === 'full-screen' ? (
-      <IconButton type='standard' icon={{ name: 'arrow-back' }} onPress={() => setActive(false)} />
+      <IconButton variant='standard' icon={{ name: 'arrow-back' }} onPress={() => setActive(false)} />
     ) : (
       leadingIcon
     );
@@ -79,13 +78,8 @@ const Search = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, refer
     if (callback) return callback(event);
   };
 
-  const {
-    defaultSearchBarStyle,
-    activeSearchBarContainerStyle,
-    defaultResultsContainerStyle,
-    defaultContainerStyle,
-    defaultFlatListStyle,
-  } = getSearchBarStyle(theme, height, width, active, type);
+  const { defaultSearchBarStyle, activeSearchBarContainerStyle, defaultContainerStyle, defaultFlatListStyle } =
+    getSearchBarStyle(theme, height, width, active, type);
 
   return (
     <AutoComplete
@@ -98,7 +92,6 @@ const Search = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, refer
       autoCompleteContainerStyle={getCombinedStylesForView(activeSearchBarContainerStyle, searchBarContainerStyle)}
       containerStyle={getCombinedStylesForView(defaultContainerStyle, containerStyle)}
       style={{ ...defaultSearchBarStyle, ...searchBarStyle }}
-      resultContainerStyle={getCombinedStylesForView(defaultResultsContainerStyle, resultContainerStyle)}
       hideDropDownButton={true}
       onFocus={(event) => {
         focusEventHandler(event, true, onFocus);

@@ -1,4 +1,9 @@
-import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
+import {
+  getColorInRGBA,
+  getResetBorderWidthStyles,
+  getResetMarginStyles,
+  getResetPaddingStyles,
+} from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
 import { ExtendedFABProps } from '../types';
@@ -50,7 +55,7 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface', them
  */
 const getExtendedFABTheme = (props: ExtendedFABProps, theme: DripsyFinalTheme) => {
   const themeColors = theme.colors;
-  const { containerColor, stateLayerColor } = getColors(props.FABColor, theme);
+  const { containerColor, stateLayerColor } = getColors(props.FABColor ?? 'primary', theme);
   const fabTheme = {
     common: {
       justifyContent: 'center' as const,
@@ -115,8 +120,8 @@ const getExtendedFABTheme = (props: ExtendedFABProps, theme: DripsyFinalTheme) =
   const labelTheme = {
     common: {
       fontWeight: '500' as const,
-      lineHeight: 20,
-      fontSize: 14,
+      lineHeight: theme.lineHeights[8],
+      fontSize: theme.fontSizes[8],
       letterSpacing: 0.1,
       color: 'inherit',
     },
@@ -165,7 +170,7 @@ export const getExtendedFABStyles = (props: ExtendedFABProps, theme: DripsyFinal
     ...commonPressableLayerTheme,
     ...propsOtherStylesForStateLayer,
     ...getResetMarginStyles(),
-
+    ...getResetBorderWidthStyles(),
     '@hover': { ...commonPressableLayerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...commonPressableLayerTheme['@focus'], ...propsFocusStyles },
     '@press': { ...commonPressableLayerTheme['@press'], ...propsPressStyles },

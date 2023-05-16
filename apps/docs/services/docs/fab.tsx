@@ -20,27 +20,31 @@ export const FABDocumentation: ContentValues = {
   subTitle: 'FABDocumentation:subTitle',
   properties: [
     {
-      name: 'size',
-      type: "'small' | 'medium' | 'large'",
-      description: 'FABDocumentation:property-size-description',
-      defaultValue: "'medium'",
-    },
-    {
       name: 'icon',
       description: 'FABDocumentation:property-icon-description',
       type: 'IconType | ReactElement',
     },
     {
+      name: 'size',
+      type: "'small' | 'medium' | 'large'",
+      description: 'FABDocumentation:property-size-description',
+      defaultValue: "'medium'",
+      optional: true,
+    },
+
+    {
       name: 'FABColor',
       description: 'FABDocumentation:property-FABColor-description',
       type: "'primary' | 'secondary' | 'surface' | 'tertiary'",
       defaultValue: "'primary'",
+      optional: true,
     },
     {
       name: 'lowered',
       description: 'FABDocumentation:property-lowered-description',
       type: 'boolean',
       defaultValue: 'false',
+      optional: true,
     },
     {
       name: 'style',

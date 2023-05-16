@@ -126,7 +126,7 @@ export const TimePickerModal = (props: TimePickerModalProps) => {
                   }}
                   onPress={() => setInputType(reverseInputTypes[inputType])}
                   style={styles.inputTypeToggle}
-                  type='standard'
+                  variant='standard'
                   accessibilityLabel='toggle keyboard'
                 />
                 <Container disableGutters style={styles.fill} />

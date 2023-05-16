@@ -17,9 +17,9 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
     common: {
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
-      height: 40,
-      width: 120,
-      marginVertical: 4,
+      flexDirection: 'row' as const,
+      height: '100%',
+      flex: 1,
       borderLeftWidth: 1,
       borderTopWidth: 1,
       borderBottomWidth: 1,
@@ -45,8 +45,8 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
     common: {
       justifyContent: 'center',
       alignItems: 'center',
-      height: 40,
-      width: 120,
+      height: '100%',
+      flex: 1,
       paddingHorizontal: 12,
     },
     on: {
@@ -221,7 +221,7 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
     buttonStyles: { ...styles, ...disabledStyles },
     layerStyles: stateLayerStyles,
     iconStyles: { ...iconStyles, ...disabledIconStyles },
-    labelStyles: { ...labelStyles, ...disabledLabelStyles, ...(props.titleStyle as Record<string, never>) },
+    labelStyles: { ...labelStyles, ...disabledLabelStyles, ...(props.labelStyle as Record<string, never>) },
     segmentedFirstButtonTheme: { ...segmentedFirstButtonTheme, ...disabledFirstButtonStyle },
     segmentedLastButtonTheme: { ...segmentedLastButtonTheme, ...disabledLastButtonStyle },
   };
@@ -236,4 +236,16 @@ export const isSelected = (props: SegmentedButtonProps) => {
   if (typeof props.selected === 'string') return props.selected === props.id;
   else if (Array.isArray(props.selected)) return props.selected.includes(props.id);
   else return false;
+};
+
+export const getSegmentedButtonGroupStyles = () => {
+  const style = {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 40,
+    width: 320,
+    borderRadius: 20,
+  } as const;
+  return style;
 };

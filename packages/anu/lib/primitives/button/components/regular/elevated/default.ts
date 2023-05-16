@@ -1,6 +1,6 @@
 import { RegularButtonProps } from '../../../types';
 
 export const defaultProps: Omit<RegularButtonProps, 'title'> = {
-  type: 'elevated',
+  variant: 'elevated',
   size: 'medium',
 };

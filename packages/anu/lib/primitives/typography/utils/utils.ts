@@ -1,5 +1,6 @@
 import { DripsyFinalTheme } from 'dripsy';
 
+import { getResetMarginStyles, getResetPaddingStyles } from '../../../../common/utils';
 import { TypographyProps } from '../types';
 
 /**
@@ -44,8 +45,8 @@ export const getFontStyles = (props: TypographyProps, theme: DripsyFinalTheme) =
   }
 
   const resetStyles = {
-    margin: 0,
-    padding: 0,
+    ...getResetMarginStyles(),
+    ...getResetPaddingStyles(),
     color: theme.colors.$onSurface,
   };
 

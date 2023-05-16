@@ -225,7 +225,7 @@ const Month = (props: MonthProps) => {
 
             <Container disableGutters style={isHorizontal ? styles.opacity1 : styles.opacity0}>
               <IconButton
-                type='standard'
+                variant='standard'
                 onPress={isHorizontal ? () => onPressYear(year) : undefined}
                 icon={{ name: selectingYear ? 'arrow-drop-up' : 'arrow-drop-down' }}
               />

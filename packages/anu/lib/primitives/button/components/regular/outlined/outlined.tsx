@@ -9,7 +9,7 @@ type ButtonProps = Partial<RegularButtonProps> & { title: string };
  *
  * @param props - Button props
  */
-const Outlined = (props: ButtonProps & { type?: 'outlined' }) => {
+const Outlined = (props: ButtonProps & { variant?: 'outlined' }) => {
   const restOfTheProps = { ...defaultProps, ...props };
 
   return <RenderComponent {...restOfTheProps} />;

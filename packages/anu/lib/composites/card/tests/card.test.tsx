@@ -15,7 +15,7 @@ describe('Testing for Card', () => {
         <CardHeader
           heading='Heading'
           avatar={<Avatar name='N' variant='circle' size='large' />}
-          action={<IconButton type='standard' icon={{ name: 'favorite' }} />}
+          action={<IconButton variant='standard' icon={{ name: 'favorite' }} />}
         />
         <CardMedia
           source={{
@@ -51,7 +51,7 @@ describe('Testing for Card - Filled', () => {
         <CardHeader
           heading='Heading'
           avatar={<Avatar name='N' variant='circle' size='large' />}
-          action={<IconButton type='standard' icon={{ name: 'favorite' }} />}
+          action={<IconButton variant='standard' icon={{ name: 'favorite' }} />}
         />
         <CardMedia
           source={{

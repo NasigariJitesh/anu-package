@@ -76,8 +76,8 @@ export const segmentedButtonDocumentation: ContentValues = {
       optional: true,
     },
     {
-      name: 'titleStyle',
-      description: 'segmentedButtonDocumentation:property-titleStyle-description',
+      name: 'labelStyle',
+      description: 'segmentedButtonDocumentation:property-labelStyle-description',
       type: 'StyleProp<TextStyle>',
       optional: true,
     },

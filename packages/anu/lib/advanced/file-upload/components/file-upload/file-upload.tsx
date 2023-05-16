@@ -21,13 +21,13 @@ import { defaultProps } from './default';
 const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: File[], uris: string[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
-    type: props.fileType ?? props.variant === 'image' ? 'image/*' : undefined,
+    type: props.fileType ?? props.uploadVariant === 'image' ? 'image/*' : undefined,
     copyToCacheDirectory: props.copyToCacheDirectory,
   });
   if (result.type === 'success' && result.uri && result.name) {
     const file = new File([result.uri], result.name, { type: result.mimeType });
 
-    if (props.variant === 'image' && props.optimization) {
+    if (props.uploadVariant === 'image' && props.optimization) {
       const compressedImage = await compressFile(file, props.optimizationConfig);
       const image = convertToFile(compressedImage, file.name);
 
@@ -117,10 +117,10 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
   const renderButton = (buttonProps: FileUploadProps) => {
     let propsForButton: CommonButtonProps;
 
-    if (buttonProps.variant === 'image') {
+    if (buttonProps.uploadVariant === 'image') {
       const {
         onChange,
-        variant,
+        uploadVariant,
         multiple,
         sortable,
         optimization,
@@ -132,8 +132,16 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
 
       propsForButton = otherButtonProps;
     } else {
-      const { onChange, variant, multiple, sortable, fileType, copyToCacheDirectory, style, ...otherButtonProps } =
-        buttonProps;
+      const {
+        onChange,
+        uploadVariant,
+        multiple,
+        sortable,
+        fileType,
+        copyToCacheDirectory,
+        style,
+        ...otherButtonProps
+      } = buttonProps;
       propsForButton = otherButtonProps;
     }
 
@@ -211,8 +219,8 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
         uriData={[...fileUris]}
         onSort={onSortHandler}
         deleteData={deleteFile}
-        variant={finalProps.variant}
-        previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
+        variant={finalProps.uploadVariant}
+        previewType={finalProps.uploadVariant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
         listWidth={finalProps.listWidth}
         listItemStyle={finalProps.listItemStyle}

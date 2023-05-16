@@ -2,6 +2,7 @@ import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu
 import { DripsyFinalTheme } from 'dripsy';
 
 import { IconButtonProps } from '../types';
+import { getResetBorderWidthStyles } from './../../../../common/utils/utils';
 import { GetButtonStylesReturnType } from './button';
 
 /**
@@ -66,8 +67,6 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
     },
     outlined: {
       backgroundColor: 'transparent',
-      borderWidth: 1,
-      borderColor: themeColors.$outline,
 
       '@disable': {
         backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
@@ -76,8 +75,6 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
     },
     outlinedUnselected: {
       backgroundColor: 'transparent',
-      borderWidth: 1,
-      borderColor: themeColors.$outline,
 
       '@disable': {
         backgroundColor: getColorInRGBA(themeColors.$onSurface, 12),
@@ -217,6 +214,8 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
     },
     outlined: {
       backgroundColor: 'transparent',
+      borderWidth: 1,
+      borderColor: themeColors.$outline,
 
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 8),
@@ -232,6 +231,8 @@ const getIconButtonTheme = (theme: DripsyFinalTheme) => {
     },
     outlinedUnselected: {
       backgroundColor: 'transparent',
+      borderWidth: 1,
+      borderColor: themeColors.$outline,
 
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 8),
@@ -416,7 +417,7 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
 
   const commonTheme = iconButtonTheme.common;
 
-  const pressableLayerTheme = iconButtonPressableLayerTheme[props.type];
+  const pressableLayerTheme = iconButtonPressableLayerTheme[props.variant];
   const commonPressableLayerTheme = iconButtonPressableLayerTheme.common;
 
   const commonIconTheme = iconTheme.common;
@@ -433,7 +434,7 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
     ...propsOtherStyles
   } = props.style ?? {};
 
-  const { backgroundColor, borderColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
+  const { backgroundColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
 
   styles = {
     ...commonTheme,
@@ -450,7 +451,7 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
   // This key will be used to select the relevant styles based on type of component and weather or not it is toggled
   let key: keyof typeof iconButtonTheme;
 
-  switch (props.type) {
+  switch (props.variant) {
     case 'outlined': {
       {
         if (props.toggle) key = selected ? 'outlinedSelected' : 'outlinedUnselected';
@@ -489,6 +490,7 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
     ...iconButtonPressableLayerTheme[key],
     ...propsOtherStylesForStateLayer,
     ...getResetMarginStyles(),
+    ...(props.variant === 'outlined' ? {} : { ...getResetBorderWidthStyles() }),
     '@hover': { ...pressableLayerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...pressableLayerTheme['@focus'], ...propsFocusStyles },
     '@press': { ...pressableLayerTheme['@press'], ...propsPressStyles },
@@ -499,6 +501,7 @@ export const getIconButtonStyles = (props: IconButtonProps, selected: boolean, t
     ...otherStyles,
     ...propsOtherStyles,
     ...getResetPaddingStyles(),
+    ...(props.variant === 'outlined' ? { ...getResetBorderWidthStyles() } : {}),
   };
 
   iconStyles = {

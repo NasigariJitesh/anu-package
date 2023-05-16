@@ -12,7 +12,7 @@ type BasicFileUploadProps = CommonButtonProps & {
   /*
    * The variant of file upload (wether image or files).
    */
-  variant?: 'image' | 'file';
+  uploadVariant?: 'image' | 'file';
   /*
    * Whether to allow multiple  files upload
    */
@@ -62,7 +62,7 @@ type BasicFileUploadProps = CommonButtonProps & {
 };
 
 type ImageFileUploadProps = BasicFileUploadProps & {
-  variant?: 'image';
+  uploadVariant?: 'image';
   /*
    * The type of preview of image in the upload list
    */
@@ -79,7 +79,7 @@ type ImageFileUploadProps = BasicFileUploadProps & {
 };
 
 type OtherFileUploadProps = BasicFileUploadProps & {
-  variant: 'file';
+  uploadVariant: 'file';
 };
 
 export type FileUploadProps = ImageFileUploadProps | OtherFileUploadProps;

@@ -38,7 +38,7 @@ const DatePickerModalContentHeader = (props: HeaderContentProps) => {
 
       {isEditingEnabled ? (
         <IconButton
-          type='standard'
+          variant='standard'
           icon={{
             name: collapsed ? editIcon ?? 'edit' : calendarIcon ?? 'calendar-today',
             props: { size: 32, color: theme.colors.$scrim },

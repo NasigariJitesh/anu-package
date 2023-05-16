@@ -40,7 +40,7 @@ const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps
       inputButtons={
         withModal ? (
           <IconButton
-            type='standard'
+            variant='standard'
             icon={{ name: calendarIcon ?? 'calendar-today', props: { size: 24 } }}
             disabled={rest.disabled}
             onPress={() => setVisible(true)}

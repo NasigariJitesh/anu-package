@@ -17,7 +17,7 @@ interface BasicFileDropZoneProps extends Omit<ContainerProps, 'variant'> {
   /**
    * The variant of file upload (wether image or files).
    */
-  variant?: 'image' | 'file';
+  uploadVariant?: 'image' | 'file';
   /**
    * Whether to allow multiple  files upload
    */
@@ -83,7 +83,7 @@ interface BasicFileDropZoneProps extends Omit<ContainerProps, 'variant'> {
 }
 
 interface ImageFileDropZoneProps extends BasicFileDropZoneProps {
-  variant?: 'image';
+  uploadVariant?: 'image';
   /**
    * The type of preview of image in the upload list
    */
@@ -96,7 +96,7 @@ interface ImageFileDropZoneProps extends BasicFileDropZoneProps {
 }
 
 interface OtherFileDropZoneProps extends BasicFileDropZoneProps {
-  variant: 'file';
+  uploadVariant: 'file';
 }
 
 export type FileDropZoneProps = ImageFileDropZoneProps | OtherFileDropZoneProps;
