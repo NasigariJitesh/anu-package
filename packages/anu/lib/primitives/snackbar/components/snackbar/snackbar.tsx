@@ -102,11 +102,7 @@ const Snackbar = () => {
             />
           ) : null}
           {finalProps.numberOfLines !== 2 && finalProps.icon ? (
-            <IconButton
-              {...finalProps.icon}
-              style={{ ...iconStyle, ...finalProps.icon.style }}
-              type='standard'
-            />
+            <IconButton {...finalProps.icon} style={{ ...iconStyle, ...finalProps.icon.style }} variant='standard' />
           ) : null}
         </Animated.View>
       </Container>

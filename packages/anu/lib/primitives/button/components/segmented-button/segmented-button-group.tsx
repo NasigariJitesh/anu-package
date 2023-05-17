@@ -1,7 +1,9 @@
 import { Container } from 'anu/lib/primitives';
 import { useState } from 'react';
 
+import { getCombinedStylesForView } from '../../../../../common/utils';
 import { SegmentedButtonGroupProps } from '../../types/segmented-button';
+import { getSegmentedButtonGroupStyles } from '../../utils';
 
 /**
  * The Segmented Button Group component
@@ -10,6 +12,8 @@ import { SegmentedButtonGroupProps } from '../../types/segmented-button';
  */
 export const SegmentedButtonGroup = (props: SegmentedButtonGroupProps) => {
   const [selected, setSelected] = useState<string | string[]>(props.selected ?? props.multiSelect ? [] : '');
+
+  const style = getSegmentedButtonGroupStyles();
 
   const onPressHandler = (value: string) => {
     if (props.onPress) props.onPress(value);
@@ -29,7 +33,7 @@ export const SegmentedButtonGroup = (props: SegmentedButtonGroupProps) => {
   if (props.children.length > 5) throw new Error('Maximum of 5 SegmentedButtons are allowed');
 
   return (
-    <Container disableGutters flexDirection='row' align='center' justify='center' style={props.containerStyle}>
+    <Container disableGutters style={getCombinedStylesForView(style, props.containerStyle)}>
       {props.children.map((c, index): React.ReactElement => {
         // if (typeof c.type !== 'string' && c.type.name === 'SegmentedButton') {
         let p;

@@ -49,16 +49,22 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
   };
 
   const RenderSelected = () => {
-    const { icon } = finalProps;
-    let { size } = iconStyles;
-    const { ...otherIconStyles } = iconStyles;
+    const { icon, dataSets } = finalProps;
+    const { fontSize, ...otherIconStyles } = iconStyles;
+    let size = fontSize ;
 
     if (icon?.props) size = icon?.props.size;
 
     if (selected) return <Icon size={size} name='check' style={otherIconStyles} />;
     else if (icon)
       return 'name' in icon ? (
-        <Icon size={size} name={icon.name as never} {...icon.props} style={[otherIconStyles, icon.props?.style]} />
+        <Icon
+          size={size}
+          name={icon.name as never}
+          {...icon.props}
+          style={[iconStyles, icon.props?.style]}
+          dataSet={dataSets?.iconDataSet}
+        />
       ) : (
         icon
       );
@@ -66,12 +72,22 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
   };
 
   return (
-    <Container disableGutters style={buttonStyles}>
-      <TouchableRipple disabled={finalProps.disabled} onPress={onPressHandler} style={generateStyles}>
-        <Container flexDirection='row' align='center' justify='center' disableGutters maxWidth={88}>
+    <Container disableGutters style={buttonStyles} dataSet={finalProps.dataSets?.containerDataSet}>
+      <TouchableRipple
+        disabled={finalProps.disabled}
+        onPress={onPressHandler}
+        style={generateStyles}
+        dataSet={finalProps.dataSets?.containerDataSet}
+      >
+        <Container flexDirection='row' align='center' justify='center' disableGutters sx={{ height: '100%' }}>
           <RenderSelected />
 
-          <Typography.Body numberOfLines={1} ellipsizeMode='tail' style={labelStyles}>
+          <Typography.Body
+            numberOfLines={1}
+            ellipsizeMode='tail'
+            style={labelStyles}
+            dataSet={finalProps.dataSets?.labelDataSet}
+          >
             {finalProps.title}
           </Typography.Body>
         </Container>

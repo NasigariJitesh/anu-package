@@ -35,7 +35,7 @@ const DatePickerModalHeader = (props: DatePickerModalHeaderProps) => {
           icon={{ name: closeIcon, props: { color: theme.colors.$onSurfaceVariant } }}
           accessibilityLabel={'close'}
           onPress={onDismiss}
-          type='standard'
+          variant='standard'
           testID='anu-dates-close'
         />
 

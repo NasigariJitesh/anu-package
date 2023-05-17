@@ -28,18 +28,21 @@ export const extendedFABDocumentation: ContentValues = {
       name: 'icon',
       description: 'extendedFABDocumentation:property-icon-description',
       type: 'IconType | ReactElement',
+      optional: true,
     },
     {
       name: 'FABColor',
       description: 'extendedFABDocumentation:property-FABColor-description',
       type: "'primary' | 'secondary' | 'surface' | 'tertiary'",
       defaultValue: "'primary'",
+      optional: true,
     },
     {
       name: 'lowered',
       description: 'extendedFABDocumentation:property-lowered-description',
       type: 'boolean',
       defaultValue: 'false',
+      optional: true,
     },
     {
       name: 'style',
@@ -48,8 +51,8 @@ export const extendedFABDocumentation: ContentValues = {
       optional: true,
     },
     {
-      name: 'titleStyle',
-      description: 'extendedFABDocumentation:property-titleStyle-description',
+      name: 'labelStyle',
+      description: 'extendedFABDocumentation:property-labelStyle-description',
       type: 'StyleProp<TextStyle>',
       optional: true,
     },

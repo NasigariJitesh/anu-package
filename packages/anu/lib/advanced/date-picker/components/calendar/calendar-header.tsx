@@ -26,7 +26,7 @@ const CalendarHeader = (props: CalendarHeaderProps) => {
 
           <Container disableGutters>
             <IconButton
-              type='standard'
+              variant='standard'
               icon={{ name: 'chevron-left', props: { color: theme.colors.$scrim } }}
               onPress={onPrev}
             />
@@ -34,7 +34,7 @@ const CalendarHeader = (props: CalendarHeaderProps) => {
 
           <Container disableGutters>
             <IconButton
-              type='standard'
+              variant='standard'
               icon={{ name: 'chevron-right', props: { color: theme.colors.$scrim } }}
               onPress={onNext}
             />
