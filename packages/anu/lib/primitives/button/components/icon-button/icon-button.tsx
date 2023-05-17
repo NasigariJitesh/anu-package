@@ -37,19 +37,29 @@ const IconButton = (props: IconButtonProps) => {
   };
 
   const getIcon = (icon: IconType | ReactElement) => {
-    // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
-    return 'name' in icon ? <Icon style={iconStyles} name={icon.name as never} {...icon.props} /> : icon;
+    return 'name' in icon ? (
+      <Icon
+        // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
+        style={iconStyles}
+        name={icon.name as never}
+        {...icon.props}
+        dataSet={restOfTheProps.dataSets?.iconDataSet}
+      />
+    ) : (
+      icon
+    );
   };
 
   return (
     // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
-    <Container disableGutters style={containerStyles}>
+    <Container disableGutters style={containerStyles} dataSet={restOfTheProps.dataSets?.containerDataSet}>
       <TouchableRipple
         accessibilityRole='button'
         {...restOfTheProps.pressableProps}
         style={generateStyles}
         disabled={restOfTheProps.disabled}
         onPress={onPressHandler}
+        dataSet={restOfTheProps.dataSets?.containerDataSet}
       >
         <Container disableGutters style={{ padding: 8 }}>
           {getIcon(restOfTheProps.icon)}

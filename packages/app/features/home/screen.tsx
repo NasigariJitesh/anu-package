@@ -24,6 +24,26 @@ export function HomeScreen() {
       link: '/components/auto-complete',
     },
     {
+      title: 'Common Button',
+      link: '/components/common-button',
+    },
+    {
+      title: 'Icon Button',
+      link: '/components/icon-button',
+    },
+    {
+      title: 'Floating Action Button',
+      link: '/components/fab',
+    },
+    {
+      title: 'Extended Floating Action Button',
+      link: '/components/extended-fab',
+    },
+    {
+      title: 'Segmented Button',
+      link: '/components/segmented-button',
+    },
+    {
       title: 'Container',
       link: '/components/container',
     },
@@ -37,6 +57,26 @@ export function HomeScreen() {
     {
       title: 'Autocomplete',
       link: '/components/auto-complete-test',
+    },
+    {
+      title: 'Common Button',
+      link: '/components/common-button-test',
+    },
+    {
+      title: 'Icon Button',
+      link: '/components/icon-button-test',
+    },
+    {
+      title: 'Floating Action Button',
+      link: '/components/fab-test',
+    },
+    {
+      title: 'Extended Floating Action Button',
+      link: '/components/extended-fab-test',
+    },
+    {
+      title: 'Segmented Button',
+      link: '/components/segmented-button-test',
     },
     {
       title: 'Container',

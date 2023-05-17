@@ -53,7 +53,7 @@ const Search = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, refer
    */
   const getLeadingComponent = () => {
     return active && type === 'full-screen' ? (
-      <IconButton type='standard' icon={{ name: 'arrow-back' }} onPress={() => setActive(false)} />
+      <IconButton variant='standard' icon={{ name: 'arrow-back' }} onPress={() => setActive(false)} />
     ) : (
       leadingIcon
     );

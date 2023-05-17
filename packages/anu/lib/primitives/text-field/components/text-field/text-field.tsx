@@ -196,7 +196,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                 <Container disableGutters style={{ minWidth: 40 }}>
                   {value && finalProps.showClearButton ? (
                     <IconButton
-                      type='standard'
+                      variant='standard'
                       icon={{ name: 'clear', props: { size: 16 } }}
                       disabled={finalProps.disabled}
                       onPress={(event) => {

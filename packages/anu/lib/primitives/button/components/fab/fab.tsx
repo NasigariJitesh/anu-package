@@ -30,7 +30,13 @@ const FAB = (props: FABProps) => {
     const { size, ...otherIconStyles } = iconStyles;
 
     return 'name' in icon ? (
-      <Icon size={size} style={otherIconStyles} name={icon.name as never} {...icon.props} />
+      <Icon
+        size={size}
+        style={otherIconStyles}
+        name={icon.name as never}
+        {...icon.props}
+        dataSet={restOfTheProps.dataSets?.iconDataSet}
+      />
     ) : (
       icon
     );
@@ -38,7 +44,7 @@ const FAB = (props: FABProps) => {
 
   return (
     // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
-    <Container disableGutters style={containerStyles}>
+    <Container disableGutters style={containerStyles} dataSet={restOfTheProps.dataSets?.containerDataSet}>
       <TouchableRipple
         accessibilityRole='button'
         {...restOfTheProps.pressableProps}
@@ -46,6 +52,7 @@ const FAB = (props: FABProps) => {
           if (restOfTheProps.onPress) restOfTheProps.onPress(event);
         }}
         style={generateStyles}
+        dataSet={restOfTheProps.dataSets?.containerDataSet}
       >
         {getIcon(restOfTheProps.icon)}
       </TouchableRipple>

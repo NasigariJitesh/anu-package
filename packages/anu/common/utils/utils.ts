@@ -137,3 +137,15 @@ export const getResetMarginStyles = () => {
     marginEnd: 0,
   };
 };
+
+export const getResetBorderWidthStyles = () => {
+  return {
+    borderWidth: 0,
+    borderEndWidth: 0,
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderStartWidth: 0,
+    borderBottomWidth: 0,
+  };
+};

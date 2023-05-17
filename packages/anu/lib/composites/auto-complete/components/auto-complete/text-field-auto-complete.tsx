@@ -46,7 +46,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
           props: { style: { color: props.error || disabled ? 'inherit' : theme.colors.$onSurfaceVariant } },
         }}
         disabled={disabled}
-        type='standard'
+        variant='standard'
         pressableProps={{
           style: {
             padding: 0,

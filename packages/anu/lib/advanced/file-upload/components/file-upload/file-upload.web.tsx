@@ -21,12 +21,12 @@ import { defaultProps } from './default';
 const handleFileUpload = async (props: FileUploadProps, updateFiles: { (files: File[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
-    type: props.fileType ?? props.variant === 'image' ? 'image/*' : undefined,
+    type: props.fileType ?? props.uploadVariant === 'image' ? 'image/*' : undefined,
     copyToCacheDirectory: props.copyToCacheDirectory,
   });
 
   if (result.type === 'success' && result.output) {
-    if (props.variant === 'image' && props.optimization) {
+    if (props.uploadVariant === 'image' && props.optimization) {
       const compressedImages = [];
       for (const file of result.output) {
         const compressedImage = await compressFile(file, props.optimizationConfig);
@@ -108,10 +108,10 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
 
   const renderButton = (buttonProps: FileUploadProps) => {
     let propsForButton: CommonButtonProps;
-    if (buttonProps.variant === 'image') {
+    if (buttonProps.uploadVariant === 'image') {
       const {
         onChange,
-        variant,
+        uploadVariant,
         multiple,
         sortable,
         optimization,
@@ -124,7 +124,7 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
     } else {
       const {
         onChange,
-        variant,
+        uploadVariant,
         multiple,
         sortable,
 
@@ -211,8 +211,8 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
         data={[...files]}
         onSort={onSortHandler}
         deleteData={deleteFile}
-        variant={finalProps.variant}
-        previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
+        variant={finalProps.uploadVariant}
+        previewType={finalProps.uploadVariant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
         listWidth={finalProps.listWidth}
         listItemStyle={finalProps.listItemStyle}

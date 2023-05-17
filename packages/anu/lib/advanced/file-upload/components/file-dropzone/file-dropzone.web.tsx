@@ -76,7 +76,7 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     setDuplicateFileNameError(false);
 
-    if (finalProps.variant === 'image' && finalProps.optimization) {
+    if (finalProps.uploadVariant === 'image' && finalProps.optimization) {
       const compressedImages = [];
       for (const file of acceptedFiles) {
         const compressedImage = await compressFile(file, finalProps.optimizationConfig);
@@ -93,7 +93,7 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept:
-      finalProps.fileType ?? finalProps.variant === 'image'
+      finalProps.fileType ?? finalProps.uploadVariant === 'image'
         ? {
             'image/*': [
               '.jpeg',
@@ -144,8 +144,8 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
         data={[...files]}
         onSort={onSortHandler}
         deleteData={deleteFile}
-        variant={finalProps.variant}
-        previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
+        variant={finalProps.uploadVariant}
+        previewType={finalProps.uploadVariant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
         listWidth={finalProps.listWidth}
         listItemStyle={finalProps.listItemStyle}

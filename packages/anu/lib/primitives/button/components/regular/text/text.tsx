@@ -9,7 +9,7 @@ type ButtonProps = Partial<RegularButtonProps> & { title: string };
  *
  * @param props - Button props
  */
-const Text = (props: ButtonProps & { type?: 'text' }) => {
+const Text = (props: ButtonProps & { variant?: 'text' }) => {
   const restOfTheProps = { ...defaultProps, ...props };
 
   return <RenderComponent {...restOfTheProps} />;

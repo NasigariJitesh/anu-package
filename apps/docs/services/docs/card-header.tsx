@@ -79,7 +79,7 @@ export const cardHeaderDocumentation: ContentValues = {
               heading='Heading'
               subHeading='subHeading'
               avatar={<Avatar name='N' variant='circle' size='large' />}
-              action={<IconButton type='standard' icon={{ name: 'more-vert' }} />}
+              action={<IconButton variant='standard' icon={{ name: 'more-vert' }} />}
             />
           </Card>
         </Container>
@@ -89,7 +89,7 @@ export const cardHeaderDocumentation: ContentValues = {
     heading='Heading'
     subHeading='subHeading'
     avatar={<Avatar name='N' variant='circle' size='large' />}
-    action={<IconButton type='standard' icon={{ name: 'more-vert' }} />}
+    action={<IconButton variant='standard' icon={{ name: 'more-vert' }} />}
   />
 </Card>`,
     },
