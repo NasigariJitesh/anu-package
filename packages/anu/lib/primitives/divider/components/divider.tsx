@@ -17,21 +17,23 @@ const Divider = (props: DividerProps) => {
   const theme = useTheme();
 
   const finalProps = { ...defaultProps, ...props };
-  const { sx, style } = getDividerStyle(finalProps, theme);
+  const { sx, style, containerStyle } = getDividerStyle(finalProps, theme);
 
   return (
-    <Container disableGutters style={style} sx={{ ...sx, ...finalProps.style }}>
-      {finalProps.text ? (
-        <Typography.Body style={getCombinedStylesForText(defaultTextStyle(theme), props.textStyle)}>
-          {finalProps.text}
-        </Typography.Body>
-      ) : null}
+    <Container disableGutters style={containerStyle}>
+      <Container disableGutters style={style} sx={{ ...sx, ...finalProps.style }}>
+        {finalProps.text ? (
+          <Typography.Body style={getCombinedStylesForText(defaultTextStyle(theme), props.textStyle)}>
+            {finalProps.text}
+          </Typography.Body>
+        ) : null}
 
-      {finalProps.children ? (
-        <Container disableGutters sx={childrenContainerStyle(theme)}>
-          {finalProps.children}
-        </Container>
-      ) : null}
+        {finalProps.children ? (
+          <Container disableGutters sx={childrenContainerStyle(theme)}>
+            {finalProps.children}
+          </Container>
+        ) : null}
+      </Container>
     </Container>
   );
 };
