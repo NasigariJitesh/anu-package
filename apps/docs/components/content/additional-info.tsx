@@ -36,7 +36,7 @@ const AdditionalInformation = (props: AdditionalInformationProps) => {
       ) : (
         <Typography.Headline style={sx(styles.stepTitle)}>{props.title}</Typography.Headline>
       )}
-      <Divider variant='full-width' light style={styles.divider} />
+      <Divider variant='full-width' style={styles.divider} />
 
       <ul id='additional-info-list'>
         {props.items.map((item) => {
