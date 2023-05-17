@@ -24,6 +24,10 @@ export function HomeScreen() {
       link: '/components/auto-complete',
     },
     {
+      title: 'Divider',
+      link: '/components/divider',
+    },
+    {
       title: 'Typography',
       link: '/components/typography',
     },
@@ -33,6 +37,10 @@ export function HomeScreen() {
     {
       title: 'Autocomplete',
       link: '/components/auto-complete-test',
+    },
+    {
+      title: 'Divider',
+      link: '/components/divider-test',
     },
     {
       title: 'Typography',

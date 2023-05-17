@@ -1,11 +1,12 @@
-import { getCombinedStylesForText } from 'anu/common/utils';
+import { getCombinedStylesForText, getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config/dripsy/theme';
 import { Container } from 'anu/lib/primitives/layout';
 import Typography from 'anu/lib/primitives/typography';
 import React from 'react';
+import { StyleSheet } from 'react-native';
 
 import { DividerProps } from '../types';
-import { childrenContainerStyle, defaultTextStyle, getDividerStyle } from '../utils';
+import { childrenContainerStyle, defaultTextStyle, getDividerStyle, getInnerContainerStyle } from '../utils';
 import { defaultProps } from './default';
 
 /**
@@ -17,22 +18,27 @@ const Divider = (props: DividerProps) => {
   const theme = useTheme();
 
   const finalProps = { ...defaultProps, ...props };
+  //@ts-expect-error
   const { sx, style, containerStyle } = getDividerStyle(finalProps, theme);
+
+  const { height, width, ...customStyle } = StyleSheet.flatten(finalProps.style ?? {});
 
   return (
     <Container disableGutters style={containerStyle}>
-      <Container disableGutters style={style} sx={{ ...sx, ...finalProps.style }}>
-        {finalProps.text ? (
-          <Typography.Body style={getCombinedStylesForText(defaultTextStyle(theme), props.textStyle)}>
-            {finalProps.text}
-          </Typography.Body>
-        ) : null}
+      <Container disableGutters style={getCombinedStylesForView(style, customStyle)} sx={sx}>
+        <Container disableGutters style={getInnerContainerStyle()}>
+          {finalProps.text ? (
+            <Typography.Body style={getCombinedStylesForText(defaultTextStyle(theme), props.textStyle)}>
+              {finalProps.text}
+            </Typography.Body>
+          ) : null}
 
-        {finalProps.children ? (
-          <Container disableGutters sx={childrenContainerStyle(theme)}>
-            {finalProps.children}
-          </Container>
-        ) : null}
+          {finalProps.children ? (
+            <Container disableGutters style={childrenContainerStyle(theme)}>
+              {finalProps.children}
+            </Container>
+          ) : null}
+        </Container>
       </Container>
     </Container>
   );

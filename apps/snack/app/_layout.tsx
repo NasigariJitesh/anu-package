@@ -29,10 +29,10 @@ export default function Root() {
           }}
         />
         <Stack.Screen
-          name='components/auto-complete-test'
+          name='components/divider'
           options={{
             headerLargeTitle: true,
-            title: 'Autocomplete Test',
+            title: 'Divider',
           }}
         />
         <Stack.Screen
@@ -40,6 +40,20 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Typography',
+          }}
+        />
+        <Stack.Screen
+          name='components/auto-complete-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Autocomplete Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/divider-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Divider Test',
           }}
         />
         <Stack.Screen
