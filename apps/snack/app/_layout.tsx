@@ -64,12 +64,28 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/container'
+          options={{
+            headerLargeTitle: true,
+            title: 'Container',
+          }}
+        />
+
+        <Stack.Screen
+          name='components/typography'
+          options={{
+            headerLargeTitle: true,
+            title: 'Typography',
+          }}
+        />
+        <Stack.Screen
           name='components/auto-complete-test'
           options={{
             headerLargeTitle: true,
             title: 'Autocomplete Test',
           }}
         />
+
         <Stack.Screen
           name='components/common-button-test'
           options={{
@@ -106,10 +122,10 @@ export default function Root() {
           }}
         />
         <Stack.Screen
-          name='components/typography'
+          name='components/container-test'
           options={{
             headerLargeTitle: true,
-            title: 'Typography',
+            title: 'Container Test',
           }}
         />
         <Stack.Screen

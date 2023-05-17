@@ -19,7 +19,6 @@ export default SegmentedButtonScreen;
 
 const styles = StyleSheet.create({
   SegmentedButton: {
-    height: 150,
     margin: 10,
   },
 });

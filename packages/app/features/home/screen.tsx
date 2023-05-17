@@ -44,6 +44,10 @@ export function HomeScreen() {
       link: '/components/segmented-button',
     },
     {
+      title: 'Container',
+      link: '/components/container',
+    },
+    {
       title: 'Typography',
       link: '/components/typography',
     },
@@ -73,6 +77,10 @@ export function HomeScreen() {
     {
       title: 'Segmented Button',
       link: '/components/segmented-button-test',
+    },
+    {
+      title: 'Container',
+      link: '/components/container-test',
     },
     {
       title: 'Typography',
