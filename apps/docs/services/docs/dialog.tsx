@@ -116,9 +116,9 @@ const Example3 = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor
             sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
           </Typography.Body>
-          <Divider light color={theme.colors?.$onSurfaceVariant as string} />
+          <Divider  color={theme.colors?.$onSurfaceVariant as string} />
           <FlatList data={data} keyExtractor={(item) => item.label} renderItem={RenderItem} style={{ width: '100%' }} />
-          <Divider light color={theme.colors?.$onSurfaceVariant as string} />
+          <Divider  color={theme.colors?.$onSurfaceVariant as string} />
         </DialogContent>
         <DialogActions justify='flex-end'>
           <Button.Text title='Action 1' />
@@ -176,7 +176,7 @@ const Example4 = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor
             sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
           </Typography.Body>
-          <Divider light color={theme.colors?.$onSurfaceVariant as string} />
+          <Divider  color={theme.colors?.$onSurfaceVariant as string} />
           <FlatList
             data={data}
             keyExtractor={(item) => item.label}
@@ -184,7 +184,7 @@ const Example4 = () => {
             style={{ width: '100%', maxHeight: 220 }}
             showsVerticalScrollIndicator={false}
           />
-          <Divider light color={theme.colors?.$onSurfaceVariant as string} style={{ marginVertical: 0 }} />
+          <Divider  color={theme.colors?.$onSurfaceVariant as string} style={{ marginVertical: 0 }} />
         </DialogContent>
         <DialogActions justify='flex-end'>
           <Button.Text title='Action 1' />

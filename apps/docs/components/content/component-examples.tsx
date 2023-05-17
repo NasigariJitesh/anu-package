@@ -140,7 +140,7 @@ const RenderExample = (example: Example, index: number) => {
           </ScrollView>
         </Container>
       ) : null}
-      {/* <Divider variant='full-width' light style={styles.divider} /> */}
+      {/* <Divider variant='full-width'  style={styles.divider} /> */}
     </Container>
   );
 };
