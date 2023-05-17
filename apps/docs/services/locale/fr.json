@@ -481,11 +481,11 @@
   "dividerDocumentation:property-style-description": "Les styles pour le composant de division.",
   "dividerDocumentation:property-orientation-description": "Si le diviseur est vertical ou horizontal.",
   "dividerDocumentation:property-thickness-description": "L’épaisseur ou le poids de la ligne de division.",
-  "dividerDocumentation:property-light-description": "Si vrai, le diviseur est affiché dans une teinte plus claire de la couleur donnée dans le style.",
   "dividerDocumentation:property-text-description": "Le texte qui doit être affiché sur le diviseur.",
   "dividerDocumentation:property-textStyle-description": "Les styles pour le texte sur le diviseur.",
   "dividerDocumentation:property-align-description": "L’alignement du texte / des enfants sur le diviseur.",
   "dividerDocumentation:property-children-description": "Le composant qui doit être affiché sur le diviseur.",
+  "dividerDocumentation:property-color-description": "La couleur du séparateur.",
 
   "fileUploadDocumentation:mainHeading": "Téléchargement de fichier",
   "fileUploadDocumentation:mainDescription": "Le téléchargement de fichiers permet aux utilisateurs de sélectionner et de télécharger des fichiers depuis leur appareil vers un serveur distant, généralement via un bouton ou un lien intitulé «Télécharger» ou «Choisir un fichier».",

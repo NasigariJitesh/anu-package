@@ -80,7 +80,12 @@ export const dividerDocumentation: ContentValues = {
             <Typography.Body>Item 4</Typography.Body>
             <Divider variant='right-inset' orientation='horizontal' />
 
-            <Container disableGutters align='center' flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
+            <Container
+              disableGutters
+              align='center'
+              flexDirection='row'
+              sx={{ ...flexStyle, marginTop: 30, height: 100 } as never}
+            >
               <Typography.Body style={style}>Item 1</Typography.Body>
               <Divider variant='full-height' orientation='vertical' />
               <Typography.Body style={style}>Item 2</Typography.Body>
@@ -121,10 +126,8 @@ export const dividerDocumentation: ContentValues = {
             <Typography.Body>Item 1</Typography.Body>
             <Divider pattern='line' />
             <Typography.Body>Item 2</Typography.Body>
-            <Divider pattern='double-line' />
-            <Typography.Body>Item 3</Typography.Body>
             <Divider pattern='dashed' />
-            <Typography.Body>Item 4</Typography.Body>
+            <Typography.Body>Item 3</Typography.Body>
             <Divider pattern='dotted' />
           </DividerExampleWrapper>
         </Container>
@@ -201,7 +204,7 @@ export const dividerDocumentation: ContentValues = {
     },
     {
       name: 'pattern',
-      type: "'line' | 'double-line' | 'dotted' | 'dashed'",
+      type: "'line'  | 'dotted' | 'dashed'",
       description: 'dividerDocumentation:property-pattern-description',
       defaultValue: "'line'",
       optional: true,
@@ -214,12 +217,12 @@ export const dividerDocumentation: ContentValues = {
       optional: true,
     },
     {
-      name: 'light',
-      type: 'boolean',
-      description: 'dividerDocumentation:property-light-description',
-      defaultValue: 'true',
+      name: 'color',
+      type: 'string',
+      description: 'dividerDocumentation:property-color-description',
       optional: true,
     },
+
     {
       name: 'text',
       type: 'string',
@@ -241,7 +244,7 @@ export const dividerDocumentation: ContentValues = {
     },
     {
       name: 'style',
-      type: 'Sx',
+      type: 'StyleProp<TextStyle>',
       description: 'dividerDocumentation:property-style-description',
       optional: true,
     },

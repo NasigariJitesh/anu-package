@@ -48,6 +48,10 @@ export function HomeScreen() {
       link: '/components/container',
     },
     {
+      title: 'Divider',
+      link: '/components/divider',
+    },
+    {
       title: 'Typography',
       link: '/components/typography',
     },
@@ -81,6 +85,10 @@ export function HomeScreen() {
     {
       title: 'Container',
       link: '/components/container-test',
+    },
+    {
+      title: 'Divider',
+      link: '/components/divider-test',
     },
     {
       title: 'Typography',
@@ -120,7 +128,7 @@ export function HomeScreen() {
 
   return (
     <Container disableGutters style={styles.container}>
-      <Tabs type='secondary' style={styles.tab}>
+      <Tabs type='primary' style={styles.tab}>
         <Tab name='Test' style={styles.tab}>
           <FlatList data={tests} renderItem={RenderItem} style={styles.flatList} />
         </Tab>

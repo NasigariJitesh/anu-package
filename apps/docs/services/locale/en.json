@@ -503,7 +503,7 @@
   "dividerDocumentation:property-style-description": "The styles for the divider component.",
   "dividerDocumentation:property-orientation-description": "Whether the divider is vertical or horizontal.",
   "dividerDocumentation:property-thickness-description": "The thickness or weight of the divider line.",
-  "dividerDocumentation:property-light-description": "If true, the divider is displayed in a lighter shade of the color given in style.",
+  "dividerDocumentation:property-color-description": "The color of the divider.",
   "dividerDocumentation:property-text-description": "The text that is to be displayed on the divider.",
   "dividerDocumentation:property-textStyle-description": "The styles for the text on the divider.",
   "dividerDocumentation:property-align-description": "The alignment of text/children on the divider.",

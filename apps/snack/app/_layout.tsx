@@ -70,7 +70,13 @@ export default function Root() {
             title: 'Container',
           }}
         />
-
+        <Stack.Screen
+          name='components/divider'
+          options={{
+            headerLargeTitle: true,
+            title: 'Divider',
+          }}
+        />
         <Stack.Screen
           name='components/typography'
           options={{
@@ -126,6 +132,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Container Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/divider-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Divider Test',
           }}
         />
         <Stack.Screen
