@@ -29,6 +29,48 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/common-button'
+          options={{
+            headerLargeTitle: true,
+            title: 'Common Button',
+          }}
+        />
+        <Stack.Screen
+          name='components/icon-button'
+          options={{
+            headerLargeTitle: true,
+            title: 'Icon Button',
+          }}
+        />
+        <Stack.Screen
+          name='components/fab'
+          options={{
+            headerLargeTitle: true,
+            title: 'Floating Action Button',
+          }}
+        />
+        <Stack.Screen
+          name='components/extended-fab'
+          options={{
+            headerLargeTitle: true,
+            title: 'Extended Floating Action Button',
+          }}
+        />
+        <Stack.Screen
+          name='components/segmented-button'
+          options={{
+            headerLargeTitle: true,
+            title: 'Segmented Button',
+          }}
+        />
+        <Stack.Screen
+          name='components/container'
+          options={{
+            headerLargeTitle: true,
+            title: 'Container',
+          }}
+        />
+        <Stack.Screen
           name='components/divider'
           options={{
             headerLargeTitle: true,
@@ -47,6 +89,49 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Autocomplete Test',
+          }}
+        />
+
+        <Stack.Screen
+          name='components/common-button-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Common Button Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/icon-button-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Icon Button Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/fab-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Floating Action Button Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/extended-fab-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Extended Floating Action Button Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/segmented-button-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Segmented Button Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/container-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Container Test',
           }}
         />
         <Stack.Screen

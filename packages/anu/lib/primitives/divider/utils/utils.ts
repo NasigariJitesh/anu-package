@@ -93,9 +93,10 @@ const getDividerCommonStyles = (props: Partial<DividerProps>, theme: DripsyFinal
     overflow: 'visible',
     alignItems: 'center' as const,
     justifyContent: getAlignment(align),
+    position: 'relative',
   };
 
-  const containerStyle: StyleProp<ViewStyle> = { overflow: 'visible', position: 'relative' };
+  const containerStyle: StyleProp<ViewStyle> = { overflow: 'visible' };
 
   switch (orientation) {
     case 'vertical': {

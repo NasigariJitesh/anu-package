@@ -182,9 +182,9 @@ export const fileUploadDocumentation: ContentValues = {
           <Example5 />
         </Container>
       ),
-      code: `<FileUpload category='common' type='filled' title='Choose a file' variant='image' previewType='list' multiple />
+      code: `<FileUpload category='common' variant='filled' title='Choose a file' uploadVariant='image' previewType='list' multiple />
       
-<FileUpload category='common' type='filled' title='Choose a file' variant='image' previewType='carousel' multiple />`,
+<FileUpload category='common' variant='filled' title='Choose a file' uploadVariant='image' previewType='carousel' multiple />`,
     },
     {
       name: 'fileUploadDocumentation:example6-name',
@@ -194,15 +194,15 @@ export const fileUploadDocumentation: ContentValues = {
           <Example6 />
         </Container>
       ),
-      code: "<FileUpload category='common' type='filled' title='Choose a file' variant='image' previewType='list' multiple sortable/>",
+      code: "<FileUpload category='common' type='filled' title='Choose a file' uploadVariant='image' previewType='list' multiple sortable/>",
     },
   ],
   properties: [
     {
-      name: 'variant',
+      name: 'uploadVariant',
       optional: true,
       type: "'image'|'file'",
-      description: 'fileUploadDocumentation:property-variant-description',
+      description: 'fileUploadDocumentation:property-uploadVariant-description',
       defaultValue: "'image'",
     },
     {

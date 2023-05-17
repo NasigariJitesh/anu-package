@@ -20,12 +20,12 @@ import { defaultProps } from './default';
 const handleFileUpload = async (props: FileDropZoneProps, updateFiles: { (files: File[], uris: string[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
-    type: getFileTypes(props.fileType, props.variant),
+    type: getFileTypes(props.fileType, props.uploadVariant),
   });
   if (result.type === 'success' && result.uri && result.name) {
     const file = new File([result.uri], result.name, { type: result.mimeType });
 
-    if (props.variant === 'image' && props.optimization) {
+    if (props.uploadVariant === 'image' && props.optimization) {
       const compressedImage = await compressFile(file, props.optimizationConfig);
       const image = convertToFile(compressedImage, file.name);
       updateFiles([image], [result.uri]);
@@ -141,8 +141,8 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
         uriData={[...fileUris]}
         onSort={onSortHandler}
         deleteData={deleteFile}
-        variant={finalProps.variant}
-        previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
+        variant={finalProps.uploadVariant}
+        previewType={finalProps.uploadVariant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
         listWidth={finalProps.listWidth}
         listItemStyle={finalProps.listItemStyle}

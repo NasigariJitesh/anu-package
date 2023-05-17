@@ -20,7 +20,7 @@ const PasswordInput = (props: PasswordInputProps) => {
         <IconButton
           disabled={finalProps.disabled}
           icon={{ name: showPassword ? 'visibility-off' : 'visibility', props: { style: iconStyle } }}
-          type='standard'
+          variant='standard'
           onPress={() => toggleShowPassword((previous) => !previous)}
         />
       ) : null}

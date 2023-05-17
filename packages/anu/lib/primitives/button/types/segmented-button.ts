@@ -36,9 +36,15 @@ export interface SegmentedButtonProps extends RNButtonProps {
   /**
    * The styles for the label of the button
    */
-  titleStyle?: StyleProp<TextStyle>;
+  labelStyle?: StyleProp<TextStyle>;
   isFirst?: boolean;
   isLast?: boolean;
+
+  dataSets?: {
+    containerDataSet?: Record<string, any>;
+    labelDataSet?: Record<string, any>;
+    iconDataSet?: Record<string, any>;
+  };
 }
 
 /**

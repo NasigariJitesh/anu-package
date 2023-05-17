@@ -147,7 +147,7 @@ const Example3 = () => {
         }}
         component={
           <IconButton
-            type='filled'
+            variant='filled'
             icon={{ name: 'settings' }}
             onPress={() => {
               setOpen(true);

@@ -8,7 +8,7 @@
  */
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-export type MaterialIconProps = React.ComponentProps<typeof MaterialIcons>;
+export type MaterialIconProps = React.ComponentProps<typeof MaterialIcons> & { dataSet?: Record<string, any> };
 
 export type IconProps = MaterialIconProps;
 

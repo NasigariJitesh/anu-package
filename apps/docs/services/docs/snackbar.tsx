@@ -28,7 +28,7 @@ const SnackbarExample = (props: Partial<SnackbarProps> & { title: string }) => {
           ...snackProps,
           content: snackProps.content ?? '',
           ...(snackProps.numberOfLines === 1 && snackProps.icon
-            ? { icon: { ...snackProps.icon, type: 'standard', onPress: () => close() } }
+            ? { icon: { ...snackProps.icon, variant: 'standard', onPress: () => close() } }
             : null),
         })
       }

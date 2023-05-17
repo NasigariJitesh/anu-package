@@ -39,7 +39,7 @@ const RegularListItem = (props: ListItemProps) => {
         </Typography.Body>
         <IconButton
           icon={{ name: 'delete-outline', props: { size: 16, style: styles.deleteIcon } }}
-          type='standard'
+          variant='standard'
           onPress={() => {
             deleteData(id);
           }}
@@ -86,7 +86,7 @@ const PreviewListItem = (props: ListItemProps) => {
         </Typography.Body>
         <IconButton
           icon={{ name: 'delete-outline', props: { size: 16, style: styles.deleteIcon } }}
-          type='standard'
+          variant='standard'
           onPress={() => {
             deleteData(id);
           }}
@@ -128,7 +128,7 @@ const CarouselListItem = (props: ListItemProps) => {
 
         <IconButton
           icon={{ name: 'delete-outline', props: { size: 16, style: styles.carouselDeleteIcon } }}
-          type='standard'
+          variant='standard'
           style={styles.carouselDeleteButton}
           onPress={() => {
             deleteData(id);
