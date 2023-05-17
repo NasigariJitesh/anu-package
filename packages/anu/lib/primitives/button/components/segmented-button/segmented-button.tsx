@@ -50,8 +50,8 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
 
   const RenderSelected = () => {
     const { icon, dataSets } = finalProps;
-    let { size } = iconStyles;
-    const { size: iconSize, ...otherIconStyles } = iconStyles;
+    const { fontSize, ...otherIconStyles } = iconStyles;
+    let size = fontSize ;
 
     if (icon?.props) size = icon?.props.size;
 
@@ -62,7 +62,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
           size={size}
           name={icon.name as never}
           {...icon.props}
-          style={[otherIconStyles, icon.props?.style]}
+          style={[iconStyles, icon.props?.style]}
           dataSet={dataSets?.iconDataSet}
         />
       ) : (
