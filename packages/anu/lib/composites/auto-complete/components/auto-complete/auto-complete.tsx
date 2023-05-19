@@ -2,9 +2,10 @@
 /* eslint-disable react/display-name */
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { Container, FlatList } from 'anu/lib/primitives';
+import { Container } from 'anu/lib/primitives';
 import { debounce as lodashDebounce } from 'lodash';
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react';
+import { FlatList } from 'react-native-gesture-handler';
 
 import { AutoCompleteProps, AutoCompleteReferenceProps, Options } from '../../types';
 import { getAutoCompleteStyles } from '../../utils';
@@ -65,7 +66,11 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
     displayResults();
   };
 
-  const { defaultTextFieldContainerStyle, defaultFlatListStyle } = getAutoCompleteStyles(theme, dimension);
+  const { defaultTextFieldContainerStyle, defaultFlatListStyle, defaultFlatListContainerStyle } = getAutoCompleteStyles(
+    theme,
+    dimension,
+    props.style,
+  );
 
   return (
     <Container disableGutters>
@@ -96,7 +101,7 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
         />
       </Container>
       {!finalProps.disabled && (finalProps.showResults ?? isOpen) ? (
-        <Container disableGutters>
+        <Container disableGutters style={defaultFlatListContainerStyle}>
           <FlatList
             keyExtractor={(item: Options) => item.id}
             {...finalProps.flatListProps}

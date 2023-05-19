@@ -63,12 +63,7 @@ export const tabsDocumentation: ContentValues = {
       type: 'IconType | ReactElement',
       optional: true,
     },
-    {
-      name: 'contentStyle',
-      description: 'tabsDocumentation:property-contentStyle-description',
-      type: 'StyleProp<ViewStyle>',
-      optional: true,
-    },
+
     {
       name: 'tabHeaderStyle',
       description: 'tabsDocumentation:property-tabHeaderStyle-description',

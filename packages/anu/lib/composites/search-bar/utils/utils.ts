@@ -106,7 +106,7 @@ export const getSearchBarStyle = (
     defaultSearchBarStyle = type === 'full-screen' ? activeFullScreenSearchBarStyle : activeDockedSearchBarStyle;
     defaultFlatListStyle =
       type === 'full-screen'
-        ? { ...flatListStyle, height: height - 72, maxHeight: height }
+        ? { ...flatListStyle, minHeight: height - 72, maxHeight: height - 72 }
         : { ...flatListStyle, borderBottomLeftRadius: 28, borderBottomRightRadius: 28 };
   } else {
     defaultSearchBarStyle = searchBarStyle;

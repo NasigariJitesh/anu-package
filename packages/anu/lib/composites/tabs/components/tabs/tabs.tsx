@@ -16,7 +16,6 @@ const Tabs = (props: TabsProps) => {
     active: propsActive,
     onChange,
     children,
-    contentStyle,
     tabHeaderStyle,
     activeTabHeaderStyle,
     type,
@@ -50,12 +49,7 @@ const Tabs = (props: TabsProps) => {
       />
       <Divider thickness={1} color={theme.colors.$surfaceVariant} variant='full-width' style={styles.divider} />
 
-      <Tab
-        {...children[active]!.props}
-        style={getCombinedStylesForView(contentStyle, props.children[active]!.props.style)}
-      >
-        {children[active]?.props.children}
-      </Tab>
+      <Tab {...children[active]!.props}>{children[active]?.props.children}</Tab>
     </Container>
   );
 };

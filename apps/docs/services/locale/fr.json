@@ -715,7 +715,6 @@
   "tabsDocumentation:property-tab-children-description": "Les composants à afficher dans l'onglet.",
   "tabsDocumentation:property-name-description": "Le nom de l'onglet.",
   "tabsDocumentation:property-icon-description": "L'icône de l'onglet.",
-  "tabsDocumentation:property-contentStyle-description": "Les styles pour le conteneur de contenu d'onglet.",
   "tabsDocumentation:property-tabHeaderStyle-description": "Les styles pour l'en-tête d'onglet.",
   "tabsDocumentation:property-activeTabHeaderStyle-description": "Les styles pour l'en-tête d'onglet de l'onglet actif.",
 

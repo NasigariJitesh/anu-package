@@ -27,6 +27,18 @@ const data = [
     id: 'item 6',
     value: 'Item 6',
   },
+  {
+    id: 'item 7',
+    value: 'Item 7',
+  },
+  {
+    id: 'item 8',
+    value: 'Item 8',
+  },
+  {
+    id: 'item 10',
+    value: 'Item 10',
+  },
 ];
 
 const Item = ({ item, onPress }: { item: Options; onPress: () => void }) => {

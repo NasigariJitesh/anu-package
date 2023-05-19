@@ -1,5 +1,6 @@
 import { DripsyFinalTheme } from 'dripsy';
 
+import { TextFieldContainerStyle } from '../../../primitives';
 import { Options } from '../types';
 
 /**
@@ -9,22 +10,25 @@ import { Options } from '../types';
  * @param dimensions
  * @param dimensions.width
  * @param dimensions.height
+ * @param style
  * @returns styles for the autocomplete component
  */
-export const getAutoCompleteStyles = (theme: DripsyFinalTheme, dimensions: { width: number; height: number }) => {
+export const getAutoCompleteStyles = (
+  theme: DripsyFinalTheme,
+  dimensions: { width: number; height: number },
+  style?: TextFieldContainerStyle,
+) => {
   const defaultTextFieldContainerStyle = {
     width: '100%',
     position: 'relative',
   } as const;
 
   const defaultFlatListContainerStyle = {
-    width: dimensions.width,
     position: 'absolute' as const,
-    top: dimensions.height,
+    top: (style?.height ?? 56) as never,
   };
   const defaultFlatListStyle = {
     maxHeight: 300,
-    paddingRight: 10,
     backgroundColor: theme.colors.$surface,
     shadowColor: theme.colors?.$shadow,
     shadowOffset: {
@@ -35,6 +39,7 @@ export const getAutoCompleteStyles = (theme: DripsyFinalTheme, dimensions: { wid
     shadowRadius: 3.84,
     elevation: 1,
     flexGrow: 0,
+    width: dimensions.width,
   };
 
   return {

@@ -106,6 +106,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/tabs'
+          options={{
+            headerLargeTitle: true,
+            title: 'Tabs',
+          }}
+        />
+        <Stack.Screen
           name='components/text-field'
           options={{
             headerLargeTitle: true,
@@ -191,10 +198,24 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/phone-input-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Phone Input Test',
+          }}
+        />
+        <Stack.Screen
           name='components/search-test'
           options={{
             headerLargeTitle: true,
             title: 'Search Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/tabs-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Tabs Test',
           }}
         />
         <Stack.Screen

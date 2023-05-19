@@ -20,10 +20,6 @@ export interface TabsProps extends ContainerProps {
    */
   children: Array<ReactElement<TabProps>>;
   /**
-   * The styles for the tab content container
-   */
-  contentStyle?: StyleProp<ViewStyle>;
-  /**
    * The styles for the tab header
    */
   tabHeaderStyle?: StyleProp<ViewStyle>;

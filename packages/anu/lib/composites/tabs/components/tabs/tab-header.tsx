@@ -6,7 +6,10 @@ import { getTabHeaderStyles } from '../../utils';
 import TabHeaderItem from './tab-header-item';
 
 const TabHeader = (props: TabHeaderProps) => {
-  const styles = getTabHeaderStyles();
+  const hasName = props.tabs.some((tab) => tab.props.name !== undefined);
+  const hasIcon = props.tabs.some((tab) => tab.props.icon !== undefined);
+
+  const styles = getTabHeaderStyles(props, hasName, hasIcon);
   return (
     <ScrollView
       horizontal

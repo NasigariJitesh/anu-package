@@ -754,7 +754,6 @@
   "tabsDocumentation:property-tab-children-description": "The components to be displayed in the tab.",
   "tabsDocumentation:property-name-description": "The name of the tab.",
   "tabsDocumentation:property-icon-description": "The icon of the tab.",
-  "tabsDocumentation:property-contentStyle-description": "The styles for the tab content container.",
   "tabsDocumentation:property-tabHeaderStyle-description": "The styles for the tab header.",
   "tabsDocumentation:property-activeTabHeaderStyle-description": "The styles for the tab header of active tab.",
 

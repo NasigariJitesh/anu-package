@@ -23,7 +23,9 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
       borderLeftWidth: 1,
       borderTopWidth: 1,
       borderBottomWidth: 1,
-      borderColor: themeColors.$outline,
+      borderTopColor: themeColors.$outline,
+      borderBottomColor: themeColors.$outline,
+      borderLeftColor: themeColors.$outline,
     },
     on: {
       backgroundColor: themeColors.$secondaryContainer,
@@ -104,14 +106,16 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
 
   const segmentedLabelTheme = {
     on: {
-      flex: 1,
+      flexShrink: 1,
+      textAlign: 'center' as const,
       color: themeColors.$onSecondaryContainer,
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
     off: {
-      flex: 1,
+      flexShrink: 1,
+      textAlign: 'center' as const,
       color: themeColors.$onSurface,
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
@@ -128,6 +132,7 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
     borderRightWidth: 1,
+    borderRightColor: themeColors.$outline,
   };
 
   return {
@@ -206,6 +211,14 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
     ...otherLabelStyles,
   };
 
+  const innerContainerStyles = {
+    flex: 1,
+    flexDirection: 'row',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  } as const;
+
   let disabledStyles = {};
   let disabledIconStyles = {};
   let disabledLabelStyles = {};
@@ -227,6 +240,7 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
     labelStyles: { ...labelStyles, ...disabledLabelStyles, ...(props.labelStyle as Record<string, never>) },
     segmentedFirstButtonTheme: { ...segmentedFirstButtonTheme, ...disabledFirstButtonStyle },
     segmentedLastButtonTheme: { ...segmentedLastButtonTheme, ...disabledLastButtonStyle },
+    innerContainerStyles,
   };
 };
 

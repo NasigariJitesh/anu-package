@@ -68,6 +68,10 @@ export function HomeScreen() {
       link: '/components/search',
     },
     {
+      title: 'Tabs',
+      link: '/components/tabs',
+    },
+    {
       title: 'Text Field',
       link: '/components/text-field',
     },
@@ -119,8 +123,16 @@ export function HomeScreen() {
       link: '/components/password-input-test',
     },
     {
+      title: 'Phone Input',
+      link: '/components/phone-input-test',
+    },
+    {
       title: 'Search',
       link: '/components/search-test',
+    },
+    {
+      title: 'Tabs',
+      link: '/components/tabs-test',
     },
     {
       title: 'Text Field',
@@ -182,6 +194,7 @@ const getStyles = (theme: DripsyFinalTheme) => {
       flex: 1,
     },
     flatList: {
+      flex: 1,
       width: '100%',
     },
     itemContainer: {
@@ -197,7 +210,7 @@ const getStyles = (theme: DripsyFinalTheme) => {
       fontSize: theme.fontSizes[7],
       fontWeight: 'bold',
     },
-    tab: { width: '100%' },
+    tab: { flex: 1, width: '100%' },
   });
 
   return styles;
