@@ -39,16 +39,26 @@ const Item = ({ item, onPress }: { item: Options; onPress: () => void }) => {
 
 const AutoCompleteScreen = () => {
   const [text, setText] = useState('');
+  const [show, toggleShow] = useState(false);
+
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
 
   const ListRenderItem = ({ item }: { item: Options }) => {
-    return <Item onPress={() => setText(item.value as string)} item={item} />;
+    return (
+      <Item
+        onPress={() => {
+          setText(item.value as string);
+          toggleShow(false);
+        }}
+        item={item}
+      />
+    );
   };
 
   return (
     <Container disableGutters sx={{ flex: 1 }}>
-      <Container disableGutters sx={{ margin: 10 }}>
+      <Container disableGutters sx={{ margin: 10, zIndex: 150 }}>
         <AutoComplete
           variant='outlined'
           data={data}
@@ -58,10 +68,12 @@ const AutoCompleteScreen = () => {
           }}
           label='Auto Complete'
           style={{ width: 150 }}
-          autoCompleteContainerStyle={{ width: 150, zIndex: 100 }}
           flatListProps={{ renderItem: ListRenderItem }}
+          showResults={show}
+          toggleShowResults={toggleShow}
         />
-
+      </Container>
+      <Container disableGutters sx={{ margin: 10, zIndex: 100 }}>
         <AutoComplete
           variant='outlined'
           data={data}
@@ -70,11 +82,11 @@ const AutoCompleteScreen = () => {
             setText1(value);
           }}
           label='Auto Complete'
-          autoCompleteContainerStyle={{ height: 150, zIndex: 99 }}
           style={{ height: 45 }}
-          flatListProps={{ renderItem: ListRenderItem }}
+          flatListProps={{ renderItem: ListRenderItem, style: { maxHeight: 100 } }}
         />
-
+      </Container>
+      <Container disableGutters sx={{ margin: 10, zIndex: 50 }}>
         <AutoComplete
           variant='outlined'
           data={data}
@@ -83,7 +95,6 @@ const AutoCompleteScreen = () => {
             setText2(value);
           }}
           label='Auto Complete'
-          autoCompleteContainerStyle={{ margin: 10, zIndex: 10 }}
           flatListProps={{ renderItem: ListRenderItem }}
         />
       </Container>

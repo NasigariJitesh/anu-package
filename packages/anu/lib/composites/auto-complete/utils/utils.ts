@@ -6,23 +6,25 @@ import { Options } from '../types';
  * to generate styles for the autocomplete
  *
  * @param theme - the theme of the application
+ * @param dimensions
+ * @param dimensions.width
+ * @param dimensions.height
  * @returns styles for the autocomplete component
  */
-export const getAutoCompleteStyles = (theme: DripsyFinalTheme) => {
-  const defaultAutoCompleteContainerStyle = {
-    alignItems: 'center',
-    width: 264,
-    position: 'relative' as const,
-  } as const;
-
+export const getAutoCompleteStyles = (theme: DripsyFinalTheme, dimensions: { width: number; height: number }) => {
   const defaultTextFieldContainerStyle = {
     width: '100%',
+    position: 'relative',
   } as const;
 
-  const defaultFlatListStyle = {
-    width: '100%',
+  const defaultFlatListContainerStyle = {
+    width: dimensions.width,
     position: 'absolute' as const,
+    top: dimensions.height,
+  };
+  const defaultFlatListStyle = {
     maxHeight: 300,
+    paddingRight: 10,
     backgroundColor: theme.colors.$surface,
     shadowColor: theme.colors?.$shadow,
     shadowOffset: {
@@ -36,9 +38,9 @@ export const getAutoCompleteStyles = (theme: DripsyFinalTheme) => {
   };
 
   return {
-    defaultAutoCompleteContainerStyle,
     defaultFlatListStyle,
     defaultTextFieldContainerStyle,
+    defaultFlatListContainerStyle,
   };
 };
 

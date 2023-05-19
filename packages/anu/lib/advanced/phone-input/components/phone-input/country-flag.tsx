@@ -6,7 +6,15 @@ import { Platform } from 'react-native';
 import { CountryCodeObject } from '../../types';
 import { getDefaultStyles } from '../../utils';
 
-const CountryFlag = ({ currentCountry, disabled }: { currentCountry?: CountryCodeObject; disabled?: boolean }) => {
+const CountryFlag = ({
+  value,
+  currentCountry,
+  disabled,
+}: {
+  value: string;
+  currentCountry?: CountryCodeObject;
+  disabled?: boolean;
+}) => {
   const [flagLoadingError, setFlagLoadingError] = useState(false);
 
   const { defaultSelectedEmojiStyle, defaultSelectedFlagStyle } = getDefaultStyles();
@@ -14,7 +22,8 @@ const CountryFlag = ({ currentCountry, disabled }: { currentCountry?: CountryCod
 
   const iconStyle = { color: disabled ? 'inherit' : theme.colors.$onSurfaceVariant };
 
-  if (currentCountry === undefined) return <Icon name='language' size={25} style={iconStyle} />;
+  if (currentCountry === undefined || !value.includes(currentCountry.countryCode))
+    return <Icon name='language' size={25} style={iconStyle} />;
 
   return !flagLoadingError && (Platform.OS === 'web' || Platform.OS === 'windows') ? (
     <Image

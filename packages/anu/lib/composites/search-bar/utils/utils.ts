@@ -1,5 +1,5 @@
 import { DripsyFinalTheme } from 'dripsy';
-import { StyleSheet } from 'react-native';
+// import { StyleSheet } from 'react-native';
 
 /**
  * To generate the styles for the search bar component
@@ -33,7 +33,7 @@ export const getSearchBarStyle = (
     width: '100%',
   };
 
-  const resultsContainerStyle = {
+  const flatListStyle = {
     shadowOffset: {
       width: 0,
       height: 4,
@@ -43,8 +43,6 @@ export const getSearchBarStyle = (
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 1,
-    width: '100%',
-    top: 56,
     zIndex: 1000,
   };
 
@@ -61,7 +59,7 @@ export const getSearchBarStyle = (
     elevation: 0,
     borderBottomWidth: 1,
     borderColor: theme.colors.$outline,
-    width: '100%',
+    width: width,
     '@hover': {
       borderColor: theme.colors.$outline,
     },
@@ -99,48 +97,24 @@ export const getSearchBarStyle = (
       borderColor: theme.colors.$outline,
     },
   };
-  const containerStyle = { width: '100%' };
 
-  let activeSearchBarContainerStyle;
   let defaultSearchBarStyle;
-  let defaultResultsContainerStyle;
-  let defaultContainerStyle;
+
   let defaultFlatListStyle;
 
   if (active) {
     defaultSearchBarStyle = type === 'full-screen' ? activeFullScreenSearchBarStyle : activeDockedSearchBarStyle;
-    defaultResultsContainerStyle =
-      type === 'full-screen'
-        ? { ...resultsContainerStyle, top: 72, height: '100%' }
-        : { ...resultsContainerStyle, borderBottomLeftRadius: 28, borderBottomRightRadius: 28 };
-    defaultContainerStyle =
-      type === 'full-screen' ? { ...containerStyle, ...StyleSheet.absoluteFillObject, zIndex: 1000 } : containerStyle;
-    activeSearchBarContainerStyle =
-      type === 'full-screen'
-        ? {
-            ...StyleSheet.absoluteFillObject,
-            height,
-            width,
-            zIndex: 1000,
-          }
-        : { zIndex: 1000 };
     defaultFlatListStyle =
       type === 'full-screen'
-        ? { maxHeight: '100%', width: '100%' }
-        : { borderBottomLeftRadius: 28, borderBottomRightRadius: 28 };
+        ? { ...flatListStyle, height: height - 72, maxHeight: height }
+        : { ...flatListStyle, borderBottomLeftRadius: 28, borderBottomRightRadius: 28 };
   } else {
     defaultSearchBarStyle = searchBarStyle;
-    defaultResultsContainerStyle = resultsContainerStyle;
-    defaultContainerStyle = containerStyle;
-    activeSearchBarContainerStyle = { zIndex: 1000 };
-    defaultFlatListStyle = {};
+    defaultFlatListStyle = flatListStyle;
   }
 
   return {
     defaultSearchBarStyle,
-    defaultResultsContainerStyle,
-    activeSearchBarContainerStyle,
-    defaultContainerStyle,
     defaultFlatListStyle,
   };
 };

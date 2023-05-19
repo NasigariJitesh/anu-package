@@ -19,13 +19,13 @@ const Divider = (props: DividerProps) => {
 
   const finalProps = { ...defaultProps, ...props };
   //@ts-expect-error
-  const { sx, style, containerStyle } = getDividerStyle(finalProps, theme);
+  const { style, containerStyle } = getDividerStyle(finalProps, theme);
 
   const { height, width, ...customStyle } = StyleSheet.flatten(finalProps.style ?? {});
 
   return (
     <Container disableGutters style={containerStyle}>
-      <Container disableGutters style={getCombinedStylesForView(style, customStyle)} sx={sx}>
+      <Container disableGutters style={getCombinedStylesForView(style, customStyle)} >
         <Container disableGutters style={getInnerContainerStyle()}>
           {finalProps.text ? (
             <Typography.Body style={getCombinedStylesForText(defaultTextStyle(theme), props.textStyle)}>

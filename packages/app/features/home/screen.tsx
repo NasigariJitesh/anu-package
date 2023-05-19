@@ -52,6 +52,26 @@ export function HomeScreen() {
       link: '/components/divider',
     },
     {
+      title: 'Menu',
+      link: '/components/menu',
+    },
+    {
+      title: 'Password Input',
+      link: '/components/password-input',
+    },
+    {
+      title: 'Phone Input',
+      link: '/components/phone-input',
+    },
+    {
+      title: 'Search',
+      link: '/components/search',
+    },
+    {
+      title: 'Text Field',
+      link: '/components/text-field',
+    },
+    {
       title: 'Typography',
       link: '/components/typography',
     },
@@ -89,6 +109,22 @@ export function HomeScreen() {
     {
       title: 'Divider',
       link: '/components/divider-test',
+    },
+    {
+      title: 'Menu',
+      link: '/components/menu-test',
+    },
+    {
+      title: 'Password Input',
+      link: '/components/password-input-test',
+    },
+    {
+      title: 'Search',
+      link: '/components/search-test',
+    },
+    {
+      title: 'Text Field',
+      link: '/components/text-field-test',
     },
     {
       title: 'Typography',
@@ -129,11 +165,11 @@ export function HomeScreen() {
   return (
     <Container disableGutters style={styles.container}>
       <Tabs type='primary' style={styles.tab}>
-        <Tab name='Test' style={styles.tab}>
-          <FlatList data={tests} renderItem={RenderItem} style={styles.flatList} />
-        </Tab>
         <Tab name='Snack' style={styles.tab}>
           <FlatList data={components} renderItem={RenderItem} style={styles.flatList} />
+        </Tab>
+        <Tab name='Test' style={styles.tab}>
+          <FlatList data={tests} renderItem={RenderItem} style={styles.flatList} />
         </Tab>
       </Tabs>
     </Container>

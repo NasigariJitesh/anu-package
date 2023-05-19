@@ -78,6 +78,41 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/menu'
+          options={{
+            headerLargeTitle: true,
+            title: 'Menu',
+          }}
+        />
+        <Stack.Screen
+          name='components/password-input'
+          options={{
+            headerLargeTitle: true,
+            title: 'Password Input',
+          }}
+        />
+        <Stack.Screen
+          name='components/phone-input'
+          options={{
+            headerLargeTitle: true,
+            title: 'Phone Input',
+          }}
+        />
+        <Stack.Screen
+          name='components/search'
+          options={{
+            headerLargeTitle: true,
+            title: 'Search',
+          }}
+        />
+        <Stack.Screen
+          name='components/text-field'
+          options={{
+            headerLargeTitle: true,
+            title: 'Text Field',
+          }}
+        />
+        <Stack.Screen
           name='components/typography'
           options={{
             headerLargeTitle: true,
@@ -139,6 +174,34 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Divider Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/menu-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Menu Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/password-input-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Password Input Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/search-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Search Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/text-field-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Text Field Test',
           }}
         />
         <Stack.Screen

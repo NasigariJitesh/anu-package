@@ -1,9 +1,9 @@
 /* eslint-disable react/display-name */
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { AutoComplete, AutoCompleteReferenceProps, IconButton, Options } from 'anu/lib';
-import React, { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
-import { NativeSyntheticEvent, TextInputFocusEventData, useWindowDimensions } from 'react-native';
+import { AutoComplete, AutoCompleteReferenceProps, Container, IconButton, Options } from 'anu/lib';
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { Modal, StyleSheet, useWindowDimensions } from 'react-native';
 
 import { SearchBarProps, SearchBarReferenceProps } from '../../types';
 import { getSearchBarStyle } from '../../utils';
@@ -18,6 +18,10 @@ const Search = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, refer
 
   const [results, setResults] = useState<Options[]>([]);
   const autoCompleteReference = useRef<AutoCompleteReferenceProps | null>(null);
+
+  useEffect(() => {
+    if (props.value.length > 0) setActive(true);
+  }, [props]);
 
   const focus = useCallback(() => {
     autoCompleteReference.current?.focus();
@@ -37,14 +41,14 @@ const Search = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, refer
     type,
     data,
     value,
-    searchBarContainerStyle,
-    searchBarStyle,
-    containerStyle,
+
+    style,
+
     onFocus,
     onBlur,
     filterOnChange,
     leadingIcon,
-
+    showResults,
     ...autoCompleteProps
   } = finalProps;
 
@@ -69,43 +73,58 @@ const Search = forwardRef<SearchBarReferenceProps, SearchBarProps>((props, refer
     return matches;
   };
 
-  const focusEventHandler = (
-    event: NativeSyntheticEvent<TextInputFocusEventData>,
-    activeValue: boolean,
-    callback?: { (event: NativeSyntheticEvent<TextInputFocusEventData>): void },
-  ) => {
-    setActive(activeValue);
-    if (callback) return callback(event);
+  const { defaultSearchBarStyle, defaultFlatListStyle } = getSearchBarStyle(theme, height, width, active, type);
+
+  const getSearchBar = () => {
+    return (
+      <AutoComplete
+        {...autoCompleteProps}
+        ref={autoCompleteReference}
+        variant='base'
+        data={results}
+        value={value}
+        leadingIcon={getLeadingComponent()}
+        style={{ ...defaultSearchBarStyle, ...style, ...(active && type === 'full-screen' ? { width } : {}) }}
+        hideDropDownButton={true}
+        onFocus={(event) => {
+          setActive(true);
+          if (onFocus) onFocus(event);
+        }}
+        onBlur={(event) => {
+          setActive(false);
+          if (onBlur) onBlur(event);
+        }}
+        filterOnChange={filterOnChangeHandler}
+        disableLabelAnimation={true}
+        error={false}
+        flatListProps={{
+          showsVerticalScrollIndicator: false,
+          ...autoCompleteProps.flatListProps,
+          style: getCombinedStylesForView(defaultFlatListStyle, autoCompleteProps.flatListProps.style),
+        }}
+        showResults={type === 'full-screen' ? active : showResults}
+      />
+    );
   };
 
-  const { defaultSearchBarStyle, activeSearchBarContainerStyle, defaultContainerStyle, defaultFlatListStyle } =
-    getSearchBarStyle(theme, height, width, active, type);
-
-  return (
-    <AutoComplete
-      {...autoCompleteProps}
-      ref={autoCompleteReference}
-      variant='base'
-      data={results}
-      value={value}
-      leadingIcon={getLeadingComponent()}
-      autoCompleteContainerStyle={getCombinedStylesForView(activeSearchBarContainerStyle, searchBarContainerStyle)}
-      containerStyle={getCombinedStylesForView(defaultContainerStyle, containerStyle)}
-      style={{ ...defaultSearchBarStyle, ...searchBarStyle }}
-      hideDropDownButton={true}
-      onFocus={(event) => {
-        focusEventHandler(event, true, onFocus);
+  return active && type === 'full-screen' ? (
+    <Modal
+      presentationStyle='fullScreen'
+      onRequestClose={() => {
+        setActive(false);
+        autoCompleteReference.current?.blur();
       }}
-      filterOnChange={filterOnChangeHandler}
-      disableLabelAnimation={true}
-      error={false}
-      flatListProps={{
-        showsVerticalScrollIndicator: false,
-        ...autoCompleteProps.flatListProps,
-        style: getCombinedStylesForView(defaultFlatListStyle, autoCompleteProps.flatListProps.style),
+      onDismiss={() => {
+        setActive(false);
+        autoCompleteReference.current?.blur();
       }}
-      showResults={value ? value.length > 0 : false}
-    />
+    >
+      <Container disableGutters style={{ ...StyleSheet.absoluteFillObject, height, width }}>
+        {getSearchBar()}
+      </Container>
+    </Modal>
+  ) : (
+    getSearchBar()
   );
 });
 

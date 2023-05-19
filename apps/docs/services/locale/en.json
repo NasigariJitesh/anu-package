@@ -104,7 +104,6 @@
   "autoCompleteDocumentation:property-debounce-description": "If true, uses debouncing technique when filtering.",
   "autoCompleteDocumentation:property-debounceDuration-description": "Time Duration for the debouncing.",
   "autoCompleteDocumentation:property-resultContainerStyle-description": "The styles for the results container.",
-  "autoCompleteDocumentation:property-autoCompleteContainerStyle-description": "The styles for the results container.",
   "autoCompleteDocumentation:external-properties-title": "Text Field Properties",
 
   "avatarDocumentation:mainHeading": "Avatar",
@@ -586,7 +585,7 @@
   "textFieldDocumentation:property-supportingTextStyle-description": "Styles for the supporting text of text field.",
   "textFieldDocumentation:property-errorMessageStyle-description": "Styles for the error messages of text field.",
   "textFieldDocumentation:property-containerStyle-description": "Styles for container of the text field component.",
-  "textFieldDocumentation:property-textInputStyle-description": "Styles for the text input of the text field component.",
+  "textFieldDocumentation:property-textStyle-description": "Styles pour le texte de saisie du composant champ de texte.",
   "textFieldDocumentation:property-style-description": "The styles for the text field component.",
   "textFieldDocumentation:property-pressableProps-description": "The properties of the pressable component of react native (except sx)",
   "textFieldDocumentation:property-sx-description": "The system prop that allows defining system overrides as well as additional CSS styles.",
@@ -619,7 +618,7 @@
   "menuListDocumentation:example1-description": "A default menu list contains items, icons, a divider, and other supporting icons.",
 
   "menuListDocumentation:property-inner-description": "Whether the menu is nested inside another menu.",
-  "menuListDocumentation:property-pos-description": "The co-ordinates of the position of the menu.",
+  "menuListDocumentation:property-positionCoordinates-description": "The co-ordinates of the custom position of the menu ('auto' is not compatible for native and compatible with web only in case of the menu is not positioned below the area that is visible on initial render).",
 
   "menuListDocumentation:external-properties-title": " Container Properties",
 
@@ -714,9 +713,7 @@
   "searchDocumentation:example4-description": "Here, the “No results found” message is typically displayed in a search results view when the search query does not return any results\n\nThis message helps to communicate to the user that their search did not produce any relevant results and encourages them to modify their search terms or try a different search strategy.",
   "searchDocumentation:property-filterOnChange-description": "The function to filter the results based on search key.",
   "searchDocumentation:property-type-description": "The type of view for search results",
-  "searchDocumentation:property-searchBarStyle-description": "The Styles for the search bar input field.",
-  "searchDocumentation:property-searchBarContainerStyle-description": "The Styles for the search bar container.",
-  "searchDocumentation:property-containerStyle-description": "The Styles for the search bar component and results container.",
+  "searchDocumentation:property-style-description": "The Styles for the search bar input field.",
   "searchDocumentation:external-properties-title": "Auto Complete Properties",
 
   "sideSheetDocumentation:mainHeading": "Side Sheet",

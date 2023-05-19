@@ -51,7 +51,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
   const RenderSelected = () => {
     const { icon, dataSets } = finalProps;
     const { fontSize, ...otherIconStyles } = iconStyles;
-    let size = fontSize ;
+    let size = fontSize;
 
     if (icon?.props) size = icon?.props.size;
 
@@ -79,7 +79,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
         style={generateStyles}
         dataSet={finalProps.dataSets?.containerDataSet}
       >
-        <Container flexDirection='row' align='center' justify='center' disableGutters sx={{ height: '100%' }}>
+        <>
           <RenderSelected />
 
           <Typography.Body
@@ -90,7 +90,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
           >
             {finalProps.title}
           </Typography.Body>
-        </Container>
+        </>
       </TouchableRipple>
     </Container>
   );

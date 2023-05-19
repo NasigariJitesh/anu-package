@@ -17,14 +17,15 @@ import {
 
 import { TextFieldProps, TextFieldReferenceProps } from '../../types';
 import {
+  getError,
   getErrorIcon,
   getErrors,
   getErrorStyle,
   getInnerContainerStyle,
   getLeadingContainerStyle,
   getSupportingTextStyle,
-  getTextFieldContainerStyle,
-  getTextFieldStyles,
+  getTextFieldStyle,
+  getTextStyles,
   getTrailingContainerStyle,
   getUnanimatedLabelStyles,
 } from '../../utils';
@@ -58,8 +59,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
 
     const [isTextFieldVisible, toggleTextFieldVisible] = useState(toggleTextFieldVisibility(props));
 
-    const style = getTextFieldStyles(theme, finalProps);
-    const containerStyle = getTextFieldContainerStyle(finalProps, theme);
+    const textStyle = getTextStyles(theme, finalProps);
+    const textFieldStyle = getTextFieldStyle(finalProps, theme);
 
     const leadingIconContainerStyle = getLeadingContainerStyle(finalProps);
     const trailingIconContainerStyle = getTrailingContainerStyle(finalProps);
@@ -73,7 +74,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
         ? ({ paddingTop: variant === 'filled' && props.label && !props.disableLabelAnimation ? 14 : 0 } as const)
         : ({ height: 0 } as const);
 
-    const [height, setHeight] = useState(containerStyle.height as number);
+    const [height, setHeight] = useState(textFieldStyle.height as number);
     const [errors, setErrors] = useState(getErrors(props.errorMessage));
 
     const focus = useCallback(() => {
@@ -107,7 +108,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     }, [props.error, props.errorMessage]);
 
     const generateStyles = (state: PressableStateCallbackType) => {
-      return generateHoverStyles(state, containerStyle, useSx);
+      return generateHoverStyles(state, textFieldStyle, useSx);
     };
 
     const onTextInputFocus = (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
@@ -132,7 +133,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     };
 
     return (
-      <Container dataSet={finalProps.dataSets?.container} disableGutters style={finalProps.containerStyle}>
+      <Container disableGutters>
         <Pressable
           ref={pressableReference}
           accessibilityRole='none'
@@ -140,6 +141,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
           {...finalProps.pressableProps}
           disabled={finalProps.disabled}
           onPress={onTextInputPressedHandler}
+          // @ts-ignore
+          dataSet={finalProps.dataSets?.textFieldDataSet}
         >
           <Container disableGutters flexDirection='row' sx={innerContainerStyle}>
             {/* TODO: Put the icon components in another file */}
@@ -155,7 +158,6 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                     <Typography.Body
                       numberOfLines={1}
                       ellipsizeMode='tail'
-                      dataSet={finalProps.dataSets?.label}
                       style={getCombinedStylesForText(labelTextStyle, finalProps.labelStyle)}
                     >
                       {finalProps.label}
@@ -178,23 +180,23 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               )}
               <TextInput
                 ref={textInputReference}
-                selectionColor={finalProps?.error ? theme.colors.$error : theme.colors.$primary}
+                selectionColor={getError(finalProps.error) ? theme.colors.$error : theme.colors.$primary}
                 {...componentProps}
                 value={value}
                 // @ts-ignore
-                dataSet={finalProps.dataSets?.textInput}
+                dataSet={finalProps.dataSets?.textDataSet}
                 onFocus={onTextInputFocus}
                 onBlur={onTextInputBlur}
-                style={[onFocusStyles, getCombinedStylesForText(style, finalProps.textInputStyle)]}
+                style={[onFocusStyles, getCombinedStylesForText(textStyle, finalProps.textStyle)]}
               />
             </Container>
-            {(!finalProps.noDefaultErrorMessage && finalProps.error) ||
-            finalProps.showClearButton ||
+            {(!finalProps.noDefaultErrorMessage && getError(finalProps.error)) ||
+            !finalProps.hideClearButton ||
             finalProps.trailingIcon ? (
               <Container disableGutters style={trailingIconContainerStyle}>
-                {/* eslint-disable-next-line react-native/no-inline-styles */}
-                <Container disableGutters style={{ minWidth: 40 }}>
-                  {value && finalProps.showClearButton ? (
+                {value && !finalProps.hideClearButton ? (
+                  /* eslint-disable-next-line react-native/no-inline-styles */
+                  <Container disableGutters style={{ minWidth: 40 }}>
                     <IconButton
                       variant='standard'
                       icon={{ name: 'clear', props: { size: 16 } }}
@@ -204,26 +206,29 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                         onTextInputPressedHandler(event);
                       }}
                     />
-                  ) : null}
-                </Container>
-                {finalProps.error && !finalProps.noDefaultErrorMessage ? getErrorIcon(theme) : finalProps.trailingIcon}
+                  </Container>
+                ) : null}
+
+                {getError(finalProps.error) && !finalProps.noDefaultErrorMessage
+                  ? getErrorIcon(theme)
+                  : finalProps.trailingIcon}
               </Container>
             ) : null}
           </Container>
         </Pressable>
-        {finalProps?.supportingText && !finalProps.error ? (
+        {finalProps?.supportingText && !getError(finalProps.error) ? (
           <Typography.Body
-            dataSet={finalProps.dataSets?.supportingText}
+            dataSet={finalProps.dataSets?.supportingTextDataSet}
             style={getCombinedStylesForText(supportingTextStyle, props.supportingTextStyle)}
           >
             {finalProps?.supportingText}
           </Typography.Body>
         ) : null}
-        {finalProps.error &&
+        {getError(finalProps.error) &&
           errors?.map((error, index) => (
             <Typography.Body
               //@ts-ignore
-              dataSet={finalProps.dataSets?.errorMessage}
+              dataSet={finalProps.dataSets?.errorMessageDataSet}
               key={index}
               style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}
             >

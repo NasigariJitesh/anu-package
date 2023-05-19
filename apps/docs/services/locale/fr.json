@@ -98,7 +98,6 @@
   "autoCompleteDocumentation:property-debounce-description": "Si vrai, utilise une technique de décalage lors du filtrage.",
   "autoCompleteDocumentation:property-debounceDuration-description": "Durée de temps pour le décalage.",
   "autoCompleteDocumentation:property-resultContainerStyle-description": "Les styles pour le conteneur des résultats.",
-  "autoCompleteDocumentation:property-autoCompleteContainerStyle-description": "Les styles pour le conteneur des résultats.",
   "autoCompleteDocumentation:external-properties-title": "Propriétés des champs de texte",
 
   "avatarDocumentation:mainHeading": "Avatar",
@@ -563,7 +562,7 @@
   "textFieldDocumentation:property-supportingTextStyle-description": "Styles pour le texte de soutien du champ de texte.",
   "textFieldDocumentation:property-errorMessageStyle-description": "Styles pour les messages d'erreur du champ de texte.",
   "textFieldDocumentation:property-containerStyle-description": "Styles pour le conteneur du composant de champ de texte.",
-  "textFieldDocumentation:property-textInputStyle-description": "Styles pour la saisie de texte du composant de champ de texte.",
+  "textFieldDocumentation:property-textStyle-description": "Styles pour la saisie de texte du composant de champ de texte.",
   "textFieldDocumentation:property-style-description": "Les styles pour le composant de champ de texte.",
   "textFieldDocumentation:property-pressableProps-description": "Les propriétés du composant pressable de react native (sauf sx)",
   "textFieldDocumentation:property-sx-description": "L'accessoire système qui permet de définir les remplacements système ainsi que les styles CSS supplémentaires.",
@@ -592,7 +591,7 @@
   "menuListDocumentation:example1-name": "Défaut",
   "menuListDocumentation:example1-description": "Une liste de menus par défaut contient des éléments, des icônes, un séparateur et d'autres icônes de support.",
   "menuListDocumentation:property-inner-description": "Si le menu est imbriqué dans un autre menu.",
-  "menuListDocumentation:property-pos-description": "Les coordonnées de la position du menu.",
+  "menuListDocumentation:property-positionCoordinates-description": "Les coordonnées de la position personnalisée du menu ('auto' n'est pas compatible avec la version native et n'est compatible avec la version web que si le menu n'est pas positionné en dessous de la zone visible lors du rendu initial).",
   "menuListDocumentation:external-properties-title": "Propriétés du conteneur",
 
   "menuItemDocumentation:mainHeading": "Élément de menu",
@@ -676,9 +675,7 @@
   "searchDocumentation:example4-description": "Ici, le message 'Aucun résultat trouvé' est généralement affiché dans une vue des résultats de recherche lorsque la requête de recherche ne renvoie aucun résultat.\n\nCe message aide à communiquer à l’utilisateur que sa recherche n’a produit aucun résultat pertinent et l’encourage à modifier ses termes de recherche ou à essayer une stratégie de recherche différente.",
   "searchDocumentation:property-filterOnChange-description": "La fonction pour filtrer les résultats en fonction de la clé de recherche.",
   "searchDocumentation:property-type-description": "Le type de vue pour les résultats de recherche",
-  "searchDocumentation:property-searchBarStyle-description": "Les styles pour le champ de saisie de la barre de recherche.",
-  "searchDocumentation:property-searchBarContainerStyle-description": "Les styles pour le conteneur de la barre de recherche.",
-  "searchDocumentation:property-containerStyle-description": "Les styles pour le composant de la barre de recherche et le conteneur des résultats.",
+  "searchDocumentation:property-style-description": "Les styles pour le champ de saisie de la barre de recherche.",
   "searchDocumentation:external-properties-title": "Propriétés Auto Complete",
 
   "sideSheetDocumentation:mainHeading": "Side Sheet",

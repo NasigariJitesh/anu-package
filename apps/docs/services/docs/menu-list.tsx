@@ -35,7 +35,7 @@ const Example1 = () => {
           />
         }
       >
-        <MenuList width={300}>
+        <MenuList width={300} positionCoordinates={{ top: 70, right: 0 }}>
           <MenuItem leadingIcon={{ name: 'dashboard' }}>
             <Typography.Body>Dashboard</Typography.Body>
           </MenuItem>
@@ -61,18 +61,16 @@ export const menuListDocumentation: ContentValues = {
   mainHeading: 'menuListDocumentation:mainHeading',
   properties: [
     {
+      name: 'positionCoordinates',
+      type: " Position coordinates | 'auto'",
+      description: 'menuListDocumentation:property-positionCoordinates-description',
+    },
+    {
       name: 'inner',
       type: 'boolean',
       description: 'menuListDocumentation:property-inner-description',
       optional: true,
       defaultValue: 'false',
-    },
-    {
-      name: 'positionCoordinates',
-      type: " Position coordinates | 'auto'",
-      description: 'menuListDocumentation:property-positionCoordinates-description',
-      optional: true,
-      defaultValue: 'auto',
     },
   ],
   externalProperties: {

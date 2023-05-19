@@ -43,8 +43,9 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
 
   const segmentedButtonStateLayerTheme = {
     common: {
-      justifyContent: 'center',
-      alignItems: 'center',
+      justifyContent: 'center' as const,
+      alignItems: 'center' as const,
+      flexDirection: 'row' as const,
       height: '100%',
       flex: 1,
       paddingHorizontal: 12,
@@ -103,12 +104,14 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
 
   const segmentedLabelTheme = {
     on: {
+      flex: 1,
       color: themeColors.$onSecondaryContainer,
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
     off: {
+      flex: 1,
       color: themeColors.$onSurface,
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),

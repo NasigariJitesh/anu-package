@@ -4,13 +4,13 @@
 import { useTheme } from 'anu/config';
 import { Avatar, Container, FlatListProps, Icon, Options, Search as SearchComponent, Typography } from 'anu/lib';
 import { SearchBarProps } from 'anu/lib/composites/search-bar/types';
-import SearchDark from 'assets/full-screen-search-dark.gif';
-import SearchLight from 'assets/full-screen-search-light.gif';
+// import SearchDark from 'assets/full-screen-search-dark.gif';
+// import SearchLight from 'assets/full-screen-search-light.gif';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { useState } from 'react';
 import { Pressable } from 'react-native';
-import { useMenuContext } from 'screens/common/provider';
+// import { useMenuContext } from 'screens/common/provider';
 
 const margin = {
   margin: 15,
@@ -71,14 +71,15 @@ const Search = (
 
   return (
     <SearchComponent
-      {...props}
       value={text}
       onChangeText={(value: string) => {
         setText(value);
       }}
+      style={{ width: 300 }}
       label='Hinted search Text'
       filterOnChange={(value: string) => data.filter((item) => item.value.toLowerCase().includes(value.toLowerCase()))}
-      flatListProps={{ renderItem: ListRenderItem }}
+      {...props}
+      flatListProps={{ ...props.flatListProps, renderItem: ListRenderItem }}
     />
   );
 };
@@ -98,7 +99,6 @@ const Example1 = () => {
               <Icon name='share' color={theme.colors?.$onSurface as string} style={{ marginRight: 20 }} />
             </Container>
           }
-          containerStyle={{ width: 360 }}
         />
       </Container>
 
@@ -112,7 +112,6 @@ const Example1 = () => {
               <Avatar source={{ uri: 'https://i.pravatar.cc/300' }} variant='circle' />
             </Container>
           }
-          containerStyle={{ width: 360 }}
         />
       </Container>
       <Container disableGutters style={margin}>
@@ -120,7 +119,6 @@ const Example1 = () => {
           data={data}
           leadingIcon={<Icon name='menu' color={theme.colors?.$onSurface as string} />}
           trailingIcon={<Avatar source={{ uri: 'https://i.pravatar.cc/300' }} variant='circle' />}
-          containerStyle={{ width: 360 }}
         />
       </Container>
       <Container disableGutters style={margin}>
@@ -128,7 +126,6 @@ const Example1 = () => {
           data={data}
           leadingIcon={<Icon name='menu' />}
           trailingIcon={<Icon name='search' color={theme.colors?.$onSurface as string} />}
-          containerStyle={{ width: 360 }}
         />
       </Container>
     </Container>
@@ -136,16 +133,16 @@ const Example1 = () => {
 };
 
 const Example2 = () => {
-  const { isDarkTheme } = useMenuContext();
+  // const { isDarkTheme } = useMenuContext();
 
   return (
     <Container disableGutters sx={flexStyle as never}>
-      <Container disableGutters sx={margin as never}>
-        {isDarkTheme ? (
-          <img src={SearchDark.src} style={{ height: 442, width: 225 }} alt='search-full-screen' />
-        ) : (
-          <img src={SearchLight.src} style={{ height: 442, width: 225 }} alt='search-full-screen' />
-        )}
+      <Container disableGutters style={margin}>
+        <Search
+          data={data}
+          leadingIcon={<Icon name='search' style={{ color: 'inherit', width: '100%' }} />}
+          type='full-screen'
+        />
       </Container>
     </Container>
   );
@@ -154,8 +151,12 @@ const Example2 = () => {
 const Example3 = () => {
   return (
     <Container disableGutters sx={flexStyle as never}>
-      <Container disableGutters style={[margin, { height: 160 }]}>
-        <Search data={data} leadingIcon={<Icon name='search' style={{ color: 'inherit' }} />} type='docked' />
+      <Container disableGutters style={margin}>
+        <Search
+          data={data}
+          leadingIcon={<Icon name='search' style={{ color: 'inherit', width: '100%' }} />}
+          type='docked'
+        />
       </Container>
     </Container>
   );
@@ -164,7 +165,7 @@ const Example3 = () => {
 const Example4 = () => {
   return (
     <Container disableGutters sx={flexStyle as never}>
-      <Container disableGutters style={[margin, { height: 160 }]}>
+      <Container disableGutters style={margin}>
         <Search
           data={[]}
           flatListProps={{
@@ -200,21 +201,9 @@ export const searchDocumentation: ContentValues = {
       defaultValue: "'docked'",
     },
     {
-      name: 'searchBarStyle',
+      name: 'style',
       type: 'TextFieldContainerStyle',
-      description: 'searchDocumentation:property-searchBarStyle-description',
-      optional: true,
-    },
-    {
-      name: 'searchBarContainerStyle',
-      description: 'searchDocumentation:property-searchBarContainerStyle-description',
-      type: 'StyleProp<ViewStyle>',
-      optional: true,
-    },
-    {
-      name: 'containerStyle',
-      description: 'searchDocumentation:property-containerStyle-description',
-      type: 'StyleProp<ViewStyle>',
+      description: 'searchDocumentation:property-style-description',
       optional: true,
     },
   ],

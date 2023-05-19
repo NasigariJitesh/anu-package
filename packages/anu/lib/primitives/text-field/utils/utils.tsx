@@ -90,7 +90,7 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
  * @param props
  * @returns style of the dripsy text field
  */
-export const getTextFieldStyles = (theme: DripsyFinalTheme, props?: TextFieldProps) => {
+export const getTextStyles = (theme: DripsyFinalTheme, props?: TextFieldProps) => {
   let common = {
     fontSize: theme.fontSizes[7],
     lineHeight: theme.lineHeights[7],
@@ -108,7 +108,7 @@ export const getTextFieldStyles = (theme: DripsyFinalTheme, props?: TextFieldPro
       ...common,
       // @ts-ignore
       outline: 'none' as never,
-      caretColor: props?.error ? theme.colors.$error : theme.colors.$primary,
+      caretColor: getError(props?.error) ? theme.colors.$error : theme.colors.$primary,
     };
   }
 
@@ -169,7 +169,7 @@ export const getTrailingContainerStyle = (props: TextFieldProps) => {
  * @param dripsyTheme
  * @returns style of the text field container
  */
-export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: DripsyFinalTheme) => {
+export const getTextFieldStyle = (props: TextFieldProps, dripsyTheme: DripsyFinalTheme) => {
   const { style: propStyle, variant, error, disabled } = props;
 
   const theme = getTextFieldTheme(dripsyTheme);
@@ -187,7 +187,7 @@ export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: D
     '@press': { ...style?.['@press'], ...propStyle?.['@press'] },
   };
 
-  if (error) {
+  if (getError(error)) {
     finalStyle =
       variant === 'outlined'
         ? {
@@ -293,4 +293,10 @@ export const getErrorIcon = (theme: DripsyFinalTheme) => {
 
 export const getInnerContainerStyle = () => {
   return { height: '100%', flex: 1 };
+};
+
+export const getError = (error?: boolean | { (): boolean }) => {
+  if (error) {
+    return typeof error == 'function' ? error() : error;
+  } else return false;
 };

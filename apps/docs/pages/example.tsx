@@ -1,10 +1,49 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
-import { Button, Chip, Container, Tab, Tabs, TimePickerModal, Typography } from 'anu/lib';
-import { PasswordInput } from 'anu/lib';
+import {
+  Button,
+  Chip,
+  Container,
+  Icon,
+  Options,
+  Search,
+  Tab,
+  Tabs,
+  TextField,
+  TimePickerModal,
+  TouchableRipple,
+  Typography,
+} from 'anu/lib';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
+import { KeyboardAvoidingView } from 'react-native';
 
+const data = [
+  {
+    id: 'item 1',
+    value: 'Item 1',
+  },
+  {
+    id: 'item 2',
+    value: 'Item 2',
+  },
+  {
+    id: 'item 3',
+    value: 'Item 3',
+  },
+  {
+    id: 'item 4',
+    value: 'Item 4',
+  },
+  {
+    id: 'item 5',
+    value: 'Item 5',
+  },
+  {
+    id: 'item 6',
+    value: 'Item 6',
+  },
+];
 /**
  *
  */
@@ -26,10 +65,47 @@ export default function Example() {
     },
     [setVisible],
   );
+  const [text1, setText1] = useState('');
+
+  const ListRenderItem = ({ item }: { item: Options }) => {
+    return (
+      <TouchableRipple
+        style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}
+        onPress={() => setText(item.value as string)}
+      >
+        <Typography.Body>{item.value as string}</Typography.Body>
+      </TouchableRipple>
+    );
+  };
 
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
-      <PasswordInput error value={text} onChangeText={setText} />
+      {/* <PasswordInput error value={text} onChangeText={setText} /> */}
+
+      <KeyboardAvoidingView>
+        <Search
+          value={text1}
+          onChangeText={(value: string) => {
+            setText1(value);
+          }}
+          label='Hinted search Text'
+          filterOnChange={(value: string) =>
+            data.filter((item) => item.value.toLowerCase().includes(value.toLowerCase()))
+          }
+          flatListProps={{ renderItem: ListRenderItem }}
+          data={data}
+          searchBarStyle={{ width: 260 }}
+          leadingIcon={<Icon name='search' />}
+          type='full-screen'
+        />
+      </KeyboardAvoidingView>
+      <TextField
+        value={text}
+        onChangeText={setText}
+        error={() => {
+          return text === 'error';
+        }}
+      />
 
       <Chip
         value='Action'

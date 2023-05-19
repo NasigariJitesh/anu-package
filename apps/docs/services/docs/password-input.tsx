@@ -4,7 +4,7 @@ import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 import { useState } from 'react';
 
 const style = {
-  width: 280,
+  width: 250,
   margin: 15,
 };
 
@@ -19,7 +19,7 @@ const flexStyle = {
 const PasswordInput = (props: PasswordInputProps) => {
   const [text, setText] = useState(props.value);
 
-  return <PasswordInputComponent {...props} containerStyle={style} value={text} onChangeText={setText} />;
+  return <PasswordInputComponent {...props} style={style} value={text} onChangeText={setText} />;
 };
 
 export const passwordInputDocumentation: ContentValues = {
@@ -50,12 +50,12 @@ export const passwordInputDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='' variant='filled' showClearButton={false} />
-            <PasswordInput value='password' variant='filled' showClearButton={false} />
+            <PasswordInput value='' variant='filled' />
+            <PasswordInput value='password' variant='filled' />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='' variant='filled' disabled showClearButton={false} />
-            <PasswordInput value='password' variant='filled' disabled showClearButton={false} />
+            <PasswordInput value='' variant='filled' disabled />
+            <PasswordInput value='password' variant='filled' disabled />
           </Container>
         </Container>
       ),
@@ -71,12 +71,12 @@ export const passwordInputDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='' variant='outlined' showClearButton={false} />
-            <PasswordInput value='password' variant='outlined' showClearButton={false} />
+            <PasswordInput value='' variant='outlined' />
+            <PasswordInput value='password' variant='outlined' />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='' variant='outlined' disabled showClearButton={false} />
-            <PasswordInput value='password' variant='outlined' disabled showClearButton={false} />
+            <PasswordInput value='' variant='outlined' disabled />
+            <PasswordInput value='password' variant='outlined' disabled />
           </Container>
         </Container>
       ),
@@ -92,12 +92,12 @@ export const passwordInputDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='' variant='filled' error showClearButton={false} />
-            <PasswordInput value='' variant='outlined' error showClearButton={false} />
+            <PasswordInput value='' variant='filled' error />
+            <PasswordInput value='' variant='outlined' error />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PasswordInput value='password' variant='filled' error showClearButton={false} />
-            <PasswordInput value='password' variant='outlined' error showClearButton={false} />
+            <PasswordInput value='password' variant='filled' error />
+            <PasswordInput value='password' variant='outlined' error />
           </Container>
         </Container>
       ),
