@@ -29,6 +29,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/badge'
+          options={{
+            headerLargeTitle: true,
+            title: 'Badge',
+          }}
+        />
+        <Stack.Screen
           name='components/common-button'
           options={{
             headerLargeTitle: true,
@@ -131,6 +138,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Autocomplete Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/badge-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Badge Test',
           }}
         />
 

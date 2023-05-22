@@ -24,6 +24,10 @@ export function HomeScreen() {
       link: '/components/auto-complete',
     },
     {
+      title: 'Badge',
+      link: '/components/badge',
+    },
+    {
       title: 'Common Button',
       link: '/components/common-button',
     },
@@ -85,6 +89,10 @@ export function HomeScreen() {
     {
       title: 'Autocomplete',
       link: '/components/auto-complete-test',
+    },
+    {
+      title: 'Badge',
+      link: '/components/badge-test',
     },
     {
       title: 'Common Button',
