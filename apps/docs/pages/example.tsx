@@ -14,6 +14,7 @@ import {
   TouchableRipple,
   Typography,
 } from 'anu/lib';
+import TextArea from 'anu/lib/composites/text-area/components/text-area';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
 import { KeyboardAvoidingView } from 'react-native';
@@ -82,6 +83,8 @@ export default function Example() {
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
       {/* <PasswordInput error value={text} onChangeText={setText} /> */}
 
+      <TextArea value={text} onChangeText={setText} numberOfLines={3} textBreakStrategy='highQuality' />
+
       <KeyboardAvoidingView>
         <Search
           value={text1}
@@ -94,7 +97,7 @@ export default function Example() {
           }
           flatListProps={{ renderItem: ListRenderItem }}
           data={data}
-          searchBarStyle={{ width: 260 }}
+          style={{ width: 260 }}
           leadingIcon={<Icon name='search' />}
           type='full-screen'
         />
