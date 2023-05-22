@@ -62,8 +62,8 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     const textStyle = getTextStyles(theme, finalProps);
     const textFieldStyle = getTextFieldStyle(finalProps, theme);
 
-    const leadingIconContainerStyle = getLeadingContainerStyle(finalProps);
-    const trailingIconContainerStyle = getTrailingContainerStyle(finalProps);
+    const leadingIconContainerStyle = getLeadingContainerStyle();
+    const trailingIconContainerStyle = getTrailingContainerStyle();
     const innerContainerStyle = getInnerContainerStyle();
     const errorStyle = getErrorStyle(theme);
     const supportingTextStyle = getSupportingTextStyle(theme);

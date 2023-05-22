@@ -124,17 +124,15 @@ export const getTextStyles = (theme: DripsyFinalTheme, props?: TextFieldProps) =
 /**
  * To generate style for the leading icon component
  *
- * @param props
- * @returns style of the leading icon
+s * @returns style of the leading icon
  */
-export const getLeadingContainerStyle = (props: TextFieldProps) => {
+export const getLeadingContainerStyle = () => {
   const style = {
     paddingLeft: 8,
     height: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: props.disabled ? 'inherit' : 'transparent',
   } as const;
 
   return style;
@@ -143,10 +141,9 @@ export const getLeadingContainerStyle = (props: TextFieldProps) => {
 /**
  * To generate style for the trailing icon component
  *
- * @param props
  * @returns style of the trailing icon
  */
-export const getTrailingContainerStyle = (props: TextFieldProps) => {
+export const getTrailingContainerStyle = () => {
   const style = {
     paddingRight: 8,
     flexDirection: 'row',
@@ -154,7 +151,6 @@ export const getTrailingContainerStyle = (props: TextFieldProps) => {
     justifyContent: 'center',
     height: '100%',
     minWidth: 48,
-    backgroundColor: props.disabled ? 'inherit' : 'transparent',
   } as const;
 
   return style;
