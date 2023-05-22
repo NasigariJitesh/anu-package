@@ -115,7 +115,7 @@ export const getTextStyles = (theme: DripsyFinalTheme, props?: TextFieldProps) =
   if (props?.disabled)
     common = {
       ...common,
-      color: 'inherit' as never,
+      color: getColorInRGBA(theme.colors.$onSurface, 38),
     } as const;
 
   return common;
@@ -134,7 +134,6 @@ export const getLeadingContainerStyle = (props: TextFieldProps) => {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'inherit',
     backgroundColor: props.disabled ? 'inherit' : 'transparent',
   } as const;
 
@@ -155,7 +154,6 @@ export const getTrailingContainerStyle = (props: TextFieldProps) => {
     justifyContent: 'center',
     height: '100%',
     minWidth: 48,
-    color: 'inherit',
     backgroundColor: props.disabled ? 'inherit' : 'transparent',
   } as const;
 

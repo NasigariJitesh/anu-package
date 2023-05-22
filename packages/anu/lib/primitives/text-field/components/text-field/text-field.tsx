@@ -167,7 +167,6 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               ) : (
                 <TextFieldLabel
                   {...finalProps}
-                  style={finalProps.labelStyle}
                   labelStyle={getCombinedStylesForText(labelTextStyle, finalProps.labelStyle)}
                   height={height}
                   textInputRef={textInputReference}
