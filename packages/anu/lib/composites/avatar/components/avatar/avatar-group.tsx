@@ -1,6 +1,6 @@
-import { getCombinedStylesForView } from 'anu/common/utils';
+import { getCombinedStylesForText, getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
-import { Container } from 'anu/lib';
+import { Container, Typography } from 'anu/lib';
 import { ReactElement } from 'react';
 
 import { AvatarGroupProps } from '../../types';
@@ -23,7 +23,7 @@ const AvatarGroup = (props: AvatarGroupProps) => {
   const theme = useTheme();
 
   //@ts-expect-error total and max cant exists together
-  const { excessAvatarStyle, excessAvatarSx, children, spacing, total, max, ...otherProps } = props;
+  const { excessAvatarStyle, excessTextStyle, children, spacing, total, max, ...otherProps } = props;
   const totalChildren = children.length;
 
   const size = (children[0] as ReactElement).props.size ?? 'medium';
@@ -32,7 +32,7 @@ const AvatarGroup = (props: AvatarGroupProps) => {
 
   const {
     excessAvatarStyle: defaultExcessAvatarStyle,
-    excessAvatarSx: defaultExcessAvatarSx,
+    excessTextStyle: defaultExcessTextStyle,
     groupStyle,
     baseZIndex,
     marginRight,
@@ -70,8 +70,11 @@ const AvatarGroup = (props: AvatarGroupProps) => {
             variant='circle'
             size={size}
             style={getCombinedStylesForView(defaultExcessAvatarStyle, excessAvatarStyle)}
-            sx={{ ...defaultExcessAvatarSx, ...excessAvatarSx }}
-          >{`+${remaining}`}</Avatar>
+          >
+            <Typography.Body style={getCombinedStylesForText(defaultExcessTextStyle, excessTextStyle)}>
+              {`+${remaining}`}
+            </Typography.Body>
+          </Avatar>
         </Container>
       ) : null}
     </Container>
