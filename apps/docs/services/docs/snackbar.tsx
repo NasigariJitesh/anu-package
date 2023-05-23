@@ -45,7 +45,7 @@ export const snackbarDocumentation: ContentValues = {
       id: 'provider',
       title: 'snackbarDocumentation:configuration-step1-name',
       description: 'snackbarDocumentation:configuration-step1-description',
-      code: `import { SnackbarProvider } from 'anu/lib';
+      code: `import { AnuSnackbarProvider } from 'anu/lib';
       
 const defaultConfig = {
   /* your default snackbar configuration */
@@ -53,9 +53,9 @@ const defaultConfig = {
  
 const App = () => {
   return (
-    <SnackbarProvider defaultSnackbarConfiguration={{}}>
+    <AnuSnackbarProvider defaultSnackbarConfiguration={{}}>
       {/* Children */}
-    </SnackbarProvider>
+    </AnuSnackbarProvider>
   );
 };
 
