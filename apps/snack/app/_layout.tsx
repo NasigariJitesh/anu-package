@@ -21,7 +21,6 @@ export default function Root() {
             title: 'Anu Components',
           }}
         />
-
         <Stack.Screen
           name='components/auto-complete'
           options={{
@@ -34,6 +33,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Avatar',
+          }}
+        />
+        <Stack.Screen
+          name='components/badge'
+          options={{
+            headerLargeTitle: true,
+            title: 'Badge',
           }}
         />
         <Stack.Screen
@@ -153,6 +159,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Avatar Test',
+          }}
+        />{' '}
+        <Stack.Screen
+          name='components/badge-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Badge Test',
           }}
         />
         <Stack.Screen

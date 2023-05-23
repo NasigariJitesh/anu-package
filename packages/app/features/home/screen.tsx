@@ -28,6 +28,10 @@ export function HomeScreen() {
       link: '/components/avatar',
     },
     {
+      title: 'Badge',
+      link: '/components/badge',
+    },
+    {
       title: 'Common Button',
       link: '/components/common-button',
     },
@@ -97,6 +101,10 @@ export function HomeScreen() {
     {
       title: 'Avatar',
       link: '/components/avatar-test',
+    },
+    {
+      title: 'Badge',
+      link: '/components/badge-test',
     },
     {
       title: 'Common Button',
