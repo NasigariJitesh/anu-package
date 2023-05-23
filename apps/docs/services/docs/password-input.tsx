@@ -19,7 +19,11 @@ const flexStyle = {
 const PasswordInput = (props: PasswordInputProps) => {
   const [text, setText] = useState(props.value);
 
-  return <PasswordInputComponent {...props} style={style} value={text} onChangeText={setText} />;
+  return (
+    <Container disableGutters style={style}>
+      <PasswordInputComponent {...props} value={text} onChangeText={setText} />
+    </Container>
+  );
 };
 
 export const passwordInputDocumentation: ContentValues = {

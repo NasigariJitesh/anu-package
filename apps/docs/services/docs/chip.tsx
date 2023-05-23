@@ -4,6 +4,8 @@ import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 
 const style = {
   margin: 15,
+  minWidth: 120,
+  maxWidth: 200,
 };
 
 const flexStyle = {

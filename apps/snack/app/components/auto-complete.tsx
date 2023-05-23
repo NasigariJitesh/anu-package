@@ -61,7 +61,7 @@ const AutoCompleteScreen = () => {
   };
 
   return (
-    <Container disableGutters sx={{ margin: 10, flex: 1 }}>
+    <Container disableGutters style={{ width: '100%', padding: 10, flex: 1 }}>
       <AutoComplete
         variant='outlined'
         data={data}

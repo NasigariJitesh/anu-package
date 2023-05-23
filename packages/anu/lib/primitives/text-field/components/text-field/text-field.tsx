@@ -17,6 +17,7 @@ import {
 
 import { TextFieldProps, TextFieldReferenceProps } from '../../types';
 import {
+  getContainerStyle,
   getError,
   getErrorIcon,
   getErrors,
@@ -61,7 +62,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
 
     const textStyle = getTextStyles(theme, finalProps);
     const textFieldStyle = getTextFieldStyle(finalProps, theme);
-
+    const containerStyle = getContainerStyle();
     const leadingIconContainerStyle = getLeadingContainerStyle();
     const trailingIconContainerStyle = getTrailingContainerStyle();
     const innerContainerStyle = getInnerContainerStyle();
@@ -133,7 +134,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     };
 
     return (
-      <Container disableGutters>
+      <Container disableGutters style={containerStyle}>
         <Pressable
           ref={pressableReference}
           accessibilityRole='none'
@@ -144,14 +145,14 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
           // @ts-ignore
           dataSet={finalProps.dataSets?.textFieldDataSet}
         >
-          <Container disableGutters flexDirection='row' sx={innerContainerStyle}>
+          <Container disableGutters flexDirection='row' style={innerContainerStyle}>
             {/* TODO: Put the icon components in another file */}
             {finalProps.leadingIcon ? (
               <Container disableGutters style={leadingIconContainerStyle}>
                 {finalProps.leadingIcon}
               </Container>
             ) : null}
-            <Container disableGutters flexDirection='column' justify='center' sx={innerContainerStyle}>
+            <Container disableGutters flexDirection='column' justify='center' style={innerContainerStyle}>
               {finalProps.disableLabelAnimation ? (
                 value ? null : (
                   <Container disableGutters style={labelContainerStyle}>
@@ -167,7 +168,6 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               ) : (
                 <TextFieldLabel
                   {...finalProps}
-                  labelStyle={getCombinedStylesForText(labelTextStyle, finalProps.labelStyle)}
                   height={height}
                   textInputRef={textInputReference}
                   states={focusState}
