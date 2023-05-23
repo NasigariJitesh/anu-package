@@ -31,7 +31,7 @@ export const sideSheetDocumentation: ContentValues = {
       description: 'sideSheetDocumentation:example1-description',
       id: 'default',
       component: <Example />,
-      code: "<SideSheet width={300} headline= 'Title' startCoordinate={-50} align='right' divider />",
+      code: "<SideSheet width={300} headline= 'Title' startCoordinate={0} align='right' divider />",
     },
   ],
   properties: [

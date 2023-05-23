@@ -84,6 +84,10 @@ export function HomeScreen() {
       link: '/components/search',
     },
     {
+      title: 'Side Sheet',
+      link: '/components/side-sheet',
+    },
+    {
       title: 'Tabs',
       link: '/components/tabs',
     },
@@ -165,6 +169,10 @@ export function HomeScreen() {
     {
       title: 'Search',
       link: '/components/search-test',
+    },
+    {
+      title: 'Side Sheet',
+      link: '/components/side-sheet-test',
     },
     {
       title: 'Tabs',

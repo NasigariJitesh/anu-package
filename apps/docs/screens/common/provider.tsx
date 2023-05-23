@@ -83,7 +83,7 @@ export default function RootLayout(props: {
   const toggleSidebar = () => {
     if (reference.current?.isActive()) {
       reference.current?.scrollTo(0);
-    } else reference.current?.scrollTo(300);
+    } else reference.current?.scrollTo(-300);
   };
 
   return (
@@ -94,7 +94,7 @@ export default function RootLayout(props: {
             <View style={{ backgroundColor: backgroundColor }}>
               <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme, toggleSidebar }}>
                 {children}
-                <SideSheet ref={reference} width={300} headline='Title' startCoordinate={0} align='left' divider />
+                <SideSheet ref={reference} width={300} headline='Title' startCoordinate={0} align='right' divider />
               </MenuContent.Provider>
             </View>
           </AnuSnackbarProvider>
