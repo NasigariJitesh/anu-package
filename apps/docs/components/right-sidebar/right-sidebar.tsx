@@ -47,6 +47,7 @@ import { sideSheetIndex } from 'services/docs/side-sheet';
 import { snackbarIndex } from 'services/docs/snackbar';
 import { switchIndex } from 'services/docs/switch';
 import { tabsIndex } from 'services/docs/tabs';
+import { textAreaIndex } from 'services/docs/text-area';
 import { textFieldIndex } from 'services/docs/text-field';
 import { themingIndex } from 'services/docs/theming';
 import { timePickerIndex } from 'services/docs/time-picker';
@@ -348,6 +349,11 @@ const RenderIndex = () => {
     case '/components/tabs': {
       {
         return <Index {...tabsIndex} />;
+      }
+    }
+    case '/components/text-area': {
+      {
+        return <Index {...textAreaIndex} />;
       }
     }
     case '/components/touchable-ripple': {

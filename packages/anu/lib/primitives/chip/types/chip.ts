@@ -12,6 +12,7 @@
 import { ExtendedDisabledStyles, ExtendedElevatedStyles, ExtendedHoverStyles } from 'anu/common/types';
 import { IconProps, IconSource } from 'anu/lib/primitives/icon';
 import { Pressable } from 'dripsy';
+import { ReactElement } from 'react';
 import { ViewProps } from 'react-native';
 
 /**
@@ -108,7 +109,7 @@ export interface AssistChip extends CommonChipProps {
   /**
    * Icon to be displayed before (to left of) the chip content
    */
-  leadingIcon?: Icon;
+  leadingIcon?: Icon | ReactElement;
   /**
    * Whether the chip has an elevated style
    */

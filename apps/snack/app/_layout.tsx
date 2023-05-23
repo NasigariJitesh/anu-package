@@ -29,6 +29,20 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/avatar'
+          options={{
+            headerLargeTitle: true,
+            title: 'Avatar',
+          }}
+        />
+        <Stack.Screen
+          name='components/badge'
+          options={{
+            headerLargeTitle: true,
+            title: 'Badge',
+          }}
+        />
+        <Stack.Screen
           name='components/common-button'
           options={{
             headerLargeTitle: true,
@@ -68,6 +82,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Checkbox',
+          }}
+        />
+        <Stack.Screen
+          name='components/chip'
+          options={{
+            headerLargeTitle: true,
+            title: 'Chip',
           }}
         />
         <Stack.Screen
@@ -120,6 +141,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/text-area'
+          options={{
+            headerLargeTitle: true,
+            title: 'Text Area',
+          }}
+        />
+        <Stack.Screen
           name='components/text-field'
           options={{
             headerLargeTitle: true,
@@ -140,7 +168,20 @@ export default function Root() {
             title: 'Autocomplete Test',
           }}
         />
-
+        <Stack.Screen
+          name='components/avatar-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Avatar Test',
+          }}
+        />{' '}
+        <Stack.Screen
+          name='components/badge-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Badge Test',
+          }}
+        />
         <Stack.Screen
           name='components/common-button-test'
           options={{
@@ -181,6 +222,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Checkbox Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/chip-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Chip Test',
           }}
         />
         <Stack.Screen
@@ -230,6 +278,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Tabs Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/text-area-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Text Area Test',
           }}
         />
         <Stack.Screen

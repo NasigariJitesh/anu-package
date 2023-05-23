@@ -23,6 +23,14 @@ const selectLabelColorBasedOnState = (props: TextInputLabelProps, theme: DripsyF
   return theme.colors.$onSurfaceVariant;
 };
 
+const selectLabelBackgroundColor = (props: TextInputLabelProps, theme: DripsyFinalTheme) => {
+  if (props.backgroundColor) return props.backgroundColor;
+
+  if (props.variant === 'outlined') return theme.colors.$surface;
+
+  if (!props.disabled) return theme.colors.$surfaceVariant;
+};
+
 /**
  * the label of text field input
  *
@@ -32,7 +40,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const theme = useTheme();
   const style = getTextStyles(theme);
 
-  const { colors, fontSizes, lineHeights } = theme;
+  const { fontSizes, lineHeights } = theme;
 
   const transitionTopCoordinate = useSharedValue(19);
   const transitionLeftCoordinate = useSharedValue(0);
@@ -44,12 +52,13 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const textStyles = {
     paddingHorizontal: 2,
     color: props.placeholderTextColor || selectLabelColorBasedOnState(props, theme),
-    backgroundColor: props.variant === 'outlined' ? props.backgroundColor ?? colors.$background : undefined,
+    backgroundColor: selectLabelBackgroundColor(props, theme),
   };
 
   const animatedStyle = {
     position: 'absolute' as const,
     zIndex: 10,
+    width: props.variant === 'outlined' ? undefined : '100%',
   };
 
   const animatedViewStyle = useAnimatedStyle(() => {
@@ -115,7 +124,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
       <Animated.Text
         numberOfLines={1}
         ellipsizeMode='tail'
-        style={[getCombinedStylesForText(textStyles, props.style), animatedTextStyle]}
+        style={[getCombinedStylesForText(textStyles, props.labelStyle), animatedTextStyle]}
       >
         {props.label}
       </Animated.Text>
