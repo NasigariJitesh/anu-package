@@ -28,12 +28,6 @@ export const cardContentDocumentation: ContentValues = {
       optional: true,
       description: 'cardContentDocumentation:property-style-description',
     },
-    {
-      name: 'sx',
-      type: 'Sx',
-      optional: true,
-      description: 'cardContentDocumentation:property-sx-description',
-    },
   ],
 
   examples: [

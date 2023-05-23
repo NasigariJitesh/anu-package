@@ -41,12 +41,6 @@ export const cardActionsDocumentation: ContentValues = {
       optional: true,
       description: 'cardActionsDocumentation:property-style-description',
     },
-    {
-      name: 'sx',
-      type: 'Sx',
-      optional: true,
-      description: 'cardActionsDocumentation:property-sx-description',
-    },
   ],
 
   examples: [
