@@ -81,8 +81,6 @@ export default function RootLayout(props: {
   };
 
   const toggleSidebar = () => {
-    console.log(reference.current?.isActive());
-
     if (reference.current?.isActive()) {
       reference.current?.scrollTo(0);
     } else reference.current?.scrollTo(300);

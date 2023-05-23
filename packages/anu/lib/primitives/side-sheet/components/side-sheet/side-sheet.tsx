@@ -61,14 +61,16 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
     (destination: number) => {
       'worklet';
 
-      console.log(destination, startCoordinate);
-      isSideSheetActive.value = align === 'right' ? destination < startCoordinate : destination > startCoordinate;
+      isSideSheetActive.value =
+        align === 'right' ? destination < startCoordinate - width : destination > startCoordinate + width;
+
+      console.log(isSideSheetActive.value, destination, startCoordinate + width);
 
       const scrollValue = destination;
 
       translateX.value = withSpring(scrollValue, { damping });
     },
-    [isSideSheetActive, translateX, damping, align],
+    [isSideSheetActive, align, startCoordinate, width, damping],
   );
 
   /**
