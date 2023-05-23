@@ -503,6 +503,11 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:text-area',
+                link: '/components/text-area',
+                components: [],
+              },
+              {
                 title: 'leftSideBar:text-fields',
                 link: '/components/text-field',
                 components: [],

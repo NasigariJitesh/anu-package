@@ -104,7 +104,7 @@ export const phoneInputDocumentation: ContentValues = {
       component: (
         <Container disableGutters flexDirection='column-reverse' sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PhoneInput variant='filled' error errorMessage='Error Message' style={style} value='+1 438 678 5289' />
+            <PhoneInput variant='filled' error errorMessage='Error Message' value='+1 438 678 5289' />
             <PhoneInput variant='outlined' error errorMessage='Error Message' value='+1 438 678 5289' />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>

@@ -76,6 +76,10 @@ export function HomeScreen() {
       link: '/components/tabs',
     },
     {
+      title: 'Text Area',
+      link: '/components/text-area',
+    },
+    {
       title: 'Text Field',
       link: '/components/text-field',
     },
@@ -145,6 +149,10 @@ export function HomeScreen() {
     {
       title: 'Text Field',
       link: '/components/text-field-test',
+    },
+    {
+      title: 'Text Area',
+      link: '/components/text-area-test',
     },
     {
       title: 'Typography',

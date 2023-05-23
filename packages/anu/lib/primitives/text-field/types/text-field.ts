@@ -120,14 +120,13 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
   };
 }
 
-export interface TextInputLabelProps extends Omit<TextFieldProps, 'style'> {
+export interface TextInputLabelProps extends TextFieldProps {
   states?: PressableStateCallbackType;
   height: number;
   textInputRef: MutableRefObject<RNTextInput | null>;
   isFocused: boolean;
   toggleIsFocused: (value: boolean) => void;
   backgroundColor?: string;
-  style?: StyleProp<TextStyle>;
 }
 
 export interface TextFieldReferenceProps {

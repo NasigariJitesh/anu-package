@@ -16,6 +16,7 @@ import {
   TouchableRipple,
   Typography,
 } from 'anu/lib';
+import TextArea from 'anu/lib/composites/text-area/components/text-area';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
 import { KeyboardAvoidingView } from 'react-native';
@@ -89,6 +90,8 @@ export default function Example() {
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=12' }} variant='circle' />
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=13' }} variant='circle' />
       </AvatarGroup>
+
+      <TextArea value={text} onChangeText={setText} numberOfLines={3} textBreakStrategy='highQuality' />
 
       <KeyboardAvoidingView>
         <Search

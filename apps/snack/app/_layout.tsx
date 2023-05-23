@@ -121,6 +121,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/text-area'
+          options={{
+            headerLargeTitle: true,
+            title: 'Text Area',
+          }}
+        />
+        <Stack.Screen
           name='components/text-field'
           options={{
             headerLargeTitle: true,
@@ -230,6 +237,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Tabs Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/text-area-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Text Area Test',
           }}
         />
         <Stack.Screen
