@@ -64,6 +64,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/checkbox'
+          options={{
+            headerLargeTitle: true,
+            title: 'Checkbox',
+          }}
+        />
+        <Stack.Screen
           name='components/container'
           options={{
             headerLargeTitle: true,

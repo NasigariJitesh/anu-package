@@ -44,6 +44,10 @@ export function HomeScreen() {
       link: '/components/segmented-button',
     },
     {
+      title: 'Checkbox',
+      link: '/components/checkbox',
+    },
+    {
       title: 'Container',
       link: '/components/container',
     },
