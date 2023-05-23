@@ -21,7 +21,6 @@ export default function Root() {
             title: 'Anu Components',
           }}
         />
-
         <Stack.Screen
           name='components/auto-complete'
           options={{
@@ -34,6 +33,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Avatar',
+          }}
+        />
+        <Stack.Screen
+          name='components/badge'
+          options={{
+            headerLargeTitle: true,
+            title: 'Badge',
           }}
         />
         <Stack.Screen
@@ -69,6 +75,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Segmented Button',
+          }}
+        />
+        <Stack.Screen
+          name='components/chip'
+          options={{
+            headerLargeTitle: true,
+            title: 'Chip',
           }}
         />
         <Stack.Screen
@@ -154,6 +167,13 @@ export default function Root() {
             headerLargeTitle: true,
             title: 'Avatar Test',
           }}
+        />{' '}
+        <Stack.Screen
+          name='components/badge-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Badge Test',
+          }}
         />
         <Stack.Screen
           name='components/common-button-test'
@@ -188,6 +208,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Segmented Button Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/chip-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Chip Test',
           }}
         />
         <Stack.Screen

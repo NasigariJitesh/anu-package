@@ -1,5 +1,5 @@
 import { DripsyFinalTheme, Sx, SxProp } from 'dripsy';
-import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { Platform, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import { BadgeProps, NumberBadgeProps } from '../types';
 
@@ -91,7 +91,10 @@ export const getBadgeStyle = (props: BadgeProps, theme: DripsyFinalTheme) => {
 
   const sx: SxProp = { color: colors.$background, fontSize: 11, lineHeight: 14 };
 
-  const offset = overlap === 'rectangular' ? 'calc(100% - 10px)' : '70%';
+  let offset;
+
+  if (Platform.OS === 'web') offset = overlap === 'rectangular' ? 'calc(100% - 10px)' : '70%';
+  else offset = '10%';
 
   switch (position) {
     case 'topLeft': {

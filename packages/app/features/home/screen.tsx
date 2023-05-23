@@ -28,6 +28,10 @@ export function HomeScreen() {
       link: '/components/avatar',
     },
     {
+      title: 'Badge',
+      link: '/components/badge',
+    },
+    {
       title: 'Common Button',
       link: '/components/common-button',
     },
@@ -46,6 +50,10 @@ export function HomeScreen() {
     {
       title: 'Segmented Button',
       link: '/components/segmented-button',
+    },
+    {
+      title: 'Chip',
+      link: '/components/chip',
     },
     {
       title: 'Container',
@@ -99,6 +107,10 @@ export function HomeScreen() {
       link: '/components/avatar-test',
     },
     {
+      title: 'Badge',
+      link: '/components/badge-test',
+    },
+    {
       title: 'Common Button',
       link: '/components/common-button-test',
     },
@@ -117,6 +129,10 @@ export function HomeScreen() {
     {
       title: 'Segmented Button',
       link: '/components/segmented-button-test',
+    },
+    {
+      title: 'Chip',
+      link: '/components/chip-test',
     },
     {
       title: 'Container',

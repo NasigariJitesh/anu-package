@@ -1,6 +1,7 @@
 /* eslint-disable unicorn/no-nested-ternary */
 import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
+import { Platform } from 'react-native';
 
 import { ChipContainerStyle, ChipProps } from '../types';
 
@@ -196,14 +197,14 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
     common: {
       minHeight: 32,
       borderRadius: 8,
+      flex: 1,
       backgroundColor: 'transparent',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingHorizontal: 8,
-      color: 'inherit',
     } as const,
     assistElevated: {
+      color: themeColors.$onSurface,
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSurface, 8),
         shadowColor: themeColors.$shadow,
@@ -226,6 +227,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
     assist: {
       borderWidth: 1,
       borderColor: themeColors.$outline,
+      color: themeColors.$onSurface,
       '@disable': {
         borderColor: getColorInRGBA(themeColors.$onSurface, 12),
       },
@@ -243,6 +245,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
     filter: {
       borderWidth: 1,
       borderColor: themeColors.$outline,
+      color: themeColors.$onSurfaceVariant,
       '@disable': {
         borderColor: getColorInRGBA(themeColors.$onSurface, 12),
       },
@@ -258,6 +261,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       },
     } as const,
     filterSelected: {
+      color: themeColors.$onSecondaryContainer,
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
         shadowColor: themeColors.$shadow,
@@ -278,6 +282,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       },
     } as const,
     filterElevated: {
+      color: themeColors.$onSurfaceVariant,
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 8),
         shadowColor: themeColors.$shadow,
@@ -298,6 +303,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       },
     } as const,
     filterElevatedSelected: {
+      color: themeColors.$onSecondaryContainer,
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
         shadowColor: themeColors.$shadow,
@@ -320,6 +326,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
     input: {
       borderWidth: 1,
       borderColor: themeColors.$outline,
+      color: themeColors.$onSurfaceVariant,
       '@disable': {
         borderColor: getColorInRGBA(themeColors.$onSurface, 12),
       },
@@ -335,6 +342,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       },
     } as const,
     inputSelected: {
+      color: themeColors.$onSecondaryContainer,
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
         shadowColor: themeColors.$shadow,
@@ -357,6 +365,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
     suggestion: {
       borderWidth: 1,
       borderColor: themeColors.$outline,
+      color: themeColors.$onSurfaceVariant,
       '@disable': {
         borderColor: getColorInRGBA(themeColors.$onSurface, 12),
       },
@@ -372,6 +381,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       },
     } as const,
     suggestionSelected: {
+      color: themeColors.$onSecondaryContainer,
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
         shadowColor: themeColors.$shadow,
@@ -392,6 +402,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       },
     } as const,
     suggestionElevated: {
+      color: themeColors.$onSurfaceVariant,
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSurfaceVariant, 8),
         shadowColor: themeColors.$shadow,
@@ -412,6 +423,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       },
     } as const,
     suggestionElevatedSelected: {
+      color: themeColors.$onSecondaryContainer,
       '@hover': {
         backgroundColor: getColorInRGBA(themeColors.$onSecondaryContainer, 8),
         shadowColor: themeColors.$shadow,
@@ -593,6 +605,7 @@ export const getStyles = (props: ChipProps, theme: DripsyFinalTheme) => {
     ...otherLayerStyles,
     ...propsOtherStylesForStateLayer,
     ...getResetMarginStyles(),
+    ...getResetPaddingStyles(),
     ...(borderColor && (key === 'input' || key === 'filter' || key === 'suggestion' || key === 'assist')
       ? { borderColor }
       : {}),
@@ -609,12 +622,44 @@ export const getStyles = (props: ChipProps, theme: DripsyFinalTheme) => {
   if (disabled) {
     styles = { ...styles, ...disableStyles };
     iconStyle = { ...iconStyle, ...iconDisableStyles };
-    layerStyles = { ...layerStyles, ...layerDisableStyles };
+    layerStyles = { ...layerStyles, ...layerDisableStyles, color: styles.color };
   }
+
+  const {
+    padding,
+    paddingVertical,
+    paddingHorizontal,
+    paddingTop,
+    paddingBottom,
+    paddingLeft,
+    paddingRight,
+    paddingStart,
+    paddingEnd,
+  } = propsOtherStyles;
+  const innerContainerStyle = {
+    padding,
+    paddingVertical,
+    paddingHorizontal: paddingHorizontal ?? 8,
+    paddingTop,
+    paddingBottom,
+    paddingLeft,
+    paddingRight,
+    paddingStart,
+    paddingEnd,
+  };
+
+  const textStyle = {
+    color: layerStyles.color,
+    fontWeight: '400' as const,
+    paddingHorizontal: 8,
+    ...(Platform.OS === 'web' ? { cursor: 'pointer' } : {}),
+  };
 
   return {
     styles,
     layerStyles,
     iconStyle,
+    textStyle,
+    innerContainerStyle,
   };
 };
