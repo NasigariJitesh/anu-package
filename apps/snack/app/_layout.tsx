@@ -134,6 +134,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/radio'
+          options={{
+            headerLargeTitle: true,
+            title: 'Radio Button',
+          }}
+        />
+        <Stack.Screen
           name='components/tabs'
           options={{
             headerLargeTitle: true,
@@ -264,6 +271,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Phone Input Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/radio-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Radio Button Test',
           }}
         />
         <Stack.Screen

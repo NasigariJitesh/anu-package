@@ -84,6 +84,10 @@ export function HomeScreen() {
       link: '/components/search',
     },
     {
+      title: 'Radio Button',
+      link: '/components/radio',
+    },
+    {
       title: 'Tabs',
       link: '/components/tabs',
     },
@@ -165,6 +169,10 @@ export function HomeScreen() {
     {
       title: 'Search',
       link: '/components/search-test',
+    },
+    {
+      title: 'Radio Button',
+      link: '/components/radio-test',
     },
     {
       title: 'Tabs',
