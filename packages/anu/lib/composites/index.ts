@@ -16,5 +16,7 @@ export { default as Search } from './search-bar';
 export * from './search-bar';
 export * from './tabs';
 export { default as Tabs } from './tabs';
+export { default as TextArea } from './text-area';
+export * from './text-area';
 export { default as TextFieldWithMask } from './text-field-with-mask';
 export * from './text-field-with-mask';

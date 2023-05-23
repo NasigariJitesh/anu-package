@@ -24,6 +24,14 @@ export function HomeScreen() {
       link: '/components/auto-complete',
     },
     {
+      title: 'Avatar',
+      link: '/components/avatar',
+    },
+    {
+      title: 'Badge',
+      link: '/components/badge',
+    },
+    {
       title: 'Common Button',
       link: '/components/common-button',
     },
@@ -76,6 +84,10 @@ export function HomeScreen() {
       link: '/components/tabs',
     },
     {
+      title: 'Text Area',
+      link: '/components/text-area',
+    },
+    {
       title: 'Text Field',
       link: '/components/text-field',
     },
@@ -89,6 +101,14 @@ export function HomeScreen() {
     {
       title: 'Autocomplete',
       link: '/components/auto-complete-test',
+    },
+    {
+      title: 'Avatar',
+      link: '/components/avatar-test',
+    },
+    {
+      title: 'Badge',
+      link: '/components/badge-test',
     },
     {
       title: 'Common Button',
@@ -145,6 +165,10 @@ export function HomeScreen() {
     {
       title: 'Text Field',
       link: '/components/text-field-test',
+    },
+    {
+      title: 'Text Area',
+      link: '/components/text-area-test',
     },
     {
       title: 'Typography',

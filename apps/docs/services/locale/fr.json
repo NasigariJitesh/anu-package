@@ -75,6 +75,7 @@
   "leftSideBar:side-sheet": "Side Sheet",
   "leftSideBar:switch": "Commutateur",
   "leftSideBar:tabs": "Onglets",
+  "leftSideBar:text-area": "Zone de texte",
   "leftSideBar:time-picker": "Sélecteur de temps",
   "leftSideBar:touchable-ripple": "Propagation tactile",
   "leftSideBar:typography": "Typographie",
@@ -124,7 +125,8 @@
   "avatarDocumentation:property-max-description": "Le nombre maximum d'avatars à afficher dans le groupe d'avatars.",
   "avatarDocumentation:property-total-description": "The total number of avatars in avatar group.",
   "avatarDocumentation:property-excessAvatarStyle-description": "The styles for the avatar that displays number of remaining avatar in avatar group.",
-  "avatarDocumentation:property-excessAvatarSx-description": "The system prop that allows defining system overrides as well as additional CSS styles for the avatar that displays number of remaining avatar in avatar group.",
+  "avatarDocumentation:property-excessTextStyle-description": "Styles pour le texte de l'avatar qui affiche le nombre d'avatars restants dans le groupe d'avatars.",
+  "avatarDocumentation:property-textStyle-description": "Styles pour le texte de la lettre avatar.",
 
   "badgeDocumentation:mainHeading": "Badge",
   "badgeDocumentation:mainDescription": "Les badges sont utilisés pour afficher une petite quantité d'informations, généralement un numéro ou un court message d'état, au-dessus d'une icône ou d'un avatar.",
@@ -729,6 +731,15 @@
   "tabsDocumentation:example4-name": "Onglets - Écrans moyens/grands",
   "tabsDocumentation:example4-description": "Il peut être utilisé sur des écrans moyens et grands avec des mises en page larges telles que des appareils tabulaires ou même des applications Web. Lorsque le conteneur d'onglets sur ces écrans s'étend horizontalement pour occuper la largeur d'écran disponible.",
 
+  "textAreaDocumentation:mainHeading": "Zone de texte",
+
+  "textAreaDocumentation:example1-name": "Zone de texte remplie",
+  "textAreaDocumentation:example2-name": "Zone de texte soulignée",
+  "textAreaDocumentation:example3-name": "Zone de texte - avec erreur",
+  "textAreaDocumentation:external-properties-title": "Propriétés du champ de texte",
+
+  "textAreaDocumentation:property-variant-description": "La variante du champ de texte pour la zone de texte.",
+  "textAreaDocumentation:property-value-description": "La valeur en tant que chaîne.",
   "timePickerDocumentation:mainHeading": "Sélecteur de temps",
   "timePickerDocumentation:mainDescription": "Un sélecteur de temps est utilisé pour permettre aux utilisateurs de sélectionner une heure spécifique de la journée, généralement affichée dans une boîte de dialogue. Il se compose généralement d'une interface d'horloge analogique ou numérique, ainsi que de boutons pour régler les valeurs d'heure et de minute.\n\nLes sélecteurs de temps peuvent être utilisés dans une variété de contextes, tels que la planification de rendez-vous ou la définition de rappels.",
   "timePickerDocumentation:example1-name": "Défaut",

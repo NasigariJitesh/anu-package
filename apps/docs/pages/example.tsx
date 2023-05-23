@@ -1,6 +1,8 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 import {
+  Avatar,
+  AvatarGroup,
   Button,
   Chip,
   Container,
@@ -14,6 +16,7 @@ import {
   TouchableRipple,
   Typography,
 } from 'anu/lib';
+import TextArea from 'anu/lib/composites/text-area/components/text-area';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
 import { KeyboardAvoidingView } from 'react-native';
@@ -81,6 +84,14 @@ export default function Example() {
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
       {/* <PasswordInput error value={text} onChangeText={setText} /> */}
+      <AvatarGroup total={15}>
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=10' }} variant='circle' />
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=11' }} variant='circle' />
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=12' }} variant='circle' />
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=13' }} variant='circle' />
+      </AvatarGroup>
+
+      <TextArea value={text} onChangeText={setText} numberOfLines={3} textBreakStrategy='highQuality' />
 
       <KeyboardAvoidingView>
         <Search
@@ -94,7 +105,7 @@ export default function Example() {
           }
           flatListProps={{ renderItem: ListRenderItem }}
           data={data}
-          searchBarStyle={{ width: 260 }}
+          style={{ width: 260 }}
           leadingIcon={<Icon name='search' />}
           type='full-screen'
         />

@@ -78,6 +78,7 @@
   "leftSideBar:side-sheet": "Side Sheet",
   "leftSideBar:switch": "Switch",
   "leftSideBar:tabs": "Tabs",
+  "leftSideBar:text-area": "Text Area",
   "leftSideBar:time-picker": "Time Picker",
   "leftSideBar:touchable-ripple": "Touchable Ripple",
   "leftSideBar:typography": "Typography",
@@ -131,7 +132,8 @@
   "avatarDocumentation:property-max-description": "The maximum number of avatars to be displayed in avatar group.",
   "avatarDocumentation:property-total-description": "The total number of avatars in avatar group.",
   "avatarDocumentation:property-excessAvatarStyle-description": "The styles for the avatar that displays number of remaining avatar in avatar group.",
-  "avatarDocumentation:property-excessAvatarSx-description": "The system prop that allows defining system overrides as well as additional CSS styles for the avatar that displays number of remaining avatar in avatar group.",
+  "avatarDocumentation:property-excessTextStyle-description": "Styles for text of the avatar that displays number of remaining avatar in avatar group.",
+  "avatarDocumentation:property-textStyle-description": "Styles for text of the letter avatar.",
 
   "badgeDocumentation:mainHeading": "Badge",
   "badgeDocumentation:mainDescription": "Badges are used to display a small amount of information, typically a number or a short status message, on top of an icon or avatar.",
@@ -767,6 +769,15 @@
   "tabsDocumentation:example3-description": "Scrollable tabs are displayed in a horizontal row, but if there are too many tabs to fit within the width of the screen, the user can swipe left or right to view additional tabs. This allows for a larger number of tabs to be displayed without taking up too much screen real estate.",
   "tabsDocumentation:example4-name": "Tabs - Medium/Large Screens",
   "tabsDocumentation:example4-description": "It can be used on medium and large screens with wide layouts such as tabular devices or even web applications. Where the tab container on these screens scales horizontally to occupy the available screen width.",
+  "textAreaDocumentation:mainHeading": "Text Area",
+
+  "textAreaDocumentation:example1-name": "Filled Text Area",
+  "textAreaDocumentation:example2-name": "Outlined Text Area",
+  "textAreaDocumentation:example3-name": "Text Area - with Error",
+  "textAreaDocumentation:external-properties-title": " Text Field Properties",
+
+  "textAreaDocumentation:property-variant-description": "The variant of text field for the text area.",
+  "textAreaDocumentation:property-value-description": "The value as a string.",
 
   "timePickerDocumentation:mainHeading": "Time picker",
   "timePickerDocumentation:mainDescription": "A Time picker is used to allow users to select a specific time of day, typically displayed in a dialog. It usually consists of an analog or digital clock interface, along with buttons for setting the hour and minute values.\n\nTime pickers can be used in a variety of contexts, such as scheduling appointments or setting reminders.",
