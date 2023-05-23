@@ -38,7 +38,7 @@ const checkForMatch = (countryCodesData: Options[], countryAlphabeticalCode?: st
 /**
  *
  * @param countryCode - The country telephoneCode
- * @param asYouType - AsYouType class object of the libphonenumber-js libraay
+ * @param asYouType - AsYouType class object of the libphonenumber-js library
  * @param countryCodesData - Array of country code objects
  */
 const getDefaultCountry = (countryCode: string, asYouType: AsYouType, countryCodesData: Options[]) => {
@@ -222,7 +222,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     return (
       <Container disableGutters flexDirection='row' align='center'>
         {children}
-        <CountryFlag currentCountry={currentCountry} disabled={finalProps.disabled} />
+        <CountryFlag value={value} currentCountry={currentCountry} disabled={finalProps.disabled} />
       </Container>
     );
   };
@@ -231,7 +231,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     <AutoComplete
       {...otherAutoCompleteProps}
       style={{ ...defaultTextFieldStyles, ...otherAutoCompleteProps.style }}
-      textInputStyle={getCombinedStylesForText(defaultTextInputStyle, otherAutoCompleteProps.textInputStyle)}
+      textStyle={getCombinedStylesForText(defaultTextInputStyle, otherAutoCompleteProps.textStyle)}
       ref={autoCompleteReference}
       data={countryCodesData}
       autoComplete='tel'

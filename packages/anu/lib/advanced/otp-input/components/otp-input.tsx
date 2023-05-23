@@ -117,7 +117,7 @@ const IndividualOTPField = ({
       noDefaultErrorMessage={true}
       onKeyPress={(event) => onKeyPressHandler(event, value)}
       disabled={inputProps.disabled}
-      showClearButton={false}
+      hideClearButton
       textContentType={inputProps.textContentType || 'oneTimeCode'}
       keyboardType={inputProps.keyboardType || getKeyboardType(inputProps.type)}
     />

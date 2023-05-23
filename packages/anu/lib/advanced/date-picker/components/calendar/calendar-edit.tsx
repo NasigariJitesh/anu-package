@@ -77,7 +77,7 @@ const CalendarEdit = (props: CalendarEditProps) => {
           inputEnabled={inputEnabled}
           style={styles.input}
           labelBackgroundColor={theme.colors.$surfaceContainerHigh}
-          showClearButton={false}
+          hideClearButton
         />
       ) : null}
 
@@ -98,7 +98,7 @@ const CalendarEdit = (props: CalendarEditProps) => {
             inputEnabled={inputEnabled}
             style={styles.rangeInput}
             labelBackgroundColor={theme.colors.$surfaceContainerHigh}
-            showClearButton={false}
+            hideClearButton
           />
 
           <Container disableGutters style={styles.separator} />
@@ -117,7 +117,7 @@ const CalendarEdit = (props: CalendarEditProps) => {
             inputEnabled={inputEnabled}
             style={styles.rangeInput}
             labelBackgroundColor={theme.colors.$surfaceContainerHigh}
-            showClearButton={false}
+            hideClearButton
           />
         </Container>
       ) : null}

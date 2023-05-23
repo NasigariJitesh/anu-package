@@ -77,6 +77,12 @@ export const avatarDocumentation: ContentValues = {
       optional: true,
     },
     {
+      name: 'textStyle',
+      type: 'StyleProp<TextStyle>',
+      description: 'avatarDocumentation:property-textStyle-description',
+      optional: true,
+    },
+    {
       name: 'excessAvatarStyle',
       type: 'StyleProp<ViewStyle>',
       description: 'avatarDocumentation:property-excessAvatarStyle-description',
@@ -84,11 +90,11 @@ export const avatarDocumentation: ContentValues = {
       optional: true,
     },
     {
-      name: 'excessAvatarSx',
-      type: 'Sx',
-      description: 'avatarDocumentation:property-excessAvatarSx-description',
-      groupProperty: true,
+      name: 'excessTextStyle',
+      type: 'StyleProp<TextStyle>',
+      description: 'avatarDocumentation:property-excessTextStyle-description',
       optional: true,
+      groupProperty: true,
     },
   ],
   examples: [

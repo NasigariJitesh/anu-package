@@ -21,14 +21,16 @@ const PhoneInput = (props: Omit<PhoneInputProps, 'value' | 'onChangeText'> & { v
   const [text, setText] = useState(props.value ?? '');
 
   return (
-    <PhoneInputComponent
-      {...props}
-      value={text}
-      onChangeText={(value: string) => {
-        setText(value);
-      }}
-      label='Phone number'
-    />
+    <Container disableGutters style={style}>
+      <PhoneInputComponent
+        {...props}
+        value={text}
+        onChangeText={(value: string) => {
+          setText(value);
+        }}
+        label='Phone number'
+      />
+    </Container>
   );
 };
 
@@ -60,12 +62,12 @@ export const phoneInputDocumentation: ContentValues = {
       component: (
         <Container disableGutters flexDirection='column-reverse' sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PhoneInput variant='filled' autoCompleteContainerStyle={style} disabled />
-            <PhoneInput variant='filled' autoCompleteContainerStyle={style} value='+1 438 678 5289' disabled />
+            <PhoneInput variant='filled' disabled />
+            <PhoneInput variant='filled' value='+1 438 678 5289' disabled />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PhoneInput variant='filled' autoCompleteContainerStyle={style} />
-            <PhoneInput variant='filled' autoCompleteContainerStyle={style} value='+1 438 678 5289' />
+            <PhoneInput variant='filled' />
+            <PhoneInput variant='filled' value='+1 438 678 5289' />
           </Container>
         </Container>
       ),
@@ -81,12 +83,12 @@ export const phoneInputDocumentation: ContentValues = {
       component: (
         <Container disableGutters flexDirection='column-reverse' sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PhoneInput variant='outlined' autoCompleteContainerStyle={style} disabled />
-            <PhoneInput variant='outlined' autoCompleteContainerStyle={style} value='+1 438 678 5289' disabled />
+            <PhoneInput variant='outlined' disabled />
+            <PhoneInput variant='outlined' value='+1 438 678 5289' disabled />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PhoneInput variant='outlined' autoCompleteContainerStyle={style} />
-            <PhoneInput variant='outlined' autoCompleteContainerStyle={style} value='+1 438 678 5289' />
+            <PhoneInput variant='outlined' />
+            <PhoneInput variant='outlined' value='+1 438 678 5289' />
           </Container>
         </Container>
       ),
@@ -102,24 +104,12 @@ export const phoneInputDocumentation: ContentValues = {
       component: (
         <Container disableGutters flexDirection='column-reverse' sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PhoneInput
-              variant='filled'
-              error
-              errorMessage='Error Message'
-              autoCompleteContainerStyle={style}
-              value='+1 438 678 5289'
-            />
-            <PhoneInput
-              variant='outlined'
-              error
-              errorMessage='Error Message'
-              autoCompleteContainerStyle={style}
-              value='+1 438 678 5289'
-            />
+            <PhoneInput variant='filled' error errorMessage='Error Message' value='+1 438 678 5289' />
+            <PhoneInput variant='outlined' error errorMessage='Error Message' value='+1 438 678 5289' />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <PhoneInput variant='filled' error errorMessage='Error Message' autoCompleteContainerStyle={style} />
-            <PhoneInput variant='outlined' error errorMessage='Error Message' autoCompleteContainerStyle={style} />
+            <PhoneInput variant='filled' error errorMessage='Error Message' />
+            <PhoneInput variant='outlined' error errorMessage='Error Message' />
           </Container>
         </Container>
       ),

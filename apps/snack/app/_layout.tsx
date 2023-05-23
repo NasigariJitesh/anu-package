@@ -21,11 +21,19 @@ export default function Root() {
             title: 'Anu Components',
           }}
         />
+
         <Stack.Screen
           name='components/auto-complete'
           options={{
             headerLargeTitle: true,
             title: 'Autocomplete',
+          }}
+        />
+        <Stack.Screen
+          name='components/avatar'
+          options={{
+            headerLargeTitle: true,
+            title: 'Avatar',
           }}
         />
         <Stack.Screen
@@ -78,6 +86,55 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/menu'
+          options={{
+            headerLargeTitle: true,
+            title: 'Menu',
+          }}
+        />
+        <Stack.Screen
+          name='components/password-input'
+          options={{
+            headerLargeTitle: true,
+            title: 'Password Input',
+          }}
+        />
+        <Stack.Screen
+          name='components/phone-input'
+          options={{
+            headerLargeTitle: true,
+            title: 'Phone Input',
+          }}
+        />
+        <Stack.Screen
+          name='components/search'
+          options={{
+            headerLargeTitle: true,
+            title: 'Search',
+          }}
+        />
+        <Stack.Screen
+          name='components/tabs'
+          options={{
+            headerLargeTitle: true,
+            title: 'Tabs',
+          }}
+        />
+        <Stack.Screen
+          name='components/text-area'
+          options={{
+            headerLargeTitle: true,
+            title: 'Text Area',
+          }}
+        />
+        <Stack.Screen
+          name='components/text-field'
+          options={{
+            headerLargeTitle: true,
+            title: 'Text Field',
+          }}
+        />
+        <Stack.Screen
           name='components/typography'
           options={{
             headerLargeTitle: true,
@@ -91,7 +148,13 @@ export default function Root() {
             title: 'Autocomplete Test',
           }}
         />
-
+        <Stack.Screen
+          name='components/avatar-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Avatar Test',
+          }}
+        />
         <Stack.Screen
           name='components/common-button-test'
           options={{
@@ -139,6 +202,55 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Divider Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/menu-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Menu Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/password-input-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Password Input Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/phone-input-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Phone Input Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/search-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Search Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/tabs-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Tabs Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/text-area-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Text Area Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/text-field-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Text Field Test',
           }}
         />
         <Stack.Screen

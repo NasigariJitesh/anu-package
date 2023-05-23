@@ -30,6 +30,7 @@ const PasswordInput = (props: PasswordInputProps) => {
   return (
     <TextField
       autoComplete='current-password'
+      hideClearButton
       {...finalProps}
       multiline={false}
       secureTextEntry={!showPassword}

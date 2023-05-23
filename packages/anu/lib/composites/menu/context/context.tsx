@@ -11,21 +11,10 @@ const MenuContext = createContext<MenuContextData>({
   position: {
     height: 0,
     width: 0,
-    x: 0,
-    y: 0,
-    top: 0,
-    left: 0,
-  },
-  rootPosition: {
-    height: 0,
-    width: 0,
-    x: 0,
-    y: 0,
     top: 0,
     left: 0,
   },
   updatePosition: () => null,
-  updateRootPosition: () => null,
   listDimension: {
     height: 0,
     width: 0,
@@ -57,8 +46,7 @@ function MenuProvider({
   onMenuToggle: (value: boolean) => void;
 }) {
   const [isOpen, setIsOpen] = useState(isMenuOpen);
-  const [position, setPosition] = useState({ height: 0, width: 0, x: 0, y: 0, top: 0, left: 0 });
-  const [rootPosition, setRootPosition] = useState({ height: 0, width: 0, x: 0, y: 0, top: 0, left: 0 });
+  const [position, setPosition] = useState({ height: 0, width: 0, top: 0, left: 0 });
   const [listDimension, setListDimension] = useState({ height: 0, width: 0 });
 
   const displayMenu = () => {
@@ -83,10 +71,8 @@ function MenuProvider({
         displayMenu,
         hideMenu,
         position,
-        rootPosition,
         listDimension,
         updatePosition: setPosition,
-        updateRootPosition: setRootPosition,
         updateListDimension: setListDimension,
       }}
     >

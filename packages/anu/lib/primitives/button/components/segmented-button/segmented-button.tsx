@@ -19,10 +19,10 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
   const finalProps = { ...defaultProps, ...props };
 
   const theme = useTheme();
+  const styles = getSegmentedButtonStyles(finalProps, selected, theme);
 
-  // eslint-disable-next-line prefer-const
-  let { buttonStyles, layerStyles, iconStyles, labelStyles, segmentedFirstButtonTheme, segmentedLastButtonTheme } =
-    getSegmentedButtonStyles(finalProps, selected, theme);
+  let { buttonStyles, layerStyles } = styles;
+  const { iconStyles, labelStyles, segmentedFirstButtonTheme, segmentedLastButtonTheme, innerContainerStyles } = styles;
 
   if (props.isFirst) {
     buttonStyles = { ...buttonStyles, ...segmentedFirstButtonTheme };
@@ -51,7 +51,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
   const RenderSelected = () => {
     const { icon, dataSets } = finalProps;
     const { fontSize, ...otherIconStyles } = iconStyles;
-    let size = fontSize ;
+    let size = fontSize;
 
     if (icon?.props) size = icon?.props.size;
 
@@ -79,7 +79,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
         style={generateStyles}
         dataSet={finalProps.dataSets?.containerDataSet}
       >
-        <Container flexDirection='row' align='center' justify='center' disableGutters sx={{ height: '100%' }}>
+        <Container disableGutters style={innerContainerStyles}>
           <RenderSelected />
 
           <Typography.Body

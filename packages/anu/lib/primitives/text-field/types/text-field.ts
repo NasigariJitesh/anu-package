@@ -1,7 +1,7 @@
 import { ExtendedDisabledStyles, ExtendedHoverStyles, ReactChildren } from 'anu/common/types';
 import { Pressable, SxProp, TextInput } from 'dripsy';
 import { MutableRefObject } from 'react';
-import { PressableStateCallbackType, StyleProp, TextInput as RNTextInput, TextStyle, ViewStyle } from 'react-native';
+import { PressableStateCallbackType, StyleProp, TextInput as RNTextInput, TextStyle } from 'react-native';
 
 /***
  * The Variant type of the text Field
@@ -19,7 +19,7 @@ export type TextInputProps = React.ComponentPropsWithoutRef<typeof TextInput>;
  */
 export interface TextFieldContainerStyle extends ExtendedHoverStyles, ExtendedDisabledStyles {}
 
-export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style' | 'placeholder'> {
+export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style' | 'placeholder' | 'dataSet'> {
   /**
    * The type of the text field
    */
@@ -46,19 +46,14 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
   style?: TextFieldContainerStyle;
 
   /**
-   * The styles for container of the text field component.
-   */
-  containerStyle?: StyleProp<ViewStyle>;
-
-  /**
    * The styles for label of the text field component.
    */
   labelStyle?: StyleProp<TextStyle>;
 
   /**
-   * The styles for text input of the text field component.
+   * The styles for input text of the text field component.
    */
-  textInputStyle?: StyleProp<TextStyle>;
+  textStyle?: StyleProp<TextStyle>;
   /**
    * The properties of the pressable component of react native (except sx)
    */
@@ -69,14 +64,14 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
   disabled?: boolean;
 
   /**
-   * If true, the clear button is displayed.
+   * If false, the clear button is displayed.
    */
-  showClearButton?: boolean;
+  hideClearButton?: boolean;
 
   /**
    * If there is any error related to field
    */
-  error?: boolean;
+  error?: boolean | { (): boolean };
   /**
    * Error messages need to be displayed with the text field
    */
@@ -113,23 +108,25 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
    */
   numberOfLines?: number;
 
+  /**
+   * callback clear button is pressed
+   */
+
   dataSets?: {
-    container?: Record<string, any>;
-    label?: Record<string, any>;
-    textInput?: Record<string, any>;
-    supportingText?: Record<string, any>;
-    errorText?: Record<string, any>;
+    textDataSet?: Record<string, any>;
+    textFieldDataSet?: Record<string, any>;
+    supportingTextDataSet?: Record<string, any>;
+    errorMessageDataSet?: Record<string, any>;
   };
 }
 
-export interface TextInputLabelProps extends Omit<TextFieldProps, 'style'> {
+export interface TextInputLabelProps extends TextFieldProps {
   states?: PressableStateCallbackType;
   height: number;
   textInputRef: MutableRefObject<RNTextInput | null>;
   isFocused: boolean;
   toggleIsFocused: (value: boolean) => void;
   backgroundColor?: string;
-  style?: StyleProp<TextStyle>;
 }
 
 export interface TextFieldReferenceProps {

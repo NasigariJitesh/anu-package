@@ -24,6 +24,10 @@ export function HomeScreen() {
       link: '/components/auto-complete',
     },
     {
+      title: 'Avatar',
+      link: '/components/avatar',
+    },
+    {
       title: 'Common Button',
       link: '/components/common-button',
     },
@@ -52,6 +56,34 @@ export function HomeScreen() {
       link: '/components/divider',
     },
     {
+      title: 'Menu',
+      link: '/components/menu',
+    },
+    {
+      title: 'Password Input',
+      link: '/components/password-input',
+    },
+    {
+      title: 'Phone Input',
+      link: '/components/phone-input',
+    },
+    {
+      title: 'Search',
+      link: '/components/search',
+    },
+    {
+      title: 'Tabs',
+      link: '/components/tabs',
+    },
+    {
+      title: 'Text Area',
+      link: '/components/text-area',
+    },
+    {
+      title: 'Text Field',
+      link: '/components/text-field',
+    },
+    {
       title: 'Typography',
       link: '/components/typography',
     },
@@ -61,6 +93,10 @@ export function HomeScreen() {
     {
       title: 'Autocomplete',
       link: '/components/auto-complete-test',
+    },
+    {
+      title: 'Avatar',
+      link: '/components/avatar-test',
     },
     {
       title: 'Common Button',
@@ -89,6 +125,34 @@ export function HomeScreen() {
     {
       title: 'Divider',
       link: '/components/divider-test',
+    },
+    {
+      title: 'Menu',
+      link: '/components/menu-test',
+    },
+    {
+      title: 'Password Input',
+      link: '/components/password-input-test',
+    },
+    {
+      title: 'Phone Input',
+      link: '/components/phone-input-test',
+    },
+    {
+      title: 'Search',
+      link: '/components/search-test',
+    },
+    {
+      title: 'Tabs',
+      link: '/components/tabs-test',
+    },
+    {
+      title: 'Text Field',
+      link: '/components/text-field-test',
+    },
+    {
+      title: 'Text Area',
+      link: '/components/text-area-test',
     },
     {
       title: 'Typography',
@@ -129,11 +193,11 @@ export function HomeScreen() {
   return (
     <Container disableGutters style={styles.container}>
       <Tabs type='primary' style={styles.tab}>
-        <Tab name='Test' style={styles.tab}>
-          <FlatList data={tests} renderItem={RenderItem} style={styles.flatList} />
-        </Tab>
         <Tab name='Snack' style={styles.tab}>
           <FlatList data={components} renderItem={RenderItem} style={styles.flatList} />
+        </Tab>
+        <Tab name='Test' style={styles.tab}>
+          <FlatList data={tests} renderItem={RenderItem} style={styles.flatList} />
         </Tab>
       </Tabs>
     </Container>
@@ -146,6 +210,7 @@ const getStyles = (theme: DripsyFinalTheme) => {
       flex: 1,
     },
     flatList: {
+      flex: 1,
       width: '100%',
     },
     itemContainer: {
@@ -161,7 +226,7 @@ const getStyles = (theme: DripsyFinalTheme) => {
       fontSize: theme.fontSizes[7],
       fontWeight: 'bold',
     },
-    tab: { width: '100%' },
+    tab: { flex: 1, width: '100%' },
   });
 
   return styles;

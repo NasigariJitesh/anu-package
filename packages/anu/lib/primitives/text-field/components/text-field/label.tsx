@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { TextInputLabelProps } from '../../types';
-import { getTextFieldStyles } from '../../utils';
+import { getError, getTextStyles } from '../../utils';
 
 const DURATION = 200; // in milliseconds
 const DELAY = 100; // in milliseconds
@@ -15,12 +15,20 @@ const DELAY = 100; // in milliseconds
 const selectLabelColorBasedOnState = (props: TextInputLabelProps, theme: DripsyFinalTheme) => {
   if (props.disabled) return getColorInRGBA(theme.colors.$onSurface, 38);
 
-  if (props.error) return theme.colors.$error;
+  if (getError(props.error)) return theme.colors.$error;
 
   // if it is focused
   if (props.states?.focused || props.states?.pressed) return theme.colors.$primary;
 
   return theme.colors.$onSurfaceVariant;
+};
+
+const selectLabelBackgroundColor = (props: TextInputLabelProps, theme: DripsyFinalTheme) => {
+  if (props.backgroundColor) return props.backgroundColor;
+
+  if (props.variant === 'outlined') return theme.colors.$surface;
+
+  if (!props.disabled) return theme.colors.$surfaceVariant;
 };
 
 /**
@@ -30,9 +38,9 @@ const selectLabelColorBasedOnState = (props: TextInputLabelProps, theme: DripsyF
  */
 const TextFieldLabel = (props: TextInputLabelProps) => {
   const theme = useTheme();
-  const style = getTextFieldStyles(theme);
+  const style = getTextStyles(theme);
 
-  const { colors, fontSizes, lineHeights } = theme;
+  const { fontSizes, lineHeights } = theme;
 
   const transitionTopCoordinate = useSharedValue(19);
   const transitionLeftCoordinate = useSharedValue(0);
@@ -44,12 +52,13 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const textStyles = {
     paddingHorizontal: 2,
     color: props.placeholderTextColor || selectLabelColorBasedOnState(props, theme),
-    backgroundColor: props.variant === 'outlined' ? props.backgroundColor ?? colors.$background : undefined,
+    backgroundColor: selectLabelBackgroundColor(props, theme),
   };
 
   const animatedStyle = {
     position: 'absolute' as const,
     zIndex: 10,
+    width: props.variant === 'outlined' ? undefined : '100%',
   };
 
   const animatedViewStyle = useAnimatedStyle(() => {
@@ -113,11 +122,9 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   return (
     <Animated.View style={[animatedStyle, animatedViewStyle]}>
       <Animated.Text
-        // @ts-ignore
-        dataSet={props.dataSets?.label}
         numberOfLines={1}
         ellipsizeMode='tail'
-        style={[getCombinedStylesForText(textStyles, props.style), animatedTextStyle]}
+        style={[getCombinedStylesForText(textStyles, props.labelStyle), animatedTextStyle]}
       >
         {props.label}
       </Animated.Text>

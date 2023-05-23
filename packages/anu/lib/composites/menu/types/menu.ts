@@ -6,8 +6,6 @@ import { PressableProps } from 'react-native';
 export interface Position {
   height: number;
   width: number;
-  x?: number;
-  y?: number;
   top: number;
   left: number;
 }
@@ -42,9 +40,9 @@ export interface MenuProps {
 
 export interface MenuListProps extends ContainerProps {
   /**
-   *The co-ordinates of the custom position of the menu
+   *The co-ordinates of the custom position of the menu ('auto' is not compatible for native and compatible with web only in case of the menu is not positioned below the area that is visible on initial render).
    */
-  positionCoordinates?: PositionCoordinates;
+  positionCoordinates: PositionCoordinates;
   /**
    *Whether the menu is nested inside another menu
    */
@@ -79,28 +77,17 @@ export interface MenuContextData {
   displayMenu: () => void;
   hideMenu: () => void;
   position: Position;
-  rootPosition: Position;
   listDimension: { height: number; width: number };
   updatePosition: React.Dispatch<
     React.SetStateAction<{
       height: number;
       width: number;
-      x: number;
-      y: number;
+
       top: number;
       left: number;
     }>
   >;
-  updateRootPosition: React.Dispatch<
-    React.SetStateAction<{
-      height: number;
-      width: number;
-      x: number;
-      y: number;
-      top: number;
-      left: number;
-    }>
-  >;
+
   updateListDimension: React.Dispatch<
     React.SetStateAction<{
       height: number;

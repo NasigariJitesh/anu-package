@@ -3,9 +3,8 @@ import { useTheme } from 'anu/config';
 import { Container, IconButton, TextField } from 'anu/lib/primitives';
 import React from 'react';
 
-import { getCombinedStylesForView } from '../../../../../common/utils';
 import { AutoCompleteProps } from '../../types';
-import { getOverridingStyleForBaseVariant } from '../../utils';
+import { getDropDownButtonStyle, getOverridingStyleForBaseVariant } from '../../utils';
 import { useAutoCompleteContext } from '../context/context';
 
 const TextFieldAutoComplete = (props: AutoCompleteProps) => {
@@ -16,7 +15,6 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
   const overrideStyle = getOverridingStyleForBaseVariant();
 
   const {
-    autoCompleteContainerStyle,
     data,
     caseSensitive,
     filterOnChange,
@@ -39,11 +37,14 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
    * @param showButton - if true, displays the button
    */
   const DropDownButton = ({ showButton }: { showButton: boolean }) => {
+    const style = getDropDownButtonStyle(theme, props);
     return showButton ? (
       <IconButton
         icon={{
           name: showResults ?? isOpen ? 'arrow-drop-up' : 'arrow-drop-down',
-          props: { style: { color: props.error || disabled ? 'inherit' : theme.colors.$onSurfaceVariant } },
+          props: {
+            style,
+          },
         }}
         disabled={disabled}
         variant='standard'
@@ -63,7 +64,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
   };
 
   const getStyle = () => {
-    let style = { ...textFieldProps.style, width: '100%', position: 'relative' as const };
+    let style = { width: 280, position: 'relative' as const };
 
     if (variant === 'base') style = { ...overrideStyle, ...style };
 
@@ -74,8 +75,6 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
     <TextField
       {...textFieldProps}
       disabled={disabled}
-      // eslint-disable-next-line react-native/no-inline-styles
-      containerStyle={getCombinedStylesForView({ width: '100%' }, textFieldProps.containerStyle)}
       style={{ ...getStyle(), ...textFieldProps.style }}
       variant={variant === 'base' ? 'outlined' : variant}
       ref={textInputReference}

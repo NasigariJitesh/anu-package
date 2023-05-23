@@ -78,6 +78,7 @@
   "leftSideBar:side-sheet": "Side Sheet",
   "leftSideBar:switch": "Switch",
   "leftSideBar:tabs": "Tabs",
+  "leftSideBar:text-area": "Text Area",
   "leftSideBar:time-picker": "Time Picker",
   "leftSideBar:touchable-ripple": "Touchable Ripple",
   "leftSideBar:typography": "Typography",
@@ -104,7 +105,6 @@
   "autoCompleteDocumentation:property-debounce-description": "If true, uses debouncing technique when filtering.",
   "autoCompleteDocumentation:property-debounceDuration-description": "Time Duration for the debouncing.",
   "autoCompleteDocumentation:property-resultContainerStyle-description": "The styles for the results container.",
-  "autoCompleteDocumentation:property-autoCompleteContainerStyle-description": "The styles for the results container.",
   "autoCompleteDocumentation:external-properties-title": "Text Field Properties",
 
   "avatarDocumentation:mainHeading": "Avatar",
@@ -132,7 +132,8 @@
   "avatarDocumentation:property-max-description": "The maximum number of avatars to be displayed in avatar group.",
   "avatarDocumentation:property-total-description": "The total number of avatars in avatar group.",
   "avatarDocumentation:property-excessAvatarStyle-description": "The styles for the avatar that displays number of remaining avatar in avatar group.",
-  "avatarDocumentation:property-excessAvatarSx-description": "The system prop that allows defining system overrides as well as additional CSS styles for the avatar that displays number of remaining avatar in avatar group.",
+  "avatarDocumentation:property-excessTextStyle-description": "Styles for text of the avatar that displays number of remaining avatar in avatar group.",
+  "avatarDocumentation:property-textStyle-description": "Styles for text of the letter avatar.",
 
   "badgeDocumentation:mainHeading": "Badge",
   "badgeDocumentation:mainDescription": "Badges are used to display a small amount of information, typically a number or a short status message, on top of an icon or avatar.",
@@ -586,7 +587,7 @@
   "textFieldDocumentation:property-supportingTextStyle-description": "Styles for the supporting text of text field.",
   "textFieldDocumentation:property-errorMessageStyle-description": "Styles for the error messages of text field.",
   "textFieldDocumentation:property-containerStyle-description": "Styles for container of the text field component.",
-  "textFieldDocumentation:property-textInputStyle-description": "Styles for the text input of the text field component.",
+  "textFieldDocumentation:property-textStyle-description": "Styles pour le texte de saisie du composant champ de texte.",
   "textFieldDocumentation:property-style-description": "The styles for the text field component.",
   "textFieldDocumentation:property-pressableProps-description": "The properties of the pressable component of react native (except sx)",
   "textFieldDocumentation:property-sx-description": "The system prop that allows defining system overrides as well as additional CSS styles.",
@@ -619,7 +620,7 @@
   "menuListDocumentation:example1-description": "A default menu list contains items, icons, a divider, and other supporting icons.",
 
   "menuListDocumentation:property-inner-description": "Whether the menu is nested inside another menu.",
-  "menuListDocumentation:property-pos-description": "The co-ordinates of the position of the menu.",
+  "menuListDocumentation:property-positionCoordinates-description": "The co-ordinates of the custom position of the menu ('auto' is not compatible for native and compatible with web only in case of the menu is not positioned below the area that is visible on initial render).",
 
   "menuListDocumentation:external-properties-title": " Container Properties",
 
@@ -714,9 +715,7 @@
   "searchDocumentation:example4-description": "Here, the “No results found” message is typically displayed in a search results view when the search query does not return any results\n\nThis message helps to communicate to the user that their search did not produce any relevant results and encourages them to modify their search terms or try a different search strategy.",
   "searchDocumentation:property-filterOnChange-description": "The function to filter the results based on search key.",
   "searchDocumentation:property-type-description": "The type of view for search results",
-  "searchDocumentation:property-searchBarStyle-description": "The Styles for the search bar input field.",
-  "searchDocumentation:property-searchBarContainerStyle-description": "The Styles for the search bar container.",
-  "searchDocumentation:property-containerStyle-description": "The Styles for the search bar component and results container.",
+  "searchDocumentation:property-style-description": "The Styles for the search bar input field.",
   "searchDocumentation:external-properties-title": "Auto Complete Properties",
 
   "sideSheetDocumentation:mainHeading": "Side Sheet",
@@ -757,7 +756,6 @@
   "tabsDocumentation:property-tab-children-description": "The components to be displayed in the tab.",
   "tabsDocumentation:property-name-description": "The name of the tab.",
   "tabsDocumentation:property-icon-description": "The icon of the tab.",
-  "tabsDocumentation:property-contentStyle-description": "The styles for the tab content container.",
   "tabsDocumentation:property-tabHeaderStyle-description": "The styles for the tab header.",
   "tabsDocumentation:property-activeTabHeaderStyle-description": "The styles for the tab header of active tab.",
 
@@ -771,6 +769,15 @@
   "tabsDocumentation:example3-description": "Scrollable tabs are displayed in a horizontal row, but if there are too many tabs to fit within the width of the screen, the user can swipe left or right to view additional tabs. This allows for a larger number of tabs to be displayed without taking up too much screen real estate.",
   "tabsDocumentation:example4-name": "Tabs - Medium/Large Screens",
   "tabsDocumentation:example4-description": "It can be used on medium and large screens with wide layouts such as tabular devices or even web applications. Where the tab container on these screens scales horizontally to occupy the available screen width.",
+  "textAreaDocumentation:mainHeading": "Text Area",
+
+  "textAreaDocumentation:example1-name": "Filled Text Area",
+  "textAreaDocumentation:example2-name": "Outlined Text Area",
+  "textAreaDocumentation:example3-name": "Text Area - with Error",
+  "textAreaDocumentation:external-properties-title": " Text Field Properties",
+
+  "textAreaDocumentation:property-variant-description": "The variant of text field for the text area.",
+  "textAreaDocumentation:property-value-description": "The value as a string.",
 
   "timePickerDocumentation:mainHeading": "Time picker",
   "timePickerDocumentation:mainDescription": "A Time picker is used to allow users to select a specific time of day, typically displayed in a dialog. It usually consists of an analog or digital clock interface, along with buttons for setting the hour and minute values.\n\nTime pickers can be used in a variety of contexts, such as scheduling appointments or setting reminders.",

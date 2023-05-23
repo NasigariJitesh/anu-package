@@ -35,7 +35,7 @@ const Example1 = () => {
           />
         }
       >
-        <MenuList width={300}>
+        <MenuList width={300} positionCoordinates={{ top: 70, right: 0 }}>
           <MenuItem leadingIcon={{ name: 'settings' }} trailingIcon={{ name: 'arrow-right' }} trailingText='Expand'>
             <Typography.Body>Settings</Typography.Body>
           </MenuItem>
