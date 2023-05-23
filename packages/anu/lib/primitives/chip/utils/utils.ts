@@ -21,6 +21,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
+      flex: 1,
     } as const,
     assist: {
       backgroundColor: 'transparent',
