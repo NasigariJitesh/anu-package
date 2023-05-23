@@ -1,4 +1,4 @@
-import { generateHoverStyles } from 'anu/common/utils';
+import { generateHoverStyles, getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, TouchableRipple } from 'anu/lib';
 import Typography from 'anu/lib/primitives/typography';
@@ -27,7 +27,7 @@ const Chip = (props: Partial<ChipProps> & { value: string }) => {
 
   const textStyle = {
     color: 'inherit',
-    paddingHorizontal: '8px',
+    paddingHorizontal: 8,
     cursor: 'inherit',
     fontFamily: 'inherit',
     fontWeight: 'inherit' as never,
@@ -46,7 +46,7 @@ const Chip = (props: Partial<ChipProps> & { value: string }) => {
       >
         <>
           <LeadingIcon {...restOfTheProps} />
-          <Typography.Label style={textStyle} size='large'>
+          <Typography.Label style={getCombinedStylesForText(textStyle, props.labelStyle)} size='large'>
             {props.value}
           </Typography.Label>
 

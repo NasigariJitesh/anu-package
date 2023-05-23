@@ -20,7 +20,6 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
     } as const,
     assist: {
       backgroundColor: 'transparent',
@@ -201,7 +200,7 @@ const getChipTheme = (theme: DripsyFinalTheme) => {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingHorizontal: '8px',
+      paddingHorizontal: 8,
       color: 'inherit',
     } as const,
     assistElevated: {
@@ -612,6 +611,7 @@ export const getStyles = (props: ChipProps, theme: DripsyFinalTheme) => {
     iconStyle = { ...iconStyle, ...iconDisableStyles };
     layerStyles = { ...layerStyles, ...layerDisableStyles };
   }
+
   return {
     styles,
     layerStyles,
