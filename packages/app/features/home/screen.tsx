@@ -52,6 +52,10 @@ export function HomeScreen() {
       link: '/components/segmented-button',
     },
     {
+      title: 'Checkbox',
+      link: '/components/checkbox',
+    },
+    {
       title: 'Chip',
       link: '/components/chip',
     },
@@ -129,6 +133,10 @@ export function HomeScreen() {
     {
       title: 'Segmented Button',
       link: '/components/segmented-button-test',
+    },
+    {
+      title: 'Checkbox',
+      link: '/components/checkbox-test',
     },
     {
       title: 'Chip',

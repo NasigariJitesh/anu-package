@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import { Checkbox, Container } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
@@ -94,12 +93,6 @@ export const checkBoxDocumentation: ContentValues = {
       optional: true,
     },
     {
-      name: 'containerStyle',
-      description: 'checkBoxDocumentation:property-containerStyle-description',
-      type: 'StyleProp<ViewStyle>',
-      optional: true,
-    },
-    {
       name: 'onPress',
       description: 'checkBoxDocumentation:property-onPress-description',
       type: '(id: string) => void',
@@ -118,12 +111,24 @@ export const checkBoxDocumentation: ContentValues = {
 <Checkbox id='selected-error' selected error />`,
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Checkbox id='basic' containerStyle={style} />
-          <Checkbox id='disabled' disabled containerStyle={style} />
-          <Checkbox id='error' error containerStyle={style} />
-          <Checkbox id='selected' selected containerStyle={style} />
-          <Checkbox id='selected-disabled' selected disabled containerStyle={style} />
-          <Checkbox id='selected-error' selected error containerStyle={style} />
+          <Container disableGutters style={style}>
+            <Checkbox id='basic' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='disabled' disabled />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='error' error />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='selected' selected />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='selected-disabled' selected disabled />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='selected-error' selected error />
+          </Container>
         </Container>
       ),
     },
@@ -135,9 +140,15 @@ export const checkBoxDocumentation: ContentValues = {
 <Checkbox id='indeterminate-error' indeterminate error />`,
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Checkbox id='indeterminate' indeterminate containerStyle={style} />
-          <Checkbox id='indeterminate-disabled' indeterminate disabled containerStyle={style} />
-          <Checkbox id='indeterminate-error' indeterminate error containerStyle={style} />
+          <Container disableGutters style={style}>
+            <Checkbox id='indeterminate' indeterminate />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='indeterminate-disabled' indeterminate disabled />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='indeterminate-error' indeterminate error />
+          </Container>
         </Container>
       ),
     },
@@ -151,11 +162,21 @@ export const checkBoxDocumentation: ContentValues = {
 <Checkbox id='labelBottom' label='Bottom' labelPlacement='bottom' />`,
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <Checkbox id='label' label='Label' containerStyle={style} />
-          <Checkbox id='labelLeft' label='Left' labelPlacement='left' containerStyle={style} />
-          <Checkbox id='labelRight' label='Right' labelPlacement='right' containerStyle={style} />
-          <Checkbox id='labelTop' label='Top' labelPlacement='top' containerStyle={{ ...style, marginTop: -1 }} />
-          <Checkbox id='labelBottom' label='Bottom' labelPlacement='bottom' containerStyle={style} />
+          <Container disableGutters style={style}>
+            <Checkbox id='label' label='Label' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='labelLeft' label='Left' labelPlacement='left' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='labelRight' label='Right' labelPlacement='right' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='labelTop' label='Top' labelPlacement='top' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Checkbox id='labelBottom' label='Bottom' labelPlacement='bottom' />
+          </Container>
         </Container>
       ),
     },
