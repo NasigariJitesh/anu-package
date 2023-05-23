@@ -4,7 +4,7 @@ import { Container, IconButton, TextField } from 'anu/lib/primitives';
 import React from 'react';
 
 import { AutoCompleteProps } from '../../types';
-import { getOverridingStyleForBaseVariant } from '../../utils';
+import { getDropDownButtonStyle, getOverridingStyleForBaseVariant } from '../../utils';
 import { useAutoCompleteContext } from '../context/context';
 
 const TextFieldAutoComplete = (props: AutoCompleteProps) => {
@@ -37,11 +37,14 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
    * @param showButton - if true, displays the button
    */
   const DropDownButton = ({ showButton }: { showButton: boolean }) => {
+    const style = getDropDownButtonStyle(theme, props);
     return showButton ? (
       <IconButton
         icon={{
           name: showResults ?? isOpen ? 'arrow-drop-up' : 'arrow-drop-down',
-          props: { style: { color: props.error || disabled ? 'inherit' : theme.colors.$onSurfaceVariant } },
+          props: {
+            style,
+          },
         }}
         disabled={disabled}
         variant='standard'

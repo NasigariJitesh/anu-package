@@ -1,7 +1,8 @@
 import { DripsyFinalTheme } from 'dripsy';
 
+import { getColorInRGBA } from '../../../../common/utils';
 import { TextFieldContainerStyle } from '../../../primitives';
-import { Options } from '../types';
+import { AutoCompleteProps, Options } from '../types';
 
 /**
  * to generate styles for the autocomplete
@@ -86,13 +87,8 @@ export const getOverridingStyleForBaseVariant = () => {
   return style;
 };
 
-export const getDropDownButtonStyle = () => {
-  const style = {
-    height: 30,
-    width: 30,
-    '@hover': { height: 30, width: 30 },
-    '@focus': { height: 30, width: 30 },
-    '@press': { height: 30, width: 30 },
-  };
-  return style;
+export const getDropDownButtonStyle = (theme: DripsyFinalTheme, props: AutoCompleteProps) => {
+  if (props.error) return { color: theme.colors.$error };
+  if (props.disabled) return { color: getColorInRGBA(theme.colors.$onSurface, 38) };
+  return { color: theme.colors.$onSurfaceVariant };
 };
