@@ -111,6 +111,10 @@ export function HomeScreen() {
       link: '/components/segmented-button-test',
     },
     {
+      title: 'Checkbox',
+      link: '/components/checkbox-test',
+    },
+    {
       title: 'Container',
       link: '/components/container-test',
     },
