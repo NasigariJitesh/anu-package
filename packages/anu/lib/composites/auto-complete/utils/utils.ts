@@ -43,10 +43,12 @@ export const getAutoCompleteStyles = (
     width: dimensions.width,
   };
 
+  const containerStyle = { width: '100%', flex: 1, height: '100%' };
   return {
     defaultFlatListStyle,
     defaultTextFieldContainerStyle,
     defaultFlatListContainerStyle,
+    containerStyle,
   };
 };
 

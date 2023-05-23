@@ -66,20 +66,21 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
     displayResults();
   };
 
-  const { defaultTextFieldContainerStyle, defaultFlatListStyle, defaultFlatListContainerStyle } = getAutoCompleteStyles(
-    theme,
-    dimension,
-    props.style,
-  );
+  const { defaultTextFieldContainerStyle, defaultFlatListStyle, defaultFlatListContainerStyle, containerStyle } =
+    getAutoCompleteStyles(theme, dimension, props.style);
 
   return (
-    <Container disableGutters>
+    <Container disableGutters style={containerStyle}>
       <Container
         disableGutters
         onLayout={(event) => {
           setDimensions({ height: event.nativeEvent.layout.height, width: event.nativeEvent.layout.width });
         }}
-        style={defaultTextFieldContainerStyle}
+        style={getCombinedStylesForView(
+          defaultTextFieldContainerStyle,
+          //@ts-expect-error
+          finalProps.style?.width ? { width: finalProps.style?.width } : {},
+        )}
       >
         <TextFieldAutoComplete
           {...finalProps}

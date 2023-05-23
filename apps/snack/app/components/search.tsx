@@ -27,6 +27,22 @@ const data = [
     id: 'item 6',
     value: 'Item 6',
   },
+  {
+    id: 'item 7',
+    value: 'Item 7',
+  },
+  {
+    id: 'item 8',
+    value: 'Item 8',
+  },
+  {
+    id: 'item 9',
+    value: 'Item 9',
+  },
+  {
+    id: 'item 10',
+    value: 'Item 10',
+  },
 ];
 
 const SearchScreen = () => {
@@ -56,9 +72,8 @@ const SearchScreen = () => {
         }
         flatListProps={{ renderItem: ListRenderItem }}
         data={data}
-        style={{ width: 260 }}
         leadingIcon={<Icon name='search' />}
-        type='full-screen'
+        type='docked'
       />
     </Container>
   );

@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 import {
+  AutoComplete,
   Avatar,
   AvatarGroup,
   Button,
@@ -8,6 +9,8 @@ import {
   Container,
   Icon,
   Options,
+  PasswordInput,
+  PhoneInput,
   Search,
   Tab,
   Tabs,
@@ -19,7 +22,6 @@ import {
 import TextArea from 'anu/lib/composites/text-area/components/text-area';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
-import { KeyboardAvoidingView } from 'react-native';
 
 const data = [
   {
@@ -82,8 +84,8 @@ export default function Example() {
   };
 
   return (
-    <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
-      {/* <PasswordInput error value={text} onChangeText={setText} /> */}
+    <Container flexDirection='column' sx={{ flex: 1, paddingTop: 1 }}>
+      <PasswordInput value={text} onChangeText={setText} />
       <AvatarGroup total={15}>
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=10' }} variant='circle' />
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=11' }} variant='circle' />
@@ -91,9 +93,21 @@ export default function Example() {
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=13' }} variant='circle' />
       </AvatarGroup>
 
-      <TextArea value={text} onChangeText={setText} numberOfLines={3} textBreakStrategy='highQuality' />
+      <Container disableGutters style={{ zIndex: 1000, marginVertical: 10, width: '100%' }}>
+        <AutoComplete
+          value={text}
+          onChangeText={(value: string) => {
+            setText(value);
+          }}
+          variant='filled'
+          data={data}
+          label='Auto Complete'
+          flatListProps={{ renderItem: ListRenderItem, style: { maxHeight: 140 } }}
+        />
+      </Container>
 
-      <KeyboardAvoidingView>
+      <TextArea value={text} onChangeText={setText} numberOfLines={3} textBreakStrategy='highQuality' />
+      <Container disableGutters style={{ zIndex: 1000, marginVertical: 10, width: '100%' }}>
         <Search
           value={text1}
           onChangeText={(value: string) => {
@@ -105,11 +119,19 @@ export default function Example() {
           }
           flatListProps={{ renderItem: ListRenderItem }}
           data={data}
-          style={{ width: 260 }}
           leadingIcon={<Icon name='search' />}
-          type='full-screen'
+          type='docked'
         />
-      </KeyboardAvoidingView>
+      </Container>
+      <Container disableGutters style={{ zIndex: 900, marginVertical: 10, width: '100%' }}>
+        <PhoneInput
+          value={text}
+          onChangeText={(value: string) => {
+            setText(value);
+          }}
+          label='Phone number'
+        />
+      </Container>
       <TextField
         value={text}
         onChangeText={setText}
