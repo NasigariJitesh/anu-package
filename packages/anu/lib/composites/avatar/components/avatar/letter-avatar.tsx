@@ -19,7 +19,6 @@ const LetterAvatar = (props: LetterAvatarProps) => {
   const { size, variant, name, lastName, textStyle, ...otherProps } = finalProps;
 
   const { containerStyle, typographyStyle } = getLetterAvatarStyle(finalProps, theme);
-  console.log(textStyle);
   return (
     <Container disableGutters {...otherProps} style={getCombinedStylesForView(containerStyle, otherProps.style)}>
       <Typography.Body style={getCombinedStylesForText(typographyStyle, textStyle)}>
