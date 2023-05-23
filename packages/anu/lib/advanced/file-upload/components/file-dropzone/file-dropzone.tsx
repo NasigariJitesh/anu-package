@@ -23,8 +23,6 @@ const handleFileUpload = async (props: FileDropZoneProps, updateFiles: { (files:
     type: getFileTypes(props.fileType, props.uploadVariant),
   });
 
-  console.log(result);
-
   if (result.type === 'success' && result.uri && result.name) {
     const file = new File([result.uri], result.name, { type: result.mimeType });
 
