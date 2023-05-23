@@ -24,6 +24,7 @@ const PasswordInput = (props: PasswordInputProps) => {
 
 export const passwordInputDocumentation: ContentValues = {
   mainHeading: 'passwordInputDocumentation:mainHeading',
+  mainDescription: 'passwordInputDocumentation:mainDescription',
 
   properties: [
     {
