@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Container, Image } from 'anu/lib';
-import sidesheet from 'assets/side-sheet.png';
+import { Button, Container } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+import { useMenuContext } from 'screens/common/provider';
 
 const flexStyle = {
   flexWrap: 'wrap',
@@ -13,6 +13,15 @@ const flexStyle = {
   overflow: 'scroll',
 } as const;
 
+const Example = () => {
+  const { toggleSidebar } = useMenuContext();
+  return (
+    <Container disableGutters sx={flexStyle as never}>
+      <Button.Filled title='Open Sidebar' onPress={toggleSidebar} />
+    </Container>
+  );
+};
+
 export const sideSheetDocumentation: ContentValues = {
   mainHeading: 'sideSheetDocumentation:mainHeading',
   mainDescription: 'sideSheetDocumentation:mainDescription',
@@ -21,11 +30,7 @@ export const sideSheetDocumentation: ContentValues = {
       name: 'sideSheetDocumentation:example1-name',
       description: 'sideSheetDocumentation:example1-description',
       id: 'default',
-      component: (
-        <Container disableGutters sx={flexStyle as never}>
-          <Image source={{ uri: sidesheet.src }} style={{ width: 450, height: 350 }} alt='side-sheet' />
-        </Container>
-      ),
+      component: <Example />,
       code: "<SideSheet width={300} headline= 'Title' startCoordinate={-50} align='right' divider />",
     },
   ],

@@ -61,9 +61,10 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
     (destination: number) => {
       'worklet';
 
-      isSideSheetActive.value = destination > 0;
+      console.log(destination, startCoordinate);
+      isSideSheetActive.value = align === 'right' ? destination < startCoordinate : destination > startCoordinate;
 
-      const scrollValue = align === 'right' ? destination : destination;
+      const scrollValue = destination;
 
       translateX.value = withSpring(scrollValue, { damping });
     },
@@ -74,6 +75,7 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
    * Check if the side sheet is open or not
    */
   const isActive = useCallback(() => {
+    console.log(isSideSheetActive.value);
     return isSideSheetActive.value;
   }, [isSideSheetActive]);
 
