@@ -38,11 +38,7 @@ export const getItemStyles = (theme: DripsyFinalTheme) => {
 };
 
 export const getDefaultStyles = () => {
-  const defaultTextFieldStyles = {
-    width: 280,
-  };
   const defaultResultsContainerStyle = {
-    width: 264,
     maxHeight: 400,
   };
   const defaultSelectedFlagStyle = {
@@ -56,10 +52,8 @@ export const getDefaultStyles = () => {
   const defaultTextInputStyle = {
     paddingLeft: 8,
     paddingRight: 0,
-    maxWidth: 150,
   };
   return {
-    defaultTextFieldStyles,
     defaultResultsContainerStyle,
     defaultSelectedFlagStyle,
     defaultSelectedEmojiStyle,

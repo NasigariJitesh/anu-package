@@ -18,7 +18,7 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       backgroundColor: colors.$surfaceVariant,
       color: colors.$onSurfaceVariant,
       height: 56,
-      width: 250,
+      width: '100%',
       justifyContent: 'center',
       paddingVertical: 0,
       paddingHorizontal: 0,
@@ -51,7 +51,7 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
       backgroundColor: colors.$background,
       color: colors.$onSurfaceVariant,
       height: 56,
-      width: 250,
+      width: '100%',
       paddingVertical: 0,
       paddingHorizontal: 0,
       borderWidth: 1,
@@ -293,4 +293,10 @@ export const getError = (error?: boolean | { (): boolean }) => {
   if (error) {
     return typeof error == 'function' ? error() : error;
   } else return false;
+};
+
+
+export const getContainerStyle = ()=>{
+   const style = { width: '100%', flex: 1, height: '100%' };
+   return style;
 };

@@ -69,8 +69,8 @@ const AutoCompleteScreen = () => {
   };
 
   return (
-    <Container disableGutters sx={{ flex: 1 }}>
-      <Container disableGutters sx={{ margin: 10, zIndex: 150 }}>
+    <Container style={{ flex: 1 }}>
+      <Container disableGutters style={{ width: '100%', height: 100, zIndex: 150 }}>
         <AutoComplete
           variant='outlined'
           data={data}
@@ -85,7 +85,7 @@ const AutoCompleteScreen = () => {
           toggleShowResults={toggleShow}
         />
       </Container>
-      <Container disableGutters sx={{ margin: 10, zIndex: 100 }}>
+      <Container disableGutters style={{ width: '100%', height: 100, zIndex: 100 }}>
         <AutoComplete
           variant='outlined'
           data={data}
@@ -98,7 +98,7 @@ const AutoCompleteScreen = () => {
           flatListProps={{ renderItem: ListRenderItem, style: { maxHeight: 100 } }}
         />
       </Container>
-      <Container disableGutters sx={{ margin: 10, zIndex: 50 }}>
+      <Container disableGutters style={{ width: '100%', height: 100, zIndex: 50 }}>
         <AutoComplete
           variant='outlined'
           data={data}

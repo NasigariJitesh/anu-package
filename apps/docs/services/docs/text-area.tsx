@@ -19,7 +19,11 @@ const flexStyle = {
 const TextArea = (props: TextAreaProps) => {
   const [text, setText] = useState(props.value);
 
-  return <TextAreaComponent {...props} style={style} value={text} onChangeText={setText} />;
+  return (
+    <Container disableGutters style={style}>
+      <TextAreaComponent {...props} value={text} onChangeText={setText} />
+    </Container>
+  );
 };
 
 export const textAreaDocumentation: ContentValues = {

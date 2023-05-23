@@ -7,13 +7,12 @@ const TextFieldScreen = () => {
   const [text, setText] = useState('');
   const [text1, setText1] = useState('');
   return (
-    <Container style={{ padding: 10 }}>
+    <Container style={{ flex: 1, padding: 10 }}>
       <TextField value={text} onChangeText={setText} hideClearButton />
       <TextField
         variant='filled'
         value={text1}
         onChangeText={setText1}
-        style={{ margin: 10 }}
         textStyle={{ color: 'red' }}
         error={() => text1 === 'error'}
       />

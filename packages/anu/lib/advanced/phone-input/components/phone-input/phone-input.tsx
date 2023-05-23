@@ -73,7 +73,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
 
   const { value, onChangeText, leadingIcon, flatListProps, ...otherAutoCompleteProps } = finalProps;
 
-  const { defaultTextFieldStyles, defaultTextInputStyle } = getDefaultStyles();
+  const { defaultTextInputStyle } = getDefaultStyles();
 
   const focus = useCallback(() => {
     autoCompleteReference.current?.focus();
@@ -230,7 +230,6 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
   return (
     <AutoComplete
       {...otherAutoCompleteProps}
-      style={{ ...defaultTextFieldStyles, ...otherAutoCompleteProps.style }}
       textStyle={getCombinedStylesForText(defaultTextInputStyle, otherAutoCompleteProps.textStyle)}
       ref={autoCompleteReference}
       data={countryCodesData}

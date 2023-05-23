@@ -78,6 +78,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/checkbox'
+          options={{
+            headerLargeTitle: true,
+            title: 'Checkbox',
+          }}
+        />
+        <Stack.Screen
           name='components/chip'
           options={{
             headerLargeTitle: true,
@@ -208,6 +215,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Segmented Button Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/checkbox-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Checkbox Test',
           }}
         />
         <Stack.Screen
