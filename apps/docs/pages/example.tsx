@@ -1,6 +1,8 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 import {
+  Avatar,
+  AvatarGroup,
   Button,
   Chip,
   Container,
@@ -82,6 +84,12 @@ export default function Example() {
   return (
     <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
       {/* <PasswordInput error value={text} onChangeText={setText} /> */}
+      <AvatarGroup total={15}>
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=10' }} variant='circle' />
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=11' }} variant='circle' />
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=12' }} variant='circle' />
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=13' }} variant='circle' />
+      </AvatarGroup>
 
       <TextArea value={text} onChangeText={setText} numberOfLines={3} textBreakStrategy='highQuality' />
 

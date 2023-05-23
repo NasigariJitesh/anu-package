@@ -1,4 +1,4 @@
-import { DripsyFinalTheme, Sx } from 'dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 import { ReactElement } from 'react';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { ImageStyle } from 'react-native';
@@ -36,6 +36,7 @@ const getLetterAvatarTheme = (theme: DripsyFinalTheme, variant?: 'circle' | 'rou
       backgroundColor: theme.colors.$primary,
       alignItems: 'center' as const,
       justifyContent: 'center' as const,
+      overflow: 'hidden' as const,
     },
     medium: {},
     small: {
@@ -50,23 +51,13 @@ const getLetterAvatarTheme = (theme: DripsyFinalTheme, variant?: 'circle' | 'rou
     },
   };
 
-  const extendedContainerTheme = {
-    common: {
-      color: theme.colors.$onPrimary,
-      overflow: 'hidden',
-    },
-    small: {},
-    medium: {},
-    large: {},
-  };
-
   const typographyTheme = {
     common: {
       lineHeight: theme.lineHeights[8],
       fontSize: theme.fontSizes[7],
       fontFamily: theme.fonts?.root,
       fontWeight: '400' as const,
-      color: 'inherit',
+      color: theme.colors.$onPrimary,
       textAlignVertical: 'center' as const,
       textAlign: 'center' as const,
     },
@@ -80,7 +71,7 @@ const getLetterAvatarTheme = (theme: DripsyFinalTheme, variant?: 'circle' | 'rou
       fontSize: theme.fontSizes[9],
     },
   };
-  return { containerTheme, extendedContainerTheme, typographyTheme };
+  return { containerTheme, typographyTheme };
 };
 
 export const getImageAvatarStyle = (props: ImageAvatarProps) => {
@@ -96,14 +87,13 @@ export const getImageAvatarStyle = (props: ImageAvatarProps) => {
 export const getLetterAvatarStyle = (props: LetterAvatarProps | ChildrenAvatarProps, theme: DripsyFinalTheme) => {
   const { variant, size } = props;
 
-  const { containerTheme, extendedContainerTheme, typographyTheme } = getLetterAvatarTheme(theme, variant);
+  const { containerTheme, typographyTheme } = getLetterAvatarTheme(theme, variant);
 
   const containerStyle: StyleProp<ViewStyle> = { ...containerTheme.common, ...containerTheme[size ?? 'medium'] };
-  const containerSx: Sx = { ...extendedContainerTheme.common, ...extendedContainerTheme[size ?? 'medium'] };
 
   const typographyStyle: StyleProp<TextStyle> = { ...typographyTheme.common, ...typographyTheme[size ?? 'medium'] };
 
-  return { containerStyle, containerSx, typographyStyle };
+  return { containerStyle, typographyStyle };
 };
 
 export const getAvatarGroupStyle = (props: AvatarGroupProps, theme: DripsyFinalTheme) => {
@@ -114,7 +104,7 @@ export const getAvatarGroupStyle = (props: AvatarGroupProps, theme: DripsyFinalT
     backgroundColor: theme.colors.$primaryContainer,
   };
 
-  const excessAvatarSx = {
+  const excessTextStyle = {
     color: theme.colors.$onPrimaryContainer,
   };
 
@@ -123,7 +113,7 @@ export const getAvatarGroupStyle = (props: AvatarGroupProps, theme: DripsyFinalT
     justifyContent: 'center' as const,
   };
 
-  return { excessAvatarStyle, excessAvatarSx, groupStyle, baseZIndex, marginRight };
+  return { excessAvatarStyle, excessTextStyle, groupStyle, baseZIndex, marginRight };
 };
 
 export const getAvatarContainerStyle = (avatar: ReactElement, zIndex: number, marginRight: number, size: string) => {

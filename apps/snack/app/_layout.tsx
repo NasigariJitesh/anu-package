@@ -21,11 +21,19 @@ export default function Root() {
             title: 'Anu Components',
           }}
         />
+
         <Stack.Screen
           name='components/auto-complete'
           options={{
             headerLargeTitle: true,
             title: 'Autocomplete',
+          }}
+        />
+        <Stack.Screen
+          name='components/avatar'
+          options={{
+            headerLargeTitle: true,
+            title: 'Avatar',
           }}
         />
         <Stack.Screen
@@ -140,7 +148,13 @@ export default function Root() {
             title: 'Autocomplete Test',
           }}
         />
-
+        <Stack.Screen
+          name='components/avatar-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Avatar Test',
+          }}
+        />
         <Stack.Screen
           name='components/common-button-test'
           options={{
