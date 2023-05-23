@@ -10,7 +10,6 @@ const flexStyle = {
   justifyContent: 'center',
 
   width: '100%',
-  padding: 10,
 } as const;
 
 export const cardActionsDocumentation: ContentValues = {
@@ -56,7 +55,7 @@ export const cardActionsDocumentation: ContentValues = {
       id: 'default',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='elevated' width={360}>
+          <Card variant='elevated' width={280}>
             <CardActions>
               <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
               <Button.Filled title='Action' />
@@ -64,7 +63,7 @@ export const cardActionsDocumentation: ContentValues = {
           </Card>
         </Container>
       ),
-      code: `<Card variant='elevated' width={360}>
+      code: `<Card variant='elevated' width={280}>
   <CardActions>
     <Button.Outlined title='Action' style={{ marginHorizontal: 10 }} />
     <Button.Filled title='Action' />

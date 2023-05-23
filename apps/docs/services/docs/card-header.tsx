@@ -10,7 +10,6 @@ const flexStyle = {
   justifyContent: 'center',
 
   width: '100%',
-  padding: 10,
 } as const;
 
 export const cardHeaderDocumentation: ContentValues = {
@@ -60,12 +59,12 @@ export const cardHeaderDocumentation: ContentValues = {
       id: 'default',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='elevated' width={360}>
+          <Card variant='elevated' width={280}>
             <CardHeader heading='Heading' subHeading='subHeading' />
           </Card>
         </Container>
       ),
-      code: `<Card variant='elevated' width={360}>
+      code: `<Card variant='elevated' width={280}>
   <CardHeader heading='Heading' subHeading='subHeading' />
 </Card>`,
     },
@@ -74,7 +73,7 @@ export const cardHeaderDocumentation: ContentValues = {
       id: 'with-avatar-action',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='elevated' width={360}>
+          <Card variant='elevated' width={280}>
             <CardHeader
               heading='Heading'
               subHeading='subHeading'
@@ -84,7 +83,7 @@ export const cardHeaderDocumentation: ContentValues = {
           </Card>
         </Container>
       ),
-      code: `<Card variant='elevated' width={360}>
+      code: `<Card variant='elevated' width={280}>
   <CardHeader
     heading='Heading'
     subHeading='subHeading'

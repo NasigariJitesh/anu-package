@@ -57,10 +57,6 @@ export interface CardContentProps {
    * The style for content area of the card
    */
   style?: StyleProp<ViewStyle>;
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx?: Sx;
 }
 
 export interface CardActionsProps {

@@ -78,6 +78,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/card'
+          options={{
+            headerLargeTitle: true,
+            title: 'Card',
+          }}
+        />
+        <Stack.Screen
           name='components/checkbox'
           options={{
             headerLargeTitle: true,
@@ -215,6 +222,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Segmented Button Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/card-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Card Test',
           }}
         />
         <Stack.Screen
