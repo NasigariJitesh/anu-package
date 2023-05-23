@@ -1,4 +1,4 @@
-import { Chip, Container } from 'anu/lib';
+import { Avatar, Chip, Container } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 
@@ -77,13 +77,26 @@ export const chipDocumentation: ContentValues = {
             <Chip type='assist' value='Assist' style={style} />
             <Chip type='assist' value='Assist' elevated style={style} />
             <Chip leadingIcon={{ name: 'person' }} type='assist' value='Assist' style={style} />
-            <Chip leadingIcon={{ name: 'person' }} elevated type='assist' value='Assist' style={style} />
+            <Chip
+              leadingIcon={<Avatar source={{ uri: 'https://i.pravatar.cc/' }} size='small' variant='circle' />}
+              elevated
+              type='assist'
+              value='Assist'
+              style={style}
+            />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
             <Chip type='assist' value='Assist' disabled style={style} />
             <Chip type='assist' value='Assist' elevated disabled style={style} />
             <Chip leadingIcon={{ name: 'person' }} type='assist' value='Assist' disabled style={style} />
-            <Chip leadingIcon={{ name: 'person' }} elevated type='assist' value='Assist' style={style} disabled />
+            <Chip
+              leadingIcon={<Avatar source={{ uri: 'https://i.pravatar.cc/' }} size='small' variant='circle' />}
+              elevated
+              type='assist'
+              value='Assist'
+              style={style}
+              disabled
+            />
           </Container>
         </Container>
       ),

@@ -78,6 +78,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/chip'
+          options={{
+            headerLargeTitle: true,
+            title: 'Chip',
+          }}
+        />
+        <Stack.Screen
           name='components/container'
           options={{
             headerLargeTitle: true,
@@ -201,6 +208,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Segmented Button Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/chip-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Chip Test',
           }}
         />
         <Stack.Screen

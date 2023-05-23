@@ -15,7 +15,23 @@ export const LeadingIcon = (props: ChipProps) => {
 
   const { iconStyle } = getStyles(props, theme);
 
-  if (props.type !== 'suggestion' && props.leadingIcon) {
+  if (props.type === 'suggestion' || !props.leadingIcon) return;
+
+  if (props.type === 'assist') {
+    return 'name' in props.leadingIcon ? (
+      <View {...props.leadingIcon.containerProps} style={props.leadingIcon.containerProps?.style}>
+        <Icon
+          name={props.leadingIcon.name as never}
+          {...props.leadingIcon.iconProps}
+          size={iconStyle.size}
+          //@ts-expect-error Reason sometimes color is undefined according to ts but its value is set according to the type of chip
+          style={iconStyle}
+        />
+      </View>
+    ) : (
+      props.leadingIcon
+    );
+  } else {
     return (
       <View {...props.leadingIcon.containerProps} style={props.leadingIcon.containerProps?.style}>
         <Icon
@@ -28,8 +44,6 @@ export const LeadingIcon = (props: ChipProps) => {
       </View>
     );
   }
-
-  return null;
 };
 
 /**
