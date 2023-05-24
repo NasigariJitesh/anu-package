@@ -3,20 +3,20 @@ import { Container, Typography } from 'anu/lib/primitives';
 import React, { memo } from 'react';
 
 import { AnalogClockHoursProps } from '../../types';
-import { circleSize, getAnalogClockHourNumbers, getAnalogClockHourStyles } from '../../utils';
+import { getAnalogClockHourNumbers, getAnalogClockHourStyles } from '../../utils';
 
 /**
  *
  * @param props
  */
 const AnalogClockHours = (props: AnalogClockHoursProps) => {
-  const { is24Hour, hours } = props;
+  const { is24Hour, hours, circleSize } = props;
 
   const outerRange = getAnalogClockHourNumbers(false, circleSize, 12, 12);
   const innerRange = getAnalogClockHourNumbers(true, circleSize, 12, 12);
 
   const theme = useTheme();
-  const styles = getAnalogClockHourStyles(theme);
+  const styles = getAnalogClockHourStyles(theme, circleSize);
 
   return (
     <>

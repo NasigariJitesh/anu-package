@@ -88,6 +88,10 @@ export function HomeScreen() {
       link: '/components/tabs',
     },
     {
+      title: 'Time Picker',
+      link: '/components/time-picker',
+    },
+    {
       title: 'Text Area',
       link: '/components/text-area',
     },
@@ -169,6 +173,10 @@ export function HomeScreen() {
     {
       title: 'Tabs',
       link: '/components/tabs-test',
+    },
+    {
+      title: 'Time Picker',
+      link: '/components/time-picker-test',
     },
     {
       title: 'Text Field',

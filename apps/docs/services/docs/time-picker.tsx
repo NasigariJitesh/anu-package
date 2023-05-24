@@ -102,25 +102,33 @@ const Example4 = () => {
 
   return (
     <Container disableGutters style={style}>
-
-      <Button.Outlined onPress={() => width >= 576 ?  setVisible(true) : add({
-          content: 'Horizontal time picker is not compatible with small screens',
-          numberOfLines: 2,
-        })} title='Select time' />
-      {width >= 576 ? <TimePickerModal
-        visible={visible}
-        hours={hours}
-        minutes={minutes}
-        onConfirm={(hoursAndMinutes: { hours: number; minutes: number }) => {
-          setHours(hoursAndMinutes.hours);
-          setMinutes(hoursAndMinutes.minutes);
-          setVisible(false);
-        }}
-        onDismiss={() => {
-          setVisible(false);
-        }}
-        horizontal={true}
-      /> : null}
+      <Button.Outlined
+        onPress={() =>
+          width >= 576
+            ? setVisible(true)
+            : add({
+                content: 'Horizontal time picker is not compatible with small screens',
+                numberOfLines: 2,
+              })
+        }
+        title='Select time'
+      />
+      {width >= 576 ? (
+        <TimePickerModal
+          visible={visible}
+          hours={hours}
+          minutes={minutes}
+          onConfirm={(hoursAndMinutes: { hours: number; minutes: number }) => {
+            setHours(hoursAndMinutes.hours);
+            setMinutes(hoursAndMinutes.minutes);
+            setVisible(false);
+          }}
+          onDismiss={() => {
+            setVisible(false);
+          }}
+          horizontal={true}
+        />
+      ) : null}
     </Container>
   );
 };
@@ -216,6 +224,19 @@ export const timePickerDocumentation: ContentValues = {
       type: "'slide' | 'fade' | 'none'",
       optional: true,
       defaultValue: "'fade'",
+    },
+    {
+      name: 'clockSize',
+      description: 'timePickerDocumentation:property-clockSize-description',
+      type: 'number',
+      optional: true,
+      defaultValue: '256',
+    },
+    {
+      name: 'modalStyle',
+      description: 'timePickerDocumentation:property-modalStyle-description',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'inputStyle',
