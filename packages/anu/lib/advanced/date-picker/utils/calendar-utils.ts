@@ -18,10 +18,10 @@ export const getCalendarHeaderHeight = (scrollMode: 'horizontal' | 'vertical') =
 };
 
 export const getCalendarEditStyles = () => {
-  const inner = { flexDirection: 'row' } as const;
-  const root = { padding: 12 };
+  const inner = { flexDirection: 'row', width: '100%' } as const;
+  const root = { padding: 12, flex: 1, width: '100%' };
   const separator = { width: 12 };
-  const input = { backgroundColor: 'transparent' };
+  const input = { backgroundColor: 'transparent', width: '100%' };
   const rangeInput = { backgroundColor: 'transparent', width: 150 };
   return { inner, root, separator, input, rangeInput };
 };

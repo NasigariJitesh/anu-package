@@ -64,6 +64,14 @@ export function HomeScreen() {
       link: '/components/container',
     },
     {
+      title: 'Date Input',
+      link: '/components/date-input',
+    },
+    {
+      title: 'Date Picker',
+      link: '/components/date-picker',
+    },
+    {
       title: 'Divider',
       link: '/components/divider',
     },
@@ -145,6 +153,10 @@ export function HomeScreen() {
     {
       title: 'Container',
       link: '/components/container-test',
+    },
+    {
+      title: 'Date Picker',
+      link: '/components/date-picker-test',
     },
     {
       title: 'Divider',

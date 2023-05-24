@@ -99,6 +99,20 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/date-input'
+          options={{
+            headerLargeTitle: true,
+            title: 'Date Input',
+          }}
+        />
+        <Stack.Screen
+          name='components/date-picker'
+          options={{
+            headerLargeTitle: true,
+            title: 'Date Picker',
+          }}
+        />
+        <Stack.Screen
           name='components/divider'
           options={{
             headerLargeTitle: true,
@@ -236,6 +250,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Container Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/date-picker-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Date Picker Test',
           }}
         />
         <Stack.Screen

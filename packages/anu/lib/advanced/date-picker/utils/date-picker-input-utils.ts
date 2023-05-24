@@ -13,13 +13,14 @@ export const getLabel = (withDateFormatInLabel: boolean, inputFormat: string, la
 };
 
 export const getDatePickerInputWithoutModalStyles = () => {
-  const root = {};
+  const root = { flex: 1, width: '100%' };
   const inputContainer = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    width: '100%',
   } as const;
-  const input = {};
+  const input = { flex: 1, width: '100%' };
 
   return { root, inputContainer, input };
 };
