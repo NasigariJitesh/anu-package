@@ -72,18 +72,23 @@ export const getDropZoneStyles = (theme: DripsyFinalTheme) => {
   return { dropZoneStyle, divStyle, childrenContainerStyle, buttonContainerStyle };
 };
 
-export const getUploadListStyles = (theme: DripsyFinalTheme, listWidth?: number, isHorizontal?: boolean) => {
+export const getUploadListStyles = (
+  theme: DripsyFinalTheme,
+  itemHeight?: number,
+  itemWidth?: number,
+  isHorizontal?: boolean,
+) => {
   const styles = {
     listItem: {
-      width: listWidth ?? 250,
-      minHeight: 48,
+      width: itemWidth ?? 250,
       marginVertical: 5,
-      backgroundColor: theme.colors.$onPrimary,
+      ...(itemHeight ? { height: itemHeight } : { minHeight: 48 }),
     },
     container: {
       marginTop: 15,
       flex: 1,
       flexDirection: isHorizontal ? ('row' as const) : ('column' as const),
+      ...(isHorizontal ? { maxWidth: 500 } : { maxHeight: 300 }),
     },
     fileIcon: {
       margin: 16,
@@ -132,8 +137,8 @@ export const getUploadListStyles = (theme: DripsyFinalTheme, listWidth?: number,
       margin: 16,
     },
     carouselListItem: {
-      height: 120,
-      width: 120,
+      height: itemHeight ?? 120,
+      width: itemWidth ?? 120,
       borderRadius: 4,
       position: 'relative' as const,
     },
@@ -176,8 +181,8 @@ export const getFileTypes = (accept?: Accept, variant?: 'image' | 'file') => {
 
 export const getFileUploadStyle = () => {
   const style = {
-    width: 280,
-    align: 'center',
+    width: '100%',
+    flex: 1,
   } as const;
   return style;
 };

@@ -1,22 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Container, Image } from 'anu/lib';
-import example1Dark from 'assets/file-upload-example1-dark.jpg';
-import example1Light from 'assets/file-upload-example1-light.png';
-import example2Dark from 'assets/file-upload-example2-dark.jpg';
-import example2Light from 'assets/file-upload-example2-light.jpg';
-import example3Dark from 'assets/file-upload-example3-dark.jpg';
-import example3Light from 'assets/file-upload-example3-light.jpg';
-import example4Dark from 'assets/file-upload-example4-dark.jpg';
-import example4Light from 'assets/file-upload-example4-light.jpg';
-import example5_1Dark from 'assets/file-upload-example5-1-dark.jpg';
-import example5_1Light from 'assets/file-upload-example5-1-light.jpg';
-import example5_2Dark from 'assets/file-upload-example5-2-dark.gif';
-import example5_2Light from 'assets/file-upload-example5-2-light.gif';
-import example6Dark from 'assets/file-upload-example6-dark.gif';
-import example6Light from 'assets/file-upload-example6-light.gif';
+import { Container, FileDropZone, FileUpload } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { useMenuContext } from 'screens/common/provider';
 
 const flexStyle = {
   flexWrap: 'wrap',
@@ -29,102 +14,6 @@ const flexStyle = {
 
 const style = { margin: 15, alignItems: 'center', justifyContent: 'center' } as const;
 
-const Example1 = () => {
-  const { isDarkTheme } = useMenuContext();
-
-  return (
-    <Container disableGutters style={style}>
-      {isDarkTheme ? (
-        <Image source={{ uri: example1Dark.src }} style={{ width: 132, height: 50 }} alt='file-upload-example-1' />
-      ) : (
-        <Image source={{ uri: example1Light.src }} style={{ width: 132, height: 50 }} alt='file-upload-example-1' />
-      )}
-    </Container>
-  );
-};
-const Example2 = () => {
-  const { isDarkTheme } = useMenuContext();
-
-  return (
-    <Container disableGutters style={style}>
-      {isDarkTheme ? (
-        <Image source={{ uri: example2Dark.src }} style={{ width: 318, height: 132 }} alt='file-upload-example-2' />
-      ) : (
-        <Image source={{ uri: example2Light.src }} style={{ width: 320, height: 140 }} alt='file-upload-example-2' />
-      )}
-    </Container>
-  );
-};
-const Example3 = () => {
-  const { isDarkTheme } = useMenuContext();
-
-  return (
-    <Container disableGutters style={style}>
-      {isDarkTheme ? (
-        <Image source={{ uri: example3Dark.src }} style={{ width: 330, height: 440 }} alt='file-upload-example-3' />
-      ) : (
-        <Image source={{ uri: example3Light.src }} style={{ width: 320, height: 450 }} alt='file-upload-example-3' />
-      )}
-    </Container>
-  );
-};
-
-const Example4 = () => {
-  const { isDarkTheme } = useMenuContext();
-
-  return (
-    <Container disableGutters style={style}>
-      {isDarkTheme ? (
-        <Image source={{ uri: example4Dark.src }} style={{ width: 460, height: 250 }} alt='file-upload-example-4' />
-      ) : (
-        <Image source={{ uri: example4Light.src }} style={{ width: 460, height: 250 }} alt='file-upload-example-4' />
-      )}
-    </Container>
-  );
-};
-
-const Example5 = () => {
-  const { isDarkTheme } = useMenuContext();
-
-  return (
-    <Container disableGutters style={style}>
-      {isDarkTheme ? (
-        <Image source={{ uri: example5_1Dark.src }} style={{ width: 312, height: 432 }} alt='file-upload-example-5-1' />
-      ) : (
-        <Image
-          source={{ uri: example5_1Light.src }}
-          style={{ width: 312, height: 432 }}
-          alt='file-upload-example-5-1'
-        />
-      )}
-      <Container disableGutters style={{ marginVertical: 10 }} />
-      {isDarkTheme ? (
-        <Image source={{ uri: example5_2Dark.src }} style={{ width: 450, height: 336 }} alt='file-upload-example-5-2' />
-      ) : (
-        <Image
-          source={{ uri: example5_2Light.src }}
-          style={{ width: 450, height: 336 }}
-          alt='file-upload-example-5-2'
-        />
-      )}
-    </Container>
-  );
-};
-
-const Example6 = () => {
-  const { isDarkTheme } = useMenuContext();
-
-  return (
-    <Container disableGutters style={style}>
-      {isDarkTheme ? (
-        <Image source={{ uri: example6Dark.src }} style={{ width: 450, height: 616 }} alt='file-upload-example-6' />
-      ) : (
-        <Image source={{ uri: example6Light.src }} style={{ width: 450, height: 547 }} alt='file-upload-example-6' />
-      )}
-    </Container>
-  );
-};
-
 export const fileUploadDocumentation: ContentValues = {
   mainHeading: 'fileUploadDocumentation:mainHeading',
   mainDescription: 'fileUploadDocumentation:mainDescription',
@@ -135,10 +24,18 @@ export const fileUploadDocumentation: ContentValues = {
       id: 'simple',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Example1 />
+          <Container disableGutters style={style}>
+            <FileUpload
+              category='common'
+              variant='filled'
+              size='medium'
+              title='Upload'
+              icon={{ name: 'file-upload' }}
+            />
+          </Container>
         </Container>
       ),
-      code: "<FileUpload category='common' type='filled' title='upload' icon={{name:'file-upload'}} />",
+      code: "<FileUpload category='common' variant='filled' size='medium' title='Upload' icon={{ name: 'file-upload' }} />",
     },
     {
       name: 'fileUploadDocumentation:example2-name',
@@ -146,7 +43,9 @@ export const fileUploadDocumentation: ContentValues = {
       id: 'single',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Example2 />
+          <Container disableGutters style={style}>
+            <FileUpload category='common' variant='filled' size='medium' title='Choose a file' multiple={false} />
+          </Container>
         </Container>
       ),
       code: "<FileUpload category='common' type='filled' title='Choose a file' multiple={false} />",
@@ -157,7 +56,9 @@ export const fileUploadDocumentation: ContentValues = {
       id: 'list',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Example3 />
+          <Container disableGutters style={style}>
+            <FileUpload category='common' variant='filled' size='medium' title='Choose a file' multiple />
+          </Container>
         </Container>
       ),
       code: "<FileUpload category='common' type='filled' title='Choose a file' multiple />",
@@ -168,18 +69,41 @@ export const fileUploadDocumentation: ContentValues = {
       id: 'dropzone',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Example4 />
+          <Container disableGutters style={style}>
+            <FileDropZone>Drop your files here</FileDropZone>
+          </Container>
         </Container>
       ),
-      code: '<FileDropZone>Drop your files here<FileDropZone>',
+      code: '<FileDropZone>Drop your files here</FileDropZone>',
     },
     {
       name: 'fileUploadDocumentation:example5-name',
       description: 'fileUploadDocumentation:example5-description',
       id: 'preview',
       component: (
-        <Container disableGutters sx={flexStyle as never}>
-          <Example5 />
+        <Container disableGutters sx={{ ...flexStyle, overflow: undefined } as never}>
+          <Container disableGutters style={style}>
+            <FileUpload
+              category='common'
+              variant='filled'
+              size='medium'
+              title='Choose a file'
+              uploadVariant='image'
+              previewType='list'
+              multiple
+            />
+          </Container>
+          <Container disableGutters style={style}>
+            <FileUpload
+              category='common'
+              variant='filled'
+              size='medium'
+              title='Choose a file'
+              uploadVariant='image'
+              previewType='carousel'
+              multiple
+            />
+          </Container>
         </Container>
       ),
       code: `<FileUpload category='common' variant='filled' title='Choose a file' uploadVariant='image' previewType='list' multiple />
@@ -191,7 +115,18 @@ export const fileUploadDocumentation: ContentValues = {
       id: 'sortable',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Example6 />
+          <Container disableGutters style={style}>
+            <FileUpload
+              category='common'
+              variant='filled'
+              size='medium'
+              title='Choose a file'
+              uploadVariant='image'
+              previewType='list'
+              multiple
+              sortable
+            />
+          </Container>
         </Container>
       ),
       code: "<FileUpload category='common' type='filled' title='Choose a file' uploadVariant='image' previewType='list' multiple sortable/>",

@@ -7,6 +7,7 @@ import {
   Button,
   Chip,
   Container,
+  FileUpload,
   Icon,
   Options,
   PasswordInput,
@@ -92,6 +93,17 @@ export default function Example() {
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=12' }} variant='circle' />
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=13' }} variant='circle' />
       </AvatarGroup>
+
+      <FileUpload
+              category='common'
+              variant='filled'
+              size='medium'
+              title='Choose a file'
+              uploadVariant='image'
+              previewType='list'
+              multiple
+              sortable
+            />
 
       <Container disableGutters style={{ zIndex: 1000, marginVertical: 10, width: '100%' }}>
         <AutoComplete

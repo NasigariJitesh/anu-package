@@ -12,10 +12,10 @@ import { getUploadListStyles } from '../../utils';
  * @param props - props for the list item
  */
 const RegularListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, variant, error, sortable, listWidth, listItemStyle } = props;
+  const { id, dataItem, single, deleteData, variant, error, sortable, itemHeight, itemWidth, listItemStyle } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, listWidth, false);
+  const styles = getUploadListStyles(theme, itemHeight, itemWidth, false);
 
   return (
     <Pressable key={id} style={getCombinedStylesForView(styles.listItem, listItemStyle)}>
@@ -63,10 +63,10 @@ const RegularListItem = (props: ListItemProps) => {
  * @param props - props for the list item
  */
 const PreviewListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, error, listWidth, uri, sortable, listItemStyle } = props;
+  const { id, dataItem, single, deleteData, error, itemHeight, itemWidth, uri, sortable, listItemStyle } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, listWidth, false);
+  const styles = getUploadListStyles(theme, itemHeight, itemWidth, false);
 
   return (
     <Pressable key={id} style={getCombinedStylesForView(styles.listItem, listItemStyle)}>
@@ -110,10 +110,10 @@ const PreviewListItem = (props: ListItemProps) => {
  * @param props - props for the list item
  */
 const CarouselListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, error, uri, listWidth, sortable, listItemStyle } = props;
+  const { id, dataItem, single, deleteData, error, uri, itemHeight, itemWidth, sortable, listItemStyle } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, listWidth, true);
+  const styles = getUploadListStyles(theme, itemHeight, itemWidth, true);
 
   return (
     <Container disableGutters style={getCombinedStylesForView(styles.carouselItem, listItemStyle)} key={id}>

@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Typography } from 'anu/lib/primitives';
 import { useEffect, useState } from 'react';
+import { ActivityIndicator } from 'react-native';
 import Animated, {
   scrollTo,
   useAnimatedReaction,
@@ -9,6 +10,7 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 
+import { useTheme } from '../../../../../config';
 import { ListProps, MovableItemProps, ScrollDirection } from '../../types';
 import { listToObject } from '../../utils';
 import MovableItem from '../movable-item';
@@ -43,6 +45,7 @@ function Item<T>(
     positionsState,
   } = props;
   const [itemAvailable, setItemAvailable] = useState(positionsState[id] !== undefined);
+  const theme = useTheme();
 
   useEffect(() => {
     if (positionsState[id] === undefined || positions.value[id] === undefined) {
@@ -73,7 +76,9 @@ function Item<T>(
     />
   ) : (
     <Container disableGutters align='center' sx={{ height: itemHeight ?? 40, width: itemWidth ?? '100%' }}>
-      <Typography.Body>...Loading Image</Typography.Body>
+      <Typography.Body>
+        <ActivityIndicator color={theme.colors.$onSurface} /> Loading Image
+      </Typography.Body>
     </Container>
   );
 }
@@ -126,6 +131,7 @@ export default function List<T>(props: ListProps<T>) {
     flex: 1,
     position: 'relative',
     backgroundColor: 'transparent',
+    marginRight: 10,
   } as const;
 
   const contentContainerStyle = {
@@ -142,6 +148,7 @@ export default function List<T>(props: ListProps<T>) {
         scrollEventThrottle={16}
         style={animatedScrollViewStyle}
         contentContainerStyle={contentContainerStyle}
+        showsVerticalScrollIndicator
       >
         {data.map((item, index) => {
           return (

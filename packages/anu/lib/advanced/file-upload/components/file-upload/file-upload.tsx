@@ -223,7 +223,10 @@ const FileUpload = forwardRef<FileUploadReferenceProps, FileUploadProps>((props,
         previewType={finalProps.uploadVariant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
         listWidth={finalProps.listWidth}
+        listHeight={finalProps.listHeight}
         listItemStyle={finalProps.listItemStyle}
+        itemWidth={finalProps.itemWidth}
+        itemHeight={finalProps.itemHeight}
       />
     </Container>
   );
