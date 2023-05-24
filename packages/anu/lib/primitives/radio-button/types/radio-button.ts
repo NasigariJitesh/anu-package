@@ -50,6 +50,11 @@ export interface RadioButtonProps {
    * The color of the radio button component.
    */
   color?: string;
+
+  dataSets?: {
+    label?: Record<string, any>;
+    radio?: Record<string, any>;
+  };
 }
 
 /**

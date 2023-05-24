@@ -3997,7 +3997,7 @@ __metadata:
     compressorjs: ^1.2.1
     dripsy: ^3.6.0
     expo-blur: ^12.2.2
-    expo-document-picker: ^11.2.2
+    expo-document-picker: 11.2.2
     expo-haptics: ~12.0.1
     jest: ^29.5.0
     jest-expo: ^48.0.2
@@ -6849,12 +6849,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-document-picker@npm:^11.2.2":
-  version: 11.3.0
-  resolution: "expo-document-picker@npm:11.3.0"
+"expo-document-picker@npm:11.2.2":
+  version: 11.2.2
+  resolution: "expo-document-picker@npm:11.2.2"
   peerDependencies:
     expo: "*"
-  checksum: 301620734f78b9e7062f0d9ef2ff858a873f93afa6da827d118083682195e7f31920bd6c30c6bcf51d173a6fff2bb680b254a2a1818e9b579a0615a2c22939ad
+  checksum: aa70d7121fe544f4f0ce1ee86fd66e5499097f64dd2cf3652ee8e9a6576018cf64807b19a1a5b5734bd10f42ad638c72234096df2332b0f63809fb3093d3645b
   languageName: node
   linkType: hard
 
