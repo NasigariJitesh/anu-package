@@ -155,6 +155,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/touchable-ripple'
+          options={{
+            headerLargeTitle: true,
+            title: 'Touchable Ripple',
+          }}
+        />
+        <Stack.Screen
           name='components/typography'
           options={{
             headerLargeTitle: true,
@@ -174,7 +181,7 @@ export default function Root() {
             headerLargeTitle: true,
             title: 'Avatar Test',
           }}
-        />{' '}
+        />
         <Stack.Screen
           name='components/badge-test'
           options={{
