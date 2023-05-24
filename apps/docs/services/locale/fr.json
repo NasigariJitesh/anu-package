@@ -419,6 +419,7 @@
   "datePickerModalDocumentation:property-disableStatusBar-description": "Si la barre d'état doit être désactivée dans les applications natives, lorsque la fenêtre modale est active.",
   "datePickerModalDocumentation:property-disableStatusBarPadding-description": "Si la marge supérieure pour la barre d'état doit être désactivée dans les applications natives.",
   "datePickerModalDocumentation:property-mask-description": "Le masque d'entrée pour l'entrée de sélection de date",
+  "datePickerModalDocumentation:property-modalStyle-description": "Style de la fenêtre modale de sélection de la date.",
 
   "dialogDocumentation:mainHeading": "Dialogue",
   "dialogDocumentation:mainDescription": "Un dialogue est utilisé pour afficher des informations ou demander à l'utilisateur une entrée. Il est affiché au-dessus de l'écran actuel et interrompt temporairement l'interaction de l'utilisateur avec le reste de l'application jusqu'à ce que le dialogue soit fermé.\n\nLe contenu du dialogue peut également inclure d'autres composants tels que des formulaires, des champs de texte, des cases à cocher et des boutons radio.",
