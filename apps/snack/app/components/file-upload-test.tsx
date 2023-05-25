@@ -36,6 +36,8 @@ const FileUploadScreen = () => {
           title='Choose a file'
           uploadVariant='image'
           previewType='carousel'
+          listWidth={200}
+          itemWidth={150}
           multiple
         />
       </Container>

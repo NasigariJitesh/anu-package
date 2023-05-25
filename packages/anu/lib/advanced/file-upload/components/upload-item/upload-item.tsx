@@ -1,7 +1,9 @@
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Icon, IconButton, Image, Typography } from 'anu/lib/primitives';
+import { ReactNode } from 'react';
 import { Pressable } from 'react-native';
+import Animated, { Layout, LightSpeedInLeft, LightSpeedOutRight } from 'react-native-reanimated';
 
 import { ListItemProps } from '../../types';
 import { getUploadListStyles } from '../../utils';
@@ -146,17 +148,41 @@ const CarouselListItem = (props: ListItemProps) => {
     </Container>
   );
 };
+const AnimatedEnterView = ({ children, sortable }: { children: ReactNode; sortable?: boolean }) => {
+  if (sortable) return <>{children}</>;
+  return (
+    <Animated.View
+      entering={LightSpeedInLeft.duration(500)}
+      exiting={LightSpeedOutRight.delay(100).duration(500)}
+      layout={Layout.springify()}
+    >
+      {children}
+    </Animated.View>
+  );
+};
 
 const UploadItem = (props: ListItemProps) => {
   switch (props.previewType) {
     case 'list': {
-      return <PreviewListItem {...props} />;
+      return (
+        <AnimatedEnterView sortable={props.sortable}>
+          <PreviewListItem {...props} />
+        </AnimatedEnterView>
+      );
     }
     case 'carousel': {
-      return <CarouselListItem {...props} />;
+      return (
+        <AnimatedEnterView sortable={props.sortable}>
+          <CarouselListItem {...props} />
+        </AnimatedEnterView>
+      );
     }
     default: {
-      return <RegularListItem {...props} />;
+      return (
+        <AnimatedEnterView sortable={props.sortable}>
+          <RegularListItem {...props} />
+        </AnimatedEnterView>
+      );
     }
   }
 };

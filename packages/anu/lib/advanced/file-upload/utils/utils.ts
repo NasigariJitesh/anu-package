@@ -88,7 +88,7 @@ export const getUploadListStyles = (
       marginTop: 15,
       flex: 1,
       flexDirection: isHorizontal ? ('row' as const) : ('column' as const),
-      ...(isHorizontal ? { maxWidth: 500 } : { maxHeight: 300 }),
+      ...(isHorizontal ? { maxWidth: 300 } : { maxHeight: 300 }),
     },
     fileIcon: {
       margin: 16,
@@ -158,8 +158,8 @@ export const getUploadListStyles = (
       },
     },
     carouselImage: {
-      height: 120,
-      width: 120,
+      height: itemHeight ?? 120,
+      width: itemWidth ?? 120,
       borderRadius: 4,
     },
   };

@@ -122,6 +122,7 @@ export default function List<T>(props: ListProps<T>) {
   );
 
   const handleScroll = useAnimatedScrollHandler((event) => {
+    console.log('scroll');
     scrollY.value = event.contentOffset.y;
   });
 
@@ -131,13 +132,11 @@ export default function List<T>(props: ListProps<T>) {
     flex: 1,
     position: 'relative',
     backgroundColor: 'transparent',
-    marginRight: 10,
+    paddingRight: 20,
   } as const;
 
   const contentContainerStyle = {
     height: contentHeight,
-    padding: 10,
-    paddingRight: 20,
   };
 
   return (
