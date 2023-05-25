@@ -14,7 +14,7 @@
     "app": "*",
     "next": "13.2.0",
     "raf": "^3.4.1",
-    "react-native-reanimated": "3.0.2",
+    "react-native-reanimated": "3.1.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-tsparticles": "^2.9.3",
     "setimmediate": "^1.0.5",
