@@ -19,9 +19,11 @@ import {
   TouchableRipple,
   Typography,
 } from 'anu/lib';
+import { Skeleton } from 'anu/lib/composites';
 import TextArea from 'anu/lib/composites/text-area/components/text-area';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
+import { useMenuContext } from 'screens/common/provider';
 
 const data = [
   {
@@ -83,8 +85,12 @@ export default function Example() {
     );
   };
 
+  const { isDarkTheme } = useMenuContext();
+
   return (
     <Container flexDirection='column' sx={{ flex: 1, paddingTop: 1 }}>
+      <Skeleton width={300} height={30} colorMode={isDarkTheme ? 'dark' : 'light'} />
+
       <PasswordInput value={text} onChangeText={setText} />
       <AvatarGroup total={15}>
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=10' }} variant='circle' />

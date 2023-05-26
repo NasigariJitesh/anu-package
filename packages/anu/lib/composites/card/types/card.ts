@@ -161,7 +161,7 @@ export interface CardHeaderProps {
   /**
    *The heading text
    */
-  heading: string;
+  heading: string | ReactChildren;
   /**
    *The style for the heading text
    */
@@ -169,7 +169,7 @@ export interface CardHeaderProps {
   /**
    *The sub heading text
    */
-  subHeading?: string;
+  subHeading?: string | ReactChildren;
   /**
    *The style for the sub heading text
    */

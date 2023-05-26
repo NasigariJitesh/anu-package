@@ -73,6 +73,7 @@
   "leftSideBar:radio": "Bouton radio",
   "leftSideBar:search": "Recherche",
   "leftSideBar:side-sheet": "Side Sheet",
+  "leftSideBar:skeleton": "Skeleton",
   "leftSideBar:switch": "Commutateur",
   "leftSideBar:tabs": "Onglets",
   "leftSideBar:text-area": "Zone de texte",
@@ -695,6 +696,29 @@
   "sideSheetDocumentation:property-onCloseButtonPress-description": "Fonction de rappel lorsque le bouton fermer est pressé.",
   "sideSheetDocumentation:property-handleStyles-description": "Styles pour la poignée.",
   "sideSheetDocumentation:property-containerStyles-description": "Styles pour la feuille inférieure.",
+
+  "skeletonDocumentation:mainHeading": "Skeleton",
+  "skeletonDocumentation:mainDescription": "Un squelette est une représentation visuelle de la mise en page d'une page qui est affichée pendant le chargement du contenu. Une fois que le contenu réel est chargé, le squelette est remplacé par le contenu réel.",
+  "skeletonDocumentation:example1-name": "Défaut",
+  "skeletonDocumentation:example1-description": "Ce squelette se compose généralement de formes ou de contours simplifiés avec animation.",
+
+  "skeletonDocumentation:example2-name": "Variations",
+  "skeletonDocumentation:example2-description": "Ce squelette se compose généralement de formes avec des variations : circulaires, arrondies et rectangulaires.",
+
+  "skeletonDocumentation:example3-name": "Exemple de carte",
+  "skeletonDocumentation:example3-description": "Le squelette de la carte se compose généralement de composants tels qu'un avatar, du texte, une image et des boutons.",
+
+  "skeletonDocumentation:property-show-description": "Spécifie si le squelette doit être visible. Par défaut, il s'affiche s'il n'y a pas d'enfants. De cette façon, vous pouvez afficher conditionnellement les enfants et masquer automatiquement le squelette lorsqu'ils existent. Si vous avez plusieurs squelettes, vous pouvez utiliser <Skeleton.Group show={loading} /> en tant que parent plutôt que d'utiliser directement cette propriété.",
+  "skeletonDocumentation:property-width-description": "La largeur du squelette.",
+  "skeletonDocumentation:property-height-description": "La largeur du squelette.",
+  "skeletonDocumentation:property-children-description": "Les composants enfants du squelette.",
+  "skeletonDocumentation:property-radius-description": "Rayon de la bordure. Peut être square, round ou un nombre. round le rend circulaire.",
+  "skeletonDocumentation:property-colors-description": "Couleur de dégradé pour le squelette.",
+  "skeletonDocumentation:property-colorMode-description": "La largeur de la feuille latérale.",
+  "skeletonDocumentation:property-boxHeight-description": "Hauteur du conteneur du squelette. S'il est défini, il donnera une hauteur fixe au conteneur. Sinon, le conteneur s'étirera vers les enfants.",
+  "skeletonDocumentation:property-backgroundColor-description": "Arrière-plan de la boîte qui contient le squelette. Doit correspondre à la couleur principale de la propriété colors.",
+  "skeletonDocumentation:property-backgroundSize-description": "Détermine dans quelle mesure le dégradé s'étire. La valeur par défaut de 6 est similaire à 600% pour la propriété CSS background-size.",
+  "skeletonDocumentation:property-disableExitAnimation-description": "Indique si l'animation pour le squelette doit être désactivée à la sortie.",
 
   "switchDocumentation:mainHeading": "Commutateur",
   "switchDocumentation:mainDescription": "Un commutateur permet aux utilisateurs de basculer entre deux états, généralement activé et désactivé, en cliquant ou en appuyant dessus. Il est couramment utilisé pour activer ou désactiver des paramètres ou des fonctionnalités dans divers types d'interfaces utilisateur.",

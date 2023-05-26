@@ -14,6 +14,8 @@ export { default as PasswordInput } from './password-input';
 export * from './password-input';
 export { default as Search } from './search-bar';
 export * from './search-bar';
+export { default as Skeleton } from './skeleton';
+export * from './skeleton';
 export * from './tabs';
 export { default as Tabs } from './tabs';
 export { default as TextArea } from './text-area';

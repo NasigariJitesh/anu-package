@@ -75,6 +75,7 @@
   "leftSideBar:phone-input": "Phone Input",
   "leftSideBar:radio": "Radio Button",
   "leftSideBar:search": "Search",
+  "leftSideBar:skeleton": "Skeleton",
   "leftSideBar:side-sheet": "Side Sheet",
   "leftSideBar:switch": "Switch",
   "leftSideBar:tabs": "Tabs",
@@ -733,6 +734,29 @@
   "sideSheetDocumentation:property-onCloseButtonPress-description": "Callback function when the close button is pressed.",
   "sideSheetDocumentation:property-handleStyles-description": "Styles for the handle.",
   "sideSheetDocumentation:property-containerStyles-description": "Styles for the bottom sheet.",
+
+  "skeletonDocumentation:mainHeading": "Skeleton",
+  "skeletonDocumentation:mainDescription": "A Skeleton is a visual representation of a page layout that is shown while content is being loaded. Once the actual content is loaded, the skeleton is replaced with the real content.",
+  "skeletonDocumentation:example1-name": "Default",
+  "skeletonDocumentation:example1-description": "This skeleton usually consists of simplified shapes or outlines with animation.",
+
+  "skeletonDocumentation:example2-name": "Variations",
+  "skeletonDocumentation:example2-description": "This skeleton usually consists of shapes with variations: circular, rounded, and rectangular.",
+
+  "skeletonDocumentation:example3-name": "Card Example",
+  "skeletonDocumentation:example3-description": "The card skeleton usually consists of components like an avatar, text, image, and buttons.",
+
+  "skeletonDocumentation:property-show-description": "Specifying whether the skeleton should be visible. By default, it shows if there are no children. This way, you can conditionally display children, and automatically hide the skeleton when they exist. If you have multiple skeletons, you can use the `<Skeleton.Group show={loading} /> as a parent rather than use this prop directly.",
+  "skeletonDocumentation:property-width-description": "The width of the skeleton.",
+  "skeletonDocumentation:property-height-description": "The width of the skeleton.",
+  "skeletonDocumentation:property-children-description": "The children components of the skeleton.",
+  "skeletonDocumentation:property-radius-description": "Border radius. Can be `square`, `round`, or a number. `round` makes it a circle.",
+  "skeletonDocumentation:property-colors-description": "Gradient color for skeleton.",
+  "skeletonDocumentation:property-colorMode-description": "The width of the side sheet.",
+  "skeletonDocumentation:property-boxHeight-description": "Height of the container of the skeleton. If set, it will give a fixed height to the container. If not set, the container will stretch to the children.",
+  "skeletonDocumentation:property-backgroundColor-description": "Background of the box that contains the skeleton. Should match the main `colors` prop color.",
+  "skeletonDocumentation:property-backgroundSize-description": "Determines how much the gradient stretches. Default value of 6 is Similar to `600%` for CSS `background-size`.",
+  "skeletonDocumentation:property-disableExitAnimation-description": "Whether to disable animation for skeleton on exit.",
 
   "switchDocumentation:mainHeading": "Switch",
   "switchDocumentation:mainDescription": "A switch allows users to toggle between two states, typically on and off, by clicking or tapping on it. It is commonly used to turn settings or features on or off in various types of user interfaces.",
