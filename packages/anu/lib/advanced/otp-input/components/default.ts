@@ -5,4 +5,5 @@ export const defaultProps: OTPInputProps = {
   value: '',
   type: 'numeric',
   variant: 'outlined',
+  width: 300,
 };

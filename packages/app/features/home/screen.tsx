@@ -72,6 +72,10 @@ export function HomeScreen() {
       link: '/components/menu',
     },
     {
+      title: 'OTP Input',
+      link: '/components/otp-input',
+    },
+    {
       title: 'Password Input',
       link: '/components/password-input',
     },
@@ -153,6 +157,10 @@ export function HomeScreen() {
     {
       title: 'Menu',
       link: '/components/menu-test',
+    },
+    {
+      title: 'OTP Input',
+      link: '/components/otp-input-test',
     },
     {
       title: 'Password Input',
