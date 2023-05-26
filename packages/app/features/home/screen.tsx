@@ -84,6 +84,10 @@ export function HomeScreen() {
       link: '/components/search',
     },
     {
+      title: 'Switch',
+      link: '/components/switch',
+    },
+    {
       title: 'Tabs',
       link: '/components/tabs',
     },
@@ -165,6 +169,10 @@ export function HomeScreen() {
     {
       title: 'Search',
       link: '/components/search-test',
+    },
+    {
+      title: 'Switch',
+      link: '/components/switch-test',
     },
     {
       title: 'Tabs',

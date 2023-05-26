@@ -4003,6 +4003,7 @@ __metadata:
     jest-expo: ^48.0.2
     libphonenumber-js: ^1.10.28
     lodash: ^4.17.21
+    moti: ^0.25.3
     react: ^18.2.0
     react-dropzone: ^14.2.3
     react-native-builder-bob: ^0.20.4
@@ -10941,7 +10942,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moti@npm:latest":
+"moti@npm:^0.25.3, moti@npm:latest":
   version: 0.25.3
   resolution: "moti@npm:0.25.3"
   dependencies:
