@@ -22,6 +22,7 @@ const handleFileUpload = async (props: FileDropZoneProps, updateFiles: { (files:
     multiple: props.multiple,
     type: getFileTypes(props.fileType, props.uploadVariant),
   });
+
   if (result.type === 'success' && result.uri && result.name) {
     const file = new File([result.uri], result.name, { type: result.mimeType });
 
@@ -118,16 +119,18 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
               await handleUpload(finalProps, updateFiles);
             }}
           >
-            <Container disableGutters style={getCombinedStylesForView(dropZoneStyle, props.dropZoneStyle)}>
+            <Container disableGutters style={getCombinedStylesForView(dropZoneStyle, finalProps.dropZoneStyle)}>
               <Container disableGutters style={childrenContainerStyle}>
-                {props.children}
+                {finalProps.children}
               </Container>
             </Container>
           </Pressable>
-          <Container disableGutters style={buttonContainerStyle}>
-            <Button.Text title='Submit' onPress={finalProps.onSubmit} />
-            <Button.Text title='Cancel' onPress={onCancel} />
-          </Container>
+          {finalProps.hideActionButtons ? null : (
+            <Container disableGutters style={buttonContainerStyle}>
+              <Button.Text title={finalProps.submitLabel || ''} onPress={finalProps.onSubmit} />
+              <Button.Text title={finalProps.cancelLabel || ''} onPress={onCancel} />
+            </Container>
+          )}
         </Container>
         {duplicateFileNameError ? (
           <Typography.Body style={errorMessageStyle}>{finalProps.errorMessageForDuplicateFiles}</Typography.Body>

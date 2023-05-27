@@ -80,6 +80,14 @@ interface BasicFileDropZoneProps extends Omit<ContainerProps, 'variant'> {
    * The message to display when duplicate file name is found in upload list
    */
   errorMessageForDuplicateFiles?: string;
+
+  /**
+   * Hide action buttons
+   */
+  hideActionButtons?: boolean;
+
+  cancelLabel?: string;
+  submitLabel?: string;
 }
 
 interface ImageFileDropZoneProps extends BasicFileDropZoneProps {

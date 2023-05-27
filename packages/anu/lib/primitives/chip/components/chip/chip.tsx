@@ -1,4 +1,4 @@
-import { generateHoverStyles } from 'anu/common/utils';
+import { generateHoverStyles, getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, TouchableRipple } from 'anu/lib';
 import Typography from 'anu/lib/primitives/typography';
@@ -42,7 +42,7 @@ const Chip = (props: Partial<ChipProps> & { value: string }) => {
           {/*
           @ts-expect-error */}
           <LeadingIcon {...restOfTheProps} />
-          <Typography.Label style={textStyle} size='large'>
+          <Typography.Label style={getCombinedStylesForText(textStyle, props.labelStyle)} size='large'>
             {props.value}
           </Typography.Label>
           {/*

@@ -11,14 +11,14 @@ export const compressFile = async (file: File, config?: Config): Promise<File | 
   const { quality, maxHeight, maxWidth, convertSize, convertTypes } = {
     quality: 0.6,
     convertSize: 1 * KILO_BYTE, // in bytes
-    convertTypes: ['image/png', 'image/jpeg', 'image/gif', 'image/webp', 'image/jpg'],
+    convertTypes: ['image/png', 'image/jpeg', 'image/gif', 'image/webp', 'image/jpg', 'image/heic'],
 
     maxWidth: 1400,
     maxHeight: 1024,
     ...config,
   };
 
-  return file.type.includes('image')
+  return file.type.includes('image') && convertTypes?.includes(file.type)
     ? new Promise((resolve, reject) => {
         new Compressor(file, {
           quality,

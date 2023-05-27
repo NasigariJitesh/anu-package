@@ -43,6 +43,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/bottom-sheet'
+          options={{
+            headerLargeTitle: true,
+            title: 'Bottom Sheet',
+          }}
+        />
+        <Stack.Screen
           name='components/common-button'
           options={{
             headerLargeTitle: true,
@@ -134,6 +141,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/radio'
+          options={{
+            headerLargeTitle: true,
+            title: 'Radio Button',
+          }}
+        />
+        <Stack.Screen
           name='components/side-sheet'
           options={{
             headerLargeTitle: true,
@@ -187,6 +201,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Badge Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/bottom-sheet-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Bottom Sheet Test',
           }}
         />
         <Stack.Screen
@@ -271,6 +292,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Phone Input Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/radio-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Radio Button Test',
           }}
         />
         <Stack.Screen
