@@ -56,6 +56,10 @@ export function HomeScreen() {
       link: '/components/segmented-button',
     },
     {
+      title: 'Card',
+      link: '/components/card',
+    },
+    {
       title: 'Checkbox',
       link: '/components/checkbox',
     },
@@ -149,6 +153,10 @@ export function HomeScreen() {
     {
       title: 'Segmented Button',
       link: '/components/segmented-button-test',
+    },
+    {
+      title: 'Card',
+      link: '/components/card-test',
     },
     {
       title: 'Checkbox',

@@ -22,7 +22,6 @@ const flexStyle = {
   justifyContent: 'center',
 
   width: '100%',
-  padding: 10,
 } as const;
 
 export const cardDocumentation: ContentValues = {
@@ -65,7 +64,7 @@ export const cardDocumentation: ContentValues = {
       description: 'cardDocumentation:example1-description',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='elevated' width={360}>
+          <Card variant='elevated' width={280}>
             <CardTitle type='default' title='Title' subTitle='Sub Title' />
             <CardContent>
               <Typography.Body>
@@ -79,7 +78,7 @@ export const cardDocumentation: ContentValues = {
           </Card>
         </Container>
       ),
-      code: `<Card variant='elevated' width={360}>
+      code: `<Card variant='elevated' width={280}>
   <CardTitle type='default' title='Title' subTitle='Sub Title' />
   <CardContent>
     <Typography.Body>
@@ -98,7 +97,7 @@ export const cardDocumentation: ContentValues = {
       description: 'cardDocumentation:example2-description',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='filled' width={360}>
+          <Card variant='filled' width={280}>
             <CardTitle type='default' title='Title' subTitle='Sub Title' />
             <CardContent>
               <Typography.Body>
@@ -112,7 +111,7 @@ export const cardDocumentation: ContentValues = {
           </Card>
         </Container>
       ),
-      code: `<Card variant='filled' width={360}>
+      code: `<Card variant='filled' width={280}>
   <CardTitle type='default' title='Title' subTitle='Sub Title' />
   <CardContent>
     <Typography.Body>
@@ -131,7 +130,7 @@ export const cardDocumentation: ContentValues = {
       description: 'cardDocumentation:example3-description',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='outlined' width={360}>
+          <Card variant='outlined' width={280}>
             <CardTitle type='default' title='Title' subTitle='Sub Title' />
             <CardContent>
               <Typography.Body>
@@ -145,7 +144,7 @@ export const cardDocumentation: ContentValues = {
           </Card>
         </Container>
       ),
-      code: `<Card variant='outlined' width={360}>
+      code: `<Card variant='outlined' width={280}>
   <CardTitle type='default' title='Title' subTitle='Sub Title' />
   <CardContent>
     <Typography.Body>
@@ -163,7 +162,7 @@ export const cardDocumentation: ContentValues = {
       id: 'stacked',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='elevated' width={360}>
+          <Card variant='elevated' width={280}>
             <CardHeader
               heading='Heading'
               subHeading='subHeading'
@@ -189,7 +188,7 @@ export const cardDocumentation: ContentValues = {
           </Card>
         </Container>
       ),
-      code: `<Card variant='elevated' width={360}>
+      code: `<Card variant='elevated' width={280}>
   <CardTitle type='default' title='Title' subTitle='Sub Title' />
   <CardHeader
     heading='Heading'
@@ -219,7 +218,7 @@ export const cardDocumentation: ContentValues = {
       id: 'horizontal',
       description: 'cardDocumentation:example5-description',
       component: (
-        <Container disableGutters sx={flexStyle as never}>
+        <Container disableGutters sx={{ ...flexStyle, overflow: 'scroll' } as never}>
           <Card variant='elevated' orientation='horizontal' width={500} height={250}>
             <Container sx={{ flex: 1 }}>
               <CardTitle type='default' title='Title' subTitle='Sub Title' />
