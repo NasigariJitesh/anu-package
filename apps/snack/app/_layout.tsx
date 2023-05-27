@@ -148,6 +148,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/side-sheet'
+          options={{
+            headerLargeTitle: true,
+            title: 'Side Sheet',
+          }}
+        />
+        <Stack.Screen
           name='components/tabs'
           options={{
             headerLargeTitle: true,
@@ -299,6 +306,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Search Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/side-sheet-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Side Sheet Test',
           }}
         />
         <Stack.Screen

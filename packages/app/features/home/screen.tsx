@@ -92,6 +92,10 @@ export function HomeScreen() {
       link: '/components/radio',
     },
     {
+      title: 'Side Sheet',
+      link: '/components/side-sheet',
+    },
+    {
       title: 'Tabs',
       link: '/components/tabs',
     },
@@ -181,6 +185,10 @@ export function HomeScreen() {
     {
       title: 'Radio Button',
       link: '/components/radio-test',
+    },
+    {
+      title: 'Side Sheet',
+      link: '/components/side-sheet-test',
     },
     {
       title: 'Tabs',
