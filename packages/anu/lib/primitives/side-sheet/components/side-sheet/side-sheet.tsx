@@ -64,8 +64,6 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
       isSideSheetActive.value =
         align === 'right' ? destination < startCoordinate - width : destination > startCoordinate + width;
 
-      console.log(isSideSheetActive.value, destination, startCoordinate + width);
-
       const scrollValue = destination;
 
       translateX.value = withSpring(scrollValue, { damping });
@@ -77,7 +75,6 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
    * Check if the side sheet is open or not
    */
   const isActive = useCallback(() => {
-    console.log(isSideSheetActive.value);
     return isSideSheetActive.value;
   }, [isSideSheetActive]);
 
