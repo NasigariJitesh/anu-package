@@ -43,6 +43,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/bottom-sheet'
+          options={{
+            headerLargeTitle: true,
+            title: 'Bottom Sheet',
+          }}
+        />
+        <Stack.Screen
           name='components/common-button'
           options={{
             headerLargeTitle: true,
@@ -187,6 +194,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Badge Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/bottom-sheet-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Bottom Sheet Test',
           }}
         />
         <Stack.Screen

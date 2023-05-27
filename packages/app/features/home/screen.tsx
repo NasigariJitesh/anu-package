@@ -32,6 +32,10 @@ export function HomeScreen() {
       link: '/components/badge',
     },
     {
+      title: 'Bottom Sheet',
+      link: '/components/bottom-sheet',
+    },
+    {
       title: 'Common Button',
       link: '/components/common-button',
     },
@@ -117,6 +121,10 @@ export function HomeScreen() {
     {
       title: 'Badge',
       link: '/components/badge-test',
+    },
+    {
+      title: 'Bottom Sheet',
+      link: '/components/bottom-sheet-test',
     },
     {
       title: 'Common Button',
