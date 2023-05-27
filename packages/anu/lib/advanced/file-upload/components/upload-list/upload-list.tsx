@@ -56,6 +56,8 @@ const UploadList = (props: UploadListProps) => {
     <ScrollView
       horizontal={props.previewType === 'carousel'}
       style={getCombinedStylesForView(styles.container, props.listStyle)}
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
     >
       {props.data.map((dataItem, index) => renderItem(dataItem, index))}
     </ScrollView>

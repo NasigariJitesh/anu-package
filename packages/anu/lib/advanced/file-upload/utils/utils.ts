@@ -82,13 +82,14 @@ export const getUploadListStyles = (
     listItem: {
       width: itemWidth ?? 250,
       marginVertical: 5,
+      backgroundColor: theme.colors.$surface,
       ...(itemHeight ? { height: itemHeight } : { minHeight: 48 }),
     },
     container: {
       marginTop: 15,
       flex: 1,
       flexDirection: isHorizontal ? ('row' as const) : ('column' as const),
-      ...(isHorizontal ? { maxWidth: 300 } : { maxHeight: 300 }),
+      ...(isHorizontal ? { maxWidth: 300 } : { maxHeight: 300, backgroundColor: theme.colors.$surface }),
     },
     fileIcon: {
       margin: 16,
@@ -131,7 +132,7 @@ export const getUploadListStyles = (
       height: 48,
       width: 48,
       borderRadius: 4,
-      marginRight: 16,
+      marginHorizontal: 16,
     },
     carouselItem: {
       margin: 16,
