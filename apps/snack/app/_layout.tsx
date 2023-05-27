@@ -113,6 +113,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/dialog'
+          options={{
+            headerLargeTitle: true,
+            title: 'Dialog',
+          }}
+        />
+        <Stack.Screen
           name='components/divider'
           options={{
             headerLargeTitle: true,
@@ -278,6 +285,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Container Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/dialog-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Dialog Test',
           }}
         />
         <Stack.Screen

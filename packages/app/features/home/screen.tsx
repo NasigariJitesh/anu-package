@@ -72,6 +72,10 @@ export function HomeScreen() {
       link: '/components/container',
     },
     {
+      title: 'Dialog',
+      link: '/components/dialog',
+    },
+    {
       title: 'Divider',
       link: '/components/divider',
     },
@@ -169,6 +173,10 @@ export function HomeScreen() {
     {
       title: 'Container',
       link: '/components/container-test',
+    },
+    {
+      title: 'Dialog',
+      link: '/components/dialog-test',
     },
     {
       title: 'Divider',
