@@ -13,7 +13,7 @@ import { ExtendedDisabledStyles, ExtendedElevatedStyles, ExtendedHoverStyles } f
 import { IconProps, IconSource } from 'anu/lib/primitives/icon';
 import { Pressable } from 'dripsy';
 import { ReactElement } from 'react';
-import { ViewProps } from 'react-native';
+import { StyleProp, TextStyle, ViewProps } from 'react-native';
 
 /**
  *  The type of the Chip Component
@@ -40,6 +40,10 @@ export interface CommonChipProps extends Omit<React.ComponentProps<typeof Pressa
    * The styles for the chip component.
    */
   style?: ChipContainerStyle;
+  /**
+   * The styles for the chip label.
+   */
+  labelStyle?: StyleProp<TextStyle>;
   /**
    * If true, the component is disabled.
    */

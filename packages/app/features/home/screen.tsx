@@ -32,6 +32,10 @@ export function HomeScreen() {
       link: '/components/badge',
     },
     {
+      title: 'Bottom Sheet',
+      link: '/components/bottom-sheet',
+    },
+    {
       title: 'Common Button',
       link: '/components/common-button',
     },
@@ -52,6 +56,10 @@ export function HomeScreen() {
       link: '/components/segmented-button',
     },
     {
+      title: 'Card',
+      link: '/components/card',
+    },
+    {
       title: 'Checkbox',
       link: '/components/checkbox',
     },
@@ -62,6 +70,10 @@ export function HomeScreen() {
     {
       title: 'Container',
       link: '/components/container',
+    },
+    {
+      title: 'Dialog',
+      link: '/components/dialog',
     },
     {
       title: 'Divider',
@@ -82,6 +94,14 @@ export function HomeScreen() {
     {
       title: 'Search',
       link: '/components/search',
+    },
+    {
+      title: 'Radio Button',
+      link: '/components/radio',
+    },
+    {
+      title: 'Side Sheet',
+      link: '/components/side-sheet',
     },
     {
       title: 'Snackbar',
@@ -119,6 +139,10 @@ export function HomeScreen() {
       link: '/components/badge-test',
     },
     {
+      title: 'Bottom Sheet',
+      link: '/components/bottom-sheet-test',
+    },
+    {
       title: 'Common Button',
       link: '/components/common-button-test',
     },
@@ -139,6 +163,10 @@ export function HomeScreen() {
       link: '/components/segmented-button-test',
     },
     {
+      title: 'Card',
+      link: '/components/card-test',
+    },
+    {
       title: 'Checkbox',
       link: '/components/checkbox-test',
     },
@@ -149,6 +177,10 @@ export function HomeScreen() {
     {
       title: 'Container',
       link: '/components/container-test',
+    },
+    {
+      title: 'Dialog',
+      link: '/components/dialog-test',
     },
     {
       title: 'Divider',
@@ -169,6 +201,14 @@ export function HomeScreen() {
     {
       title: 'Search',
       link: '/components/search-test',
+    },
+    {
+      title: 'Radio Button',
+      link: '/components/radio-test',
+    },
+    {
+      title: 'Side Sheet',
+      link: '/components/side-sheet-test',
     },
     {
       title: 'Snackbar',

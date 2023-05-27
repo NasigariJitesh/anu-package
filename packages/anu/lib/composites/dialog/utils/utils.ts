@@ -22,7 +22,7 @@ export const getDialogStyles = (theme: DripsyFinalTheme, props: DialogProps, dim
       ? {
           ...(dimensions.width > 768
             ? { maxWidth: 560, margin: 56, height: dimensions.height - 112 }
-            : { width: dimensions.width, height: dimensions.height, borderRadius: 0 }),
+            : { flex: 1, width: dimensions.width, height: dimensions.height, borderRadius: 0 }),
         }
       : {
           marginHorizontal: 16,
