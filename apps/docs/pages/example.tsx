@@ -8,6 +8,7 @@ import {
   Button,
   Chip,
   Container,
+  FileUpload,
   Icon,
   Options,
   PasswordInput,
@@ -15,12 +16,12 @@ import {
   Search,
   Tab,
   Tabs,
+  TextArea,
   TextField,
   TimePickerModal,
   TouchableRipple,
   Typography,
 } from 'anu/lib';
-import TextArea from 'anu/lib/composites/text-area/components/text-area';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
 
@@ -112,6 +113,17 @@ export default function Example() {
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=13' }} variant='circle' />
       </AvatarGroup>
 
+      <FileUpload
+        category='common'
+        variant='filled'
+        size='medium'
+        title='Choose a file'
+        uploadVariant='image'
+        previewType='list'
+        multiple
+        sortable
+      />
+
       <Container disableGutters style={{ zIndex: 1000, marginVertical: 10, width: '100%' }}>
         <AutoComplete
           value={text}
@@ -125,7 +137,18 @@ export default function Example() {
         />
       </Container>
 
-      <TextArea value={text} onChangeText={setText} numberOfLines={3} textBreakStrategy='highQuality' />
+      <TextArea
+        value={text}
+        onChangeText={setText}
+        numberOfLines={3}
+        textBreakStrategy='highQuality'
+        variant='filled'
+        labelStyle={{
+          '@active': {
+            backgroundColor: 'red',
+          },
+        }}
+      />
       <Container disableGutters style={{ zIndex: 1000, marginVertical: 10, width: '100%' }}>
         <Search
           value={text1}

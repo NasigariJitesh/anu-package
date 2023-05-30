@@ -77,6 +77,14 @@ export function HomeScreen() {
       link: '/components/container',
     },
     {
+      title: 'Date Input',
+      link: '/components/date-input',
+    },
+    {
+      title: 'Date Picker',
+      link: '/components/date-picker',
+    },
+    {
       title: 'Dialog',
       link: '/components/dialog',
     },
@@ -85,8 +93,24 @@ export function HomeScreen() {
       link: '/components/divider',
     },
     {
+      title: 'File Drop Zone',
+      link: '/components/file-dropzone',
+    },
+    {
+      title: 'File Upload',
+      link: '/components/file-upload',
+    },
+    {
+      title: 'Image',
+      link: '/components/image',
+    },
+    {
       title: 'Menu',
       link: '/components/menu',
+    },
+    {
+      title: 'OTP Input',
+      link: '/components/otp-input',
     },
     {
       title: 'Password Input',
@@ -109,8 +133,20 @@ export function HomeScreen() {
       link: '/components/side-sheet',
     },
     {
+      title: 'Snackbar',
+      link: '/components/snackbar',
+    },
+    {
+      title: 'Switch',
+      link: '/components/switch',
+    },
+    {
       title: 'Tabs',
       link: '/components/tabs',
+    },
+    {
+      title: 'Time Picker',
+      link: '/components/time-picker',
     },
     {
       title: 'Text Area',
@@ -119,6 +155,10 @@ export function HomeScreen() {
     {
       title: 'Text Field',
       link: '/components/text-field',
+    },
+    {
+      title: 'Touchable Ripple',
+      link: '/components/touchable-ripple',
     },
     {
       title: 'Typography',
@@ -184,6 +224,10 @@ export function HomeScreen() {
       link: '/components/container-test',
     },
     {
+      title: 'Date Picker',
+      link: '/components/date-picker-test',
+    },
+    {
       title: 'Dialog',
       link: '/components/dialog-test',
     },
@@ -192,8 +236,20 @@ export function HomeScreen() {
       link: '/components/divider-test',
     },
     {
+      title: 'File Drop Zone',
+      link: '/components/file-dropzone-test',
+    },
+    {
+      title: 'File Upload',
+      link: '/components/file-upload-test',
+    },
+    {
       title: 'Menu',
       link: '/components/menu-test',
+    },
+    {
+      title: 'OTP Input',
+      link: '/components/otp-input-test',
     },
     {
       title: 'Password Input',
@@ -216,8 +272,20 @@ export function HomeScreen() {
       link: '/components/side-sheet-test',
     },
     {
+      title: 'Snackbar',
+      link: '/components/snackbar-test',
+    },
+    {
+      title: 'Switch',
+      link: '/components/switch-test',
+    },
+    {
       title: 'Tabs',
       link: '/components/tabs-test',
+    },
+    {
+      title: 'Time Picker',
+      link: '/components/time-picker-test',
     },
     {
       title: 'Text Field',

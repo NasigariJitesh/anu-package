@@ -55,6 +55,19 @@ type BasicFileUploadProps = CommonButtonProps & {
    * The width of files upload list
    */
   listWidth?: number;
+
+  /*
+   * The height of files upload list
+   */
+  listHeight?: number;
+  /**
+   * The width of files upload item
+   */
+  itemWidth?: number;
+  /**
+   * The height of files upload item
+   */
+  itemHeight?: number;
   /*
    * The message to display when duplicate file name is found in upload list
    */

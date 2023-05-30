@@ -120,6 +120,20 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/date-input'
+          options={{
+            headerLargeTitle: true,
+            title: 'Date Input',
+          }}
+        />
+        <Stack.Screen
+          name='components/date-picker'
+          options={{
+            headerLargeTitle: true,
+            title: 'Date Picker',
+          }}
+        />
+        <Stack.Screen
           name='components/dialog'
           options={{
             headerLargeTitle: true,
@@ -134,10 +148,38 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/file-dropzone'
+          options={{
+            headerLargeTitle: true,
+            title: 'File Drop Zone',
+          }}
+        />
+        <Stack.Screen
+          name='components/file-upload'
+          options={{
+            headerLargeTitle: true,
+            title: 'File Upload',
+          }}
+        />
+        <Stack.Screen
+          name='components/image'
+          options={{
+            headerLargeTitle: true,
+            title: 'Image',
+          }}
+        />
+        <Stack.Screen
           name='components/menu'
           options={{
             headerLargeTitle: true,
             title: 'Menu',
+          }}
+        />
+        <Stack.Screen
+          name='components/otp-input'
+          options={{
+            headerLargeTitle: true,
+            title: 'OTP Input',
           }}
         />
         <Stack.Screen
@@ -176,10 +218,31 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/snackbar'
+          options={{
+            headerLargeTitle: true,
+            title: 'Snackbar',
+          }}
+        />
+        <Stack.Screen
+          name='components/switch'
+          options={{
+            headerLargeTitle: true,
+            title: 'Switch',
+          }}
+        />
+        <Stack.Screen
           name='components/tabs'
           options={{
             headerLargeTitle: true,
             title: 'Tabs',
+          }}
+        />
+        <Stack.Screen
+          name='components/time-picker'
+          options={{
+            headerLargeTitle: true,
+            title: 'Time Picker',
           }}
         />
         <Stack.Screen
@@ -194,6 +257,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Text Field',
+          }}
+        />
+        <Stack.Screen
+          name='components/touchable-ripple'
+          options={{
+            headerLargeTitle: true,
+            title: 'Touchable Ripple',
           }}
         />
         <Stack.Screen
@@ -223,7 +293,7 @@ export default function Root() {
             headerLargeTitle: true,
             title: 'Avatar Test',
           }}
-        />{' '}
+        />
         <Stack.Screen
           name='components/badge-test'
           options={{
@@ -302,6 +372,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/date-picker-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Date Picker Test',
+          }}
+        />
+        <Stack.Screen
           name='components/dialog-test'
           options={{
             headerLargeTitle: true,
@@ -316,10 +393,31 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/file-dropzone-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'File Drop Zone Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/file-upload-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'File Upload Test',
+          }}
+        />
+        <Stack.Screen
           name='components/menu-test'
           options={{
             headerLargeTitle: true,
             title: 'Menu Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/otp-input-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'OTP Input Test',
           }}
         />
         <Stack.Screen
@@ -358,10 +456,31 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/snackbar-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Snackbar Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/switch-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Switch Test',
+          }}
+        />
+        <Stack.Screen
           name='components/tabs-test'
           options={{
             headerLargeTitle: true,
             title: 'Tabs Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/time-picker-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Time Picker Test',
           }}
         />
         <Stack.Screen

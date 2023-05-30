@@ -33,10 +33,16 @@ const CardHeader = (props: CardHeaderProps) => {
         </Container>
       ) : null}
       <Container disableGutters style={headingContainerStyle} sx={sx}>
-        <Typography.Body style={headingStyle}>{finalProps.heading}</Typography.Body>
-        {finalProps.subHeading ? (
+        {typeof finalProps.heading === 'string' ? (
+          <Typography.Body style={headingStyle}>{finalProps.heading}</Typography.Body>
+        ) : (
+          finalProps.heading
+        )}
+        {finalProps.subHeading && (typeof finalProps.heading === 'string' ) ? (
           <Typography.Body style={subHeadingStyle}>{finalProps.subHeading}</Typography.Body>
-        ) : null}
+        ) : (
+          finalProps.subHeading
+        )}
       </Container>
       {'action' in finalProps && finalProps.action ? (
         <Container disableGutters style={actionContainerStyle} sx={sx}>

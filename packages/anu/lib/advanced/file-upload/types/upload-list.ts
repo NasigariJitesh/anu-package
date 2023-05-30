@@ -12,6 +12,9 @@ export interface UploadListProps {
   listStyle: StyleProp<ViewStyle>;
   listItemStyle: StyleProp<ViewStyle>;
   listWidth?: number;
+  listHeight?: number;
+  itemWidth?: number;
+  itemHeight?: number;
 }
 
 export interface ListItemProps {
@@ -24,6 +27,7 @@ export interface ListItemProps {
   deleteData: (index: number) => void;
   previewType?: 'list' | 'carousel';
   sortable?: boolean;
-  listWidth?: number;
   listItemStyle: StyleProp<ViewStyle>;
+  itemWidth?: number;
+  itemHeight?: number;
 }

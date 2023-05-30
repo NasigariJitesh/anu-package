@@ -59,6 +59,7 @@ const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps
         startYear,
         endYear,
         inputEnabled,
+        style,
       }) =>
         withModal ? (
           <DatePickerModal
@@ -78,6 +79,7 @@ const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps
             startYear={startYear ?? 1900}
             endYear={endYear ?? 2200}
             inputEnabled={inputEnabled}
+            style={style}
           />
         ) : null
       }

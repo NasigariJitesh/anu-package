@@ -142,7 +142,7 @@ export const extendTheme = (theme: DripsyBaseTheme = {}, mode: ColorMode = 'ligh
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getThemeMode = (theme: DripsyCustomTheme) => {
+export const getThemeMode = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return useTheme().colorScheme;
 };

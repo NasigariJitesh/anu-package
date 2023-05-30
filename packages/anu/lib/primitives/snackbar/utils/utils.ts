@@ -32,18 +32,22 @@ export const getSnackbarStyle = (theme: DripsyFinalTheme, props?: SnackbarProps)
     borderRadius: 4,
     backgroundColor: theme.colors.$inverseSurface,
     alignItems: props?.numberOfLines === 2 && props?.longerAction ? 'flex-start' : 'center',
+    justifyContent: props?.numberOfLines === 2 ? 'space-between' : 'flex-start',
     paddingHorizontal: 16,
     minWidth: 300,
     minHeight: 48,
     width: '100%',
   } as const;
-  const textContainerStyle = { flex: 1 };
+  const textContainerStyle = { flex: 1, ...(props?.numberOfLines === 2 ? { maxWidth: '75%' } : {}) };
+  const innerContainerStyle = {
+    flex: 1,
+    flexDirection: 'row',
+  };
   const textStyle = {
     fontSize: theme.fontSizes[8],
     lineHeight: theme.lineHeights[8],
     color: theme.colors.$inverseOnSurface,
     marginVertical: 16,
-    ...(props?.numberOfLines === 2 ? { maxWidth: '75%' } : {}),
   };
 
   const actionStyle = {
@@ -58,5 +62,14 @@ export const getSnackbarStyle = (theme: DripsyFinalTheme, props?: SnackbarProps)
     color: theme.colors.$inverseOnSurface,
   };
 
-  return { containerStyle, snackbarStyle, textStyle, actionStyle, actionLabelStyle, iconStyle, textContainerStyle };
+  return {
+    containerStyle,
+    snackbarStyle,
+    textStyle,
+    actionStyle,
+    actionLabelStyle,
+    iconStyle,
+    textContainerStyle,
+    innerContainerStyle,
+  };
 };

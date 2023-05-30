@@ -47,6 +47,7 @@ import { regularButtonIndex } from 'services/docs/regular-button';
 import { searchIndex } from 'services/docs/search';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
 import { sideSheetIndex } from 'services/docs/side-sheet';
+import { skeletonIndex } from 'services/docs/skeleton';
 import { snackbarIndex } from 'services/docs/snackbar';
 import { switchIndex } from 'services/docs/switch';
 import { tabsIndex } from 'services/docs/tabs';
@@ -352,6 +353,11 @@ const RenderIndex = () => {
     case '/components/side-sheet': {
       {
         return <Index {...sideSheetIndex} />;
+      }
+    }
+    case '/components/skeleton': {
+      {
+        return <Index {...skeletonIndex} />;
       }
     }
     case '/components/snackbar': {
