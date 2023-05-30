@@ -1,4 +1,5 @@
 import { ReactChildren } from 'anu/common/types';
+import { StyleProp, ViewStyle } from 'react-native';
 
 import {
   BaseCalendarProps,
@@ -118,6 +119,7 @@ interface CommonDatePickerModalProps {
   disableStatusBar?: boolean;
   disableStatusBarPadding?: boolean;
   inputEnabled?: boolean;
+  style?: StyleProp<ViewStyle>
 }
 
 export interface DatePickerModalSingleProps extends DatePickerModalContentSingleProps, CommonDatePickerModalProps {}

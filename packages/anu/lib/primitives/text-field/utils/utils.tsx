@@ -295,8 +295,7 @@ export const getError = (error?: boolean | { (): boolean }) => {
   } else return false;
 };
 
-
-export const getContainerStyle = ()=>{
-   const style = { width: '100%', flex: 1, height: '100%' };
-   return style;
+export const getContainerStyle = () => {
+  const style = { width: '100%', flex: 1, height: '100%' };
+  return style;
 };

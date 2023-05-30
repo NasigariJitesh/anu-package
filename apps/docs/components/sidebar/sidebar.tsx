@@ -493,6 +493,16 @@ const Sidebar = () => {
                 link: '/components/side-sheet',
               },
               {
+                title: 'leftSideBar:skeleton',
+                components: [],
+                link: '/components/skeleton',
+              },
+              {
+                title: 'leftSideBar:snackbar',
+                link: '/components/snackbar',
+                components: [],
+              },
+              {
                 title: 'leftSideBar:switch',
                 link: '/components/switch',
                 components: [],

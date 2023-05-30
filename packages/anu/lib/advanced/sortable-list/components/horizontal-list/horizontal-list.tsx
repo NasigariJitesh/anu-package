@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Typography } from 'anu/lib/primitives';
 import { useEffect, useState } from 'react';
+import { ActivityIndicator } from 'react-native';
 import Animated, {
   scrollTo,
   useAnimatedReaction,
@@ -9,6 +10,7 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 
+import { useTheme } from '../../../../../config';
 import { HorizontalMovableItemProps, ListProps, ScrollDirectionHorizontal } from '../../types';
 import { listToObject } from '../../utils';
 import HorizontalMovableItem from '../horizontal-movable-item';
@@ -44,6 +46,8 @@ function HorizontalItem<T>(
   } = props;
   const [itemAvailable, setItemAvailable] = useState(positionsState[id] !== undefined);
 
+  const theme = useTheme();
+
   useEffect(() => {
     if (positionsState[id] === undefined || positions.value[id] === undefined) {
       setItemAvailable(false);
@@ -73,7 +77,10 @@ function HorizontalItem<T>(
     />
   ) : (
     <Container disableGutters align='center' justify='center' sx={{ height: itemHeight, width: itemWidth }}>
-      <Typography.Body>...Loading Image</Typography.Body>
+      <Typography.Body>
+        {' '}
+        <ActivityIndicator color={theme.colors.$onSurface} /> Loading Image
+      </Typography.Body>
     </Container>
   );
 }
@@ -144,6 +151,7 @@ export default function HorizontalList<T>(props: ListProps<T>) {
       scrollEventThrottle={16}
       style={animatedScrollViewStyle}
       contentContainerStyle={contentContainerStyle}
+      showsHorizontalScrollIndicator
     >
       {data.map((item, index) => {
         return (

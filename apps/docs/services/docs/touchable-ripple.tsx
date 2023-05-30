@@ -9,6 +9,7 @@ const flexStyle = {
   alignItems: 'center',
   justifyContent: 'center',
 
+  overflow: 'scroll',
   width: '100%',
   padding: 10,
 } as const;

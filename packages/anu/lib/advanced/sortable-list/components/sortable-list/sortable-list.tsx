@@ -20,10 +20,16 @@ export default function SortableList<T>(props: SortableListProps<T>) {
   const { containerHeight = 330, containerWidth = 350, horizontal, data, keyExtractor } = finalProps;
 
   const [dataWithId, setDataWithId] = useState(convertToDataWithId(data, keyExtractor));
+  const [reloadTrigger, setReloadTrigger] = useState(0);
 
   useEffect(() => {
     setDataWithId(convertToDataWithId(data, keyExtractor));
+    setTimeout(() => {
+      setReloadTrigger((previous) => previous + 1);
+    }, 1000);
   }, [data]);
+
+  useEffect(() => {}, [reloadTrigger]);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

@@ -168,6 +168,7 @@ export const getDatePickerModalStyles = (
     : {};
   const modalContent = {
     ...(collapsed ? { flex: 1 } : {}),
+    maxHeight: mode === 'single' ? 600 : undefined,
     width: '100%',
     borderRadius: 16,
     shadowColor: theme.colors?.$shadow as string,

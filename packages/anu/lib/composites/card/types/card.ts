@@ -1,6 +1,5 @@
 import { ReactChildren } from 'anu/common/types';
 import { ContainerAlign, ContainerJustify, ContainerProps, ImageProps } from 'anu/lib';
-import { Sx } from 'dripsy';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 /**
@@ -57,10 +56,6 @@ export interface CardContentProps {
    * The style for content area of the card
    */
   style?: StyleProp<ViewStyle>;
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx?: Sx;
 }
 
 export interface CardActionsProps {
@@ -72,10 +67,7 @@ export interface CardActionsProps {
    * The style for action area of the card
    */
   style?: StyleProp<ViewStyle>;
-  /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */
-  sx?: Sx;
+
   /**
    * The alignment of all action items on the cross axis
    */
@@ -161,7 +153,7 @@ export interface CardHeaderProps {
   /**
    *The heading text
    */
-  heading: string;
+  heading: string | ReactChildren;
   /**
    *The style for the heading text
    */
@@ -169,7 +161,7 @@ export interface CardHeaderProps {
   /**
    *The sub heading text
    */
-  subHeading?: string;
+  subHeading?: string | ReactChildren;
   /**
    *The style for the sub heading text
    */

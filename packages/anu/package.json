@@ -27,6 +27,7 @@
     "expo-blur": "^12.2.2",
     "expo-document-picker": "11.2.2",
     "expo-haptics": "~12.0.1",
+    "expo-linear-gradient": "^12.1.2",
     "libphonenumber-js": "^1.10.28",
     "lodash": "^4.17.21",
     "moti": "^0.25.3",
@@ -37,7 +38,7 @@
     "next": "*",
     "react": ">=18",
     "react-native-gesture-handler": "*",
-    "react-native-reanimated": "*",
+    "react-native-reanimated": ">=3",
     "react-native-safe-area-context": "*",
     "react-native-vector-icons": "*"
   },
