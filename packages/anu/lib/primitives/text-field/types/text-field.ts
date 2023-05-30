@@ -9,6 +9,10 @@ import { PressableStateCallbackType, StyleProp, TextInput as RNTextInput, TextSt
  */
 export type TextInputVariant = 'outlined' | 'filled';
 
+export interface LabelStyle extends TextStyle {
+  '@active': TextStyle;
+}
+
 /**
  * The props type of the dripsy text input
  */
@@ -48,7 +52,7 @@ export interface TextFieldProps extends Omit<TextInputProps, 'variant' | 'style'
   /**
    * The styles for label of the text field component.
    */
-  labelStyle?: StyleProp<TextStyle>;
+  labelStyle?: LabelStyle;
 
   /**
    * The styles for input text of the text field component.
