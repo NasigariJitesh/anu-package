@@ -1,4 +1,4 @@
-import { StyleProp, TextStyle } from 'react-native';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export interface DisplayModeContextData {
   mode: 'AM' | 'PM' | undefined;
@@ -72,6 +72,7 @@ export interface TimePickerProps {
   use24HourClock?: boolean;
   inputStyle?: StyleProp<TextStyle>;
   horizontal?: boolean;
+  clockSize: number;
 }
 
 export interface TimePickerModalProps {
@@ -137,4 +138,8 @@ export interface TimePickerModalProps {
    * Default input option to display
    */
   defaultInputType?: PossibleInputTypes;
+
+  modalStyle?: StyleProp<ViewStyle>;
+
+  clockSize?: number;
 }

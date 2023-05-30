@@ -4,19 +4,18 @@ import React, { memo } from 'react';
 
 import { AnalogClockMinutesProps } from '../../types';
 import { getAnalogClockMinuteNumbers, getAnalogClockMinuteStyles } from '../../utils';
-import { circleSize } from '../../utils';
 
 /**
  *
  * @param props
  */
 const AnalogClockMinutes = (props: AnalogClockMinutesProps) => {
-  const { minutes } = props;
+  const { minutes, circleSize } = props;
 
   const range = getAnalogClockMinuteNumbers(circleSize, 12);
 
   const theme = useTheme();
-  const styles = getAnalogClockMinuteStyles(theme);
+  const styles = getAnalogClockMinuteStyles(theme, circleSize);
   return (
     <>
       {range.map((a, index) => {

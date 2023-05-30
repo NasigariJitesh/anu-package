@@ -790,6 +790,8 @@
   "timePickerDocumentation:property-keyboardIcon-description": "Nom de l'icône des icônes matérielles fournies par les icônes vectorielles natives de réaction, pour le clavier.",
   "timePickerDocumentation:property-clockIcon-description": "Nom de l'icône des icônes matérielles fournies par les icônes vectorielles natives de réaction, pour l'horloge.",
   "timePickerDocumentation:property-animationType-description": "L'animation pour la modalité du sélecteur de temps, lorsqu'elle apparaît ou disparaît.",
+  "timePickerDocumentation:property-clockSize-description": "Taille de l'horloge du sélecteur de temps en pixels.",
+  "timePickerDocumentation:property-modalStyle-description": "Style pour la fenêtre modale de sélection de l'heure.",
   "timePickerDocumentation:property-inputStyle-description": "Style pour les champs d'entrée du sélecteur de temps.",
 
   "touchableRippleDocumentation:mainHeading": "Propagation tactile",

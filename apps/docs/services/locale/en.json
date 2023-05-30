@@ -830,6 +830,8 @@
   "timePickerDocumentation:property-keyboardIcon-description": "Icon name from material icons provided by react native vector icons, for the keyboard.",
   "timePickerDocumentation:property-clockIcon-description": "Icon name from material icons provided by react native vector icons, for the clock.",
   "timePickerDocumentation:property-animationType-description": "The animation for the time picker modal, when it appears or disappears.",
+  "timePickerDocumentation:property-clockSize-description": "Size of the clock of time picker in pixels.",
+  "timePickerDocumentation:property-modalStyle-description": "Style for the time picker modal.",
   "timePickerDocumentation:property-inputStyle-description": "Style for the input fields of the time picker.",
 
   "touchableRippleDocumentation:mainHeading": "Touchable Ripple",

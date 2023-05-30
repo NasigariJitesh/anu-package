@@ -204,6 +204,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/time-picker'
+          options={{
+            headerLargeTitle: true,
+            title: 'Time Picker',
+          }}
+        />
+        <Stack.Screen
           name='components/text-area'
           options={{
             headerLargeTitle: true,
@@ -397,6 +404,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Tabs Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/time-picker-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Time Picker Test',
           }}
         />
         <Stack.Screen
