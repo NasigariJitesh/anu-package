@@ -127,6 +127,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/image'
+          options={{
+            headerLargeTitle: true,
+            title: 'Image',
+          }}
+        />
+        <Stack.Screen
           name='components/menu'
           options={{
             headerLargeTitle: true,

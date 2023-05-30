@@ -80,6 +80,10 @@ export function HomeScreen() {
       link: '/components/divider',
     },
     {
+      title: 'Image',
+      link: '/components/image',
+    },
+    {
       title: 'Menu',
       link: '/components/menu',
     },
