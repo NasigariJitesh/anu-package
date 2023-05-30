@@ -13,7 +13,7 @@ import { defaultProps } from './default';
 const CardActions = (props: CardActionsProps) => {
   const finalProps = { ...defaultProps, ...props };
 
-  const { style, sx } = getCardActionsStyle();
+  const { style } = getCardActionsStyle();
 
   return (
     <Container
@@ -22,7 +22,6 @@ const CardActions = (props: CardActionsProps) => {
       align={finalProps.align}
       justify={finalProps.justify}
       style={getCombinedStylesForView(style, finalProps.style)}
-      sx={{ ...sx, ...finalProps.sx }}
     >
       {finalProps.children}
     </Container>

@@ -22,17 +22,16 @@ const CardHeader = (props: CardHeaderProps) => {
     headingContainerStyle,
     headingStyle,
     subHeadingStyle,
-    sx,
   } = getCardHeaderStyle(theme);
 
   return (
-    <Container disableGutters flexDirection='row' style={containerStyle} sx={sx}>
+    <Container disableGutters flexDirection='row' style={containerStyle} >
       {finalProps.avatar ? (
-        <Container disableGutters style={avatarContainerStyle} sx={sx}>
+        <Container disableGutters style={avatarContainerStyle} >
           {finalProps.avatar}
         </Container>
       ) : null}
-      <Container disableGutters style={headingContainerStyle} sx={sx}>
+      <Container disableGutters style={headingContainerStyle} >
         {typeof finalProps.heading === 'string' ? (
           <Typography.Body style={headingStyle}>{finalProps.heading}</Typography.Body>
         ) : (
@@ -45,7 +44,7 @@ const CardHeader = (props: CardHeaderProps) => {
         )}
       </Container>
       {'action' in finalProps && finalProps.action ? (
-        <Container disableGutters style={actionContainerStyle} sx={sx}>
+        <Container disableGutters style={actionContainerStyle} >
           {finalProps.action}
         </Container>
       ) : null}

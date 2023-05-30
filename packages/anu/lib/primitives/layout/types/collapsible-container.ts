@@ -3,7 +3,7 @@ import Animated from 'react-native-reanimated';
 
 export type State = 'expanded' | 'collapsed';
 
-export type Config = {
+export type Configuration = {
   duration?: number;
   easing?: Animated.EasingFunction;
   defaultState?: State;

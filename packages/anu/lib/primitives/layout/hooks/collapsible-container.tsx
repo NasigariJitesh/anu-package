@@ -2,13 +2,13 @@ import React from 'react';
 import type { LayoutChangeEvent } from 'react-native';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
 
-import type { Config, State } from '../types';
+import type { Configuration, State } from '../types';
 
 /**
  *
  * @param config
  */
-export function useCollapsible(config?: Config) {
+export function useCollapsible(config?: Configuration) {
   const [height, setHeight] = React.useState(0);
   const [state, setState] = React.useState<State>(config?.defaultState ?? 'collapsed');
 

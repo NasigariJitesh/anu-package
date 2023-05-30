@@ -17,14 +17,13 @@ const ChildrenAvatar = (props: ChildrenAvatarProps) => {
   const finalProps = { ...defaultChildrenProps, ...props };
 
   const { size, variant, children, ...otherProps } = finalProps;
-  const { containerStyle, containerSx, typographyStyle } = getLetterAvatarStyle(finalProps, theme);
+  const { containerStyle,  typographyStyle } = getLetterAvatarStyle(finalProps, theme);
 
   return (
     <Container
       disableGutters
       {...otherProps}
       style={getCombinedStylesForView(containerStyle, otherProps.style)}
-      sx={{ ...containerSx, ...otherProps.sx }}
     >
       {typeof children === 'string' || children instanceof String ? (
         <Typography.Body style={typographyStyle}>{children}</Typography.Body>
