@@ -15,12 +15,12 @@ import {
   Search,
   Tab,
   Tabs,
+  TextArea,
   TextField,
   TimePickerModal,
   TouchableRipple,
   Typography,
 } from 'anu/lib';
-import TextArea from 'anu/lib/composites/text-area/components/text-area';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
 

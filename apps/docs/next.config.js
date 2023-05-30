@@ -26,6 +26,7 @@ const nextConfig = {
     'react-dropzone',
     'expo-document-picker',
     'expo-blur',
+    'expo-linear-gradient',
     'expo-haptics',
     'expo-modules-core',
   ],
