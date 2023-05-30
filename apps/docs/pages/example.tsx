@@ -6,6 +6,7 @@ import {
   AvatarGroup,
   Button,
   Chip,
+  CollapsibleContainer,
   Container,
   Icon,
   Options,
@@ -18,10 +19,12 @@ import {
   TimePickerModal,
   TouchableRipple,
   Typography,
+  useCollapsible,
 } from 'anu/lib';
 import TextArea from 'anu/lib/composites/text-area/components/text-area';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 
 const data = [
   {
@@ -57,6 +60,8 @@ export default function Example() {
   const [text, setText] = useState('');
   const [visible1, setVisible1] = useState(false);
 
+  const { animatedHeight, onPress, onLayout, state } = useCollapsible();
+
   const onDismiss = useCallback(() => {
     setVisible(false);
     setVisible1(false);
@@ -85,6 +90,24 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' sx={{ flex: 1, paddingTop: 1 }}>
+      <Container disableGutters style={{ backgroundColor: 'red', width: '100%' }}>
+        <TouchableOpacity onPress={onPress} accessibilityRole='button'>
+          <Container disableGutters style={{ backgroundColor: 'pink', width: '100%' }}>
+            <Typography.Body>question?</Typography.Body>
+          </Container>
+        </TouchableOpacity>
+        <CollapsibleContainer animatedHeight={animatedHeight} onLayout={onLayout} state={state}>
+          <Container disableGutters style={{ backgroundColor: 'yellow', width: '100%' }}>
+            <Typography.Body>
+              answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer
+              answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer
+              answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer
+              answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer
+              answer answer answer answer
+            </Typography.Body>
+          </Container>
+        </CollapsibleContainer>
+      </Container>
       <PasswordInput value={text} onChangeText={setText} />
       <AvatarGroup total={15}>
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=10' }} variant='circle' />

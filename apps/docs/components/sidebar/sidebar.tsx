@@ -49,15 +49,18 @@ const Group = (props: HeadingProps) => {
   return (
     <FlatList
       contentContainerStyle={style.groupList}
+      style={style.flatList}
       data={props.links}
       renderItem={({ item }) => {
         return item.components.length > 0 ? (
           <Accordion.Container
             title={
-              <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.groupName}>
+              <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.groupName as never}>
                 {getTranslation(item.title)}
               </Accordion.Header>
             }
+            style={{ padding: 0 }}
+            spacing={0}
           >
             <Accordion.Children>
               <Components links={item.components} />
@@ -67,7 +70,7 @@ const Group = (props: HeadingProps) => {
           <Typography.Title
             onPress={onLinkPress}
             style={[
-              style.groupName,
+              style.groupName as never,
               pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
             ]}
           >
@@ -268,8 +271,13 @@ const Sidebar = () => {
           <HeadingLink link='/theming' title='leftSideBar:theming' />
           <Index
             heading='leftSideBar:components'
-            headingLink='/components/auto-complete'
+            headingLink='/components/accordion'
             links={[
+              {
+                title: 'leftSideBar:accordion',
+                components: [],
+                link: '/components/accordion',
+              },
               {
                 title: 'leftSideBar:auto-complete',
                 components: [],
@@ -557,6 +565,7 @@ const style = {
     fontWeight: '400',
     opacity: 0.7,
     marginVertical: 5,
+    flex: null,
   },
   componentName: {
     fontSize: 18,
@@ -575,6 +584,9 @@ const style = {
   groupList: {
     marginTop: 15,
     marginLeft: 15,
+  },
+  flatList: {
+    width: 220,
   },
   componentList: {
     marginVertical: 15,

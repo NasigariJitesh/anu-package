@@ -18,6 +18,11 @@ export interface AccordionProps {
   sx?: ContainerProps['sx'];
 
   /**
+   * Spacing between Accordion title and Accordion children
+   */
+  spacing?: number;
+
+  /**
    * Executes when the header is pressed
    */
   onPress?: () => void;
@@ -52,6 +57,8 @@ export interface AccordionHeaderProps extends Partial<TitleProps> {
     open?: (props: MaterialIconProps) => JSX.Element;
     collapsed?: (props: MaterialIconProps) => JSX.Element;
   };
+
+  supportingText?: string;
 }
 
 export interface AccordionChildrenProps extends Partial<ContainerProps> {
