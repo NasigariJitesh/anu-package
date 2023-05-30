@@ -120,6 +120,10 @@ export function HomeScreen() {
       link: '/components/text-field',
     },
     {
+      title: 'Touchable Ripple',
+      link: '/components/touchable-ripple',
+    },
+    {
       title: 'Typography',
       link: '/components/typography',
     },
