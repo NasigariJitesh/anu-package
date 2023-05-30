@@ -1,5 +1,6 @@
 import { ReactChildren } from 'anu/common/types';
 import { TextFieldWithMaskProps } from 'anu/lib/composites';
+import { StyleProp, ViewStyle } from 'react-native';
 
 import { ValidRangeType } from './calendar';
 
@@ -83,6 +84,8 @@ export type DatePickerInputProps = {
    * The input mask for the date picker input
    */
   mask?: string;
+
+  modalStyle?: StyleProp<ViewStyle>;
 } & Omit<TextFieldWithMaskProps, 'value' | 'onChange' | 'onChangeText' | 'inputMode' | 'mask'>;
 
 export interface UseDateInputProps {
@@ -107,6 +110,7 @@ export interface DatePickerInputWithoutModalProps extends DatePickerInputProps {
     startYear: DatePickerInputProps['startYear'];
     endYear: DatePickerInputProps['endYear'];
     inputEnabled: DatePickerInputProps['inputEnabled'];
+    style: DatePickerInputProps['modalStyle'];
   }) => void;
   inputButtons?: ReactChildren;
 }

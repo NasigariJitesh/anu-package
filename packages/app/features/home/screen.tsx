@@ -32,6 +32,10 @@ export function HomeScreen() {
       link: '/components/badge',
     },
     {
+      title: 'Bottom Sheet',
+      link: '/components/bottom-sheet',
+    },
+    {
       title: 'Common Button',
       link: '/components/common-button',
     },
@@ -52,6 +56,10 @@ export function HomeScreen() {
       link: '/components/segmented-button',
     },
     {
+      title: 'Card',
+      link: '/components/card',
+    },
+    {
       title: 'Checkbox',
       link: '/components/checkbox',
     },
@@ -64,8 +72,24 @@ export function HomeScreen() {
       link: '/components/container',
     },
     {
+      title: 'Date Input',
+      link: '/components/date-input',
+    },
+    {
+      title: 'Date Picker',
+      link: '/components/date-picker',
+    },
+    {
+      title: 'Dialog',
+      link: '/components/dialog',
+    },
+    {
       title: 'Divider',
       link: '/components/divider',
+    },
+    {
+      title: 'Image',
+      link: '/components/image',
     },
     {
       title: 'Menu',
@@ -84,8 +108,24 @@ export function HomeScreen() {
       link: '/components/search',
     },
     {
+      title: 'Radio Button',
+      link: '/components/radio',
+    },
+    {
+      title: 'Side Sheet',
+      link: '/components/side-sheet',
+    },
+    {
+      title: 'Snackbar',
+      link: '/components/snackbar',
+    },
+    {
       title: 'Tabs',
       link: '/components/tabs',
+    },
+    {
+      title: 'Time Picker',
+      link: '/components/time-picker',
     },
     {
       title: 'Text Area',
@@ -94,6 +134,10 @@ export function HomeScreen() {
     {
       title: 'Text Field',
       link: '/components/text-field',
+    },
+    {
+      title: 'Touchable Ripple',
+      link: '/components/touchable-ripple',
     },
     {
       title: 'Typography',
@@ -113,6 +157,10 @@ export function HomeScreen() {
     {
       title: 'Badge',
       link: '/components/badge-test',
+    },
+    {
+      title: 'Bottom Sheet',
+      link: '/components/bottom-sheet-test',
     },
     {
       title: 'Common Button',
@@ -135,6 +183,10 @@ export function HomeScreen() {
       link: '/components/segmented-button-test',
     },
     {
+      title: 'Card',
+      link: '/components/card-test',
+    },
+    {
       title: 'Checkbox',
       link: '/components/checkbox-test',
     },
@@ -145,6 +197,14 @@ export function HomeScreen() {
     {
       title: 'Container',
       link: '/components/container-test',
+    },
+    {
+      title: 'Date Picker',
+      link: '/components/date-picker-test',
+    },
+    {
+      title: 'Dialog',
+      link: '/components/dialog-test',
     },
     {
       title: 'Divider',
@@ -167,8 +227,24 @@ export function HomeScreen() {
       link: '/components/search-test',
     },
     {
+      title: 'Radio Button',
+      link: '/components/radio-test',
+    },
+    {
+      title: 'Side Sheet',
+      link: '/components/side-sheet-test',
+    },
+    {
+      title: 'Snackbar',
+      link: '/components/snackbar-test',
+    },
+    {
       title: 'Tabs',
       link: '/components/tabs-test',
+    },
+    {
+      title: 'Time Picker',
+      link: '/components/time-picker-test',
     },
     {
       title: 'Text Field',

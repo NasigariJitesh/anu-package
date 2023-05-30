@@ -14,16 +14,14 @@ import {
   Search,
   Tab,
   Tabs,
+  TextArea,
   TextField,
   TimePickerModal,
   TouchableRipple,
   Typography,
 } from 'anu/lib';
-import { Skeleton } from 'anu/lib/composites';
-import TextArea from 'anu/lib/composites/text-area/components/text-area';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
-import { useMenuContext } from 'screens/common/provider';
 
 const data = [
   {
@@ -85,13 +83,14 @@ export default function Example() {
     );
   };
 
-  const { isDarkTheme } = useMenuContext();
-
   return (
     <Container flexDirection='column' sx={{ flex: 1, paddingTop: 1 }}>
-      <Skeleton width={300} height={30} colorMode={isDarkTheme ? 'dark' : 'light'} />
-
-      <PasswordInput value={text} onChangeText={setText} />
+      <PasswordInput
+        label='LOngggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg'
+        value={text}
+        onChangeText={setText}
+        variant='filled'
+      />
       <AvatarGroup total={15}>
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=10' }} variant='circle' />
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=11' }} variant='circle' />
@@ -112,7 +111,18 @@ export default function Example() {
         />
       </Container>
 
-      <TextArea value={text} onChangeText={setText} numberOfLines={3} textBreakStrategy='highQuality' />
+      <TextArea
+        value={text}
+        onChangeText={setText}
+        numberOfLines={3}
+        textBreakStrategy='highQuality'
+        variant='filled'
+        labelStyle={{
+          '@active': {
+            backgroundColor: 'red',
+          },
+        }}
+      />
       <Container disableGutters style={{ zIndex: 1000, marginVertical: 10, width: '100%' }}>
         <Search
           value={text1}

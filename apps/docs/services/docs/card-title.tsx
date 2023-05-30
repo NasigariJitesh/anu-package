@@ -10,7 +10,6 @@ const flexStyle = {
   justifyContent: 'center',
 
   width: '100%',
-  padding: 10,
 } as const;
 
 export const cardTitleDocumentation: ContentValues = {
@@ -48,12 +47,12 @@ export const cardTitleDocumentation: ContentValues = {
       id: 'default',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='elevated' width={360}>
+          <Card variant='elevated' width={280}>
             <CardTitle title='Title' subTitle='subTitle' />
           </Card>
         </Container>
       ),
-      code: `<Card variant='elevated' width={360}>
+      code: `<Card variant='elevated' width={280}>
   <CardTitle title='Title' subTitle='subTitle' />
 </Card>`,
     },
@@ -62,7 +61,7 @@ export const cardTitleDocumentation: ContentValues = {
       id: 'custom',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='elevated' width={360}>
+          <Card variant='elevated' width={280}>
             <CardTitle type='custom'>
               <Typography.Title style={{ fontSize: 24, marginVertical: 5 }}>Title</Typography.Title>
               <Typography.Title>SubTitle 1</Typography.Title>
@@ -71,7 +70,7 @@ export const cardTitleDocumentation: ContentValues = {
           </Card>
         </Container>
       ),
-      code: `<Card variant='elevated' width={360}>
+      code: `<Card variant='elevated' width={280}>
   <CardTitle type='custom'>
     <Typography.Title style={{ fontSize: 24, marginVertical: 5 }}>Title</Typography.Title>
     <Typography.Title>SubTitle 1</Typography.Title>

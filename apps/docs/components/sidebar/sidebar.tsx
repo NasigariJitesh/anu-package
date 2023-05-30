@@ -498,6 +498,11 @@ const Sidebar = () => {
                 link: '/components/skeleton',
               },
               {
+                title: 'leftSideBar:snackbar',
+                link: '/components/snackbar',
+                components: [],
+              },
+              {
                 title: 'leftSideBar:switch',
                 link: '/components/switch',
                 components: [],

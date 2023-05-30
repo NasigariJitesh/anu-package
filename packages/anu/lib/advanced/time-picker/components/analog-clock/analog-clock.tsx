@@ -6,7 +6,6 @@ import { GestureResponderEvent, PanResponder, StyleSheet, View } from 'react-nat
 import { useDisplayModeContext } from '../../context';
 import { AnalogClockProps, clockTypes, hourTypes } from '../../types';
 import {
-  circleSize,
   getAnalogClockStyles,
   getAngle,
   getHours,
@@ -24,7 +23,7 @@ import AnimatedClockSwitcher from './animated-clock-switcher';
  * @param props
  */
 const AnalogClock = (props: AnalogClockProps) => {
-  const { hours, minutes, focused, is24Hour, onChange } = props;
+  const { hours, minutes, focused, is24Hour, onChange, circleSize } = props;
 
   const { mode } = useDisplayModeContext();
   // used to make pointer shorter if hours are selected and above 12
@@ -38,7 +37,7 @@ const AnalogClock = (props: AnalogClockProps) => {
   const is24HourReference = useLatest(is24Hour);
   const modeReference = useLatest(mode);
   const theme = useTheme();
-  const styles = getAnalogClockStyles(theme);
+  const styles = getAnalogClockStyles(theme, circleSize);
 
   const onPointerMove = useCallback(
     (event: GestureResponderEvent, final: boolean) => {
@@ -108,7 +107,7 @@ const AnalogClock = (props: AnalogClockProps) => {
     }),
   ).current;
 
-  const dynamicSize = focused === clockTypes.hours && shortPointer ? 33 : 0;
+  const dynamicSize = focused === clockTypes.hours && shortPointer ? circleSize / 8 : 0;
 
   const pointerNumber = focused === clockTypes.hours ? hours : minutes;
 
@@ -150,8 +149,8 @@ const AnalogClock = (props: AnalogClockProps) => {
       </Container>
       <AnimatedClockSwitcher
         focused={focused}
-        hours={<AnalogClockHours is24Hour={is24Hour} hours={hours} />}
-        minutes={<AnalogClockMinutes minutes={minutes} />}
+        hours={<AnalogClockHours circleSize={circleSize} is24Hour={is24Hour} hours={hours} />}
+        minutes={<AnalogClockMinutes circleSize={circleSize} minutes={minutes} />}
       />
     </Container>
   );

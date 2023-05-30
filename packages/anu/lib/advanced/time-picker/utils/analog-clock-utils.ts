@@ -1,8 +1,8 @@
 import { DripsyFinalTheme } from 'dripsy';
 
-import { circleSize } from './utils';
+export const getAnalogClockStyles = (theme: DripsyFinalTheme, circleSize: number) => {
+  const baseValue = (circleSize / 32) * 3;
 
-export const getAnalogClockStyles = (theme: DripsyFinalTheme) => {
   const center = { alignItems: 'center', justifyContent: 'center' } as const;
   const clock = {
     alignItems: 'center',
@@ -14,47 +14,49 @@ export const getAnalogClockStyles = (theme: DripsyFinalTheme) => {
     width: circleSize,
   } as const;
   const endPoint = {
-    borderRadius: 24,
-    bottom: -23,
-    height: 48,
+    borderRadius: baseValue,
+    bottom: -baseValue + 1,
+    height: baseValue * 2,
     position: 'absolute',
     right: 0,
-    width: 48,
+    width: baseValue * 2,
     backgroundColor: theme.colors.$primary,
   } as const;
   const line = {
     backgroundColor: theme.colors.$primary,
-    borderRadius: 4,
+    borderRadius: baseValue / 6,
     height: 2,
     position: 'absolute',
   } as const;
   const middlePoint = {
-    borderRadius: 4,
-    height: 8,
-    width: 8,
+    borderRadius: baseValue / 6,
+    height: baseValue / 3,
+    width: baseValue / 3,
     backgroundColor: theme.colors.$primary,
   };
 
   return { center, clock, endPoint, line, middlePoint };
 };
 
-export const getAnalogClockMinuteStyles = (theme: DripsyFinalTheme) => {
-  const minuteInner = { borderRadius: 24 };
+export const getAnalogClockMinuteStyles = (theme: DripsyFinalTheme, circleSize: number) => {
+  const baseValue = (circleSize / 32) * 3;
+
+  const minuteInner = { borderRadius: baseValue };
   const minuteRoot = {
     alignItems: 'center',
-    borderRadius: 24,
-    height: 48,
+    borderRadius: baseValue,
+    height: baseValue * 2,
     justifyContent: 'center',
-    marginLeft: -24,
-    marginTop: -24,
+    marginLeft: -baseValue,
+    marginTop: -baseValue,
     position: 'absolute',
-    width: 48,
+    width: baseValue * 2,
     zIndex: 20,
   } as const;
   const minuteText = {
     color: theme.colors.$onSurface,
-    fontSize: theme.fontSizes[7],
-    lineHeight: theme.lineHeights[7],
+    fontSize: (baseValue * 2) / 3,
+    lineHeight: baseValue,
   };
 
   const currentMinuteText = {
@@ -92,36 +94,38 @@ export const getAnalogClockMinuteNumbers = (size: number, count: number) => {
     });
 };
 
-export const getAnalogClockHourStyles = (theme: DripsyFinalTheme) => {
-  const innerHourInner = { borderRadius: 24 };
+export const getAnalogClockHourStyles = (theme: DripsyFinalTheme, circleSize: number) => {
+  const baseValue = (circleSize / 32) * 3;
+
+  const innerHourInner = { borderRadius: baseValue };
   const innerHourRoot = {
     alignItems: 'center',
-    borderRadius: 24,
-    height: 48,
+    borderRadius: baseValue,
+    height: baseValue * 2,
     justifyContent: 'center',
-    marginLeft: -24,
-    marginTop: -24,
+    marginLeft: -baseValue,
+    marginTop: -baseValue,
     position: 'absolute',
-    width: 48,
+    width: baseValue * 2,
     zIndex: 20,
   } as const;
-  const outerHourInner = { borderRadius: 24 };
+  const outerHourInner = { borderRadius: baseValue };
   const outerHourRoot = {
     alignItems: 'center',
-    borderRadius: 24,
-    height: 48,
+    borderRadius: baseValue,
+    height: baseValue * 2,
     justifyContent: 'center',
-    marginLeft: -24,
-    marginTop: -24,
+    marginLeft: -baseValue,
+    marginTop: -baseValue,
     position: 'absolute',
-    width: 48,
+    width: baseValue * 2,
     zIndex: 20,
   } as const;
 
   const hourText = {
     color: theme.colors.$onSurface,
-    fontSize: theme.fontSizes[7],
-    lineHeight: theme.lineHeights[7],
+    fontSize: (baseValue * 2) / 3,
+    lineHeight: baseValue,
   };
 
   const currentHourText = {

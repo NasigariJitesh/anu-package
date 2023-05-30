@@ -1,8 +1,7 @@
 import { ExtendedDisabledStyles, ExtendedHoverStyles, Flex } from 'anu/common/types';
 import { ContainerAlign } from 'anu/lib/primitives/layout/types';
 import { ContainerJustify } from 'anu/lib/primitives/layout/types/container';
-import { StyleProp, ViewStyle } from 'react-native';
-import { TextStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
+import { StyleProp, TextStyle } from 'react-native';
 
 import RadioButton from '../components';
 
@@ -46,10 +45,7 @@ export interface RadioButtonProps {
    * The styles for the label of the radio button.
    */
   labelStyle?: StyleProp<TextStyle>;
-  /**
-   * The styles for the container of the radio button.
-   */
-  containerStyle?: StyleProp<ViewStyle>;
+
   /**
    * The color of the radio button component.
    */
@@ -57,7 +53,6 @@ export interface RadioButtonProps {
 
   dataSets?: {
     label?: Record<string, any>;
-    container?: Record<string, any>;
     radio?: Record<string, any>;
   };
 }
