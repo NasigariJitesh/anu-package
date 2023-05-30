@@ -34,7 +34,7 @@ const nextConfig = {
     return [
       {
         source: '/components',
-        destination: '/components/avatar',
+        destination: '/components/accordion',
         permanent: false,
       },
       {

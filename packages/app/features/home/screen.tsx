@@ -20,9 +20,14 @@ export function HomeScreen() {
 
   const components: ComponentLinks[] = [
     {
+      title: 'Accordion',
+      link: '/components/accordion',
+    },
+    {
       title: 'Autocomplete',
       link: '/components/auto-complete',
     },
+
     {
       title: 'Avatar',
       link: '/components/avatar',
@@ -162,6 +167,10 @@ export function HomeScreen() {
   ];
 
   const tests: ComponentLinks[] = [
+    {
+      title: 'Accordion',
+      link: '/components/accordion-test',
+    },
     {
       title: 'Autocomplete',
       link: '/components/auto-complete-test',

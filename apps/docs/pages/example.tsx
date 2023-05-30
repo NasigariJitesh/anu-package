@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 import {
+  Accordion,
   AutoComplete,
   Avatar,
   AvatarGroup,
@@ -57,6 +58,7 @@ export default function Example() {
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState('');
   const [visible1, setVisible1] = useState(false);
+  const [visible2, setVisible2] = useState(false);
 
   const onDismiss = useCallback(() => {
     setVisible(false);
@@ -86,12 +88,24 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' sx={{ flex: 1, paddingTop: 1 }}>
-      <PasswordInput
-        label='LOngggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg'
-        value={text}
-        onChangeText={setText}
-        variant='filled'
-      />
+      <Accordion.Container title={<Accordion.Header>Accordion 1</Accordion.Header>} collapse={visible2}>
+        <Accordion.Children>
+          <Typography.Body>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </Typography.Body>
+        </Accordion.Children>
+      </Accordion.Container>
+
+      <TouchableRipple
+        style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}
+        onPress={() => setVisible2((p) => !p)}
+      >
+        <>Press</>
+      </TouchableRipple>
+
+      <PasswordInput value={text} onChangeText={setText} />
       <AvatarGroup total={15}>
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=10' }} variant='circle' />
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=11' }} variant='circle' />
@@ -100,15 +114,15 @@ export default function Example() {
       </AvatarGroup>
 
       <FileUpload
-              category='common'
-              variant='filled'
-              size='medium'
-              title='Choose a file'
-              uploadVariant='image'
-              previewType='list'
-              multiple
-              sortable
-            />
+        category='common'
+        variant='filled'
+        size='medium'
+        title='Choose a file'
+        uploadVariant='image'
+        previewType='list'
+        multiple
+        sortable
+      />
 
       <Container disableGutters style={{ zIndex: 1000, marginVertical: 10, width: '100%' }}>
         <AutoComplete

@@ -1,5 +1,4 @@
 /* eslint-disable react-native/no-inline-styles */
-import { useTheme } from 'anu/config';
 import { Accordion, Container, Typography } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
@@ -61,21 +60,10 @@ const Example1 = () => {
 };
 
 const Example2 = () => {
-  const theme = useTheme();
-  const accordionStyle = {
-    maxWidth: 420,
-    flex: 1,
-    backgroundColor: theme.colors.$surface,
-    padding: 16,
-    borderRadius: 4,
-  };
   return (
     <Container disableGutters sx={flexStyle as never}>
       <Container disableGutters flexDirection='row' style={style}>
-        <Accordion.Container
-          title={<Accordion.Header supportingText='Supporting Text'>Title</Accordion.Header>}
-          style={accordionStyle}
-        >
+        <Accordion.Container title={<Accordion.Header supportingText='Supporting Text'>Title</Accordion.Header>}>
           <Accordion.Children>
             <Typography.Body>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -97,74 +85,92 @@ export const accordionDocumentation: ContentValues = {
       name: 'accordionDocumentation:example1-name',
       id: 'default',
       component: <Example1 />,
-      code: "<Container width={600} maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
+      code: `<Accordion.Container title={<Accordion.Header>Accordion 1</Accordion.Header>}>
+  <Accordion.Children>
+    <Typography.Body>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+      ea commodo consequat.
+    </Typography.Body>
+  </Accordion.Children>
+</Accordion.Container>
+
+<Accordion.Container title={<Accordion.Header>Accordion 2</Accordion.Header>}>
+  <Accordion.Children>
+    <Typography.Body>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+      ea commodo consequat.
+    </Typography.Body>
+  </Accordion.Children>
+</Accordion.Container>
+
+<Accordion.Container title={<Accordion.Header>Accordion 3</Accordion.Header>}>
+  <Accordion.Children>
+    <Typography.Body>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+      ea commodo consequat.
+    </Typography.Body>
+  </Accordion.Children>
+</Accordion.Container>`,
     },
     {
-      name: 'accordionDocumentation:example1-name',
+      name: 'accordionDocumentation:example2-name',
       id: 'default',
       component: <Example2 />,
-      code: "<Container width={600} maxWidth={'sm'} sx={{ backgroundColor: '#c1c1c1', height: 200 }} />",
+      code: `<Accordion.Container title={<Accordion.Header supportingText='Supporting Text'>Title</Accordion.Header>}>
+      <Accordion.Children>
+        <Typography.Body>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </Typography.Body>
+      </Accordion.Children>
+    </Accordion.Container>`,
     },
   ],
+  externalProperties: {
+    link: '/components/container',
+    title: 'accordionDocumentation:external-properties-title',
+  },
+  additionalInformation: {
+    title: 'accordionDocumentation:additionalInformation-title',
+    isLocaleSpecific: true,
+    items: [
+      { info: 'accordionDocumentation:additionalInformation-info1', isLocaleSpecific: true },
+      { info: 'accordionDocumentation:additionalInformation-info2', isLocaleSpecific: true },
+    ],
+    id: 'see-also',
+  },
   properties: [
     {
-      name: 'flexDirection',
-      optional: true,
-      type: "'row' | 'row-reverse' | 'column' | 'column-reverse'",
-      description: 'accordionDocumentation:property-flexDirection-description',
-      defaultValue: "'column'",
+      name: 'title',
+      type: 'ReactElement',
+      description: 'accordionDocumentation:property-title-description',
     },
     {
-      name: 'align',
-      optional: true,
-      type: "'center' | 'flex-start' | 'flex-end'",
-      description: 'accordionDocumentation:property-align-description',
-      defaultValue: "'flex-start'",
+      name: 'children',
+      type: 'ReactElement',
+      description: 'accordionDocumentation:property-children-description',
     },
     {
-      name: 'justify',
-      description: 'accordionDocumentation:property-justify-description',
+      name: 'collapse',
       optional: true,
-      type: "'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around'",
-      defaultValue: "'flex-start'",
-    },
-    {
-      name: 'style',
-      description: 'accordionDocumentation:property-style-description',
-      type: 'StyleProp<ViewStyle>',
-      optional: true,
-    },
-    {
-      name: 'disableGutters',
-      description: 'accordionDocumentation:property-disableGutters-description',
       type: 'boolean',
-      optional: true,
-      defaultValue: 'false',
+      description: 'accordionDocumentation:property-collapse-description',
     },
     {
-      name: 'fixed',
-      description: 'accordionDocumentation:property-fixed-description',
-      type: 'boolean',
+      name: 'onPress',
+      description: 'accordionDocumentation:property-onPress-description',
       optional: true,
-      defaultValue: 'false',
+      type: '() => void',
     },
     {
-      name: 'width',
-      description: 'accordionDocumentation:property-width-description',
-      type: 'number | string',
+      name: 'spacing',
+      description: 'accordionDocumentation:property-spacing-description',
       optional: true,
-    },
-    {
-      name: 'maxWidth',
-      description: 'accordionDocumentation:property-maxWidth-description',
-      optional: true,
-      type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | number | string",
-    },
-    {
-      name: 'sx',
-      description: 'accordionDocumentation:property-sx-description',
-      type: 'Sx',
-      optional: true,
+      type: 'number',
+      defaultValue: '16',
     },
   ],
 };
@@ -179,6 +185,11 @@ export const accordionIndex: HeadingProps = {
     {
       link: '#props',
       title: 'content:props',
+      components: [],
+    },
+    {
+      link: '#see-also',
+      title: 'accordionDocumentation:additionalInformation-title',
       components: [],
     },
   ],

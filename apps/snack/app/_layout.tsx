@@ -22,6 +22,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/accordion'
+          options={{
+            headerLargeTitle: true,
+            title: 'Accordion',
+          }}
+        />
+        <Stack.Screen
           name='components/auto-complete'
           options={{
             headerLargeTitle: true,
@@ -264,6 +271,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Typography',
+          }}
+        />
+        <Stack.Screen
+          name='components/accordion-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Accordion Test',
           }}
         />
         <Stack.Screen
