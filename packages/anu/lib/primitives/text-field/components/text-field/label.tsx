@@ -52,13 +52,13 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const textStyles = {
     paddingHorizontal: 2,
     color: props.placeholderTextColor || selectLabelColorBasedOnState(props, theme),
-    backgroundColor: selectLabelBackgroundColor(props, theme),
   };
 
   const animatedStyle = {
     position: 'absolute' as const,
     zIndex: 10,
     width: props.variant === 'outlined' ? undefined : '100%',
+    backgroundColor: selectLabelBackgroundColor(props, theme),
   };
 
   const animatedViewStyle = useAnimatedStyle(() => {
