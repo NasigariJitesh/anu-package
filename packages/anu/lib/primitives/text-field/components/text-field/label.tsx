@@ -4,9 +4,11 @@ import { getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { DripsyFinalTheme } from 'dripsy';
 import { useEffect } from 'react';
+import { StyleProp, TextStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { TextInputLabelProps } from '../../types';
+import { Container } from '../../../layout';
+import { LabelStyle, TextInputLabelProps } from '../../types';
 import { getError, getTextStyles } from '../../utils';
 
 const DURATION = 200; // in milliseconds
@@ -24,11 +26,27 @@ const selectLabelColorBasedOnState = (props: TextInputLabelProps, theme: DripsyF
 };
 
 const selectLabelBackgroundColor = (props: TextInputLabelProps, theme: DripsyFinalTheme) => {
+  if (!props.isFocused && !props.value) return;
+
   if (props.backgroundColor) return props.backgroundColor;
 
   if (props.variant === 'outlined') return theme.colors.$surface;
 
   if (!props.disabled) return theme.colors.$surfaceVariant;
+};
+
+const getExtendedLabelStyles = (
+  isFocused: boolean,
+  defaultStyle: StyleProp<TextStyle>,
+  animatedStyle: StyleProp<TextStyle>,
+  value?: string,
+  labelStyle?: LabelStyle,
+) => {
+  const { '@active': activeStyles, ...commonStyles } = labelStyle ?? {};
+
+  return isFocused || value
+    ? [getCombinedStylesForText(defaultStyle, activeStyles), animatedStyle]
+    : [getCombinedStylesForText(defaultStyle, commonStyles), animatedStyle];
 };
 
 /**
@@ -51,14 +69,20 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
   const textStyles = {
     paddingHorizontal: 2,
+    maxWidth: '100%',
     color: props.placeholderTextColor || selectLabelColorBasedOnState(props, theme),
   };
 
   const animatedStyle = {
     position: 'absolute' as const,
     zIndex: 10,
-    width: props.variant === 'outlined' ? undefined : '100%',
+    flex: 1,
+    width: '100%',
+  };
+
+  const containerStyle = {
     backgroundColor: selectLabelBackgroundColor(props, theme),
+    ...(props.variant === 'filled' ? { flex: 1 } : {}),
   };
 
   const animatedViewStyle = useAnimatedStyle(() => {
@@ -66,6 +90,7 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
       top: transitionTopCoordinate.value,
       left: transitionLeftCoordinate.value,
       paddingHorizontal: 16,
+      flexDirection: 'row',
     };
   }, [transitionTopCoordinate, transitionTopCoordinate]);
 
@@ -121,13 +146,15 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
   return (
     <Animated.View style={[animatedStyle, animatedViewStyle]}>
-      <Animated.Text
-        numberOfLines={1}
-        ellipsizeMode='tail'
-        style={[getCombinedStylesForText(textStyles, props.labelStyle), animatedTextStyle]}
-      >
-        {props.label}
-      </Animated.Text>
+      <Container disableGutters style={containerStyle}>
+        <Animated.Text
+          numberOfLines={1}
+          ellipsizeMode='tail'
+          style={getExtendedLabelStyles(props.isFocused, textStyles, animatedTextStyle, props.value, props.labelStyle)}
+        >
+          {props.label}
+        </Animated.Text>
+      </Container>
     </Animated.View>
   );
 };
