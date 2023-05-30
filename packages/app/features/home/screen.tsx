@@ -88,6 +88,14 @@ export function HomeScreen() {
       link: '/components/divider',
     },
     {
+      title: 'File Drop Zone',
+      link: '/components/file-dropzone',
+    },
+    {
+      title: 'File Upload',
+      link: '/components/file-upload',
+    },
+    {
       title: 'Image',
       link: '/components/image',
     },
@@ -209,6 +217,14 @@ export function HomeScreen() {
     {
       title: 'Divider',
       link: '/components/divider-test',
+    },
+    {
+      title: 'File Drop Zone',
+      link: '/components/file-dropzone-test',
+    },
+    {
+      title: 'File Upload',
+      link: '/components/file-upload-test',
     },
     {
       title: 'Menu',

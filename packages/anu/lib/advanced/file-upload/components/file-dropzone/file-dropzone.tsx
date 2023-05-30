@@ -147,8 +147,11 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
         variant={finalProps.uploadVariant}
         previewType={finalProps.uploadVariant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
+        listHeight={finalProps.listHeight}
         listWidth={finalProps.listWidth}
         listItemStyle={finalProps.listItemStyle}
+        itemWidth={finalProps.itemWidth}
+        itemHeight={finalProps.itemHeight}
       />
     </Container>
   );

@@ -141,6 +141,20 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/file-dropzone'
+          options={{
+            headerLargeTitle: true,
+            title: 'File Drop Zone',
+          }}
+        />
+        <Stack.Screen
+          name='components/file-upload'
+          options={{
+            headerLargeTitle: true,
+            title: 'File Upload',
+          }}
+        />
+        <Stack.Screen
           name='components/image'
           options={{
             headerLargeTitle: true,
@@ -348,6 +362,20 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Divider Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/file-dropzone-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'File Drop Zone Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/file-upload-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'File Upload Test',
           }}
         />
         <Stack.Screen

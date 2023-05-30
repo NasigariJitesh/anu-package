@@ -4,7 +4,7 @@
   "main": "index.ts",
   "dependencies": {
     "moti": "latest",
-    "react-native-reanimated": "3.0.2",
+    "react-native-reanimated": "3.1.0",
     "solito": "3.0.0"
   },
   "sideEffects": false
