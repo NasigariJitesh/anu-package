@@ -5,6 +5,9 @@ import { ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
+import { accordionIndex } from 'services/docs/accordion';
+import { accordionChildrenIndex } from 'services/docs/accordion-children';
+import { accordionHeaderIndex } from 'services/docs/accordion-header';
 import { autoCompleteIndex } from 'services/docs/auto-complete';
 import { avatarIndex } from 'services/docs/avatar';
 import { badgeIndex } from 'services/docs/badge';
@@ -145,6 +148,21 @@ const RenderIndex = () => {
   const { pathname } = useRouter();
 
   switch (pathname) {
+    case '/components/accordion': {
+      {
+        return <Index {...accordionIndex} />;
+      }
+    }
+    case '/components/accordion/header': {
+      {
+        return <Index {...accordionHeaderIndex} />;
+      }
+    }
+    case '/components/accordion/children': {
+      {
+        return <Index {...accordionChildrenIndex} />;
+      }
+    }
     case '/components/auto-complete': {
       {
         return <Index {...autoCompleteIndex} />;

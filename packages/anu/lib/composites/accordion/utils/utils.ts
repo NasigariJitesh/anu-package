@@ -36,32 +36,19 @@ export const getIconStyles = (dripsyTheme: DripsyFinalTheme) => {
 export const getHeaderContainerStyles = () => {
   return {
     backgroundColor: 'transparent',
-    flex: 1,
     width: '100%',
-  };
-};
-
-/**
- * Get default styles for accordion children container
- *
- * @returns - default styles for icon
- */
-export const getChildrenStyles = () => {
-  return {
-    backgroundColor: 'transparent',
   };
 };
 
 /**
  * Get default styles for accordion header title
  *
- * @param theme
  * @returns - default styles for title
  */
 export const getTitleStyles = () => {
   return {
-    flex: 1,
-  };
+    fontWeight: '400',
+  } as const;
 };
 
 /**
@@ -88,15 +75,15 @@ export const getAccordionHeaderStyles = (theme: DripsyFinalTheme) => {
   return {
     icon: getIconStyles(theme),
     container: getHeaderContainerStyles(),
-    title: getTitleStyles(),
+    title: { flex: 1 },
+    commonTitleStyles: getTitleStyles(),
     supportingText: getSupportingTextStyles(theme),
   };
 };
 
 export const getAccordionStyles = (theme: DripsyFinalTheme) => {
   const container = {
-    maxWidth: 420,
-    flex: 1,
+    width: '100%',
     backgroundColor: theme.colors.$surface,
     padding: 16,
     borderRadius: 4,

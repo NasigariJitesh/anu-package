@@ -1,12 +1,12 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 import {
+  Accordion,
   AutoComplete,
   Avatar,
   AvatarGroup,
   Button,
   Chip,
-  CollapsibleContainer,
   Container,
   Icon,
   Options,
@@ -19,12 +19,10 @@ import {
   TimePickerModal,
   TouchableRipple,
   Typography,
-  useCollapsible,
 } from 'anu/lib';
 import TextArea from 'anu/lib/composites/text-area/components/text-area';
 import React, { useCallback } from 'react';
 import { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
 
 const data = [
   {
@@ -59,8 +57,7 @@ export default function Example() {
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState('');
   const [visible1, setVisible1] = useState(false);
-
-  const { animatedHeight, onPress, onLayout, state } = useCollapsible();
+  const [visible2, setVisible2] = useState(false);
 
   const onDismiss = useCallback(() => {
     setVisible(false);
@@ -90,24 +87,23 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' sx={{ flex: 1, paddingTop: 1 }}>
-      <Container disableGutters style={{ backgroundColor: 'red', width: '100%' }}>
-        <TouchableOpacity onPress={onPress} accessibilityRole='button'>
-          <Container disableGutters style={{ backgroundColor: 'pink', width: '100%' }}>
-            <Typography.Body>question?</Typography.Body>
-          </Container>
-        </TouchableOpacity>
-        <CollapsibleContainer animatedHeight={animatedHeight} onLayout={onLayout} state={state}>
-          <Container disableGutters style={{ backgroundColor: 'yellow', width: '100%' }}>
-            <Typography.Body>
-              answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer
-              answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer
-              answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer
-              answer answer answer answer answer answer answer answer answer answer answer answer answer answer answer
-              answer answer answer answer
-            </Typography.Body>
-          </Container>
-        </CollapsibleContainer>
-      </Container>
+      <Accordion.Container title={<Accordion.Header>Accordion 1</Accordion.Header>} collapse={visible2}>
+        <Accordion.Children>
+          <Typography.Body>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </Typography.Body>
+        </Accordion.Children>
+      </Accordion.Container>
+
+      <TouchableRipple
+        style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}
+        onPress={() => setVisible2((p) => !p)}
+      >
+        <>Press</>
+      </TouchableRipple>
+
       <PasswordInput value={text} onChangeText={setText} />
       <AvatarGroup total={15}>
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=10' }} variant='circle' />

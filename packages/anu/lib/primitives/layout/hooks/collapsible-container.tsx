@@ -18,8 +18,12 @@ export function useCollapsible(config?: Config) {
     animatedHeight.value = state === 'collapsed' ? withTiming(0, config) : withTiming(height, config);
   }, [state, height, animatedHeight, config]);
 
-  const onPress = React.useCallback(() => {
-    setState((previous) => (previous === 'collapsed' ? 'expanded' : 'collapsed'));
+  const onPress = React.useCallback((collapse?: boolean) => {
+    if (collapse === undefined) {
+      setState((previous) => (previous === 'collapsed' ? 'expanded' : 'collapsed'));
+    } else {
+      setState(collapse ? 'collapsed' : 'expanded');
+    }
   }, []);
 
   const onLayout = React.useCallback(

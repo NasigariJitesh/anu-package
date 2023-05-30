@@ -3,27 +3,19 @@ import { ContainerProps } from 'anu/lib/primitives/layout/types';
 import { TitleProps } from 'anu/lib/primitives/typography/types';
 import React from 'react';
 
-export interface AccordionProps {
+export interface AccordionProps extends ContainerProps {
   /**
    * If true, the accordion will be collapsed. Open otherwise
    */
   collapse?: boolean;
-  /**
-   * Styles for the parent component
-   */
-  style?: ContainerProps['style'];
-  /**
-   * Sx styles for the parent component
-   */
-  sx?: ContainerProps['sx'];
 
   /**
-   * Spacing between Accordion title and Accordion children
+   * Space between Accordion title and Accordion children
    */
   spacing?: number;
 
   /**
-   * Executes when the header is pressed
+   * Callback when the header is pressed
    */
   onPress?: () => void;
 
@@ -36,11 +28,6 @@ export interface AccordionProps {
    * Component to render when the accordion is open
    */
   children: React.ReactElement;
-
-  /**
-   * properties that will be sent to the container component
-   */
-  containerProps?: Partial<Omit<ContainerProps, 'children' | 'style' | 'sx'>>;
 }
 
 export interface AccordionHeaderProps extends Partial<TitleProps> {
@@ -51,13 +38,13 @@ export interface AccordionHeaderProps extends Partial<TitleProps> {
   iconProps?: Omit<MaterialIconProps, 'name'>;
 
   /**
-   * Custom Icon components that you can provide. for both open and collapsed states
+   * Custom Icon component that you can provide. for accordion header
    */
-  icon?: {
-    open?: (props: MaterialIconProps) => JSX.Element;
-    collapsed?: (props: MaterialIconProps) => JSX.Element;
-  };
+  icon?: (props: MaterialIconProps) => JSX.Element;
 
+  /**
+   * Supporting Text for the accordion Header
+   */
   supportingText?: string;
 }
 

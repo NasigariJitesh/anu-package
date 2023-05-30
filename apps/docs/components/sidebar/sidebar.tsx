@@ -61,6 +61,7 @@ const Group = (props: HeadingProps) => {
             }
             style={{ padding: 0 }}
             spacing={0}
+            collapse={false}
           >
             <Accordion.Children>
               <Components links={item.components} />
@@ -104,6 +105,9 @@ const RenderItem = ({ item }: { item: ComponentLinks }) => {
               {getTranslation(item.title)}
             </Accordion.Header>
           }
+          collapse={false}
+          style={{ padding: 0 }}
+          spacing={0}
         >
           <Accordion.Children>
             <Categories links={item.variants} />
@@ -275,7 +279,23 @@ const Sidebar = () => {
             links={[
               {
                 title: 'leftSideBar:accordion',
-                components: [],
+                components: [
+                  {
+                    title: 'leftSideBar:accordion',
+                    variants: [],
+                    link: '/components/accordion',
+                  },
+                  {
+                    title: 'leftSideBar:accordion-header',
+                    variants: [],
+                    link: '/components/accordion/header',
+                  },
+                  {
+                    title: 'leftSideBar:accordion-children',
+                    variants: [],
+                    link: '/components/accordion/children',
+                  },
+                ],
                 link: '/components/accordion',
               },
               {

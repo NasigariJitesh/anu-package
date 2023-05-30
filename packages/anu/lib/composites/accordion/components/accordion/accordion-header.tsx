@@ -15,7 +15,7 @@ import { useAccordionContext } from './accordion';
  * @param props - header props for accordion
  */
 const RenderIcon = (props: AccordionHeaderProps) => {
-  const { collapse, animatedHeight, height } = useAccordionContext();
+  const { animatedHeight, height } = useAccordionContext();
 
   const style = getAccordionHeaderStyles(useTheme());
 
@@ -29,8 +29,7 @@ const RenderIcon = (props: AccordionHeaderProps) => {
     };
   }, [animatedHeight, interpolate, Extrapolate, height]);
 
-  if (props.icon?.collapsed && collapse) return <>{props.icon.collapsed}</>;
-  else if (props.icon?.open && !collapse) return <>{props.icon.open}</>;
+  if (props.icon) return <>{props.icon}</>;
 
   return (
     <Animated.View style={animatedStyle}>
@@ -48,10 +47,13 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
   const style = getAccordionHeaderStyles(useTheme());
 
   return (
-    <Container sx={style.container} disableGutters flexDirection='row' align='center'>
+    <Container style={style.container} disableGutters flexDirection='row' align='center'>
       <Typography.Title
         {...props}
-        style={getCombinedStylesForText(props.supportingText ? {} : style.title, props.style)}
+        style={getCombinedStylesForText(
+          props.supportingText ? style.commonTitleStyles : { ...style.commonTitleStyles, ...style.title },
+          props.style,
+        )}
       />
       {props.supportingText ? (
         <Typography.Body style={style.supportingText}>{props.supportingText}</Typography.Body>
