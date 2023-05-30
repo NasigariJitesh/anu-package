@@ -68,12 +68,7 @@ export const radioDocumentation: ContentValues = {
       type: 'StyleProp<TextStyle>',
       optional: true,
     },
-    {
-      name: 'containerStyle',
-      description: 'radioDocumentation:property-containerStyle-description',
-      type: 'StyleProp<ViewStyle>',
-      optional: true,
-    },
+
     {
       name: 'onPress',
       description: 'radioDocumentation:property-onPress-description',
@@ -91,10 +86,18 @@ export const radioDocumentation: ContentValues = {
 <Radio id='basic-disabled' selected='basic-disabled' disabled/>`,
       component: (
         <Container flexDirection='row' sx={flexStyle as never}>
-          <Radio id='basic' containerStyle={style} />
-          <Radio id='disabled' disabled containerStyle={style} />
-          <Radio id='basic' selected='basic' containerStyle={style} />
-          <Radio id='basic-disabled' selected='basic-disabled' disabled containerStyle={style} />
+          <Container disableGutters style={style}>
+            <Radio id='basic' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Radio id='disabled' disabled />
+          </Container>
+          <Container disableGutters style={style}>
+            <Radio id='basic' selected='basic' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Radio id='basic-disabled' selected='basic-disabled' disabled />
+          </Container>
         </Container>
       ),
     },
@@ -108,11 +111,21 @@ export const radioDocumentation: ContentValues = {
 <Radio id='labelBottom' label='Bottom' labelPlacement='bottom' />`,
       component: (
         <Container flexDirection='row' sx={flexStyle as never}>
-          <Radio id='label' label='Label' containerStyle={style} />
-          <Radio id='labelLeft' label='Left' labelPlacement='left' containerStyle={style} />
-          <Radio id='labelRight' label='Right' labelPlacement='right' containerStyle={style} />
-          <Radio id='labelTop' label='Top' labelPlacement='top' containerStyle={{ ...style, marginTop: -1 }} />
-          <Radio id='labelBottom' label='Bottom' labelPlacement='bottom' containerStyle={style} />
+          <Container disableGutters style={style}>
+            <Radio id='label' label='Label' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Radio id='labelLeft' label='Left' labelPlacement='left' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Radio id='labelRight' label='Right' labelPlacement='right' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Radio id='labelTop' label='Top' labelPlacement='top' />
+          </Container>
+          <Container disableGutters style={style}>
+            <Radio id='labelBottom' label='Bottom' labelPlacement='bottom' />
+          </Container>
         </Container>
       ),
     },
@@ -121,16 +134,16 @@ export const radioDocumentation: ContentValues = {
       id: 'radio-button-group',
       // eslint-disable-next-line no-secrets/no-secrets
       code: `<RadioButtonGroup flexDirection='row'>
-<Radio id='button1' label='Button 1' />
-<Radio id='button2' label='Button 2' />
-<Radio id='button3' label='Button 3' />
+  <Radio id='button1' label='Button 1' />
+  <Radio id='button2' label='Button 2' />
+  <Radio id='button3' label='Button 3' />
 </RadioButtonGroup>`,
       component: (
         <Container flexDirection='row' sx={flexStyle as never}>
           <RadioButtonGroup flexDirection='row'>
-            <Radio id='button1' label='Button 1' containerStyle={style} />
-            <Radio id='button2' label='Button 2' containerStyle={style} />
-            <Radio id='button3' label='Button 3' containerStyle={style} />
+            <Radio id='button1' label='Button 1' labelStyle={{ marginRight: 5 }} />
+            <Radio id='button2' label='Button 2' labelStyle={{ marginRight: 5 }} />
+            <Radio id='button3' label='Button 3' labelStyle={{ marginRight: 5 }} />
           </RadioButtonGroup>
         </Container>
       ),

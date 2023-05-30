@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Button, Container, Typography } from 'anu/lib/primitives';
 import React, { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
@@ -116,27 +117,29 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
 
   return (
     <Container disableGutters style={finalProps.style}>
-      <Container disableGutters>
-        <Container disableGutters>
-          <Container disableGutters style={dropZoneStyle}>
+      <>
+        <>
+          <Container disableGutters style={getCombinedStylesForView(dropZoneStyle, finalProps.dropZoneStyle)}>
             <div {...getRootProps()} style={divStyle}>
               <input {...getInputProps()} />
               <Container disableGutters style={childrenContainerStyle}>
-                {props.dragActivePlaceholder !== undefined && isDragActive
-                  ? props.dragActivePlaceholder
-                  : props.children}
+                {finalProps.dragActivePlaceholder !== undefined && isDragActive
+                  ? finalProps.dragActivePlaceholder
+                  : finalProps.children}
               </Container>
             </div>
           </Container>
-          <Container disableGutters style={buttonContainerStyle}>
-            <Button.Text title='Submit' onPress={finalProps.onSubmit} />
-            <Button.Text title='Cancel' onPress={onCancel} />
-          </Container>
-        </Container>
+          {finalProps.hideActionButtons ? null : (
+            <Container disableGutters style={buttonContainerStyle}>
+              <Button.Text title={finalProps.submitLabel || ''} onPress={finalProps.onSubmit} />
+              <Button.Text title={finalProps.cancelLabel || ''} onPress={onCancel} />
+            </Container>
+          )}
+        </>
         {duplicateFileNameError ? (
           <Typography.Body style={errorMessageStyle}>{finalProps.errorMessageForDuplicateFiles}</Typography.Body>
         ) : null}
-      </Container>
+      </>
 
       <UploadList
         errors={finalProps.errors}

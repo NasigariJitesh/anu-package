@@ -1,5 +1,4 @@
-import { getMaxWidthInPixels } from 'anu/common/utils';
-import { DripsyFinalTheme, Sx } from 'dripsy';
+import { DripsyFinalTheme } from 'dripsy';
 import { ImageStyle, StyleProp, ViewStyle } from 'react-native';
 
 import { CardMediaProps, CardProps } from './../types/card';
@@ -11,11 +10,8 @@ import { CardMediaProps, CardProps } from './../types/card';
  * @param theme
  * @returns style properties for the card component
  */
-export const getCardStyles = (
-  props: Partial<CardProps>,
-  theme: DripsyFinalTheme,
-): { style: StyleProp<ViewStyle>; sx: Sx } => {
-  const { style, sx } = getCommonCardStyles(props);
+export const getCardStyles = (props: Partial<CardProps>, theme: DripsyFinalTheme): { style: StyleProp<ViewStyle> } => {
+  const { style } = getCommonCardStyles(props);
   const { colors } = theme;
 
   switch (props.variant) {
@@ -29,10 +25,6 @@ export const getCardStyles = (
             borderWidth: 1,
             borderColor: colors?.$outline as string,
           },
-          sx: {
-            ...sx,
-            color: colors?.$onSurface as string,
-          },
         };
       }
     }
@@ -42,10 +34,6 @@ export const getCardStyles = (
           style: {
             ...style,
             backgroundColor: colors.$surfaceContainerHighest,
-          },
-          sx: {
-            ...sx,
-            color: colors?.$onSurface as string,
           },
         };
       }
@@ -65,10 +53,6 @@ export const getCardStyles = (
           shadowRadius: 3.84,
           elevation: 1,
         },
-        sx: {
-          ...sx,
-          color: colors?.$onSurface as string,
-        },
       };
     }
   }
@@ -81,9 +65,8 @@ export const getCardStyles = (
  * @returns common style properties for the card component
  */
 export const getCommonCardStyles = (props: Partial<CardProps>) => {
-  const { flexDirection, maxWidth, align, justify, width, sx, height, orientation } = props;
+  const { flexDirection, align, justify, width, height, orientation } = props;
 
-  let sxStyle: Sx = { ...sx };
   let containerStyle: StyleProp<ViewStyle> = {
     flexDirection: flexDirection,
     alignItems: align,
@@ -92,50 +75,45 @@ export const getCommonCardStyles = (props: Partial<CardProps>) => {
     overflow: 'hidden',
   };
 
-  if (maxWidth) sxStyle = { ...sxStyle, maxWidth: getMaxWidthInPixels(maxWidth) };
-
   if (width) containerStyle = { ...containerStyle, width };
 
   if (height) containerStyle = { ...containerStyle, height };
 
   if (orientation === 'horizontal') containerStyle = { ...containerStyle, flexDirection: 'row' };
 
-  return { style: containerStyle, sx: sxStyle };
+  return { style: containerStyle };
 };
 
 export const getCardContentStyle = () => {
   const style = {
-    margin: 16,
-    width: 'calc(100% - 32px)',
-  };
-  const sx = {
-    color: 'inherit',
+    padding: 16,
+    width: '100%',
   };
 
-  return { style, sx };
+  return { style };
 };
 
 export const getCardTitleStyle = (theme: DripsyFinalTheme) => {
   const style = {
-    margin: 16,
-    width: 'calc(100% - 32px)',
+    padding: 16,
+    width: '100%',
   };
-  const sx = {
-    color: 'inherit',
-  };
+
   const titleStyle = {
     fontSize: theme.fontSizes[7],
     lineHeight: theme.lineHeights[7],
     textAlignVertical: 'center' as const,
+    color: theme.colors.$onSurface,
   };
   const subTitleStyle = {
     fontSize: theme.fontSizes[8],
     lineHeight: theme.lineHeights[8],
-    marginTop: '6px',
+    marginTop: 6,
     textAlignVertical: 'center' as const,
+    color: theme.colors.$onSurface,
   };
 
-  return { style, sx, titleStyle, subTitleStyle };
+  return { style, titleStyle, subTitleStyle };
 };
 
 export const getCardMediaStyle = (props: CardMediaProps) => {
@@ -149,14 +127,11 @@ export const getCardMediaStyle = (props: CardMediaProps) => {
 
 export const getCardActionsStyle = () => {
   const style = {
-    margin: 16,
-    width: 'calc(100% - 32px)',
-  };
-  const sx = {
-    color: 'inherit',
+    padding: 16,
+    width: '100%',
   };
 
-  return { style, sx };
+  return { style };
 };
 
 export const getCardHeaderStyle = (theme: DripsyFinalTheme) => {
@@ -175,23 +150,21 @@ export const getCardHeaderStyle = (theme: DripsyFinalTheme) => {
   };
   const actionContainerStyle = {
     position: 'absolute' as const,
-    right: '16px',
+    right: 16,
   };
 
   const headingStyle = {
     fontSize: theme.fontSizes[7],
     lineHeight: theme.lineHeights[7],
     textAlignVertical: 'center' as const,
+    color: theme.colors.$onSurface,
   };
   const subHeadingStyle = {
     fontSize: theme.fontSizes[8],
     lineHeight: theme.lineHeights[8],
-    marginTop: '4px',
+    marginTop: 4,
     textAlignVertical: 'center' as const,
-  };
-
-  const sx = {
-    color: 'inherit',
+    color: theme.colors.$onSurface,
   };
 
   return {
@@ -201,6 +174,5 @@ export const getCardHeaderStyle = (theme: DripsyFinalTheme) => {
     actionContainerStyle,
     headingStyle,
     subHeadingStyle,
-    sx,
   };
 };

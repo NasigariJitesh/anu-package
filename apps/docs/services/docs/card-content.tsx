@@ -10,7 +10,6 @@ const flexStyle = {
   justifyContent: 'center',
 
   width: '100%',
-  padding: 10,
 } as const;
 
 export const cardContentDocumentation: ContentValues = {
@@ -29,12 +28,6 @@ export const cardContentDocumentation: ContentValues = {
       optional: true,
       description: 'cardContentDocumentation:property-style-description',
     },
-    {
-      name: 'sx',
-      type: 'Sx',
-      optional: true,
-      description: 'cardContentDocumentation:property-sx-description',
-    },
   ],
 
   examples: [
@@ -43,7 +36,7 @@ export const cardContentDocumentation: ContentValues = {
       id: 'default',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='elevated' width={360}>
+          <Card variant='elevated' width={280}>
             <CardContent>
               <Typography.Body>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
@@ -52,7 +45,7 @@ export const cardContentDocumentation: ContentValues = {
           </Card>
         </Container>
       ),
-      code: `<Card variant='elevated' width={360}>
+      code: `<Card variant='elevated' width={280}>
   <CardContent>
     <Typography.Body>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.

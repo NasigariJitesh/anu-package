@@ -15,14 +15,14 @@ const CardTitle = (props: CardTitleProps) => {
 
   const finalProps = { ...defaultProps, ...props };
 
-  const { style, sx, titleStyle, subTitleStyle } = getCardTitleStyle(theme);
+  const { style, titleStyle, subTitleStyle } = getCardTitleStyle(theme);
 
   return finalProps.type === 'custom' ? (
-    <Container disableGutters style={style} sx={sx}>
+    <Container disableGutters style={style}>
       {finalProps.children}
     </Container>
   ) : (
-    <Container disableGutters style={style} sx={sx}>
+    <Container disableGutters style={style}>
       <Typography.Body style={titleStyle}>{finalProps.title}</Typography.Body>
       {finalProps.subTitle ? <Typography.Body style={subTitleStyle}>{finalProps.subTitle}</Typography.Body> : null}
     </Container>
