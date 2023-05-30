@@ -132,6 +132,10 @@ export function HomeScreen() {
       link: '/components/snackbar',
     },
     {
+      title: 'Switch',
+      link: '/components/switch',
+    },
+    {
       title: 'Tabs',
       link: '/components/tabs',
     },
@@ -261,6 +265,10 @@ export function HomeScreen() {
     {
       title: 'Snackbar',
       link: '/components/snackbar-test',
+    },
+    {
+      title: 'Switch',
+      link: '/components/switch-test',
     },
     {
       title: 'Tabs',

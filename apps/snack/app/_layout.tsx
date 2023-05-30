@@ -218,6 +218,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/switch'
+          options={{
+            headerLargeTitle: true,
+            title: 'Switch',
+          }}
+        />
+        <Stack.Screen
           name='components/tabs'
           options={{
             headerLargeTitle: true,
@@ -439,6 +446,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Snackbar Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/switch-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Switch Test',
           }}
         />
         <Stack.Screen

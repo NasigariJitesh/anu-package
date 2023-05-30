@@ -18,6 +18,7 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
       borderRadius: 25,
       borderWidth: 2,
       zIndex: 0,
+      justifyContent: 'center',
       color: {
         off: themeColors.$surfaceVariant,
         on: themeColors.$primary,
@@ -26,12 +27,13 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
         off: themeColors.$outline,
         on: 'transparent',
       },
-    },
+    } as const,
 
     trackDisabled: {
       borderRadius: 25,
       borderWidth: 2,
       zIndex: 0,
+      justifyContent: 'center',
       color: {
         off: getColorInRGBA(themeColors.$surfaceVariant, 12),
         on: getColorInRGBA(themeColors.$onSurface, 12),
@@ -40,11 +42,10 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
         off: getColorInRGBA(themeColors.$onSurface, 12),
         on: 'transparent',
       },
-    },
+    } as const,
 
     thumb: {
       borderRadius: 10_000,
-      position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center',
       zIndex: 4,
@@ -52,19 +53,18 @@ const getSwitchTheme = (theme: DripsyFinalTheme) => {
         off: themeColors.$outline,
         on: themeColors.$onPrimary,
       },
-    },
+    } as const,
 
     thumbDisabled: {
       borderRadius: 10_000,
       alignItems: 'center',
       justifyContent: 'center',
-      position: 'absolute',
       zIndex: 4,
       backgroundColor: {
         off: getColorInRGBA(themeColors.$onSurface, 38),
         on: getColorInRGBA(themeColors.$surface, 99),
       },
-    },
+    } as const,
   };
 
   return switchTheme;
@@ -94,6 +94,7 @@ export const getSwitchStyles = (props: SwitchProps, state: boolean, defaultTheme
     borderColor: props.trackColor ?? state ? trackTheme.borderColor.on : trackTheme.borderColor.off,
     ...(props.trackStyle as Record<string, never>),
     height: props.size,
+    borderRadius: props.size,
     width: props.size * 2,
   };
 
