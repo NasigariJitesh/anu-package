@@ -441,6 +441,7 @@
   "datePickerModalDocumentation:property-disableStatusBar-description": "Whether to disable the status bar in native apps, when the modal is active.",
   "datePickerModalDocumentation:property-disableStatusBarPadding-description": "Whether to disable the padding at top for status bar in native apps.",
   "datePickerModalDocumentation:property-mask-description": "The input mask for the date picker input",
+  "datePickerModalDocumentation:property-modalStyle-description": "Style for the date picker modal.",
 
   "dialogDocumentation:mainHeading": "Dialog",
   "dialogDocumentation:mainDescription": "A Dialog is used to display information or prompt the user for input. It is displayed on top of the current screen and temporarily halts the user’s interaction with the rest of the application until the dialog is dismissed.\n\nThe content of the dialog can also include other components such as forms, text inputs, checkboxes, and radio buttons.",
