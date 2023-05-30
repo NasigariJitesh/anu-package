@@ -56,6 +56,29 @@ export const otpInputDocumentation: ContentValues = {
 
       optional: true,
     },
+
+    {
+      name: 'width',
+      description: 'otpInputDocumentation:property-width-description',
+      type: 'number',
+      optional: true,
+      defaultValue: '300',
+    },
+
+    {
+      name: 'size',
+      description: 'otpInputDocumentation:property-size-description',
+      type: 'number',
+      optional: true,
+      defaultValue: '40',
+    },
+    {
+      name: 'spacing',
+      description: 'otpInputDocumentation:property-spacing-description',
+      type: 'number',
+      optional: true,
+    },
+
     {
       name: 'error',
       description: 'otpInputDocumentation:property-error-description',
@@ -85,27 +108,17 @@ export const otpInputDocumentation: ContentValues = {
       type: 'string[]',
       optional: true,
     },
-    {
-      name: 'style',
-      description: 'textFieldDocumentation:property-style-description',
-      type: 'ExtendedDisabledStyles, ExtendedHoverStyles',
-      optional: true,
-    },
+
     {
       name: 'errorMessageStyle',
       description: 'otpInputDocumentation:property-errorMessageStyle-description',
       type: 'StyleProp<TextStyle>',
       optional: true,
     },
+
     {
-      name: 'containerStyle',
-      description: 'otpInputDocumentation:property-containerStyle-description',
-      type: 'StyleProp<ViewStyle>',
-      optional: true,
-    },
-    {
-      name: 'textInputStyle',
-      description: 'otpInputDocumentation:property-textInputStyle-description',
+      name: 'textStyle',
+      description: 'otpInputDocumentation:property-textStyle-description',
       type: 'StyleProp<TextStyle>',
       optional: true,
     },
@@ -116,8 +129,12 @@ export const otpInputDocumentation: ContentValues = {
       id: 'filled-otp-input',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} />
-          <OTPInput value='1234' variant='filled' numberOfDigits={4} containerStyle={style} />
+          <Container disableGutters style={style}>
+            <OTPInput value='' variant='filled' numberOfDigits={4} />
+          </Container>
+          <Container disableGutters style={style}>
+            <OTPInput value='1234' variant='filled' numberOfDigits={4} />
+          </Container>
         </Container>
       ),
       code: `<OTPInput value='' variant='filled' numberOfDigits={4} />
@@ -128,8 +145,12 @@ export const otpInputDocumentation: ContentValues = {
       id: 'outlined-otp-input',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} />
-          <OTPInput value='1234' variant='outlined' numberOfDigits={4} containerStyle={style} />
+          <Container disableGutters style={style}>
+            <OTPInput value='' variant='outlined' numberOfDigits={4} />
+          </Container>
+          <Container disableGutters style={style}>
+            <OTPInput value='1234' variant='outlined' numberOfDigits={4} />
+          </Container>
         </Container>
       ),
       code: `<OTPInput value='' variant='outlined' numberOfDigits={4} />
@@ -141,12 +162,16 @@ export const otpInputDocumentation: ContentValues = {
       id: 'error',
       component: (
         <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-          <OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} error />
-          <OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} error />
+          <Container disableGutters style={style}>
+            <OTPInput value='' variant='filled' numberOfDigits={4} error />
+          </Container>
+          <Container disableGutters style={style}>
+            <OTPInput value='' variant='outlined' numberOfDigits={4} error />
+          </Container>
         </Container>
       ),
-      code: `<OTPInput value='' variant='filled' numberOfDigits={4} containerStyle={style} error />
-<OTPInput value='' variant='outlined' numberOfDigits={4} containerStyle={style} error />`,
+      code: `<OTPInput value='' variant='filled' numberOfDigits={4}  error />
+<OTPInput value='' variant='outlined' numberOfDigits={4}  error />`,
     },
   ],
 };

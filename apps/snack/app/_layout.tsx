@@ -169,6 +169,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/otp-input'
+          options={{
+            headerLargeTitle: true,
+            title: 'OTP Input',
+          }}
+        />
+        <Stack.Screen
           name='components/password-input'
           options={{
             headerLargeTitle: true,
@@ -383,6 +390,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Menu Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/otp-input-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'OTP Input Test',
           }}
         />
         <Stack.Screen

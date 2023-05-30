@@ -647,6 +647,9 @@
   "otpInputDocumentation:property-numberOfDigits-description": "Number of Digits in the OTP",
   "otpInputDocumentation:property-value-description": "The OTP Value as a string.",
   "otpInputDocumentation:property-type-description": "The type of the OTP.",
+  "otpInputDocumentation:property-width-description": "The width of the OTP input component.",
+  "otpInputDocumentation:property-size-description": "The size of each input.",
+  "otpInputDocumentation:property-spacing-description": "The gap/spacing between consecutive inputs.",
   "otpInputDocumentation:property-disabled-description": "If true, the component is disabled.",
   "otpInputDocumentation:property-error-description": "If there is any error after validation of input.",
   "otpInputDocumentation:property-hideValue-description": "Whether to hide the otp value like password",
@@ -654,9 +657,7 @@
   "otpInputDocumentation:property-errorMessage-description": "Error messages need to be displayed with the otp input.",
   "otpInputDocumentation:property-onSubmit-description": "The callback to be called when the OTP is submitted.",
   "otpInputDocumentation:property-errorMessageStyle-description": "Styles for the error messages of text field.",
-  "otpInputDocumentation:property-containerStyle-description": "Styles for container of the text field component.",
-  "otpInputDocumentation:property-textInputStyle-description": "Styles for the text input of the otp input component.",
-  "otpInputDocumentation:property-style-description": "The styles for the otp input component.",
+  "otpInputDocumentation:property-textStyle-description": "Styles for the text input of the otp input component.",
 
   "otpInputDocumentation:example1-name": "Filled OTP Input",
 
