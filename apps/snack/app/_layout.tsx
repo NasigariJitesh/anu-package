@@ -43,6 +43,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/bottom-sheet'
+          options={{
+            headerLargeTitle: true,
+            title: 'Bottom Sheet',
+          }}
+        />
+        <Stack.Screen
           name='components/common-button'
           options={{
             headerLargeTitle: true,
@@ -78,6 +85,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/card'
+          options={{
+            headerLargeTitle: true,
+            title: 'Card',
+          }}
+        />
+        <Stack.Screen
           name='components/checkbox'
           options={{
             headerLargeTitle: true,
@@ -99,6 +113,27 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/date-input'
+          options={{
+            headerLargeTitle: true,
+            title: 'Date Input',
+          }}
+        />
+        <Stack.Screen
+          name='components/date-picker'
+          options={{
+            headerLargeTitle: true,
+            title: 'Date Picker',
+          }}
+        />
+        <Stack.Screen
+          name='components/dialog'
+          options={{
+            headerLargeTitle: true,
+            title: 'Dialog',
+          }}
+        />
+        <Stack.Screen
           name='components/divider'
           options={{
             headerLargeTitle: true,
@@ -117,6 +152,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'File Upload',
+          }}
+        />
+        <Stack.Screen
+          name='components/image'
+          options={{
+            headerLargeTitle: true,
+            title: 'Image',
           }}
         />
         <Stack.Screen
@@ -148,6 +190,27 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/radio'
+          options={{
+            headerLargeTitle: true,
+            title: 'Radio Button',
+          }}
+        />
+        <Stack.Screen
+          name='components/side-sheet'
+          options={{
+            headerLargeTitle: true,
+            title: 'Side Sheet',
+          }}
+        />
+        <Stack.Screen
+          name='components/snackbar'
+          options={{
+            headerLargeTitle: true,
+            title: 'Snackbar',
+          }}
+        />
+        <Stack.Screen
           name='components/tabs'
           options={{
             headerLargeTitle: true,
@@ -166,6 +229,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Text Field',
+          }}
+        />
+        <Stack.Screen
+          name='components/touchable-ripple'
+          options={{
+            headerLargeTitle: true,
+            title: 'Touchable Ripple',
           }}
         />
         <Stack.Screen
@@ -188,12 +258,19 @@ export default function Root() {
             headerLargeTitle: true,
             title: 'Avatar Test',
           }}
-        />{' '}
+        />
         <Stack.Screen
           name='components/badge-test'
           options={{
             headerLargeTitle: true,
             title: 'Badge Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/bottom-sheet-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Bottom Sheet Test',
           }}
         />
         <Stack.Screen
@@ -232,6 +309,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/card-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Card Test',
+          }}
+        />
+        <Stack.Screen
           name='components/checkbox-test'
           options={{
             headerLargeTitle: true,
@@ -250,6 +334,20 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Container Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/date-picker-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Date Picker Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/dialog-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Dialog Test',
           }}
         />
         <Stack.Screen
@@ -295,10 +393,31 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/radio-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Radio Button Test',
+          }}
+        />
+        <Stack.Screen
           name='components/search-test'
           options={{
             headerLargeTitle: true,
             title: 'Search Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/side-sheet-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Side Sheet Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/snackbar-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Snackbar Test',
           }}
         />
         <Stack.Screen

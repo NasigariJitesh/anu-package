@@ -86,7 +86,12 @@ export default function Example() {
 
   return (
     <Container flexDirection='column' sx={{ flex: 1, paddingTop: 1 }}>
-      <PasswordInput value={text} onChangeText={setText} />
+      <PasswordInput
+        label='LOngggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg'
+        value={text}
+        onChangeText={setText}
+        variant='filled'
+      />
       <AvatarGroup total={15}>
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=10' }} variant='circle' />
         <Avatar source={{ uri: 'https://i.pravatar.cc/?img=11' }} variant='circle' />
@@ -118,7 +123,18 @@ export default function Example() {
         />
       </Container>
 
-      <TextArea value={text} onChangeText={setText} numberOfLines={3} textBreakStrategy='highQuality' />
+      <TextArea
+        value={text}
+        onChangeText={setText}
+        numberOfLines={3}
+        textBreakStrategy='highQuality'
+        variant='filled'
+        labelStyle={{
+          '@active': {
+            backgroundColor: 'red',
+          },
+        }}
+      />
       <Container disableGutters style={{ zIndex: 1000, marginVertical: 10, width: '100%' }}>
         <Search
           value={text1}

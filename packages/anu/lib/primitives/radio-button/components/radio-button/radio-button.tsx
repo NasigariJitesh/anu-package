@@ -44,18 +44,8 @@ export const Radio = (props: RadioButtonProps) => {
   };
 
   return (
-    <Container
-      dataSet={finalProps.dataSets?.container}
-      disableGutters
-      {...getLabelAlignment(finalProps.labelPlacement)}
-      style={finalProps.containerStyle}
-    >
-      <TouchableRipple
-        dataSet={finalProps.dataSets?.radio}
-        disabled={finalProps.disabled}
-        onPress={onPressHandler}
-        style={generateStyles}
-      >
+    <Container disableGutters {...getLabelAlignment(finalProps.labelPlacement)}>
+      <TouchableRipple disabled={finalProps.disabled} onPress={onPressHandler} style={generateStyles}>
         {/* 
         // @ts-expect-error REASON: we get ts error but react native ignores hover related styles */}
         <Container dataSet={finalProps.dataSets?.radio} disableGutters style={radioStyles}>

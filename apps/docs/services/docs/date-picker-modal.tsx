@@ -443,6 +443,12 @@ export const datePickerModalDocumentation: ContentValues = {
       type: 'string',
       optional: true,
     },
+    {
+      name: 'modalStyle',
+      description: 'datePickerModalDocumentation:property-modalStyle-description',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
+    },
   ],
 };
 

@@ -1,4 +1,3 @@
-import { getColorInRGBA } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container } from 'anu/lib';
 import * as React from 'react';
@@ -26,7 +25,14 @@ export const DatePickerModal = (props: DatePickerModalProps) => {
 
   const theme = useTheme();
   const dimensions = useWindowDimensions();
-  const { visible, animationType, disableStatusBar, disableStatusBarPadding, inputEnabled, ...rest } = props;
+  const {
+    visible,
+    animationType,
+    disableStatusBar = props.mode === 'single' ? true : false,
+    inputEnabled,
+    style,
+    ...rest
+  } = props;
   const animationTypeCalculated =
     animationType ||
     Platform.select({
@@ -61,18 +67,10 @@ export const DatePickerModal = (props: DatePickerModalProps) => {
           <Container disableGutters style={[StyleSheet.absoluteFill, styles.modalRoot]} pointerEvents='box-none'>
             <Container
               disableGutters
-              style={[styles.modalContent, dimensions.width > 650 ? styles.modalContentBig : null]}
+              style={[styles.modalContent, dimensions.width > 650 ? styles.modalContentBig : null, style]}
             >
-              {disableStatusBar ? null : <StatusBar translucent={true} />}
-              {disableStatusBarPadding ? null : (
-                <Container
-                  disableGutters
-                  style={{
-                    height: StatusBar.currentHeight,
-                    backgroundColor: getColorInRGBA(theme.colors.$primary, 24),
-                  }}
-                />
-              )}
+              {disableStatusBar ? null : <StatusBar translucent={false} />}
+
               <DatePickerModalContent
                 {...rest}
                 inputEnabled={inputEnabled}

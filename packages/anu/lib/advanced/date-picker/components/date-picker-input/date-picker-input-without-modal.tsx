@@ -22,7 +22,7 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
       label,
       value,
       onChange,
-      textInputStyle,
+      textStyle,
       locale,
       validRange,
       inputMode,
@@ -40,6 +40,7 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
       endYear,
       onChangeText,
       inputEnabled,
+      modalStyle,
       ...rest
     } = finalProps;
 
@@ -70,7 +71,7 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
     }
 
     return (
-      <Container disableGutters>
+      <Container disableGutters style={styles.root}>
         <Container disableGutters style={styles.root}>
           <Container disableGutters style={styles.inputContainer}>
             <TextFieldWithMask
@@ -87,7 +88,7 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
               }}
               error={(!!error && !hideValidationErrors) || !!hasError}
               errorMessage={error ?? ''}
-              textInputStyle={getCombinedStylesForText(styles.input, textInputStyle)}
+              textStyle={getCombinedStylesForText(styles.input, textStyle)}
               trailingIcon={inputButtons}
             />
           </Container>
@@ -104,6 +105,7 @@ const DatePickerInputWithoutModal = forwardRef<TextFieldReferenceProps, DatePick
           startYear,
           endYear,
           inputEnabled,
+          style: modalStyle,
         }) ?? null}
       </Container>
     );
