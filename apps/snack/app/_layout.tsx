@@ -169,6 +169,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/snackbar'
+          options={{
+            headerLargeTitle: true,
+            title: 'Snackbar',
+          }}
+        />
+        <Stack.Screen
           name='components/tabs'
           options={{
             headerLargeTitle: true,
@@ -341,6 +348,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Side Sheet Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/snackbar-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Snackbar Test',
           }}
         />
         <Stack.Screen

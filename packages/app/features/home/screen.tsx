@@ -104,6 +104,10 @@ export function HomeScreen() {
       link: '/components/side-sheet',
     },
     {
+      title: 'Snackbar',
+      link: '/components/snackbar',
+    },
+    {
       title: 'Tabs',
       link: '/components/tabs',
     },
@@ -205,6 +209,10 @@ export function HomeScreen() {
     {
       title: 'Side Sheet',
       link: '/components/side-sheet-test',
+    },
+    {
+      title: 'Snackbar',
+      link: '/components/snackbar-test',
     },
     {
       title: 'Tabs',
