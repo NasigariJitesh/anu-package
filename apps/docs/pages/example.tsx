@@ -116,6 +116,7 @@ export default function Example() {
         onChangeText={setText}
         numberOfLines={3}
         textBreakStrategy='highQuality'
+        variant='filled'
         labelStyle={{
           '@active': {
             backgroundColor: 'red',

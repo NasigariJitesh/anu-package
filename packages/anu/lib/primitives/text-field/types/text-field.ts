@@ -10,7 +10,7 @@ import { PressableStateCallbackType, StyleProp, TextInput as RNTextInput, TextSt
 export type TextInputVariant = 'outlined' | 'filled';
 
 export interface LabelStyle extends TextStyle {
-  '@active': TextStyle;
+  '@active'?: TextStyle;
 }
 
 /**

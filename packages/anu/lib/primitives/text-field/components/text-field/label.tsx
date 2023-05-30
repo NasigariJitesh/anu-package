@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { StyleProp, TextStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
+import { Container } from '../../../layout';
 import { LabelStyle, TextInputLabelProps } from '../../types';
 import { getError, getTextStyles } from '../../utils';
 
@@ -68,23 +69,28 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
   const textStyles = {
     paddingHorizontal: 2,
-    flex: 1,
+    maxWidth: '100%',
     color: props.placeholderTextColor || selectLabelColorBasedOnState(props, theme),
   };
 
   const animatedStyle = {
     position: 'absolute' as const,
     zIndex: 10,
+    flex: 1,
+    width: '100%',
+  };
+
+  const containerStyle = {
     backgroundColor: selectLabelBackgroundColor(props, theme),
-    width: props.variant === 'outlined' ? undefined : '90%',
-    maxWidth: '100%',
+    ...(props.variant === 'filled' ? { flex: 1 } : {}),
   };
 
   const animatedViewStyle = useAnimatedStyle(() => {
     return {
       top: transitionTopCoordinate.value,
       left: transitionLeftCoordinate.value,
-      marginHorizontal: 16,
+      paddingHorizontal: 16,
+      flexDirection: 'row',
     };
   }, [transitionTopCoordinate, transitionTopCoordinate]);
 
@@ -140,13 +146,15 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
 
   return (
     <Animated.View style={[animatedStyle, animatedViewStyle]}>
-      <Animated.Text
-        numberOfLines={1}
-        ellipsizeMode='tail'
-        style={getExtendedLabelStyles(props.isFocused, textStyles, animatedTextStyle, props.value, props.labelStyle)}
-      >
-        {props.label}
-      </Animated.Text>
+      <Container disableGutters style={containerStyle}>
+        <Animated.Text
+          numberOfLines={1}
+          ellipsizeMode='tail'
+          style={getExtendedLabelStyles(props.isFocused, textStyles, animatedTextStyle, props.value, props.labelStyle)}
+        >
+          {props.label}
+        </Animated.Text>
+      </Container>
     </Animated.View>
   );
 };
