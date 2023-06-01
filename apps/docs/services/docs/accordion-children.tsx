@@ -39,7 +39,6 @@ const Example1 = () => {
 
 export const accordionChildrenDocumentation: ContentValues = {
   mainHeading: 'accordionChildrenDocumentation:mainHeading',
-  mainDescription: 'accordionChildrenDocumentation:mainDescription',
   examples: [
     {
       name: 'accordionChildrenDocumentation:example1-name',

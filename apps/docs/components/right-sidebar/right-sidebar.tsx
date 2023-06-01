@@ -49,6 +49,8 @@ import { segmentedButtonIndex } from 'services/docs/segmented-button';
 import { sideSheetIndex } from 'services/docs/side-sheet';
 import { skeletonIndex } from 'services/docs/skeleton';
 import { snackbarIndex } from 'services/docs/snackbar';
+import { stepIndex } from 'services/docs/step';
+import { stepIndicatorIndex } from 'services/docs/step-indicator';
 import { switchIndex } from 'services/docs/switch';
 import { tabsIndex } from 'services/docs/tabs';
 import { textAreaIndex } from 'services/docs/text-area';
@@ -363,6 +365,16 @@ const RenderIndex = () => {
     case '/components/snackbar': {
       {
         return <Index {...snackbarIndex} />;
+      }
+    }
+    case '/components/step-indicator': {
+      {
+        return <Index {...stepIndicatorIndex} />;
+      }
+    }
+    case '/components/step-indicator/step': {
+      {
+        return <Index {...stepIndex} />;
       }
     }
     case '/components/switch': {

@@ -121,12 +121,12 @@ export function HomeScreen() {
       link: '/components/phone-input',
     },
     {
-      title: 'Search',
-      link: '/components/search',
-    },
-    {
       title: 'Radio Button',
       link: '/components/radio',
+    },
+    {
+      title: 'Search',
+      link: '/components/search',
     },
     {
       title: 'Side Sheet',
@@ -135,6 +135,10 @@ export function HomeScreen() {
     {
       title: 'Snackbar',
       link: '/components/snackbar',
+    },
+    {
+      title: 'Step Indicator',
+      link: '/components/step-indicator',
     },
     {
       title: 'Switch',
@@ -260,12 +264,12 @@ export function HomeScreen() {
       link: '/components/phone-input-test',
     },
     {
-      title: 'Search',
-      link: '/components/search-test',
-    },
-    {
       title: 'Radio Button',
       link: '/components/radio-test',
+    },
+    {
+      title: 'Search',
+      link: '/components/search-test',
     },
     {
       title: 'Side Sheet',
@@ -274,6 +278,10 @@ export function HomeScreen() {
     {
       title: 'Snackbar',
       link: '/components/snackbar-test',
+    },
+    {
+      title: 'Step Indicator',
+      link: '/components/step-indicator-test',
     },
     {
       title: 'Switch',

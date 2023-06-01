@@ -78,7 +78,8 @@
   "leftSideBar:side-sheet": "Side Sheet",
   "leftSideBar:skeleton": "Skeleton",
   "leftSideBar:snackbar": "Snackbar",
-
+  "leftSideBar:step-indicator": "Step Indicator",
+  "leftSideBar:step": "Step",
   "leftSideBar:switch": "Commutateur",
   "leftSideBar:tabs": "Onglets",
   "leftSideBar:text-area": "Zone de texte",

@@ -14,6 +14,8 @@ import {
   PasswordInput,
   PhoneInput,
   Search,
+  Step,
+  StepIndicator,
   Tab,
   Tabs,
   TextArea,
@@ -97,6 +99,17 @@ export default function Example() {
           </Typography.Body>
         </Accordion.Children>
       </Accordion.Container>
+
+      <StepIndicator width={500}>
+        <Step completed editable>
+          Step 1
+        </Step>
+        <Step optional>Step 2</Step>
+        <Step notApplicable name={'Custom\nname'} icon={<Icon name='person' />}>
+          Step 3
+        </Step>
+        <Step error>Step 4</Step>
+      </StepIndicator>
 
       <TouchableRipple
         style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}

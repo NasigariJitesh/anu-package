@@ -225,6 +225,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/step-indicator'
+          options={{
+            headerLargeTitle: true,
+            title: 'Step Indicator',
+          }}
+        />
+        <Stack.Screen
           name='components/switch'
           options={{
             headerLargeTitle: true,
@@ -460,6 +467,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Snackbar Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/step-indicator-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Step Indicator Test',
           }}
         />
         <Stack.Screen
