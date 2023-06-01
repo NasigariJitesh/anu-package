@@ -3,6 +3,7 @@ import { Button, Container, IconButton, Typography } from 'anu/lib';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { Animated, KeyboardAvoidingView, Modal, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
+import { getCombinedStylesForView } from '../../../../../common/utils';
 import {
   clockTypes,
   inputTypes,
@@ -11,7 +12,13 @@ import {
   reverseInputTypes,
   TimePickerModalProps,
 } from '../../types';
-import { getHoursNumber, getMinutesNumber, getTimeInputTypeIcon, getTimePickerModalStyles } from '../../utils';
+import {
+  defaultCircleSize,
+  getHoursNumber,
+  getMinutesNumber,
+  getTimeInputTypeIcon,
+  getTimePickerModalStyles,
+} from '../../utils';
 import TimePicker from '../time-picker';
 import { defaultProps } from './default';
 
@@ -45,6 +52,8 @@ export const TimePickerModal = (props: TimePickerModalProps) => {
     inputStyle,
     horizontal,
     defaultInputType,
+    clockSize,
+    modalStyle,
   } = finalProps;
 
   let labelText = label;
@@ -98,7 +107,7 @@ export const TimePickerModal = (props: TimePickerModalProps) => {
         </TouchableWithoutFeedback>
         <Container disableGutters style={[StyleSheet.absoluteFill, styles.modalRoot]} pointerEvents='box-none'>
           <KeyboardAvoidingView style={styles.keyboardView} behavior={'padding'}>
-            <Animated.View style={styles.modalContent}>
+            <Animated.View style={getCombinedStylesForView(styles.modalContent, modalStyle)}>
               <Container disableGutters style={styles.labelContainer}>
                 <Typography.Body style={styles.label}>{labelText}</Typography.Body>
               </Container>
@@ -113,6 +122,7 @@ export const TimePickerModal = (props: TimePickerModalProps) => {
                   onChange={onChange}
                   onFocusInput={onFocusInput}
                   horizontal={horizontal}
+                  clockSize={clockSize ?? defaultCircleSize}
                 />
               </Container>
               <Container disableGutters style={styles.bottom}>
@@ -126,7 +136,7 @@ export const TimePickerModal = (props: TimePickerModalProps) => {
                   }}
                   onPress={() => setInputType(reverseInputTypes[inputType])}
                   style={styles.inputTypeToggle}
-                  type='standard'
+                  variant='standard'
                   accessibilityLabel='toggle keyboard'
                 />
                 <Container disableGutters style={styles.fill} />

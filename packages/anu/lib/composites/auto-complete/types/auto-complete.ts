@@ -1,5 +1,4 @@
 import { FlatListProps, TextFieldProps } from 'anu/lib/primitives';
-import { StyleProp, ViewStyle } from 'react-native';
 
 export interface Options {
   id: string;
@@ -48,20 +47,27 @@ export interface AutoCompleteProps extends Omit<Partial<TextFieldProps>, 'value'
    * Time Duration for the debouncing
    */
   debounceDuration?: number;
-
   /**
-   * The styles for the results container
+   * The direction which the dropdown button is displayed
    */
-  resultContainerStyle?: StyleProp<ViewStyle>;
-  /**
-   * The styles for the results container
-   */
-  autoCompleteContainerStyle?: StyleProp<ViewStyle>;
-
   direction?: 'rtl' | 'ltr';
+  /**
+   * Whether to hide the drop down button
+   */
   hideDropDownButton?: boolean;
+  /**
+   * Whether to show the result drop down
+   */
   showResults?: boolean;
+  /**
+   * Callback to toggle the showResults property
+   */
   toggleShowResults?: (value: React.SetStateAction<boolean>) => void;
+
+  /**
+   * should use portal while rendering the results drop down
+   */
+  usePortal?: boolean;
 }
 
 export interface AutoCompleteReferenceProps {

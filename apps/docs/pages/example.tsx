@@ -1,15 +1,23 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 import {
+  Accordion,
+  AutoComplete,
+  Avatar,
+  AvatarGroup,
   Button,
   Chip,
   Container,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
+  FileUpload,
+  Icon,
+  Options,
+  PasswordInput,
+  PhoneInput,
+  Search,
   Tab,
   Tabs,
+  TextArea,
+  TextField,
   TimePickerModal,
   TouchableRipple,
   Typography,
@@ -17,13 +25,40 @@ import {
 import React, { useCallback } from 'react';
 import { useState } from 'react';
 
+const data = [
+  {
+    id: 'item 1',
+    value: 'Item 1',
+  },
+  {
+    id: 'item 2',
+    value: 'Item 2',
+  },
+  {
+    id: 'item 3',
+    value: 'Item 3',
+  },
+  {
+    id: 'item 4',
+    value: 'Item 4',
+  },
+  {
+    id: 'item 5',
+    value: 'Item 5',
+  },
+  {
+    id: 'item 6',
+    value: 'Item 6',
+  },
+];
 /**
  *
  */
 export default function Example() {
   const [visible, setVisible] = useState(false);
-  const [text, setText] = useState(false);
+  const [text, setText] = useState('');
   const [visible1, setVisible1] = useState(false);
+  const [visible2, setVisible2] = useState(false);
 
   const onDismiss = useCallback(() => {
     setVisible(false);
@@ -38,12 +73,118 @@ export default function Example() {
     },
     [setVisible],
   );
+  const [text1, setText1] = useState('');
+
+  const ListRenderItem = ({ item }: { item: Options }) => {
+    return (
+      <TouchableRipple
+        style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}
+        onPress={() => setText(item.value as string)}
+      >
+        <Typography.Body>{item.value as string}</Typography.Body>
+      </TouchableRipple>
+    );
+  };
 
   return (
-    <Container flexDirection='column' justify='space-between' sx={{ flex: 1, height: '100vh', paddingTop: 1 }}>
+    <Container flexDirection='column' sx={{ flex: 1, paddingTop: 1 }}>
+      <Accordion.Container title={<Accordion.Header>Accordion 1</Accordion.Header>} collapse={visible2}>
+        <Accordion.Children>
+          <Typography.Body>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </Typography.Body>
+        </Accordion.Children>
+      </Accordion.Container>
+
+      <TouchableRipple
+        style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}
+        onPress={() => setVisible2((p) => !p)}
+      >
+        <>Press</>
+      </TouchableRipple>
+
+      <PasswordInput value={text} onChangeText={setText} />
+      <AvatarGroup total={15}>
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=10' }} variant='circle' />
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=11' }} variant='circle' />
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=12' }} variant='circle' />
+        <Avatar source={{ uri: 'https://i.pravatar.cc/?img=13' }} variant='circle' />
+      </AvatarGroup>
+
+      <FileUpload
+        category='common'
+        variant='filled'
+        size='medium'
+        title='Choose a file'
+        uploadVariant='image'
+        previewType='list'
+        multiple
+        sortable
+      />
+
+      <Container disableGutters style={{ zIndex: 1000, marginVertical: 10, width: '100%' }}>
+        <AutoComplete
+          value={text}
+          onChangeText={(value: string) => {
+            setText(value);
+          }}
+          variant='filled'
+          data={data}
+          label='Auto Complete'
+          flatListProps={{ renderItem: ListRenderItem, style: { maxHeight: 140 } }}
+        />
+      </Container>
+
+      <TextArea
+        value={text}
+        onChangeText={setText}
+        numberOfLines={3}
+        textBreakStrategy='highQuality'
+        variant='filled'
+        labelStyle={{
+          '@active': {
+            backgroundColor: 'red',
+          },
+        }}
+      />
+      <Container disableGutters style={{ zIndex: 1000, marginVertical: 10, width: '100%' }}>
+        <Search
+          value={text1}
+          onChangeText={(value: string) => {
+            setText1(value);
+          }}
+          label='Hinted search Text'
+          filterOnChange={(value: string) =>
+            data.filter((item) => item.value.toLowerCase().includes(value.toLowerCase()))
+          }
+          flatListProps={{ renderItem: ListRenderItem }}
+          data={data}
+          leadingIcon={<Icon name='search' />}
+          type='docked'
+        />
+      </Container>
+      <Container disableGutters style={{ zIndex: 900, marginVertical: 10, width: '100%' }}>
+        <PhoneInput
+          value={text}
+          onChangeText={(value: string) => {
+            setText(value);
+          }}
+          label='Phone number'
+        />
+      </Container>
+      <TextField
+        value={text}
+        onChangeText={setText}
+        error={() => {
+          return text === 'error';
+        }}
+      />
+
       <Chip
         value='Action'
-        type='input' 
+        type='input'
         style={{
           width: 300,
           borderRadius: 10,
@@ -91,21 +232,6 @@ export default function Example() {
         minutes={14}
         use24HourClock
       />
-      <TouchableRipple onPress={() => setText(true)}>
-        <Container sx={{ height: 100, width: 100 }}>Press here</Container>
-      </TouchableRipple>
-      <Dialog visible={text} onDismiss={() => setText(false)} type='full-screen'>
-        <DialogTitle type='full-screen' title='Dialog Title' onDismiss={() => setText(false)} />
-        <DialogContent>
-          <Typography.Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-          </Typography.Body>
-        </DialogContent>
-        <DialogActions justify='flex-end'>
-          <Button.Outlined title='Action' />
-          <Button.Filled title='Action' />
-        </DialogActions>
-      </Dialog>
     </Container>
   );
 }

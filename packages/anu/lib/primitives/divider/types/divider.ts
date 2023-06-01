@@ -1,25 +1,18 @@
 import { ReactChildren } from 'anu/common/types';
-import { Sx } from 'dripsy';
-import { StyleProp, TextStyle } from 'react-native';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 /**
  * The Divider variant type
  * Checkout {@link https://m3.material.io/components/divider/specs Divider} to learn more
  */
-export type DividerVariant =
-  | 'full-width'
-  | 'left-inset'
-  | 'right-inset'
-  | 'middle'
-  | 'full-height'
-  | 'top-inset'
-  | 'bottom-inset';
+export type DividerVariantHorizontal = 'full-width' | 'left-inset' | 'right-inset' | 'middle';
+export type DividerVariantVertical = 'full-height' | 'top-inset' | 'bottom-inset' | 'middle';
 
 /**
  * The Divider pattern type
  * Checkout {@link https://developer.mozilla.org/en-US/docs/Web/CSS/border-style Divider Pattern} to learn more
  */
-export type DividerPattern = 'line' | 'double-line' | 'dotted' | 'dashed';
+export type DividerPattern = 'line' | 'dotted' | 'dashed';
 
 /**
  * The Divider orientation type
@@ -34,11 +27,7 @@ export type DividerAlign = 'center' | 'start' | 'end';
 /**
  * Props for the divider component
  */
-export interface DividerProps {
-  /**
-   * Variant of divider that decides width for horizontal, height for vertical dividers
-   */
-  variant?: DividerVariant;
+interface CommonDividerProps {
   /**
    * The pattern of the dividing line
    */
@@ -51,10 +40,7 @@ export interface DividerProps {
    * The thickness or weight of the divider line.
    */
   thickness?: number;
-  /**
-   * If true, the divider is displayed in a lighter shade of the color given in style.
-   */
-  light?: boolean;
+
   /**
    * The component that is to be displayed on the divider
    */
@@ -78,5 +64,23 @@ export interface DividerProps {
   /**
    * The styles for the divider component
    */
-  style?: Sx;
+  style?: StyleProp<ViewStyle>;
 }
+
+interface VerticalDividerProps extends CommonDividerProps {
+  /**
+   * Variant of divider that decides width for horizontal, height for vertical dividers
+   */
+  variant?: DividerVariantVertical;
+  orientation: 'vertical';
+}
+
+interface HorizontalDividerProps extends CommonDividerProps {
+  /**
+   * Variant of divider that decides width for horizontal, height for vertical dividers
+   */
+  variant?: DividerVariantHorizontal;
+  orientation?: 'horizontal';
+}
+
+export type DividerProps = HorizontalDividerProps | VerticalDividerProps;

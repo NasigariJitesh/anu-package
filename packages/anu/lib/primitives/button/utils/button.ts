@@ -1,5 +1,11 @@
-import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
+import {
+  getColorInRGBA,
+  getResetBorderWidthStyles,
+  getResetMarginStyles,
+  getResetPaddingStyles,
+} from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
+import { Platform } from 'react-native';
 
 import { ButtonContainerStyle, RegularButtonProps } from '../types';
 
@@ -20,9 +26,6 @@ const getButtonTheme = (theme: DripsyFinalTheme) => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
     },
     filled: {
       backgroundColor: themeColors.$primary,
@@ -87,14 +90,10 @@ const getButtonTheme = (theme: DripsyFinalTheme) => {
     common: {
       minHeight: 40,
       minWidth: 100,
-      color: 'inherit',
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 100,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
       paddingHorizontal: 16,
     },
     filled: {
@@ -140,7 +139,7 @@ const getButtonTheme = (theme: DripsyFinalTheme) => {
       },
 
       '@press': {
-        backgroundColor: getColorInRGBA(themeColors.$onPrimary, 12),
+        backgroundColor: getColorInRGBA(themeColors.$primary, 12),
       },
     },
     tonal: {
@@ -238,7 +237,7 @@ export const getDisabledButtonStyles = (
 ): GetButtonStylesReturnType => {
   const { buttonTheme } = getButtonTheme(defaultTheme);
 
-  const theme = buttonTheme[props.type];
+  const theme = buttonTheme[props.variant];
 
   if (props.disabled) return { ...theme['@disable'], ...props.style?.['@disable'] };
 
@@ -255,10 +254,10 @@ const getRegularButtonStyles = (props: RegularButtonProps, defaultTheme: DripsyF
   const { buttonTheme, stateLayerTheme } = getButtonTheme(defaultTheme);
   const { colors } = defaultTheme;
 
-  const theme = buttonTheme[props.type];
+  const theme = buttonTheme[props.variant];
   const commonTheme = buttonTheme.common;
 
-  const layerTheme = stateLayerTheme[props.type];
+  const layerTheme = stateLayerTheme[props.variant];
   const commonLayerTheme = stateLayerTheme.common;
 
   const {
@@ -269,7 +268,7 @@ const getRegularButtonStyles = (props: RegularButtonProps, defaultTheme: DripsyF
     ...propsOtherStyles
   } = props?.style ?? {};
 
-  const { backgroundColor, borderColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
+  const { backgroundColor, ...propsOtherStylesForStateLayer } = propsOtherStyles;
 
   let styles;
 
@@ -278,22 +277,24 @@ const getRegularButtonStyles = (props: RegularButtonProps, defaultTheme: DripsyF
     color: theme.color,
     ...commonTheme,
     ...propsOtherStyles,
-    ...(props.type === 'outlined' && borderColor ? { borderWidth: 0, borderColor: 'transparent' } : {}),
+    ...(props.variant === 'outlined' ? { ...getResetBorderWidthStyles() } : {}),
     ...getResetPaddingStyles(),
   };
 
   let stateLayerStyles: GetButtonStylesReturnType = {
     ...commonLayerTheme,
     ...layerTheme,
+
     ...propsOtherStylesForStateLayer,
-    ...(props.type === 'outlined' && borderColor ? { borderColor } : {}),
+
+    ...(props.variant === 'outlined' ? {} : { ...getResetBorderWidthStyles() }),
     ...getResetMarginStyles(),
     '@hover': { ...layerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...layerTheme['@focus'], ...propsFocusStyles },
     '@press': { ...layerTheme['@press'], ...propsPressStyles },
   };
 
-  switch (props.type) {
+  switch (props.variant) {
     case 'elevated': {
       {
         const elevatedTheme = buttonTheme.elevated;
@@ -321,7 +322,7 @@ const getRegularButtonStyles = (props: RegularButtonProps, defaultTheme: DripsyF
 
   const disabledStyles = getDisabledButtonStyles(props, defaultTheme);
 
-  if (props.disabled && props.type === 'outlined')
+  if (props.disabled && props.variant === 'outlined')
     stateLayerStyles = { ...stateLayerStyles, borderColor: getColorInRGBA(colors.$onSurface, 12) };
 
   return { styles: { ...styles, ...disabledStyles }, stateLayerStyles };
@@ -334,9 +335,13 @@ const getRegularButtonStyles = (props: RegularButtonProps, defaultTheme: DripsyF
  */
 export const getLabelStyles = (props: RegularButtonProps) => {
   let labelStyles;
-  labelStyles = { color: 'inherit', paddingHorizontal: 8 };
+  labelStyles = { paddingHorizontal: 8 };
 
-  if (props.icon && props.type === 'text') {
+  if (Platform.OS === 'web') {
+    labelStyles = { ...labelStyles, cursor: 'pointer' };
+  }
+
+  if (props.icon && props.variant === 'text') {
     labelStyles = { ...labelStyles, paddingLeft: 8, paddingRight: 4 };
   }
 

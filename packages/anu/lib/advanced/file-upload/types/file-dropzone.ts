@@ -17,7 +17,7 @@ interface BasicFileDropZoneProps extends Omit<ContainerProps, 'variant'> {
   /**
    * The variant of file upload (wether image or files).
    */
-  variant?: 'image' | 'file';
+  uploadVariant?: 'image' | 'file';
   /**
    * Whether to allow multiple  files upload
    */
@@ -77,13 +77,33 @@ interface BasicFileDropZoneProps extends Omit<ContainerProps, 'variant'> {
    */
   listWidth?: number;
   /**
+   * The height of files upload list
+   */
+  listHeight?: number;
+  /**
+   * The width of files upload item
+   */
+  itemWidth?: number;
+  /**
+   * The height of files upload item
+   */
+  itemHeight?: number;
+  /**
    * The message to display when duplicate file name is found in upload list
    */
   errorMessageForDuplicateFiles?: string;
+
+  /**
+   * Hide action buttons
+   */
+  hideActionButtons?: boolean;
+
+  cancelLabel?: string;
+  submitLabel?: string;
 }
 
 interface ImageFileDropZoneProps extends BasicFileDropZoneProps {
-  variant?: 'image';
+  uploadVariant?: 'image';
   /**
    * The type of preview of image in the upload list
    */
@@ -96,7 +116,7 @@ interface ImageFileDropZoneProps extends BasicFileDropZoneProps {
 }
 
 interface OtherFileDropZoneProps extends BasicFileDropZoneProps {
-  variant: 'file';
+  uploadVariant: 'file';
 }
 
 export type FileDropZoneProps = ImageFileDropZoneProps | OtherFileDropZoneProps;

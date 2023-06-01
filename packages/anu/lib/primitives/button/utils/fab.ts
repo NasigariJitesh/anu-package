@@ -1,4 +1,9 @@
-import { getColorInRGBA, getResetMarginStyles, getResetPaddingStyles } from 'anu/common/utils';
+import {
+  getColorInRGBA,
+  getResetBorderWidthStyles,
+  getResetMarginStyles,
+  getResetPaddingStyles,
+} from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 
 import { FABProps } from '../types';
@@ -54,14 +59,12 @@ const getColors = (color: 'primary' | 'secondary' | 'tertiary' | 'surface', them
  */
 const getFABTheme = (props: FABProps, theme: DripsyFinalTheme) => {
   const themeColors = theme.colors;
-  const { containerColor, stateLayerColor, iconColor } = getColors(props.FABColor, theme);
+  const { containerColor, stateLayerColor, iconColor } = getColors(props.FABColor ?? 'primary', theme);
 
   const fabTheme = {
     common: {
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
-      transitionProperty: 'all',
-      transitionDuration: '.2s',
       backgroundColor: containerColor,
       shadowColor: themeColors.$shadow,
       shadowOffset: {
@@ -93,8 +96,6 @@ const getFABTheme = (props: FABProps, theme: DripsyFinalTheme) => {
     common: {
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
-      transitionProperty: 'all',
-      transitionDuration: '.2s',
     },
     small: {
       backgroundColor: 'transparent',
@@ -205,7 +206,8 @@ const getFABTheme = (props: FABProps, theme: DripsyFinalTheme) => {
 export const getFABStyles = (props: FABProps, defaultTheme: DripsyFinalTheme) => {
   const { fabTheme, fabPressableLayerTheme, fabIconTheme } = getFABTheme(props, defaultTheme);
 
-  const { size, style } = props;
+  const { size: propSize, style } = props;
+  const size = propSize ?? 'medium';
 
   const theme = fabTheme[size];
   const commonTheme = fabTheme.common;
@@ -237,6 +239,7 @@ export const getFABStyles = (props: FABProps, defaultTheme: DripsyFinalTheme) =>
     ...pressableLayerTheme,
     ...propsOtherStylesForStateLayer,
     ...getResetMarginStyles(),
+    ...getResetBorderWidthStyles(),
     '@hover': { ...pressableLayerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...pressableLayerTheme['@focus'], ...propsFocusStyles },
     '@press': { ...pressableLayerTheme['@press'], ...propsPressStyles },

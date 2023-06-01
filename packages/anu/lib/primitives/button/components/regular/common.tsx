@@ -43,7 +43,7 @@ export const RenderComponent = (props: ButtonProps) => {
 
   return (
     // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
-    <Container disableGutters style={styles}>
+    <Container dataSet={props.dataSets?.containerDataSet} disableGutters style={styles}>
       <TouchableRipple
         accessibilityRole='button'
         {...props.pressableProps}
@@ -52,10 +52,12 @@ export const RenderComponent = (props: ButtonProps) => {
         }}
         style={generateStyles}
         disabled={props.disabled}
+        dataSet={props.dataSets?.containerDataSet}
       >
         <>
           {getIcon()}
           <Typography.Label
+            dataSet={props.dataSets?.labelDataSet}
             selectable={false}
             size='large'
             style={getCombinedStylesForText(labelStyles, props.labelStyle)}

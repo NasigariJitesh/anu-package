@@ -61,7 +61,7 @@ const getPosition = (
       positionObject =
         position.left + listDimension.width + position.width <= screenDimension.width
           ? { ...positionObject, left: position.left + position.width }
-          : { ...positionObject, right: 0 };
+          : { ...positionObject, left: position.left - listDimension.width };
     }
 
     return positionObject;

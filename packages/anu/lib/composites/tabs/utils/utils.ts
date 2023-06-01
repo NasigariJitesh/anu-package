@@ -2,7 +2,7 @@ import { getColorInRGBA } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
 import { StyleProp, ViewStyle } from 'react-native';
 
-import { HeaderItemProps } from '../types';
+import { HeaderItemProps, TabHeaderProps } from '../types';
 
 export const getHeaderItemStyles = (theme: DripsyFinalTheme, props: HeaderItemProps) => {
   const RippleStyle = {
@@ -84,13 +84,16 @@ export const getHeaderItemStyles = (theme: DripsyFinalTheme, props: HeaderItemPr
   };
 };
 
-export const getTabHeaderStyles = () => {
+export const getTabHeaderStyles = (props: TabHeaderProps, hasIcon: boolean, hasName: boolean) => {
   const container = {
     flexDirection: 'row',
     width: '100%',
+    minHeight: props?.type !== 'secondary' && hasIcon && hasName ? 64 : 48,
+    flexGrow: 0,
+    flexShrink: 0,
   } as const;
   const contentContainer = {
-    flex: 1,
+    flexGrow: 1,
   };
   return { container, contentContainer };
 };

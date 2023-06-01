@@ -5,8 +5,7 @@ import { TextFieldProps } from '../../types';
  */
 export const defaultProps: TextFieldProps = {
   variant: 'outlined',
-  value: '',
-  showClearButton: true,
+  hideClearButton: false,
   noDefaultErrorMessage: false,
   inputMode: undefined,
   onPressIn: undefined,
@@ -48,4 +47,5 @@ export const defaultProps: TextFieldProps = {
   onClick: undefined,
   accessibilityLabelledBy: undefined,
   accessibilityLanguage: undefined,
+  numberOfLines: 1,
 };

@@ -37,7 +37,7 @@ const Example1 = () => {
           />
         }
       >
-        <MenuList width={300}>
+        <MenuList width={300} positionCoordinates={{ top: 70, right: 0 }}>
           <MenuItem leadingIcon={{ name: 'dashboard' }}>
             <Typography.Body>Dashboard</Typography.Body>
           </MenuItem>
@@ -84,7 +84,7 @@ const Example2 = () => {
           />
         }
       >
-        <MenuList width={300}>
+        <MenuList width={300} positionCoordinates={{ top: 70, right: 0 }}>
           <MenuItem leadingIcon={{ name: 'dashboard' }}>
             <Typography.Body>Dashboard</Typography.Body>
           </MenuItem>
@@ -116,7 +116,7 @@ const Example2 = () => {
               </MenuItem>
             }
           >
-            <MenuList width={300} inner>
+            <MenuList width={300} inner positionCoordinates='auto'>
               <MenuItem>
                 <Typography.Body>Profile</Typography.Body>
               </MenuItem>
@@ -147,7 +147,7 @@ const Example3 = () => {
         }}
         component={
           <IconButton
-            type='filled'
+            variant='filled'
             icon={{ name: 'settings' }}
             onPress={() => {
               setOpen(true);
@@ -155,7 +155,7 @@ const Example3 = () => {
           />
         }
       >
-        <MenuList width={300}>
+        <MenuList width={300} positionCoordinates={{ top: 70, right: 0 }}>
           <MenuItem leadingIcon={{ name: 'dashboard' }}>
             <Typography.Body>Dashboard</Typography.Body>
           </MenuItem>

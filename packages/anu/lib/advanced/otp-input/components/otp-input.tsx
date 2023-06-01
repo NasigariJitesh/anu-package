@@ -1,12 +1,13 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/display-name */
 import { getCombinedStylesForText } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, TextField, TextFieldReferenceProps, Typography } from 'anu/lib';
-import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { NativeSyntheticEvent, StyleProp, TextInputKeyPressEventData, TextStyle } from 'react-native';
 
 import { OTPInputProps } from '../types';
-import { getErrorStyle, getOTPFieldStyle, getOTPTextInputStyle } from '../utils';
+import { getErrorStyle, getOTPTextInputStyle } from '../utils';
 import { defaultProps } from './default';
 
 interface IndividualOTPFieldProps {
@@ -66,6 +67,34 @@ const validateValue = (value: string, type?: 'alphabetic' | 'alphanumeric' | 'nu
 };
 
 /**
+ * To validate the given input
+ *
+ * @param {string}value - value entered into input
+ * @param {'alphabetic' | 'alphanumeric' | 'numeric'}type - the type of otp
+ * @returns {boolean} - whether the value is valid according to type of otp
+ */
+const validateString = (value: string, type?: 'alphabetic' | 'alphanumeric' | 'numeric') => {
+  switch (type) {
+    case 'alphanumeric': {
+      return /^[\dA-Za-z]*$/.test(value);
+    }
+    case 'alphabetic': {
+      return /^[A-Za-z]*$/.test(value);
+    }
+    case 'numeric': {
+      // eslint-disable-next-line unicorn/better-regex
+      return /^[0-9]*$/.test(value);
+    }
+  }
+};
+
+const getKeyboardType = (type?: 'alphabetic' | 'alphanumeric' | 'numeric') => {
+  if (type === 'alphabetic') return 'default';
+  else if (type === 'alphanumeric') return 'default';
+  else return 'number-pad';
+};
+
+/**
  * Individual OTP Field
  *
  * @param param0 - parameters for each otp field
@@ -86,8 +115,6 @@ const IndividualOTPField = ({
   onValueChangeHandler,
   onSubmitHandler,
 }: IndividualOTPFieldProps) => {
-  const style = getOTPFieldStyle(inputProps.numberOfDigits, index);
-
   const onKeyPressHandler = (event: NativeSyntheticEvent<TextInputKeyPressEventData>, digit: string) => {
     if (digit === '' && event.nativeEvent.key == 'Backspace') {
       if (index === 0) references.current[0]?.focus();
@@ -95,24 +122,36 @@ const IndividualOTPField = ({
     } else if (event.nativeEvent.key == 'Enter') onSubmitHandler();
   };
   return (
-    <TextField
-      testID={inputProps.testID ? inputProps.testID + '-field-' + (index + 1) : undefined}
-      ref={(element) => references.current.push(element)}
+    <Container
+      disableGutters
+      flexDirection='row'
       key={index}
-      value={value}
-      secureTextEntry={inputProps.hideValue ?? false}
-      variant={inputProps.variant}
-      style={{ ...style, ...inputProps.style }}
-      textInputStyle={textInputStyle}
-      label=''
-      disableLabelAnimation
-      onChangeText={(text) => onValueChangeHandler(text, index)}
-      error={inputProps.error}
-      noDefaultErrorMessage={true}
-      onKeyPress={(event) => onKeyPressHandler(event, value)}
-      disabled={inputProps.disabled}
-      showClearButton={false}
-    />
+      maxWidth={(inputProps.size ?? 40) + (inputProps.spacing ?? 0)}
+    >
+      <TextField
+        testID={inputProps.testID ? inputProps.testID + '-field-' + (index + 1) : undefined}
+        ref={(element) => references.current.push(element)}
+        key={index}
+        value={value}
+        secureTextEntry={inputProps.hideValue ?? false}
+        variant={inputProps.variant}
+        style={{ height: inputProps.size ?? 40, width: inputProps.size ?? 40 }}
+        textStyle={getCombinedStylesForText(textInputStyle, inputProps.textStyle)}
+        label=''
+        disableLabelAnimation
+        onChangeText={(text) => onValueChangeHandler(text, index)}
+        error={inputProps.error}
+        noDefaultErrorMessage={true}
+        onKeyPress={(event) => onKeyPressHandler(event, value)}
+        disabled={inputProps.disabled}
+        hideClearButton
+        textContentType={inputProps.textContentType || 'oneTimeCode'}
+        keyboardType={inputProps.keyboardType || getKeyboardType(inputProps.type)}
+      />
+      {inputProps.spacing !== undefined && index < inputProps.numberOfDigits - 1 ? (
+        <Container disableGutters width={inputProps.spacing} style={{ height: inputProps.size ?? 40 }} />
+      ) : null}
+    </Container>
   );
 };
 
@@ -133,6 +172,12 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
   const textInputStyle = getOTPTextInputStyle();
   const errorStyle = getErrorStyle(theme);
 
+  useEffect(() => {
+    setOTPValue(getInitialArray(finalProps.value, finalProps.numberOfDigits, finalProps.type));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [finalProps.value]);
+
   const focus = useCallback(() => {
     references.current[0]?.focus();
   }, [references]);
@@ -145,30 +190,57 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
 
   useImperativeHandle(reference, () => ({ focus, blur }), [focus, blur]);
 
-  const onValueChangeHandler = (value: string, index: number) => {
-    const recentValue = value.slice(-1);
+  const onValueChangeHandler = async (value: string, index: number) => {
     const array = [...otpValue];
 
-    if (validateValue(recentValue, finalProps.type)) {
-      if (recentValue !== '') {
-        if (index === finalProps.numberOfDigits - 1) references.current[index]?.blur();
-        else references.current[index + 1]?.focus();
-      }
+    if (value.length <= 1) {
+      //check if a digit is being deleted or a new digit is being entered or a digit is entered to replace in already existing digits place
 
-      array.splice(index, 1, recentValue);
+      const recentValue = value.slice(-1);
+
+      if (validateValue(recentValue, finalProps.type)) {
+        if (recentValue !== '') {
+          if (index === finalProps.numberOfDigits - 1) references.current[index]?.blur();
+          else references.current[index + 1]?.focus();
+        }
+
+        array.splice(index, 1, recentValue);
+        setOTPValue([...array]);
+      }
+      if (finalProps.onValueChange) finalProps.onValueChange(array.join(''));
+    } else {
+      //trim the already existing digit form the value
+      if (otpValue[index] !== '')
+        if (otpValue[index] === value[0]) value = value.slice(1);
+        else if (otpValue[index] === value[value.length - 1]) value = value.slice(0, -1);
+
+      value = value.slice(0, finalProps.numberOfDigits);
+
+      if (validateString(value, finalProps.type)) {
+        array.splice(index, value.length, ...value);
+        if (index + value.length === finalProps.numberOfDigits) references.current[index]?.blur();
+        else references.current[index + value.length]?.focus();
+      }
     }
+
     setOTPValue([...array]);
 
     if (finalProps.onValueChange) finalProps.onValueChange(array.join(''));
   };
 
   const onSubmitHandler = () => {
-    if (props.onSubmit) props.onSubmit(otpValue.join(''));
+    if (finalProps.onSubmit) finalProps.onSubmit(otpValue.join(''));
   };
 
   return (
-    <Container disableGutters testID={props.testID} style={props.containerStyle}>
-      <Container disableGutters flexDirection='row'>
+    <Container disableGutters testID={finalProps.testID} width={finalProps.width}>
+      <Container
+        disableGutters
+        flexDirection='row'
+        justify={finalProps.spacing === undefined ? 'space-between' : 'flex-start'}
+        align='center'
+        width={finalProps.width}
+      >
         {otpValue.map((value, index) => (
           <IndividualOTPField
             index={index}
@@ -182,9 +254,14 @@ const OTPInput = forwardRef<TextFieldReferenceProps, OTPInputProps>((props, refe
           />
         ))}
       </Container>
-      {props.error &&
-        props.errorMessage?.map((error, index) => (
-          <Typography.Body key={index} style={getCombinedStylesForText(errorStyle, props.errorMessageStyle)}>
+      {finalProps.error &&
+        finalProps.errorMessage?.map((error, index) => (
+          <Typography.Body
+            //@ts-ignore
+            dataSet={finalProps.dataSets?.errorText}
+            key={index}
+            style={getCombinedStylesForText(errorStyle, finalProps.errorMessageStyle)}
+          >
             {error}
           </Typography.Body>
         ))}

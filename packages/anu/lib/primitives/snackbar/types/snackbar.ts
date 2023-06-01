@@ -2,9 +2,9 @@ import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 import { IconButtonProps, RegularButtonProps } from '../../button';
 
-type ActionProps = Partial<RegularButtonProps> & { title: string; type?: 'text' };
+type ActionProps = Partial<RegularButtonProps> & { title: string; variant?: 'text' };
 
-type IconProps = Omit<IconButtonProps, 'toggle' | 'selected' | 'type'> & { type?: 'standard' };
+type IconProps = Omit<IconButtonProps, 'toggle' | 'selected' | 'variant'> & { variant?: 'standard' };
 
 interface CommonSnackbarProps {
   /**

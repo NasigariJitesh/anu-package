@@ -20,12 +20,13 @@ import { defaultProps } from './default';
 const handleFileUpload = async (props: FileDropZoneProps, updateFiles: { (files: File[], uris: string[]): void }) => {
   const result = await FilePicker.getDocumentAsync({
     multiple: props.multiple,
-    type: getFileTypes(props.fileType, props.variant),
+    type: getFileTypes(props.fileType, props.uploadVariant),
   });
+
   if (result.type === 'success' && result.uri && result.name) {
     const file = new File([result.uri], result.name, { type: result.mimeType });
 
-    if (props.variant === 'image' && props.optimization) {
+    if (props.uploadVariant === 'image' && props.optimization) {
       const compressedImage = await compressFile(file, props.optimizationConfig);
       const image = convertToFile(compressedImage, file.name);
       updateFiles([image], [result.uri]);
@@ -118,16 +119,18 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
               await handleUpload(finalProps, updateFiles);
             }}
           >
-            <Container disableGutters style={getCombinedStylesForView(dropZoneStyle, props.dropZoneStyle)}>
+            <Container disableGutters style={getCombinedStylesForView(dropZoneStyle, finalProps.dropZoneStyle)}>
               <Container disableGutters style={childrenContainerStyle}>
-                {props.children}
+                {finalProps.children}
               </Container>
             </Container>
           </Pressable>
-          <Container disableGutters style={buttonContainerStyle}>
-            <Button.Text title='Submit' onPress={finalProps.onSubmit} />
-            <Button.Text title='Cancel' onPress={onCancel} />
-          </Container>
+          {finalProps.hideActionButtons ? null : (
+            <Container disableGutters style={buttonContainerStyle}>
+              <Button.Text title={finalProps.submitLabel || ''} onPress={finalProps.onSubmit} />
+              <Button.Text title={finalProps.cancelLabel || ''} onPress={onCancel} />
+            </Container>
+          )}
         </Container>
         {duplicateFileNameError ? (
           <Typography.Body style={errorMessageStyle}>{finalProps.errorMessageForDuplicateFiles}</Typography.Body>
@@ -141,11 +144,14 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
         uriData={[...fileUris]}
         onSort={onSortHandler}
         deleteData={deleteFile}
-        variant={finalProps.variant}
-        previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
+        variant={finalProps.uploadVariant}
+        previewType={finalProps.uploadVariant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
+        listHeight={finalProps.listHeight}
         listWidth={finalProps.listWidth}
         listItemStyle={finalProps.listItemStyle}
+        itemWidth={finalProps.itemWidth}
+        itemHeight={finalProps.itemHeight}
       />
     </Container>
   );

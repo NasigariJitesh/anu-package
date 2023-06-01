@@ -14,15 +14,13 @@ import { Pressable } from 'react-native';
 
 const style = {
   margin: 15,
-  height: 250,
-  width: 296,
+  width: 250,
 };
 
 const flexStyle = {
   flexWrap: 'wrap',
   alignItems: 'center',
   justifyContent: 'center',
-
   width: '100%',
 } as const;
 
@@ -59,12 +57,16 @@ const AutoComplete = (
   },
 ) => {
   const [text, setText] = useState('');
+  const [show, toggleShow] = useState(false);
 
   const ListRenderItem = ({ item }: { item: Options }) => {
     return (
       <Pressable
         style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}
-        onPress={() => setText(item.value as string)}
+        onPress={() => {
+          setText(item.value as string);
+          toggleShow(false);
+        }}
       >
         <Typography.Body>{item.value as string}</Typography.Body>
       </Pressable>
@@ -72,15 +74,20 @@ const AutoComplete = (
   };
 
   return (
-    <AutoCompleteComponent
-      {...props}
-      value={text}
-      onChangeText={(value: string) => {
-        setText(value);
-      }}
-      label='Auto Complete'
-      flatListProps={{ ...props.flatListProps, renderItem: ListRenderItem }}
-    />
+    <Container disableGutters style={style}>
+      <AutoCompleteComponent
+        {...props}
+        value={text}
+        onChangeText={(value: string) => {
+          setText(value);
+        }}
+        style={{ width: 250 }}
+        label='Auto Complete'
+        flatListProps={{ ...props.flatListProps, renderItem: ListRenderItem, style: { maxHeight: 140 } }}
+        showResults={show}
+        toggleShowResults={toggleShow}
+      />
+    </Container>
   );
 };
 
@@ -141,20 +148,6 @@ export const autoCompleteDocumentation: ContentValues = {
       optional: true,
       defaultValue: '200',
     },
-
-    {
-      name: 'resultContainerStyle',
-      description: 'autoCompleteDocumentation:property-resultContainerStyle-description',
-      type: 'StyleProp<ViewStyle>',
-      optional: true,
-    },
-
-    {
-      name: 'autoCompleteContainerStyle',
-      description: 'autoCompleteDocumentation:property-autoCompleteContainerStyle-description',
-      type: 'StyleProp<ViewStyle>',
-      optional: true,
-    },
   ],
   examples: [
     {
@@ -163,7 +156,7 @@ export const autoCompleteDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <AutoComplete variant='outlined' data={data} autoCompleteContainerStyle={style} />
+            <AutoComplete variant='outlined' data={data} />
           </Container>
         </Container>
       ),
@@ -174,7 +167,7 @@ export const autoCompleteDocumentation: ContentValues = {
       id: 'filled-auto-complete',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <AutoComplete variant='filled' data={data} autoCompleteContainerStyle={style} />
+          <AutoComplete variant='filled' data={data} />
         </Container>
       ),
       code: "<AutoComplete variant='filled' data={data} flatListProps={{ renderItem: ListRenderItem }} />",
@@ -184,7 +177,7 @@ export const autoCompleteDocumentation: ContentValues = {
       id: 'base-auto-complete',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <AutoComplete variant='base' data={data} autoCompleteContainerStyle={style} />
+          <AutoComplete variant='base' data={data} />
         </Container>
       ),
       code: "<AutoComplete variant='base' data={data} flatListProps={{ renderItem: ListRenderItem }} />",
@@ -194,7 +187,7 @@ export const autoCompleteDocumentation: ContentValues = {
       id: 'auto-complete-debouncing',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <AutoComplete variant='outlined' data={data} autoCompleteContainerStyle={style} debounce />
+          <AutoComplete variant='outlined' data={data} debounce />
         </Container>
       ),
       code: "<AutoComplete variant='outlined' data={data} flatListProps={{ renderItem: ListRenderItem }} debounce />",
@@ -214,7 +207,6 @@ export const autoCompleteDocumentation: ContentValues = {
                 </Pressable>
               ),
             }}
-            autoCompleteContainerStyle={[style, { height: 100 }]}
           />
         </Container>
       ),

@@ -1,5 +1,5 @@
 import { TextFieldContainerStyle } from 'anu/lib';
-import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { StyleProp, TextInputProps, TextStyle } from 'react-native';
 
 export interface OTPInputProps {
   /**
@@ -24,16 +24,22 @@ export interface OTPInputProps {
   type?: 'alphabetic' | 'alphanumeric' | 'numeric';
   hideValue?: boolean;
 
+  size?: number;
+  spacing?: number;
+
+  width?: number | string;
+
   errorMessage?: string[];
   /**
    * The variant of text field for the otp input.
    */
   variant?: 'outlined' | 'filled';
-  containerStyle?: StyleProp<ViewStyle>;
   style?: TextFieldContainerStyle;
-  textInputStyle?: StyleProp<TextStyle>;
+  textStyle?: StyleProp<TextStyle>;
   errorMessageStyle?: StyleProp<TextStyle>;
   testID?: string;
   disabled?: boolean;
   error?: boolean;
+  keyboardType?: TextInputProps['keyboardType'];
+  textContentType?: TextInputProps['textContentType'];
 }

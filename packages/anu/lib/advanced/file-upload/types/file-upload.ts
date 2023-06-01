@@ -12,7 +12,7 @@ type BasicFileUploadProps = CommonButtonProps & {
   /*
    * The variant of file upload (wether image or files).
    */
-  variant?: 'image' | 'file';
+  uploadVariant?: 'image' | 'file';
   /*
    * Whether to allow multiple  files upload
    */
@@ -55,6 +55,19 @@ type BasicFileUploadProps = CommonButtonProps & {
    * The width of files upload list
    */
   listWidth?: number;
+
+  /*
+   * The height of files upload list
+   */
+  listHeight?: number;
+  /**
+   * The width of files upload item
+   */
+  itemWidth?: number;
+  /**
+   * The height of files upload item
+   */
+  itemHeight?: number;
   /*
    * The message to display when duplicate file name is found in upload list
    */
@@ -62,7 +75,7 @@ type BasicFileUploadProps = CommonButtonProps & {
 };
 
 type ImageFileUploadProps = BasicFileUploadProps & {
-  variant?: 'image';
+  uploadVariant?: 'image';
   /*
    * The type of preview of image in the upload list
    */
@@ -79,7 +92,7 @@ type ImageFileUploadProps = BasicFileUploadProps & {
 };
 
 type OtherFileUploadProps = BasicFileUploadProps & {
-  variant: 'file';
+  uploadVariant: 'file';
 };
 
 export type FileUploadProps = ImageFileUploadProps | OtherFileUploadProps;

@@ -1,9 +1,8 @@
 import { ContainerJustify } from 'anu/lib/primitives/layout/types';
-import { DripsyFinalTheme, SxProp } from 'dripsy';
-import { StyleProp, ViewStyle } from 'react-native';
+import { DripsyFinalTheme } from 'dripsy';
+import { Platform, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
 import { DividerProps } from '../types';
-import { getColorInRGBA } from './../../../../common/utils/utils';
 import { DividerAlign, DividerPattern } from './../types/divider';
 
 /**
@@ -16,60 +15,60 @@ import { DividerAlign, DividerPattern } from './../types/divider';
 export const getDividerStyle = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
   const { variant, orientation } = props;
   // eslint-disable-next-line prefer-const
-  let { style, sx } = getDividerCommonStyles(props, theme);
+  let { style, containerStyle } = getDividerCommonStyles(props, theme);
   switch (variant) {
     case 'full-width': {
       return {
-        style: { ...style, width: '100%' },
-        sx: sx,
+        containerStyle: { ...containerStyle, padding: 0 },
+        style,
       };
     }
     case 'full-height': {
       return {
-        style: { ...style, margin: 0 },
-        sx: sx,
+        containerStyle: { ...containerStyle, padding: 0 },
+        style,
       };
     }
     case 'middle': {
-      if (orientation === 'vertical') style = { ...style, marginVertical: '16px' };
-      else if (orientation === 'horizontal') style = { ...style, width: 'calc(100% - 32px)', marginHorizontal: '16px' };
+      if (orientation === 'vertical') containerStyle = { ...containerStyle, paddingVertical: 16 };
+      else if (orientation === 'horizontal') containerStyle = { ...containerStyle, paddingHorizontal: 16 };
 
       return {
-        style: style,
-        sx: sx,
+        containerStyle,
+        style,
       };
     }
     case 'bottom-inset': {
       return {
-        style: { ...style, marginBottom: '16px' },
-        sx: sx,
+        containerStyle: { ...containerStyle, paddingBottom: 16 },
+        style,
       };
     }
     case 'top-inset': {
       return {
-        style: { ...style, marginTop: '16px' },
-        sx: sx,
+        containerStyle: { ...containerStyle, paddingTop: 16 },
+        style,
       };
     }
     case 'left-inset': {
       return {
-        style: { ...style, width: 'calc(100% - 16px)', marginLeft: '16px' },
-        sx: sx,
+        containerStyle: { ...containerStyle, paddingLeft: 16 },
+        style,
       };
     }
     case 'right-inset': {
       return {
-        style: { ...style, width: 'calc(100% - 32px)', marginRight: '16px' },
-        sx: sx,
+        containerStyle: { ...containerStyle, paddingRight: 16 },
+        style,
       };
     }
     default: {
-      if (orientation === 'vertical') style = { ...style, marginVertical: '16px' };
-      else if (orientation === 'horizontal') style = { ...style, width: 'calc(100% - 32px)', marginHorizontal: '16px' };
+      if (orientation === 'vertical') containerStyle = { ...containerStyle, paddingVertical: 16 };
+      else if (orientation === 'horizontal') containerStyle = { ...containerStyle, paddingHorizontal: 16 };
 
       return {
-        style: style,
-        sx: sx,
+        containerStyle,
+        style,
       };
     }
   }
@@ -83,56 +82,78 @@ export const getDividerStyle = (props: Partial<DividerProps>, theme: DripsyFinal
  *  @returns common style properties for the divider component
  */
 const getDividerCommonStyles = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
-  const { colors } = theme;
+  const { orientation, align, pattern, thickness, style: propStyle } = props;
 
-  const { orientation, align, pattern, thickness } = props;
-  let borderWidth = thickness;
-  if (pattern === 'double-line' && thickness && +thickness < 3) borderWidth = 3;
-  const style: StyleProp<ViewStyle> = { overflow: 'visible' };
-  const sx: SxProp = { color: props.style?.color ?? (colors?.$onBackground as string) };
+  const { height, width } = StyleSheet.flatten(propStyle ?? {});
+
+  const borderWidth = thickness ?? 1;
+
+  const style: StyleProp<ViewStyle> = {
+    flex: 1,
+    overflow: 'visible',
+    alignItems: 'center' as const,
+    justifyContent: getAlignment(align),
+    position: 'relative',
+  };
+
+  const containerStyle: StyleProp<ViewStyle> = { overflow: 'visible' };
 
   switch (orientation) {
     case 'vertical': {
       return {
+        containerStyle: {
+          ...containerStyle,
+
+          flexDirection: 'column' as const,
+          ...(height
+            ? { height }
+            : { ...(Platform.OS === 'web' ? { alignSelf: 'stretch' as const } : { height: '100%' }) }),
+        },
         style: {
           ...style,
-          width: '0px',
+          width: 0,
+          marginHorizontal: 8,
           flexDirection: 'column' as const,
-          marginHorizontal: '8px',
-          alignItems: 'center' as const,
-          justifyContent: getAlignment(align),
-          borderLeft: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props, theme)}`,
+          borderLeftWidth: borderWidth,
+          borderLeftColor: getColor(props, theme),
+          borderStyle: getBorderStyle(pattern),
         },
-        sx: { ...sx, alignSelf: 'stretch' },
       };
     }
     case 'horizontal': {
       return {
+        containerStyle: {
+          ...containerStyle,
+          flexDirection: 'row' as const,
+          ...(width ? { width } : { width: '100%' }),
+        },
         style: {
           ...style,
-          height: '1px',
+          height: 1,
           flexDirection: 'row' as const,
-          marginVertical: '16px',
-          alignItems: 'center' as const,
-          justifyContent: getAlignment(align),
-          borderTop: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props, theme)}`,
+          marginVertical: 16,
+          borderTopWidth: borderWidth,
+          borderTopColor: getColor(props, theme),
+          borderStyle: getBorderStyle(pattern),
         },
-        sx: sx,
       };
     }
     default: {
       return {
+        containerStyle: {
+          ...containerStyle,
+          flexDirection: 'row' as const,
+          ...(width ? { width } : { width: '100%' }),
+        },
         style: {
           ...style,
-          width: '1px',
-          flexDirection: 'column' as const,
-          alignItems: 'center' as const,
-          marginVertical: '8px',
-          justifyContent: getAlignment(align),
-          borderLeft: `${getBorderWidthInPixels(borderWidth)} ${getBorderStyle(pattern)} ${getColor(props, theme)}`,
+          height: 1,
+          flexDirection: 'row' as const,
+          marginVertical: 16,
+          borderTopWidth: borderWidth,
+          borderTopColor: getColor(props, theme),
+          borderStyle: getBorderStyle(pattern),
         },
-
-        sx: sx,
       };
     }
   }
@@ -166,20 +187,17 @@ const getAlignment = (align?: DividerAlign) => {
  */
 const getBorderStyle = (pattern?: DividerPattern) => {
   switch (pattern) {
-    case 'double-line': {
-      return 'double';
-    }
     case 'line': {
-      return 'solid';
+      return 'solid' as const;
     }
     case 'dotted': {
-      return 'dotted';
+      return 'dotted' as const;
     }
     case 'dashed': {
-      return 'dashed';
+      return 'dashed' as const;
     }
     default: {
-      return 'solid';
+      return 'solid' as const;
     }
   }
 };
@@ -194,19 +212,9 @@ const getBorderStyle = (pattern?: DividerPattern) => {
 const getColor = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
   const { colors } = theme;
 
-  const { light, color: propsColor } = props;
-  const color = propsColor ?? (colors?.$primary as string);
-  return light ? getColorInRGBA(color, 75) : color;
-};
-
-/**
- * To generate the width of the divider
- *
- *  @param {string | number} width - The width of the divider
- *  @returns width in pixels
- */
-const getBorderWidthInPixels = (width?: string | number) => {
-  return typeof width === 'string' ? width : width?.toString() + 'px';
+  const { color: propsColor } = props;
+  const color = propsColor ?? (colors?.$outlineVariant as string);
+  return color;
 };
 
 /**
@@ -217,11 +225,15 @@ const getBorderWidthInPixels = (width?: string | number) => {
 export const defaultTextStyle = (theme: DripsyFinalTheme) =>
   ({
     backgroundColor: theme.colors?.$background as never,
-    paddingHorizontal: '4px',
+    paddingHorizontal: 4,
     color: theme.colors?.$onBackground as never,
     textAlignVertical: 'center',
   } as const);
 
 export const childrenContainerStyle = (theme: DripsyFinalTheme) => {
-  return { paddingHorizontal: '4px', backgroundColor: theme.colors.$background };
+  return { paddingHorizontal: 4, backgroundColor: theme.colors.$background };
+};
+
+export const getInnerContainerStyle = () => {
+  return { position: 'absolute' as const };
 };

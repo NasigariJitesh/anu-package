@@ -1,7 +1,7 @@
 import { ContainerProps, Icon, Image, ImageProps } from 'anu/lib';
-import { Sx } from 'dripsy';
 import { ReactElement } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
+import { TextStyle } from 'react-native';
 
 import Avatar from '../components/avatar';
 
@@ -28,6 +28,11 @@ export interface LetterAvatarProps extends Omit<ContainerProps, 'children' | 'va
    * The last name of the user for letter avatar.
    */
   lastName?: string;
+
+  /**
+   * Styles for the text
+   */
+  textStyle?: StyleProp<TextStyle>;
 }
 
 export interface ImageAvatarProps extends Omit<ImageProps, 'children' | 'variant'>, CommonAvatarProps {}
@@ -48,9 +53,10 @@ interface CommonAvatarGroupProps extends Omit<ContainerProps, 'children'> {
    */
   excessAvatarStyle?: StyleProp<ViewStyle>;
   /**
-   * The system prop that allows defining system overrides as well as additional CSS styles for the avatar that displays number of remaining avatar in avatar group
+   * Styles for text of the avatar that displays number of remaining avatar in avatar group.
    */
-  excessAvatarSx?: Sx;
+  excessTextStyle?: StyleProp<TextStyle>;
+
   /**
    * The space between each avatar in group
    */

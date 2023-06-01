@@ -49,15 +49,19 @@ const Group = (props: HeadingProps) => {
   return (
     <FlatList
       contentContainerStyle={style.groupList}
+      style={style.flatList}
       data={props.links}
       renderItem={({ item }) => {
         return item.components.length > 0 ? (
           <Accordion.Container
             title={
-              <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.groupName}>
+              <Accordion.Header iconProps={{ size: 18, style: { opacity: 0.7 } }} style={style.groupName as never}>
                 {getTranslation(item.title)}
               </Accordion.Header>
             }
+            style={{ padding: 0 }}
+            spacing={0}
+            collapse={false}
           >
             <Accordion.Children>
               <Components links={item.components} />
@@ -67,7 +71,7 @@ const Group = (props: HeadingProps) => {
           <Typography.Title
             onPress={onLinkPress}
             style={[
-              style.groupName,
+              style.groupName as never,
               pathname === item.link ? { ...style.active, color: theme.colors?.$primary as never } : {},
             ]}
           >
@@ -101,6 +105,9 @@ const RenderItem = ({ item }: { item: ComponentLinks }) => {
               {getTranslation(item.title)}
             </Accordion.Header>
           }
+          collapse={false}
+          style={{ padding: 0 }}
+          spacing={0}
         >
           <Accordion.Children>
             <Categories links={item.variants} />
@@ -268,8 +275,29 @@ const Sidebar = () => {
           <HeadingLink link='/theming' title='leftSideBar:theming' />
           <Index
             heading='leftSideBar:components'
-            headingLink='/components/auto-complete'
+            headingLink='/components/accordion'
             links={[
+              {
+                title: 'leftSideBar:accordion',
+                components: [
+                  {
+                    title: 'leftSideBar:accordion',
+                    variants: [],
+                    link: '/components/accordion',
+                  },
+                  {
+                    title: 'leftSideBar:accordion-header',
+                    variants: [],
+                    link: '/components/accordion/header',
+                  },
+                  {
+                    title: 'leftSideBar:accordion-children',
+                    variants: [],
+                    link: '/components/accordion/children',
+                  },
+                ],
+                link: '/components/accordion',
+              },
               {
                 title: 'leftSideBar:auto-complete',
                 components: [],
@@ -468,6 +496,11 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:password-input',
+                link: '/components/password-input',
+                components: [],
+              },
+              {
                 title: 'leftSideBar:phone-input',
                 link: '/components/phone-input',
                 components: [],
@@ -488,6 +521,16 @@ const Sidebar = () => {
                 link: '/components/side-sheet',
               },
               {
+                title: 'leftSideBar:skeleton',
+                components: [],
+                link: '/components/skeleton',
+              },
+              {
+                title: 'leftSideBar:snackbar',
+                link: '/components/snackbar',
+                components: [],
+              },
+              {
                 title: 'leftSideBar:switch',
                 link: '/components/switch',
                 components: [],
@@ -495,6 +538,11 @@ const Sidebar = () => {
               {
                 title: 'leftSideBar:tabs',
                 link: '/components/tabs',
+                components: [],
+              },
+              {
+                title: 'leftSideBar:text-area',
+                link: '/components/text-area',
                 components: [],
               },
               {
@@ -547,6 +595,7 @@ const style = {
     fontWeight: '400',
     opacity: 0.7,
     marginVertical: 5,
+    flex: null,
   },
   componentName: {
     fontSize: 18,
@@ -565,6 +614,9 @@ const style = {
   groupList: {
     marginTop: 15,
     marginLeft: 15,
+  },
+  flatList: {
+    width: 220,
   },
   componentList: {
     marginVertical: 15,

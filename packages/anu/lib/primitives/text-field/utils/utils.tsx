@@ -1,6 +1,6 @@
 import { getColorInRGBA } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
-import { StyleProp, TextStyle } from 'react-native';
+import { Platform, StyleProp, TextStyle } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { TextFieldProps } from '../types';
@@ -90,25 +90,32 @@ const getTextFieldTheme = ({ colors }: DripsyFinalTheme) => {
  * @param props
  * @returns style of the dripsy text field
  */
-export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFieldProps) => {
+export const getTextStyles = (theme: DripsyFinalTheme, props?: TextFieldProps) => {
   let common = {
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: theme.fontSizes[7],
+    lineHeight: theme.lineHeights[7],
     fontWeight: '400' as const,
-    outline: 'none',
-    // paddingTop: props?.variant === 'filled' ? 8 : 0,
     paddingHorizontal: 18,
-    color: colors.$onSurface,
+    color: theme.colors.$onSurface,
     letterSpacing: 0.5,
-    caretColor: props?.error ? colors.$error : colors.$primary,
-
     backgroundColor: 'transparent',
-  } as const;
+    position: 'relative' as const,
+    width: '100%' as const,
+  };
+
+  if (Platform.OS === 'web') {
+    common = {
+      ...common,
+      // @ts-ignore
+      outline: 'none' as never,
+      caretColor: getError(props?.error) ? theme.colors.$error : theme.colors.$primary,
+    };
+  }
 
   if (props?.disabled)
     common = {
       ...common,
-      color: 'inherit' as never,
+      color: getColorInRGBA(theme.colors.$onSurface, 38),
     } as const;
 
   return common;
@@ -117,18 +124,15 @@ export const getTextFieldStyles = ({ colors }: DripsyFinalTheme, props?: TextFie
 /**
  * To generate style for the leading icon component
  *
- * @param props
- * @returns style of the leading icon
+s * @returns style of the leading icon
  */
-export const getLeadingContainerStyle = (props: TextFieldProps) => {
+export const getLeadingContainerStyle = () => {
   const style = {
     paddingLeft: 8,
     height: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'inherit',
-    backgroundColor: props.disabled ? 'inherit' : 'transparent',
   } as const;
 
   return style;
@@ -137,10 +141,9 @@ export const getLeadingContainerStyle = (props: TextFieldProps) => {
 /**
  * To generate style for the trailing icon component
  *
- * @param props
  * @returns style of the trailing icon
  */
-export const getTrailingContainerStyle = (props: TextFieldProps) => {
+export const getTrailingContainerStyle = () => {
   const style = {
     paddingRight: 8,
     flexDirection: 'row',
@@ -148,8 +151,6 @@ export const getTrailingContainerStyle = (props: TextFieldProps) => {
     justifyContent: 'center',
     height: '100%',
     minWidth: 48,
-    color: 'inherit',
-    backgroundColor: props.disabled ? 'inherit' : 'transparent',
   } as const;
 
   return style;
@@ -162,7 +163,7 @@ export const getTrailingContainerStyle = (props: TextFieldProps) => {
  * @param dripsyTheme
  * @returns style of the text field container
  */
-export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: DripsyFinalTheme) => {
+export const getTextFieldStyle = (props: TextFieldProps, dripsyTheme: DripsyFinalTheme) => {
   const { style: propStyle, variant, error, disabled } = props;
 
   const theme = getTextFieldTheme(dripsyTheme);
@@ -180,7 +181,7 @@ export const getTextFieldContainerStyle = (props: TextFieldProps, dripsyTheme: D
     '@press': { ...style?.['@press'], ...propStyle?.['@press'] },
   };
 
-  if (error) {
+  if (getError(error)) {
     finalStyle =
       variant === 'outlined'
         ? {
@@ -263,27 +264,38 @@ export const getSupportingTextStyle = (theme: DripsyFinalTheme) => {
   return style;
 };
 
-export const getUnanimatedLabelStyles = () => {
+export const getUnanimatedLabelStyles = (theme: DripsyFinalTheme) => {
   const labelContainerStyle = {
     left: 0,
     position: 'absolute',
     paddingHorizontal: 16,
   } as const;
   const labelTextStyle = {
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: theme.fontSizes[7],
+    lineHeight: theme.lineHeights[7],
     letterSpacing: 0.5,
     paddingHorizontal: 2,
-    color: 'inherit',
+    color: theme.colors.$onSurfaceVariant,
   } as const;
 
   return { labelContainerStyle, labelTextStyle };
 };
 
-export const getErrorIcon = () => {
-  return <MaterialCommunityIcons name='alert-circle' color='inherit' size={24} />;
+export const getErrorIcon = (theme: DripsyFinalTheme) => {
+  return <MaterialCommunityIcons name='alert-circle' color={theme.colors.$error} size={24} />;
 };
 
 export const getInnerContainerStyle = () => {
-  return { backgroundColor: 'inherit', height: '100%', borderRadius: 'inherit', color: 'inherit', flex: 1 };
+  return { height: '100%', flex: 1 };
+};
+
+export const getError = (error?: boolean | { (): boolean }) => {
+  if (error) {
+    return typeof error == 'function' ? error() : error;
+  } else return false;
+};
+
+export const getContainerStyle = () => {
+  const style = { width: '100%', flex: 1, height: '100%' };
+  return style;
 };

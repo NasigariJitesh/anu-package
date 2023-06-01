@@ -1,11 +1,8 @@
 /* eslint-disable no-secrets/no-secrets */
 /* eslint-disable react-native/no-inline-styles */
-import { Container, Image } from 'anu/lib';
-import exampleDark from 'assets/file-upload-example4-dark.jpg';
-import exampleLight from 'assets/file-upload-example4-light.jpg';
+import { Container, FileDropZone } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { useMenuContext } from 'screens/common/provider';
 
 const flexStyle = {
   flexWrap: 'wrap',
@@ -18,20 +15,6 @@ const flexStyle = {
 
 const style = { margin: 15 };
 
-const Example1 = () => {
-  const { isDarkTheme } = useMenuContext();
-
-  return (
-    <Container disableGutters style={style}>
-      {isDarkTheme ? (
-        <Image source={{ uri: exampleDark.src }} style={{ width: 460, height: 250 }} alt='file-drop-zone-example' />
-      ) : (
-        <Image source={{ uri: exampleLight.src }} style={{ width: 460, height: 250 }} alt='file-drop-zone-example' />
-      )}
-    </Container>
-  );
-};
-
 export const fileDropZoneDocumentation: ContentValues = {
   mainHeading: 'fileDropZoneDocumentation:mainHeading',
   mainDescription: 'fileDropZoneDocumentation:mainDescription',
@@ -42,7 +25,9 @@ export const fileDropZoneDocumentation: ContentValues = {
       id: 'default',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Example1 />
+          <Container disableGutters style={style}>
+            <FileDropZone>Drop your files here</FileDropZone>
+          </Container>
         </Container>
       ),
       code: '<FileDropZone>Drop your files here<FileDropZone>',

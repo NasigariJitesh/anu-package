@@ -29,3 +29,17 @@ export const getContainerStyles = (props: Partial<ContainerProps>) => {
 
   return { style: containerStyle, sx: sxStyle };
 };
+
+export const getCollapsibleContainerStyles = () => {
+  const container = {
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+  } as const;
+  const overflowHidden = {
+    overflow: 'hidden',
+    width: '100%',
+  } as const;
+
+  return { container, overflowHidden };
+};

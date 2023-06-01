@@ -1,6 +1,6 @@
 import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'anu/common/types';
 import { IconStyle } from 'anu/lib/primitives/icon';
-import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { StyleProp, TextStyle } from 'react-native';
 
 export interface CheckBoxStyle extends ExtendedDisabledStyles, ExtendedHoverStyles {}
 
@@ -47,10 +47,6 @@ export interface CheckboxProps {
    */
   labelStyle?: StyleProp<TextStyle>;
   /**
-   * The styles for the container of the checkbox
-   */
-  containerStyle?: StyleProp<ViewStyle>;
-  /**
    * The styles for the checked Icon
    */
   iconStyle?: IconStyle;
@@ -66,4 +62,9 @@ export interface CheckboxProps {
    * The size of the checked icon
    */
   iconSize?: number;
+
+  dataSets?: {
+    label?: Record<string, any>;
+    checkbox?: Record<string, any>;
+  };
 }

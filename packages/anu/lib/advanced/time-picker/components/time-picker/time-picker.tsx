@@ -4,7 +4,7 @@ import { useWindowDimensions } from 'react-native';
 
 import { useDisplayModeContext } from '../../context';
 import { inputTypes, OnChangeFunction, TimePickerProps } from '../../types';
-import { getContainerWidth, getTimePickerStyles, toHourInputFormat, toHourOutputFormat } from '../../utils';
+import { getTimePickerStyles, toHourInputFormat, toHourOutputFormat } from '../../utils';
 import AnalogClock from '../analog-clock';
 import TimeInputs from '../time-input';
 
@@ -13,7 +13,18 @@ import TimeInputs from '../time-input';
  * @param props
  */
 const TimePicker = (props: TimePickerProps) => {
-  const { hours, minutes, onFocusInput, focused, inputType, onChange, use24HourClock, inputStyle, horizontal } = props;
+  const {
+    hours,
+    minutes,
+    onFocusInput,
+    focused,
+    inputType,
+    onChange,
+    use24HourClock,
+    inputStyle,
+    horizontal,
+    clockSize,
+  } = props;
 
   const { setMode } = useDisplayModeContext();
 
@@ -50,19 +61,7 @@ const TimePicker = (props: TimePickerProps) => {
   );
 
   return (
-    <Container
-      disableGutters
-      style={
-        isLandscape
-          ? [
-              styles.rootLandscape,
-              {
-                width: getContainerWidth(inputType, is24Hour),
-              },
-            ]
-          : styles.rootPortrait
-      }
-    >
+    <Container disableGutters style={isLandscape ? styles.rootLandscape : styles.rootPortrait}>
       <TimeInputs
         inputType={inputType}
         hours={hours}
@@ -84,6 +83,7 @@ const TimePicker = (props: TimePickerProps) => {
               focused={focused}
               is24Hour={is24Hour}
               onChange={onInnerChange}
+              circleSize={clockSize}
             />
           </Container>
         </>

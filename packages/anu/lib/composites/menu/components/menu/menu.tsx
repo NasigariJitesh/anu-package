@@ -7,18 +7,12 @@ import { MenuProps } from '../../types';
 import { getContainerStyle } from '../../utils';
 
 const MenuContainer = (props: MenuProps) => {
-  const { updatePosition, isOpen, updateRootPosition } = useMenuContext();
+  const { updatePosition, isOpen } = useMenuContext();
 
   const style = getContainerStyle();
 
   return (
-    <Container
-      disableGutters
-      onLayout={(event: LayoutChangeEvent) => {
-        updateRootPosition({ top: 0, left: 0, ...event.nativeEvent.layout });
-      }}
-      style={style}
-    >
+    <Container disableGutters style={style}>
       <Container
         disableGutters
         {...props}

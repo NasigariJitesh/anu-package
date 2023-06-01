@@ -1,7 +1,9 @@
 import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Icon, IconButton, Image, Typography } from 'anu/lib/primitives';
+import { ReactNode } from 'react';
 import { Pressable } from 'react-native';
+import Animated, { Layout, LightSpeedInLeft, LightSpeedOutRight } from 'react-native-reanimated';
 
 import { ListItemProps } from '../../types';
 import { getUploadListStyles } from '../../utils';
@@ -12,10 +14,10 @@ import { getUploadListStyles } from '../../utils';
  * @param props - props for the list item
  */
 const RegularListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, variant, error, sortable, listWidth, listItemStyle } = props;
+  const { id, dataItem, single, deleteData, variant, error, sortable, itemHeight, itemWidth, listItemStyle } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, listWidth, false);
+  const styles = getUploadListStyles(theme, itemHeight, itemWidth, false);
 
   return (
     <Pressable style={getCombinedStylesForView(styles.listItem, listItemStyle)}>
@@ -40,7 +42,7 @@ const RegularListItem = (props: ListItemProps) => {
         </Typography.Body>
         <IconButton
           icon={{ name: 'delete-outline', props: { size: 16, style: styles.deleteIcon } }}
-          type='standard'
+          variant='standard'
           onPress={() => {
             deleteData(id);
           }}
@@ -63,10 +65,10 @@ const RegularListItem = (props: ListItemProps) => {
  * @param props - props for the list item
  */
 const PreviewListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, error, listWidth, sortable, listItemStyle } = props;
+  const { id, dataItem, single, deleteData, error, sortable, itemHeight, itemWidth, listItemStyle } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, listWidth, false);
+  const styles = getUploadListStyles(theme, itemHeight, itemWidth, false);
   const url = URL.createObjectURL(dataItem);
 
   return (
@@ -93,7 +95,7 @@ const PreviewListItem = (props: ListItemProps) => {
         </Typography.Body>
         <IconButton
           icon={{ name: 'delete-outline', props: { size: 16, style: styles.deleteIcon } }}
-          type='standard'
+          variant='standard'
           onPress={() => {
             deleteData(id);
           }}
@@ -116,10 +118,10 @@ const PreviewListItem = (props: ListItemProps) => {
  * @param props - props for the list item
  */
 const CarouselListItem = (props: ListItemProps) => {
-  const { id, dataItem, single, deleteData, error, listWidth, sortable, listItemStyle } = props;
+  const { id, dataItem, single, deleteData, error, sortable, itemHeight, itemWidth, listItemStyle } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, listWidth, true);
+  const styles = getUploadListStyles(theme, itemHeight, itemWidth, true);
   const url = URL.createObjectURL(dataItem);
 
   return (
@@ -139,7 +141,7 @@ const CarouselListItem = (props: ListItemProps) => {
         )}
         <IconButton
           icon={{ name: 'delete-outline', props: { size: 16, style: styles.carouselDeleteIcon } }}
-          type='standard'
+          variant='standard'
           style={styles.carouselDeleteButton}
           onPress={() => {
             deleteData(id);
@@ -158,18 +160,42 @@ const CarouselListItem = (props: ListItemProps) => {
   );
 };
 
+const AnimatedEnterView = ({ children, sortable }: { children: ReactNode; sortable?: boolean }) => {
+  if (sortable) return <>{children}</>;
+  return (
+    <Animated.View
+      entering={LightSpeedInLeft.duration(500)}
+      exiting={LightSpeedOutRight.delay(100).duration(500)}
+      layout={Layout.springify()}
+    >
+      {children}
+    </Animated.View>
+  );
+};
+
 const UploadItem = (props: ListItemProps) => {
   switch (props.previewType) {
     case 'list': {
-      return <PreviewListItem {...props} />;
+      return (
+        <AnimatedEnterView sortable={props.sortable}>
+          <PreviewListItem {...props} />
+        </AnimatedEnterView>
+      );
     }
     case 'carousel': {
-      return <CarouselListItem {...props} />;
+      return (
+        <AnimatedEnterView sortable={props.sortable}>
+          <CarouselListItem {...props} />
+        </AnimatedEnterView>
+      );
     }
     default: {
-      return <RegularListItem {...props} />;
+      return (
+        <AnimatedEnterView sortable={props.sortable}>
+          <RegularListItem {...props} />
+        </AnimatedEnterView>
+      );
     }
   }
 };
-
 export default UploadItem;

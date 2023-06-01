@@ -26,6 +26,7 @@ const nextConfig = {
     'react-dropzone',
     'expo-document-picker',
     'expo-blur',
+    'expo-linear-gradient',
     'expo-haptics',
     'expo-modules-core',
   ],
@@ -33,7 +34,7 @@ const nextConfig = {
     return [
       {
         source: '/components',
-        destination: '/components/avatar',
+        destination: '/components/accordion',
         permanent: false,
       },
       {

@@ -10,7 +10,6 @@ const flexStyle = {
   justifyContent: 'center',
 
   width: '100%',
-  padding: 10,
 } as const;
 
 export const cardHeaderDocumentation: ContentValues = {
@@ -60,12 +59,12 @@ export const cardHeaderDocumentation: ContentValues = {
       id: 'default',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='elevated' width={360}>
+          <Card variant='elevated' width={280}>
             <CardHeader heading='Heading' subHeading='subHeading' />
           </Card>
         </Container>
       ),
-      code: `<Card variant='elevated' width={360}>
+      code: `<Card variant='elevated' width={280}>
   <CardHeader heading='Heading' subHeading='subHeading' />
 </Card>`,
     },
@@ -74,22 +73,22 @@ export const cardHeaderDocumentation: ContentValues = {
       id: 'with-avatar-action',
       component: (
         <Container disableGutters sx={flexStyle as never}>
-          <Card variant='elevated' width={360}>
+          <Card variant='elevated' width={280}>
             <CardHeader
               heading='Heading'
               subHeading='subHeading'
               avatar={<Avatar name='N' variant='circle' size='large' />}
-              action={<IconButton type='standard' icon={{ name: 'more-vert' }} />}
+              action={<IconButton variant='standard' icon={{ name: 'more-vert' }} />}
             />
           </Card>
         </Container>
       ),
-      code: `<Card variant='elevated' width={360}>
+      code: `<Card variant='elevated' width={280}>
   <CardHeader
     heading='Heading'
     subHeading='subHeading'
     avatar={<Avatar name='N' variant='circle' size='large' />}
-    action={<IconButton type='standard' icon={{ name: 'more-vert' }} />}
+    action={<IconButton variant='standard' icon={{ name: 'more-vert' }} />}
   />
 </Card>`,
     },

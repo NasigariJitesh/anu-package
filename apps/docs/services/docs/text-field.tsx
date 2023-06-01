@@ -1,9 +1,11 @@
-import { Container, Icon, TextField } from 'anu/lib';
+import { Container, Icon, TextField as TextFieldComponent, TextFieldProps } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+import { useState } from 'react';
 
 const style = {
   margin: 15,
+  width: 250,
 };
 
 const flexStyle = {
@@ -13,6 +15,16 @@ const flexStyle = {
 
   width: '100%',
 } as const;
+
+const TextField = (props: Partial<TextFieldProps>) => {
+  const [text, setText] = useState(props.value ?? '');
+
+  return (
+    <Container disableGutters style={style}>
+      <TextFieldComponent {...props} value={text} onChangeText={setText} />
+    </Container>
+  );
+};
 
 export const textFieldDocumentation: ContentValues = {
   mainHeading: 'textFieldDocumentation:mainHeading',
@@ -79,14 +91,8 @@ export const textFieldDocumentation: ContentValues = {
       optional: true,
     },
     {
-      name: 'containerStyle',
-      description: 'textFieldDocumentation:property-containerStyle-description',
-      type: 'StyleProp<ViewStyle>',
-      optional: true,
-    },
-    {
-      name: 'textInputStyle',
-      description: 'textFieldDocumentation:property-textInputStyle-description',
+      name: 'textStyle',
+      description: 'textFieldDocumentation:property-textStyle-description',
       type: 'StyleProp<TextStyle>',
       optional: true,
     },
@@ -117,37 +123,17 @@ export const textFieldDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <TextField
-              value=''
-              variant='filled'
-              label='Label Text'
-              supportingText='Supporting text'
-              containerStyle={style}
-            />
-            <TextField
-              variant='filled'
-              label='Label Text'
-              supportingText='Supporting text'
-              value='Input Text'
-              containerStyle={style}
-            />
+            <TextField value='' variant='filled' label='Label Text' supportingText='Supporting text' />
+            <TextField variant='filled' label='Label Text' supportingText='Supporting text' value='Input Text' />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <TextField
-              value=''
-              variant='filled'
-              label='Label Text'
-              supportingText='Supporting text'
-              disabled
-              containerStyle={style}
-            />
+            <TextField value='' variant='filled' label='Label Text' supportingText='Supporting text' disabled />
             <TextField
               variant='filled'
               label='Label Text'
               supportingText='Supporting text'
               value='Input Text'
               disabled
-              containerStyle={style}
             />
           </Container>
         </Container>
@@ -169,7 +155,6 @@ export const textFieldDocumentation: ContentValues = {
               variant='filled'
               label='Label Text'
               supportingText='Supporting text'
-              containerStyle={style}
               value=''
             />
             <TextField
@@ -178,7 +163,6 @@ export const textFieldDocumentation: ContentValues = {
               label='Label Text'
               supportingText='Supporting text'
               value='Input Text'
-              containerStyle={style}
             />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -188,7 +172,6 @@ export const textFieldDocumentation: ContentValues = {
               label='Label Text'
               supportingText='Supporting text'
               disabled
-              containerStyle={style}
               value=''
             />
             <TextField
@@ -198,7 +181,6 @@ export const textFieldDocumentation: ContentValues = {
               supportingText='Supporting text'
               value='Input Text'
               disabled
-              containerStyle={style}
             />
           </Container>
         </Container>
@@ -215,37 +197,17 @@ export const textFieldDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <TextField
-              value=''
-              variant='outlined'
-              label='Label Text'
-              supportingText='Supporting text'
-              containerStyle={style}
-            />
-            <TextField
-              variant='outlined'
-              label='Label Text'
-              supportingText='Supporting text'
-              value='Input Text'
-              containerStyle={style}
-            />
+            <TextField value='' variant='outlined' label='Label Text' supportingText='Supporting text' />
+            <TextField variant='outlined' label='Label Text' supportingText='Supporting text' value='Input Text' />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
-            <TextField
-              value=''
-              variant='outlined'
-              label='Label Text'
-              supportingText='Supporting text'
-              disabled
-              containerStyle={style}
-            />
+            <TextField value='' variant='outlined' label='Label Text' supportingText='Supporting text' disabled />
             <TextField
               variant='outlined'
               label='Label Text'
               supportingText='Supporting text'
               value='Input Text'
               disabled
-              containerStyle={style}
             />
           </Container>
         </Container>
@@ -268,7 +230,6 @@ export const textFieldDocumentation: ContentValues = {
               variant='outlined'
               label='Label Text'
               supportingText='Supporting text'
-              containerStyle={style}
             />
             <TextField
               leadingIcon={<Icon color='inherit' name='search' />}
@@ -276,7 +237,6 @@ export const textFieldDocumentation: ContentValues = {
               label='Label Text'
               supportingText='Supporting text'
               value='Input Text'
-              containerStyle={style}
             />
           </Container>
           <Container disableGutters flexDirection='row' sx={flexStyle as never}>
@@ -287,7 +247,6 @@ export const textFieldDocumentation: ContentValues = {
               label='Label Text'
               supportingText='Supporting text'
               disabled
-              containerStyle={style}
             />
             <TextField
               leadingIcon={<Icon color='inherit' name='search' />}
@@ -296,7 +255,6 @@ export const textFieldDocumentation: ContentValues = {
               supportingText='Supporting text'
               value='Input Text'
               disabled
-              containerStyle={style}
             />
           </Container>
         </Container>
@@ -318,7 +276,6 @@ export const textFieldDocumentation: ContentValues = {
             label='Label Text'
             supportingText='Supporting text'
             value='Input Text'
-            containerStyle={style}
             error
             errorMessage={'Error message'}
           />
@@ -328,7 +285,6 @@ export const textFieldDocumentation: ContentValues = {
             label='Label Text'
             supportingText='Supporting text'
             value='Input Text'
-            containerStyle={style}
             error
             errorMessage={'Error message'}
           />

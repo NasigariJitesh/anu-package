@@ -1,4 +1,4 @@
-import { getCombinedStylesForView } from 'anu/common/utils';
+import { getCombinedStylesForText, getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Typography } from 'anu/lib';
 import React from 'react';
@@ -16,18 +16,12 @@ const LetterAvatar = (props: LetterAvatarProps) => {
   const theme = useTheme();
   const finalProps = { ...defaultLetterProps, ...props };
 
-  const { size, variant, name, lastName, ...otherProps } = finalProps;
+  const { size, variant, name, lastName, textStyle, ...otherProps } = finalProps;
 
-  const { containerStyle, containerSx, typographyStyle } = getLetterAvatarStyle(finalProps, theme);
-
+  const { containerStyle, typographyStyle } = getLetterAvatarStyle(finalProps, theme);
   return (
-    <Container
-      disableGutters
-      {...otherProps}
-      style={getCombinedStylesForView(containerStyle, otherProps.style)}
-      sx={{ ...containerSx, ...otherProps.sx }}
-    >
-      <Typography.Body style={typographyStyle}>
+    <Container disableGutters {...otherProps} style={getCombinedStylesForView(containerStyle, otherProps.style)}>
+      <Typography.Body style={getCombinedStylesForText(typographyStyle, textStyle)}>
         {name[0] + (lastName && lastName[0] ? lastName[0] : '')}
       </Typography.Body>
     </Container>

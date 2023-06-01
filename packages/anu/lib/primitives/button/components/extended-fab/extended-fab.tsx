@@ -36,7 +36,7 @@ const ExtendedFAB = (props: ExtendedFABProps) => {
   };
   return (
     // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
-    <Container disableGutters style={containerStyles}>
+    <Container disableGutters style={containerStyles} dataSet={restOfTheProps.dataSets?.containerDataSet}>
       <TouchableRipple
         accessibilityRole='button'
         {...restOfTheProps.pressableProps}
@@ -44,10 +44,15 @@ const ExtendedFAB = (props: ExtendedFABProps) => {
           if (restOfTheProps.onPress) restOfTheProps.onPress(event);
         }}
         style={generateStyles}
+        dataSet={restOfTheProps.dataSets?.containerDataSet}
       >
         <>
           {restOfTheProps.icon ? getIcon(restOfTheProps.icon) : null}
-          <Typography.Label selectable={false} style={getCombinedStylesForText(labelStyles, restOfTheProps.titleStyle)}>
+          <Typography.Label
+            dataSet={restOfTheProps.dataSets?.labelDataSet}
+            selectable={false}
+            style={getCombinedStylesForText(labelStyles, restOfTheProps.labelStyle)}
+          >
             {restOfTheProps.title}
           </Typography.Label>
         </>

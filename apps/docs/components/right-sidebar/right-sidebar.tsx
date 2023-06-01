@@ -5,6 +5,9 @@ import { ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Source_Sans_Pro } from 'next/font/google';
 import { useRouter } from 'next/router';
+import { accordionIndex } from 'services/docs/accordion';
+import { accordionChildrenIndex } from 'services/docs/accordion-children';
+import { accordionHeaderIndex } from 'services/docs/accordion-header';
 import { autoCompleteIndex } from 'services/docs/auto-complete';
 import { avatarIndex } from 'services/docs/avatar';
 import { badgeIndex } from 'services/docs/badge';
@@ -37,15 +40,18 @@ import { menuIndex } from 'services/docs/menu';
 import { menuItemIndex } from 'services/docs/menu-item';
 import { menuListIndex } from 'services/docs/menu-list';
 import { otpInputIndex } from 'services/docs/otp-input';
+import { passwordInputIndex } from 'services/docs/password-input';
 import { phoneInputIndex } from 'services/docs/phone-input';
 import { radioButtonIndex } from 'services/docs/radio-button';
 import { regularButtonIndex } from 'services/docs/regular-button';
 import { searchIndex } from 'services/docs/search';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
 import { sideSheetIndex } from 'services/docs/side-sheet';
+import { skeletonIndex } from 'services/docs/skeleton';
 import { snackbarIndex } from 'services/docs/snackbar';
 import { switchIndex } from 'services/docs/switch';
 import { tabsIndex } from 'services/docs/tabs';
+import { textAreaIndex } from 'services/docs/text-area';
 import { textFieldIndex } from 'services/docs/text-field';
 import { themingIndex } from 'services/docs/theming';
 import { timePickerIndex } from 'services/docs/time-picker';
@@ -143,6 +149,21 @@ const RenderIndex = () => {
   const { pathname } = useRouter();
 
   switch (pathname) {
+    case '/components/accordion': {
+      {
+        return <Index {...accordionIndex} />;
+      }
+    }
+    case '/components/accordion/header': {
+      {
+        return <Index {...accordionHeaderIndex} />;
+      }
+    }
+    case '/components/accordion/children': {
+      {
+        return <Index {...accordionChildrenIndex} />;
+      }
+    }
     case '/components/auto-complete': {
       {
         return <Index {...autoCompleteIndex} />;
@@ -309,6 +330,11 @@ const RenderIndex = () => {
         return <Index {...otpInputIndex} />;
       }
     }
+    case '/components/password-input': {
+      {
+        return <Index {...passwordInputIndex} />;
+      }
+    }
     case '/components/phone-input': {
       {
         return <Index {...phoneInputIndex} />;
@@ -329,6 +355,11 @@ const RenderIndex = () => {
         return <Index {...sideSheetIndex} />;
       }
     }
+    case '/components/skeleton': {
+      {
+        return <Index {...skeletonIndex} />;
+      }
+    }
     case '/components/snackbar': {
       {
         return <Index {...snackbarIndex} />;
@@ -342,6 +373,11 @@ const RenderIndex = () => {
     case '/components/tabs': {
       {
         return <Index {...tabsIndex} />;
+      }
+    }
+    case '/components/text-area': {
+      {
+        return <Index {...textAreaIndex} />;
       }
     }
     case '/components/touchable-ripple': {

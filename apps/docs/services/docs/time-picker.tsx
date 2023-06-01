@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Button, Container, TimePickerModal } from 'anu/lib';
+import { Button, Container, TimePickerModal, useSnackbar } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
+import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { useState } from 'react';
 
 const style = {
@@ -96,24 +97,38 @@ const Example4 = () => {
   const [visible, setVisible] = useState(false);
   const [minutes, setMinutes] = useState<number>();
   const [hours, setHours] = useState<number>();
+  const { width } = useWindowDimensions();
+  const { add } = useSnackbar();
 
   return (
     <Container disableGutters style={style}>
-      <Button.Outlined onPress={() => setVisible(true)} title='Select time' />
-      <TimePickerModal
-        visible={visible}
-        hours={hours}
-        minutes={minutes}
-        onConfirm={(hoursAndMinutes: { hours: number; minutes: number }) => {
-          setHours(hoursAndMinutes.hours);
-          setMinutes(hoursAndMinutes.minutes);
-          setVisible(false);
-        }}
-        onDismiss={() => {
-          setVisible(false);
-        }}
-        horizontal={true}
+      <Button.Outlined
+        onPress={() =>
+          width >= 576
+            ? setVisible(true)
+            : add({
+                content: 'Horizontal time picker is not compatible with small screens',
+                numberOfLines: 2,
+              })
+        }
+        title='Select time'
       />
+      {width >= 576 ? (
+        <TimePickerModal
+          visible={visible}
+          hours={hours}
+          minutes={minutes}
+          onConfirm={(hoursAndMinutes: { hours: number; minutes: number }) => {
+            setHours(hoursAndMinutes.hours);
+            setMinutes(hoursAndMinutes.minutes);
+            setVisible(false);
+          }}
+          onDismiss={() => {
+            setVisible(false);
+          }}
+          horizontal={true}
+        />
+      ) : null}
     </Container>
   );
 };
@@ -209,6 +224,19 @@ export const timePickerDocumentation: ContentValues = {
       type: "'slide' | 'fade' | 'none'",
       optional: true,
       defaultValue: "'fade'",
+    },
+    {
+      name: 'clockSize',
+      description: 'timePickerDocumentation:property-clockSize-description',
+      type: 'number',
+      optional: true,
+      defaultValue: '256',
+    },
+    {
+      name: 'modalStyle',
+      description: 'timePickerDocumentation:property-modalStyle-description',
+      type: 'StyleProp<ViewStyle>',
+      optional: true,
     },
     {
       name: 'inputStyle',

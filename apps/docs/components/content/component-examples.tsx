@@ -140,7 +140,7 @@ const RenderExample = (example: Example, index: number) => {
           </ScrollView>
         </Container>
       ) : null}
-      {/* <Divider variant='full-width' light style={styles.divider} /> */}
+      {/* <Divider variant='full-width'  style={styles.divider} /> */}
     </Container>
   );
 };
@@ -164,7 +164,7 @@ const getStyles = ({ colors }: DripsyFinalTheme, isDarkTheme?: boolean) => {
     },
     examplesContainer: {
       marginVertical: 20,
-      zIndex: 1000,
+      zIndex: 100,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
     },
     codeContainer: {
@@ -181,7 +181,7 @@ const getStyles = ({ colors }: DripsyFinalTheme, isDarkTheme?: boolean) => {
       borderWidth: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      overflow: 'scroll',
+      zIndex: 150,
     },
     heading: {
       color: colors?.$onSurface as never,
@@ -211,6 +211,7 @@ const getStyles = ({ colors }: DripsyFinalTheme, isDarkTheme?: boolean) => {
       backgroundColor: 'transparent',
       fontSize: 14,
       color: colors?.$onSurface as never,
+      zIndex: 90,
     },
     divider: {
       color: colors?.$onSurface as never,

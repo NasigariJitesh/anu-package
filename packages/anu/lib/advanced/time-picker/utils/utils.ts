@@ -9,8 +9,8 @@ import {
   reverseInputTypes,
 } from '../types';
 
-export const circleSize = 256;
-const outerHeight = 34;
+export const defaultCircleSize = 256;
+const outerHeight = 36;
 const DEGREE_30 = Math.PI / 6;
 const DEGREE_6 = Math.PI / 30;
 const DEGREE_360 = Math.PI * 2;

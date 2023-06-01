@@ -1,5 +1,3 @@
-import { DripsyFinalTheme } from 'dripsy';
-
 import { CardProps } from '../../types/card';
 
 /**
@@ -8,7 +6,3 @@ import { CardProps } from '../../types/card';
 export const defaultProps: Partial<CardProps> = {
   variant: 'elevated' as const,
 };
-
-export const defaultSxProps = (theme: DripsyFinalTheme) => ({
-  color: theme.colors?.$primary as string,
-});

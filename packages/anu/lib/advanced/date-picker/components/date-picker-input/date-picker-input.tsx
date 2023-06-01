@@ -40,7 +40,7 @@ const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps
       inputButtons={
         withModal ? (
           <IconButton
-            type='standard'
+            variant='standard'
             icon={{ name: calendarIcon ?? 'calendar-today', props: { size: 24 } }}
             disabled={rest.disabled}
             onPress={() => setVisible(true)}
@@ -59,6 +59,7 @@ const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps
         startYear,
         endYear,
         inputEnabled,
+        style,
       }) =>
         withModal ? (
           <DatePickerModal
@@ -78,6 +79,7 @@ const DatePickerInput = forwardRef<TextFieldReferenceProps, DatePickerInputProps
             startYear={startYear ?? 1900}
             endYear={endYear ?? 2200}
             inputEnabled={inputEnabled}
+            style={style}
           />
         ) : null
       }

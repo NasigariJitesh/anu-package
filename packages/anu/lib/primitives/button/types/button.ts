@@ -10,9 +10,10 @@
  */
 import { ExtendedDisabledStyles, ExtendedHoverStyles } from 'anu/common/types';
 import { IconProps, IconSource } from 'anu/lib/primitives/icon';
-import { Pressable } from 'dripsy';
 import { ReactElement } from 'react';
 import { ButtonProps as RNButtonProps, StyleProp, TextStyle } from 'react-native';
+
+import TouchableRipple from '../../touchable-ripple';
 
 /**
  *  The type of the Button Component
@@ -53,7 +54,7 @@ export interface ButtonProps extends RNButtonProps {
   /**
    * The properties of the pressable component of react native (except sx)
    */
-  pressableProps?: Omit<React.ComponentProps<typeof Pressable>, 'sx'>;
+  pressableProps?: Omit<React.ComponentProps<typeof TouchableRipple>, 'sx' | 'children'>;
 }
 
 /**
@@ -69,7 +70,12 @@ interface CommonRegularButtonProps extends ButtonProps {
   /**
    * The type/variant of the button
    */
-  type: ButtonType;
+  variant: ButtonType;
+
+  dataSets?: {
+    containerDataSet?: Record<string, any>;
+    labelDataSet?: Record<string, any>;
+  };
 }
 
 export type RegularButtonProps = Omit<CommonRegularButtonProps, 'category'>;
@@ -91,7 +97,7 @@ interface CommonIconButtonProps extends Omit<ButtonProps, 'title' | 'labelStyle'
   /**
    * The type of the icon button
    */
-  type: IconButtonType;
+  variant: IconButtonType;
   /**
    * Whether the icon button is toggle-able
    */
@@ -101,6 +107,11 @@ interface CommonIconButtonProps extends Omit<ButtonProps, 'title' | 'labelStyle'
    * Whether the toggle-able icon button is selected or not
    */
   selected?: boolean;
+
+  dataSets?: {
+    containerDataSet?: Record<string, any>;
+    iconDataSet?: Record<string, any>;
+  };
 }
 
 export type IconButtonProps = Omit<CommonIconButtonProps, 'category'>;
@@ -117,15 +128,20 @@ interface CommonFABProps extends Omit<ButtonProps, 'title' | 'type' | 'disabled'
   /**
    * The size of the floating action button
    */
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Color theme for the FAB
    */
-  FABColor: 'primary' | 'secondary' | 'surface' | 'tertiary';
+  FABColor?: 'primary' | 'secondary' | 'surface' | 'tertiary';
   /**
    * Whether the FAB is lowered than usual FAB elevation
    */
   lowered?: boolean;
+
+  dataSets?: {
+    containerDataSet?: Record<string, any>;
+    iconDataSet?: Record<string, any>;
+  };
 }
 
 export type FABProps = Omit<CommonFABProps, 'category'>;
@@ -142,7 +158,7 @@ interface CommonExtendedFABProps extends Omit<ButtonProps, 'type' | 'disabled' |
   /**
    * Color theme for the Extended FAB
    */
-  FABColor: 'primary' | 'secondary' | 'surface' | 'tertiary';
+  FABColor?: 'primary' | 'secondary' | 'surface' | 'tertiary';
   /**
    * Whether the FAB is lowered than usual FAB elevation
    */
@@ -150,7 +166,13 @@ interface CommonExtendedFABProps extends Omit<ButtonProps, 'type' | 'disabled' |
   /**
    * The styles for the title of extended FAB
    */
-  titleStyle?: StyleProp<TextStyle>;
+  labelStyle?: StyleProp<TextStyle>;
+
+  dataSets?: {
+    containerDataSet?: Record<string, any>;
+    labelDataSet?: Record<string, any>;
+    iconDataSet?: Record<string, any>;
+  };
 }
 
 export type ExtendedFABProps = Omit<CommonExtendedFABProps, 'category'>;

@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+import { getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Button, Container, Typography } from 'anu/lib/primitives';
 import React, { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
@@ -76,7 +77,7 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     setDuplicateFileNameError(false);
 
-    if (finalProps.variant === 'image' && finalProps.optimization) {
+    if (finalProps.uploadVariant === 'image' && finalProps.optimization) {
       const compressedImages = [];
       for (const file of acceptedFiles) {
         const compressedImage = await compressFile(file, finalProps.optimizationConfig);
@@ -93,7 +94,7 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept:
-      finalProps.fileType ?? finalProps.variant === 'image'
+      finalProps.fileType ?? finalProps.uploadVariant === 'image'
         ? {
             'image/*': [
               '.jpeg',
@@ -116,27 +117,29 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
 
   return (
     <Container disableGutters style={finalProps.style}>
-      <Container disableGutters>
-        <Container disableGutters>
-          <Container disableGutters style={dropZoneStyle}>
+      <>
+        <>
+          <Container disableGutters style={getCombinedStylesForView(dropZoneStyle, finalProps.dropZoneStyle)}>
             <div {...getRootProps()} style={divStyle}>
               <input {...getInputProps()} />
               <Container disableGutters style={childrenContainerStyle}>
-                {props.dragActivePlaceholder !== undefined && isDragActive
-                  ? props.dragActivePlaceholder
-                  : props.children}
+                {finalProps.dragActivePlaceholder !== undefined && isDragActive
+                  ? finalProps.dragActivePlaceholder
+                  : finalProps.children}
               </Container>
             </div>
           </Container>
-          <Container disableGutters style={buttonContainerStyle}>
-            <Button.Text title='Submit' onPress={finalProps.onSubmit} />
-            <Button.Text title='Cancel' onPress={onCancel} />
-          </Container>
-        </Container>
+          {finalProps.hideActionButtons ? null : (
+            <Container disableGutters style={buttonContainerStyle}>
+              <Button.Text title={finalProps.submitLabel || ''} onPress={finalProps.onSubmit} />
+              <Button.Text title={finalProps.cancelLabel || ''} onPress={onCancel} />
+            </Container>
+          )}
+        </>
         {duplicateFileNameError ? (
           <Typography.Body style={errorMessageStyle}>{finalProps.errorMessageForDuplicateFiles}</Typography.Body>
         ) : null}
-      </Container>
+      </>
 
       <UploadList
         errors={finalProps.errors}
@@ -144,11 +147,14 @@ const FileDropZone = forwardRef<FileDropZoneReferenceProps, FileDropZoneProps>((
         data={[...files]}
         onSort={onSortHandler}
         deleteData={deleteFile}
-        variant={finalProps.variant}
-        previewType={finalProps.variant === 'image' ? finalProps.previewType : undefined}
+        variant={finalProps.uploadVariant}
+        previewType={finalProps.uploadVariant === 'image' ? finalProps.previewType : undefined}
         listStyle={finalProps.listStyle}
         listWidth={finalProps.listWidth}
+        listHeight={finalProps.listHeight}
         listItemStyle={finalProps.listItemStyle}
+        itemWidth={finalProps.itemWidth}
+        itemHeight={finalProps.itemHeight}
       />
     </Container>
   );

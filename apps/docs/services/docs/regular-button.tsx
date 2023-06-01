@@ -27,9 +27,9 @@ export const regularButtonDocumentation: ContentValues = {
       description: 'regularButtonDocumentation:property-title-description',
     },
     {
-      name: 'type',
+      name: 'variant',
       type: "'elevated' | 'filled' | 'tonal' | 'outlined' | 'text'",
-      description: 'regularButtonDocumentation:property-type-description',
+      description: 'regularButtonDocumentation:property-variant-description',
     },
     {
       name: 'icon',

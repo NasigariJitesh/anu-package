@@ -65,6 +65,9 @@ ul#additional-links-list {
   list-style: initial;
 }
 
+input::-ms-clear, input::-ms-reveal {
+  display: none;
+}
 
 `;
 

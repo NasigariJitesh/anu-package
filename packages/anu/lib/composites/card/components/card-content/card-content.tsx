@@ -13,14 +13,10 @@ import { defaultProps } from './default';
 const CardContent = (props: CardContentProps) => {
   const finalProps = { ...defaultProps, ...props };
 
-  const { style, sx } = getCardContentStyle();
+  const { style } = getCardContentStyle();
 
   return (
-    <Container
-      disableGutters
-      style={getCombinedStylesForView(style, finalProps.style)}
-      sx={{ ...sx, ...finalProps.sx }}
-    >
+    <Container disableGutters style={getCombinedStylesForView(style, finalProps.style)}>
       {finalProps.children}
     </Container>
   );

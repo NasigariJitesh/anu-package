@@ -2,7 +2,7 @@
 /* eslint-disable unicorn/no-useless-undefined */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/display-name */
-import { getCombinedStylesForText, getCombinedStylesForView } from 'anu/common/utils';
+import { getCombinedStylesForText } from 'anu/common/utils';
 import { AutoComplete, AutoCompleteReferenceProps, Container, convertToOptionsFormat, Options } from 'anu/lib';
 import { AsYouType, ParseError, parsePhoneNumber, parsePhoneNumberWithError, PhoneNumber } from 'libphonenumber-js';
 import { debounce as lodashDebounce, DebouncedFunc } from 'lodash';
@@ -38,7 +38,7 @@ const checkForMatch = (countryCodesData: Options[], countryAlphabeticalCode?: st
 /**
  *
  * @param countryCode - The country telephoneCode
- * @param asYouType - AsYouType class object of the libphonenumber-js libraay
+ * @param asYouType - AsYouType class object of the libphonenumber-js library
  * @param countryCodesData - Array of country code objects
  */
 const getDefaultCountry = (countryCode: string, asYouType: AsYouType, countryCodesData: Options[]) => {
@@ -73,7 +73,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
 
   const { value, onChangeText, leadingIcon, flatListProps, ...otherAutoCompleteProps } = finalProps;
 
-  const { defaultResultsContainerStyle, defaultTextFieldStyles, defaultTextInputStyle } = getDefaultStyles();
+  const { defaultTextInputStyle } = getDefaultStyles();
 
   const focus = useCallback(() => {
     autoCompleteReference.current?.focus();
@@ -222,7 +222,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
     return (
       <Container disableGutters flexDirection='row' align='center'>
         {children}
-        <CountryFlag currentCountry={currentCountry} disabled={finalProps.disabled} />
+        <CountryFlag value={value} currentCountry={currentCountry} disabled={finalProps.disabled} />
       </Container>
     );
   };
@@ -230,12 +230,7 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
   return (
     <AutoComplete
       {...otherAutoCompleteProps}
-      style={{ ...defaultTextFieldStyles, ...otherAutoCompleteProps.style }}
-      resultContainerStyle={getCombinedStylesForView(
-        defaultResultsContainerStyle,
-        otherAutoCompleteProps.resultContainerStyle,
-      )}
-      textInputStyle={getCombinedStylesForText(defaultTextInputStyle, otherAutoCompleteProps.textInputStyle)}
+      textStyle={getCombinedStylesForText(defaultTextInputStyle, otherAutoCompleteProps.textStyle)}
       ref={autoCompleteReference}
       data={countryCodesData}
       autoComplete='tel'

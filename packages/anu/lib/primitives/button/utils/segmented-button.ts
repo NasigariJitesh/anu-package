@@ -17,16 +17,15 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
     common: {
       justifyContent: 'center' as const,
       alignItems: 'center' as const,
-      height: 40,
-      width: 120,
-      marginVertical: 4,
+      flexDirection: 'row' as const,
+      height: '100%',
+      flex: 1,
       borderLeftWidth: 1,
       borderTopWidth: 1,
       borderBottomWidth: 1,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
-      borderColor: themeColors.$outline,
+      borderTopColor: themeColors.$outline,
+      borderBottomColor: themeColors.$outline,
+      borderLeftColor: themeColors.$outline,
     },
     on: {
       backgroundColor: themeColors.$secondaryContainer,
@@ -46,14 +45,12 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
 
   const segmentedButtonStateLayerTheme = {
     common: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: 40,
-      width: 120,
+      justifyContent: 'center' as const,
+      alignItems: 'center' as const,
+      flexDirection: 'row' as const,
+      height: '100%',
+      flex: 1,
       paddingHorizontal: 12,
-      transitionProperty: 'all',
-      transitionTimingFunction: 'ease',
-      transitionDuration: '.2s',
     },
     on: {
       backgroundColor: 'transparent',
@@ -90,7 +87,7 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
   const segmentedIconTheme = {
     common: {
       paddingRight: 4,
-      size: 18,
+      fontSize: 18,
     },
     on: {
       color: themeColors.$onSecondaryContainer,
@@ -109,12 +106,16 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
 
   const segmentedLabelTheme = {
     on: {
+      flexShrink: 1,
+      textAlign: 'center' as const,
       color: themeColors.$onSecondaryContainer,
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
       },
     },
     off: {
+      flexShrink: 1,
+      textAlign: 'center' as const,
       color: themeColors.$onSurface,
       '@disable': {
         color: getColorInRGBA(themeColors.$onSurface, 38),
@@ -131,6 +132,7 @@ export const getSegmentedButtonTheme = (theme: DripsyFinalTheme) => {
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
     borderRightWidth: 1,
+    borderRightColor: themeColors.$outline,
   };
 
   return {
@@ -209,6 +211,14 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
     ...otherLabelStyles,
   };
 
+  const innerContainerStyles = {
+    flex: 1,
+    flexDirection: 'row',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  } as const;
+
   let disabledStyles = {};
   let disabledIconStyles = {};
   let disabledLabelStyles = {};
@@ -227,9 +237,10 @@ export const getSegmentedButtonStyles = (props: SegmentedButtonProps, selected: 
     buttonStyles: { ...styles, ...disabledStyles },
     layerStyles: stateLayerStyles,
     iconStyles: { ...iconStyles, ...disabledIconStyles },
-    labelStyles: { ...labelStyles, ...disabledLabelStyles, ...(props.titleStyle as Record<string, never>) },
+    labelStyles: { ...labelStyles, ...disabledLabelStyles, ...(props.labelStyle as Record<string, never>) },
     segmentedFirstButtonTheme: { ...segmentedFirstButtonTheme, ...disabledFirstButtonStyle },
     segmentedLastButtonTheme: { ...segmentedLastButtonTheme, ...disabledLastButtonStyle },
+    innerContainerStyles,
   };
 };
 
@@ -242,4 +253,16 @@ export const isSelected = (props: SegmentedButtonProps) => {
   if (typeof props.selected === 'string') return props.selected === props.id;
   else if (Array.isArray(props.selected)) return props.selected.includes(props.id);
   else return false;
+};
+
+export const getSegmentedButtonGroupStyles = () => {
+  const style = {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 40,
+    width: 320,
+    borderRadius: 20,
+  } as const;
+  return style;
 };

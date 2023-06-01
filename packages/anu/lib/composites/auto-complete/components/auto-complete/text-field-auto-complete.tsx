@@ -15,8 +15,6 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
   const overrideStyle = getOverridingStyleForBaseVariant();
 
   const {
-    resultContainerStyle,
-    autoCompleteContainerStyle,
     data,
     caseSensitive,
     filterOnChange,
@@ -32,8 +30,6 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
     ...textFieldProps
   } = props;
 
-  const dropDownButtonStyle = getDropDownButtonStyle();
-
   /**
    * component for the dropdown button of the auto-complete field
    *
@@ -41,18 +37,20 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
    * @param showButton - if true, displays the button
    */
   const DropDownButton = ({ showButton }: { showButton: boolean }) => {
+    const style = getDropDownButtonStyle(theme, props);
     return showButton ? (
       <IconButton
         icon={{
           name: showResults ?? isOpen ? 'arrow-drop-up' : 'arrow-drop-down',
-          props: { style: { color: props.error || disabled ? 'inherit' : theme.colors.$onSurfaceVariant } },
+          props: {
+            style,
+          },
         }}
         disabled={disabled}
-        type='standard'
-        style={dropDownButtonStyle}
+        variant='standard'
         pressableProps={{
           style: {
-            padding: 1,
+            padding: 0,
           },
         }}
         onPress={(event) => {
@@ -66,7 +64,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
   };
 
   const getStyle = () => {
-    let style = { ...textFieldProps.style, position: 'relative' as const };
+    let style = { width: '100%', position: 'relative' as const };
 
     if (variant === 'base') style = { ...overrideStyle, ...style };
 
@@ -77,8 +75,7 @@ const TextFieldAutoComplete = (props: AutoCompleteProps) => {
     <TextField
       {...textFieldProps}
       disabled={disabled}
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={getStyle()}
+      style={{ ...getStyle(), ...textFieldProps.style }}
       variant={variant === 'base' ? 'outlined' : variant}
       ref={textInputReference}
       leadingIcon={
