@@ -122,8 +122,8 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
         { duration: DURATION },
       );
 
-      transitionLineHeight.value = withTiming(lineHeights[9], { duration: DURATION });
-      transitionFontSize.value = withTiming(fontSizes[9], { duration: DURATION });
+      transitionLineHeight.value = withTiming(lineHeights[9] ?? 16, { duration: DURATION });
+      transitionFontSize.value = withTiming(fontSizes[9] ?? 12, { duration: DURATION });
       transitionLetterSpacing.value = withTiming(0.4, { duration: DURATION });
     }, DELAY);
   };
@@ -139,8 +139,8 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
       transitionLeftCoordinate.value = withTiming(0, { duration: DURATION });
 
       transitionLineHeight.value = withTiming(16, { duration: DURATION });
-      transitionFontSize.value = withTiming(style.fontSize, { duration: DURATION });
-      transitionLetterSpacing.value = withTiming(style.letterSpacing, { duration: DURATION });
+      transitionFontSize.value = withTiming(style.fontSize as number, { duration: DURATION });
+      transitionLetterSpacing.value = withTiming(style.letterSpacing as number, { duration: DURATION });
     }, DELAY);
   };
 
