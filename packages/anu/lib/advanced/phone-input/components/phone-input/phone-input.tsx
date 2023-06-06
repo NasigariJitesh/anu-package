@@ -242,7 +242,11 @@ const PhoneInput = forwardRef<PhoneInputReferenceProps, PhoneInputProps>((props,
       showResults={showCountries}
       toggleShowResults={toggleShowCountries}
       error={error || otherAutoCompleteProps.error}
-      errorMessage={[...errorMessage, ...getCustomErrorMessages()]}
+      errorMessage={
+        finalProps.noDefaultErrorMessage
+          ? [...getCustomErrorMessages()]
+          : [...errorMessage, ...getCustomErrorMessages()]
+      }
       flatListProps={{
         ...flatListProps,
         renderItem: (info) => <CountryItem {...info} setObject={setCountryCodeObject} />,

@@ -68,7 +68,7 @@ export function generateTheme<T>({
 }: ThemeGenerationProps<T>): AnuTheme<T> {
   const generatedColors = generateMaterialColors(color, colorScheme);
   //@ts-ignore
-  const generatedTheme = makeTheme({ ...theme, colors: generatedColors });
+  const generatedTheme = makeTheme({ ...theme, colors: generatedColors, colorScheme });
 
   return extendDefaultTheme === false ? generatedTheme : lodash.merge(getDefaultTheme(colorScheme), generatedTheme);
 }
