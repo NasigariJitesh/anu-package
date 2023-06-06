@@ -135,7 +135,7 @@ const IndividualOTPField = ({
         value={value}
         secureTextEntry={inputProps.hideValue ?? false}
         variant={inputProps.variant}
-        style={{ height: inputProps.size ?? 40, width: inputProps.size ?? 40 }}
+        style={{ ...inputProps.style, height: inputProps.size ?? 40, width: inputProps.size ?? 40 }}
         textStyle={getCombinedStylesForText(textInputStyle, inputProps.textStyle)}
         label=''
         disableLabelAnimation
