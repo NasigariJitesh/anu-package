@@ -59,6 +59,7 @@ export default function Example() {
   const [text, setText] = useState('');
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onDismiss = useCallback(() => {
     setVisible(false);
@@ -136,6 +137,8 @@ export default function Example() {
           flatListProps={{ renderItem: ListRenderItem, style: { maxHeight: 140 } }}
         />
       </Container>
+
+      <Button.Tonal onPress={() => setLoading((previous) => !previous)} title='Loading test' isLoading={loading} />
 
       <TextArea
         value={text}

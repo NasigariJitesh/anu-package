@@ -29,6 +29,7 @@ const nextConfig = {
     'expo-linear-gradient',
     'expo-haptics',
     'expo-modules-core',
+    'expo-image-manipulator',
   ],
   async redirects() {
     return [
