@@ -48,6 +48,11 @@ export interface CommonChipProps extends Omit<React.ComponentProps<typeof Pressa
    * If true, the component is disabled.
    */
   disabled?: boolean;
+
+  dataSets?: {
+    chipDataSet?: Record<string, any>;
+    labelDataSet?: Record<string, any>;
+  };
 }
 
 type Icon = { name: IconSource; containerProps?: ViewProps; iconProps?: Omit<IconProps, 'name'> };
