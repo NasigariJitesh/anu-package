@@ -1,5 +1,5 @@
 import { useTheme } from 'anu/config';
-import { Icon, Image, Typography } from 'anu/lib/primitives';
+import { Icon, Typography } from 'anu/lib/primitives';
 import { memo, useState } from 'react';
 import { Platform } from 'react-native';
 
@@ -27,13 +27,12 @@ const CountryFlag = ({
     return <Icon name='language' size={25} style={iconStyle} />;
 
   return !flagLoadingError && (Platform.OS === 'web' || Platform.OS === 'windows') ? (
-    <Image
-      alt={currentCountry.alt}
-      source={{ uri: currentCountry.flag }}
-      onError={() => setFlagLoadingError(true)}
-      onPartialLoad={() => setFlagLoadingError(true)}
-      onLoad={() => setFlagLoadingError(false)}
+    <img
+      src={currentCountry?.flag}
+      alt={currentCountry?.alt}
       style={defaultSelectedFlagStyle}
+      onError={() => setFlagLoadingError(true)}
+      onLoad={() => setFlagLoadingError(false)}
     />
   ) : (
     <Typography.Body style={defaultSelectedEmojiStyle}>{currentCountry.emoji}</Typography.Body>
