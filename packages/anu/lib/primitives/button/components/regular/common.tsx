@@ -3,7 +3,7 @@ import { useTheme } from 'anu/config';
 import { Container, Icon, TouchableRipple } from 'anu/lib';
 import Typography from 'anu/lib/primitives/typography';
 import { useSx } from 'dripsy';
-import { GestureResponderEvent, PressableStateCallbackType } from 'react-native';
+import { ActivityIndicator, GestureResponderEvent, PressableStateCallbackType } from 'react-native';
 
 import { RegularButtonProps as ButtonProps } from '../../types';
 import { getButtonStyles, getLabelStyles } from '../../utils';
@@ -17,7 +17,14 @@ export const RenderComponent = (props: ButtonProps) => {
   const theme = useTheme();
 
   const { styles, stateLayerStyles } = getButtonStyles(props, theme);
-  const labelStyles = { ...getLabelStyles(props), color: styles.color as string };
+  const labelStyles = {
+    ...getLabelStyles(props),
+    color: styles.color as string,
+  };
+
+  const activityIndicatorStyle = {
+    marginHorizontal: 2,
+  };
 
   const generateStyles = (state: PressableStateCallbackType) => {
     return generateHoverStyles(state, stateLayerStyles, useSx);
@@ -33,7 +40,7 @@ export const RenderComponent = (props: ButtonProps) => {
           name={icon.name as never}
           {...icon.props}
           //@ts-expect-error reason: the style type will always be text style only
-          style={getCombinedStylesForText({ color: styles.color }, icon.props?.style)}
+          style={getCombinedStylesForText({ color: styles.color as string }, icon.props?.style)}
         />
       ) : (
         icon
@@ -42,8 +49,12 @@ export const RenderComponent = (props: ButtonProps) => {
   };
 
   return (
-    // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
-    <Container dataSet={props.dataSets?.containerDataSet} disableGutters style={styles}>
+    <Container
+      dataSet={props.dataSets?.containerDataSet}
+      disableGutters
+      // @ts-expect-error REASON: we get ts error but react native ignores hover related styles
+      style={styles}
+    >
       <TouchableRipple
         accessibilityRole='button'
         {...props.pressableProps}
@@ -56,6 +67,7 @@ export const RenderComponent = (props: ButtonProps) => {
       >
         <>
           {getIcon()}
+          {props.isLoading ? <ActivityIndicator style={activityIndicatorStyle} color={styles.color as string} /> : null}
           <Typography.Label
             dataSet={props.dataSets?.labelDataSet}
             selectable={false}

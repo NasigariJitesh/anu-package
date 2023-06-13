@@ -1,9 +1,10 @@
 import { getColorInRGBA } from 'anu/common/utils';
 import Compressor from 'compressorjs';
 import { DripsyFinalTheme } from 'dripsy';
+import { manipulateAsync, SaveFormat } from 'expo-image-manipulator';
 import { Accept } from 'react-dropzone';
 
-import { Config } from '../types';
+import { Config, ConfigNative } from '../types';
 
 const KILO_BYTE = 1000; // in bytes
 
@@ -31,6 +32,38 @@ export const compressFile = async (file: File, config?: Config): Promise<File | 
         });
       })
     : file;
+};
+
+export const compressFileNative = async (
+  file: File,
+  fileUri: string,
+  config?: ConfigNative,
+): Promise<{
+  compressedImage: File;
+  uri: string;
+}> => {
+  const { actions, saveOptions } = {
+    saveOptions: {
+      compress: 0.6,
+      base64: true,
+      format: SaveFormat.PNG,
+    },
+
+    ...config,
+  };
+
+  if (file.type.includes('image')) {
+    const compressedImage = await manipulateAsync(fileUri, actions, saveOptions);
+    const image = new File([compressedImage.uri], file.name, {
+      type: file.type,
+    });
+
+    const { uri } = compressedImage;
+
+    return { compressedImage: image, uri };
+  }
+
+  return { compressedImage: file, uri: fileUri };
 };
 
 export const convertToFile = (file: File | Blob, fileName: string) => {
@@ -69,7 +102,12 @@ export const getDropZoneStyles = (theme: DripsyFinalTheme) => {
     marginVertical: 4,
   } as const;
 
-  return { dropZoneStyle, divStyle, childrenContainerStyle, buttonContainerStyle };
+  return {
+    dropZoneStyle,
+    divStyle,
+    childrenContainerStyle,
+    buttonContainerStyle,
+  };
 };
 
 export const getUploadListStyles = (
