@@ -6,7 +6,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { DividerProps } from '../types';
-import { childrenContainerStyle, defaultTextStyle, getDividerStyle, getInnerContainerStyle } from '../utils';
+import { defaultTextStyle, getDividerStyle, getInnerContainerStyle } from '../utils';
 import { defaultProps } from './default';
 
 /**
@@ -25,19 +25,17 @@ const Divider = (props: DividerProps) => {
 
   return (
     <Container disableGutters style={containerStyle}>
-      <Container disableGutters style={getCombinedStylesForView(style, customStyle)} >
-        <Container disableGutters style={getInnerContainerStyle()}>
+      <Container disableGutters style={getCombinedStylesForView(style, customStyle)}>
+        {/* 
+        // @ts-expect-error the finalProps will be of Divider props  */}
+        <Container disableGutters style={getInnerContainerStyle(finalProps, theme)}>
           {finalProps.text ? (
             <Typography.Body style={getCombinedStylesForText(defaultTextStyle(theme), props.textStyle)}>
               {finalProps.text}
             </Typography.Body>
           ) : null}
 
-          {finalProps.children ? (
-            <Container disableGutters style={childrenContainerStyle(theme)}>
-              {finalProps.children}
-            </Container>
-          ) : null}
+          {finalProps.children}
         </Container>
       </Container>
     </Container>

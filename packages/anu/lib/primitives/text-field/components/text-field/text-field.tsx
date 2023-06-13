@@ -75,7 +75,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
         ? ({ paddingTop: variant === 'filled' && props.label && !props.disableLabelAnimation ? 14 : 0 } as const)
         : ({ height: 0 } as const);
 
-    const [height, setHeight] = useState(textFieldStyle.height as number);
+    const [leadingIconWidth, setLeadingIconWidth] = useState(0);
     const [errors, setErrors] = useState(getErrors(props.errorMessage));
 
     const focus = useCallback(() => {
@@ -91,12 +91,6 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
     }, [textInputReference]);
 
     useImperativeHandle(reference, () => ({ focus, blur }), [focus, blur]);
-
-    useEffect(() => {
-      pressableReference.current?.measure((_x, _y, _w, h) => {
-        setHeight(h);
-      });
-    }, []);
 
     useEffect(() => {
       if (errors?.length <= 0 && !finalProps.noDefaultErrorMessage) {
@@ -148,7 +142,13 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
           <Container disableGutters flexDirection='row' style={innerContainerStyle}>
             {/* TODO: Put the icon components in another file */}
             {finalProps.leadingIcon ? (
-              <Container disableGutters style={leadingIconContainerStyle}>
+              <Container
+                disableGutters
+                style={leadingIconContainerStyle}
+                onLayout={(event) => {
+                  setLeadingIconWidth(event.nativeEvent.layout.width);
+                }}
+              >
                 {finalProps.leadingIcon}
               </Container>
             ) : null}
@@ -168,13 +168,13 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
               ) : (
                 <TextFieldLabel
                   {...finalProps}
-                  height={height}
+                  leadingIconWidth={leadingIconWidth}
                   textInputRef={textInputReference}
                   states={focusState}
                   value={value}
                   isFocused={isTextFieldVisible}
                   toggleIsFocused={toggleTextFieldVisible}
-                  backgroundColor={finalProps.labelBackgroundColor}
+                  backgroundColor={finalProps.labelBackgroundColor ?? textFieldStyle.backgroundColor}
                 />
               )}
               <TextInput

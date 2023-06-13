@@ -224,16 +224,22 @@ const getColor = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
  */
 export const defaultTextStyle = (theme: DripsyFinalTheme) =>
   ({
-    backgroundColor: theme.colors?.$background as never,
     paddingHorizontal: 4,
     color: theme.colors?.$onBackground as never,
     textAlignVertical: 'center',
+    overflow: 'visible',
+    height: 20,
   } as const);
 
-export const childrenContainerStyle = (theme: DripsyFinalTheme) => {
-  return { paddingHorizontal: 4, backgroundColor: theme.colors.$background };
-};
-
-export const getInnerContainerStyle = () => {
-  return { position: 'absolute' as const };
+export const getInnerContainerStyle = (props: DividerProps, theme: DripsyFinalTheme) => {
+  return {
+    position: 'absolute' as const,
+    backgroundColor: StyleSheet.flatten(props.style)?.backgroundColor ?? theme.colors.$surface,
+    overflow: 'visible' as const,
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+    ...(props.orientation === 'vertical'
+      ? { width: props.thickness, left: props.thickness ? -props.thickness : 0 }
+      : { height: props.thickness, top: props.thickness ? -props.thickness : 0 }),
+  };
 };
