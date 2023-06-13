@@ -82,6 +82,7 @@ const StepIndicatorHeaderItem = (props: StepHeaderItemProps) => {
                   {...(props.vertical
                     ? { orientation: 'vertical', variant: 'full-height', style: { height: '100%', width: 24 } }
                     : { orientation: 'horizontal', variant: 'full-width' })}
+                    
                 />
               )}
         </Container>
