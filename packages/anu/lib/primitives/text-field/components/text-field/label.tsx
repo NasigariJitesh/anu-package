@@ -5,6 +5,7 @@ import { useTheme } from 'anu/config';
 import { DripsyFinalTheme } from 'dripsy';
 import { useEffect } from 'react';
 import { StyleProp, TextStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { Container } from '../../../layout';
@@ -26,13 +27,13 @@ const selectLabelColorBasedOnState = (props: TextInputLabelProps, theme: DripsyF
 };
 
 const selectLabelBackgroundColor = (props: TextInputLabelProps, theme: DripsyFinalTheme) => {
-  if (!props.isFocused && !props.value) return;
+  if ((!props.isFocused && !props.value) || props.disabled) return;
 
-  if (props.backgroundColor) return props.backgroundColor;
+  if (props.backgroundColor) return props.backgroundColor as string;
 
   if (props.variant === 'outlined') return theme.colors.$surface;
 
-  if (!props.disabled) return theme.colors.$surfaceVariant;
+  return theme.colors.$surfaceVariant;
 };
 
 const getExtendedLabelStyles = (
@@ -67,10 +68,17 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
   const transitionLineHeight = useSharedValue(style.fontSize as number);
   const transitionLetterSpacing = useSharedValue(style.letterSpacing as number);
 
+  const customTextStyle = StyleSheet.flatten(props.textStyle);
+  const customLabelStyle = StyleSheet.flatten(props.labelStyle);
+
   const textStyles = {
-    paddingHorizontal: 2,
+    paddingHorizontal: 4,
     maxWidth: '100%',
     color: props.placeholderTextColor || selectLabelColorBasedOnState(props, theme),
+    overflow: 'visible' as const,
+    //reason- it is getting overridden when active even after passing along with custom styles,
+    fontFamily: customLabelStyle?.fontFamily,
+    height: 16,
   };
 
   const animatedStyle = {
@@ -78,18 +86,23 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
     zIndex: 10,
     flex: 1,
     width: '100%',
+    overflow: 'visible' as const,
+    paddingHorizontal: props.isFocused || props.value ? 16 : customTextStyle?.paddingHorizontal ?? 16,
+    ...(props.variant === 'outlined' && (props.isFocused || props.value) ? { height: 1 } : {}),
   };
 
   const containerStyle = {
     backgroundColor: selectLabelBackgroundColor(props, theme),
     ...(props.variant === 'filled' ? { flex: 1 } : {}),
+    ...(props.variant === 'outlined' && (props.isFocused || props.value)
+      ? ({ height: 1, justifyContent: 'center', overflow: 'visible' } as const)
+      : {}),
   };
 
   const animatedViewStyle = useAnimatedStyle(() => {
     return {
       top: transitionTopCoordinate.value,
       left: transitionLeftCoordinate.value,
-      paddingHorizontal: 16,
       flexDirection: 'row',
     };
   }, [transitionTopCoordinate, transitionTopCoordinate]);
@@ -107,6 +120,10 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
     else transitionOut();
 
     if (props.value) transitionIn();
+
+    if (props.leadingIconWidth > 0 && props.variant === 'outlined') {
+      transitionLeftCoordinate.value = 0 - props.leadingIconWidth;
+    }
   }, [props]);
 
   /**
@@ -114,16 +131,15 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
    */
   const transitionIn = () => {
     setTimeout(() => {
-      transitionTopCoordinate.value = withTiming(props.variant === 'outlined' ? -9 : 4, {
+      transitionTopCoordinate.value = withTiming(props.variant === 'outlined' ? -1 : 4, {
         duration: DURATION,
       });
-      transitionLeftCoordinate.value = withTiming(
-        props.leadingIcon && props.variant === 'outlined' ? -props.height * 0.5 : 0,
-        { duration: DURATION },
-      );
+      transitionLeftCoordinate.value = withTiming(props.variant === 'outlined' ? 0 - props.leadingIconWidth : 0, {
+        duration: DURATION,
+      });
 
-      transitionLineHeight.value = withTiming(lineHeights[9], { duration: DURATION });
-      transitionFontSize.value = withTiming(fontSizes[9], { duration: DURATION });
+      transitionLineHeight.value = withTiming(lineHeights[9] ?? 16, { duration: DURATION });
+      transitionFontSize.value = withTiming(fontSizes[9] ?? 12, { duration: DURATION });
       transitionLetterSpacing.value = withTiming(0.4, { duration: DURATION });
     }, DELAY);
   };
@@ -139,8 +155,8 @@ const TextFieldLabel = (props: TextInputLabelProps) => {
       transitionLeftCoordinate.value = withTiming(0, { duration: DURATION });
 
       transitionLineHeight.value = withTiming(16, { duration: DURATION });
-      transitionFontSize.value = withTiming(style.fontSize, { duration: DURATION });
-      transitionLetterSpacing.value = withTiming(style.letterSpacing, { duration: DURATION });
+      transitionFontSize.value = withTiming(style.fontSize as number, { duration: DURATION });
+      transitionLetterSpacing.value = withTiming(style.letterSpacing as number, { duration: DURATION });
     }, DELAY);
   };
 

@@ -2552,6 +2552,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@material/material-color-utilities@npm:^0.2.5":
+  version: 0.2.6
+  resolution: "@material/material-color-utilities@npm:0.2.6"
+  checksum: fe6e380ee4ede2d238a95962729cf93a1460b4dc6e4f61017db6e4f1d42ef65399141a04b01522b91f78a498adcbe3222b148514a6835f8a5bc15614bd925da4
+  languageName: node
+  linkType: hard
+
 "@motionone/animation@npm:^10.12.0":
   version: 10.15.1
   resolution: "@motionone/animation@npm:10.15.1"
@@ -3988,6 +3995,7 @@ __metadata:
   resolution: "anu@workspace:packages/anu"
   dependencies:
     "@gorhom/portal": ^1.0.14
+    "@material/material-color-utilities": ^0.2.5
     "@testing-library/jest-native": ^5.4.2
     "@testing-library/react-native": ^11.5.4
     "@types/jest": ^29.4.0
@@ -3999,6 +4007,7 @@ __metadata:
     expo-blur: ^12.2.2
     expo-document-picker: 11.2.2
     expo-haptics: ~12.0.1
+    expo-image-manipulator: ^11.1.1
     expo-linear-gradient: ^12.1.2
     jest: ^29.5.0
     jest-expo: ^48.0.2
@@ -6906,6 +6915,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-image-loader@npm:~4.2.0":
+  version: 4.2.0
+  resolution: "expo-image-loader@npm:4.2.0"
+  peerDependencies:
+    expo: "*"
+  checksum: eb35c46bf8da9115fc233b2c028b57e845e6921ea35cca3c9a800efbb63f7b0970c44f987c3934fffbcc9ec3d37403983cf8def06b72ad581793488461ee7aff
+  languageName: node
+  linkType: hard
+
+"expo-image-manipulator@npm:^11.1.1":
+  version: 11.2.0
+  resolution: "expo-image-manipulator@npm:11.2.0"
+  dependencies:
+    expo-image-loader: ~4.2.0
+  peerDependencies:
+    expo: "*"
+  checksum: e735f8bd378610435d17a13607b36d9c7591b1386318c3e002a0fc1a3637be8fd714fb8177156a02c7c0bf932dfe319595632c439663d3bfb019f1958c481761
+  languageName: node
+  linkType: hard
+
 "expo-keep-awake@npm:~12.0.1":
   version: 12.0.1
   resolution: "expo-keep-awake@npm:12.0.1"
@@ -7135,13 +7164,13 @@ __metadata:
   linkType: hard
 
 "fast-xml-parser@npm:^4.0.12":
-  version: 4.2.2
-  resolution: "fast-xml-parser@npm:4.2.2"
+  version: 4.2.4
+  resolution: "fast-xml-parser@npm:4.2.4"
   dependencies:
     strnum: ^1.0.5
   bin:
     fxparser: src/cli/cli.js
-  checksum: f0e687927ddc11b2ba9e434d8bf77ef759b6692639dd2dd731e2f30201319e7c70dec08a103dd67a1af7a27f176246502d9d0f5325b5b5b99ab49665fa876857
+  checksum: d3b4d0c0152c09f98def792769fca6bb3fa1d597f9745d9564451c239089bd86bdf573c9263b4944860028cb7edb81752d64399c1aff8b87c9225ecef96905f7
   languageName: node
   linkType: hard
 

@@ -122,7 +122,6 @@ export default function List<T>(props: ListProps<T>) {
   );
 
   const handleScroll = useAnimatedScrollHandler((event) => {
-    console.log('scroll');
     scrollY.value = event.contentOffset.y;
   });
 

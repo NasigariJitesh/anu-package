@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import { useTheme } from 'anu/config';
 import { Icon, Typography } from 'anu/lib/primitives';
-import { memo } from 'react';
+import { memo, useState } from 'react';
+import { Platform } from 'react-native';
 
 import { getColorInRGBA } from '../../../../../common/utils';
 import { CountryCodeObject } from '../../types';
@@ -15,7 +17,9 @@ const CountryFlag = ({
   currentCountry?: CountryCodeObject;
   disabled?: boolean;
 }) => {
-  const { defaultSelectedEmojiStyle } = getDefaultStyles();
+  const [flagLoadingError, setFlagLoadingError] = useState(false);
+
+  const { defaultSelectedEmojiStyle, defaultSelectedFlagStyle } = getDefaultStyles();
   const theme = useTheme();
 
   const iconStyle = { color: disabled ? getColorInRGBA(theme.colors.$onSurface, 38) : theme.colors.$onSurfaceVariant };
@@ -23,7 +27,17 @@ const CountryFlag = ({
   if (currentCountry === undefined || !value.includes(currentCountry.countryCode))
     return <Icon name='language' size={25} style={iconStyle} />;
 
-  return <Typography.Body style={defaultSelectedEmojiStyle}>{currentCountry.emoji}</Typography.Body>;
+  return !flagLoadingError || Platform.OS === 'windows' ? (
+    <img
+      src={currentCountry?.flag}
+      alt={currentCountry?.alt}
+      style={defaultSelectedFlagStyle}
+      onError={() => setFlagLoadingError(true)}
+      onLoad={() => setFlagLoadingError(false)}
+    />
+  ) : (
+    <Typography.Body style={defaultSelectedEmojiStyle}>{currentCountry.emoji}</Typography.Body>
+  );
 };
 
 export default memo(CountryFlag);

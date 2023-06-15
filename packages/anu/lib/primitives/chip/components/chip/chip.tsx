@@ -35,6 +35,7 @@ const Chip = (props: Partial<ChipProps> & { value: string }) => {
         onPress={(event: GestureResponderEvent) => {
           if (restOfTheProps.onPress) restOfTheProps.onPress(event);
         }}
+        dataSet={restOfTheProps.dataSets?.chipDataSet}
         style={generateStyles}
         disabled={props.disabled}
       >
@@ -42,7 +43,7 @@ const Chip = (props: Partial<ChipProps> & { value: string }) => {
           {/*
           @ts-expect-error */}
           <LeadingIcon {...restOfTheProps} />
-          <Typography.Label style={getCombinedStylesForText(textStyle, props.labelStyle)} size='large'>
+          <Typography.Label dataSet={restOfTheProps.dataSets?.labelDataSet} style={getCombinedStylesForText(textStyle, props.labelStyle)} size='large'>
             {props.value}
           </Typography.Label>
           {/*

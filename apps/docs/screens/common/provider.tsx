@@ -1,6 +1,6 @@
 import { AnuProvider } from 'anu/common/context';
 import { ReactChildren } from 'anu/common/types';
-import { makeTheme, PortalProvider } from 'anu/config';
+import { generateTheme, PortalProvider } from 'anu/config';
 import { AnuSnackbarProvider, SideSheet, SideSheetReferenceProps } from 'anu/lib';
 import { AnuLocalizationProvider } from 'anu/lib/advanced/smart-localization';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
@@ -80,6 +80,13 @@ export default function RootLayout(props: {
     setBackgroundColor(isDarkTheme ? '#fffbff' : '#1B1B1F');
   };
 
+  const MyTheme = generateTheme({
+    theme: {},
+    color: { primary: '#090C7D', secondary: '#7D0946', tertiary: '#7D7A09', neutral: '#929094' },
+    colorScheme: isDarkTheme ? 'dark' : 'light',
+    extendDefaultTheme: true,
+  });
+
   const toggleSidebar = () => {
     if (reference.current?.isActive()) {
       reference.current?.scrollTo(0);
@@ -87,7 +94,7 @@ export default function RootLayout(props: {
   };
 
   return (
-    <AnuProvider ssr theme={makeTheme({})} mode={isDarkTheme ? 'dark' : 'light'}>
+    <AnuProvider ssr theme={MyTheme}>
       <AnuLocalizationProvider locales={Locales} default={locale?.includes('fr') ? 'fr' : 'en'}>
         <PortalProvider>
           <AnuSnackbarProvider>
