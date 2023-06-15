@@ -531,6 +531,22 @@ const Sidebar = () => {
                 components: [],
               },
               {
+                title: 'leftSideBar:step-indicator',
+                link: '/components/step-indicator',
+                components: [
+                  {
+                    title: 'leftSideBar:step-indicator',
+                    link: '/components/step-indicator',
+                    variants: [],
+                  },
+                  {
+                    title: 'leftSideBar:step',
+                    link: '/components/step-indicator/step',
+                    variants: [],
+                  },
+                ],
+              },
+              {
                 title: 'leftSideBar:switch',
                 link: '/components/switch',
                 components: [],
