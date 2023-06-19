@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { AutoComplete, Container, Options, TouchableRipple, Typography } from 'anu/lib';
 import { useState } from 'react';
+import { Pressable } from 'react-native';
 
 const data = [
   {
@@ -53,25 +54,73 @@ const Item = ({ item, onPress }: { item: Options; onPress: () => void }) => {
   );
 };
 
+const ListRenderItem = ({ item, setValue }: { item: Options; setValue: (text: string) => void }) => {
+  return <Item onPress={() => setValue(item.value as string)} item={item} />;
+};
+
+const ListEmptyComponent = () => {
+  return (
+    <Pressable style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}>
+      <Typography.Body>No more Results</Typography.Body>
+    </Pressable>
+  );
+};
+
 const AutoCompleteScreen = () => {
   const [text, setText] = useState('');
-
-  const ListRenderItem = ({ item }: { item: Options }) => {
-    return <Item onPress={() => setText(item.value as string)} item={item} />;
-  };
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('');
 
   return (
-    <Container disableGutters style={{ width: '100%', padding: 10, flex: 1 }}>
-      <AutoComplete
-        variant='outlined'
-        data={data}
-        value={text}
-        onChangeText={(value: string) => {
-          setText(value);
-        }}
-        label='Auto Complete'
-        flatListProps={{ renderItem: ListRenderItem }}
-      />
+    <Container style={{ width: '100%', flex: 1 }}>
+      <Container disableGutters style={{ width: '100%', height: 150, padding: 10, zIndex: 120 }}>
+        <Typography.Title style={{ marginBottom: 5 }}>Outlined</Typography.Title>
+        <AutoComplete
+          variant='outlined'
+          data={data}
+          value={text}
+          onChangeText={(value: string) => {
+            setText(value);
+          }}
+          label='Auto Complete'
+          flatListProps={{
+            renderItem: ({ item }: { item: Options }) => <ListRenderItem item={item} setValue={setText} />,
+            ListEmptyComponent: ListEmptyComponent,
+          }}
+        />
+      </Container>
+      <Container disableGutters style={{ width: '100%', height: 150, padding: 10, zIndex: 110 }}>
+        <Typography.Title style={{ marginBottom: 5 }}>Filled</Typography.Title>
+        <AutoComplete
+          variant='filled'
+          data={data}
+          value={text1}
+          onChangeText={(value: string) => {
+            setText1(value);
+          }}
+          label='Auto Complete'
+          flatListProps={{
+            renderItem: ({ item }: { item: Options }) => <ListRenderItem item={item} setValue={setText1} />,
+            ListEmptyComponent: ListEmptyComponent,
+          }}
+        />
+      </Container>
+      <Container disableGutters style={{ width: '100%', height: 150, padding: 10, zIndex: 100 }}>
+        <Typography.Title style={{ marginBottom: 5 }}>Base</Typography.Title>
+        <AutoComplete
+          variant='base'
+          data={data}
+          value={text2}
+          onChangeText={(value: string) => {
+            setText2(value);
+          }}
+          label='Auto Complete'
+          flatListProps={{
+            renderItem: ({ item }: { item: Options }) => <ListRenderItem item={item} setValue={setText2} />,
+            ListEmptyComponent: ListEmptyComponent,
+          }}
+        />
+      </Container>
     </Container>
   );
 };

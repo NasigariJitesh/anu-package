@@ -48,7 +48,7 @@ const MenuScreen = () => {
       <Menu
         isOpen={open1}
         onMenuToggle={(value) => {
-          setOpen(value);
+          setOpen1(value);
         }}
         component={
           <Button.Filled

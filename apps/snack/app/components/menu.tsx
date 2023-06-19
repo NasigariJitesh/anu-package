@@ -6,6 +6,8 @@ const MenuScreen = () => {
   const [open, setOpen] = useState(false);
   return (
     <Container>
+      <Typography.Title style={{ marginBottom: 5, marginTop: 10 }}>Menu</Typography.Title>
+
       <Menu
         isOpen={open}
         onMenuToggle={(value) => {
@@ -17,7 +19,6 @@ const MenuScreen = () => {
             onPress={() => {
               setOpen(true);
             }}
-            style={{ margin: 10 }}
           />
         }
       >

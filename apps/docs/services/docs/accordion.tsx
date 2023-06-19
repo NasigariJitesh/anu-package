@@ -117,7 +117,7 @@ export const accordionDocumentation: ContentValues = {
     },
     {
       name: 'accordionDocumentation:example2-name',
-      id: 'default',
+      id: 'support-text',
       component: <Example2 />,
       code: `<Accordion.Container title={<Accordion.Header supportingText='Supporting Text'>Title</Accordion.Header>}>
       <Accordion.Children>
@@ -181,6 +181,10 @@ export const accordionIndex: HeadingProps = {
     {
       title: 'accordionDocumentation:example1-name',
       link: '#default',
+    },
+    {
+      title: 'accordionDocumentation:example2-name',
+      link: '#support-text',
     },
     {
       link: '#props',

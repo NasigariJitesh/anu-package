@@ -45,36 +45,62 @@ const data = [
   },
 ];
 
+const Item = ({ item, onPress }: { item: Options; onPress: () => void }) => {
+  return (
+    <TouchableRipple style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }} onPress={onPress}>
+      <Typography.Body>{item.value as string}</Typography.Body>
+    </TouchableRipple>
+  );
+};
+
+const ListRenderItem = ({ item, setValue }: { item: Options; setValue: (text: string) => void }) => {
+  return <Item onPress={() => setValue(item.value as string)} item={item} />;
+};
+
 const SearchScreen = () => {
   const [text, setText] = useState('');
-
-  const ListRenderItem = ({ item }: { item: Options }) => {
-    return (
-      <TouchableRipple
-        style={{ paddingVertical: 10, paddingHorizontal: 5, width: '100%' }}
-        onPress={() => setText(item.value as string)}
-      >
-        <Typography.Body>{item.value as string}</Typography.Body>
-      </TouchableRipple>
-    );
-  };
+  const [text1, setText1] = useState('');
 
   return (
-    <Container disableGutters style={{ margin: 10 }}>
-      <Search
-        value={text}
-        onChangeText={(value: string) => {
-          setText(value);
-        }}
-        label='Hinted search Text'
-        filterOnChange={(value: string) =>
-          data.filter((item) => item.value.toLowerCase().includes(value.toLowerCase()))
-        }
-        flatListProps={{ renderItem: ListRenderItem }}
-        data={data}
-        leadingIcon={<Icon name='search' />}
-        type='docked'
-      />
+    <Container disableGutters style={{ flex: 1, width: '100%' }}>
+      <Container disableGutters style={{ flex: 1, padding: 10, width: '100%', zIndex: 100 }}>
+        <Typography.Title style={{ marginBottom: 5 }}>Docked Search</Typography.Title>
+        <Search
+          value={text}
+          onChangeText={(value: string) => {
+            setText(value);
+          }}
+          label='Hinted search Text'
+          filterOnChange={(value: string) =>
+            data.filter((item) => item.value.toLowerCase().includes(value.toLowerCase()))
+          }
+          flatListProps={{
+            renderItem: ({ item }: { item: Options }) => <ListRenderItem item={item} setValue={setText} />,
+          }}
+          data={data}
+          leadingIcon={<Icon name='search' />}
+          type='docked'
+        />
+      </Container>
+      <Container disableGutters style={{ flex: 1, padding: 10, width: '100%', zIndex: 90 }}>
+        <Typography.Title style={{ marginBottom: 5 }}>Full Screen Search</Typography.Title>
+        <Search
+          value={text1}
+          onChangeText={(value: string) => {
+            setText1(value);
+          }}
+          label='Hinted search Text'
+          filterOnChange={(value: string) =>
+            data.filter((item) => item.value.toLowerCase().includes(value.toLowerCase()))
+          }
+          flatListProps={{
+            renderItem: ({ item }: { item: Options }) => <ListRenderItem item={item} setValue={setText1} />,
+          }}
+          data={data}
+          leadingIcon={<Icon name='search' />}
+          type='full-screen'
+        />
+      </Container>
     </Container>
   );
 };

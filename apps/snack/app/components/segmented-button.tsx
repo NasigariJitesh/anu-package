@@ -1,11 +1,12 @@
-import { Container, SegmentedButton, SegmentedButtonGroup } from 'anu/lib';
+/* eslint-disable react-native/no-inline-styles */
+import { Container, SegmentedButton, SegmentedButtonGroup, Typography } from 'anu/lib';
 import React from 'react';
-import { StyleSheet } from 'react-native';
 
 const SegmentedButtonScreen = () => {
   return (
-    <Container>
-      <SegmentedButtonGroup multiSelect containerStyle={styles.SegmentedButton}>
+    <Container style={{ padding: 10, flex: 1, width: '100%' }}>
+      <Typography.Title style={{ marginBottom: 5 }}>Segmented Button</Typography.Title>
+      <SegmentedButtonGroup multiSelect containerStyle={{ width: '100%' }}>
         <SegmentedButton id='segmentedButton1' title='Button 1' />
         <SegmentedButton id='segmentedButton2' title='Button 2' />
         <SegmentedButton id='segmentedButton3' title='Button 3' icon={{ name: 'person' }} />
@@ -16,9 +17,3 @@ const SegmentedButtonScreen = () => {
 };
 
 export default SegmentedButtonScreen;
-
-const styles = StyleSheet.create({
-  SegmentedButton: {
-    margin: 10,
-  },
-});
