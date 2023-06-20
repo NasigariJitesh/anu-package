@@ -5,7 +5,7 @@ import React from 'react';
 
 const AccordionScreen = () => {
   return (
-    <Container style={{ width: '100%', padding: 10 }}>
+    <Container style={{ width: '100%', padding: 10, flex: 1 }}>
       <Typography.Title style={{ marginBottom: 5 }}>Accordion</Typography.Title>
       <Accordion.Container title={<Accordion.Header>Title 1</Accordion.Header>}>
         <Accordion.Children>
