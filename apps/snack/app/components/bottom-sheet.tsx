@@ -6,7 +6,8 @@ const BottomSheetScreen = () => {
   const bottomSheetReference = useRef<BottomSheetReferenceProps | null>(null);
 
   return (
-    <Container disableGutters style={{ width: '100%' }}>
+    <Container style={{ width: '100%', padding: 10 }}>
+      <Typography.Title style={{ marginBottom: 5 }}>Bottom Sheet</Typography.Title>
       <Button.Filled
         title={'Open Bottom Sheet'}
         onPress={() => {

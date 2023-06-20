@@ -220,15 +220,17 @@ const getColor = (props: Partial<DividerProps>, theme: DripsyFinalTheme) => {
 /**
  * Default text style
  *
+ * @param props
  *  @param {DripsyFinalTheme} theme - dripsy theme
  */
-export const defaultTextStyle = (theme: DripsyFinalTheme) =>
+export const defaultTextStyle = (props: DividerProps, theme: DripsyFinalTheme) =>
   ({
     paddingHorizontal: 4,
     color: theme.colors?.$onBackground as never,
     textAlignVertical: 'center',
+    textAlign: 'center',
     overflow: 'visible',
-    height: 20,
+    ...(props.orientation === 'horizontal' ? { height: 20 } : { width: 20 }),
   } as const);
 
 export const getInnerContainerStyle = (props: DividerProps, theme: DripsyFinalTheme) => {

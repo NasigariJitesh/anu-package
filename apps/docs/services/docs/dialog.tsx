@@ -116,9 +116,9 @@ const Example3 = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor
             sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
           </Typography.Body>
-          <Divider  color={theme.colors?.$onSurfaceVariant as string} />
+          <Divider color={theme.colors?.$onSurfaceVariant as string} />
           <FlatList data={data} keyExtractor={(item) => item.label} renderItem={RenderItem} style={{ width: '100%' }} />
-          <Divider  color={theme.colors?.$onSurfaceVariant as string} />
+          <Divider color={theme.colors?.$onSurfaceVariant as string} />
         </DialogContent>
         <DialogActions justify='flex-end'>
           <Button.Text title='Action 1' />
@@ -176,7 +176,7 @@ const Example4 = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor
             sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
           </Typography.Body>
-          <Divider  color={theme.colors?.$onSurfaceVariant as string} />
+          <Divider color={theme.colors?.$onSurfaceVariant as string} />
           <FlatList
             data={data}
             keyExtractor={(item) => item.label}
@@ -184,7 +184,7 @@ const Example4 = () => {
             style={{ width: '100%', maxHeight: 220 }}
             showsVerticalScrollIndicator={false}
           />
-          <Divider  color={theme.colors?.$onSurfaceVariant as string} style={{ marginVertical: 0 }} />
+          <Divider color={theme.colors?.$onSurfaceVariant as string} style={{ marginVertical: 0 }} />
         </DialogContent>
         <DialogActions justify='flex-end'>
           <Button.Text title='Action 1' />
@@ -244,20 +244,22 @@ const Example5 = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor
             sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
           </Typography.Body>
-          <TextField
-            variant='outlined'
-            value={text1}
-            onChangeText={setText1}
-            style={{ backgroundColor: 'transparent', margin: 15, width: 250 }}
-            labelBackgroundColor={theme.colors?.$surfaceContainerHigh as string}
-          />
-          <TextField
-            variant='outlined'
-            value={text}
-            onChangeText={setText}
-            style={{ backgroundColor: 'transparent', margin: 15, width: 250 }}
-            labelBackgroundColor={theme.colors?.$surfaceContainerHigh as string}
-          />
+          <Container disableGutters style={{ height: 180 }}>
+            <TextField
+              variant='outlined'
+              value={text1}
+              onChangeText={setText1}
+              style={{ backgroundColor: 'transparent', marginVertical: 15, width: 250 }}
+              labelBackgroundColor={theme.colors?.$surfaceContainerHigh as string}
+            />
+            <TextField
+              variant='outlined'
+              value={text}
+              onChangeText={setText}
+              style={{ backgroundColor: 'transparent', marginVertical: 15, width: 250 }}
+              labelBackgroundColor={theme.colors?.$surfaceContainerHigh as string}
+            />
+          </Container>
           <Typography.Body>Title</Typography.Body>
           <FlatList
             data={data}

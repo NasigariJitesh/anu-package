@@ -30,7 +30,8 @@ const Divider = (props: DividerProps) => {
         // @ts-expect-error the finalProps will be of Divider props  */}
         <Container disableGutters style={getInnerContainerStyle(finalProps, theme)}>
           {finalProps.text ? (
-            <Typography.Body style={getCombinedStylesForText(defaultTextStyle(theme), props.textStyle)}>
+            // @ts-expect-error the finalProps will be of Divider props
+            <Typography.Body style={getCombinedStylesForText(defaultTextStyle(finalProps, theme), props.textStyle)}>
               {finalProps.text}
             </Typography.Body>
           ) : null}

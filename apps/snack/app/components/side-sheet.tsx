@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-native/no-color-literals */
-import { Button, Container, SideSheet, SideSheetReferenceProps } from 'anu/lib';
+import { Button, Container, SideSheet, SideSheetReferenceProps, Typography } from 'anu/lib';
 import React, { useRef } from 'react';
 
 const ContainerScreen = () => {
@@ -13,8 +13,10 @@ const ContainerScreen = () => {
   };
 
   return (
-    <Container style={{ flex: 1 }}>
-      <Button.Filled title='Open Sidebar' onPress={toggleSidebar} />
+    <Container style={{ flex: 1, padding: 10 }}>
+      <Typography.Title style={{ marginBottom: 5 }}>Side Sheet</Typography.Title>
+
+      <Button.Filled title='Open SideSheet' onPress={toggleSidebar} />
       <SideSheet ref={reference} width={150} headline='Title' startCoordinate={0} align='right' />
     </Container>
   );

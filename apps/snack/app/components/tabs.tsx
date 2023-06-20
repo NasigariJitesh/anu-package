@@ -6,7 +6,21 @@ import { StyleSheet } from 'react-native';
 const TabsScreen = () => {
   return (
     <Container disableGutters style={styles.flex}>
-      <Tabs type='primary' style={styles.flex}>
+      <Typography.Title style={styles.heading}>Primary Tabs</Typography.Title>
+      <Tabs type='primary'>
+        <Tab name='Tab1' icon={{ name: 'home' }} style={styles.tabContainer}>
+          <Typography.Body>This is Tab1</Typography.Body>
+        </Tab>
+        <Tab name='Tab2' icon={{ name: 'favorite' }} style={styles.tabContainer}>
+          <Typography.Body>This is Tab2</Typography.Body>
+        </Tab>
+        <Tab name='Tab3' icon={{ name: 'notifications' }} style={styles.tabContainer}>
+          <Typography.Body>This is Tab3</Typography.Body>
+        </Tab>
+      </Tabs>
+      <Typography.Title style={styles.heading}>Secondary Tabs</Typography.Title>
+
+      <Tabs type='secondary'>
         <Tab name='Tab1' icon={{ name: 'home' }} style={styles.tabContainer}>
           <Typography.Body>This is Tab1</Typography.Body>
         </Tab>
@@ -23,10 +37,10 @@ const TabsScreen = () => {
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
+  heading: { marginBottom: 5, marginTop: 10 },
   tabContainer: {
     alignItems: 'center',
-    backgroundColor: '#fcfcfc',
-    height: 300,
+    height: 200,
     justifyContent: 'center',
     width: '100%',
   },
