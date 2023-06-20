@@ -176,7 +176,7 @@ const getStyles = ({ colors }: DripsyFinalTheme, isDarkTheme?: boolean) => {
       paddingVertical: 20,
       width: ['90vw', '90vw', '550px', '600px', '750px'],
       borderRadius: 18,
-      backgroundColor: (isDarkTheme ? '#46464F' : '#E5E1E6') as string,
+      backgroundColor: (isDarkTheme ? '#2b2b2e' : '#f3efef') as string,
       borderColor: colors?.$outline as string,
       borderWidth: 1,
       alignItems: 'center',

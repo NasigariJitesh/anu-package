@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { useTheme } from 'anu/config';
 import { Chip, Container, Divider, Typography } from 'anu/lib';
 import { ContentValues } from 'components/content';
@@ -160,11 +161,11 @@ export const dividerDocumentation: ContentValues = {
             </Divider>
             <Container disableGutters align='center' flexDirection='row' sx={{ ...flexStyle, marginTop: 30 } as never}>
               <Typography.Body style={[style, otherStyle]}>Item 1</Typography.Body>
-              <Divider text='Center' orientation='vertical' />
+              <Divider text='Center' orientation='vertical' textStyle={{ width: 60 }} />
               <Typography.Body style={[style, otherStyle]}>Item 2</Typography.Body>
-              <Divider text='Start' orientation='vertical' align='start' />
+              <Divider text='Start' orientation='vertical' align='start' textStyle={{ width: 60 }} />
               <Typography.Body style={[style, otherStyle]}>Item 3</Typography.Body>
-              <Divider text='End' orientation='vertical' align='end' />
+              <Divider text='End' orientation='vertical' align='end' textStyle={{ width: 40 }} />
               <Typography.Body style={[style, otherStyle]}>Item 4</Typography.Body>
             </Container>
           </DividerExampleWrapper>
