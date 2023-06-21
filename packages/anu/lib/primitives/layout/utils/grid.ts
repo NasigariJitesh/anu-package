@@ -54,6 +54,10 @@ export const getRowStyle = (
 		width: '100%',
 	};
 
+	const containerStyle = {
+		flex: 1,
+	};
+
 	const itemStyle = {
 		width:
 			gridWidth && columns && space
@@ -64,5 +68,5 @@ export const getRowStyle = (
 		width: space,
 		alignSelf: 'stretch',
 	} as const;
-	return { rowStyle, spacerStyle, flatListStyle, itemSpacerStyle, itemStyle };
+	return { containerStyle,  rowStyle, spacerStyle, flatListStyle, itemSpacerStyle, itemStyle };
 };

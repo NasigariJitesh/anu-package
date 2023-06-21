@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
+import { getCombinedStylesForView } from 'anu/common/utils';
 import { Container } from 'anu/lib';
 import React, { useEffect, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
@@ -54,10 +55,11 @@ const Grid = <T,>(props: GridProps<T>) => {
 		rowHeight,
 		spacing,
 		showScrollIndicator,
+		style,
 		...containerProps
 	} = finalProps;
 
-	const { flatListStyle, ...styles } = getRowStyle(
+	const { flatListStyle, containerStyle, ...styles } = getRowStyle(
 		rowHeight,
 		spacing,
 		gridWidth,
@@ -80,13 +82,14 @@ const Grid = <T,>(props: GridProps<T>) => {
 			onLayout={(event) => {
 				setGridWidth(event.nativeEvent.layout.width);
 			}}
-			{...containerProps}>
+			{...containerProps} style={getCombinedStylesForView(containerStyle, style)}>
 			<FlatList
 				data={items}
 				style={flatListStyle}
 				showsVerticalScrollIndicator={showScrollIndicator}
 				renderItem={({ item, index }) => (
 					<Row
+						key={index}
 						items={item}
 						numberOfRows={items?.length ?? 0}
 						numberOfColumns={columns ?? 0}
