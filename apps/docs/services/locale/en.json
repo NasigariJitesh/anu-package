@@ -1012,14 +1012,14 @@
   "theming:step-1:title": "Creating a theme",
   "theming:step-1:description": "Creating a new theme can be done with ease using the following approach. It involves extending the default theme provided by Anu, which results in a new theme object. This method draws inspiration from Dripsy and further guidance can be found in their documentation.",
   "theming:step-2:title": "Usage",
-  "theming:step-3:title": "Color Modes",
+  "theming:step-3:title": "Theme Builder",
   "theming:step-3:description-1": "The color modes available in the library are sourced from <a  class=\"documentation-link\" target=\"blank\" href=\"https://m3.material.io/styles/color/overview\" title=\"Material Design v3 Colors\">Material Design v3</a>.",
   "theming:step-3:description-2": "Further information on this is provided in the following link: <a  class=\"documentation-link\" target=\"blank\" href=\"https://m3.material.io/styles/color/the-color-system/key-colors-tones\" title=\"The Color System - Material Design 3\">The Color System - Material Design 3</a>.",
-  "theming:step-3:description-3": "To obtain the color mode for your theme, you can utilize the material custom theme builder available at the following link: <a  class=\"documentation-link\" target=\"blank\" href=\"https://m3.material.io/theme-builder#/custom\" title=\"Material Theme Builder\">Material Theme Builder</a>.",
-  "theming:step-4:title": "Default Color Modes",
-  "theming:step-4:sub-title-1": "Light theme",
-  "theming:step-4:sub-title-2": "Dark theme",
-  "theming:step-4:description": "The theme can be utilized to customize these colors, and any modifications made will be consistently applied to all components within the library.",
+  "theming:step-3:description-3": "To obtain the color mode for your theme, you can utilize the material custom theme builder available below",
+  "theming:step-3:sub-title-1": "Light theme",
+  "theming:step-3:sub-title-2": "Dark theme",
+  "theming:step-3:error": "Primary Color Value is required",
+
   "theming:step-5:title": "Custom Fonts (In the future)",
   "theming:step-5:description-1": "The default font family in use is as follows: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif.",
   "theming:step-5:description-2": "By specifying a font family at the root level of the theme, it is possible to modify this setting globally throughout the library.",
@@ -1031,10 +1031,13 @@
   "theming-index:mainHeading": "Theming",
   "theming-index:title-1": "Creating a theme",
   "theming-index:title-2": "Usage",
-  "theming-index:title-3": "Color Modes",
-  "theming-index:title-4": "Default Color Modes",
+  "theming-index:title-3": "Theme Builder",
   "theming-index:title-5": "Light theme",
   "theming-index:title-6": "Dark theme",
   "theming-index:title-7": "Custom Fonts",
-  "theming-index:title-8": "Additional links"
+  "theming-index:title-8": "Additional links",
+
+  "theming:preview": "Preview",
+  "theming:colorPalette": "Color Palette",
+  "theming:colorMode": "Color Mode"
 }
