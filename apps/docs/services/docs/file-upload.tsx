@@ -7,12 +7,12 @@ const flexStyle = {
   flexWrap: 'wrap',
   alignItems: 'center',
   justifyContent: 'center',
-
+  flexDirection: 'row',
+  paddingHorizontal: 10,
   width: '100%',
-  overflow: 'scroll',
 } as const;
 
-const style = { margin: 15, alignItems: 'center', justifyContent: 'center' } as const;
+const style = { margin: 15, alignItems: 'center', justifyContent: 'center', flex: 1, maxWidth: 400 } as const;
 
 export const fileUploadDocumentation: ContentValues = {
   mainHeading: 'fileUploadDocumentation:mainHeading',
@@ -70,7 +70,9 @@ export const fileUploadDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters style={style}>
-            <FileDropZone>Drop your files here</FileDropZone>
+            <FileDropZone style={{ width: '100%' }} dropZoneStyle={{ width: '100%' }}>
+              Drop your files here
+            </FileDropZone>
           </Container>
         </Container>
       ),
@@ -81,28 +83,32 @@ export const fileUploadDocumentation: ContentValues = {
       description: 'fileUploadDocumentation:example5-description',
       id: 'preview',
       component: (
-        <Container disableGutters sx={{ ...flexStyle, overflow: undefined } as never}>
-          <Container disableGutters style={style}>
-            <FileUpload
-              category='common'
-              variant='filled'
-              size='medium'
-              title='Choose a file'
-              uploadVariant='image'
-              previewType='list'
-              multiple
-            />
+        <Container disableGutters sx={{ ...flexStyle, flexDirection: 'column' } as never}>
+          <Container disableGutters sx={flexStyle as never}>
+            <Container disableGutters style={style}>
+              <FileUpload
+                category='common'
+                variant='filled'
+                size='medium'
+                title='Choose a file'
+                uploadVariant='image'
+                previewType='list'
+                multiple
+              />
+            </Container>
           </Container>
-          <Container disableGutters style={style}>
-            <FileUpload
-              category='common'
-              variant='filled'
-              size='medium'
-              title='Choose a file'
-              uploadVariant='image'
-              previewType='carousel'
-              multiple
-            />
+          <Container disableGutters sx={flexStyle as never}>
+            <Container disableGutters style={style}>
+              <FileUpload
+                category='common'
+                variant='filled'
+                size='medium'
+                title='Choose a file'
+                uploadVariant='image'
+                previewType='carousel'
+                multiple
+              />
+            </Container>
           </Container>
         </Container>
       ),
@@ -114,7 +120,7 @@ export const fileUploadDocumentation: ContentValues = {
       name: 'fileUploadDocumentation:example6-name',
       id: 'sortable',
       component: (
-        <Container disableGutters sx={flexStyle as never}>
+        <Container disableGutters sx={{ ...flexStyle, overflow: 'scroll' } as never}>
           <Container disableGutters style={style}>
             <FileUpload
               category='common'
@@ -123,6 +129,9 @@ export const fileUploadDocumentation: ContentValues = {
               title='Choose a file'
               uploadVariant='image'
               previewType='list'
+              itemHeight={72}
+              itemWidth={400}
+              listWidth={400}
               multiple
               sortable
             />
