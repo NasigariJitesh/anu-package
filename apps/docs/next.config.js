@@ -30,6 +30,7 @@ const nextConfig = {
     'expo-haptics',
     'expo-modules-core',
     'expo-image-manipulator',
+    '@miblanchard/react-native-slider',
   ],
   async redirects() {
     return [

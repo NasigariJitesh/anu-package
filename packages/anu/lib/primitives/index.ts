@@ -21,6 +21,8 @@ export { default as Radio, RadioButtonGroup } from './radio-button';
 export * from './radio-button';
 export { default as SideSheet } from './side-sheet';
 export * from './side-sheet';
+export { default as Slider } from './slider';
+export * from './slider';
 export { default as useSnackbar } from './snackbar';
 export * from './snackbar';
 export { default as Switch } from './switch';
