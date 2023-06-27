@@ -136,7 +136,9 @@ const Slider = (props: SliderProps) => {
       return (
         <Container disableGutters style={labelContainerStyle}>
           <Typography.Body style={labelStyle} numberOfLines={1}>
-            {currentValue.toFixed(1).replace(/[,.]0$/, '')}
+            {finalProps.formatValueForValueIndicator
+              ? finalProps.formatValueForValueIndicator(currentValue)
+              : currentValue.toFixed(1).replace(/[,.]0$/, '')}
           </Typography.Body>
         </Container>
       );

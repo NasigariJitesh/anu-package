@@ -61,6 +61,8 @@ export interface CommonSliderProps
   containerStyle?: StyleProp<ViewStyle>;
 
   hideValueIndicator?: boolean;
+
+  formatValueForValueIndicator?: (currentValue: number) => string;
 }
 
 interface RegularSliderProps extends CommonSliderProps {
