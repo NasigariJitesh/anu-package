@@ -218,6 +218,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/slider'
+          options={{
+            headerLargeTitle: true,
+            title: 'Slider',
+          }}
+        />
+        <Stack.Screen
           name='components/snackbar'
           options={{
             headerLargeTitle: true,
@@ -460,6 +467,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Side Sheet Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/slider-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Slider Test',
           }}
         />
         <Stack.Screen

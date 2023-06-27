@@ -132,7 +132,7 @@ const Slider = (props: SliderProps) => {
    */
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const renderLabel = (currentValue: number, index: number) => {
-    if (showMinLabel && !(props.vertical ?? false) && !props.disabled) {
+    if (!(finalProps.hideValueIndicator ?? false) && showMinLabel && !(props.vertical ?? false) && !props.disabled) {
       return (
         <Container disableGutters style={labelContainerStyle}>
           <Typography.Body style={labelStyle} numberOfLines={1}>
@@ -179,7 +179,11 @@ const Slider = (props: SliderProps) => {
     if (index === finalTrackMarks.length - 1) {
       align = 'flex-end';
 
-      style = { ...trackMarksStyle, paddingLeft: 8, width: finalProps.thumbSize ?? thumbStyle.width };
+      style = {
+        ...trackMarksStyle,
+        paddingLeft: 8,
+        width: finalProps.thumbSize ?? thumbStyle.width,
+      };
     }
 
     return finalProps.trackMarks?.includes(finalTrackMarks[index]!) && finalProps.renderTrackMarkComponent ? (
@@ -187,7 +191,7 @@ const Slider = (props: SliderProps) => {
         <Container disableGutters align={align} style={style}>
           <Icon name='circle' key={index} size={trackMarksStyle.size} style={trackMarksStyle} />
         </Container>
-        {finalProps.renderTrackMarkComponent(finalProps.trackMarks.indexOf(finalTrackMarks[index]!))}
+        {finalProps.renderTrackMarkComponent(finalTrackMarks[index]!)}
       </Container>
     ) : (
       <Container disableGutters align={align} style={style}>

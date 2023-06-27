@@ -59,6 +59,8 @@ export interface CommonSliderProps
   thumbSize?: number;
 
   containerStyle?: StyleProp<ViewStyle>;
+
+  hideValueIndicator?: boolean;
 }
 
 interface RegularSliderProps extends CommonSliderProps {

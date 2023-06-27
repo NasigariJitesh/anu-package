@@ -125,7 +125,7 @@ const getSliderTheme = (theme: DripsyFinalTheme) => {
       color: colors.$onPrimary,
       transform: [{ rotateZ: '-45deg' }],
       fontSize: 12,
-      maxWidth: '70%',
+      height: 16,
     },
   };
 
@@ -227,7 +227,11 @@ export const getSliderStyle = (props: SliderProps, theme: DripsyFinalTheme, isMa
   const stateLayerStyle = {
     ...stateLayerTheme.common,
     ...(thumbTouchSize
-      ? { height: thumbTouchSize.height, width: thumbTouchSize.width, borderRadius: thumbTouchSize.height / 2 }
+      ? {
+          height: thumbTouchSize.height,
+          width: thumbTouchSize.width,
+          borderRadius: thumbTouchSize.height / 2,
+        }
       : {}),
 
     '@hover': {
