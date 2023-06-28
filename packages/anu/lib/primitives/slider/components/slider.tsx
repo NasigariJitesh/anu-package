@@ -30,6 +30,10 @@ const Slider = (props: SliderProps) => {
     else setIsMaximumValueSelected(false);
   }, [value, finalProps.maximumValue]);
 
+  useEffect(() => {
+    setValue(finalProps.value);
+  }, [finalProps.value]);
+
   const theme = useTheme();
 
   const {
