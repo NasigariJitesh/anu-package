@@ -12,7 +12,6 @@ import { getImageAvatarStyle } from '../../../utils';
  * @returns - ImageAvatarProps
  */
 const FallbackImage = (props: ImageAvatarProps) => {
-
   const { imageStyle } = getImageAvatarStyle(props);
   const { size, variant, alt, source, ...otherProps } = props;
   return (

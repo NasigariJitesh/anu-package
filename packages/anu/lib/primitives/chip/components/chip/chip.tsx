@@ -43,7 +43,11 @@ const Chip = (props: Partial<ChipProps> & { value: string }) => {
           {/*
           @ts-expect-error */}
           <LeadingIcon {...restOfTheProps} />
-          <Typography.Label dataSet={restOfTheProps.dataSets?.labelDataSet} style={getCombinedStylesForText(textStyle, props.labelStyle)} size='large'>
+          <Typography.Label
+            dataSet={restOfTheProps.dataSets?.labelDataSet}
+            style={getCombinedStylesForText(textStyle, props.labelStyle)}
+            size='large'
+          >
             {props.value}
           </Typography.Label>
           {/*

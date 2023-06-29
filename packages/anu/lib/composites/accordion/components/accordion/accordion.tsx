@@ -78,7 +78,7 @@ const Accordion = (props: AccordionProps) => {
         </Pressable>
 
         <CollapsibleContainer animatedHeight={animatedHeight} onLayout={onLayout} state={state} style={animatedStyle}>
-        {children}
+          {children}
         </CollapsibleContainer>
       </Container>
     </AccordionContext.Provider>
