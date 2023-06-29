@@ -3,7 +3,7 @@ import { useTheme } from 'anu/config';
 import React, { forwardRef, useCallback, useImperativeHandle } from 'react';
 import { SafeAreaView } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import Animated, { AnimationCallback, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
 import { SideSheetProps, SideSheetReferenceProps } from '../../types';
 import { getSideSheetStyles } from '../../utils';
@@ -58,7 +58,7 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
    * this is a hook to create smooth scroll
    */
   const scrollTo = useCallback(
-    (destination: number) => {
+    (destination: number, callback?: AnimationCallback | undefined) => {
       'worklet';
 
       isSideSheetActive.value =
@@ -66,8 +66,9 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
 
       const scrollValue = destination;
 
-      translateX.value = withSpring(scrollValue, { damping });
+      translateX.value = withSpring(scrollValue, { damping }, callback);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [isSideSheetActive, align, startCoordinate, width, damping],
   );
 
@@ -123,7 +124,6 @@ const SideSheet = forwardRef<SideSheetReferenceProps, SideSheetProps>((props, re
       <Animated.View style={[styles.container, rnSideSheetStyle]}>
         <SafeAreaView>
           <Header {...finalProps} scrollTo={scrollTo} />
-
           {children}
         </SafeAreaView>
       </Animated.View>
