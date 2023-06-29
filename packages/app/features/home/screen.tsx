@@ -101,6 +101,10 @@ export function HomeScreen() {
       link: '/components/file-upload',
     },
     {
+      title: 'Grid',
+      link: '/components/grid',
+    },
+    {
       title: 'Image',
       link: '/components/image',
     },
@@ -250,6 +254,10 @@ export function HomeScreen() {
     {
       title: 'File Upload',
       link: '/components/file-upload-test',
+    },
+    {
+      title: 'Grid',
+      link: '/components/grid-test',
     },
     {
       title: 'Menu',

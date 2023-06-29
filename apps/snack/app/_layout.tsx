@@ -162,6 +162,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/grid'
+          options={{
+            headerLargeTitle: true,
+            title: 'Grid',
+          }}
+        />
+        <Stack.Screen
           name='components/image'
           options={{
             headerLargeTitle: true,
@@ -418,6 +425,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'File Upload Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/grid-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Grid Test',
           }}
         />
         <Stack.Screen
