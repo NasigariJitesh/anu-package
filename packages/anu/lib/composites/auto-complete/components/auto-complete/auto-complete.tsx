@@ -47,7 +47,8 @@ const AutoComplete = forwardRef<AutoCompleteReferenceProps, AutoCompleteProps>((
 
   useEffect(() => {
     if (finalProps.value) {
-      filter(finalProps.value);
+      if (finalProps.debounce) debouncedFilter(finalProps.value);
+      else filter(finalProps.value);
 
       displayResults();
     }
