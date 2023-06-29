@@ -1,5 +1,5 @@
 import { SliderProps as RNSliderProps } from '@miblanchard/react-native-slider';
-import { StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export interface CommonSliderProps
   extends Partial<
@@ -59,6 +59,7 @@ export interface CommonSliderProps
   thumbSize?: number;
 
   containerStyle?: StyleProp<ViewStyle>;
+  labelStyle?: StyleProp<TextStyle>;
 
   hideValueIndicator?: boolean;
 

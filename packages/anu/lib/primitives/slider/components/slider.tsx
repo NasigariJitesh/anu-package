@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Slider as RNSlider } from '@miblanchard/react-native-slider';
-import { generateHoverStyles, getCombinedStylesForView } from 'anu/common/utils';
+import { generateHoverStyles, getCombinedStylesForText, getCombinedStylesForView } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Icon, Typography } from 'anu/lib';
 import { Pressable, useSx } from 'dripsy';
@@ -139,7 +139,7 @@ const Slider = (props: SliderProps) => {
     if (!(finalProps.hideValueIndicator ?? false) && showMinLabel && !(props.vertical ?? false) && !props.disabled) {
       return (
         <Container disableGutters style={labelContainerStyle}>
-          <Typography.Body style={labelStyle} numberOfLines={1}>
+          <Typography.Body style={getCombinedStylesForText(labelStyle, finalProps.labelStyle)} numberOfLines={1}>
             {finalProps.formatValueForValueIndicator
               ? finalProps.formatValueForValueIndicator(currentValue)
               : currentValue.toFixed(1).replace(/[,.]0$/, '')}

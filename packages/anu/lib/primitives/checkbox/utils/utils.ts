@@ -140,7 +140,7 @@ const getCheckboxTheme = (theme: DripsyFinalTheme) => {
  */
 export const getCheckboxStyles = (props: CheckboxProps, selected: boolean, theme: DripsyFinalTheme) => {
   const { checkboxTheme, checkboxStateLayerTheme, selectedIconTheme } = getCheckboxTheme(theme);
-  const { indeterminate, error, style, color, disabled } = props;
+  const { indeterminate, error, style, color, disabled, touchSize } = props;
 
   let key: keyof typeof checkboxTheme;
 
@@ -182,6 +182,7 @@ export const getCheckboxStyles = (props: CheckboxProps, selected: boolean, theme
     ...commonStateLayerTheme,
     ...checkboxStateLayerTheme[key],
     ...propsOtherStylesForStateLayer,
+    ...(touchSize ? { height: touchSize, width: touchSize } : {}),
     ...getResetPaddingStyles(),
     '@hover': { ...stateLayerTheme['@hover'], ...propsHoverStyles },
     '@focus': { ...stateLayerTheme['@focus'], ...propsFocusStyles },
@@ -218,23 +219,23 @@ export const getCheckboxStyles = (props: CheckboxProps, selected: boolean, theme
  */
 export const getLabelAlignment = (labelPlacement?: 'left' | 'right' | 'top' | 'bottom') => {
   switch (labelPlacement) {
-		case 'left': {
-			return { flexDirection: 'row-reverse', align: 'center' } as const;
-		}
-		case 'right': {
-			return { flexDirection: 'row', align: 'center' } as const;
-		}
-		case 'top': {
-			return {
-				flexDirection: 'column-reverse',
-				justify: 'center',
-			} as const;
-		}
-		case 'bottom': {
-			return { flexDirection: 'column', justify: 'center' } as const;
-		}
-		default: {
-			return { flexDirection: 'row', align: 'center' } as const;
-		}
-	}
+    case 'left': {
+      return { flexDirection: 'row-reverse', align: 'center' } as const;
+    }
+    case 'right': {
+      return { flexDirection: 'row', align: 'center' } as const;
+    }
+    case 'top': {
+      return {
+        flexDirection: 'column-reverse',
+        justify: 'center',
+      } as const;
+    }
+    case 'bottom': {
+      return { flexDirection: 'column', justify: 'center' } as const;
+    }
+    default: {
+      return { flexDirection: 'row', align: 'center' } as const;
+    }
+  }
 };
