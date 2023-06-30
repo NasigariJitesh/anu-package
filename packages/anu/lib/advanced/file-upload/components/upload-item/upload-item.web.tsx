@@ -17,7 +17,7 @@ const RegularListItem = (props: ListItemProps) => {
   const { id, dataItem, single, deleteData, variant, error, sortable, itemHeight, itemWidth, listItemStyle } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, itemHeight, itemWidth, false);
+  const styles = getUploadListStyles(theme, itemHeight, itemWidth);
 
   return (
     <Pressable style={getCombinedStylesForView(styles.listItem, listItemStyle)}>
@@ -68,7 +68,7 @@ const PreviewListItem = (props: ListItemProps) => {
   const { id, dataItem, single, deleteData, error, sortable, itemHeight, itemWidth, listItemStyle } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, itemHeight, itemWidth, false);
+  const styles = getUploadListStyles(theme, itemHeight, itemWidth, 'list');
   const url = URL.createObjectURL(dataItem);
 
   return (
@@ -121,7 +121,7 @@ const CarouselListItem = (props: ListItemProps) => {
   const { id, dataItem, single, deleteData, error, sortable, itemHeight, itemWidth, listItemStyle } = props;
   const theme = useTheme();
 
-  const styles = getUploadListStyles(theme, itemHeight, itemWidth, true);
+  const styles = getUploadListStyles(theme, itemHeight, itemWidth, 'carousel');
   const url = URL.createObjectURL(dataItem);
 
   return (

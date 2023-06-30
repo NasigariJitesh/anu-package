@@ -8,12 +8,12 @@ const flexStyle = {
   flexWrap: 'wrap',
   alignItems: 'center',
   justifyContent: 'center',
-
+  flexDirection: 'row',
+  paddingHorizontal: 10,
   width: '100%',
-  overflow: 'scroll',
 } as const;
 
-const style = { margin: 15 };
+const style = { margin: 15, alignItems: 'center', justifyContent: 'center', flex: 1, maxWidth: 400 } as const;
 
 export const fileDropZoneDocumentation: ContentValues = {
   mainHeading: 'fileDropZoneDocumentation:mainHeading',
@@ -26,7 +26,9 @@ export const fileDropZoneDocumentation: ContentValues = {
       component: (
         <Container disableGutters sx={flexStyle as never}>
           <Container disableGutters style={style}>
-            <FileDropZone>Drop your files here</FileDropZone>
+            <FileDropZone style={{ width: '100%' }} dropZoneStyle={{ width: '100%' }}>
+              Drop your files here
+            </FileDropZone>
           </Container>
         </Container>
       ),

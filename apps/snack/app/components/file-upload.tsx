@@ -32,7 +32,7 @@ const FileUploadScreen = () => {
             size='medium'
             title='Upload'
             icon={{ name: 'file-upload' }}
-            listStyle={{ width: 320 }}
+            listStyle={{ width: 320, height: 300 }}
             listItemStyle={{ width: '100%' }}
           />
         </Container>
@@ -47,8 +47,9 @@ const FileUploadScreen = () => {
             title='Upload'
             icon={{ name: 'file-upload' }}
             previewType='list'
-            listStyle={{ width: 320 }}
+            listStyle={{ width: 320, height: 300 }}
             listItemStyle={{ width: '100%' }}
+            sortable
           />
         </Container>
       </ScrollView>

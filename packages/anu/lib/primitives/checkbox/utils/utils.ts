@@ -218,24 +218,23 @@ export const getCheckboxStyles = (props: CheckboxProps, selected: boolean, theme
  */
 export const getLabelAlignment = (labelPlacement?: 'left' | 'right' | 'top' | 'bottom') => {
   switch (labelPlacement) {
-    case 'left': {
-      return { flexDirection: 'row-reverse', justify: 'center', align: 'center' } as const;
-    }
-    case 'right': {
-      return { flexDirection: 'row', justify: 'center', align: 'center' } as const;
-    }
-    case 'top': {
-      return {
-        flexDirection: 'column-reverse',
-        justify: 'center',
-        align: 'center',
-      } as const;
-    }
-    case 'bottom': {
-      return { flexDirection: 'column', justify: 'center', align: 'center' } as const;
-    }
-    default: {
-      return { flexDirection: 'row', justify: 'center', align: 'center' } as const;
-    }
-  }
+		case 'left': {
+			return { flexDirection: 'row-reverse', align: 'center' } as const;
+		}
+		case 'right': {
+			return { flexDirection: 'row', align: 'center' } as const;
+		}
+		case 'top': {
+			return {
+				flexDirection: 'column-reverse',
+				justify: 'center',
+			} as const;
+		}
+		case 'bottom': {
+			return { flexDirection: 'column', justify: 'center' } as const;
+		}
+		default: {
+			return { flexDirection: 'row', align: 'center' } as const;
+		}
+	}
 };
