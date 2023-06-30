@@ -118,7 +118,7 @@
   "accordionChildrenDocumentation:property-children-description": "Composant à rendre lorsque l'accordéon est ouvert",
 
   "autoCompleteDocumentation:mainHeading": "Auto Compléter",
-
+  "autoCompleteDocumentation:mainDescription": "L'autocomplétion fournit des suggestions ou des prédictions à l'utilisateur lorsqu'il tape dans un champ de saisie. Elle aide les utilisateurs à compléter rapidement et précisément leur saisie en leur présentant une liste d'options suggérées en fonction du texte saisi.",
   "autoCompleteDocumentation:example1-name": "Auto Compléter avec contour",
   "autoCompleteDocumentation:example2-name": "Auto Compléter rempli",
   "autoCompleteDocumentation:example3-name": "Auto Compléter de base",
@@ -645,7 +645,7 @@
   "menuItemDocumentation:external-properties-title": "Propriétés pressables",
 
   "otpInputDocumentation:mainHeading": "Champ de saisie OTP",
-
+  "otpInputDocumentation:mainDescription": "Une entrée OTP (One-Time Password) est spécifiquement utilisée pour saisir des mots de passe à usage unique, généralement utilisés à des fins d'authentification ou de vérification. Il se compose généralement d'une série de champs de saisie, chacun représentant un chiffre de l'OTP.",
   "otpInputDocumentation:property-variant-description": "La variante du champ de texte pour la saisie otp.",
   "otpInputDocumentation:property-numberOfDigits-description": "Nombre de chiffres dans l’OTP",
   "otpInputDocumentation:property-value-description": "La valeur OTP en tant que chaîne.",
@@ -863,7 +863,7 @@
   "tabsDocumentation:example4-description": "Il peut être utilisé sur des écrans moyens et grands avec des mises en page larges telles que des appareils tabulaires ou même des applications Web. Lorsque le conteneur d'onglets sur ces écrans s'étend horizontalement pour occuper la largeur d'écran disponible.",
 
   "textAreaDocumentation:mainHeading": "Zone de texte",
-
+  "textAreaDocumentation:mainDescription": "Une zone de texte permet de saisir et d'afficher du texte sur plusieurs lignes. Il s'agit d'une boîte rectangulaire dans laquelle les utilisateurs peuvent saisir de grandes quantités de texte, comme des commentaires, des descriptions ou des messages. Les zones de texte offrent généralement des fonctionnalités telles que le redimensionnement automatique au fur et à mesure que l'utilisateur saisit du texte, et des barres de défilement pour naviguer dans le contenu.",
   "textAreaDocumentation:example1-name": "Zone de texte remplie",
   "textAreaDocumentation:example2-name": "Zone de texte soulignée",
   "textAreaDocumentation:example3-name": "Zone de texte - avec erreur",

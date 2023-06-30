@@ -122,6 +122,8 @@
   "accordionChildrenDocumentation:property-children-description": "Component to render when the accordion is open",
 
   "autoCompleteDocumentation:mainHeading": "Auto Complete",
+  "autoCompleteDocumentation:mainDescription": " Autocomplete input provides suggestions or predictions to the user as they type in an input field. It helps users quickly and accurately complete their input by presenting a list of suggested options based on the entered text.",
+
   "autoCompleteDocumentation:example1-name": "Outlined Auto Complete",
 
   "autoCompleteDocumentation:example2-name": "Filled Auto Complete",
@@ -676,6 +678,7 @@
   "menuItemDocumentation:external-properties-title": " Pressable Properties",
 
   "otpInputDocumentation:mainHeading": "OTP Input Field",
+  "otpInputDocumentation:mainDescription": "An OTP (One-Time Password) input is specifically used to enter one-time passwords, typically used for authentication or verification purposes. It usually consists of a series of input fields, each representing a digit of the OTP.",
 
   "otpInputDocumentation:property-variant-description": "The variant of text field for the otp input.",
   "otpInputDocumentation:property-numberOfDigits-description": "Number of Digits in the OTP",
@@ -904,7 +907,9 @@
   "tabsDocumentation:example3-description": "Scrollable tabs are displayed in a horizontal row, but if there are too many tabs to fit within the width of the screen, the user can swipe left or right to view additional tabs. This allows for a larger number of tabs to be displayed without taking up too much screen real estate.",
   "tabsDocumentation:example4-name": "Tabs - Medium/Large Screens",
   "tabsDocumentation:example4-description": "It can be used on medium and large screens with wide layouts such as tabular devices or even web applications. Where the tab container on these screens scales horizontally to occupy the available screen width.",
+
   "textAreaDocumentation:mainHeading": "Text Area",
+  "textAreaDocumentation:mainDescription": "A text area input allows us to enter and display multiline text. It is a rectangular box where users can enter larger amounts of text, such as comments, descriptions, or messages.\n Text areas typically provide features such as automatic resizing as the user enters more text, and scrollbars for navigating through the content.",
 
   "textAreaDocumentation:example1-name": "Filled Text Area",
   "textAreaDocumentation:example2-name": "Outlined Text Area",

@@ -93,6 +93,8 @@ const AutoComplete = (
 
 export const autoCompleteDocumentation: ContentValues = {
   mainHeading: 'autoCompleteDocumentation:mainHeading',
+  mainDescription: 'autoCompleteDocumentation:mainDescription',
+
   properties: [
     {
       name: 'value',

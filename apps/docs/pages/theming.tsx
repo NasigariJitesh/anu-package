@@ -27,7 +27,7 @@ import { DripsyFinalTheme, ScrollView, useSx } from 'dripsy';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { Fira_Code, Source_Sans_Pro } from 'next/font/google';
 import { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import { useMenuContext } from 'screens/common/provider';
@@ -46,6 +46,14 @@ interface ThemeDemoProps {
   theme: AnuFinalTheme;
 }
 
+interface ColorProps {
+  title: string;
+  backgroundColor: string;
+  color: string;
+  colorCode?: string;
+  customColor?: boolean;
+}
+
 const source = Source_Sans_Pro({
   weight: ['400', '600'],
   style: 'normal',
@@ -58,7 +66,7 @@ const firaCode = Fira_Code({
   subsets: ['latin'],
 });
 
-const data = [
+const data: ColorProps[] = [
   { title: 'Primary', backgroundColor: '$primary', color: '$onPrimary', colorCode: 'Primary40' },
   { title: 'On Primary', backgroundColor: '$onPrimary', color: '$primary', colorCode: 'Primary100' },
   {
@@ -218,17 +226,20 @@ const data = [
   {
     title: 'Shadow',
     backgroundColor: '$shadow',
-    color: '$onSurface',
+    color: '#fff',
+    customColor: true,
   },
   {
     title: 'Surface Tint',
     backgroundColor: '$surfaceTint',
-    color: '$onSurface',
+    color: '#fff',
+    customColor: true,
   },
   {
     title: 'scrim',
     backgroundColor: '$scrim',
-    color: '$onSurface',
+    color: '#fff',
+    customColor: true,
   },
 ];
 
@@ -451,6 +462,81 @@ const AdditionalLinks = () => {
   );
 };
 
+const ColorBlock = ({ item }: { item: ColorProps }) => {
+  const theme = useTheme();
+
+  const styles = getStyles(theme);
+
+  const [active, setActive] = useState(false);
+  const [isCopiedToClipboard, toggleCopyToClipboard] = useState(false);
+  const [timeOut, updateTimeOut] = useState<NodeJS.Timeout | null>(null);
+
+  const sx = useSx();
+
+  useEffect(() => {
+    return () => {
+      if (timeOut) clearTimeout(timeOut);
+    };
+  }, [timeOut]);
+
+  const onPressedHandler = () => {
+    if (isCopiedToClipboard) return;
+
+    toggleCopyToClipboard(true);
+
+    navigator.clipboard.writeText(theme.colors[item.backgroundColor as keyof AnuFinalTheme['colors']]);
+
+    updateTimeOut(
+      setTimeout(() => {
+        toggleCopyToClipboard(false);
+      }, 3000),
+    );
+  };
+
+  return (
+    <Pressable style={styles.colorBlockPressable} onHoverIn={() => setActive(true)} onHoverOut={() => setActive(false)}>
+      <Container
+        style={[
+          styles.colorBlock,
+          { backgroundColor: theme.colors[item.backgroundColor as keyof AnuFinalTheme['colors']] },
+        ]}
+      >
+        {active ? (
+          <Icon
+            name={isCopiedToClipboard ? 'check' : 'content-copy'}
+            size={18}
+            onPress={onPressedHandler}
+            style={sx({
+              position: 'absolute',
+              zIndex: 2,
+              right: '5px',
+              top: '25px',
+              borderRadius: '8px',
+              padding: '8px',
+              color: item.customColor ? item.color : theme.colors[item.color as keyof AnuFinalTheme['colors']],
+            })}
+          />
+        ) : null}
+        <Typography.Title
+          style={{ color: item.customColor ? item.color : theme.colors[item.color as keyof AnuFinalTheme['colors']] }}
+        >
+          {item.title}
+        </Typography.Title>
+        {item.colorCode ? (
+          <Typography.Title
+            style={{
+              alignSelf: 'flex-end',
+              color: theme.colors[item.color as keyof AnuFinalTheme['colors']],
+            }}
+          >
+            {item.colorCode}
+          </Typography.Title>
+        ) : null}
+      </Container>
+    </Pressable>
+  );
+};
+
 const Preview = () => {
   const theme = useTheme();
   const styles = getStyles(theme);
@@ -482,8 +568,13 @@ const Preview = () => {
           </Container>
         </Container>
         <Container disableGutters style={[styles.wrapContainer, { alignItems: 'center' }]}>
-          <Chip value='Assist Chip' type='assist' style={styles.margin} />
-          <Chip value='Assist Chip' type='assist' leadingIcon={{ name: 'star' }} style={styles.margin} />
+          <Chip value='Assist Chip' type='assist' style={{ ...styles.margin, minWidth: 100, maxWidth: 120 }} />
+          <Chip
+            value='Assist Chip'
+            type='assist'
+            leadingIcon={{ name: 'star' }}
+            style={{ ...styles.margin, minWidth: 100, maxWidth: 120 }}
+          />
           <Avatar variant='circle' size='large' style={styles.margin}>
             <Icon name='person' style={{ color: theme.colors.$onPrimary }} />
           </Avatar>
@@ -565,28 +656,7 @@ const ColorPalette = () => {
         numberOfColumns={[{ minWidth: 100, columns: 4 }]}
         defaultNumberOfColumns={4}
         style={{ minWidth: 600 }}
-        renderItem={(item) => (
-          <Container
-            style={[
-              styles.colorBlock,
-              { backgroundColor: theme.colors[item.backgroundColor as keyof AnuFinalTheme['colors']] },
-            ]}
-          >
-            <Typography.Title style={{ color: theme.colors[item.color as keyof AnuFinalTheme['colors']] }}>
-              {item.title}
-            </Typography.Title>
-            {item.colorCode ? (
-              <Typography.Title
-                style={{
-                  alignSelf: 'flex-end',
-                  color: theme.colors[item.color as keyof AnuFinalTheme['colors']],
-                }}
-              >
-                {item.colorCode}
-              </Typography.Title>
-            ) : null}
-          </Container>
-        )}
+        renderItem={(item) => <ColorBlock item={item} />}
       />
     </ScrollView>
   );
@@ -708,7 +778,9 @@ const ThemeBuilder = () => {
               onChangeText={setNeutralVariant}
             />
           </Container>
-          <Button.Filled title='Generate' onPress={() => makeTheme()} style={styles.button} />
+          <Container disableGutters width='100%' align='center'>
+            <Button.Filled title='Generate' onPress={() => makeTheme()} style={styles.button} />
+          </Container>
         </Container>
 
         {error ? (
@@ -740,15 +812,20 @@ const Theming = () => {
             id='create-theme'
             title='theming:step-1:title'
             description={['theming:step-1:description']}
-            code={`import { makeTheme } from 'anu';
+            code={`import { generateTheme } from 'anu';
 
-const theme = makeTheme({ 
-  colors: {
-    $primary: ‘#4d53b7’,
-    $secondary: ‘#a63066’, 
-    $background: ‘#ffffff’,
-  },
-});`}
+const theme = generateTheme({
+  theme: {},
+  color: { primary: '#090C7D', secondary: '#7D0946', tertiary: '#7D7A09', neutral: '#929094' },
+  colorScheme: 'light',
+  extendDefaultTheme: true,
+});
+
+export default function App(props: AppProps){
+  <AnuProvider theme={theme}>
+    //Your App
+  </AnuProvider>
+};`}
           />
           <Step
             id='usage'
@@ -889,7 +966,7 @@ const getStyles = (theme: DripsyFinalTheme) => {
       margin: 15,
     },
 
-    colorInput: { minWidth: 200, maxWidth: 300, margin: 15 },
+    colorInput: { minWidth: 250, flex: 1, maxWidth: 350, margin: 15 },
 
     primaryError: {
       fontWeight: '400',
@@ -899,22 +976,26 @@ const getStyles = (theme: DripsyFinalTheme) => {
     },
 
     button: {
-      alignSelf: 'center',
       width: 180,
       margin: 15,
+    },
+
+    colorBlockPressable: {
+      width: '100%',
+      marginVertical: 10,
     },
 
     colorBlock: {
       width: '100%',
       padding: 10,
       height: 100,
-      marginVertical: 10,
       justifyContent: 'space-between',
     },
 
     wrapContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
+      justifyContent: 'space-between',
     },
   } as const;
   return styles;
