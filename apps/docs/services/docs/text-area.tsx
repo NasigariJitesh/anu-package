@@ -28,6 +28,7 @@ const TextArea = (props: TextAreaProps) => {
 
 export const textAreaDocumentation: ContentValues = {
   mainHeading: 'textAreaDocumentation:mainHeading',
+  mainDescription: 'textAreaDocumentation:mainDescription',
 
   properties: [
     {
