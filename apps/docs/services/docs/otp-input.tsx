@@ -3,7 +3,8 @@ import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
 
 const style = {
-  margin: 15,
+  marginVertical: 15,
+  marginHorizontal: 40,
 };
 
 const flexStyle = {
@@ -16,6 +17,7 @@ const flexStyle = {
 
 export const otpInputDocumentation: ContentValues = {
   mainHeading: 'otpInputDocumentation:mainHeading',
+  mainDescription: 'otpInputDocumentation:mainDescription',
 
   properties: [
     {

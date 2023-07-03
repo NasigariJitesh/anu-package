@@ -48,6 +48,7 @@ import { searchIndex } from 'services/docs/search';
 import { segmentedButtonIndex } from 'services/docs/segmented-button';
 import { sideSheetIndex } from 'services/docs/side-sheet';
 import { skeletonIndex } from 'services/docs/skeleton';
+import { sliderIndex } from 'services/docs/slider';
 import { snackbarIndex } from 'services/docs/snackbar';
 import { stepIndex } from 'services/docs/step';
 import { stepIndicatorIndex } from 'services/docs/step-indicator';
@@ -405,6 +406,11 @@ const RenderIndex = () => {
     case '/components/typography': {
       {
         return <Index {...typographyIndex} />;
+      }
+    }
+    case '/experimental/slider': {
+      {
+        return <Index {...sliderIndex} />;
       }
     }
     case '/getting-started': {

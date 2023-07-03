@@ -525,6 +525,7 @@ const Sidebar = () => {
                 components: [],
                 link: '/components/skeleton',
               },
+
               {
                 title: 'leftSideBar:snackbar',
                 link: '/components/snackbar',
@@ -579,6 +580,17 @@ const Sidebar = () => {
               {
                 title: 'leftSideBar:typography',
                 link: '/components/typography',
+                components: [],
+              },
+            ]}
+          />
+          <Index
+            heading='leftSideBar:experimental'
+            headingLink='/experimental/slider'
+            links={[
+              {
+                title: 'leftSideBar:slider',
+                link: '/experimental/slider',
                 components: [],
               },
             ]}

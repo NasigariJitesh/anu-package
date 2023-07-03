@@ -17,7 +17,7 @@ const keyExtractor = (item: File, index: number) => item.name + index;
  */
 const UploadList = (props: UploadListProps) => {
   const theme = useTheme();
-  const styles = getUploadListStyles(theme, props.itemHeight, props.itemWidth, props.previewType === 'carousel');
+  const styles = getUploadListStyles(theme, props.itemHeight, props.itemWidth, props.previewType);
 
   const renderItem = (item: File, index: number) => {
     const propList = {

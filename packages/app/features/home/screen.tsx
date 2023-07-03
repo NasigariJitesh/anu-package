@@ -101,6 +101,10 @@ export function HomeScreen() {
       link: '/components/file-upload',
     },
     {
+      title: 'Grid',
+      link: '/components/grid',
+    },
+    {
       title: 'Image',
       link: '/components/image',
     },
@@ -131,6 +135,10 @@ export function HomeScreen() {
     {
       title: 'Side Sheet',
       link: '/components/side-sheet',
+    },
+    {
+      title: 'Slider',
+      link: '/components/slider',
     },
     {
       title: 'Snackbar',
@@ -248,6 +256,10 @@ export function HomeScreen() {
       link: '/components/file-upload-test',
     },
     {
+      title: 'Grid',
+      link: '/components/grid-test',
+    },
+    {
       title: 'Menu',
       link: '/components/menu-test',
     },
@@ -274,6 +286,10 @@ export function HomeScreen() {
     {
       title: 'Side Sheet',
       link: '/components/side-sheet-test',
+    },
+    {
+      title: 'Slider',
+      link: '/components/slider-test',
     },
     {
       title: 'Snackbar',

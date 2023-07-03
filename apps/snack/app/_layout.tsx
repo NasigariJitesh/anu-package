@@ -162,6 +162,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/grid'
+          options={{
+            headerLargeTitle: true,
+            title: 'Grid',
+          }}
+        />
+        <Stack.Screen
           name='components/image'
           options={{
             headerLargeTitle: true,
@@ -215,6 +222,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Side Sheet',
+          }}
+        />
+        <Stack.Screen
+          name='components/slider'
+          options={{
+            headerLargeTitle: true,
+            title: 'Slider',
           }}
         />
         <Stack.Screen
@@ -414,6 +428,13 @@ export default function Root() {
           }}
         />
         <Stack.Screen
+          name='components/grid-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Grid Test',
+          }}
+        />
+        <Stack.Screen
           name='components/menu-test'
           options={{
             headerLargeTitle: true,
@@ -460,6 +481,13 @@ export default function Root() {
           options={{
             headerLargeTitle: true,
             title: 'Side Sheet Test',
+          }}
+        />
+        <Stack.Screen
+          name='components/slider-test'
+          options={{
+            headerLargeTitle: true,
+            title: 'Slider Test',
           }}
         />
         <Stack.Screen

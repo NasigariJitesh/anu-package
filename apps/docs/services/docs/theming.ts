@@ -13,11 +13,7 @@ export const themingIndex: HeadingProps = {
     },
     {
       title: 'theming-index:title-3',
-      link: '#color-modes',
-    },
-    {
-      title: 'theming-index:title-4',
-      link: '#default-color-modes',
+      link: '#theme-builder',
     },
     {
       title: 'theming-index:title-5',

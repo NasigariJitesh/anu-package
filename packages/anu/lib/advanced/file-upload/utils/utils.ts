@@ -114,20 +114,22 @@ export const getUploadListStyles = (
   theme: DripsyFinalTheme,
   itemHeight?: number,
   itemWidth?: number,
-  isHorizontal?: boolean,
+  previewType?: 'list' | 'carousel',
 ) => {
+  const isHorizontal = previewType === 'carousel';
   const styles = {
     listItem: {
-      width: itemWidth ?? 250,
+      width: itemWidth ?? '100%',
       marginVertical: 5,
       backgroundColor: theme.colors.$surface,
-      ...(itemHeight ? { height: itemHeight } : { minHeight: 48 }),
+      borderRadius: 4,
     },
     container: {
       marginTop: 15,
       flex: 1,
+      width: '100%',
       flexDirection: isHorizontal ? ('row' as const) : ('column' as const),
-      ...(isHorizontal ? { maxWidth: 300 } : { maxHeight: 300, backgroundColor: theme.colors.$surface }),
+      ...(isHorizontal ? { maxWidth: 300 } : { maxHeight: 300 }),
     },
     fileIcon: {
       margin: 16,
@@ -157,6 +159,7 @@ export const getUploadListStyles = (
     listItemContainer: {
       flexDirection: 'row' as const,
       alignItems: 'center' as const,
+      ...(itemHeight ? { height: itemHeight } : { minHeight: previewType === 'list' ? 72 : 48 }),
     },
     errorMessage: {
       fontSize: theme.fontSizes[9],
