@@ -137,6 +137,10 @@ export function HomeScreen() {
       link: '/components/side-sheet',
     },
     {
+      title: 'Slider',
+      link: '/components/slider',
+    },
+    {
       title: 'Snackbar',
       link: '/components/snackbar',
     },
@@ -282,6 +286,10 @@ export function HomeScreen() {
     {
       title: 'Side Sheet',
       link: '/components/side-sheet-test',
+    },
+    {
+      title: 'Slider',
+      link: '/components/slider-test',
     },
     {
       title: 'Snackbar',

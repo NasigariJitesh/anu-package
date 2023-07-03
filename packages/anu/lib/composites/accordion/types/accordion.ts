@@ -46,6 +46,8 @@ export interface AccordionHeaderProps extends Partial<TitleProps> {
    * Supporting Text for the accordion Header
    */
   supportingText?: string;
+
+  leadingComponent?: React.ReactNode;
 }
 
 export interface AccordionChildrenProps extends Partial<ContainerProps> {

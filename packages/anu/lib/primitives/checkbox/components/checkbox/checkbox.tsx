@@ -3,7 +3,7 @@ import { generateHoverStyles } from 'anu/common/utils';
 import { useTheme } from 'anu/config';
 import { Container, Icon, TouchableRipple, Typography } from 'anu/lib/primitives';
 import { useSx } from 'dripsy';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PressableStateCallbackType } from 'react-native';
 
 import { CheckboxProps } from '../../types';
@@ -20,6 +20,10 @@ export const Checkbox = (props: CheckboxProps) => {
   const finalProps = { ...defaultProps, ...props };
 
   const theme = useTheme();
+
+  useEffect(() => {
+    setIsSelected(finalProps.selected ?? false);
+  }, [finalProps.selected]);
 
   const { checkboxStyles, layerStyles, selectedIconStyles } = getCheckboxStyles(props, isSelected, theme);
 

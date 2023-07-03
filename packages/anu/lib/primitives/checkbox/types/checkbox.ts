@@ -62,7 +62,7 @@ export interface CheckboxProps {
    * The size of the checked icon
    */
   iconSize?: number;
-
+  touchSize?: number;
   dataSets?: {
     label?: Record<string, any>;
     checkbox?: Record<string, any>;

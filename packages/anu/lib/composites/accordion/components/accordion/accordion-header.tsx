@@ -48,6 +48,7 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
 
   return (
     <Container style={style.container} disableGutters flexDirection='row' align='center'>
+      {props.leadingComponent}
       <Typography.Title
         {...props}
         style={getCombinedStylesForText(

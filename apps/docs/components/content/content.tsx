@@ -21,6 +21,7 @@ export interface ContentValues {
     title: string;
     link: string;
   };
+  isExperimental?: boolean;
   additionalInformation?: AdditionalInformationProps;
   configurationSteps?: ConfigurationStepProps[];
 }
@@ -43,6 +44,7 @@ const Content = ({ values }: ContentProps) => {
     externalProperties,
     additionalInformation,
     configurationSteps,
+    isExperimental,
   } = values;
 
   const styles = getStyles();
@@ -61,6 +63,7 @@ const Content = ({ values }: ContentProps) => {
         heading={heading}
         subTitle={subTitle}
         mainDescription={mainDescription}
+        isExperimental={isExperimental}
       />
       {configurationSteps ? <ComponentConfiguration steps={configurationSteps} /> : null}
       <ComponentExamples examples={examples} />

@@ -2559,6 +2559,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@miblanchard/react-native-slider@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "@miblanchard/react-native-slider@npm:2.3.1"
+  peerDependencies:
+    react: ">=16.8"
+    react-native: ">=0.59"
+  checksum: 0f66becdd3ef9dc238b6c816b143fc36927d140ff453e46033451a5799177a30f864f91d5d307b7424b49d07e3dac3ca2517e16777c1b34fd99d140cc56e16bc
+  languageName: node
+  linkType: hard
+
 "@motionone/animation@npm:^10.12.0":
   version: 10.15.1
   resolution: "@motionone/animation@npm:10.15.1"
@@ -3996,6 +4006,7 @@ __metadata:
   dependencies:
     "@gorhom/portal": ^1.0.14
     "@material/material-color-utilities": ^0.2.5
+    "@miblanchard/react-native-slider": ^2.3.1
     "@testing-library/jest-native": ^5.4.2
     "@testing-library/react-native": ^11.5.4
     "@types/jest": ^29.4.0
