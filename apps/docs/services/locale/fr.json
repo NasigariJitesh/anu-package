@@ -120,7 +120,7 @@
   "accordionChildrenDocumentation:property-children-description": "Composant à rendre lorsque l'accordéon est ouvert",
 
   "autoCompleteDocumentation:mainHeading": "Auto Compléter",
-
+  "autoCompleteDocumentation:mainDescription": "L'autocomplétion fournit des suggestions ou des prédictions à l'utilisateur lorsqu'il tape dans un champ de saisie. Elle aide les utilisateurs à compléter rapidement et précisément leur saisie en leur présentant une liste d'options suggérées en fonction du texte saisi.",
   "autoCompleteDocumentation:example1-name": "Auto Compléter avec contour",
   "autoCompleteDocumentation:example2-name": "Auto Compléter rempli",
   "autoCompleteDocumentation:example3-name": "Auto Compléter de base",
@@ -647,7 +647,7 @@
   "menuItemDocumentation:external-properties-title": "Propriétés pressables",
 
   "otpInputDocumentation:mainHeading": "Champ de saisie OTP",
-
+  "otpInputDocumentation:mainDescription": "Une entrée OTP (One-Time Password) est spécifiquement utilisée pour saisir des mots de passe à usage unique, généralement utilisés à des fins d'authentification ou de vérification. Il se compose généralement d'une série de champs de saisie, chacun représentant un chiffre de l'OTP.",
   "otpInputDocumentation:property-variant-description": "La variante du champ de texte pour la saisie otp.",
   "otpInputDocumentation:property-numberOfDigits-description": "Nombre de chiffres dans l’OTP",
   "otpInputDocumentation:property-value-description": "La valeur OTP en tant que chaîne.",
@@ -901,7 +901,7 @@
   "tabsDocumentation:example4-description": "Il peut être utilisé sur des écrans moyens et grands avec des mises en page larges telles que des appareils tabulaires ou même des applications Web. Lorsque le conteneur d'onglets sur ces écrans s'étend horizontalement pour occuper la largeur d'écran disponible.",
 
   "textAreaDocumentation:mainHeading": "Zone de texte",
-
+  "textAreaDocumentation:mainDescription": "Une zone de texte permet de saisir et d'afficher du texte sur plusieurs lignes. Il s'agit d'une boîte rectangulaire dans laquelle les utilisateurs peuvent saisir de grandes quantités de texte, comme des commentaires, des descriptions ou des messages. Les zones de texte offrent généralement des fonctionnalités telles que le redimensionnement automatique au fur et à mesure que l'utilisateur saisit du texte, et des barres de défilement pour naviguer dans le contenu.",
   "textAreaDocumentation:example1-name": "Zone de texte remplie",
   "textAreaDocumentation:example2-name": "Zone de texte soulignée",
   "textAreaDocumentation:example3-name": "Zone de texte - avec erreur",
@@ -1006,14 +1006,14 @@
   "theming:step-1:title": "Créer un thème",
   "theming:step-1:description": "La création d'un nouveau thème peut se faire facilement en utilisant l'approche suivante. Il s'agit d'étendre le thème par défaut fourni par Anu, ce qui se traduit par un nouvel objet thème. Cette méthode s'inspire de Dripsy et des conseils supplémentaires peuvent être trouvés dans leur documentation.",
   "theming:step-2:title": "Usage",
-  "theming:step-3:title": "Modes de couleur",
+  "theming:step-3:title": "Constructeur de thèmes",
   "theming:step-3:description-1": "Les modes de couleur disponibles dans la bibliothèque proviennent de <a class=\"documentation-link\" href=\"https://m3.material.io/styles/color/overview\" title=\"Material Design v3 Colors \">Conception de matériaux v3</a>.",
   "theming:step-3:description-2": "De plus amples informations à ce sujet sont fournies dans le lien suivant : <a class=\"documentation-link\" href=\"https://m3.material.io/styles/color/the-color-system/key-colors- tons\" title=\"Le système de couleurs - Material Design 3\">Le système de couleurs - Material Design 3</a>.",
-  "theming:step-3:description-3": "Pour obtenir le mode couleur de votre thème, vous pouvez utiliser le générateur de thème personnalisé Material disponible sur le lien suivant : <a target=\"blank\" class=\"documentation-link\" href=\"https://m3.material.io/theme- builder#/custom\" title=\"Material Theme Builder\">Material Theme Builder</a>.",
-  "theming:step-4:title": "Modes de couleur par défaut",
-  "theming:step-4:sub-title-1": "Thème lumière",
-  "theming:step-4:sub-title-2": "Thème sombre",
-  "theming:step-4:description": "Le thème peut être utilisé pour personnaliser ces couleurs, et toutes les modifications apportées seront appliquées de manière cohérente à tous les composants de la bibliothèque.",
+  "theming:step-3:description-3": "Pour obtenir le mode de couleur de votre thème, vous pouvez utiliser le constructeur de thème personnalisé matériel disponible ci-dessous",
+  "theming:step-3:sub-title-1": "Thème lumière",
+  "theming:step-3:sub-title-2": "Thème sombre",
+  "theming:step-3:error": "La valeur de la couleur primaire est requise",
+
   "theming:step-5:title": "Polices personnalisées (dans le futur)",
   "theming:step-5:description-1": "La famille de polices par défaut utilisée est la suivante : -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif.",
   "theming:step-5:description-2": "En spécifiant une famille de polices au niveau racine du thème, il est possible de modifier ce paramètre globalement dans toute la bibliothèque.",
@@ -1025,10 +1025,13 @@
   "theming-index:mainHeading": "Thématisation",
   "theming-index:title-1": "Créer un thème",
   "theming-index:title-2": "Usage",
-  "theming-index:title-3": "Modes de couleur",
-  "theming-index:title-4": "Modes de couleur par défaut",
+  "theming-index:title-3": "Constructeur de thèmes",
   "theming-index:title-5": "Thème lumière",
   "theming-index:title-6": "Thème sombre",
   "theming-index:title-7": "Polices personnalisées",
-  "theming-index:title-8": "Liens supplémentaires"
+  "theming-index:title-8": "Liens supplémentaires",
+
+  "theming:preview": "Avant-première",
+  "theming:colorPalette": "Palette de couleurs",
+  "theming:colorMode": "Mode couleur"
 }

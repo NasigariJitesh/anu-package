@@ -17,6 +17,7 @@ const flexStyle = {
 
 export const otpInputDocumentation: ContentValues = {
   mainHeading: 'otpInputDocumentation:mainHeading',
+  mainDescription: 'otpInputDocumentation:mainDescription',
 
   properties: [
     {
