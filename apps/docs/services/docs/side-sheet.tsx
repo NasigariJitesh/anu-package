@@ -1,8 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Button, Container } from 'anu/lib';
+import { Button, Container, SideSheet, SideSheetReferenceProps } from 'anu/lib';
 import { ContentValues } from 'components/content';
 import { HeadingProps } from 'components/right-sidebar/right-sidebar';
-import { useMenuContext } from 'screens/common/provider';
+import { useRef, useState } from 'react';
+import { Modal, StyleSheet, TouchableOpacity } from 'react-native';
 
 const flexStyle = {
   flexWrap: 'wrap',
@@ -14,11 +15,41 @@ const flexStyle = {
 } as const;
 
 const Example = () => {
-  const { toggleSidebar } = useMenuContext();
+  const [isModalOpen, toggleIsModalOpen] = useState(false);
+
+  const sideSheetReference = useRef<SideSheetReferenceProps | null>(null);
+
+  const handleOnModalPress = () => {
+    if (isModalOpen) {
+      console.log('handle close');
+
+      sideSheetReference?.current?.scrollTo(0, () => {
+        toggleIsModalOpen(false);
+      });
+    } else {
+      toggleIsModalOpen(true);
+
+      console.log('handle open');
+
+      setTimeout(() => {
+        sideSheetReference?.current?.scrollTo(-300);
+      }, 0);
+
+      // toggleShow(true);
+    }
+  };
+
   return (
-    <Container disableGutters sx={flexStyle as never}>
-      <Button.Filled title='Open Sidebar' onPress={toggleSidebar} />
-    </Container>
+    <>
+      <Container disableGutters sx={flexStyle as never}>
+        <Button.Filled title='Open Sidebar' onPress={handleOnModalPress} />
+      </Container>
+      <Modal visible={isModalOpen} transparent presentationStyle='overFullScreen' statusBarTranslucent>
+        <TouchableOpacity activeOpacity={1} onPress={handleOnModalPress} style={StyleSheet.absoluteFill}>
+          <SideSheet ref={sideSheetReference} width={300} headline='Title' startCoordinate={0} align='right' divider />
+        </TouchableOpacity>
+      </Modal>
+    </>
   );
 };
 

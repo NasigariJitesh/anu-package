@@ -34,10 +34,10 @@ const Example1 = () => {
   return (
     <Container disableGutters sx={flexStyle as never}>
       <StepIndicator style={style}>
-        <Step style={{ padding: 10, width: '100%', flex:1 }} completed={completed[0]}>
+        <Step style={{ padding: 10, width: '100%', flex: 1 }} completed={completed[0]}>
           <Typography.Title> Step 1</Typography.Title>
 
-          <Typography.Body style={{ flex:1, paddingVertical: 10 }}>
+          <Typography.Body style={{ flex: 1, paddingVertical: 10 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
@@ -55,9 +55,9 @@ const Example1 = () => {
             />
           </Container>
         </Step>
-        <Step style={{ padding: 10, width: '100%', flex:1 }} completed={completed[1]}>
+        <Step style={{ padding: 10, width: '100%', flex: 1 }} completed={completed[1]}>
           <Typography.Title> Step 2</Typography.Title>
-          <Typography.Body style={{ flex:1, paddingVertical: 10 }}>
+          <Typography.Body style={{ flex: 1, paddingVertical: 10 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
@@ -90,10 +90,10 @@ const Example1 = () => {
             />
           </Container>
         </Step>
-        <Step style={{ padding: 10, width: '100%', flex:1 }} completed={completed[2]}>
+        <Step style={{ padding: 10, width: '100%', flex: 1 }} completed={completed[2]}>
           <Typography.Title> Step 3</Typography.Title>
 
-          <Typography.Body style={{ flex:1, paddingVertical: 10 }}>
+          <Typography.Body style={{ flex: 1, paddingVertical: 10 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
@@ -126,10 +126,10 @@ const Example1 = () => {
             />
           </Container>
         </Step>
-        <Step style={{ padding: 10, width: '100%', flex:1  }} completed={completed[3]}>
+        <Step style={{ padding: 10, width: '100%', flex: 1 }} completed={completed[3]}>
           <Typography.Title> Step 4</Typography.Title>
 
-          <Typography.Body style={{ flex:1, paddingVertical: 10 }}>
+          <Typography.Body style={{ flex: 1, paddingVertical: 10 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
@@ -274,7 +274,7 @@ const Example8 = () => {
         <Step style={{ padding: 10, flex: 1, height: '100%' }} completed={completed[0]}>
           <Typography.Title> Step 1</Typography.Title>
 
-          <Typography.Body style={{ flex:1, paddingVertical: 10 }}>
+          <Typography.Body style={{ flex: 1, paddingVertical: 10 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
@@ -294,7 +294,7 @@ const Example8 = () => {
         </Step>
         <Step style={{ padding: 10, flex: 1, height: '100%' }} completed={completed[1]}>
           <Typography.Title> Step 2</Typography.Title>
-          <Typography.Body style={{ flex:1, paddingVertical: 10 }}>
+          <Typography.Body style={{ flex: 1, paddingVertical: 10 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
@@ -329,7 +329,7 @@ const Example8 = () => {
         </Step>
         <Step style={{ padding: 10, flex: 1, height: '100%' }} completed={completed[2]}>
           <Typography.Title> Step 3</Typography.Title>
-          <Typography.Body style={{ flex:1, paddingVertical: 10 }}>
+          <Typography.Body style={{ flex: 1, paddingVertical: 10 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
@@ -365,7 +365,7 @@ const Example8 = () => {
         <Step style={{ padding: 10, flex: 1, height: '100%' }} completed={completed[3]}>
           <Typography.Title> Step 4</Typography.Title>
 
-          <Typography.Body style={{ flex:1, paddingVertical: 10 }}>
+          <Typography.Body style={{ flex: 1, paddingVertical: 10 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.

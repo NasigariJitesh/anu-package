@@ -119,7 +119,7 @@ interface CommonDatePickerModalProps {
   disableStatusBar?: boolean;
   disableStatusBarPadding?: boolean;
   inputEnabled?: boolean;
-  style?: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>;
 }
 
 export interface DatePickerModalSingleProps extends DatePickerModalContentSingleProps, CommonDatePickerModalProps {}

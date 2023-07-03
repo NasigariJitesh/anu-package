@@ -1,11 +1,11 @@
 import { AnuProvider } from 'anu/common/context';
 import { ReactChildren } from 'anu/common/types';
 import { generateTheme, PortalProvider } from 'anu/config';
-import { AnuSnackbarProvider, SideSheet, SideSheetReferenceProps } from 'anu/lib';
+import { AnuSnackbarProvider } from 'anu/lib';
 import { AnuLocalizationProvider } from 'anu/lib/advanced/smart-localization';
 import { useWindowDimensions } from 'hooks/useWindowDimensions';
 import { useRouter } from 'next/router';
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useColorScheme, View } from 'react-native';
 
 import Locales from '../../services/locale';
@@ -15,7 +15,6 @@ const MenuContent = createContext({
   toggleMenu: () => {},
   isDarkTheme: true,
   toggleTheme: () => {},
-  toggleSidebar: () => {},
 });
 
 export const useMenuContext = () => useContext(MenuContent);
@@ -41,8 +40,6 @@ export default function RootLayout(props: {
   const { width } = useWindowDimensions();
   const { pathname, locale } = useRouter();
   const { backgroundColor, setBackgroundColor, children } = props;
-
-  const reference = useRef<SideSheetReferenceProps | null>(null);
 
   useEffect(() => {
     setBackgroundColor(isDarkTheme ? '#1B1B1F' : '#fffbff');
@@ -87,21 +84,14 @@ export default function RootLayout(props: {
     extendDefaultTheme: true,
   });
 
-  const toggleSidebar = () => {
-    if (reference.current?.isActive()) {
-      reference.current?.scrollTo(0);
-    } else reference.current?.scrollTo(-300);
-  };
-
   return (
     <AnuProvider ssr theme={MyTheme}>
       <AnuLocalizationProvider locales={Locales} default={locale?.includes('fr') ? 'fr' : 'en'}>
         <PortalProvider>
           <AnuSnackbarProvider>
             <View style={{ backgroundColor: backgroundColor }}>
-              <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme, toggleSidebar }}>
+              <MenuContent.Provider value={{ isOpen, toggleMenu, isDarkTheme, toggleTheme }}>
                 {children}
-                <SideSheet ref={reference} width={300} headline='Title' startCoordinate={0} align='right' divider />
               </MenuContent.Provider>
             </View>
           </AnuSnackbarProvider>

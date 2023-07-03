@@ -5,7 +5,7 @@ import { GestureResponderEvent, Platform, PressableStateCallbackType, StyleProp,
 const touchableEvents = ['onPress', 'onLongPress', 'onPressIn', 'onPressOut'] as const;
 
 type TouchableEventObject = Partial<
-  Record<typeof touchableEvents[number], ((event: GestureResponderEvent) => void) | null>
+  Record<(typeof touchableEvents)[number], ((event: GestureResponderEvent) => void) | null>
 >;
 
 /**

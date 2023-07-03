@@ -72,7 +72,7 @@ const ComponentProperties = ({ properties, externalProperties }: ComponentProper
           </Typography.Body>
         ) : null}
 
-        {isLast ? null : <Divider variant='full-width'  style={styles.divider} />}
+        {isLast ? null : <Divider variant='full-width' style={styles.divider} />}
       </Container>
     );
   };
@@ -81,7 +81,7 @@ const ComponentProperties = ({ properties, externalProperties }: ComponentProper
     <Container disableGutters sx={styles.container as never}>
       <View nativeID='props' style={styles.invisible} />
       <LocalizedTypography.Headline style={styles.heading} localeKey='content:props' />
-      <Divider variant='full-width'  style={styles.divider} />
+      <Divider variant='full-width' style={styles.divider} />
       {properties.map((prop, index) => renderProperty(prop, index, index === properties.length - 1))}
 
       {externalProperties ? (

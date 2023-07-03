@@ -11,7 +11,7 @@
     "snack": "cd apps/snack && yarn start",
     "docs": "cd apps/docs && yarn next",
     "lint": "eslint .",
-    "format": "prettier --write . "
+    "format": "npx prettier --write . "
   },
   "dependencies": {
     "expo-router": "^1.5.3"
