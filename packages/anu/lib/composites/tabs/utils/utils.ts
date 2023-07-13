@@ -1,13 +1,17 @@
 import { getColorInRGBA } from 'anu/common/utils';
 import { DripsyFinalTheme } from 'dripsy';
-import { StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
 import { HeaderItemProps, TabHeaderProps } from '../types';
 
 export const getHeaderItemStyles = (theme: DripsyFinalTheme, props: HeaderItemProps) => {
-  const RippleStyle = {
-    minWidth: 150,
+  const rippleStyle = {
+    minHeight: props.type !== 'secondary' && props.icon && props.name ? 64 : 48,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
     flex: 1,
+    minWidth: 150,
     '@hover': {
       backgroundColor: getColorInRGBA(props.isActive ? theme.colors.$primary : theme.colors.$onSurface, 8),
     },
@@ -18,14 +22,6 @@ export const getHeaderItemStyles = (theme: DripsyFinalTheme, props: HeaderItemPr
       backgroundColor: getColorInRGBA(props.isActive ? theme.colors.$primary : theme.colors.$onSurface, 12),
     },
   };
-
-  const containerStyle = {
-    minHeight: props.type !== 'secondary' && props.icon && props.name ? 64 : 48,
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    flex: 1,
-  } as const;
 
   const innerContainerStyle = {
     flexDirection: props.type === 'secondary' ? 'row' : 'column',
@@ -71,15 +67,16 @@ export const getHeaderItemStyles = (theme: DripsyFinalTheme, props: HeaderItemPr
     color: theme.colors.$onSurfaceVariant,
   };
 
+  const customStyles = getCustomStyles(props);
+
   return {
-    RippleStyle,
+    rippleStyle: { ...rippleStyle, ...StyleSheet.flatten(customStyles) } as const,
     activeStyle,
     labelStyle,
     iconStyle,
     primaryIndicatorContainerStyle,
     primaryIndicatorStyle,
     secondaryIndicatorStyle,
-    containerStyle,
     innerContainerStyle,
   };
 };

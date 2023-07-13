@@ -48,7 +48,9 @@ const toggleTextFieldVisibility = (props: Partial<TextFieldProps>) => {
  */
 const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & { value: string }>(
   (props, reference) => {
-    const [focusState, setOnFocus] = useState<PressableStateCallbackType>({ pressed: false });
+    const [focusState, setOnFocus] = useState<PressableStateCallbackType>({
+      pressed: false,
+    });
 
     const pressableReference = useRef<View | null>(null);
     const textInputReference = useRef<RNTextInput | null>(null);
@@ -72,7 +74,9 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
 
     const onFocusStyles =
       isTextFieldVisible || value !== '' || props.label !== ''
-        ? ({ paddingTop: variant === 'filled' && props.label && !props.disableLabelAnimation ? 14 : 0 } as const)
+        ? ({
+            paddingTop: variant === 'filled' && props.label && !props.disableLabelAnimation ? 14 : 0,
+          } as const)
         : ({ height: 0 } as const);
 
     const [leadingIconWidth, setLeadingIconWidth] = useState(0);
@@ -175,6 +179,7 @@ const TextField = forwardRef<TextFieldReferenceProps, Partial<TextFieldProps> & 
                   isFocused={isTextFieldVisible}
                   toggleIsFocused={toggleTextFieldVisible}
                   backgroundColor={finalProps.labelBackgroundColor ?? textFieldStyle.backgroundColor}
+                  color={finalProps.disabled ? textFieldStyle.color : undefined}
                 />
               )}
               <TextInput
