@@ -1,5 +1,6 @@
 import { ReactChildren } from 'anu/common/types';
 import { ViewProps } from 'react-native';
+import { AnimationCallback } from 'react-native-reanimated';
 
 export interface BottomSheetProps extends Omit<ViewProps, 'style'> {
   children?: ReactChildren;
@@ -47,8 +48,9 @@ export interface BottomSheetReferenceProps {
    * - when there is a start coordinate, do not forget to add or subtract it as needed, if the alignments are left and right respectively
    *
    * @param destination - y coordinate on the screen
+   * @param callback - callback function to be called after the animation is completed
    */
-  scrollTo: (destination: number) => void;
+  scrollTo: (destination: number, callback?: AnimationCallback | undefined) => void;
 
   /**
    * @returns will return true if the sheet is in the view port

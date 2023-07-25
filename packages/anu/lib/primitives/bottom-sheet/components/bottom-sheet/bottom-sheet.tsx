@@ -4,6 +4,7 @@ import { forwardRef, useCallback, useImperativeHandle } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
+  AnimationCallback,
   Extrapolate,
   interpolate,
   useAnimatedStyle,
@@ -59,14 +60,14 @@ const BottomSheet = forwardRef<BottomSheetReferenceProps, BottomSheetProps>((pro
    * this is a hook to create smooth scroll
    */
   const scrollTo = useCallback(
-    (destination: number) => {
+    (destination: number, callback?: AnimationCallback | undefined) => {
       'worklet';
 
       isBottomSheetActive.value = destination + -startCoordinate < 0;
 
       const value = Math.max(destination, maxTranslateY);
 
-      translateY.value = withSpring(value, { damping });
+      translateY.value = withSpring(value, { damping }, callback);
     },
     [isBottomSheetActive, maxTranslateY, translateY, damping, startCoordinate],
   );
