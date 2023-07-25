@@ -82,7 +82,6 @@ export interface SideSheetReferenceProps {
    *
    * @param destination - x coordinate on the screen
    * @param callback - callback function to be called after the animation is completed
-   * @default width of the sheet
    */
   scrollTo: (destination: number, callback?: AnimationCallback | undefined) => void;
 
