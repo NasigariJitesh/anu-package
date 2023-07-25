@@ -16,9 +16,9 @@ const Tabs = (props: TabsProps) => {
     active: propsActive,
     onChange,
     children,
-    tabHeaderStyle,
     activeTabHeaderStyle,
     type,
+    headerStyle,
     ...containerProps
   } = finalProps;
 
@@ -43,7 +43,7 @@ const Tabs = (props: TabsProps) => {
         tabs={children}
         updateActive={updateActive}
         activeTabHeaderStyle={activeTabHeaderStyle}
-        tabHeaderStyle={tabHeaderStyle}
+        headerStyle={headerStyle}
         active={active}
         type={type}
       />

@@ -26,7 +26,7 @@ const TabHeader = (props: TabHeaderProps) => {
           isActive={props.active === index}
           type={props.type}
           activeTabHeaderStyle={props.activeTabHeaderStyle}
-          tabHeaderStyle={props.tabHeaderStyle}
+          tabHeaderStyle={props.headerStyle}
         />
       ))}
     </ScrollView>

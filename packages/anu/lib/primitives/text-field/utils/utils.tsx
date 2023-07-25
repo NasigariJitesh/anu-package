@@ -115,7 +115,7 @@ export const getTextStyles = (theme: DripsyFinalTheme, props?: TextFieldProps) =
   if (props?.disabled)
     common = {
       ...common,
-      color: getColorInRGBA(theme.colors.$onSurface, 38),
+      color: getTextFieldStyle(props, theme).color ?? getColorInRGBA(theme.colors.$onSurface, 38),
     } as const;
 
   return common;
@@ -193,8 +193,16 @@ export const getTextFieldStyle = (props: TextFieldProps, dripsyTheme: DripsyFina
               borderColor: colors.$onErrorContainer,
               color: colors.$onErrorContainer,
             },
-            '@focus': { ...finalStyle['@focus'], borderColor: colors.$error, color: colors.$error },
-            '@press': { ...finalStyle['@press'], borderColor: colors.$error, color: colors.$error },
+            '@focus': {
+              ...finalStyle['@focus'],
+              borderColor: colors.$error,
+              color: colors.$error,
+            },
+            '@press': {
+              ...finalStyle['@press'],
+              borderColor: colors.$error,
+              color: colors.$error,
+            },
           }
         : {
             ...finalStyle,
@@ -206,8 +214,16 @@ export const getTextFieldStyle = (props: TextFieldProps, dripsyTheme: DripsyFina
               borderBottomColor: colors.$onErrorContainer,
               color: colors.$onErrorContainer,
             },
-            '@focus': { ...finalStyle['@focus'], borderBottomColor: colors.$error, color: colors.$error },
-            '@press': { ...finalStyle['@press'], borderBottomColor: colors.$error, color: colors.$error },
+            '@focus': {
+              ...finalStyle['@focus'],
+              borderBottomColor: colors.$error,
+              color: colors.$error,
+            },
+            '@press': {
+              ...finalStyle['@press'],
+              borderBottomColor: colors.$error,
+              color: colors.$error,
+            },
           };
   }
 
