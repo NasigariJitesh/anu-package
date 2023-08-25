@@ -40,7 +40,6 @@ export const getItemsArray = <T>(data: T[], numberOfColumns: NumberOfColumns, wi
 export const getRowStyle = (height?: number, space?: number, gridWidth?: number, columns?: number) => {
   const rowStyle = {
     flexDirection: 'row',
-    alignItems: 'center',
     width: gridWidth,
     height,
   } as const;
