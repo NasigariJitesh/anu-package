@@ -127,16 +127,16 @@ const CarouselListItem = (props: ListItemProps) => {
             <Icon name='drag-indicator' size={16} style={styles.dragIcon} />
           </Container>
         )}
-
-        <IconButton
-          icon={{ name: 'delete-outline', props: { size: 16, style: styles.carouselDeleteIcon } }}
-          variant='standard'
-          style={styles.carouselDeleteButton}
-          onPress={() => {
-            deleteData(id);
-          }}
-        />
-
+        <Container disableGutters style={styles.carouselDeleteButtonContainer}>
+          <IconButton
+            icon={{ name: 'delete-outline', props: { size: 16, style: styles.carouselDeleteIcon } }}
+            variant='standard'
+            style={styles.carouselDeleteButton}
+            onPress={() => {
+              deleteData(id);
+            }}
+          />
+        </Container>
         {error?.error === true ? (
           <Container disableGutters>
             <Typography.Body style={styles.errorMessage} numberOfLines={1} ellipsizeMode='tail'>

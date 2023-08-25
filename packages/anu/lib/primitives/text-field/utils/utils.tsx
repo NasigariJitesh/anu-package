@@ -115,7 +115,7 @@ export const getTextStyles = (theme: DripsyFinalTheme, props?: TextFieldProps) =
   if (props?.disabled)
     common = {
       ...common,
-      color: getTextFieldStyle(props, theme).color ?? getColorInRGBA(theme.colors.$onSurface, 38),
+      color: (getTextFieldStyle(props, theme).color ?? getColorInRGBA(theme.colors.$onSurface, 38)) as string,
     } as const;
 
   return common;
