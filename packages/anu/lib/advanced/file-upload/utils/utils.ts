@@ -189,15 +189,18 @@ export const getUploadListStyles = (
       top: 8,
       left: 8,
       borderRadius: 100,
-      backgroundColor: getColorInRGBA(theme.colors.$onSurface, 10),
+      backgroundColor: getColorInRGBA(theme.colors.$onSurface, 40),
+    },
+    carouselDeleteButtonContainer: {
+      position: 'absolute' as const,
+      top: 8,
+      right: 8,
     },
     carouselDeleteButton: {
-      position: 'absolute' as const,
-      top: 0,
-      right: 0,
-      '@hover': {
-        backgroundColor: getColorInRGBA(theme.colors.$onSurface, 10),
-      },
+      height: 30,
+      width: 30,
+      padding: 0,
+      backgroundColor: getColorInRGBA(theme.colors.$onSurface, 40),
     },
     carouselImage: {
       height: itemHeight ?? 120,
