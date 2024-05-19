@@ -1,6 +1,6 @@
 {
   "name": "anu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/NasigariJitesh/anu-package#readme",
   "repository": "https://github.com/NasigariJitesh/anu-package",
   "scripts": {
@@ -42,7 +42,7 @@
     "jest-expo": "^48.0.2",
     "react": "^18.2.0",
     "react-native-builder-bob": "^0.20.4",
-    "tsconfig": "*",
+    "tsconfig": "^1.0.1",
     "typescript": "^4.9.4"
   },
   "dependencies": {

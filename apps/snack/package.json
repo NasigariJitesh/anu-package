@@ -5,11 +5,11 @@
     "ios": "expo run:ios"
   },
   "main": "index.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "name": "@anu/snack",
   "dependencies": {
-    "app": "*",
+    "app": "^1.0.1",
     "expo": "^48.0.0",
     "expo-linking": "~4.0.1",
     "expo-splash-screen": "~0.18.1",

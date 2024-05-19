@@ -1,6 +1,6 @@
 {
   "name": "@anu/docs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@expo/next-adapter": "5.0.2",
-    "anu": "*",
-    "app": "*",
+    "anu": "^1.0.1",
+    "app": "^1.0.1",
     "next": "13.2.0",
     "raf": "^3.4.1",
     "react-native-reanimated": "3.1.0",
@@ -26,6 +26,6 @@
     "@types/node": "17.0.21",
     "@types/react-syntax-highlighter": "^15.5.6",
     "eslint-config-next": "13.2.0",
-    "tsconfig": "*"
+    "tsconfig": "^1.0.1"
   }
 }
