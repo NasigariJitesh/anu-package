@@ -3,7 +3,7 @@ import 'setimmediate';
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import { Icon } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
@@ -13,7 +13,7 @@ import { PhoneInputReferenceProps } from '../types';
 
 describe('Testing for Auto Complete', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <PhoneInput value='+919988' onChangeText={() => {}} />
     </DripsyApp>,
   );
@@ -27,7 +27,7 @@ describe('Testing for Auto Complete', () => {
 
 describe('Testing for Outlined Auto Complete', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <PhoneInput defaultCountryCode='+91' value='' variant='outlined' onChangeText={() => {}} />
     </DripsyApp>,
   );
@@ -41,7 +41,7 @@ describe('Testing for Outlined Auto Complete', () => {
 
 describe('Testing for Filled Auto Complete', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <PhoneInput defaultCountryCode='+1829' value='' variant='filled' onChangeText={() => {}} error />
     </DripsyApp>,
   );
@@ -56,7 +56,7 @@ describe('Testing for Filled Auto Complete', () => {
 describe('Testing for Outlined Auto Complete Events without ref', () => {
   it('should trigger focus handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput
           testID='phone-input-test'
           defaultCountryCode='+91'
@@ -73,7 +73,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger focus handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput testID='phone-input-test' value='' variant='filled' onChangeText={() => {}} onFocus={() => {}} />
       </DripsyApp>,
     );
@@ -83,7 +83,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger blur handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput testID='phone-input-test' value='' variant='filled' onChangeText={() => {}} onBlur={() => {}} />
       </DripsyApp>,
     );
@@ -93,7 +93,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput
           testID='phone-input-test'
           value='+919988'
@@ -110,7 +110,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput
           testID='phone-input-test'
           value='+919988'
@@ -127,7 +127,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput
           testID='phone-input-test'
           value='+919988'
@@ -144,7 +144,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput testID='phone-input-test' value='+919988' variant='filled' onChangeText={() => {}} />
       </DripsyApp>,
     );
@@ -154,7 +154,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput testID='phone-input-test' value='+919988' variant='filled' onChangeText={() => {}} />
       </DripsyApp>,
     );
@@ -164,7 +164,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput testID='phone-input-test' value='+919988' variant='filled' onChangeText={() => {}} />
       </DripsyApp>,
     );
@@ -174,7 +174,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput
           testID='phone-input-test'
           value='+1 211222222222222222222222'
@@ -189,7 +189,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger press handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput testID='phone-input-test' value='+919988' variant='filled' onChangeText={() => {}} />
       </DripsyApp>,
     );
@@ -199,7 +199,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger press handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput testID='phone-input-test' value='' variant='filled' onChangeText={() => {}} />
       </DripsyApp>,
     );
@@ -214,7 +214,7 @@ describe('Testing for Outlined Auto Complete with ref', () => {
 
   it('Focus using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput
           ref={reference}
           testID='phone-input-test'
@@ -232,7 +232,7 @@ describe('Testing for Outlined Auto Complete with ref', () => {
 
   it('Blur using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <PhoneInput
           ref={reference}
           testID='phone-input-test'

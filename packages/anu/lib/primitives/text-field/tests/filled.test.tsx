@@ -3,7 +3,7 @@ import 'setimmediate';
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -12,7 +12,7 @@ import { TextFieldReferenceProps } from '../types';
 
 describe('Testing for Default text field', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <TextField value='Hey' label='' />
     </DripsyApp>,
   );
@@ -26,7 +26,7 @@ describe('Testing for Default text field', () => {
 
 describe('Testing for Filled text field', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <TextField value='Hey' variant='filled' label='' />
     </DripsyApp>,
   );
@@ -40,7 +40,7 @@ describe('Testing for Filled text field', () => {
 
 describe('Testing for Filled text field - with error', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <TextField value='Hey' variant='filled' error={true} label='' />
     </DripsyApp>,
   );
@@ -53,7 +53,7 @@ describe('Testing for Filled text field - with error', () => {
 
 describe('Testing for Filled text field - with error message', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <TextField value='Hey' variant='filled' error={true} errorMessage={['Error 1', 'Error 2']} label='' />
     </DripsyApp>,
   );
@@ -66,7 +66,7 @@ describe('Testing for Filled text field - with error message', () => {
 
 describe('Testing for Filled text field - disabled', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <TextField value='Hey' variant='filled' error={true} errorMessage={'Error 1'} label='' disabled />
     </DripsyApp>,
   );
@@ -80,7 +80,7 @@ describe('Testing for Filled text field - disabled', () => {
 describe('Testing for Filled Text field Events without ref', () => {
   it('should trigger focus handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='' variant='filled' label='TextField' testID='text-field-test' error />
       </DripsyApp>,
     );
@@ -90,7 +90,7 @@ describe('Testing for Filled Text field Events without ref', () => {
 
   it('should trigger blur handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='' variant='filled' label='TextField' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -100,7 +100,7 @@ describe('Testing for Filled Text field Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='' variant='filled' label='TextField' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -110,7 +110,7 @@ describe('Testing for Filled Text field Events without ref', () => {
 
   it('should trigger press handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='' variant='filled' label='TextField' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -124,7 +124,7 @@ describe('Testing for Filled Text field with ref', () => {
 
   it('Focus using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='Hey' variant='filled' label='Hey' ref={reference} />
       </DripsyApp>,
     );
@@ -134,7 +134,7 @@ describe('Testing for Filled Text field with ref', () => {
 
   it('Blur using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='Hey' variant='filled' label='Hey' ref={reference} testID='text-field-test' />
       </DripsyApp>,
     );

@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-secrets/no-secrets */
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import { Avatar, Button, Container, IconButton, Typography } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
@@ -10,7 +10,7 @@ import Card, { CardActions, CardContent, CardHeader, CardMedia, CardTitle } from
 
 describe('Testing for Card', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Card width={300}>
         <CardHeader
           heading='Heading'
@@ -46,7 +46,7 @@ describe('Testing for Card', () => {
 
 describe('Testing for Card - Filled', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Card variant='filled' width={300}>
         <CardHeader
           heading='Heading'
@@ -82,7 +82,7 @@ describe('Testing for Card - Filled', () => {
 
 describe('Testing for Card - Outlined', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Card variant='outlined' width={300} maxWidth={300}>
         <CardHeader heading='Heading' avatar={<Avatar name='N' variant='circle' size='large' />} />
         <CardMedia
@@ -114,7 +114,7 @@ describe('Testing for Card - Outlined', () => {
 
 describe('Testing for Card - Elevated', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Card variant='elevated' width={300}>
         <CardHeader heading='Heading' subHeading='subHeading' />
         <CardMedia
@@ -148,7 +148,7 @@ describe('Testing for Card - Elevated', () => {
 
 describe('Testing for Card - Vertical', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Card variant='elevated' orientation='vertical' width={300}>
         <CardHeader heading='Heading' subHeading='subHeading' />
         <CardMedia
@@ -184,7 +184,7 @@ describe('Testing for Card - Vertical', () => {
 
 describe('Testing for Card - Horizontal with height', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Card variant='elevated' orientation='horizontal' height={300}>
         <CardHeader heading='Heading' subHeading='subHeading' />
         <CardMedia
@@ -222,7 +222,7 @@ describe('Testing for Card - Horizontal with height', () => {
 
 describe('Testing for Card - Horizontal', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Card variant='elevated' orientation='horizontal' height={300}>
         <CardHeader heading='Heading' subHeading='subHeading' />
         <CardMedia

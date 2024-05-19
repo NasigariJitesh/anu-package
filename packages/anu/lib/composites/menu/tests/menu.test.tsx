@@ -1,14 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-secrets/no-secrets */
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import { Button, Menu, MenuItem, MenuList } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
 describe('Testing for Menu', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Menu isOpen={true} onMenuToggle={() => {}} component={<Button.Outlined title='Menu' onPress={() => {}} />}>
         <MenuList width={400}>
           <MenuItem leadingIcon={{ name: 'close' }} disabled>
@@ -52,7 +52,7 @@ describe('Testing for Menu', () => {
 
 describe('Testing for Menu with position', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Menu isOpen={true} onMenuToggle={() => {}} component={<Button.Outlined title='Menu' onPress={() => {}} />}>
         <MenuList width={400} positionCoordinates={{ top: 10, left: 50 }}>
           <MenuItem leadingIcon={{ name: 'close' }} disabled>
@@ -96,7 +96,7 @@ describe('Testing for Menu with position', () => {
 
 describe('Testing for Menu Closed position inner open', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Menu isOpen={true} onMenuToggle={() => {}} component={<Button.Outlined title='Menu' onPress={() => {}} />}>
         <MenuList width={400} positionCoordinates={{ top: 10, left: 50 }}>
           <MenuItem leadingIcon={{ name: 'close' }} disabled>

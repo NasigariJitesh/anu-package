@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/prefer-module */
 import placeholder from 'anu/assets/avatar-placeholder.png';
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import { Icon, Image } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
@@ -15,7 +15,7 @@ describe('Testing for Children Avatar Rounded', () => {
   const name = 'NJ';
 
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <ChildrenAvatar>{name}</ChildrenAvatar>
       <ChildrenAvatar size='large'>
         <Icon name='menu' />
@@ -37,7 +37,7 @@ describe('Testing for Children Avatar Rounded', () => {
     const props = [result[0]?.props, result[1]?.props, result[2]?.props];
 
     const commonRendererTree = renderer.create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <Avatar {...props[0]} />
         <Avatar {...props[1]} />
         <Avatar {...props[2]} />
@@ -52,10 +52,10 @@ describe('Testing for Children Avatar Circle', () => {
   const name = 'NJ';
 
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <ChildrenAvatar variant='circle'>{name}</ChildrenAvatar>
       <ChildrenAvatar size='large' variant='circle'>
-        <DripsyApp theme={makeTheme({})}>
+        <DripsyApp theme={defaultTheme}>
           <Icon name='menu' />
         </DripsyApp>
       </ChildrenAvatar>
@@ -76,7 +76,7 @@ describe('Testing for Children Avatar Circle', () => {
     const props = [result[0]?.props, result[1]?.props, result[2]?.props];
 
     const commonRendererTree = renderer.create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <Avatar {...props[0]} />
         <Avatar {...props[1]} />
         <Avatar {...props[2]} />

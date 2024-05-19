@@ -3,12 +3,25 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 
 import { AnuLocalizationProvider } from '../index';
 
+const locales = {
+  en: {
+    value: 'English',
+  },
+  french: {
+    value: 'French',
+  },
+};
+
 describe('Testing for LocalizedTypography Provider', () => {
   const defaultLocale = 'en';
   let currentLocale = defaultLocale;
 
   const renderer = ShallowRenderer.createRenderer();
-  renderer.render(<AnuLocalizationProvider default={defaultLocale}>{/* children */}</AnuLocalizationProvider>);
+  renderer.render(
+    <AnuLocalizationProvider locales={locales} default={defaultLocale}>
+      children
+    </AnuLocalizationProvider>,
+  );
 
   const result = renderer.getRenderOutput();
 
@@ -31,7 +44,11 @@ describe('Testing for LocalizedTypography Provider', () => {
   });
 
   it('Render the whole provider', () => {
-    render(<AnuLocalizationProvider default={defaultLocale}>{/* children */}</AnuLocalizationProvider>);
+    render(
+      <AnuLocalizationProvider locales={locales} default={defaultLocale}>
+        children
+      </AnuLocalizationProvider>,
+    );
 
     expect(screen.toJSON()).toMatchSnapshot();
   });

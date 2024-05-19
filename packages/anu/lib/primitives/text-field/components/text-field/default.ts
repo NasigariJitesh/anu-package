@@ -42,6 +42,7 @@ export const defaultProps: TextFieldProps = {
   cursorColor: undefined,
   verticalAlign: undefined,
   label: 'Text Field',
+  //@ts-ignore
   href: undefined,
   hrefAttrs: undefined,
   onClick: undefined,

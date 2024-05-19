@@ -3,7 +3,7 @@ import 'setimmediate';
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import { Options, Typography } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
@@ -18,7 +18,7 @@ const ListRenderItem = ({ item }: { item: Options }) => {
 
 describe('Testing for Search Bar', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <SearchBar
         value='Hey'
         data={data}
@@ -39,7 +39,7 @@ describe('Testing for Search Bar', () => {
 
 describe('Testing for Standard Search Bar', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <SearchBar
         value='Hey'
         data={data}
@@ -61,7 +61,7 @@ describe('Testing for Standard Search Bar', () => {
 
 describe('Testing for Filled Search Bar', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <SearchBar
         value='Hey'
         data={data}
@@ -84,7 +84,7 @@ describe('Testing for Filled Search Bar', () => {
 describe('Testing for Outlined Search Bar Events without ref', () => {
   it('should trigger focus handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <SearchBar
           testID='auto-complete-test'
           value='Hey'
@@ -107,7 +107,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
 
   it('should trigger focus handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <SearchBar
           testID='auto-complete-test'
           value='Hey'
@@ -130,7 +130,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
 
   it('should trigger blur handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <SearchBar
           testID='auto-complete-test'
           value='Hey'
@@ -149,7 +149,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <SearchBar
           testID='auto-complete-test'
           value='Hey'
@@ -168,7 +168,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <SearchBar
           testID='auto-complete-test'
           value='Hey'
@@ -187,7 +187,7 @@ describe('Testing for Outlined Search Bar Events without ref', () => {
 
   it('should trigger press handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <SearchBar
           testID='auto-complete-test'
           value='Hey'
@@ -210,7 +210,7 @@ describe('Testing for Outlined Search Bar with ref', () => {
 
   it('Focus using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <SearchBar
           testID='auto-complete-test'
           ref={reference}
@@ -230,7 +230,7 @@ describe('Testing for Outlined Search Bar with ref', () => {
 
   it('Blur using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <SearchBar
           ref={reference}
           value='Hey'

@@ -1,5 +1,5 @@
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import renderer from 'react-test-renderer';
 
 import { RenderComponent } from '../components/common';
@@ -9,7 +9,7 @@ describe('Testing for Typography.Label', () => {
   const innerText = 'Title';
 
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Typography.Title>{innerText}</Typography.Title>
     </DripsyApp>,
   );
@@ -25,7 +25,7 @@ describe('Testing for Typography.Label', () => {
     const props = result?.props;
 
     const commonRendererTree = renderer.create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <RenderComponent {...props} />
       </DripsyApp>,
     );

@@ -1,5 +1,5 @@
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import * as React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -8,7 +8,7 @@ import { CalendarEdit } from '../components';
 it('renders CalendarEdit', () => {
   const tree = renderer
     .create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <CalendarEdit
           mode={'single'}
           state={{
@@ -32,7 +32,7 @@ it('renders CalendarEdit', () => {
 it('renders CalendarEdit - range', () => {
   const tree = renderer
     .create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <CalendarEdit
           mode={'range'}
           state={{

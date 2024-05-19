@@ -1,13 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
 import Slider from '..';
 describe('Testing for Continuous Slider', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Slider value={1} minimumValue={0} maximumValue={10} />
     </DripsyApp>,
   );
@@ -21,7 +21,7 @@ describe('Testing for Continuous Slider', () => {
 
 describe('Testing for Continuous Slider with track marks', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Slider value={1} minimumValue={0} maximumValue={10} trackMarks={[3, 6]} />
     </DripsyApp>,
   );
@@ -35,7 +35,7 @@ describe('Testing for Continuous Slider with track marks', () => {
 
 describe('Testing for Continuous Slider with styles', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Slider
         value={1}
         minimumValue={0}
@@ -59,7 +59,7 @@ describe('Testing for Continuous Slider with styles', () => {
 
 describe('Testing for Continuous Slider with range', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Slider
         value={[2, 6]}
         minimumValue={0}

@@ -1,5 +1,5 @@
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -8,7 +8,7 @@ import { TimeInput } from '../components';
 it('renders TimeInputs', () => {
   const tree = renderer
     .create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TimeInput
           inputType='keyboard'
           hours={12}

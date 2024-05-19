@@ -2,7 +2,7 @@ import 'setimmediate';
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import { TextFieldReferenceProps } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
@@ -11,7 +11,7 @@ import OtpInput from '..';
 
 describe('Testing for OTP Field', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <OtpInput numberOfDigits={4} value='' />
     </DripsyApp>,
   );
@@ -25,7 +25,7 @@ describe('Testing for OTP Field', () => {
 
 describe('Testing for OTP Field Outlined', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <OtpInput numberOfDigits={4} value='' variant='outlined' />
     </DripsyApp>,
   );
@@ -40,7 +40,7 @@ describe('Testing for OTP Field Outlined', () => {
 describe('Testing for Outlined Otp field Events without ref', () => {
   it('should trigger focus handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -50,7 +50,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger blur handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -60,7 +60,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -72,7 +72,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -81,7 +81,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger change text handler - numeric', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput
           numberOfDigits={4}
           value=''
@@ -100,7 +100,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger change text handler - numeric - multidigit', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' type='numeric' />
       </DripsyApp>,
     );
@@ -109,7 +109,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger change text handler - alphabetic', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' type='alphabetic' />
       </DripsyApp>,
     );
@@ -118,7 +118,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger change text handler - alphabetic - multidigit', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' type='alphabetic' />
       </DripsyApp>,
     );
@@ -127,7 +127,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger change text handler - alphanumeric', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' type='alphanumeric' />
       </DripsyApp>,
     );
@@ -136,7 +136,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger change text handler - alphanumeric - multidigit', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' type='alphanumeric' />
       </DripsyApp>,
     );
@@ -145,7 +145,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger press handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -154,7 +154,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger keypress handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -165,7 +165,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger keypress handler for first input', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -176,7 +176,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger keypress handler and onSubmit', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput
           numberOfDigits={4}
           value='1234'
@@ -193,7 +193,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger keypress handler without onSubmit', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='1234' variant='outlined' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -204,7 +204,7 @@ describe('Testing for Outlined Otp field Events without ref', () => {
 
   it('should trigger keypress handler with other key', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='1234' variant='outlined' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -219,7 +219,7 @@ describe('Testing for Outlined Otp field Events with ref', () => {
 
   it('Focus using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput numberOfDigits={4} value='' variant='outlined' testID='text-field-test' ref={reference} />
       </DripsyApp>,
     );
@@ -229,7 +229,7 @@ describe('Testing for Outlined Otp field Events with ref', () => {
 
   it('Blur using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <OtpInput
           numberOfDigits={4}
           value=''

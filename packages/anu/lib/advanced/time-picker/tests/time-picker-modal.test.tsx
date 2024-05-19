@@ -1,7 +1,7 @@
 import 'setImmediate';
 
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import * as React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -10,15 +10,8 @@ import TimePickerModal from '../components';
 it('renders TimePicker Modal', () => {
   const tree = renderer
     .create(
-      <DripsyApp theme={makeTheme({})}>
-        <TimePickerModal
-          locale='en'
-          hours={6}
-          minutes={30}
-          onConfirm={() => null}
-          onDismiss={() => null}
-          visible={true}
-        />
+      <DripsyApp theme={defaultTheme}>
+        <TimePickerModal hours={6} minutes={30} onConfirm={() => null} onDismiss={() => null} visible={true} />
       </DripsyApp>,
     )
     .toJSON();
@@ -29,15 +22,8 @@ it('renders TimePicker Modal', () => {
 it('renders TimePicker Modal', () => {
   const tree = renderer
     .create(
-      <DripsyApp theme={makeTheme({})}>
-        <TimePickerModal
-          locale='en'
-          hours={6}
-          minutes={30}
-          onConfirm={() => null}
-          onDismiss={() => null}
-          visible={false}
-        />
+      <DripsyApp theme={defaultTheme}>
+        <TimePickerModal hours={6} minutes={30} onConfirm={() => null} onDismiss={() => null} visible={false} />
       </DripsyApp>,
     )
     .toJSON();

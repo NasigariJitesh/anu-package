@@ -42,7 +42,7 @@ export interface MenuListProps extends ContainerProps {
   /**
    *The co-ordinates of the custom position of the menu ('auto' is not compatible for native and compatible with web only in case of the menu is not positioned below the area that is visible on initial render).
    */
-  positionCoordinates: PositionCoordinates;
+  positionCoordinates?: PositionCoordinates;
   /**
    *Whether the menu is nested inside another menu
    */

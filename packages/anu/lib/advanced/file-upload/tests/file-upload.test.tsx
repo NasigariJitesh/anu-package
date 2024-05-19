@@ -1,15 +1,15 @@
 import 'setimmediate';
 
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import renderer from 'react-test-renderer';
 
 import FileUpload from '../components/file-upload';
 
 describe('Testing for FileUpload', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
-      <FileUpload category='common' size='medium' type='outlined' title='Upload' />
+    <DripsyApp theme={defaultTheme}>
+      <FileUpload category='common' size='medium' variant='elevated' title='Upload' />
     </DripsyApp>,
   );
 
@@ -22,8 +22,8 @@ describe('Testing for FileUpload', () => {
 
 describe('Testing for FileUpload - image', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
-      <FileUpload category='icon-button' type='outlined' icon={{ name: 'checked' }} variant='image' />
+    <DripsyApp theme={defaultTheme}>
+      <FileUpload category='icon-button' variant='outlined' icon={{ name: 'checked' }} uploadVariant='image' />
     </DripsyApp>,
   );
 
@@ -36,14 +36,13 @@ describe('Testing for FileUpload - image', () => {
 
 describe('Testing for FileUpload - file', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <FileUpload
         category='floating-action'
         FABColor='primary'
         size='medium'
-        type='outlined'
         icon={{ name: 'checked' }}
-        variant='image'
+        uploadVariant='image'
       />
     </DripsyApp>,
   );
@@ -57,15 +56,13 @@ describe('Testing for FileUpload - file', () => {
 
 describe('Testing for FileUpload - Extended Fab', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <FileUpload
         category='extended-floating-action'
         FABColor='primary'
-        size='medium'
         title='Upload'
-        type='outlined'
         icon={{ name: 'checked' }}
-        variant='image'
+        uploadVariant='image'
       />
     </DripsyApp>,
   );

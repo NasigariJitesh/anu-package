@@ -1,5 +1,5 @@
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import * as React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -7,7 +7,7 @@ import DatePickerInput from '../components';
 it('renders DatePickerInput', () => {
   const tree = renderer
     .create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <DatePickerInput
           locale={'en'}
           value={new Date('12/26/2022')}

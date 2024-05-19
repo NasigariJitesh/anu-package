@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/prefer-module */
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -12,7 +12,7 @@ describe('Testing for Letter Avatar Rounded', () => {
   const lastName = 'Nasigari';
 
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <LetterAvatar name={name} lastName={lastName} />
       <LetterAvatar size='large' name={name} lastName={lastName} />
       <LetterAvatar size='small' name={name} lastName={lastName} />
@@ -30,7 +30,7 @@ describe('Testing for Letter Avatar Rounded', () => {
     const props = [result[0]?.props, result[1]?.props, result[2]?.props];
 
     const commonRendererTree = renderer.create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <Avatar {...props[0]} />
         <Avatar {...props[1]} />
         <Avatar {...props[2]} />
@@ -45,7 +45,7 @@ describe('Testing for Letter Avatar Circle', () => {
   const name = 'Jitesh';
 
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <LetterAvatar name={name} variant='circle' />
       <LetterAvatar size='large' name={name} variant='circle' />
       <LetterAvatar size='small' name={name} variant='circle' />
@@ -63,7 +63,7 @@ describe('Testing for Letter Avatar Circle', () => {
     const props = [result[0]?.props, result[1]?.props, result[2]?.props];
 
     const commonRendererTree = renderer.create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <Avatar {...props[0]} />
         <Avatar {...props[1]} />
         <Avatar {...props[2]} />

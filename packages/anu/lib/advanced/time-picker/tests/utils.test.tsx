@@ -1,6 +1,6 @@
 import { hourTypes } from '../types';
 import {
-  circleSize,
+  defaultCircleSize,
   getHours,
   getHourType,
   getHourTypeFromOffset,
@@ -46,11 +46,11 @@ describe('timeUtils', () => {
   });
 
   it('should return "am" hour type from offset', () => {
-    expect(getHourTypeFromOffset(20, 75, circleSize)).toBe(hourTypes.am);
+    expect(getHourTypeFromOffset(20, 75, defaultCircleSize)).toBe(hourTypes.am);
   });
 
   it('should return "pm" hour type from offset', () => {
-    expect(getHourTypeFromOffset(135, 45, circleSize)).toBe(hourTypes.pm);
+    expect(getHourTypeFromOffset(135, 45, defaultCircleSize)).toBe(hourTypes.pm);
   });
 
   it('should return correct minutes from hand angle', () => {

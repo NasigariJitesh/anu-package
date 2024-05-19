@@ -3,7 +3,7 @@ import 'setimmediate';
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -13,7 +13,7 @@ import { TextFieldReferenceProps } from '../types';
 
 describe('Testing for Outlined Text field', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <TextField value='Hey' variant='outlined' />
     </DripsyApp>,
   );
@@ -27,7 +27,7 @@ describe('Testing for Outlined Text field', () => {
 
 describe('Testing for Outlined Text field with label', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <TextField value='Hey' variant='outlined' label='Hey' />
     </DripsyApp>,
   );
@@ -41,7 +41,7 @@ describe('Testing for Outlined Text field with label', () => {
 
 describe('Testing for Outlined Text field with icons', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <TextField
         value='Hey'
         variant='outlined'
@@ -62,7 +62,7 @@ describe('Testing for Outlined Text field with icons', () => {
 describe('Testing for Outlined Text field Events without ref', () => {
   it('should trigger focus handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='' variant='outlined' label='TextField' testID='text-field-test' error />
       </DripsyApp>,
     );
@@ -72,7 +72,7 @@ describe('Testing for Outlined Text field Events without ref', () => {
 
   it('should trigger blur handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='' variant='outlined' label='TextField' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -82,7 +82,7 @@ describe('Testing for Outlined Text field Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='' variant='outlined' label='TextField' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -92,7 +92,7 @@ describe('Testing for Outlined Text field Events without ref', () => {
 
   it('should trigger press handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='' variant='outlined' label='TextField' testID='text-field-test' />
       </DripsyApp>,
     );
@@ -106,7 +106,7 @@ describe('Testing for Outlined Text field with ref', () => {
 
   it('Focus using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='Hey' variant='outlined' label='Hey' ref={reference} />
       </DripsyApp>,
     );
@@ -116,7 +116,7 @@ describe('Testing for Outlined Text field with ref', () => {
 
   it('Blur using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <TextField value='Hey' variant='outlined' label='Hey' ref={reference} testID='text-field-test' />
       </DripsyApp>,
     );

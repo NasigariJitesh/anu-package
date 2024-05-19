@@ -1,5 +1,5 @@
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -9,7 +9,7 @@ import { inputTypes } from '../types';
 it('renders AmPmSwitcher', () => {
   const tree = renderer
     .create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AmPmSwitcher hours={12} onChange={() => null} inputType={inputTypes.keyboard} />
       </DripsyApp>,
     )

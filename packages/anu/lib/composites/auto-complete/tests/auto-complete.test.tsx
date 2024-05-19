@@ -3,7 +3,7 @@ import 'setimmediate';
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import { Icon } from 'anu/lib';
 import React from 'react';
 import renderer from 'react-test-renderer';
@@ -14,7 +14,7 @@ import { data, ListRenderItem } from './utils';
 
 describe('Testing for Auto Complete', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <AutoComplete
         value='Hey'
         data={data}
@@ -35,7 +35,7 @@ describe('Testing for Auto Complete', () => {
 
 describe('Testing for Outlined Auto Complete', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <AutoComplete
         value='Hey'
         variant='outlined'
@@ -55,7 +55,7 @@ describe('Testing for Outlined Auto Complete', () => {
 
 describe('Testing for Base Auto Complete', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <AutoComplete
         value='Hey'
         variant='base'
@@ -76,7 +76,7 @@ describe('Testing for Base Auto Complete', () => {
 
 describe('Testing for Filled Auto Complete', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <AutoComplete
         value='Hey'
         variant='filled'
@@ -98,7 +98,7 @@ describe('Testing for Filled Auto Complete', () => {
 describe('Testing for Outlined Auto Complete Events without ref', () => {
   it('should trigger focus handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           testID='auto-complete-test'
           value='Hey'
@@ -116,7 +116,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger blur handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           testID='auto-complete-test'
           value='Hey'
@@ -135,7 +135,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           testID='auto-complete-test'
           value='Hey'
@@ -153,7 +153,7 @@ describe('Testing for Outlined Auto Complete Events without ref', () => {
 
   it('should trigger press handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           testID='auto-complete-test'
           value='Hey'
@@ -174,7 +174,7 @@ describe('Testing for Outlined Auto Complete with ref', () => {
 
   it('Focus using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           ref={reference}
           testID='auto-complete-test'
@@ -194,7 +194,7 @@ describe('Testing for Outlined Auto Complete with ref', () => {
 
   it('Blur using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           ref={reference}
           testID='auto-complete-test'
@@ -217,7 +217,7 @@ describe('Testing for Outlined Auto Complete with ref', () => {
 describe('Testing for base Auto Complete Events without ref', () => {
   it('should trigger focus handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           testID='auto-complete-test'
           value='Hey'
@@ -237,7 +237,7 @@ describe('Testing for base Auto Complete Events without ref', () => {
 
   it('should trigger blur handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           testID='auto-complete-test'
           value='Hey'
@@ -255,7 +255,7 @@ describe('Testing for base Auto Complete Events without ref', () => {
 
   it('should trigger change text handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           testID='auto-complete-test'
           value='Hey'
@@ -275,7 +275,7 @@ describe('Testing for base Auto Complete Events without ref', () => {
 
   it('should trigger press handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           testID='auto-complete-test'
           value=''
@@ -295,7 +295,7 @@ describe('Testing for base Auto Complete Events without ref', () => {
 
   it('should trigger press handler', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           testID='auto-complete-test'
           value=''
@@ -319,7 +319,7 @@ describe('Testing for base Auto Complete with ref', () => {
 
   it('Focus using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           ref={reference}
           testID='auto-complete-test'
@@ -339,7 +339,7 @@ describe('Testing for base Auto Complete with ref', () => {
 
   it('Blur using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           ref={reference}
           testID='auto-complete-test'
@@ -361,7 +361,7 @@ describe('Testing for base Auto Complete with ref', () => {
   });
   it('Blur using ref', async () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <AutoComplete
           ref={reference}
           testID='auto-complete-test'

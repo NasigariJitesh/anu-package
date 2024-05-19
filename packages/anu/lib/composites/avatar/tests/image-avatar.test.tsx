@@ -2,7 +2,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import placeholder from 'anu/assets/avatar-placeholder.png';
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
@@ -11,7 +11,7 @@ import ImageAvatar from '../components/avatar/image-avatar';
 
 describe('Testing for Image Avatar Rounded', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <ImageAvatar source={{ uri: placeholder.src }} />
       <ImageAvatar size='large' source={{ uri: placeholder.src }} />
       <ImageAvatar size='small' source={{ uri: placeholder.src }} />
@@ -29,7 +29,7 @@ describe('Testing for Image Avatar Rounded', () => {
     const props = [result[0]?.props, result[1]?.props, result[2]?.props];
 
     const commonRendererTree = renderer.create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <Avatar {...props[0]} />
         <Avatar {...props[1]} />
         <Avatar {...props[2]} />
@@ -42,7 +42,7 @@ describe('Testing for Image Avatar Rounded', () => {
 
 describe('Testing for Image Avatar Circle', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <ImageAvatar source={{ uri: placeholder.src }} variant='circle' />
       <ImageAvatar
         size='large'
@@ -76,7 +76,7 @@ describe('Testing for Image Avatar Circle', () => {
     const props = [result[0]?.props, result[1]?.props, result[2]?.props];
 
     const commonRendererTree = renderer.create(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <Avatar {...props[0]} />
         <Avatar {...props[1]} />
         <Avatar {...props[2]} />
@@ -92,7 +92,7 @@ describe('Testing for Image Avatar Events error', () => {
     jest.spyOn(console, 'error').mockImplementation();
 
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <ImageAvatar
           source={{ uri: placeholder.src }}
           alt='image'
@@ -109,7 +109,7 @@ describe('Testing for Image Avatar Events error', () => {
   });
   it('should trigger error handler without any function', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <ImageAvatar source={{ uri: placeholder.src }} testID='Image-test' variant='circle' />
       </DripsyApp>,
     );
@@ -123,7 +123,7 @@ describe('Testing for Image Avatar Events load', () => {
     jest.spyOn(console, 'log').mockImplementation();
 
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <ImageAvatar
           source={{ uri: placeholder.src }}
           alt='image'
@@ -141,7 +141,7 @@ describe('Testing for Image Avatar Events load', () => {
 
   it('should trigger on load handler without any function', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <ImageAvatar source={{ uri: placeholder.src }} testID='Image-test' variant='circle' />
       </DripsyApp>,
     );
@@ -155,7 +155,7 @@ describe('Testing for Image Avatar partial load', () => {
     jest.spyOn(console, 'error').mockImplementation();
 
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <ImageAvatar
           source={{ uri: placeholder.src }}
           testID='Image-test'
@@ -171,7 +171,7 @@ describe('Testing for Image Avatar partial load', () => {
   });
   it('should trigger partial load handler without any function', () => {
     render(
-      <DripsyApp theme={makeTheme({})}>
+      <DripsyApp theme={defaultTheme}>
         <ImageAvatar source={{ uri: placeholder.src }} testID='Image-test' variant='circle' />
       </DripsyApp>,
     );

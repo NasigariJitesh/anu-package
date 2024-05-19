@@ -173,7 +173,7 @@ const ForNextJS = () => {
     {
       title: 'getting-started:step4.2:title',
       code: `import { Provider } from 'anu/common/context';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
       
 const theme = makeTheme({});
       
@@ -257,7 +257,7 @@ const GettingStarted = () => {
           id='provider'
           description='getting-started:step3:description'
           code={`import { Provider } from 'anu/common/context';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 
 const theme = makeTheme({});
 

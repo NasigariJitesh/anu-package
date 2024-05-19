@@ -11,15 +11,25 @@
     "snack": "cd apps/snack && yarn start",
     "docs": "cd apps/docs && yarn next",
     "lint": "eslint .",
-    "format": "npx prettier --write . "
+    "build": "lerna run build",
+    "format": "npx prettier --write . ",
+    "prepare": "lerna run prepare",
+    "publish": "lerna run publish",
+    "bootstrap": "lerna bootstrap",
+    "release": "lerna publish"
   },
   "dependencies": {
+    "expo": "^48.0.0",
     "expo-router": "^1.5.3"
   },
   "devDependencies": {
+    "@react-native-community/bob": "^0.11.2",
     "@types/react": "^18.0.17",
     "@types/react-native": "^0.69.5",
     "eslint": "^8.21.0",
+    "expo-module-scripts": "3.4.1",
+    "lerna": "^3.22.1",
+    "release-it": "^13.5.8",
     "tsconfig": "*",
     "turbo": "^1.4.2",
     "typescript": "^4.7.4"
@@ -32,5 +42,32 @@
     "**/expo-router",
     "**/expo-router/**"
   ],
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
+  },
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
+  "version": "0.1.0",
   "packageManager": "yarn@3.4.1"
 }

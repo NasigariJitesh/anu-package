@@ -1,12 +1,12 @@
 import DripsyApp from 'anu/common/context/anu-provider';
-import { makeTheme } from 'anu/config';
+import { defaultTheme } from 'anu/config';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
 import Slider from '..';
 describe('Testing for Discrete Slider', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Slider value={1} minimumValue={0} maximumValue={10} step={2} />
     </DripsyApp>,
   );
@@ -20,7 +20,7 @@ describe('Testing for Discrete Slider', () => {
 
 describe('Testing for Discrete Slider with track marks', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Slider value={1} minimumValue={0} maximumValue={10} step={2} trackMarks={[4, 8]} />
     </DripsyApp>,
   );
@@ -34,7 +34,7 @@ describe('Testing for Discrete Slider with track marks', () => {
 
 describe('Testing for Discrete Slider Disabled', () => {
   const tree = renderer.create(
-    <DripsyApp theme={makeTheme({})}>
+    <DripsyApp theme={defaultTheme}>
       <Slider value={1} minimumValue={0} maximumValue={10} step={2} disabled />
     </DripsyApp>,
   );
